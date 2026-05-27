@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin — Time Pepe WhatsApp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sidebar-w: 240px;
+      --sidebar:   #080f1e;
+      --sidebar2:  #0d1a2e;
+      --sidebar3:  #162236;
+      --blue:      #1a7fe8;
+      --blue2:     #5db3ff;
+      --green:     #22c55e;
+      --amber:     #f59e0b;
+      --red:       #ef4444;
+      --purple:    #7c3aed;
+      --bg:        #eef5ff;
+      --card:      #ffffff;
+      --text:      #0d2a4a;
+      --muted:     #7aaecf;
+      --border:    #dbeafe;
+      --topbar:    64px;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    /* ── Layout ──────────────────────────────────────────── */
+    .layout {
+      display: grid;
+      grid-template-columns: var(--sidebar-w) 1fr;
+      height: 100vh;
+    }
+
+    /* ── Sidebar ─────────────────────────────────────────── */
+    aside {
+      background: var(--sidebar);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+      z-index: 20;
+    }
+
+    .sidebar-logo {
+      padding: 20px 16px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sidebar-logo img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      border-radius: 0;
+      background: none;
+      padding: 0;
+    }
+
+    .sidebar-logo .brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-logo .brand b {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .sidebar-logo .brand span {
+      font-size: 10px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.05em;
+      font-weight: 300;
+    }
+
+    nav {
+      flex: 1;
+      padding: 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow-y: auto;
+    }
+
+    .nav-label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      padding: 12px 8px 6px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.5);
+      font-size: 13.5px;
+      font-weight: 500;
+      transition: all 0.18s;
+      user-select: none;
+    }
+
+    .nav-item .icon { font-size: 18px; line-height: 1; flex-shrink: 0; }
+
+    .nav-item:hover { background: var(--sidebar3); color: rgba(255,255,255,0.85); }
+
+    .nav-item.active {
+      background: var(--blue);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 4px 16px rgba(26,127,232,0.35);
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      background: var(--amber);
+      color: #000;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+    }
+
+    .sidebar-footer {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.25);
+      animation: pulse-dot 2s ease infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.25); }
+      50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0.10); }
+    }
+
+    .sidebar-footer span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── Main ────────────────────────────────────────────── */
+    .main-wrapper {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── Topbar ──────────────────────────────────────────── */
+    .topbar {
+      height: var(--topbar);
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      gap: 16px;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .topbar-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      flex: 1;
+    }
+
+    .topbar-actions { display: flex; align-items: center; gap: 12px; }
+
+    .icon-btn {
+      width: 38px; height: 38px;
+      border: none;
+      background: var(--bg);
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: background 0.15s;
+      position: relative;
+    }
+
+    .icon-btn:hover { background: var(--border); }
+
+    .notif-dot {
+      position: absolute;
+      top: 6px; right: 6px;
+      width: 8px; height: 8px;
+      background: var(--red);
+      border-radius: 50%;
+      border: 2px solid var(--card);
+    }
+
+    .avatar {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* ── Content ─────────────────────────────────────────── */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 28px;
+    }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* ── KPI Cards ───────────────────────────────────────── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .kpi-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26,127,232,0.10);
+    }
+
+    .kpi-header { display: flex; align-items: center; justify-content: space-between; }
+
+    .kpi-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .kpi-trend {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    .trend-up   { background: rgba(34,197,94,0.12); color: #16a34a; }
+    .trend-down { background: rgba(239,68,68,0.12);  color: #dc2626; }
+
+    .kpi-value {
+      font-family: 'Inter', sans-serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .kpi-label {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ── Dashboard grid ──────────────────────────────────── */
+    .dash-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 20px;
+    }
+
+    /* ── Mapa no dashboard ───────────────────────────────── */
+    .dash-map-row {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 16px;
+      height: 400px;
+      margin-bottom: 20px;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      z-index: 1;
+    }
+
+    /* ── Card ─────────────────────────────────────────────── */
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 18px 20px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .card-body { padding: 20px; }
+
+    /* ── Bar chart ───────────────────────────────────────── */
+    .bar-chart { display: flex; flex-direction: column; gap: 12px; }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 110px 1fr 52px;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .bar-city { font-size: 12.5px; font-weight: 600; color: var(--text); white-space: nowrap; }
+
+    .bar-track {
+      height: 10px;
+      background: var(--bg);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 1s cubic-bezier(.22,1,.36,1);
+    }
+
+    .bar-count { font-size: 12px; font-weight: 700; color: var(--text); text-align: right; }
+
+    /* ── Recent leads table ──────────────────────────────── */
+    .leads-table { width: 100%; border-collapse: collapse; }
+
+    .leads-table th {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 8px 12px;
+      text-align: left;
+      background: var(--bg);
+    }
+
+    .leads-table td {
+      padding: 10px 12px;
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    .leads-table tbody tr:hover { background: #f5f9ff; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .badge-blue   { background: rgba(26,127,232,0.12); color: var(--blue); }
+    .badge-green  { background: rgba(34,197,94,0.12);  color: #16a34a; }
+    .badge-amber  { background: rgba(245,158,11,0.12); color: #b45309; }
+    .badge-purple { background: rgba(124,58,237,0.12); color: var(--purple); }
+    .badge-red    { background: rgba(239,68,68,0.12);  color: var(--red); }
+    .badge-grey   { background: rgba(0,0,0,0.06);      color: #64748b; }
+
+    /* ── Mapa section ─────────────────────────────────────── */
+    .map-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 20px;
+      height: calc(100vh - var(--topbar) - 120px);
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      z-index: 1;
+    }
+
+    .city-list { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; }
+
+    .city-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+
+    .city-item:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 12px rgba(26,127,232,0.10);
+      transform: translateX(3px);
+    }
+
+    .city-item-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .city-name { font-weight: 700; font-size: 14px; color: var(--text); }
+
+    .city-count {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    .city-event { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+
+    .city-mini-bar {
+      height: 4px;
+      background: var(--bg);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .city-mini-fill { height: 100%; border-radius: 999px; }
+
+    .city-leads-names {
+      margin-top: 8px;
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Envio em Massa ──────────────────────────────────── */
+    .envio-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr 300px;
+      gap: 20px;
+      height: calc(100vh - var(--topbar) - 120px);
+    }
+
+    .recipient-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow-y: auto;
+    }
+
+    .recip-item {
+      background: var(--card);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .recip-item.selected {
+      border-color: var(--blue);
+      background: rgba(26,127,232,0.04);
+    }
+
+    .recip-check {
+      width: 20px; height: 20px;
+      border-radius: 6px;
+      border: 2px solid var(--border);
+      background: var(--card);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+      transition: all 0.15s;
+    }
+
+    .recip-item.selected .recip-check {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .recip-info { flex: 1; min-width: 0; }
+    .recip-name { font-weight: 600; font-size: 13px; color: var(--text); }
+    .recip-count { font-size: 11px; color: var(--muted); }
+    .recip-total { font-size: 20px; font-weight: 600; font-family: 'Inter',sans-serif; color: var(--text); margin-left: auto; }
+
+    .msg-editor { display: flex; flex-direction: column; gap: 14px; overflow-y: auto; }
+
+    .field-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      resize: none;
+      outline: none;
+      transition: border-color 0.2s;
+      line-height: 1.6;
+    }
+
+    textarea:focus { border-color: var(--blue); }
+
+    .vars-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .var-chip {
+      background: rgba(26,127,232,0.1);
+      color: var(--blue);
+      border: 1px solid rgba(26,127,232,0.2);
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .var-chip:hover { background: rgba(26,127,232,0.18); }
+
+    .schedule-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    input[type="date"], input[type="time"], input[type="text"], select.form-sel {
+      width: 100%;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    input[type="date"]:focus, input[type="time"]:focus,
+    input[type="text"]:focus, select.form-sel:focus {
+      border-color: var(--blue);
+    }
+
+    .wpp-preview {
+      background: #ece5dd;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .wpp-header {
+      background: #075e54;
+      border-radius: 12px 12px 0 0;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      margin: -16px -16px 0;
+    }
+
+    .wpp-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+
+    .wpp-title { font-weight: 600; font-size: 14px; }
+    .wpp-status { font-size: 11px; opacity: 0.7; }
+
+    .wpp-bubble {
+      background: #fff;
+      border-radius: 0 12px 12px 12px;
+      padding: 10px 14px;
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #111;
+      max-width: 90%;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      white-space: pre-wrap;
+    }
+
+    .wpp-time {
+      font-size: 10.5px;
+      color: #999;
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    .wpp-footer {
+      background: #f0f0f0;
+      border-radius: 24px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .wpp-footer span { flex: 1; font-size: 13px; color: #999; }
+
+    /* ── Action buttons ──────────────────────────────────── */
+    .actions-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.18s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(26,127,232,0.30);
+      flex: 1;
+      justify-content: center;
+    }
+
+    .btn-primary:hover { box-shadow: 0 6px 20px rgba(26,127,232,0.45); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: var(--card);
+      border: 2px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+    .btn-danger {
+      background: rgba(239,68,68,0.1);
+      color: var(--red);
+      border: none;
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, #16a34a, var(--green));
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(34,197,94,0.30);
+      flex: 1;
+      justify-content: center;
+    }
+
+    .btn-green:hover { transform: translateY(-1px); }
+
+    /* ── Agendamentos table ──────────────────────────────── */
+    .sched-table { width: 100%; border-collapse: collapse; }
+
+    .sched-table th {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px 16px;
+      text-align: left;
+      background: var(--bg);
+      position: sticky;
+      top: 0;
+    }
+
+    .sched-table td {
+      padding: 12px 16px;
+      font-size: 13.5px;
+      border-top: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    .sched-table tbody tr:hover { background: #f5f9ff; }
+
+    .progress-bar {
+      height: 6px;
+      background: var(--bg);
+      border-radius: 999px;
+      overflow: hidden;
+      width: 100px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--blue), var(--blue2));
+    }
+
+    .status-indicator {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .stat-green  { background: var(--green); }
+    .stat-amber  { background: var(--amber); }
+    .stat-grey   { background: #94a3b8; }
+    .stat-red    { background: var(--red); }
+    .stat-blue   { background: var(--blue); animation: pulse-dot 2s infinite; }
+
+    /* ── Rotinas cards ────────────────────────────────────── */
+    .rotinas-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .rotina-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: box-shadow 0.2s;
+    }
+
+    .rotina-card:hover {
+      box-shadow: 0 6px 24px rgba(26,127,232,0.10);
+    }
+
+    .rotina-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .rotina-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .rotina-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    .toggle {
+      width: 44px; height: 24px;
+      border-radius: 999px;
+      background: #e2e8f0;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.25s;
+      flex-shrink: 0;
+    }
+
+    .toggle.on { background: var(--green); }
+
+    .toggle::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      transition: transform 0.25s;
+    }
+
+    .toggle.on::after { transform: translateX(20px); }
+
+    .rotina-flow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .flow-step {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .flow-arrow { color: var(--muted); font-size: 16px; }
+
+    .rotina-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .rotina-stat { text-align: center; }
+    .rotina-stat-val { font-family: 'Inter',sans-serif; font-size: 20px; font-weight: 600; color: var(--text); }
+    .rotina-stat-label { font-size: 10px; color: var(--muted); font-weight: 600; }
+
+    .rotina-footer {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .btn-sm {
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+    }
+
+    .btn-sm.outline {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-sm.outline:hover { border-color: var(--blue); color: var(--blue); }
+
+    .btn-sm.danger { background: rgba(239,68,68,0.08); color: var(--red); }
+
+    /* ── Map popup ────────────────────────────────────────── */
+    .leaflet-popup-content-wrapper {
+      border-radius: 14px !important;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15) !important;
+      border: none !important;
+    }
+
+    .map-popup-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .map-popup-sub { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+
+    .map-popup-leads {
+      font-family: 'Inter', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .map-popup-names {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      padding-top: 8px;
+      margin-top: 4px;
+    }
+
+    /* ── Section header ──────────────────────────────────── */
+    .sec-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .sec-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .sec-subtitle { font-size: 13px; color: var(--muted); margin-top: 2px; }
+
+    /* ── Filter row ──────────────────────────────────────── */
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      transition: all 0.15s;
+    }
+
+    .filter-chip.active {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    /* ── Scrollbar ────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+    /* ── Toast ────────────────────────────────────────────── */
+    .toast {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      background: var(--text);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-size: 13.5px;
+      font-weight: 500;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      z-index: 9999;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(.34,1.56,.64,1);
+      max-width: 320px;
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+  </style>
+  <style>
+    /* ── Login screen ─────────────────────────────────── */
+    #login-screen {
+      position: fixed; inset: 0;
+      background: linear-gradient(135deg, #080f1e 0%, #0d1a2e 60%, #0a1628 100%);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9000;
+      transition: opacity 0.5s ease;
+    }
+
+    #login-screen.hide { opacity: 0; pointer-events: none; }
+
+    .login-card {
+      width: 380px;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0;
+    }
+
+    .login-logo {
+      width: 130px; height: 130px;
+      object-fit: contain;
+      margin-bottom: 28px;
+      filter: drop-shadow(0 8px 32px rgba(26,127,232,0.35));
+    }
+
+    .login-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .login-name {
+      font-family: 'Inter', sans-serif;
+      font-size: 22px; font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 32px;
+    }
+
+    .login-avatar {
+      width: 68px; height: 68px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; font-weight: 600; color: #fff;
+      margin-bottom: 28px;
+      box-shadow: 0 0 0 4px rgba(26,127,232,0.2), 0 8px 32px rgba(26,127,232,0.3);
+    }
+
+    .login-input-wrap {
+      width: 100%; position: relative; margin-bottom: 14px;
+    }
+
+    .login-input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 15px 20px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px; font-weight: 300;
+      color: #fff;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .login-input::placeholder { color: rgba(255,255,255,0.3); }
+    .login-input:focus {
+      border-color: var(--blue);
+      background: rgba(26,127,232,0.08);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 15px;
+      margin-top: 8px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--blue), var(--blue2));
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px; font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 6px 24px rgba(26,127,232,0.35);
+      letter-spacing: 0.02em;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 32px rgba(26,127,232,0.5);
+    }
+
+    .login-footer {
+      margin-top: 24px;
+      font-size: 11px; font-weight: 300;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+
+    /* Tooltip do mapa ────────────────────────────────── */
+    .city-tooltip {
+      background: rgba(8,15,30,0.9) !important;
+      border: 1px solid rgba(93,179,255,0.3) !important;
+      color: #e8f4ff !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 12px !important;
+      font-weight: 400 !important;
+      border-radius: 8px !important;
+      padding: 4px 10px !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
+    }
+
+    .city-tooltip::before { display: none !important; }
+  </style>
+</head>
+<body>
+
+<!-- ── Login screen ─────────────────────────────────── -->
+<div id="login-screen">
+  <div class="login-card">
+    <img class="login-logo"
+         src="https://trngl.com.br/wp-content/uploads/2026/05/LOGO_PEPE.png"
+         alt="Time Pepe"/>
+    <div class="login-title">Time Pepe · Painel Admin</div>
+    <div class="login-name">Beela Rodrigues</div>
+    <div class="login-avatar">BR</div>
+    <div class="login-input-wrap">
+      <input class="login-input" type="password" placeholder="Senha de acesso"
+             id="login-pwd" onkeydown="if(event.key==='Enter') doLogin()"/>
+    </div>
+    <button class="login-btn" onclick="doLogin()">Entrar no painel</button>
+    <div class="login-footer">WhatsApp Admin · Time Pepe © 2026</div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- ── Sidebar ──────────────────────────────────────── -->
+  <aside>
+    <div class="sidebar-logo">
+      <img src="https://trngl.com.br/wp-content/uploads/2026/05/LOGO_PEPE.png" alt="Pepe"/>
+      <div class="brand">
+        <b>Time Pepe</b>
+        <span>WhatsApp Admin</span>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-label">Principal</div>
+      <div class="nav-item active" onclick="showSection('dashboard')">
+        <span class="icon">📊</span> Dashboard
+      </div>
+      <div class="nav-item" onclick="showSection('contatos')">
+        <span class="icon">👥</span> Contatos
+      </div>
+
+      <div class="nav-label">WhatsApp</div>
+      <div class="nav-item" onclick="showSection('envio')">
+        <span class="icon">📤</span> Envio
+      </div>
+      <div class="nav-item" onclick="showSection('agendamentos')">
+        <span class="icon">📅</span> Agendamentos
+        <span class="nav-badge">3</span>
+      </div>
+      <div class="nav-item" onclick="showSection('rotinas')">
+        <span class="icon">⚡</span> Rotinas
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="status-dot"></div>
+      <span>Evolution API conectada</span>
+    </div>
+  </aside>
+
+  <!-- ── Main ─────────────────────────────────────────── -->
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-title" id="page-title">Dashboard</div>
+      <div class="topbar-actions">
+        <button class="icon-btn" title="Atualizar" onclick="toast('Dados atualizados ✓')">🔄</button>
+        <button class="icon-btn" title="Notificações">
+          🔔
+          <div class="notif-dot"></div>
+        </button>
+        <div class="avatar" title="Admin">P</div>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- DASHBOARD                                      -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section id="sec-dashboard" class="section active">
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <div class="kpi-icon" style="background:rgba(26,127,232,0.12)">👥</div>
+              <span class="kpi-trend trend-up">+12% ↑</span>
+            </div>
+            <div class="kpi-value">830</div>
+            <div class="kpi-label">Total de Leads</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <div class="kpi-icon" style="background:rgba(34,197,94,0.12)">💬</div>
+              <span class="kpi-trend trend-up">+8% ↑</span>
+            </div>
+            <div class="kpi-value">2.341</div>
+            <div class="kpi-label">Mensagens Enviadas</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <div class="kpi-icon" style="background:rgba(245,158,11,0.12)">📈</div>
+              <span class="kpi-trend trend-up">+3% ↑</span>
+            </div>
+            <div class="kpi-value">68%</div>
+            <div class="kpi-label">Taxa de Resposta</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-header">
+              <div class="kpi-icon" style="background:rgba(124,58,237,0.12)">🎯</div>
+              <span class="kpi-trend trend-up">2 ativos</span>
+            </div>
+            <div class="kpi-value">43</div>
+            <div class="kpi-label">Leads Hoje</div>
+          </div>
+        </div>
+
+        <!-- Mapa de calor + lista de cidades -->
+        <div class="dash-map-row">
+          <div id="map"></div>
+          <div class="card" style="display:flex;flex-direction:column;overflow:hidden">
+            <div class="card-header">
+              <div class="card-title">Cidades</div>
+              <span class="badge badge-blue" id="city-total-badge">830 leads</span>
+            </div>
+            <div class="card-body city-list" id="city-list" style="flex:1;overflow-y:auto;padding:12px"></div>
+          </div>
+        </div>
+
+        <div class="dash-grid">
+          <!-- Chart -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Leads por Cidade</div>
+              <div class="filter-row" style="margin:0;gap:6px">
+                <span class="filter-chip active" style="font-size:11px;padding:4px 12px">Todos</span>
+                <span class="filter-chip" style="font-size:11px;padding:4px 12px">Tubarão</span>
+                <span class="filter-chip" style="font-size:11px;padding:4px 12px">Garopaba</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="bar-chart" id="bar-chart"></div>
+            </div>
+          </div>
+
+          <!-- Recent leads -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Leads Recentes</div>
+              <span class="badge badge-green">Ao vivo</span>
+            </div>
+            <div style="overflow-y:auto;max-height:380px">
+              <table class="leads-table">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th>Evento</th>
+                    <th>Hora</th>
+                  </tr>
+                </thead>
+                <tbody id="recent-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- CONTATOS                                       -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section id="sec-contatos" class="section">
+        <div class="sec-header">
+          <div>
+            <div class="sec-title">Contatos</div>
+            <div class="sec-subtitle">Todos os leads cadastrados</div>
+          </div>
+          <button class="btn btn-primary" style="flex:none;width:auto" onclick="toast('Importar CSV em breve 📂')">
+            ⬆️ Importar Contatos
+          </button>
+        </div>
+        <div class="card">
+          <div style="overflow-x:auto">
+            <table class="sched-table" id="contacts-table">
+              <thead>
+                <tr>
+                  <th>Nome</th><th>WhatsApp</th><th>Cadastrado no evento:</th><th>Cidade</th><th>Data</th><th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="contacts-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- ENVIO EM MASSA                                 -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section id="sec-envio" class="section">
+        <div class="sec-header">
+          <div>
+            <div class="sec-title">Envio em Massa</div>
+            <div class="sec-subtitle">Selecione os destinatários, escreva a mensagem e agende ou envie agora</div>
+          </div>
+          <span class="badge badge-green" id="recip-badge">0 selecionados</span>
+        </div>
+        <div class="envio-layout">
+
+          <!-- Destinatários -->
+          <div style="display:flex;flex-direction:column;gap:8px;overflow-y:auto">
+            <div class="field-label">Destinatários</div>
+            <div class="recip-item selected" data-count="830" onclick="toggleRecip(this)">
+              <div class="recip-check">✓</div>
+              <div class="recip-info">
+                <div class="recip-name">📋 Todos os Leads</div>
+                <div class="recip-count">todas as cidades</div>
+              </div>
+              <div class="recip-total">830</div>
+            </div>
+            <div class="recip-item" data-count="312" onclick="toggleRecip(this)">
+              <div class="recip-check"></div>
+              <div class="recip-info">
+                <div class="recip-name">🎯 Evento em Tubarão</div>
+                <div class="recip-count">Tubarão + Criciúma + Araranguá</div>
+              </div>
+              <div class="recip-total">412</div>
+            </div>
+            <div class="recip-item" data-count="189" onclick="toggleRecip(this)">
+              <div class="recip-check"></div>
+              <div class="recip-info">
+                <div class="recip-name">🏛️ Prefeitura de Garopaba</div>
+                <div class="recip-count">Garopaba + Imbituba + P. Lopes</div>
+              </div>
+              <div class="recip-total">251</div>
+            </div>
+            <div class="recip-item" data-count="98" onclick="toggleRecip(this)">
+              <div class="recip-check"></div>
+              <div class="recip-info">
+                <div class="recip-name">🌆 Florianópolis</div>
+                <div class="recip-count">Grande Floripa</div>
+              </div>
+              <div class="recip-total">136</div>
+            </div>
+
+            <div class="field-label" style="margin-top:12px">Agendar</div>
+            <div class="schedule-row">
+              <div>
+                <div class="field-label" style="font-size:10px">Data</div>
+                <input type="date" id="sched-date" value="2026-05-16"/>
+              </div>
+              <div>
+                <div class="field-label" style="font-size:10px">Hora</div>
+                <input type="time" id="sched-time" value="09:00"/>
+              </div>
+            </div>
+
+            <div class="actions-row" style="margin-top:8px">
+              <button class="btn btn-outline" onclick="scheduleMsg()" style="flex:1;justify-content:center;font-size:13px">📅 Agendar</button>
+            </div>
+            <div class="actions-row">
+              <button class="btn btn-green" onclick="sendNow()">🚀 Enviar Agora</button>
+            </div>
+          </div>
+
+          <!-- Editor de mensagem -->
+          <div class="msg-editor">
+            <div>
+              <div class="field-label">Campanha</div>
+              <input type="text" value="Convite Evento Tubarão — Maio 2026"/>
+            </div>
+            <div>
+              <div class="field-label">Mensagem</div>
+              <textarea id="msg-text" rows="9" oninput="updatePreview()" placeholder="Escreva a mensagem aqui...">Olá, *{nome}*! 👋
+
+Aqui é o *Time Pepe* e temos uma novidade exclusiva para você!
+
+🎯 Você está cadastrado em *{evento}*.
+
+📅 Não perca o próximo encontro — vai ser incrível!
+
+Responda *SIM* para confirmar sua presença ou *INFO* para mais detalhes.
+
+_Equipe Time Pepe_ 🐾</textarea>
+            </div>
+            <div>
+              <div class="field-label">Variáveis disponíveis</div>
+              <div class="vars-row">
+                <span class="var-chip" onclick="insertVar('{nome}')">👤 {nome}</span>
+                <span class="var-chip" onclick="insertVar('{evento}')">🎯 {evento}</span>
+                <span class="var-chip" onclick="insertVar('{cidade}')">📍 {cidade}</span>
+                <span class="var-chip" onclick="insertVar('{data}')">📅 {data}</span>
+                <span class="var-chip" onclick="insertVar('{link}')">🔗 {link}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preview WhatsApp -->
+          <div style="display:flex;flex-direction:column;gap:10px;overflow-y:auto">
+            <div class="field-label">Preview</div>
+            <div class="wpp-preview">
+              <div class="wpp-header">
+                <div class="wpp-avatar">🐾</div>
+                <div>
+                  <div class="wpp-title">Time Pepe</div>
+                  <div class="wpp-status">online</div>
+                </div>
+              </div>
+              <div style="padding:12px 0">
+                <div class="wpp-bubble" id="msg-preview">Olá, <b>João Silva</b>! 👋
+
+Aqui é o <b>Time Pepe</b> e temos uma novidade exclusiva para você!
+
+🎯 Você está cadastrado em <b>Evento em Tubarão</b>.
+
+📅 Não perca o próximo encontro — vai ser incrível!
+
+Responda <b>SIM</b> para confirmar sua presença ou <b>INFO</b> para mais detalhes.
+
+<i>Equipe Time Pepe</i> 🐾</div>
+                <div class="wpp-time">agora ✓✓</div>
+              </div>
+              <div class="wpp-footer">
+                <span>Digite uma mensagem</span>
+                <span>🎙️</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- AGENDAMENTOS                                   -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section id="sec-agendamentos" class="section">
+        <div class="sec-header">
+          <div>
+            <div class="sec-title">Agendamentos</div>
+            <div class="sec-subtitle">Mensagens programadas para envio</div>
+          </div>
+          <div class="filter-row" style="margin:0">
+            <span class="filter-chip active">Todos</span>
+            <span class="filter-chip">Pendentes</span>
+            <span class="filter-chip">Enviados</span>
+          </div>
+        </div>
+        <div class="card">
+          <div style="overflow-x:auto">
+            <table class="sched-table">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Campanha</th>
+                  <th>Destinatários</th>
+                  <th>Agendado para</th>
+                  <th>Progresso</th>
+                  <th>Evento</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="sched-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════════════════ -->
+      <!-- ROTINAS                                        -->
+      <!-- ══════════════════════════════════════════════ -->
+      <section id="sec-rotinas" class="section">
+        <div class="sec-header">
+          <div>
+            <div class="sec-title">Rotinas Automáticas</div>
+            <div class="sec-subtitle">Fluxos disparados por gatilho · 3 ativos</div>
+          </div>
+          <button class="btn btn-primary" style="flex:none;width:auto" onclick="toast('Editor de rotinas em breve 🚧')">
+            + Nova Rotina
+          </button>
+        </div>
+        <div class="rotinas-grid" id="rotinas-grid"></div>
+      </section>
+
+    </div><!-- /content -->
+  </div><!-- /main-wrapper -->
+</div><!-- /layout -->
+
+<div class="toast" id="toast"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet.heat/dist/leaflet-heat.js"></script>
+<script>
+// ════════════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════════════
+
+const CITIES = [
+  { name: 'Tubarão',       label: 'Tubarão — SC',         lat: -28.4782, lng: -49.0430, leads: 312, event: 'Evento em Tubarão',        color: '#1a7fe8' },
+  { name: 'Garopaba',      label: 'Garopaba — SC',        lat: -28.0305, lng: -48.6612, leads: 189, event: 'Prefeitura de Garopaba',   color: '#22c55e' },
+  { name: 'Florianópolis', label: 'Florianópolis — SC',   lat: -27.6131, lng: -48.4854, leads: 98,  event: 'Geral',                    color: '#7c3aed' },
+  { name: 'Criciúma',      label: 'Criciúma — SC',        lat: -28.7445, lng: -49.3609, leads: 72,  event: 'Evento em Tubarão',        color: '#1a7fe8' },
+  { name: 'Imbituba',      label: 'Imbituba — SC',        lat: -28.2125, lng: -48.6962, leads: 44,  event: 'Prefeitura de Garopaba',   color: '#22c55e' },
+  { name: 'Laguna',        label: 'Laguna — SC',          lat: -28.4697, lng: -48.8275, leads: 31,  event: 'Geral',                    color: '#f59e0b' },
+  { name: 'Araranguá',     label: 'Araranguá — SC',       lat: -28.9457, lng: -49.4567, leads: 28,  event: 'Evento em Tubarão',        color: '#1a7fe8' },
+  { name: 'Palhoça',       label: 'Palhoça — SC',         lat: -27.7618, lng: -48.6606, leads: 23,  event: 'Geral',                    color: '#f59e0b' },
+  { name: 'Paulo Lopes',   label: 'Paulo Lopes — SC',     lat: -27.9462, lng: -48.7385, leads: 18,  event: 'Prefeitura de Garopaba',   color: '#22c55e' },
+  { name: 'São José',      label: 'São José — SC',        lat: -27.5889, lng: -48.6567, leads: 15,  event: 'Geral',                    color: '#f59e0b' },
+];
+
+const SAMPLE_LEADS = {
+  'Tubarão':       ['João Silva', 'Maria Santos', 'Pedro Oliveira', 'Ana Costa', 'Carlos Lima', 'Beatriz Souza', 'Rafael Nunes'],
+  'Garopaba':      ['Lucas Pereira', 'Fernanda Rodrigues', 'Rafael Alves', 'Juliana Martins', 'Bruno Castro', 'Larissa Melo'],
+  'Florianópolis': ['Amanda Ferreira', 'Diego Barbosa', 'Patricia Lima', 'Marcos Rocha', 'Isabela Cunha'],
+  'Criciúma':      ['Renata Gomes', 'Felipe Santos', 'Camila Araújo', 'Thiago Costa', 'Sandra Pires'],
+  'Imbituba':      ['Sandra Moreira', 'Eduardo Dias', 'Vanessa Pinto', 'Ricardo Lopes'],
+  'Laguna':        ['Roberto Nunes', 'Cristina Melo', 'André Sousa'],
+  'Araranguá':     ['Clarice Fontes', 'Gustavo Ramos', 'Priscila Teixeira'],
+  'Palhoça':       ['Vitor Hugo', 'Aline Brito'],
+  'Paulo Lopes':   ['Alexandre Costa', 'Carla Duarte'],
+  'São José':      ['Rodrigo Medeiros', 'Tatiane Freitas'],
+};
+
+const RECENT_LEADS = [
+  { nome: 'João Silva',       evento: 'Evento em Tubarão',      hora: '14:32', badge: 'badge-blue'   },
+  { nome: 'Fernanda Rodrigues', evento: 'Prefeitura de Garopaba', hora: '14:18', badge: 'badge-green'  },
+  { nome: 'Pedro Oliveira',   evento: 'Evento em Tubarão',      hora: '13:55', badge: 'badge-blue'   },
+  { nome: 'Juliana Martins',  evento: 'Prefeitura de Garopaba', hora: '13:40', badge: 'badge-green'  },
+  { nome: 'Amanda Ferreira',  evento: 'Geral',                   hora: '13:12', badge: 'badge-purple' },
+  { nome: 'Carlos Lima',      evento: 'Evento em Tubarão',      hora: '12:58', badge: 'badge-blue'   },
+  { nome: 'Larissa Melo',     evento: 'Prefeitura de Garopaba', hora: '12:34', badge: 'badge-green'  },
+  { nome: 'Diego Barbosa',    evento: 'Geral',                   hora: '12:01', badge: 'badge-purple' },
+];
+
+const SCHEDULED = [
+  { status: 'pendente', statusLabel: 'Pendente',   camp: 'Convite Evento Tubarão',     dest: 412,  dt: '16/05 · 09:00', prog: 0,   event: 'Evento em Tubarão',       badge: 'badge-blue'  },
+  { status: 'pendente', statusLabel: 'Pendente',   camp: 'Lembrete Garopaba',          dest: 251,  dt: '16/05 · 14:30', prog: 0,   event: 'Prefeitura de Garopaba',  badge: 'badge-green' },
+  { status: 'agendado', statusLabel: 'Agendado',   camp: 'Follow-up Geral',            dest: 830,  dt: '18/05 · 10:00', prog: 0,   event: 'Todos',                   badge: 'badge-amber' },
+  { status: 'enviado',  statusLabel: 'Enviado',    camp: 'Boas-vindas Floripa',        dest: 98,   dt: '12/05 · 10:00', prog: 100, event: 'Geral',                   badge: 'badge-purple'},
+  { status: 'enviado',  statusLabel: 'Enviado',    camp: 'Campanha Criciúma',          dest: 72,   dt: '10/05 · 09:00', prog: 100, event: 'Evento em Tubarão',       badge: 'badge-blue'  },
+  { status: 'falhou',   statusLabel: 'Falhou',     camp: 'Teste Massa API',            dest: 15,   dt: '09/05 · 08:00', prog: 60,  event: 'Geral',                   badge: 'badge-red'   },
+];
+
+const ROTINAS = [
+  {
+    nome: 'Boas-vindas Automático',
+    desc: 'Enviado imediatamente após o cadastro no formulário. Personalizado com nome e cidade do lead.',
+    trigger: '📝 Novo cadastro',
+    action:  '💬 Mensagem imediata',
+    on: true,
+    stats: { leads: 830, msgs: 830, taxa: '94%' },
+  },
+  {
+    nome: 'Follow-up 30 minutos',
+    desc: 'Mensagem de acompanhamento enviada 30 minutos após o cadastro, com link para confirmação.',
+    trigger: '⏱️ 30 min após cadastro',
+    action:  '📨 Mensagem follow-up',
+    on: true,
+    stats: { leads: 764, msgs: 764, taxa: '68%' },
+  },
+  {
+    nome: 'Lembrete de Evento',
+    desc: 'Aviso automático 24 horas antes da data do evento cadastrado. Inclui local e horário.',
+    trigger: '📅 24h antes do evento',
+    action:  '📣 Lembrete personalizado',
+    on: true,
+    stats: { leads: 501, msgs: 501, taxa: '72%' },
+  },
+  {
+    nome: 'Reengajamento',
+    desc: 'Contatos sem interação há mais de 48 horas recebem uma nova mensagem com oferta especial.',
+    trigger: '😴 48h sem resposta',
+    action:  '💡 Oferta especial',
+    on: false,
+    stats: { leads: 0, msgs: 0, taxa: '—' },
+  },
+];
+
+// ════════════════════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════════════════════
+
+const PAGE_TITLES = {
+  dashboard:    'Dashboard',
+  contatos:     'Contatos',
+  envio:        'Envio',
+  agendamentos: 'Agendamentos',
+  rotinas:      'Rotinas Automáticas',
+};
+
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('sec-' + id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  document.getElementById('page-title').textContent = PAGE_TITLES[id];
+  if (id === 'dashboard') { initMap(); if (map) setTimeout(() => map.invalidateSize(), 50); }
+  updateRecipCount();
+}
+
+// ════════════════════════════════════════════════════════
+// LOGIN
+// ════════════════════════════════════════════════════════
+
+function doLogin() {
+  const screen = document.getElementById('login-screen');
+  screen.classList.add('hide');
+  setTimeout(() => screen.style.display = 'none', 500);
+}
+
+// ════════════════════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════════════════════
+
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3200);
+}
+
+// ════════════════════════════════════════════════════════
+// DASHBOARD — BAR CHART
+// ════════════════════════════════════════════════════════
+
+function drawBarChart() {
+  const max = CITIES[0].leads;
+  const colors = {
+    'Evento em Tubarão':      '#1a7fe8',
+    'Prefeitura de Garopaba': '#22c55e',
+    'Geral':                  '#f59e0b',
+  };
+  const container = document.getElementById('bar-chart');
+  const rows = CITIES.map(c => `
+    <div class="bar-row">
+      <div class="bar-city">${c.name}</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="width:${(c.leads/max*100).toFixed(1)}%;background:${colors[c.event]}"></div>
+      </div>
+      <div class="bar-count">${c.leads}</div>
+    </div>
+  `).join('');
+  container.innerHTML = rows;
+
+  // Legenda
+  container.innerHTML += `
+    <div style="display:flex;gap:16px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)">
+        <span style="width:10px;height:10px;border-radius:3px;background:#1a7fe8;display:inline-block"></span>Evento em Tubarão
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)">
+        <span style="width:10px;height:10px;border-radius:3px;background:#22c55e;display:inline-block"></span>Prefeitura de Garopaba
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)">
+        <span style="width:10px;height:10px;border-radius:3px;background:#f59e0b;display:inline-block"></span>Geral
+      </div>
+    </div>
+  `;
+}
+
+// ════════════════════════════════════════════════════════
+// DASHBOARD — RECENT LEADS
+// ════════════════════════════════════════════════════════
+
+function drawRecentLeads() {
+  const tbody = document.getElementById('recent-tbody');
+  tbody.innerHTML = RECENT_LEADS.map(l => `
+    <tr>
+      <td><b>${l.nome}</b></td>
+      <td><span class="badge ${l.badge}">${l.evento}</span></td>
+      <td style="color:var(--muted);font-size:12px">${l.hora}</td>
+    </tr>
+  `).join('');
+}
+
+// ════════════════════════════════════════════════════════
+// MAP
+// ════════════════════════════════════════════════════════
+
+let map, mapInited = false, mapLayers = {}, heatLayer = null;
+
+// GeoJSON inline dos 10 municípios com leads — funciona sem servidor
+const GEO_DATA_SC = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"id":"4201406","name":"Araranguá","description":"Araranguá"},"geometry":{"type":"Polygon","coordinates":[[[-49.3151551822,-28.9034717613],[-49.3303024063,-28.9156472892],[-49.3767566103,-28.9555370136],[-49.3873733947,-28.9463939916],[-49.3887534856,-28.9452045576],[-49.4093340645,-28.9413942439],[-49.4093680859,-28.9416232772],[-49.4135464922,-28.9492132897],[-49.437825568,-28.9635115651],[-49.4810801843,-28.9949965257],[-49.4824418864,-29.0027534251],[-49.507794504,-29.0169290338],[-49.5120237877,-29.0198615287],[-49.5334647334,-29.0278447289],[-49.5486854815,-29.0408580939],[-49.5535021574,-29.0520699509],[-49.5660712506,-29.0581255636],[-49.6040925865,-29.0303772241],[-49.6041870199,-29.0303064416],[-49.6228833107,-29.016652093],[-49.6188042923,-29.0131097778],[-49.5920807238,-28.9903036859],[-49.5828960773,-28.982418045],[-49.6001095485,-28.9746469524],[-49.6067885298,-28.9509840924],[-49.6045448384,-28.9427269999],[-49.5897149496,-28.9348182845],[-49.5837130052,-28.9375450043],[-49.5804080452,-28.9301086764],[-49.5753656462,-28.9359490147],[-49.5707034145,-28.9342015606],[-49.5677661894,-28.9287795483],[-49.575813795,-28.9290590593],[-49.5716998457,-28.9233111697],[-49.5572716881,-28.9252860383],[-49.5469456791,-28.925183377],[-49.5351397147,-28.916689754],[-49.5255393311,-28.9120930627],[-49.5158165199,-28.9159759915],[-49.5170706048,-28.9114246576],[-49.5103229974,-28.9084205791],[-49.5136453862,-28.893114487],[-49.5049638002,-28.8915430168],[-49.5028914843,-28.8870972197],[-49.4936157144,-28.8831966517],[-49.4722649577,-28.8844775675],[-49.4660847017,-28.8879019507],[-49.4605055062,-28.9013218078],[-49.449472667,-28.9024392096],[-49.443069271,-28.9093451517],[-49.4320190093,-28.9086833583],[-49.4226623113,-28.8819432905],[-49.4210320551,-28.877954649],[-49.3987820174,-28.8332600953],[-49.3510306041,-28.8550057701],[-49.3507209152,-28.8555337083],[-49.3428250401,-28.8590805748],[-49.3306138004,-28.8645646571],[-49.301359374,-28.8776965197],[-49.2905876847,-28.8825287323],[-49.298468218,-28.8891346567],[-49.3151551822,-28.9034717613]]]}},{"type":"Feature","properties":{"id":"4204608","name":"Criciúma","description":"Criciúma"},"geometry":{"type":"Polygon","coordinates":[[[-49.4112872834,-28.6364489606],[-49.4030651422,-28.6369535584],[-49.3988313211,-28.6361733594],[-49.3696269061,-28.6346231],[-49.3594083081,-28.6364854266],[-49.3593573139,-28.639243346],[-49.3367866802,-28.6451988774],[-49.3330841014,-28.6390435695],[-49.3280325416,-28.6383159513],[-49.3201857477,-28.6420085834],[-49.313066152,-28.6398878705],[-49.3089357669,-28.643454963],[-49.3040842913,-28.6412698327],[-49.3028755062,-28.6404435698],[-49.2907467429,-28.6382861548],[-49.282458865,-28.6469902595],[-49.2649725548,-28.6540781132],[-49.2538709548,-28.6657701456],[-49.2526473545,-28.6659092687],[-49.2438049462,-28.6729151626],[-49.2439319249,-28.6739552927],[-49.2620727535,-28.6732408515],[-49.2832497205,-28.6795805143],[-49.3059155468,-28.6761895282],[-49.3332137051,-28.6787227317],[-49.332813004,-28.6965643807],[-49.3304987709,-28.7170204318],[-49.3319331491,-28.7270220229],[-49.3329651156,-28.7342150366],[-49.3332322994,-28.7360831821],[-49.335690424,-28.7532189676],[-49.3358357804,-28.7542345044],[-49.3571765576,-28.7555198924],[-49.3550468695,-28.7900476682],[-49.3544791061,-28.7992275453],[-49.3544020187,-28.8004777195],[-49.3510306041,-28.8550057701],[-49.3987820174,-28.8332600953],[-49.4029838141,-28.8298443985],[-49.4064978736,-28.8273482151],[-49.4078177272,-28.8264103887],[-49.4090813175,-28.825515672],[-49.425414185,-28.8139177795],[-49.4221038508,-28.8090959678],[-49.4212731708,-28.7995788968],[-49.4172142089,-28.7928600108],[-49.4230531703,-28.7926604339],[-49.4204667996,-28.7861598837],[-49.4286995141,-28.7817175926],[-49.4278314088,-28.7755264894],[-49.4358049731,-28.7675278888],[-49.4304999058,-28.7604125219],[-49.4336975873,-28.7571778319],[-49.4335089017,-28.7569462896],[-49.4308581762,-28.7562173664],[-49.432745912,-28.7541652623],[-49.4270944323,-28.755331019],[-49.4275837289,-28.7525490218],[-49.4228293901,-28.7537484935],[-49.4250228702,-28.7492731128],[-49.4206435585,-28.751177831],[-49.4144150075,-28.7491656739],[-49.411691888,-28.7420488607],[-49.4090797514,-28.7427187496],[-49.4103141943,-28.739656758],[-49.4068936229,-28.7356083658],[-49.4124715621,-28.7326629023],[-49.4097129037,-28.7281920517],[-49.4205765479,-28.7187346785],[-49.4212548117,-28.7139667087],[-49.4229947815,-28.7126095531],[-49.4537702893,-28.7126094192],[-49.4559887354,-28.7126090474],[-49.4763080557,-28.7126050505],[-49.4779391908,-28.7091924913],[-49.4746658515,-28.7082212371],[-49.4756021492,-28.7050566334],[-49.4756025612,-28.7046432033],[-49.4751734025,-28.7013897871],[-49.4714123583,-28.6912181844],[-49.4629100254,-28.6870256707],[-49.461685733,-28.6761857258],[-49.4647147581,-28.6736361406],[-49.4559718355,-28.6623275569],[-49.4547106649,-28.6545822138],[-49.451357243,-28.6339835338],[-49.4112872834,-28.6364489606]]]}},{"type":"Feature","properties":{"id":"4205407","name":"Florianópolis","description":"Florianópolis"},"geometry":{"type":"Polygon","coordinates":[[[-48.389113304,-27.4370352805],[-48.3711718786,-27.4445402693],[-48.3650397769,-27.4334950798],[-48.3583100425,-27.4412941078],[-48.3594001315,-27.4482080343],[-48.3700609269,-27.4513232402],[-48.3748827373,-27.4661664109],[-48.3748204769,-27.4690193716],[-48.3752964991,-27.4817428108],[-48.3878068682,-27.4879139499],[-48.4157705001,-27.5239735129],[-48.4252406708,-27.5417280285],[-48.4285187761,-27.5653969602],[-48.4272651975,-27.5693121151],[-48.423049563,-27.5754828369],[-48.4221061693,-27.5725975725],[-48.4196172469,-27.5739009587],[-48.4127747941,-27.572899573],[-48.4192833532,-27.5833138223],[-48.4190924616,-27.5930410971],[-48.426750553,-27.594378248],[-48.4329376953,-27.6039152906],[-48.4350582239,-27.6072714893],[-48.4317338037,-27.616915899],[-48.4391271586,-27.6178279795],[-48.4446936003,-27.6249009804],[-48.4456146299,-27.629805782],[-48.4492569934,-27.6301014381],[-48.4639668559,-27.646647283],[-48.4749862458,-27.6654754545],[-48.4809054677,-27.690747293],[-48.5007157308,-27.7141858736],[-48.5018522528,-27.7187715641],[-48.5064482802,-27.7373242162],[-48.5062978734,-27.7447120847],[-48.5014253927,-27.7495520633],[-48.4980633474,-27.7469796778],[-48.4997064845,-27.7515053976],[-48.4952572136,-27.7563564787],[-48.4879752065,-27.7544589493],[-48.4853991005,-27.7589808679],[-48.4767567088,-27.7615503263],[-48.4751610164,-27.7693366778],[-48.4823757892,-27.7691460411],[-48.4853876168,-27.7723628255],[-48.4874652905,-27.7780093858],[-48.48314235,-27.7835381462],[-48.4881772313,-27.7896767949],[-48.498792239,-27.7939641817],[-48.5067907103,-27.7902474937],[-48.5066149935,-27.7823696869],[-48.5157807108,-27.7806409151],[-48.5261730671,-27.7859470819],[-48.5321851784,-27.7937512014],[-48.5399427166,-27.8202598356],[-48.5439485563,-27.8300079653],[-48.5677462319,-27.8469617461],[-48.5754593869,-27.8423371607],[-48.5778516241,-27.821665615],[-48.5815237732,-27.8147804544],[-48.5926021569,-27.8074805765],[-48.5910276929,-27.786961394],[-48.6013322278,-27.7769173029],[-48.5928051332,-27.767609931],[-48.5962118265,-27.7592501551],[-48.5881846472,-27.7509693781],[-48.6000306272,-27.7263663424],[-48.5985343113,-27.6982865404],[-48.6014099204,-27.6850279546],[-48.6047264184,-27.6732616553],[-48.6010740092,-27.6613012185],[-48.5939006569,-27.6414755297],[-48.6100898987,-27.6267540033],[-48.612532562,-27.6140568508],[-48.6056366689,-27.6006910933],[-48.6055067783,-27.5879726842],[-48.6002027924,-27.5725928681],[-48.5720991535,-27.5513313209],[-48.5678003515,-27.5450405084],[-48.5773874431,-27.5308122985],[-48.5742851322,-27.5165645583],[-48.5884861838,-27.492718625],[-48.5895812377,-27.4846996574],[-48.5814315258,-27.466131215],[-48.5865846513,-27.4537978826],[-48.5850247922,-27.4538085436],[-48.5407615323,-27.4356597482],[-48.5324951045,-27.4269354491],[-48.5260377334,-27.4078715293],[-48.4826811216,-27.3793259354],[-48.425521403,-27.3810448117],[-48.4212455806,-27.381172369],[-48.4161822789,-27.3813232842],[-48.4160393821,-27.3813274839],[-48.4096823849,-27.385258575],[-48.4109816211,-27.3919440575],[-48.4093978481,-27.4056996534],[-48.4044611092,-27.406107065],[-48.4019402501,-27.4134047187],[-48.3985462708,-27.424603696],[-48.389113304,-27.4370352805]]]}},{"type":"Feature","properties":{"id":"4205704","name":"Garopaba","description":"Garopaba"},"geometry":{"type":"Polygon","coordinates":[[[-48.619132872,-27.9624022214],[-48.6243416444,-27.9718937121],[-48.6306152849,-27.9942076452],[-48.62976834,-28.0106679252],[-48.6169801332,-28.0230814952],[-48.6090403131,-28.0162866526],[-48.5983640196,-28.0299005412],[-48.5996641708,-28.0346527997],[-48.6045026997,-28.0339386497],[-48.6096026541,-28.0402528064],[-48.6068638088,-28.05200109],[-48.6095071099,-28.0620095207],[-48.6170597299,-28.0656687834],[-48.619774721,-28.0737338635],[-48.6265343689,-28.0750411714],[-48.6277796546,-28.0824312968],[-48.6312440164,-28.0833559149],[-48.6304771346,-28.0900509321],[-48.6370065228,-28.1041498017],[-48.6362614643,-28.1070993239],[-48.6302237407,-28.1075721403],[-48.6340153182,-28.1125898861],[-48.6351912058,-28.1101954779],[-48.6390233424,-28.1136502468],[-48.6667203901,-28.1168021257],[-48.6780209462,-28.1047473181],[-48.6843055077,-28.1037841079],[-48.7011886266,-28.1019879466],[-48.7008322534,-28.0945421976],[-48.706563439,-28.0921189555],[-48.7016804951,-28.0880304373],[-48.7070819932,-28.0859455209],[-48.7066612287,-28.0828218403],[-48.7039410413,-28.0773375856],[-48.7073077519,-28.0652153547],[-48.7116641234,-28.0598348082],[-48.7222263281,-28.0601941968],[-48.7241251501,-28.0554544206],[-48.7186635588,-28.0534257161],[-48.7193774179,-28.0458787087],[-48.7065423051,-28.0259614297],[-48.6981282544,-28.0211648616],[-48.6964998464,-28.0120903575],[-48.6917088114,-28.0175663274],[-48.6886803595,-28.0185910872],[-48.6815616936,-28.0061181896],[-48.6727953137,-28.0065331591],[-48.6567564484,-27.9883916934],[-48.6603793014,-27.9822650532],[-48.6547289877,-27.9730743115],[-48.65188717,-27.9688837645],[-48.6500861577,-27.9674097019],[-48.6464453622,-27.9656176146],[-48.642818458,-27.9683330388],[-48.635845507,-27.9547750994],[-48.6197028374,-27.9442282721],[-48.6241367733,-27.9584944126],[-48.619132872,-27.9624022214]]]}},{"type":"Feature","properties":{"id":"4207304","name":"Imbituba","description":"Imbituba"},"geometry":{"type":"Polygon","coordinates":[[[-48.6780209462,-28.1047473181],[-48.6667203901,-28.1168021257],[-48.6390233424,-28.1136502468],[-48.6351912058,-28.1101954779],[-48.6340153182,-28.1125898861],[-48.6354693481,-28.1170123054],[-48.6303989255,-28.1185849719],[-48.6318125322,-28.1218158597],[-48.6388006085,-28.1222406506],[-48.6426905172,-28.1318807411],[-48.6425807427,-28.1355112605],[-48.6360165829,-28.1388216092],[-48.6463309382,-28.143878466],[-48.6472968331,-28.1496230546],[-48.6533995302,-28.1546422962],[-48.6630993302,-28.1814311677],[-48.6621920162,-28.1898448274],[-48.6576020863,-28.1913261625],[-48.6574064779,-28.1950443078],[-48.6654057878,-28.2041230632],[-48.6622739812,-28.2084327796],[-48.6671021975,-28.2152817558],[-48.6612220163,-28.2302576817],[-48.6537465172,-28.2330170916],[-48.649885779,-28.2270146328],[-48.6459619899,-28.2334866141],[-48.6766962977,-28.2565249769],[-48.6991323399,-28.2929620497],[-48.7067515521,-28.3131961444],[-48.7089391138,-28.3309894282],[-48.705800195,-28.3364330107],[-48.6979593178,-28.3370475352],[-48.7039084712,-28.3421831419],[-48.7063463912,-28.3408263994],[-48.7437166316,-28.3283347959],[-48.7553141412,-28.324456029],[-48.7385792471,-28.2851292123],[-48.7236888099,-28.2600625227],[-48.7236274094,-28.2503774843],[-48.7274622141,-28.2372927937],[-48.7371946633,-28.2285465569],[-48.7415366124,-28.2117411481],[-48.739828172,-28.1985728712],[-48.7308827494,-28.1970486094],[-48.7382467305,-28.1803493142],[-48.7302431495,-28.1746248224],[-48.7341938616,-28.1688529326],[-48.7312159792,-28.1560447186],[-48.7346097105,-28.1537352427],[-48.7402435527,-28.1556795024],[-48.7425850143,-28.1507359577],[-48.7370747106,-28.1450705179],[-48.7484147625,-28.1392387891],[-48.7391333018,-28.1352900754],[-48.7389733103,-28.1322951997],[-48.7442202607,-28.1310483732],[-48.7399685389,-28.1263269761],[-48.7441585546,-28.1197922308],[-48.7498868667,-28.1234833102],[-48.7540789917,-28.1183508464],[-48.7527781283,-28.1150738519],[-48.7461335281,-28.1160687384],[-48.7473037392,-28.1129887393],[-48.7515816053,-28.1131871997],[-48.7511635118,-28.1079588709],[-48.7539946339,-28.1115418228],[-48.7596020162,-28.1093528869],[-48.7548608279,-28.105103044],[-48.758713021,-28.1039346543],[-48.7565199275,-28.0988178105],[-48.7620671695,-28.0902958849],[-48.7160293941,-28.084087504],[-48.7066612287,-28.0828218403],[-48.7070819932,-28.0859455209],[-48.7016804951,-28.0880304373],[-48.706563439,-28.0921189555],[-48.7008322534,-28.0945421976],[-48.7011886266,-28.1019879466],[-48.6843055077,-28.1037841079],[-48.6780209462,-28.1047473181]]]}},{"type":"Feature","properties":{"id":"4209409","name":"Laguna","description":"Laguna"},"geometry":{"type":"Polygon","coordinates":[[[-48.7063463912,-28.3408263994],[-48.7269972061,-28.3636603453],[-48.7405915546,-28.3863114854],[-48.7475172691,-28.4129086458],[-48.7461901821,-28.4200314952],[-48.7386451785,-28.4226981767],[-48.7482708237,-28.4287708319],[-48.7588734111,-28.443502886],[-48.767192606,-28.4750722523],[-48.7637205105,-28.490961409],[-48.7607666783,-28.4947279238],[-48.7563756855,-28.4939667135],[-48.7464519553,-28.4947089623],[-48.7477055574,-28.5003053651],[-48.7420739101,-28.5029860196],[-48.7425199194,-28.5075880542],[-48.7474388332,-28.5071376969],[-48.7552843984,-28.5159740922],[-48.7581642941,-28.522996023],[-48.7547324298,-28.5270958948],[-48.7571525588,-28.5376965869],[-48.7618106925,-28.5366542415],[-48.7814456271,-28.5516249253],[-48.7854935418,-28.5593178794],[-48.7813009984,-28.5640851494],[-48.783185286,-28.5689890496],[-48.7908455458,-28.5679789584],[-48.8133537103,-28.5896171459],[-48.8143413936,-28.6002987648],[-48.810035888,-28.6011157849],[-48.8092914788,-28.6050287551],[-48.8178950692,-28.6094370313],[-48.8260114022,-28.6070705505],[-48.8342940235,-28.612092252],[-48.8425036099,-28.6110355469],[-48.8545895831,-28.6150074781],[-48.8597308876,-28.6075133712],[-48.8654721529,-28.6040480609],[-48.8744582899,-28.5946015638],[-48.9050082146,-28.6031334535],[-48.9307623467,-28.5940265781],[-48.944329811,-28.5941652761],[-48.9343797226,-28.5796915897],[-48.901949638,-28.5324894993],[-48.9035479422,-28.5289506507],[-48.9223888568,-28.5127412359],[-48.91175002,-28.5120678562],[-48.9070029052,-28.5208111141],[-48.8949768031,-28.5242440473],[-48.8955035984,-28.5142457133],[-48.907804247,-28.510542883],[-48.9138950295,-28.4972921162],[-48.9251254499,-28.4931882956],[-48.923550487,-28.4882370711],[-48.9141910625,-28.4695335163],[-48.915903309,-28.4585148768],[-48.9216878757,-28.4509962767],[-48.9241016343,-28.4361139664],[-48.9334065718,-28.4249170138],[-48.9358653341,-28.4222234069],[-48.940099299,-28.4111293148],[-48.9340811405,-28.3967108803],[-48.9349918659,-28.3911029174],[-48.9384971654,-28.3833320469],[-48.9340485439,-28.3813889267],[-48.9375059918,-28.3725133221],[-48.9357090302,-28.3656471106],[-48.948686887,-28.3599525312],[-48.9277153797,-28.3489189562],[-48.9164099013,-28.3542523958],[-48.909417035,-28.3518106363],[-48.9056530478,-28.3586994898],[-48.8915312301,-28.3607600836],[-48.89128053,-28.3606228661],[-48.8054931245,-28.3552708879],[-48.7756686223,-28.3582658253],[-48.7631767498,-28.3562512148],[-48.7511950666,-28.3449962125],[-48.7553141412,-28.324456029],[-48.7437166316,-28.3283347959],[-48.7063463912,-28.3408263994]]]}},{"type":"Feature","properties":{"id":"4211900","name":"Palhoça","description":"Palhoça"},"geometry":{"type":"Polygon","coordinates":[[[-48.6662723662,-27.6067102618],[-48.6532268357,-27.6219131147],[-48.643017911,-27.6272544202],[-48.6423171905,-27.6352280239],[-48.643494291,-27.6427536659],[-48.6358767178,-27.6507000205],[-48.6218163961,-27.6574443874],[-48.6010740092,-27.6613012185],[-48.6047264184,-27.6732616553],[-48.6014099204,-27.6850279546],[-48.5985343113,-27.6982865404],[-48.6000306272,-27.7263663424],[-48.5881846472,-27.7509693781],[-48.5962118265,-27.7592501551],[-48.5928051332,-27.767609931],[-48.6013322278,-27.7769173029],[-48.5910276929,-27.786961394],[-48.5926021569,-27.8074805765],[-48.5815237732,-27.8147804544],[-48.5778516241,-27.821665615],[-48.5754593869,-27.8423371607],[-48.578883669,-27.8523868214],[-48.5799248675,-27.848218739],[-48.5860737556,-27.8472856916],[-48.5974678441,-27.8527581148],[-48.6017876268,-27.86446533],[-48.5994346401,-27.8779562457],[-48.5914138447,-27.8848031504],[-48.5874824929,-27.8809156707],[-48.5777204257,-27.8823874268],[-48.5741585308,-27.8770982629],[-48.5734899189,-27.8895770427],[-48.5828682955,-27.9054941003],[-48.5896904097,-27.9035038757],[-48.6063128751,-27.9169551356],[-48.6244351264,-27.9103766429],[-48.636547846,-27.9144929368],[-48.6408708447,-27.9048769539],[-48.6465921288,-27.911237766],[-48.6437315804,-27.9054604441],[-48.6481448723,-27.9058798764],[-48.6474311367,-27.9023776308],[-48.6515898452,-27.9010092668],[-48.6535605544,-27.9031675904],[-48.6563513671,-27.9098125163],[-48.6810785672,-27.9067166783],[-48.6908550255,-27.90209479],[-48.6983356881,-27.9033037823],[-48.7028004516,-27.8962787901],[-48.7234888591,-27.8941246558],[-48.7230736963,-27.8873175589],[-48.7269734467,-27.8825403546],[-48.7303707588,-27.8707239066],[-48.7369330737,-27.8619436003],[-48.7357870885,-27.8426314786],[-48.7477237159,-27.8279367128],[-48.7411948323,-27.8252086992],[-48.7447130754,-27.8171501377],[-48.7399579063,-27.8100404836],[-48.7384373711,-27.7975478098],[-48.7345080956,-27.7858728775],[-48.7264844852,-27.783636786],[-48.715482435,-27.7741327214],[-48.7070279834,-27.7740397016],[-48.6750245049,-27.7575928421],[-48.6812112273,-27.7582749619],[-48.6851991031,-27.7547388836],[-48.6951597302,-27.7319104433],[-48.7026692483,-27.7144489],[-48.7010509163,-27.7052239588],[-48.7056020295,-27.69579776],[-48.7084546284,-27.6934029963],[-48.7145261299,-27.6900126259],[-48.722944312,-27.6888284465],[-48.7221660153,-27.6850413496],[-48.7196043402,-27.6790394555],[-48.7303870264,-27.6785414334],[-48.7377209643,-27.655467323],[-48.7431866744,-27.6343456446],[-48.7382030022,-27.614294373],[-48.6888575419,-27.6122081663],[-48.6707147008,-27.6190931777],[-48.6662723662,-27.6067102618]]]}},{"type":"Feature","properties":{"id":"4212304","name":"Paulo Lopes","description":"Paulo Lopes"},"geometry":{"type":"Polygon","coordinates":[[[-48.7384373711,-27.7975478098],[-48.7399579063,-27.8100404836],[-48.7447130754,-27.8171501377],[-48.7411948323,-27.8252086992],[-48.7477237159,-27.8279367128],[-48.7357870885,-27.8426314786],[-48.7369330737,-27.8619436003],[-48.7303707588,-27.8707239066],[-48.7269734467,-27.8825403546],[-48.7230736963,-27.8873175589],[-48.7234888591,-27.8941246558],[-48.7028004516,-27.8962787901],[-48.6983356881,-27.9033037823],[-48.6908550255,-27.90209479],[-48.6810785672,-27.9067166783],[-48.6563513671,-27.9098125163],[-48.6535605544,-27.9031675904],[-48.6515898452,-27.9010092668],[-48.6474311367,-27.9023776308],[-48.6481448723,-27.9058798764],[-48.6437315804,-27.9054604441],[-48.6465921288,-27.911237766],[-48.6408708447,-27.9048769539],[-48.636547846,-27.9144929368],[-48.6244351264,-27.9103766429],[-48.6063128751,-27.9169551356],[-48.5896904097,-27.9035038757],[-48.5828682955,-27.9054941003],[-48.5863884762,-27.9051243803],[-48.5989641858,-27.9159110537],[-48.6197028374,-27.9442282721],[-48.635845507,-27.9547750994],[-48.642818458,-27.9683330388],[-48.6464453622,-27.9656176146],[-48.6500861577,-27.9674097019],[-48.65188717,-27.9688837645],[-48.6547289877,-27.9730743115],[-48.6603793014,-27.9822650532],[-48.6567564484,-27.9883916934],[-48.6727953137,-28.0065331591],[-48.6815616936,-28.0061181896],[-48.6886803595,-28.0185910872],[-48.6917088114,-28.0175663274],[-48.6964998464,-28.0120903575],[-48.6981282544,-28.0211648616],[-48.7065423051,-28.0259614297],[-48.7193774179,-28.0458787087],[-48.7186635588,-28.0534257161],[-48.7241251501,-28.0554544206],[-48.7222263281,-28.0601941968],[-48.7116641234,-28.0598348082],[-48.7073077519,-28.0652153547],[-48.7039410413,-28.0773375856],[-48.7066612287,-28.0828218403],[-48.7160293941,-28.084087504],[-48.7620671695,-28.0902958849],[-48.7701636253,-28.0871136322],[-48.7762493941,-28.0887762414],[-48.796217483,-28.0948220931],[-48.807839098,-28.0931582012],[-48.8100148225,-28.0785152596],[-48.8216861299,-28.0736783492],[-48.8243984052,-28.0752964781],[-48.8323312338,-28.0714036962],[-48.8491909965,-28.0729405562],[-48.8694246416,-28.080183283],[-48.868467278,-28.0767677401],[-48.8726750891,-28.0772748255],[-48.8744322427,-28.072276804],[-48.8890734597,-28.0819508657],[-48.8941206114,-28.0796884108],[-48.8893279841,-28.0759018859],[-48.8819690451,-28.0513587664],[-48.8605040428,-28.0432593632],[-48.8538435711,-28.0335509677],[-48.8541031464,-28.022516433],[-48.8437447101,-28.0068454655],[-48.8436515287,-27.9959427911],[-48.8382264877,-27.9800627047],[-48.8380361946,-27.9640345802],[-48.8495838698,-27.9510351806],[-48.8463903578,-27.9446002473],[-48.8404412778,-27.9420480002],[-48.8427759277,-27.9373365687],[-48.8370771891,-27.9330190635],[-48.8429625142,-27.9303408956],[-48.8468801961,-27.9220529839],[-48.8454721331,-27.9062430978],[-48.8420279059,-27.9006145377],[-48.8337709832,-27.9076138731],[-48.8256686789,-27.9050626096],[-48.8242050208,-27.8937828481],[-48.827546969,-27.8893146206],[-48.8371690247,-27.8897058808],[-48.8467060436,-27.8660385984],[-48.8431166628,-27.8608315172],[-48.8266630293,-27.8442519976],[-48.8196232142,-27.825439774],[-48.8157411186,-27.8295393327],[-48.7999111382,-27.8287357729],[-48.7884849803,-27.8350482007],[-48.782070797,-27.830981291],[-48.7761404836,-27.8348952157],[-48.7716955086,-27.8330528941],[-48.7658439542,-27.8413787507],[-48.7562636261,-27.8404849168],[-48.7654577057,-27.8291143842],[-48.7590265047,-27.8229771096],[-48.7590303396,-27.8120941422],[-48.7495793214,-27.8102363383],[-48.7479189861,-27.8031064948],[-48.7433105903,-27.8040110636],[-48.7384373711,-27.7975478098]]]}},{"type":"Feature","properties":{"id":"4216602","name":"São José","description":"São José"},"geometry":{"type":"Polygon","coordinates":[[[-48.6795273077,-27.5300966456],[-48.6725792455,-27.5395749464],[-48.6678443685,-27.5379977475],[-48.6649092677,-27.5313978839],[-48.6564079913,-27.5366444049],[-48.6538181932,-27.5436339397],[-48.6495121585,-27.5414910683],[-48.6352150412,-27.5352256428],[-48.6307480702,-27.5290794135],[-48.5742851322,-27.5165645583],[-48.5773874431,-27.5308122985],[-48.5678003515,-27.5450405084],[-48.5720991535,-27.5513313209],[-48.6002027924,-27.5725928681],[-48.6055067783,-27.5879726842],[-48.6056366689,-27.6006910933],[-48.612532562,-27.6140568508],[-48.6100898987,-27.6267540033],[-48.5939006569,-27.6414755297],[-48.6010740092,-27.6613012185],[-48.6218163961,-27.6574443874],[-48.6358767178,-27.6507000205],[-48.643494291,-27.6427536659],[-48.6423171905,-27.6352280239],[-48.643017911,-27.6272544202],[-48.6532268357,-27.6219131147],[-48.6662723662,-27.6067102618],[-48.6707147008,-27.6190931777],[-48.6888575419,-27.6122081663],[-48.7382030022,-27.614294373],[-48.7456003679,-27.6150285327],[-48.7452697785,-27.5954033669],[-48.7353306906,-27.5905932875],[-48.730835301,-27.5832618912],[-48.7353341241,-27.5814830432],[-48.7300028569,-27.5746574962],[-48.7320182096,-27.5668630073],[-48.7270555072,-27.5526559968],[-48.7225953545,-27.536291217],[-48.7167485532,-27.5275689864],[-48.7051026381,-27.5252341169],[-48.7050268133,-27.5252096328],[-48.6926078596,-27.5223790154],[-48.6909303989,-27.5193643163],[-48.6795896017,-27.5218595896],[-48.6795273077,-27.5300966456]]]}},{"type":"Feature","properties":{"id":"4218707","name":"Tubarão","description":"Tubarão"},"geometry":{"type":"Polygon","coordinates":[[[-49.0749146763,-28.3922211936],[-49.071626007,-28.3972055604],[-49.0677984374,-28.392492967],[-49.0603442338,-28.3928061716],[-49.0579165176,-28.4008927761],[-49.0522995401,-28.4033439312],[-49.0234557426,-28.3983959405],[-49.0235925625,-28.4043276244],[-49.0204569332,-28.4131087336],[-49.024315266,-28.4156517894],[-49.017942625,-28.4208264774],[-49.0134778645,-28.4250170286],[-49.0127404459,-28.4249486642],[-48.9868529938,-28.4225478955],[-48.9795523586,-28.4218707765],[-48.9681916476,-28.4324526073],[-48.9678873917,-28.4411068107],[-48.9725135929,-28.4495808507],[-48.974826726,-28.4572816828],[-48.9792779602,-28.4552126128],[-48.9854877187,-28.4584331224],[-48.9844300161,-28.4621480332],[-48.987710923,-28.4615753466],[-48.9848843764,-28.464207772],[-48.9763344023,-28.4618437416],[-48.9749265135,-28.4672456033],[-48.9746268209,-28.4717536725],[-48.9701609187,-28.4730161226],[-48.9519669736,-28.4872855691],[-48.9472886295,-28.4951183948],[-48.9484471133,-28.5021789105],[-48.9412797077,-28.5009783992],[-48.9376081302,-28.5078658396],[-48.9223888568,-28.5127412359],[-48.9035479422,-28.5289506507],[-48.901949638,-28.5324894993],[-48.9343797226,-28.5796915897],[-48.944329811,-28.5941652761],[-48.9593073493,-28.5814208609],[-48.9616336473,-28.5750656827],[-48.970794663,-28.5722812315],[-48.9636984855,-28.5631867708],[-48.96782304,-28.5550098405],[-48.9741082836,-28.5526696754],[-48.9756226671,-28.5580073363],[-48.9848949979,-28.559103031],[-48.9993282303,-28.5545135616],[-49.001926807,-28.5530314934],[-49.0163632173,-28.5341413626],[-49.0255490636,-28.533821793],[-49.0303440081,-28.5490819928],[-49.0451488669,-28.5562194157],[-49.0549779333,-28.55631134],[-49.0678944962,-28.5517915494],[-49.0978661717,-28.5277130475],[-49.1077256534,-28.5206583801],[-49.1249011204,-28.5083637359],[-49.1334063673,-28.502729872],[-49.13444153,-28.4980697424],[-49.1430736623,-28.4980814807],[-49.1504243488,-28.5019202454],[-49.1657090627,-28.5010703877],[-49.1669151167,-28.5060652647],[-49.1759837836,-28.5126797786],[-49.1815654646,-28.5084682704],[-49.1840913874,-28.4990396436],[-49.1390438069,-28.472461065],[-49.123033587,-28.4746348842],[-49.1216873784,-28.4603226226],[-49.1247231514,-28.4550830477],[-49.1222222733,-28.4487638797],[-49.1129030585,-28.4443473949],[-49.1155800541,-28.4359352846],[-49.1175384856,-28.4309625334],[-49.1247037417,-28.4195993968],[-49.1317508246,-28.4184191166],[-49.1381497232,-28.4141914097],[-49.1382653832,-28.4090094058],[-49.1013647052,-28.3621926077],[-49.0823375137,-28.378541964],[-49.081604355,-28.3832890386],[-49.0766453494,-28.3843116404],[-49.0749146763,-28.3922211936]]]}}]};
+
+function initMap() {
+  if (mapInited) return;
+  mapInited = true;
+
+  map = L.map('map', { zoomControl: true, scrollWheelZoom: true })
+         .setView([-28.15, -48.95], 9);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap',
+    maxZoom: 18,
+  }).addTo(map);
+
+  // ── Polígonos GeoJSON inline ──────────────────────────
+  L.geoJSON(GEO_DATA_SC, {
+    style: feat => {
+      const city = CITIES.find(c => c.name === feat.properties.name);
+      if (!city) return { fillColor: '#dbeafe', fillOpacity: 0.3, color: '#93c5fd', weight: 1 };
+      return { fillColor: city.color, fillOpacity: 0.35, color: city.color, weight: 2 };
+    },
+    onEachFeature: (feat, layer) => {
+      const city = CITIES.find(c => c.name === feat.properties.name);
+      const label = city
+        ? `<b>${feat.properties.name}</b><br>Cadastrado no evento: ${city.event}<br>${city.leads} leads`
+        : feat.properties.name;
+      layer.bindTooltip(label, { sticky: true, className: 'city-tooltip' });
+      if (city) {
+        layer.on('click', () => {
+          map.flyTo([city.lat, city.lng], 11, { duration: 1 });
+          mapLayers[city.name]?.openPopup();
+        });
+      }
+    }
+  }).addTo(map);
+
+  // ── Heatmap ───────────────────────────────────────────
+  if (typeof L.heatLayer === 'function') {
+    const maxLeads = Math.max(...CITIES.map(c => c.leads));
+    const pts = CITIES.map(c => [c.lat, c.lng, c.leads / maxLeads]);
+    heatLayer = L.heatLayer(pts, {
+      radius: 55, blur: 40, maxZoom: 13,
+      gradient: { 0.2: '#1a7fe8', 0.5: '#5db3ff', 0.8: '#93d5ff', 1.0: '#ffffff' }
+    }).addTo(map);
+  }
+
+  // Marcadores circulares com popup de detalhes
+  CITIES.forEach(city => {
+    const r = 8 + Math.sqrt(city.leads) * 1.2;
+    const circle = L.circleMarker([city.lat, city.lng], {
+      radius: r,
+      fillColor: city.color,
+      color: '#fff',
+      weight: 2,
+      fillOpacity: 0.92,
+    }).addTo(map);
+
+    const names = SAMPLE_LEADS[city.name] || [];
+    const shown = names.slice(0, 4).join(', ');
+    const extra = city.leads - names.length;
+    const popup = `
+      <div style="min-width:210px;font-family:'Inter',sans-serif">
+        <div class="map-popup-title">${city.label}</div>
+        <div class="map-popup-sub">Cadastrado no evento: <b>${city.event}</b></div>
+        <div class="map-popup-leads">${city.leads} <span style="font-size:14px;font-weight:400;color:#7aaecf">leads</span></div>
+        <div class="map-popup-names">
+          ${shown}${extra > 0 ? ` <span style="color:var(--blue);font-weight:600">+${extra} outros</span>` : ''}
+        </div>
+      </div>`;
+
+    circle.bindPopup(popup, { maxWidth: 270 });
+    mapLayers[city.name] = circle;
+  });
+
+  buildCityList(CITIES);
+  setTimeout(() => map.invalidateSize(), 250);
+}
+
+function buildCityList(cities) {
+  const max   = CITIES[0].leads;
+  const list  = document.getElementById('city-list');
+  const total = cities.reduce((s, c) => s + c.leads, 0);
+  document.getElementById('city-total-badge').textContent = `${total} leads`;
+
+  list.innerHTML = cities.map(c => {
+    const names  = SAMPLE_LEADS[c.name] || [];
+    const shown  = names.slice(0, 3).join(', ');
+    const extra  = c.leads - names.length;
+    return `
+    <div class="city-item" onclick="flyToCity('${c.name}')">
+      <div class="city-item-header">
+        <div class="city-name">${c.label}</div>
+        <div class="city-count">${c.leads}</div>
+      </div>
+      <div class="city-event">${c.event}</div>
+      <div class="city-mini-bar">
+        <div class="city-mini-fill" style="width:${(c.leads/max*100).toFixed(1)}%;background:${c.color}"></div>
+      </div>
+      <div class="city-leads-names">
+        ${shown}${extra > 0 ? ` <span style="color:var(--blue);font-weight:600">+${extra}</span>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function flyToCity(name) {
+  const city = CITIES.find(c => c.name === name);
+  if (!city || !map) return;
+  map.flyTo([city.lat, city.lng], 12, { duration: 1.2 });
+  mapLayers[name]?.openPopup();
+}
+
+function filterMap(key, el) {
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  const filtered = key === 'todos'    ? CITIES
+    : key === 'tubarao'  ? CITIES.filter(c => c.event === 'Evento em Tubarão')
+    : CITIES.filter(c => c.event === 'Prefeitura de Garopaba');
+  buildCityList(filtered);
+}
+
+// ════════════════════════════════════════════════════════
+// ENVIO EM MASSA
+// ════════════════════════════════════════════════════════
+
+function toggleRecip(el) {
+  el.classList.toggle('selected');
+  el.querySelector('.recip-check').textContent = el.classList.contains('selected') ? '✓' : '';
+  updateRecipCount();
+}
+
+function updateRecipCount() {
+  const total = [...document.querySelectorAll('.recip-item.selected')]
+    .reduce((s, el) => s + parseInt(el.dataset.count || 0), 0);
+  const badge = document.getElementById('recip-badge');
+  if (badge) badge.textContent = `${total} selecionados`;
+}
+
+function insertVar(v) {
+  const ta = document.getElementById('msg-text');
+  const s  = ta.selectionStart, e = ta.selectionEnd;
+  ta.value = ta.value.slice(0, s) + v + ta.value.slice(e);
+  ta.selectionStart = ta.selectionEnd = s + v.length;
+  ta.focus();
+  updatePreview();
+}
+
+function updatePreview() {
+  const raw  = document.getElementById('msg-text').value;
+  const html = raw
+    .replace(/\*(.*?)\*/g, '<b>$1</b>')
+    .replace(/_(.*?)_/g,   '<i>$1</i>')
+    .replace(/\{nome\}/g,   'João Silva')
+    .replace(/\{evento\}/g, 'Evento em Tubarão')
+    .replace(/\{cidade\}/g, 'Tubarão')
+    .replace(/\{data\}/g,   '16/05/2026')
+    .replace(/\{link\}/g,   'pepe.app/evento')
+    .replace(/\n/g, '<br>');
+  document.getElementById('msg-preview').innerHTML = html;
+}
+
+function scheduleMsg() {
+  const d = document.getElementById('sched-date').value;
+  const t = document.getElementById('sched-time').value;
+  if (!d || !t) { toast('Defina data e hora ⚠️'); return; }
+  toast(`✅ Mensagem agendada para ${d.split('-').reverse().join('/')} às ${t}`);
+}
+
+function sendNow() {
+  const total = [...document.querySelectorAll('.recip-item.selected')]
+    .reduce((s, el) => s + parseInt(el.dataset.count || 0), 0);
+  if (total === 0) { toast('Selecione pelo menos um grupo ⚠️'); return; }
+  toast(`🚀 Enviando para ${total} contatos via Evolution API...`);
+}
+
+// ════════════════════════════════════════════════════════
+// AGENDAMENTOS
+// ════════════════════════════════════════════════════════
+
+const STATUS_DOT = {
+  pendente: 'stat-amber',
+  agendado: 'stat-blue',
+  enviado:  'stat-green',
+  falhou:   'stat-red',
+};
+
+function drawScheduled() {
+  const tbody = document.getElementById('sched-tbody');
+  tbody.innerHTML = SCHEDULED.map((s, i) => `
+    <tr>
+      <td>
+        <span class="status-indicator ${STATUS_DOT[s.status]}"></span>
+        <span class="badge ${s.status === 'enviado' ? 'badge-green' : s.status === 'falhou' ? 'badge-red' : s.status === 'agendado' ? 'badge-blue' : 'badge-amber'}">${s.statusLabel}</span>
+      </td>
+      <td><b>${s.camp}</b></td>
+      <td>${s.dest.toLocaleString('pt-BR')} contatos</td>
+      <td style="color:var(--muted);font-size:12.5px">${s.dt}</td>
+      <td>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width:${s.prog}%"></div>
+        </div>
+        <span style="font-size:11px;color:var(--muted)">${s.prog}%</span>
+      </td>
+      <td><span class="badge ${s.badge}">${s.event}</span></td>
+      <td>
+        <div style="display:flex;gap:6px">
+          ${s.status !== 'enviado' ? `<button class="btn-sm outline" onclick="toast('Editando campanha...')">✏️</button>` : ''}
+          ${s.status !== 'enviado' ? `<button class="btn-sm danger" onclick="cancelSched(${i})">✕</button>` : ''}
+          ${s.status === 'enviado' ? `<button class="btn-sm outline" onclick="toast('Relatório em breve 📊')">📊</button>` : ''}
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function cancelSched(i) {
+  SCHEDULED[i].status = 'cancelado'; SCHEDULED[i].statusLabel = 'Cancelado';
+  drawScheduled();
+  toast('Agendamento cancelado');
+}
+
+// ════════════════════════════════════════════════════════
+// ROTINAS
+// ════════════════════════════════════════════════════════
+
+function drawRotinas() {
+  const grid = document.getElementById('rotinas-grid');
+  grid.innerHTML = ROTINAS.map((r, i) => `
+    <div class="rotina-card">
+      <div class="rotina-header">
+        <div>
+          <div class="rotina-title">${r.nome}</div>
+          <div class="rotina-desc">${r.desc}</div>
+        </div>
+        <div class="toggle ${r.on ? 'on' : ''}" onclick="toggleRotina(${i}, this)" title="${r.on ? 'Pausar' : 'Ativar'}"></div>
+      </div>
+      <div class="rotina-flow">
+        <div class="flow-step">${r.trigger}</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">${r.action}</div>
+      </div>
+      <div class="rotina-stats">
+        <div class="rotina-stat">
+          <div class="rotina-stat-val">${r.stats.leads.toLocaleString('pt-BR')}</div>
+          <div class="rotina-stat-label">Leads</div>
+        </div>
+        <div class="rotina-stat">
+          <div class="rotina-stat-val">${r.stats.msgs.toLocaleString('pt-BR')}</div>
+          <div class="rotina-stat-label">Enviados</div>
+        </div>
+        <div class="rotina-stat">
+          <div class="rotina-stat-val">${r.stats.taxa}</div>
+          <div class="rotina-stat-label">Resposta</div>
+        </div>
+      </div>
+      <div class="rotina-footer">
+        <button class="btn-sm outline" onclick="toast('Editor em breve 🚧')">✏️ Editar</button>
+        <button class="btn-sm outline" onclick="toast('Histórico em breve 📋')">📋 Histórico</button>
+        <button class="btn-sm danger" onclick="toast('Rotina removida ⚠️')">🗑️</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleRotina(i, el) {
+  ROTINAS[i].on = !ROTINAS[i].on;
+  el.classList.toggle('on', ROTINAS[i].on);
+  toast(ROTINAS[i].on ? `✅ "${ROTINAS[i].nome}" ativada` : `⏸️ "${ROTINAS[i].nome}" pausada`);
+}
+
+// ════════════════════════════════════════════════════════
+// CONTATOS
+// ════════════════════════════════════════════════════════
+
+const ALL_CONTACTS = [
+  { nome: 'João Silva',          tel: '(48) 99901-2233', evento: 'Evento em Tubarão',      cidade: 'Tubarão',       data: '13/05 14:32', status: 'badge-green'  },
+  { nome: 'Fernanda Rodrigues',  tel: '(48) 99812-4455', evento: 'Prefeitura de Garopaba', cidade: 'Garopaba',      data: '13/05 14:18', status: 'badge-green'  },
+  { nome: 'Pedro Oliveira',      tel: '(48) 99723-6677', evento: 'Evento em Tubarão',      cidade: 'Tubarão',       data: '13/05 13:55', status: 'badge-green'  },
+  { nome: 'Juliana Martins',     tel: '(48) 99634-8899', evento: 'Prefeitura de Garopaba', cidade: 'Garopaba',      data: '13/05 13:40', status: 'badge-green'  },
+  { nome: 'Amanda Ferreira',     tel: '(48) 99545-0011', evento: 'Geral',                  cidade: 'Florianópolis', data: '13/05 13:12', status: 'badge-blue'   },
+  { nome: 'Carlos Lima',         tel: '(48) 99456-2233', evento: 'Evento em Tubarão',      cidade: 'Criciúma',      data: '13/05 12:58', status: 'badge-green'  },
+  { nome: 'Larissa Melo',        tel: '(48) 99367-4455', evento: 'Prefeitura de Garopaba', cidade: 'Imbituba',      data: '13/05 12:34', status: 'badge-green'  },
+  { nome: 'Diego Barbosa',       tel: '(48) 99278-6677', evento: 'Geral',                  cidade: 'Palhoça',       data: '13/05 12:01', status: 'badge-blue'   },
+  { nome: 'Beatriz Souza',       tel: '(48) 99189-8899', evento: 'Evento em Tubarão',      cidade: 'Tubarão',       data: '13/05 11:44', status: 'badge-green'  },
+  { nome: 'Rafael Alves',        tel: '(48) 99090-0011', evento: 'Prefeitura de Garopaba', cidade: 'Garopaba',      data: '13/05 11:20', status: 'badge-amber'  },
+  { nome: 'Renata Gomes',        tel: '(48) 98901-2233', evento: 'Evento em Tubarão',      cidade: 'Criciúma',      data: '12/05 16:05', status: 'badge-green'  },
+  { nome: 'Lucas Pereira',       tel: '(48) 98812-4455', evento: 'Prefeitura de Garopaba', cidade: 'Garopaba',      data: '12/05 15:30', status: 'badge-amber'  },
+  { nome: 'Clarice Fontes',      tel: '(48) 98723-6677', evento: 'Evento em Tubarão',      cidade: 'Araranguá',     data: '12/05 14:10', status: 'badge-green'  },
+  { nome: 'Sandra Moreira',      tel: '(48) 98634-8899', evento: 'Prefeitura de Garopaba', cidade: 'Imbituba',      data: '12/05 13:50', status: 'badge-green'  },
+  { nome: 'Gustavo Ramos',       tel: '(48) 98545-0011', evento: 'Evento em Tubarão',      cidade: 'Araranguá',     data: '12/05 10:22', status: 'badge-blue'   },
+];
+
+function drawContacts() {
+  const tbody = document.getElementById('contacts-tbody');
+  if (!tbody) return;
+  tbody.innerHTML = ALL_CONTACTS.map(c => `
+    <tr>
+      <td><b>${c.nome}</b></td>
+      <td style="color:var(--muted);font-size:12.5px">${c.tel}</td>
+      <td><span class="badge badge-blue" style="font-size:11px">${c.evento}</span></td>
+      <td style="font-size:13px">${c.cidade}</td>
+      <td style="color:var(--muted);font-size:12px">${c.data}</td>
+      <td><span class="badge ${c.status}">${c.status === 'badge-green' ? 'Mensagem Enviada' : c.status === 'badge-amber' ? 'Aguardando' : 'Novo'}</span></td>
+    </tr>
+  `).join('');
+}
+
+// ════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════
+
+drawBarChart();
+drawRecentLeads();
+drawScheduled();
+drawRotinas();
+drawContacts();
+updateRecipCount();
+// Mapa carrega após o DOM estar pronto (dashboard é a seção ativa)
+if (document.readyState === 'complete') { setTimeout(initMap, 150); } else { window.addEventListener('load', () => setTimeout(initMap, 150)); }
+</script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+{
+  "name": "Lead Capture Pepe → WhatsApp + Google Sheets",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-capture-pepe",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "🌐 Webhook - Recebe Lead",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1.1,
+      "position": [240, 300],
+      "webhookId": "lead-capture-pepe"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"status\": \"received\", \"message\": \"Lead registrado com sucesso\" }",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "respond-webhook",
+      "name": "✅ Responder Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [460, 180]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Normaliza e valida os dados do lead (nome opcional)\nconst body = $input.first().json.body || $input.first().json;\n\nconst name         = (body.name || 'Visitante').trim();\nconst phone        = (body.phone || '').replace(/\\D/g, '');\nconst phoneDisplay = body.phone_display || phone;\nconst ddi          = body.ddi || '55';\nconst cidadeEvento = body.cidade_evento || 'Não informado';\nconst source       = body.source || 'desconhecido';\nconst pageUrl      = body.page_url || '';\nconst timestamp    = body.timestamp || new Date().toISOString();\n\nconst dt            = new Date(timestamp);\nconst dateFormatted = dt.toLocaleDateString('pt-BR');\nconst timeFormatted = dt.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });\n\nconst evolutionPhone = phone.startsWith(ddi) ? phone : ddi + phone;\n\nif (phone.length < 10) {\n  throw new Error('Dados inválidos: telefone ausente ou incompleto');\n}\n\nreturn [{\n  json: {\n    name,\n    phone,\n    evolutionPhone,\n    phoneDisplay,\n    ddi,\n    cidadeEvento,\n    source,\n    pageUrl,\n    timestamp,\n    dateFormatted,\n    timeFormatted,\n    fullTimestamp: `${dateFormatted} ${timeFormatted}`\n  }\n}];"
+      },
+      "id": "normalize-data",
+      "name": "🔧 Normalizar Dados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 380]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "SEU_GOOGLE_SHEET_ID_AQUI",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Data": "={{ $json.dateFormatted }}",
+            "Hora": "={{ $json.timeFormatted }}",
+            "Nome": "={{ $json.name }}",
+            "Telefone": "={{ $json.phoneDisplay }}",
+            "DDI": "={{ $json.ddi }}",
+            "Número Completo": "={{ $json.evolutionPhone }}",
+            "Cidade/Evento": "={{ $json.cidadeEvento }}",
+            "Origem": "={{ $json.source }}",
+            "Página": "={{ $json.pageUrl }}",
+            "Status": "Novo Lead",
+            "Mensagem Enviada": "Sim"
+          }
+        },
+        "options": {}
+      },
+      "id": "google-sheets",
+      "name": "📊 Salvar no Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [700, 280],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "CREDENCIAL_GOOGLE_SHEETS",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://{{ $vars.EVOLUTION_API_HOST }}/message/sendText/{{ $vars.EVOLUTION_INSTANCE }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "C756025A504D-4453-81E4-C3E25A169CE4"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": []
+        },
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('🔧 Normalizar Dados').item.json.evolutionPhone }}\",\n  \"text\": \"Olá, *{{ $('🔧 Normalizar Dados').item.json.name }}*! 👋\\n\\nObrigado pelo seu interesse! Recebemos seu contato e estamos muito felizes em ter você aqui. 🎉\\n\\n📍 *{{ $('🔧 Normalizar Dados').item.json.cidadeEvento }}*\\n\\nEm instantes um de nossos especialistas entrará em contato. Fique atento(a)! 🚀\\n\\n_Equipe Pepe_\",\n  \"delay\": 1000\n}",
+        "options": {}
+      },
+      "id": "send-whatsapp-immediate",
+      "name": "📱 Enviar Mensagem Imediata (WhatsApp)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [700, 460]
+    },
+    {
+      "parameters": {
+        "amount": 30,
+        "unit": "seconds"
+      },
+      "id": "wait-1",
+      "name": "⏱ Aguardar 30s",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [940, 460]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://{{ $vars.EVOLUTION_API_HOST }}/message/sendText/{{ $vars.EVOLUTION_INSTANCE }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "C756025A504D-4453-81E4-C3E25A169CE4"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('🔧 Normalizar Dados').item.json.evolutionPhone }}\",\n  \"text\": \"💡 *{{ $('🔧 Normalizar Dados').item.json.name }}*, que tal conhecer mais sobre nossos serviços?\\n\\n✅ Benefício 1 — descreva aqui\\n✅ Benefício 2 — descreva aqui\\n✅ Benefício 3 — descreva aqui\\n\\nResponda com *SIM* para receber uma proposta detalhada ou *NÃO* para se descadastrar.\",\n  \"delay\": 1000\n}",
+        "options": {}
+      },
+      "id": "send-whatsapp-followup",
+      "name": "📨 Mensagem Follow-up (Template)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1180, 460],
+      "notes": "💡 TEMPLATE FLEXÍVEL — edite o texto acima conforme sua campanha"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": false
+          },
+          "conditions": [
+            {
+              "id": "check-error",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            }
+          ]
+        }
+      },
+      "id": "check-success",
+      "name": "🔍 Verificar Erro",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [940, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log de erro para debugging\nconst item = $input.first().json;\nconsole.error('Erro no fluxo de lead:', JSON.stringify(item));\n\nreturn [{\n  json: {\n    error: true,\n    message: 'Falha ao processar lead',\n    data: item,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "id": "error-handler",
+      "name": "⚠️ Tratar Erro",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1180, 280]
+    }
+  ],
+  "connections": {
+    "🌐 Webhook - Recebe Lead": {
+      "main": [
+        [
+          {
+            "node": "✅ Responder Webhook",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "🔧 Normalizar Dados",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔧 Normalizar Dados": {
+      "main": [
+        [
+          {
+            "node": "📊 Salvar no Google Sheets",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "📱 Enviar Mensagem Imediata (WhatsApp)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📱 Enviar Mensagem Imediata (WhatsApp)": {
+      "main": [
+        [
+          {
+            "node": "⏱ Aguardar 30s",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⏱ Aguardar 30s": {
+      "main": [
+        [
+          {
+            "node": "📨 Mensagem Follow-up (Template)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "📊 Salvar no Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "🔍 Verificar Erro",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔍 Verificar Erro": {
+      "main": [
+        [
+          {
+            "node": "⚠️ Tratar Erro",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "saveExecutionProgress": true,
+    "errorWorkflow": ""
+  },
+  "staticData": null,
+  "meta": {
+    "templateId": "lead-whatsapp-evolution-pepe",
+    "instanceId": "lead-capture-pepe-v1"
+  },
+  "pinData": {},
+  "versionId": "1.0.0",
+  "tags": ["whatsapp", "leads", "evolution-api", "google-sheets", "pepe"]
+}

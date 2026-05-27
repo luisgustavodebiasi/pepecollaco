@@ -1,6 +1,11 @@
 import { normalizarTelefone, formatarTelefone } from './telefone.js'
 import { buscarContato, confirmarPresenca, contarConfirmados } from './api.js'
 
+// ── Escape de HTML (previne XSS com dados do banco) ───────────
+function esc(s) {
+  return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
 // ── Eventos disponíveis ────────────────────────────────────────
 // Adicione mais objetos { nome, cidade } para múltiplos eventos no dia
 const EVENTOS = [
@@ -165,13 +170,13 @@ async function atualizarContador() {
 // ── Alerta ─────────────────────────────────────────────────────
 function mostrarAlerta(msg, tipo = 'info') {
   alertaBusca.className = `alert alert-${tipo}`
-  alertaBusca.innerHTML = msg
+  alertaBusca.textContent = msg
   alertaBusca.classList.remove('hidden')
 }
 
 // ── Render contato ─────────────────────────────────────────────
 function dado(label, valor) {
-  const v = (valor || '').trim()
+  const v = esc(valor).trim()
   return `<div class="dado">
     <div class="dado-label">${label}</div>
     <div class="dado-valor${!v ? ' empty' : ''}">${v || 'Não informado'}</div>
@@ -207,10 +212,14 @@ function coletarEdicao() {
 }
 
 function montarInfoSucesso(c) {
+  const cargo   = esc(c.cargo)
+  const cidade  = esc(c.cidade)
+  const partido = esc(c.partido)
+  const nomeEv  = esc(eventoAtual?.nome)
   return [
-    c.cargo  && `<div class="sucesso-info-item">💼 ${c.cargo}</div>`,
-    c.cidade && `<div class="sucesso-info-item">📍 ${c.cidade}${c.partido ? ` — ${c.partido}` : ''}</div>`,
-    eventoAtual?.nome && `<div class="sucesso-info-item">🗓️ ${eventoAtual.nome}</div>`,
+    cargo  && `<div class="sucesso-info-item">💼 ${cargo}</div>`,
+    cidade && `<div class="sucesso-info-item">📍 ${cidade}${partido ? ` — ${partido}` : ''}</div>`,
+    nomeEv && `<div class="sucesso-info-item">🗓️ ${nomeEv}</div>`,
   ].filter(Boolean).join('')
 }
 

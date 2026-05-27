@@ -9,3 +9,6 @@ credenciamento/dist/
 contatos_final.csv
 contatos_supabase.csv
 contatos_revisao.csv
+
+# DS_Store em qualquer subdiretório
+**/.DS_Store

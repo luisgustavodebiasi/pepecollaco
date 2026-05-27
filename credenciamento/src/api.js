@@ -1,55 +1,40 @@
 import { supabase } from './supabase.js'
 
 const WEBHOOK_BOAS_VINDAS = import.meta.env.VITE_N8N_WEBHOOK_BOAS_VINDAS
+const WEBHOOK_SECRET      = import.meta.env.VITE_WEBHOOK_SECRET
 
 // ── Leitura ─────────────────────────────────────────────────
 
-/** Busca contato pelo telefone normalizado. Retorna objeto ou null. */
+/** Busca contato via RPC (evita SELECT direto na tabela). */
 export async function buscarContato(telefoneNormalizado) {
   const { data, error } = await supabase
-    .from('contatos')
-    .select('*')
-    .eq('telefone_normalizado', telefoneNormalizado)
-    .maybeSingle()
+    .rpc('buscar_contato_por_telefone', { p_telefone: telefoneNormalizado })
 
   if (error) throw error
-  return data
+  return Array.isArray(data) ? (data[0] ?? null) : (data ?? null)
 }
 
 // ── Escrita ─────────────────────────────────────────────────
 
 /**
- * Salva ou atualiza contato via upsert (chave: telefone_normalizado).
- * Remove campos internos com _ antes de salvar.
- */
-export async function salvarOuAtualizarContato(dados) {
-  // eslint-disable-next-line no-unused-vars
-  const { _statusContato, ...dadosLimpos } = dados
-
-  const { data, error } = await supabase
-    .from('contatos')
-    .upsert(dadosLimpos, { onConflict: 'telefone_normalizado' })
-    .select()
-    .single()
-
-  if (error) throw error
-  return data
-}
-
-/**
- * Confirma presença: salva no Supabase e notifica n8n.
+ * Confirma presença via RPC server-side e notifica n8n.
  * Retorna { contato, n8nOk, n8nErro }.
  * Nunca lança se só o n8n falhar.
  */
 export async function confirmarPresenca(dadosContato, statusContato = 'existente') {
-  const agora = new Date().toISOString()
+  // Campos internos não vão para o banco
+  // eslint-disable-next-line no-unused-vars
+  const { _statusContato, confirmado_evento, confirmado_em, boas_vindas_enviada,
+          agradecimento_enviado, boas_vindas_enviada_em, agradecimento_enviado_em,
+          created_at, updated_at, id, ...dadosLimpos } = dadosContato
 
-  const contato = await salvarOuAtualizarContato({
-    ...dadosContato,
-    confirmado_evento: true,
-    confirmado_em:     agora,
-    origem:            dadosContato.origem || 'credenciamento_evento',
-  })
+  const { data, error } = await supabase
+    .rpc('confirmar_presenca_evento', { p_dados: dadosLimpos })
+
+  if (error) throw error
+
+  const contato = Array.isArray(data) ? (data[0] ?? null) : (data ?? null)
+  if (!contato) throw new Error('Upsert não retornou dados')
 
   let n8nOk   = false
   let n8nErro = null
@@ -57,8 +42,8 @@ export async function confirmarPresenca(dadosContato, statusContato = 'existente
   try {
     await notificarN8n({
       tipo:                 'boas_vindas',
-      evento:               dadosContato.nome_evento  || dadosContato.cidade_evento || '',
-      cidade_evento:        dadosContato.cidade_evento || '',
+      evento:               contato.nome_evento   || contato.cidade_evento || '',
+      cidade_evento:        contato.cidade_evento || '',
       status_contato:       statusContato,
       telefone_normalizado: contato.telefone_normalizado,
       telefone_original:    contato.telefone_original  || '',
@@ -82,6 +67,7 @@ export async function confirmarPresenca(dadosContato, statusContato = 'existente
 
 /**
  * Envia payload ao webhook n8n com timeout de 8s.
+ * Adiciona header de autenticação se VITE_WEBHOOK_SECRET estiver definido.
  * Lança erro se falhar (capturado em confirmarPresenca).
  */
 export async function notificarN8n(payload) {
@@ -90,10 +76,13 @@ export async function notificarN8n(payload) {
   const ctrl    = new AbortController()
   const timeout = setTimeout(() => ctrl.abort(), 8000)
 
+  const headers = { 'Content-Type': 'application/json' }
+  if (WEBHOOK_SECRET) headers['Authorization'] = `Bearer ${WEBHOOK_SECRET}`
+
   try {
     const res = await fetch(WEBHOOK_BOAS_VINDAS, {
       method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       body:    JSON.stringify(payload),
       signal:  ctrl.signal,
     })
@@ -105,97 +94,54 @@ export async function notificarN8n(payload) {
 
 // ── Relatórios (usados pelo admin) ──────────────────────────
 
-/** Retorna confirmados recentes, limite configurável. */
+/** Retorna confirmados recentes via RPC. */
 export async function listarRecentes(limit = 15) {
   const { data, error } = await supabase
-    .from('contatos')
-    .select('id, nome, cargo, cidade, cidade_evento, nome_evento, confirmado_em, boas_vindas_enviada, agradecimento_enviado')
-    .eq('confirmado_evento', true)
-    .order('confirmado_em', { ascending: false })
-    .limit(limit)
+    .rpc('listar_confirmados_recentes', { p_limit: limit })
 
   if (error) throw error
   return data ?? []
 }
 
-/** Retorna todos os confirmados ordenados por confirmado_em desc. */
-export async function listarConfirmados() {
-  const { data, error } = await supabase
-    .from('contatos')
-    .select('*')
-    .eq('confirmado_evento', true)
-    .order('confirmado_em', { ascending: false })
-
-  if (error) throw error
-  return data ?? []
-}
-
-/** Retorna resumo do evento via view ou contagens diretas. */
+/** Retorna resumo do evento via RPC. */
 export async function obterResumoEvento() {
-  const { data, error } = await supabase
-    .from('v_resumo_evento')
-    .select('*')
-    .single()
+  const { data, error } = await supabase.rpc('resumo_evento')
 
   if (!error && data) {
+    const d = Array.isArray(data) ? data[0] : data
     return {
-      ...data,
+      ...d,
       agradecimentos_pendentes: Math.max(
         0,
-        (data.total_confirmados || 0) - (data.agradecimentos_enviados || 0)
+        (d.total_confirmados || 0) - (d.agradecimentos_enviados || 0)
       ),
     }
   }
-
-  // Fallback: contagens diretas se a view não existir
-  const [
-    { count: total },
-    { count: confirmados },
-    { count: boasVindas },
-    { count: agradecimentos },
-  ] = await Promise.all([
-    supabase.from('contatos').select('*', { count: 'exact', head: true }),
-    supabase.from('contatos').select('*', { count: 'exact', head: true }).eq('confirmado_evento', true),
-    supabase.from('contatos').select('*', { count: 'exact', head: true }).eq('boas_vindas_enviada', true),
-    supabase.from('contatos').select('*', { count: 'exact', head: true }).eq('agradecimento_enviado', true),
-  ])
-
   return {
-    total_contatos:          total          ?? 0,
-    total_confirmados:       confirmados    ?? 0,
-    boas_vindas_enviadas:    boasVindas     ?? 0,
-    agradecimentos_enviados: agradecimentos ?? 0,
-    agradecimentos_pendentes: Math.max(0, (confirmados ?? 0) - (agradecimentos ?? 0)),
+    total_contatos: 0, total_confirmados: 0,
+    boas_vindas_enviadas: 0, agradecimentos_enviados: 0,
+    agradecimentos_pendentes: 0,
   }
 }
 
 /**
- * Busca contatos por nome/telefone com filtro opcional por cidade_evento.
+ * Busca contatos via RPC (elimina injeção no .or() do PostgREST).
  * Usado na tabela do admin.
  */
-export async function buscarContatos({ busca = '', cidadeEvento = '', apenasConfirmados = false, limit = 200 } = {}) {
-  let query = supabase
-    .from('contatos')
-    .select('id, telefone_normalizado, nome, cargo, cidade, cidade_evento, confirmado_evento, confirmado_em, boas_vindas_enviada, agradecimento_enviado')
-    .order('confirmado_em', { ascending: false, nullsFirst: false })
-    .limit(limit)
+export async function buscarContatos({ busca = '', limit = 200 } = {}) {
+  const { data, error } = await supabase
+    .rpc('listar_contatos_admin', {
+      p_busca: busca,
+      p_limit: limit,
+    })
 
-  if (apenasConfirmados) query = query.eq('confirmado_evento', true)
-  if (cidadeEvento)      query = query.eq('cidade_evento', cidadeEvento)
-  if (busca)             query = query.or(`nome.ilike.%${busca}%,telefone_normalizado.ilike.%${busca}%`)
-
-  const { data, error } = await query
   if (error) throw error
   return data ?? []
 }
 
 /** Contador rápido de confirmados (para o banner do topo). */
 export async function contarConfirmados() {
-  const { count, error } = await supabase
-    .from('contatos')
-    .select('*', { count: 'exact', head: true })
-    .eq('confirmado_evento', true)
-
+  const { data, error } = await supabase.rpc('contar_confirmados')
   if (error) return null
-  return count
+  return typeof data === 'number' ? data : (Array.isArray(data) ? data[0] : null)
 }

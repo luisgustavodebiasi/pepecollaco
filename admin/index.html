@@ -1524,8 +1524,13 @@ Responda <b>SIM</b> para confirmar sua presença ou <b>INFO</b> para mais detalh
 const CONFIG = {
   SUPABASE_URL: '',        // ex: https://xxxx.supabase.co
   SUPABASE_KEY: '',        // anon key (começa com eyJ...)
-  ACCESS_CODE:  'pepe2026',
+  ACCESS_CODE:  '',   // preencha antes de usar — não commitar com valor real
 }
+// ── Escape de HTML (previne XSS com dados do banco) ───────────
+function esc(s) {
+  return String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+}
+
 const db = CONFIG.SUPABASE_URL && CONFIG.SUPABASE_KEY
   ? window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY)
   : null
@@ -1719,26 +1724,22 @@ async function carregarRecentes() {
   if (!db) {
     tbody.innerHTML = RECENT_LEADS.map(l => `
       <tr>
-        <td><b>${l.nome}</b></td>
-        <td><span class="badge ${l.badge}">${l.evento}</span></td>
-        <td style="color:var(--muted);font-size:12px">${l.hora}</td>
+        <td><b>${esc(l.nome)}</b></td>
+        <td><span class="badge ${esc(l.badge)}">${esc(l.evento)}</span></td>
+        <td style="color:var(--muted);font-size:12px">${esc(l.hora)}</td>
       </tr>`).join('');
     return;
   }
   try {
-    const { data } = await db
-      .from('contatos')
-      .select('nome, cargo, nome_evento, confirmado_em')
-      .eq('confirmado_evento', true)
-      .order('confirmado_em', { ascending: false })
-      .limit(15);
+    const { data, error } = await db.rpc('listar_confirmados_recentes', { p_limit: 15 });
+    if (error) throw error;
     tbody.innerHTML = (data || []).map(c => {
       const hora = c.confirmado_em
         ? new Date(c.confirmado_em).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
         : '—';
       return `<tr>
-        <td><b>${c.nome}</b></td>
-        <td><span class="badge badge-blue" style="font-size:11px">${c.nome_evento || 'Evento'}</span></td>
+        <td><b>${esc(c.nome)}</b></td>
+        <td><span class="badge badge-blue" style="font-size:11px">${esc(c.nome_evento) || 'Evento'}</span></td>
         <td style="color:var(--muted);font-size:12px">${hora}</td>
       </tr>`;
     }).join('') || '<tr><td colspan="3" style="text-align:center;padding:16px;color:var(--muted)">Nenhum confirmado ainda</td></tr>';
@@ -2050,31 +2051,28 @@ async function carregarContatos() {
   tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Carregando...</td></tr>';
   const busca = (document.getElementById('contacts-search')?.value || '').trim();
   try {
-    let query = db
-      .from('contatos')
-      .select('telefone_normalizado, nome, cargo, partido, cidade, nome_evento, confirmado_evento, confirmado_em, boas_vindas_enviada')
-      .order('confirmado_em', { ascending: false, nullsFirst: false })
-      .limit(200);
-    if (busca) query = query.or(`nome.ilike.%${busca}%,telefone_normalizado.ilike.%${busca}%`);
-    const { data, error } = await query;
+    const { data, error } = await db.rpc('listar_contatos_admin', {
+      p_busca: busca,
+      p_limit: 200,
+    });
     if (error) throw error;
     tbody.innerHTML = (data || []).map(c => {
       const dt = c.confirmado_em ? new Date(c.confirmado_em).toLocaleString('pt-BR') : '—';
       const bv = c.boas_vindas_enviada
         ? '<span class="badge badge-green" style="font-size:11px">✓ Enviado</span>'
         : '<span class="badge badge-amber" style="font-size:11px">Pendente</span>';
-      const subinfo = [c.cargo, c.partido].filter(Boolean).join(' · ');
+      const subinfo = [esc(c.cargo), esc(c.partido)].filter(Boolean).join(' · ');
       return `<tr>
-        <td><b>${c.nome}</b>${subinfo ? `<br><span style="font-size:11px;color:var(--muted)">${subinfo}</span>` : ''}</td>
+        <td><b>${esc(c.nome)}</b>${subinfo ? `<br><span style="font-size:11px;color:var(--muted)">${subinfo}</span>` : ''}</td>
         <td style="color:var(--muted);font-size:12.5px">${formatarTelAdmin(c.telefone_normalizado)}</td>
-        <td style="font-size:13px">${c.cidade || '—'}</td>
-        <td><span class="badge badge-blue" style="font-size:11px">${c.nome_evento || '—'}</span></td>
+        <td style="font-size:13px">${esc(c.cidade) || '—'}</td>
+        <td><span class="badge badge-blue" style="font-size:11px">${esc(c.nome_evento) || '—'}</span></td>
         <td style="color:var(--muted);font-size:12px">${dt}</td>
         <td>${bv}</td>
       </tr>`;
     }).join('') || '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Nenhum contato encontrado</td></tr>';
   } catch (e) {
-    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--red)">Erro: ${e.message}</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--red)">Erro: ${esc(e.message)}</td></tr>`;
   }
 }
 
@@ -2085,7 +2083,7 @@ async function carregarContatos() {
 async function carregarDashboard() {
   if (!db) return;
   try {
-    const { data } = await db.from('v_resumo_evento').select('*').single();
+    const { data } = await db.rpc('resumo_evento').single();
     if (data) {
       const set = (id, val) => {
         const el = document.getElementById(id);

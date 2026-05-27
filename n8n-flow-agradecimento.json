@@ -207,18 +207,18 @@
     "📱 Enviar WhatsApp — Agradecimento": {
       "main": [
         [
-          { "node": "⏱ Aguardar 3s (Rate Limit)", "type": "main", "index": 0 }
-        ]
-      ]
-    },
-    "⏱ Aguardar 3s (Rate Limit)": {
-      "main": [
-        [
           { "node": "📊 Marcar Agradecimento no Supabase", "type": "main", "index": 0 }
         ]
       ]
     },
     "📊 Marcar Agradecimento no Supabase": {
+      "main": [
+        [
+          { "node": "⏱ Aguardar 3s (Rate Limit)", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "⏱ Aguardar 3s (Rate Limit)": {
       "main": [
         [
           { "node": "🔁 Loop por Contato", "type": "main", "index": 0 }
@@ -238,6 +238,6 @@
     "instanceId": "credenciamento-evento-pepe"
   },
   "pinData": {},
-  "versionId": "1.0.0",
+  "versionId": "1.1.0",
   "tags": ["credenciamento", "whatsapp", "evolution-api", "supabase", "pepe", "agradecimento"]
 }

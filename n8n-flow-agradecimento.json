@@ -1,0 +1,243 @@
+{
+  "name": "Credenciamento — Agradecimento Noturno",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 22 * * *"
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "🕙 Agendar — 22h Diário",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://{{ $vars.SUPABASE_URL }}/rest/v1/contatos?confirmado_evento=eq.true&agradecimento_enviado=eq.false&select=id,telefone_normalizado,nome,cargo,cidade,partido",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey",        "value": "={{ $vars.SUPABASE_SERVICE_KEY }}" },
+            { "name": "Authorization", "value": "=Bearer {{ $vars.SUPABASE_SERVICE_KEY }}" },
+            { "name": "Accept",        "value": "application/json" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fetch-confirmados",
+      "name": "📥 Buscar Confirmados no Supabase",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [440, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Supabase retorna um array direto no corpo da resposta\nconst raw = $input.first().json;\n\n// Se for array (resultado direto), expande para múltiplos items\nif (Array.isArray(raw)) {\n  if (raw.length === 0) {\n    return [{ json: { total: 0, vazio: true } }];\n  }\n  return raw.map(c => ({ json: { ...c, vazio: false } }));\n}\n\n// Fallback: já é um objeto único\nif (raw.id) {\n  return [{ json: { ...raw, vazio: false } }];\n}\n\nreturn [{ json: { total: 0, vazio: true } }];"
+      },
+      "id": "expand-results",
+      "name": "🔄 Expandir Resultados",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": false },
+          "conditions": [
+            {
+              "id": "check-vazio",
+              "leftValue": "={{ $json.vazio }}",
+              "rightValue": true,
+              "operator": { "type": "boolean", "operation": "notEquals" }
+            }
+          ]
+        }
+      },
+      "id": "if-has-contacts",
+      "name": "🔍 Há Contatos?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [920, 300]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "split-in-batches",
+      "name": "🔁 Loop por Contato",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [1160, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "const contato = $input.first().json;\n\nconst nome   = (contato.nome   || 'Prezado(a)').trim();\nconst evento = $vars.NOME_EVENTO || 'Evento';\n\nconst saudacao = nome.split(' ')[0];\n\nconst texto = `Olá, *${saudacao}*! 👋\\n\\nObrigado por participar do *${evento}*! 🙏\\n\\nFoi um prazer ter sua presença hoje. Esperamos que tenha sido um dia muito produtivo!\\n\\nContamos com você nas próximas iniciativas. Até breve! 👊\\n\\n_Equipe Pepê Collaço_`;\n\nreturn [{\n  json: {\n    ...contato,\n    mensagem_whatsapp:      texto,\n    agradecimento_enviado_em: new Date().toISOString(),\n  }\n}];"
+      },
+      "id": "compose-agradecimento",
+      "name": "📝 Montar Mensagem Agradecimento",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1400, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://{{ $vars.EVOLUTION_API_HOST }}/message/sendText/{{ $vars.EVOLUTION_INSTANCE }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey",       "value": "={{ $vars.EVOLUTION_API_KEY }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"number\": \"{{ $('📝 Montar Mensagem Agradecimento').item.json.telefone_normalizado }}\",\n  \"text\":   \"{{ $('📝 Montar Mensagem Agradecimento').item.json.mensagem_whatsapp }}\",\n  \"delay\":  1200\n}",
+        "options": {}
+      },
+      "id": "send-agradecimento",
+      "name": "📱 Enviar WhatsApp — Agradecimento",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1640, 200]
+    },
+    {
+      "parameters": {
+        "amount": 3,
+        "unit": "seconds"
+      },
+      "id": "rate-limit-wait",
+      "name": "⏱ Aguardar 3s (Rate Limit)",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [1880, 200]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://{{ $vars.SUPABASE_URL }}/rest/v1/contatos?telefone_normalizado=eq.{{ $('📝 Montar Mensagem Agradecimento').item.json.telefone_normalizado }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "apikey",        "value": "={{ $vars.SUPABASE_SERVICE_KEY }}" },
+            { "name": "Authorization", "value": "=Bearer {{ $vars.SUPABASE_SERVICE_KEY }}" },
+            { "name": "Content-Type",  "value": "application/json" },
+            { "name": "Prefer",        "value": "return=minimal" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"agradecimento_enviado\":    true,\n  \"agradecimento_enviado_em\": \"{{ $('📝 Montar Mensagem Agradecimento').item.json.agradecimento_enviado_em }}\"\n}",
+        "options": {}
+      },
+      "id": "mark-agradecimento",
+      "name": "📊 Marcar Agradecimento no Supabase",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [2120, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "console.log('Agradecimento noturno concluído. Nenhum contato pendente.');\nreturn [{ json: { status: 'sem_pendentes', timestamp: new Date().toISOString() } }];"
+      },
+      "id": "log-sem-pendentes",
+      "name": "💤 Sem Pendentes — Encerrar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1160, 440]
+    }
+  ],
+  "connections": {
+    "🕙 Agendar — 22h Diário": {
+      "main": [
+        [
+          { "node": "📥 Buscar Confirmados no Supabase", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "📥 Buscar Confirmados no Supabase": {
+      "main": [
+        [
+          { "node": "🔄 Expandir Resultados", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "🔄 Expandir Resultados": {
+      "main": [
+        [
+          { "node": "🔍 Há Contatos?", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "🔍 Há Contatos?": {
+      "main": [
+        [
+          { "node": "🔁 Loop por Contato", "type": "main", "index": 0 }
+        ],
+        [
+          { "node": "💤 Sem Pendentes — Encerrar", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "🔁 Loop por Contato": {
+      "main": [
+        [
+          { "node": "📝 Montar Mensagem Agradecimento", "type": "main", "index": 0 }
+        ],
+        []
+      ]
+    },
+    "📝 Montar Mensagem Agradecimento": {
+      "main": [
+        [
+          { "node": "📱 Enviar WhatsApp — Agradecimento", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "📱 Enviar WhatsApp — Agradecimento": {
+      "main": [
+        [
+          { "node": "⏱ Aguardar 3s (Rate Limit)", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "⏱ Aguardar 3s (Rate Limit)": {
+      "main": [
+        [
+          { "node": "📊 Marcar Agradecimento no Supabase", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "📊 Marcar Agradecimento no Supabase": {
+      "main": [
+        [
+          { "node": "🔁 Loop por Contato", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "saveExecutionProgress": true,
+    "errorWorkflow": ""
+  },
+  "staticData": null,
+  "meta": {
+    "templateId": "credenciamento-agradecimento-v1",
+    "instanceId": "credenciamento-evento-pepe"
+  },
+  "pinData": {},
+  "versionId": "1.0.0",
+  "tags": ["credenciamento", "whatsapp", "evolution-api", "supabase", "pepe", "agradecimento"]
+}

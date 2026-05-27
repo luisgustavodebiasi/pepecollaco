@@ -1,1 +1,11 @@
 .DS_Store
+
+# Credenciamento — Vite
+credenciamento/.env
+credenciamento/node_modules/
+credenciamento/dist/
+
+# CSVs com dados pessoais (não versionar)
+contatos_final.csv
+contatos_supabase.csv
+contatos_revisao.csv

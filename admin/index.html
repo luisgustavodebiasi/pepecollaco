@@ -1186,7 +1186,7 @@
     <header class="topbar">
       <div class="topbar-title" id="page-title">Dashboard</div>
       <div class="topbar-actions">
-        <button class="icon-btn" title="Atualizar" onclick="toast('Dados atualizados ✓')">🔄</button>
+        <button class="icon-btn" title="Atualizar" onclick="carregarDashboard().then(()=>toast('Dados atualizados ✓'))">🔄</button>
         <button class="icon-btn" title="Notificações">
           🔔
           <div class="notif-dot"></div>
@@ -1206,34 +1206,34 @@
           <div class="kpi-card">
             <div class="kpi-header">
               <div class="kpi-icon" style="background:rgba(26,127,232,0.12)">👥</div>
-              <span class="kpi-trend trend-up">+12% ↑</span>
+              <span class="kpi-trend trend-up">base total</span>
             </div>
-            <div class="kpi-value">830</div>
-            <div class="kpi-label">Total de Leads</div>
+            <div class="kpi-value" id="kpi-total">—</div>
+            <div class="kpi-label">Total na Base</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-header">
-              <div class="kpi-icon" style="background:rgba(34,197,94,0.12)">💬</div>
-              <span class="kpi-trend trend-up">+8% ↑</span>
+              <div class="kpi-icon" style="background:rgba(34,197,94,0.12)">✅</div>
+              <span class="kpi-trend trend-up">evento</span>
             </div>
-            <div class="kpi-value">2.341</div>
-            <div class="kpi-label">Mensagens Enviadas</div>
+            <div class="kpi-value" id="kpi-confirmados">—</div>
+            <div class="kpi-label">Confirmados no Evento</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-header">
-              <div class="kpi-icon" style="background:rgba(245,158,11,0.12)">📈</div>
-              <span class="kpi-trend trend-up">+3% ↑</span>
+              <div class="kpi-icon" style="background:rgba(245,158,11,0.12)">💬</div>
+              <span class="kpi-trend trend-up">whatsapp</span>
             </div>
-            <div class="kpi-value">68%</div>
-            <div class="kpi-label">Taxa de Resposta</div>
+            <div class="kpi-value" id="kpi-boas-vindas">—</div>
+            <div class="kpi-label">Boas-vindas Enviadas</div>
           </div>
           <div class="kpi-card">
             <div class="kpi-header">
-              <div class="kpi-icon" style="background:rgba(124,58,237,0.12)">🎯</div>
-              <span class="kpi-trend trend-up">2 ativos</span>
+              <div class="kpi-icon" style="background:rgba(124,58,237,0.12)">🙏</div>
+              <span class="kpi-trend trend-up">noturno</span>
             </div>
-            <div class="kpi-value">43</div>
-            <div class="kpi-label">Leads Hoje</div>
+            <div class="kpi-value" id="kpi-agradecimentos">—</div>
+            <div class="kpi-label">Agradecimentos Enviados</div>
           </div>
         </div>
 
@@ -1301,14 +1301,22 @@
           </button>
         </div>
         <div class="card">
+          <div style="padding:0 0 14px;display:flex;gap:10px;align-items:center">
+            <input id="contacts-search" type="search" placeholder="Buscar por nome ou telefone..."
+              style="flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;color:var(--text);outline:none"
+              oninput="carregarContatos()" />
+            <button class="btn-sm outline" onclick="carregarContatos()" style="white-space:nowrap">🔍 Buscar</button>
+          </div>
           <div style="overflow-x:auto">
             <table class="sched-table" id="contacts-table">
               <thead>
                 <tr>
-                  <th>Nome</th><th>WhatsApp</th><th>Cadastrado no evento:</th><th>Cidade</th><th>Data</th><th>Status</th>
+                  <th>Nome / Cargo</th><th>WhatsApp</th><th>Cidade</th><th>Evento</th><th>Confirmado em</th><th>Boas-vindas</th>
                 </tr>
               </thead>
-              <tbody id="contacts-tbody"></tbody>
+              <tbody id="contacts-tbody">
+                <tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Navegue até Contatos para carregar os dados</td></tr>
+              </tbody>
             </table>
           </div>
         </div>
@@ -1506,11 +1514,24 @@ Responda <b>SIM</b> para confirmar sua presença ou <b>INFO</b> para mais detalh
 
 <div class="toast" id="toast"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet.heat/dist/leaflet-heat.js"></script>
 <script>
 // ════════════════════════════════════════════════════════
-// DATA
+// CONFIG — preencha com os valores do seu projeto
+// ════════════════════════════════════════════════════════
+const CONFIG = {
+  SUPABASE_URL: '',        // ex: https://xxxx.supabase.co
+  SUPABASE_KEY: '',        // anon key (começa com eyJ...)
+  ACCESS_CODE:  'pepe2026',
+}
+const db = CONFIG.SUPABASE_URL && CONFIG.SUPABASE_KEY
+  ? window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY)
+  : null
+
+// ════════════════════════════════════════════════════════
+// DATA (mock — usado no mapa e nas seções estáticas)
 // ════════════════════════════════════════════════════════
 
 const CITIES = [
@@ -1612,7 +1633,8 @@ function showSection(id) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   event.currentTarget.classList.add('active');
   document.getElementById('page-title').textContent = PAGE_TITLES[id];
-  if (id === 'dashboard') { initMap(); if (map) setTimeout(() => map.invalidateSize(), 50); }
+  if (id === 'dashboard') { initMap(); if (map) setTimeout(() => map.invalidateSize(), 50); carregarDashboard(); }
+  if (id === 'contatos')  carregarContatos();
   updateRecipCount();
 }
 
@@ -1621,6 +1643,14 @@ function showSection(id) {
 // ════════════════════════════════════════════════════════
 
 function doLogin() {
+  const pwd = document.getElementById('login-pwd').value;
+  if (CONFIG.ACCESS_CODE && pwd !== CONFIG.ACCESS_CODE) {
+    const inp = document.getElementById('login-pwd');
+    inp.style.borderColor = '#ef4444';
+    inp.value = '';
+    inp.placeholder = 'Senha incorreta ❌';
+    return;
+  }
   const screen = document.getElementById('login-screen');
   screen.classList.add('hide');
   setTimeout(() => screen.style.display = 'none', 500);
@@ -1677,18 +1707,44 @@ function drawBarChart() {
 }
 
 // ════════════════════════════════════════════════════════
-// DASHBOARD — RECENT LEADS
+// DASHBOARD — RECENT LEADS (Supabase)
 // ════════════════════════════════════════════════════════
 
 function drawRecentLeads() {
+  carregarRecentes();
+}
+
+async function carregarRecentes() {
   const tbody = document.getElementById('recent-tbody');
-  tbody.innerHTML = RECENT_LEADS.map(l => `
-    <tr>
-      <td><b>${l.nome}</b></td>
-      <td><span class="badge ${l.badge}">${l.evento}</span></td>
-      <td style="color:var(--muted);font-size:12px">${l.hora}</td>
-    </tr>
-  `).join('');
+  if (!db) {
+    tbody.innerHTML = RECENT_LEADS.map(l => `
+      <tr>
+        <td><b>${l.nome}</b></td>
+        <td><span class="badge ${l.badge}">${l.evento}</span></td>
+        <td style="color:var(--muted);font-size:12px">${l.hora}</td>
+      </tr>`).join('');
+    return;
+  }
+  try {
+    const { data } = await db
+      .from('contatos')
+      .select('nome, cargo, nome_evento, confirmado_em')
+      .eq('confirmado_evento', true)
+      .order('confirmado_em', { ascending: false })
+      .limit(15);
+    tbody.innerHTML = (data || []).map(c => {
+      const hora = c.confirmado_em
+        ? new Date(c.confirmado_em).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })
+        : '—';
+      return `<tr>
+        <td><b>${c.nome}</b></td>
+        <td><span class="badge badge-blue" style="font-size:11px">${c.nome_evento || 'Evento'}</span></td>
+        <td style="color:var(--muted);font-size:12px">${hora}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="3" style="text-align:center;padding:16px;color:var(--muted)">Nenhum confirmado ainda</td></tr>';
+  } catch (e) {
+    console.warn('Erro ao carregar recentes:', e);
+  }
 }
 
 // ════════════════════════════════════════════════════════
@@ -1969,40 +2025,81 @@ function toggleRotina(i, el) {
 }
 
 // ════════════════════════════════════════════════════════
-// CONTATOS
+// CONTATOS (Supabase)
 // ════════════════════════════════════════════════════════
 
-const ALL_CONTACTS = [
-  { nome: 'João Silva',          tel: '(48) 99901-2233', evento: 'Evento em Tubarão',      cidade: 'Tubarão',       data: '13/05 14:32', status: 'badge-green'  },
-  { nome: 'Fernanda Rodrigues',  tel: '(48) 99812-4455', evento: 'Prefeitura de Garopaba', cidade: 'Garopaba',      data: '13/05 14:18', status: 'badge-green'  },
-  { nome: 'Pedro Oliveira',      tel: '(48) 99723-6677', evento: 'Evento em Tubarão',      cidade: 'Tubarão',       data: '13/05 13:55', status: 'badge-green'  },
-  { nome: 'Juliana Martins',     tel: '(48) 99634-8899', evento: 'Prefeitura de Garopaba', cidade: 'Garopaba',      data: '13/05 13:40', status: 'badge-green'  },
-  { nome: 'Amanda Ferreira',     tel: '(48) 99545-0011', evento: 'Geral',                  cidade: 'Florianópolis', data: '13/05 13:12', status: 'badge-blue'   },
-  { nome: 'Carlos Lima',         tel: '(48) 99456-2233', evento: 'Evento em Tubarão',      cidade: 'Criciúma',      data: '13/05 12:58', status: 'badge-green'  },
-  { nome: 'Larissa Melo',        tel: '(48) 99367-4455', evento: 'Prefeitura de Garopaba', cidade: 'Imbituba',      data: '13/05 12:34', status: 'badge-green'  },
-  { nome: 'Diego Barbosa',       tel: '(48) 99278-6677', evento: 'Geral',                  cidade: 'Palhoça',       data: '13/05 12:01', status: 'badge-blue'   },
-  { nome: 'Beatriz Souza',       tel: '(48) 99189-8899', evento: 'Evento em Tubarão',      cidade: 'Tubarão',       data: '13/05 11:44', status: 'badge-green'  },
-  { nome: 'Rafael Alves',        tel: '(48) 99090-0011', evento: 'Prefeitura de Garopaba', cidade: 'Garopaba',      data: '13/05 11:20', status: 'badge-amber'  },
-  { nome: 'Renata Gomes',        tel: '(48) 98901-2233', evento: 'Evento em Tubarão',      cidade: 'Criciúma',      data: '12/05 16:05', status: 'badge-green'  },
-  { nome: 'Lucas Pereira',       tel: '(48) 98812-4455', evento: 'Prefeitura de Garopaba', cidade: 'Garopaba',      data: '12/05 15:30', status: 'badge-amber'  },
-  { nome: 'Clarice Fontes',      tel: '(48) 98723-6677', evento: 'Evento em Tubarão',      cidade: 'Araranguá',     data: '12/05 14:10', status: 'badge-green'  },
-  { nome: 'Sandra Moreira',      tel: '(48) 98634-8899', evento: 'Prefeitura de Garopaba', cidade: 'Imbituba',      data: '12/05 13:50', status: 'badge-green'  },
-  { nome: 'Gustavo Ramos',       tel: '(48) 98545-0011', evento: 'Evento em Tubarão',      cidade: 'Araranguá',     data: '12/05 10:22', status: 'badge-blue'   },
-];
+function drawContacts() { /* substituído por carregarContatos() */ }
 
-function drawContacts() {
+function formatarTelAdmin(tel) {
+  if (!tel || tel.length < 12) return tel || '—';
+  const sem55 = tel.startsWith('55') ? tel.slice(2) : tel;
+  const ddd = sem55.slice(0, 2);
+  const num = sem55.slice(2);
+  return num.length === 9
+    ? `(${ddd}) ${num.slice(0,5)}-${num.slice(5)}`
+    : `(${ddd}) ${num.slice(0,4)}-${num.slice(4)}`;
+}
+
+async function carregarContatos() {
   const tbody = document.getElementById('contacts-tbody');
   if (!tbody) return;
-  tbody.innerHTML = ALL_CONTACTS.map(c => `
-    <tr>
-      <td><b>${c.nome}</b></td>
-      <td style="color:var(--muted);font-size:12.5px">${c.tel}</td>
-      <td><span class="badge badge-blue" style="font-size:11px">${c.evento}</span></td>
-      <td style="font-size:13px">${c.cidade}</td>
-      <td style="color:var(--muted);font-size:12px">${c.data}</td>
-      <td><span class="badge ${c.status}">${c.status === 'badge-green' ? 'Mensagem Enviada' : c.status === 'badge-amber' ? 'Aguardando' : 'Novo'}</span></td>
-    </tr>
-  `).join('');
+  if (!db) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Configure SUPABASE_URL e SUPABASE_KEY no CONFIG para ver dados reais.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Carregando...</td></tr>';
+  const busca = (document.getElementById('contacts-search')?.value || '').trim();
+  try {
+    let query = db
+      .from('contatos')
+      .select('telefone_normalizado, nome, cargo, partido, cidade, nome_evento, confirmado_evento, confirmado_em, boas_vindas_enviada')
+      .order('confirmado_em', { ascending: false, nullsFirst: false })
+      .limit(200);
+    if (busca) query = query.or(`nome.ilike.%${busca}%,telefone_normalizado.ilike.%${busca}%`);
+    const { data, error } = await query;
+    if (error) throw error;
+    tbody.innerHTML = (data || []).map(c => {
+      const dt = c.confirmado_em ? new Date(c.confirmado_em).toLocaleString('pt-BR') : '—';
+      const bv = c.boas_vindas_enviada
+        ? '<span class="badge badge-green" style="font-size:11px">✓ Enviado</span>'
+        : '<span class="badge badge-amber" style="font-size:11px">Pendente</span>';
+      const subinfo = [c.cargo, c.partido].filter(Boolean).join(' · ');
+      return `<tr>
+        <td><b>${c.nome}</b>${subinfo ? `<br><span style="font-size:11px;color:var(--muted)">${subinfo}</span>` : ''}</td>
+        <td style="color:var(--muted);font-size:12.5px">${formatarTelAdmin(c.telefone_normalizado)}</td>
+        <td style="font-size:13px">${c.cidade || '—'}</td>
+        <td><span class="badge badge-blue" style="font-size:11px">${c.nome_evento || '—'}</span></td>
+        <td style="color:var(--muted);font-size:12px">${dt}</td>
+        <td>${bv}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Nenhum contato encontrado</td></tr>';
+  } catch (e) {
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--red)">Erro: ${e.message}</td></tr>`;
+  }
+}
+
+// ════════════════════════════════════════════════════════
+// DASHBOARD — KPIs (Supabase)
+// ════════════════════════════════════════════════════════
+
+async function carregarDashboard() {
+  if (!db) return;
+  try {
+    const { data } = await db.from('v_resumo_evento').select('*').single();
+    if (data) {
+      const set = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = (val ?? 0).toLocaleString('pt-BR');
+      };
+      set('kpi-total',          data.total_contatos);
+      set('kpi-confirmados',    data.total_confirmados);
+      set('kpi-boas-vindas',    data.boas_vindas_enviadas);
+      set('kpi-agradecimentos', data.agradecimentos_enviados);
+    }
+  } catch (e) {
+    console.warn('Erro ao carregar KPIs:', e);
+  }
+  await carregarRecentes();
 }
 
 // ════════════════════════════════════════════════════════
@@ -2013,10 +2110,14 @@ drawBarChart();
 drawRecentLeads();
 drawScheduled();
 drawRotinas();
-drawContacts();
 updateRecipCount();
-// Mapa carrega após o DOM estar pronto (dashboard é a seção ativa)
-if (document.readyState === 'complete') { setTimeout(initMap, 150); } else { window.addEventListener('load', () => setTimeout(initMap, 150)); }
+// Mapa e dados carregam após o DOM estar pronto
+if (document.readyState === 'complete') {
+  setTimeout(initMap, 150);
+  carregarDashboard();
+} else {
+  window.addEventListener('load', () => { setTimeout(initMap, 150); carregarDashboard(); });
+}
 </script>
 </body>
 </html>

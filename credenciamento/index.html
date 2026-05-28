@@ -2,166 +2,299 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Credenciamento — Evento Pepê Collaço</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Credenciamento — Pepê Collaço</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue:   #1a4f8a;
-      --blue2:  #2d7dd2;
-      --blue3:  #dceeff;
-      --yellow: #f5c518;
-      --green:  #22c55e;
-      --red:    #ef4444;
-      --bg:     #f0f6ff;
-      --card:   #ffffff;
-      --text:   #1a2340;
-      --muted:  #6b7280;
-      --border: #d1dffe;
-      --radius: 12px;
+      --blue:     #1a7fe8;
+      --blue2:    #5db3ff;
+      --blue-d:   #0d3366;
+      --yellow:   #f5c518;
+      --green:    #22c55e;
+      --red:      #ef4444;
+      --text:     #0d2a4a;
+      --muted:    #7aaecf;
+      --border:   #c2ddf7;
+      --input-bg: #f0f8ff;
+    }
+
+    html, body {
+      min-height: 100%;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: var(--text);
+      overflow-x: hidden;
     }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    /* ── COUNTER BAR ── */
-    .counter-bar {
-      background: var(--blue);
-      color: #fff;
-      text-align: center;
-      padding: 8px 16px;
-      font-size: 13px;
-      font-weight: 600;
-    }
-    .counter-bar span { color: var(--yellow); font-size: 18px; font-weight: 800; margin: 0 4px; }
-
-    /* ── HEADER ── */
-    header {
-      background: linear-gradient(135deg, #0d3366 0%, var(--blue) 60%, #1e5fa0 100%);
-      color: #fff;
-      padding: 20px 24px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 16px;
-    }
-    header h1 { font-size: 20px; font-weight: 800; letter-spacing: -.3px; }
-    header h1 span { color: var(--yellow); }
-    header p { font-size: 13px; opacity: .75; margin-top: 2px; }
-    .badge-evento {
-      background: var(--yellow);
-      color: var(--blue);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 20px;
-      white-space: nowrap;
+      justify-content: flex-start;
+      min-height: 100dvh;
+      padding: 20px 16px 48px;
+      background: linear-gradient(-45deg, #daeeff, #c5e4ff, #e0efff, #b8d9f7);
+      background-size: 400% 400%;
+      animation: gradientShift 10s ease infinite;
     }
 
-    /* ── CONTAINER ── */
-    main { max-width: 640px; margin: 28px auto; padding: 0 16px 80px; }
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-    /* ── CARD ── */
-    .card {
-      background: var(--card);
+    /* ── CANVAS ── */
+    #bg-canvas     { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
+
+    /* ── COUNTER PILL ── */
+    .counter-pill {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: 0 2px 12px rgba(26,79,138,.08);
+      border-radius: 20px;
+      padding: 7px 16px;
+      font-size: 13px;
+      color: var(--text);
+      margin-bottom: 16px;
+      font-weight: 500;
+      box-shadow: 0 2px 12px rgba(26,127,232,0.1);
     }
-    .card + .card { margin-top: 20px; }
-    .card-title {
+    .counter-pill strong {
+      color: var(--blue);
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    /* ── MAIN CARD ── */
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 28px;
+      padding: 32px 24px 28px;
+      width: 100%;
+      max-width: 480px;
+      box-shadow:
+        0 8px 40px rgba(26,127,232,0.14),
+        0 1px 4px rgba(26,127,232,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+      animation: cardIn 0.6s cubic-bezier(.34,1.56,.64,1) both;
+    }
+
+    @keyframes cardIn {
+      from { transform: translateY(28px) scale(0.96); opacity: 0; }
+      to   { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    /* ── LOGO ── */
+    .logo-wrap { text-align: center; margin-bottom: 20px; }
+    .logo-img {
+      max-width: 150px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      animation: logoPulse 3s ease-in-out infinite;
+    }
+    @keyframes logoPulse {
+      0%, 100% { filter: drop-shadow(0 4px 16px rgba(26,127,232,0.18)); }
+      50%       { filter: drop-shadow(0 6px 28px rgba(26,127,232,0.40)); }
+    }
+
+    /* ── BADGE ── */
+    .credencial-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--blue-d), var(--blue));
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-family: 'Syne', sans-serif;
       font-size: 15px;
       font-weight: 700;
       color: var(--blue);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .card-title .icon {
-      width: 28px; height: 28px;
-      background: var(--blue3);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px;
-    }
 
-    /* ── FORM ── */
-    .field { margin-bottom: 16px; }
+    /* ── LABELS ── */
     label {
       display: block;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
-      color: var(--muted);
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      letter-spacing: .5px;
-      margin-bottom: 6px;
+      color: var(--muted);
+      margin-bottom: 8px;
     }
+
+    /* ── INPUTS ── */
     input, select, textarea {
       width: 100%;
-      padding: 11px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 15px;
-      font-family: inherit;
+      background: var(--input-bg);
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 18px;
       color: var(--text);
-      background: #fff;
-      transition: border-color .15s;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
       outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
     }
+    input::placeholder { color: #b8d5ef; font-weight: 400; }
     input:focus, select:focus, textarea:focus {
-      border-color: var(--blue2);
-      box-shadow: 0 0 0 3px rgba(45,125,210,.12);
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(26,127,232,0.10);
     }
-    input:disabled, select:disabled { background: #f8fafc; color: var(--muted); cursor: not-allowed; }
+    input:disabled, select:disabled {
+      background: #eaf3fc;
+      color: var(--muted);
+      cursor: not-allowed;
+    }
     textarea { resize: vertical; min-height: 80px; }
-    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 
-    /* ── BOTÕES ── */
+    /* Phone — super large for mobile */
+    #inputTelefone {
+      font-size: 26px;
+      font-weight: 600;
+      padding: 20px 22px;
+      border-radius: 18px;
+      letter-spacing: 1.5px;
+      text-align: center;
+      border-width: 2.5px;
+    }
+    #inputTelefone::placeholder { font-size: 18px; letter-spacing: 0; }
+
+    /* Select custom arrow */
+    .select-wrap { position: relative; }
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 16px; top: 50%;
+      transform: translateY(-50%);
+      width: 18px; height: 18px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237aaecf' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+      pointer-events: none;
+    }
+    select { padding-right: 46px; cursor: pointer; }
+
+    .field { margin-bottom: 16px; }
+    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    /* ── BUTTONS ── */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 11px 22px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
+      padding: 16px 22px;
       border: none;
-      transition: opacity .15s, transform .1s;
+      border-radius: 16px;
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
     }
-    .btn:active { transform: scale(.98); }
-    .btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
-    .btn-primary  { background: var(--blue2); color: #fff; }
-    .btn-primary:hover:not(:disabled)  { background: var(--blue); }
-    .btn-success  { background: var(--green); color: #fff; }
-    .btn-success:hover:not(:disabled)  { background: #16a34a; }
-    .btn-ghost    { background: transparent; color: var(--blue2); border: 1.5px solid var(--blue3); }
-    .btn-ghost:hover:not(:disabled) { background: var(--blue3); }
-    .btn-full     { width: 100%; }
-    .btn-group    { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+    .btn:active:not(:disabled) { transform: scale(0.97); }
+    .btn:disabled { opacity: 0.38; cursor: not-allowed; }
 
-    /* ── BUSCA ── */
-    .search-row { display: flex; gap: 10px; }
-    .search-row input { flex: 1; font-size: 18px; letter-spacing: 1px; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue2) 100%);
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(26,127,232,0.32);
+    }
+    .btn-primary:hover:not(:disabled) {
+      box-shadow: 0 8px 32px rgba(26,127,232,0.45);
+      transform: translateY(-1px);
+    }
 
-    /* ── ALERTAS ── */
+    .btn-success {
+      background: linear-gradient(135deg, #16a34a 0%, var(--green) 100%);
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(34,197,94,0.30);
+    }
+    .btn-success:hover:not(:disabled) {
+      box-shadow: 0 8px 32px rgba(34,197,94,0.42);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: rgba(26,127,232,0.06);
+      color: var(--blue);
+      border: 2px solid var(--border);
+      box-shadow: none;
+      font-size: 15px;
+      padding: 13px 18px;
+    }
+    .btn-ghost:hover:not(:disabled) { background: rgba(26,127,232,0.12); }
+
+    .btn-full { width: 100%; }
+    .btn-group { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+
+    /* Consultar — full width, large */
+    #btnConsultar {
+      width: 100%;
+      padding: 20px;
+      font-size: 19px;
+      border-radius: 18px;
+      margin-top: 4px;
+    }
+
+    /* ── SPINNER ── */
+    .spinner {
+      width: 20px; height: 20px;
+      border: 3px solid rgba(255,255,255,0.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      display: inline-block;
+    }
+    .spinner-dark {
+      border-color: rgba(26,79,138,0.2);
+      border-top-color: var(--blue);
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── ALERTS ── */
     .alert {
       padding: 12px 16px;
-      border-radius: 8px;
+      border-radius: 12px;
       font-size: 14px;
       font-weight: 500;
-      margin-bottom: 16px;
+      margin-bottom: 0;
       display: flex;
       align-items: flex-start;
       gap: 10px;
@@ -171,135 +304,143 @@
     .alert-warning { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; }
     .alert-error   { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; }
 
-    /* ── DADOS DO CONTATO ── */
-    .contato-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    @media (max-width: 480px) { .contato-grid { grid-template-columns: 1fr; } }
-    .dado .dado-label {
-      font-size: 11px; font-weight: 600; color: var(--muted);
-      text-transform: uppercase; letter-spacing: .5px;
-    }
-    .dado .dado-valor { font-size: 15px; font-weight: 500; color: var(--text); margin-top: 2px; }
-    .dado .dado-valor.empty { color: #cbd5e1; font-style: italic; font-weight: 400; }
+    /* ── CONTACT DATA GRID ── */
+    .contato-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+    @media (max-width: 400px) { .contato-grid { grid-template-columns: 1fr; } }
+    .dado { background: var(--input-bg); border-radius: 12px; padding: 10px 14px; }
+    .dado-label { font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .dado-valor { font-size: 14px; font-weight: 500; color: var(--text); margin-top: 3px; }
+    .dado-valor.empty { color: #b8d5ef; font-style: italic; font-weight: 400; }
 
-    /* ── BADGE CONFIRMADO ── */
-    .confirmado-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d;
-      border-radius: 20px; padding: 6px 14px;
-      font-size: 13px; font-weight: 700; margin-bottom: 16px;
-    }
+    /* ── ALREADY CONFIRMED ── */
     .ja-confirmado-aviso {
-      background: #fffbeb; border: 1px solid #fde68a; color: #92400e;
-      border-radius: 8px; padding: 10px 14px; font-size: 13px;
-      margin-bottom: 16px; display: flex; align-items: flex-start; gap: 8px;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      color: #92400e;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
     }
 
-    /* ── SPINNER ── */
-    .spinner {
-      width: 18px; height: 18px;
-      border: 2.5px solid rgba(255,255,255,.3);
-      border-top-color: #fff;
-      border-radius: 50%;
-      animation: spin .7s linear infinite;
+    /* ── SUCCESS ── */
+    .sucesso-wrap { text-align: center; padding: 8px 0 16px; }
+    .sucesso-emoji {
+      font-size: 64px;
+      margin-bottom: 12px;
+      display: block;
+      animation: popIn 0.6s cubic-bezier(.34,1.56,.64,1) both;
     }
-    .spinner-dark {
-      border-color: rgba(26,79,138,.2);
-      border-top-color: var(--blue2);
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ── SUCESSO ── */
-    .sucesso-wrap {
-      text-align: center;
-      padding: 12px 0 24px;
+    .sucesso-nome {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 4px;
     }
-    .sucesso-emoji { font-size: 56px; margin-bottom: 12px; display: block; }
-    .sucesso-nome  { font-size: 24px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
-    .sucesso-sub   { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
-    .sucesso-info  { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
+    .sucesso-sub { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
+    .sucesso-info { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
     .sucesso-info-item {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--bg); border-radius: 8px; padding: 8px 14px;
-      font-size: 13px; font-weight: 500; color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--input-bg);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
     }
 
     /* ── UTILS ── */
-    .hidden  { display: none !important; }
-    .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
-    .text-muted { color: var(--muted); font-size: 13px; }
+    .hidden { display: none !important; }
+
+    /* ── MOBILE TWEAKS ── */
+    @media (max-width: 380px) {
+      .card { padding: 24px 18px 24px; border-radius: 22px; }
+      .logo-img { max-width: 120px; }
+      #inputTelefone { font-size: 22px; padding: 17px 18px; }
+      #btnConsultar  { font-size: 17px; padding: 17px; }
+      .btn { font-size: 15px; }
+    }
   </style>
 </head>
 <body>
 
-<div class="counter-bar">
-  Confirmados hoje: <span id="counterNum">—</span>
+<canvas id="bg-canvas"></canvas>
+<canvas id="confetti-canvas"></canvas>
+
+<!-- Counter -->
+<div class="counter-pill">
+  Confirmados hoje: <strong id="counterNum">—</strong>
 </div>
 
-<header>
-  <div style="flex:1">
-    <div style="margin-bottom:8px"><span class="badge-evento">Credenciamento</span></div>
-    <h1>Pepê <span>Collaço</span> — Evento 2026</h1>
-    <p id="subtituloHeader">Selecione o evento e consulte pelo WhatsApp</p>
+<!-- Main card -->
+<div class="card">
+
+  <!-- Logo -->
+  <div class="logo-wrap">
+    <img
+      src="https://trngl.com.br/wp-content/uploads/2026/05/LOGO_PEPE.png"
+      alt="Pepê Collaço"
+      class="logo-img"
+    />
   </div>
-</header>
 
-<main>
+  <div style="text-align:center">
+    <span class="credencial-badge">Credenciamento</span>
+  </div>
 
-  <!-- ══ CARD BUSCA (sempre visível) ══ -->
-  <div class="card" id="cardBusca">
-    <div class="card-title">
-      <span class="icon">🔍</span>
-      Consulta / Cadastro
-    </div>
+  <!-- ══ BUSCA (sempre visível) ══ -->
+  <div id="cardBusca">
 
-    <!-- Seletor de evento -->
     <div class="field">
-      <label>Evento de hoje *</label>
-      <select id="selectEvento">
-        <option value="">— selecione o evento —</option>
-      </select>
-    </div>
-
-    <!-- Telefone -->
-    <div class="field">
-      <label>WhatsApp (com DDD)</label>
-      <div class="search-row">
-        <input
-          type="tel"
-          id="inputTelefone"
-          placeholder="(48) 99999-9999"
-          maxlength="20"
-          inputmode="numeric"
-          autocomplete="off"
-        />
-        <button class="btn btn-primary" id="btnConsultar">
-          Consultar
-        </button>
+      <label>Evento</label>
+      <div class="select-wrap">
+        <select id="selectEvento">
+          <option value="">— selecione o evento —</option>
+        </select>
       </div>
     </div>
 
-    <div id="alertaBusca" class="hidden"></div>
+    <div class="field" style="margin-bottom:12px">
+      <label>WhatsApp (com DDD)</label>
+      <input
+        type="tel"
+        id="inputTelefone"
+        placeholder="(48) 99999-9999"
+        maxlength="20"
+        inputmode="numeric"
+        autocomplete="off"
+      />
+    </div>
+
+    <button class="btn btn-primary" id="btnConsultar">Consultar</button>
+
+    <div id="alertaBusca" class="hidden" style="margin-top:14px"></div>
   </div>
 
-  <!-- ══ CARD CONTATO ENCONTRADO ══ -->
-  <div class="card hidden" id="cardEncontrado">
-    <div class="card-title">
-      <span class="icon">👤</span>
-      Contato Encontrado na Base
-    </div>
+  <!-- ══ CONTATO ENCONTRADO ══ -->
+  <div id="cardEncontrado" class="hidden">
+    <hr class="divider" />
+    <div class="section-title">👤 Contato Encontrado</div>
 
     <div id="avisoJaConfirmado" class="hidden ja-confirmado-aviso">
-      ⚠️ <span>Este contato já tinha presença confirmada. Você pode atualizar os dados e confirmar novamente.</span>
+      ⚠️ <span>Este contato já teve presença confirmada. Você pode atualizar os dados e confirmar novamente.</span>
     </div>
 
-    <div id="dadosContato" class="contato-grid" style="margin-bottom:16px"></div>
+    <div id="dadosContato" class="contato-grid"></div>
 
     <!-- Formulário de edição (toggle) -->
     <div id="formEdicao" class="hidden">
-      <hr class="divider" />
-      <div class="card-title" style="margin-bottom:14px; font-size:14px">
-        <span class="icon">✏️</span> Editar Dados
-      </div>
+      <div class="section-title" style="font-size:14px;margin-bottom:12px">✏️ Editar Dados</div>
       <div class="field">
         <label>Nome *</label>
         <input type="text" id="editNome" placeholder="Nome completo" />
@@ -324,7 +465,6 @@
       </div>
     </div>
 
-    <hr class="divider" />
     <div class="btn-group">
       <button class="btn btn-ghost" id="btnEditar">✏️ Editar Dados</button>
       <button class="btn btn-success" id="btnConfirmar" style="flex:1">
@@ -333,13 +473,12 @@
     </div>
   </div>
 
-  <!-- ══ CARD NOVO CADASTRO ══ -->
-  <div class="card hidden" id="cardNovo">
-    <div class="card-title">
-      <span class="icon">➕</span>
-      Novo Cadastro
-    </div>
-    <div class="alert alert-info" style="margin-bottom:18px">
+  <!-- ══ NOVO CADASTRO ══ -->
+  <div id="cardNovo" class="hidden">
+    <hr class="divider" />
+    <div class="section-title">➕ Novo Cadastro</div>
+
+    <div class="alert alert-info" style="margin-bottom:16px">
       ℹ️ Telefone não encontrado na base. Preencha os dados para cadastrar.
     </div>
 
@@ -372,14 +511,15 @@
 
     <div class="btn-group">
       <button class="btn btn-ghost" id="btnCancelarNovo">Cancelar</button>
-      <button class="btn btn-success btn-full" id="btnSalvarNovo">
+      <button class="btn btn-success btn-full" id="btnSalvarNovo" style="flex:1">
         ✅ Salvar e Confirmar Presença
       </button>
     </div>
   </div>
 
-  <!-- ══ CARD SUCESSO ══ -->
-  <div class="card hidden" id="cardSucesso">
+  <!-- ══ SUCESSO ══ -->
+  <div id="cardSucesso" class="hidden">
+    <hr class="divider" />
     <div class="sucesso-wrap">
       <span class="sucesso-emoji">🎉</span>
       <div class="sucesso-nome" id="sucessoNome">—</div>
@@ -388,15 +528,126 @@
       <div id="avisoN8n" class="alert alert-warning hidden" style="text-align:left;margin-bottom:16px">
         ⚠️ Presença confirmada, mas houve erro ao enviar WhatsApp. Verifique o n8n.
       </div>
-      <div class="btn-group" style="justify-content:center">
-        <button class="btn btn-primary btn-full" id="btnCadastrarOutro">
-          ➕ Cadastrar outro
-        </button>
-      </div>
+      <button class="btn btn-primary btn-full" id="btnCadastrarOutro">
+        ➕ Cadastrar outro
+      </button>
     </div>
   </div>
 
-</main>
+</div>
+
+<!-- Elemento mantido para compatibilidade com main.js -->
+<span id="subtituloHeader" style="display:none"></span>
+
+<script>
+  // ─── Background: bolhas flutuantes ────────────────────────────
+  const bgCanvas = document.getElementById('bg-canvas');
+  const bgCtx    = bgCanvas.getContext('2d');
+
+  function resizeBg() {
+    bgCanvas.width  = window.innerWidth;
+    bgCanvas.height = window.innerHeight;
+  }
+
+  class Bubble {
+    constructor(placed) { this.reset(placed); }
+    reset(placed) {
+      this.r     = 18 + Math.random() * 70;
+      this.x     = this.r + Math.random() * (bgCanvas.width  - this.r * 2);
+      this.y     = placed ? Math.random() * bgCanvas.height : bgCanvas.height + this.r + Math.random() * 150;
+      this.vy    = -(0.15 + Math.random() * 0.4);
+      this.vx    = (Math.random() - 0.5) * 0.25;
+      this.alpha = 0.025 + Math.random() * 0.055;
+      this.phase = Math.random() * Math.PI * 2;
+      this.freq  = 0.008 + Math.random() * 0.015;
+    }
+    update() {
+      this.y    += this.vy;
+      this.x    += this.vx;
+      this.phase += this.freq;
+      if (this.y + this.r < 0) this.reset(false);
+    }
+    draw() {
+      const a = this.alpha * (0.75 + 0.25 * Math.sin(this.phase));
+      const g = bgCtx.createRadialGradient(
+        this.x - this.r * 0.28, this.y - this.r * 0.28, 0,
+        this.x, this.y, this.r
+      );
+      g.addColorStop(0, `rgba(145,207,255,${a * 1.6})`);
+      g.addColorStop(1, `rgba(26,127,232,${a})`);
+      bgCtx.beginPath();
+      bgCtx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      bgCtx.fillStyle = g;
+      bgCtx.fill();
+    }
+  }
+
+  resizeBg();
+  const bgBubbles = Array.from({ length: 20 }, () => new Bubble(true));
+  window.addEventListener('resize', resizeBg);
+  (function animateBg() {
+    bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+    bgBubbles.forEach(b => { b.update(); b.draw(); });
+    requestAnimationFrame(animateBg);
+  })();
+
+  // ─── Confetti ─────────────────────────────────────────────────
+  const confCanvas = document.getElementById('confetti-canvas');
+  const confCtx    = confCanvas.getContext('2d');
+  const CONF_COLORS = ['#1a7fe8','#5db3ff','#ffd93d','#ff6b6b','#6bcb77','#c77dff','#ff9f1c','#fff'];
+  let confPieces = [], confActive = false;
+
+  window.launchConfetti = function () {
+    confCanvas.width  = window.innerWidth;
+    confCanvas.height = window.innerHeight;
+    confPieces = [];
+    for (let i = 0; i < 160; i++) {
+      confPieces.push({
+        x: Math.random() * confCanvas.width,
+        y: -20 - Math.random() * confCanvas.height * 0.6,
+        w: 6 + Math.random() * 10, h: 3 + Math.random() * 5,
+        color: CONF_COLORS[Math.floor(Math.random() * CONF_COLORS.length)],
+        vy: 2.5 + Math.random() * 4.5, vx: (Math.random() - 0.5) * 2.5,
+        angle: Math.random() * Math.PI * 2, spin: (Math.random() - 0.5) * 0.14,
+        alpha: 0.7 + Math.random() * 0.3
+      });
+    }
+    confActive = true;
+    drawConf();
+    setTimeout(() => { confActive = false; }, 4500);
+  };
+
+  function drawConf() {
+    confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+    let any = false;
+    confPieces.forEach(p => {
+      p.y += p.vy; p.x += p.vx; p.angle += p.spin; p.vy += 0.04;
+      if (p.y < confCanvas.height + 20) any = true;
+      confCtx.save();
+      confCtx.globalAlpha = p.alpha;
+      confCtx.translate(p.x, p.y);
+      confCtx.rotate(p.angle);
+      confCtx.fillStyle = p.color;
+      confCtx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      confCtx.restore();
+    });
+    if (confActive || any) requestAnimationFrame(drawConf);
+    else confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+  }
+
+  // ─── Máscara do telefone ───────────────────────────────────────
+  const inputTel = document.getElementById('inputTelefone');
+  inputTel.addEventListener('input', () => {
+    let v = inputTel.value.replace(/\D/g, '');
+    if      (v.length <= 2)  inputTel.value = v;
+    else if (v.length <= 6)  inputTel.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    else if (v.length <= 10) inputTel.value = `(${v.slice(0,2)}) ${v.slice(2,6)}-${v.slice(6)}`;
+    else                     inputTel.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7,11)}`;
+  });
+  inputTel.addEventListener('keypress', e => {
+    if (!/[\d]/.test(e.key)) e.preventDefault();
+  });
+</script>
 
 <script type="module" src="/src/main.js"></script>
 </body>

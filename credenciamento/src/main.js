@@ -104,6 +104,7 @@ function setState(estado) {
 
     case 'sucesso':
       cardSucesso.classList.remove('hidden')
+      if (typeof window.launchConfetti === 'function') window.launchConfetti()
       break
   }
 }

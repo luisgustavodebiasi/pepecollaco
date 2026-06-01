@@ -1119,6 +1119,20 @@
     }
 
     .city-tooltip::before { display: none !important; }
+
+    .painel-filtro {
+      padding: 7px 10px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      font-family: inherit;
+      font-size: 12.5px;
+      color: var(--text);
+      cursor: pointer;
+      outline: none;
+      max-width: 200px;
+    }
+    .painel-filtro:focus { border-color: var(--blue); }
   </style>
 </head>
 <body>
@@ -1301,11 +1315,36 @@
           </button>
         </div>
         <div class="card">
-          <div style="padding:0 0 14px;display:flex;gap:10px;align-items:center">
+          <div style="padding:0 0 12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
             <input id="contacts-search" type="search" placeholder="Buscar por nome ou telefone..."
-              style="flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;color:var(--text);outline:none"
-              oninput="carregarContatos()" />
+              style="flex:1;min-width:200px;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:14px;color:var(--text);outline:none"
+              oninput="debouncedContatos()" />
             <button class="btn-sm outline" onclick="carregarContatos()" style="white-space:nowrap">🔍 Buscar</button>
+            <button class="btn-sm outline" onclick="exportarContatosCSV()" style="white-space:nowrap" title="Baixar o resultado filtrado em CSV">⬇️ Exportar CSV</button>
+          </div>
+          <div style="padding:0 0 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <select id="f-status" onchange="carregarContatos()" class="painel-filtro">
+              <option value="">Status: todos</option>
+              <option value="confirmados">✅ Confirmados</option>
+              <option value="nao_confirmados">⏳ Não confirmados</option>
+            </select>
+            <select id="f-bv" onchange="carregarContatos()" class="painel-filtro">
+              <option value="">Boas-vindas: todas</option>
+              <option value="enviadas">Enviadas</option>
+              <option value="pendentes">Pendentes</option>
+            </select>
+            <select id="f-cidade" onchange="carregarContatos()" class="painel-filtro"><option value="">Cidade: todas</option></select>
+            <select id="f-evento" onchange="carregarContatos()" class="painel-filtro"><option value="">Evento: todos</option></select>
+            <select id="f-partido" onchange="carregarContatos()" class="painel-filtro"><option value="">Partido: todos</option></select>
+            <select id="f-origem" onchange="carregarContatos()" class="painel-filtro"><option value="">Origem: todas</option></select>
+            <select id="f-limit" onchange="carregarContatos()" class="painel-filtro">
+              <option value="200">200 linhas</option>
+              <option value="500">500 linhas</option>
+              <option value="1000">1000 linhas</option>
+              <option value="2000">2000 linhas</option>
+            </select>
+            <button class="btn-sm outline" onclick="limparFiltros()" style="white-space:nowrap">✕ Limpar filtros</button>
+            <span id="contacts-count" style="margin-left:auto;font-size:12.5px;color:var(--muted);font-weight:500"></span>
           </div>
           <div style="overflow-x:auto">
             <table class="sched-table" id="contacts-table">
@@ -2041,6 +2080,74 @@ function formatarTelAdmin(tel) {
     : `(${ddd}) ${num.slice(0,4)}-${num.slice(4)}`;
 }
 
+let ultimoResultadoContatos = [];   // guardado para o export CSV
+let facetasCarregadas = false;
+let _debTimer = null;
+
+const val = id => (document.getElementById(id)?.value || '').trim();
+
+function debouncedContatos() {
+  clearTimeout(_debTimer);
+  _debTimer = setTimeout(carregarContatos, 350);
+}
+
+function limparFiltros() {
+  ['contacts-search','f-status','f-bv','f-cidade','f-evento','f-partido','f-origem']
+    .forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  carregarContatos();
+}
+
+// Preenche os menus de filtro (cidade/evento/partido/origem) a partir das facetas
+async function loadFacetas() {
+  if (!db || facetasCarregadas) return;
+  try {
+    const { data, error } = await db.rpc('painel_facetas');
+    if (error) throw error;
+    const f = Array.isArray(data) ? data[0] : data;
+    const fill = (id, arr, rotulo) => {
+      const sel = document.getElementById(id);
+      if (!sel || !Array.isArray(arr)) return;
+      const atual = sel.value;
+      sel.innerHTML = `<option value="">${rotulo}: todos</option>` +
+        arr.map(o => `<option value="${esc(o.v)}">${esc(o.v)} (${o.n})</option>`).join('');
+      sel.value = atual;
+    };
+    fill('f-cidade',  f.cidades,  'Cidade');
+    fill('f-evento',  f.eventos,  'Evento');
+    fill('f-partido', f.partidos, 'Partido');
+    fill('f-origem',  f.origens,  'Origem');
+    facetasCarregadas = true;
+  } catch (e) {
+    // RPC painel_facetas ainda não aplicada no Supabase — segue sem dropdowns ricos
+    console.warn('painel_facetas indisponível (aplique a migração v3):', e.message);
+  }
+}
+
+function renderContatos(data) {
+  const tbody = document.getElementById('contacts-tbody');
+  ultimoResultadoContatos = data || [];
+  const cnt = document.getElementById('contacts-count');
+  if (cnt) cnt.textContent = `${ultimoResultadoContatos.length.toLocaleString('pt-BR')} contato(s)`;
+  tbody.innerHTML = ultimoResultadoContatos.map(c => {
+    const dt = c.confirmado_em ? new Date(c.confirmado_em).toLocaleString('pt-BR') : '—';
+    const bv = c.boas_vindas_enviada
+      ? '<span class="badge badge-green" style="font-size:11px">✓ Enviado</span>'
+      : '<span class="badge badge-amber" style="font-size:11px">Pendente</span>';
+    const conf = c.confirmado_evento
+      ? '<span class="badge badge-green" style="font-size:10px">✅</span> '
+      : '';
+    const subinfo = [esc(c.cargo), esc(c.partido)].filter(Boolean).join(' · ');
+    return `<tr>
+      <td>${conf}<b>${esc(c.nome)}</b>${subinfo ? `<br><span style="font-size:11px;color:var(--muted)">${subinfo}</span>` : ''}</td>
+      <td style="color:var(--muted);font-size:12.5px">${formatarTelAdmin(c.telefone_normalizado)}</td>
+      <td style="font-size:13px">${esc(c.cidade) || '—'}</td>
+      <td><span class="badge badge-blue" style="font-size:11px">${esc(c.nome_evento) || '—'}</span></td>
+      <td style="color:var(--muted);font-size:12px">${dt}</td>
+      <td>${bv}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Nenhum contato encontrado</td></tr>';
+}
+
 async function carregarContatos() {
   const tbody = document.getElementById('contacts-tbody');
   if (!tbody) return;
@@ -2048,32 +2155,54 @@ async function carregarContatos() {
     tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Configure SUPABASE_URL e SUPABASE_KEY no CONFIG para ver dados reais.</td></tr>';
     return;
   }
+  loadFacetas();
   tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Carregando...</td></tr>';
-  const busca = (document.getElementById('contacts-search')?.value || '').trim();
+
+  const args = {
+    p_busca:       val('contacts-search'),
+    p_cidade:      val('f-cidade'),
+    p_origem:      val('f-origem'),
+    p_evento:      val('f-evento'),
+    p_partido:     val('f-partido'),
+    p_status:      val('f-status'),
+    p_boas_vindas: val('f-bv'),
+    p_limit:       parseInt(val('f-limit') || '200', 10),
+  };
+
   try {
-    const { data, error } = await db.rpc('listar_contatos_admin', {
-      p_busca: busca,
-      p_limit: 200,
-    });
+    let { data, error } = await db.rpc('painel_contatos', args);
+    if (error && (error.code === 'PGRST202' || /function .*painel_contatos/i.test(error.message || ''))) {
+      // Migração v3 ainda não aplicada → fallback p/ a RPC antiga (só busca + limite)
+      console.warn('painel_contatos indisponível; usando listar_contatos_admin (aplique a migração v3).');
+      ({ data, error } = await db.rpc('listar_contatos_admin', { p_busca: args.p_busca, p_limit: args.p_limit }));
+    }
     if (error) throw error;
-    tbody.innerHTML = (data || []).map(c => {
-      const dt = c.confirmado_em ? new Date(c.confirmado_em).toLocaleString('pt-BR') : '—';
-      const bv = c.boas_vindas_enviada
-        ? '<span class="badge badge-green" style="font-size:11px">✓ Enviado</span>'
-        : '<span class="badge badge-amber" style="font-size:11px">Pendente</span>';
-      const subinfo = [esc(c.cargo), esc(c.partido)].filter(Boolean).join(' · ');
-      return `<tr>
-        <td><b>${esc(c.nome)}</b>${subinfo ? `<br><span style="font-size:11px;color:var(--muted)">${subinfo}</span>` : ''}</td>
-        <td style="color:var(--muted);font-size:12.5px">${formatarTelAdmin(c.telefone_normalizado)}</td>
-        <td style="font-size:13px">${esc(c.cidade) || '—'}</td>
-        <td><span class="badge badge-blue" style="font-size:11px">${esc(c.nome_evento) || '—'}</span></td>
-        <td style="color:var(--muted);font-size:12px">${dt}</td>
-        <td>${bv}</td>
-      </tr>`;
-    }).join('') || '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">Nenhum contato encontrado</td></tr>';
+    renderContatos(data);
   } catch (e) {
     tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--red)">Erro: ${esc(e.message)}</td></tr>`;
   }
+}
+
+function exportarContatosCSV() {
+  if (!ultimoResultadoContatos.length) { toast('Nada para exportar ⚠️'); return; }
+  const cols = ['nome','telefone_normalizado','telefone_original','cargo','partido','cidade',
+                'nome_evento','origem','confirmado_evento','confirmado_em',
+                'boas_vindas_enviada','agradecimento_enviado','observacoes'];
+  const escCsv = v => {
+    const s = String(v ?? '');
+    return /[",;\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  const linhas = [cols.join(';')].concat(
+    ultimoResultadoContatos.map(c => cols.map(k => escCsv(c[k])).join(';'))
+  );
+  const blob = new Blob(['﻿' + linhas.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `contatos_pepe_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast(`⬇️ ${ultimoResultadoContatos.length} contatos exportados`);
 }
 
 // ════════════════════════════════════════════════════════

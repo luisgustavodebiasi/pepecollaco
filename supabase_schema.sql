@@ -294,3 +294,86 @@ BEGIN
 END;
 $$;
 GRANT EXECUTE ON FUNCTION listar_contatos_admin(text, int) TO anon, authenticated;
+
+-- =============================================================
+-- MIGRAÇÃO v3 — PAINEL com filtros avançados
+-- Execute no SQL Editor do Supabase. Adiciona duas funções usadas
+-- pelo dashboard (admin/index.html) para filtrar ao máximo:
+--   • painel_facetas()  → opções/contagens p/ os menus de filtro
+--   • painel_contatos(...) → listagem filtrada por vários critérios
+-- Mantém as funções antigas intactas (compatível com o que já existe).
+-- =============================================================
+
+-- ── 7. Facetas (opções e contagens para os filtros) ──────────
+CREATE OR REPLACE FUNCTION painel_facetas()
+RETURNS jsonb
+LANGUAGE sql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+  SELECT jsonb_build_object(
+    'total',        (SELECT count(*) FROM contatos),
+    'confirmados',  (SELECT count(*) FROM contatos WHERE confirmado_evento),
+    'boas_vindas',  (SELECT count(*) FROM contatos WHERE boas_vindas_enviada),
+    'agradecimentos',(SELECT count(*) FROM contatos WHERE agradecimento_enviado),
+    'cidades', (SELECT COALESCE(jsonb_agg(t), '[]') FROM (
+        SELECT cidade AS v, count(*) AS n FROM contatos
+        WHERE cidade IS NOT NULL AND cidade <> ''
+        GROUP BY cidade ORDER BY count(*) DESC, cidade LIMIT 300) t),
+    'origens', (SELECT COALESCE(jsonb_agg(t), '[]') FROM (
+        SELECT origem AS v, count(*) AS n FROM contatos
+        WHERE origem IS NOT NULL AND origem <> ''
+        GROUP BY origem ORDER BY count(*) DESC) t),
+    'eventos', (SELECT COALESCE(jsonb_agg(t), '[]') FROM (
+        SELECT nome_evento AS v, count(*) AS n FROM contatos
+        WHERE nome_evento IS NOT NULL AND nome_evento <> ''
+        GROUP BY nome_evento ORDER BY count(*) DESC) t),
+    'partidos', (SELECT COALESCE(jsonb_agg(t), '[]') FROM (
+        SELECT partido AS v, count(*) AS n FROM contatos
+        WHERE partido IS NOT NULL AND partido <> ''
+        GROUP BY partido ORDER BY count(*) DESC) t)
+  );
+$$;
+GRANT EXECUTE ON FUNCTION painel_facetas() TO anon, authenticated;
+
+-- ── 8. Listagem do painel com filtros combinados ─────────────
+-- Todos os parâmetros são opcionais; string vazia = "sem filtro".
+--   p_status:      ''(todos) | 'confirmados' | 'nao_confirmados'
+--   p_boas_vindas: ''(todos) | 'enviadas'    | 'pendentes'
+CREATE OR REPLACE FUNCTION painel_contatos(
+  p_busca       text DEFAULT '',
+  p_cidade      text DEFAULT '',
+  p_origem      text DEFAULT '',
+  p_evento      text DEFAULT '',
+  p_partido     text DEFAULT '',
+  p_status      text DEFAULT '',
+  p_boas_vindas text DEFAULT '',
+  p_limit       int  DEFAULT 200
+)
+RETURNS SETOF contatos
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path = public
+AS $$
+DECLARE
+  v_busca text := left(trim(p_busca), 100);
+  v_limit int  := LEAST(GREATEST(p_limit, 1), 2000);
+BEGIN
+  RETURN QUERY
+    SELECT * FROM contatos
+    WHERE (v_busca = '' OR nome ILIKE '%' || v_busca || '%'
+                        OR telefone_normalizado ILIKE '%' || v_busca || '%')
+      AND (p_cidade  = '' OR cidade      = p_cidade)
+      AND (p_origem  = '' OR origem      = p_origem)
+      AND (p_evento  = '' OR nome_evento = p_evento)
+      AND (p_partido = '' OR partido     = p_partido)
+      AND (p_status  = '' OR (p_status = 'confirmados'     AND confirmado_evento)
+                          OR (p_status = 'nao_confirmados' AND NOT confirmado_evento))
+      AND (p_boas_vindas = '' OR (p_boas_vindas = 'enviadas'  AND boas_vindas_enviada)
+                              OR (p_boas_vindas = 'pendentes' AND NOT boas_vindas_enviada))
+    ORDER BY confirmado_em DESC NULLS LAST, nome
+    LIMIT v_limit;
+END;
+$$;
+GRANT EXECUTE ON FUNCTION painel_contatos(text, text, text, text, text, text, text, int)
+  TO anon, authenticated;

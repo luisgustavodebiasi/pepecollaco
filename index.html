@@ -234,7 +234,7 @@
       transition:background .2s, border-color .2s;
     }
     .car-btn:hover { background:var(--gold); color:var(--navy); border-color:var(--gold); }
-    .car-dots { display:flex; gap:6px; margin-left:8px; }
+    .car-dots { display:flex; flex-wrap:wrap; gap:6px; margin-left:8px; }
     .car-dot  { width:6px; height:6px; border-radius:50%; background:rgba(201,168,76,.3); border:none; cursor:pointer; transition:background .2s, transform .2s; padding:0; }
     .car-dot.on { background:var(--gold); transform:scale(1.3); }
 
@@ -665,62 +665,102 @@
   <div class="car-outer">
     <div class="car-viewport">
       <div class="car-track" id="carTrack">
-
-        <!-- Slide 1: Substituir por foto real de Tubarão -->
-        <div class="car-slide" style="background:linear-gradient(135deg,#0a1f3a,#1a3a6b);">
-          <!-- <img src="assets/img/galeria/tubarao.jpg" alt="Vista de Tubarão, SC" /> -->
-          <div class="car-ph">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Foto — Tubarão, SC
-          </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-01.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
           <div class="car-slide-overlay"></div>
-          <p class="car-caption">Tubarão, nossa cidade</p>
         </div>
-
-        <!-- Slide 2: Substituir por foto de evento/mandato -->
-        <div class="car-slide" style="background:linear-gradient(135deg,#0f2a4a,#0a1628);">
-          <!-- <img src="assets/img/galeria/mandato.jpg" alt="Pepê Collaço em atividade parlamentar" /> -->
-          <div class="car-ph">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Foto — Atividade parlamentar
-          </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-02.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
           <div class="car-slide-overlay"></div>
-          <p class="car-caption">Na Assembleia Legislativa</p>
         </div>
-
-        <!-- Slide 3: Substituir por foto de visita a município -->
-        <div class="car-slide" style="background:linear-gradient(135deg,#12233d,#1a3055);">
-          <!-- <img src="assets/img/galeria/municipio.jpg" alt="Visita a município da AMUREL" /> -->
-          <div class="car-ph">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Foto — Visita a município
-          </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-03.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
           <div class="car-slide-overlay"></div>
-          <p class="car-caption">Visita à AMUREL</p>
         </div>
-
-        <!-- Slide 4: Substituir por foto de entrega de emenda/obra -->
-        <div class="car-slide" style="background:linear-gradient(135deg,#0d1c30,#162a50);">
-          <!-- <img src="assets/img/galeria/obra.jpg" alt="Entrega de emenda ou obra" /> -->
-          <div class="car-ph">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Foto — Entrega de emenda
-          </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-06.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
           <div class="car-slide-overlay"></div>
-          <p class="car-caption">Recursos para o Sul</p>
         </div>
-
-        <!-- Slide 5: Substituir por foto com lideranças / parceria -->
-        <div class="car-slide" style="background:linear-gradient(135deg,#091525,#0f2040);">
-          <!-- <img src="assets/img/galeria/parceria.jpg" alt="Pepê com prefeitos e lideranças" /> -->
-          <div class="car-ph">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Foto — Parceria com prefeitos
-          </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-08.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
           <div class="car-slide-overlay"></div>
-          <p class="car-caption">Trabalho em parceria</p>
         </div>
-
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-09.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-12.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-15.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-16.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-19.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-20.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-24.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-26.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-27.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-29.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-30.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-33.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-36.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-37.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-38.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-40.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-41.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-44.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
+        <div class="car-slide">
+          <img src="assets/img/galeria/gal-49.webp" alt="Pepê Collaço — atuação do mandato" loading="lazy" decoding="async" />
+          <div class="car-slide-overlay"></div>
+        </div>
       </div>
     </div>
 

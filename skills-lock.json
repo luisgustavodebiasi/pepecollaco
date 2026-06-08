@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "video": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "skillPath": "skills/video/SKILL.md",
+      "computedHash": "8286d39be8d86f9fc1c39b3c340cdebcf9a490f7606ffde566572baa163b1fe7"
+    },
+    "video-production": {
+      "source": "absolutelyskilled/absolutelyskilled",
+      "sourceType": "github",
+      "skillPath": "skills/video-production/SKILL.md",
+      "computedHash": "f0b9c357ea8bd760d42ec5811c149d55971f9d0974dae59be4f4b9ca362ffbcf"
+    },
+    "video-scriptwriting": {
+      "source": "absolutelyskilled/absolutelyskilled",
+      "sourceType": "github",
+      "skillPath": "skills/video-scriptwriting/SKILL.md",
+      "computedHash": "b716b16a34d0cb545989a46e6ac5816fd2e015ead3ce1085a6f3494f19eae438"
+    }
+  }
+}

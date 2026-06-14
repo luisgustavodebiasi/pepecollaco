@@ -177,8 +177,48 @@ footer{background:var(--bd);color:rgba(255,255,255,.65);text-align:center;paddin
 footer span{color:var(--yl)}
 @media(max-width:700px){.cgrid{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}.hi{flex-direction:column}.hi-logo img{height:48px}}
 </style>
+<style>
+#pw-overlay{position:fixed;inset:0;z-index:99999;background:linear-gradient(135deg,#1a4f8a 0%,#2d5fa8 60%,#1a4f8a 100%);display:flex;align-items:center;justify-content:center}
+#pw-box{background:#fff;border-radius:16px;padding:40px 36px;max-width:360px;width:90%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.25)}
+#pw-box h2{color:#1a4f8a;font-size:20px;font-weight:800;margin-bottom:6px}
+#pw-box p{color:#6b7280;font-size:13px;margin-bottom:24px}
+#pw-input{width:100%;padding:11px 14px;border:2px solid #dceeff;border-radius:8px;font-size:15px;outline:none;transition:.2s;margin-bottom:14px}
+#pw-input:focus{border-color:#2d7dd2}
+#pw-btn{width:100%;padding:11px;background:#1a4f8a;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;transition:.2s}
+#pw-btn:hover{background:#2d7dd2}
+#pw-err{color:#d73a49;font-size:12px;margin-top:8px;min-height:16px}
+body.locked{overflow:hidden}
+</style>
 </head>
-<body>
+<body class="locked">
+<div id="pw-overlay">
+  <div id="pw-box">
+    <h2>Painel Estratégico 2026</h2>
+    <p>Área restrita — insira a senha para continuar</p>
+    <input id="pw-input" type="password" placeholder="Senha" autocomplete="current-password" />
+    <button id="pw-btn" onclick="checkPw()">Entrar</button>
+    <div id="pw-err"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var PW='Eleito100%devotos';
+  var saved=sessionStorage.getItem('painel_auth');
+  if(saved===PW){unlock();}
+  document.getElementById('pw-input').addEventListener('keydown',function(e){if(e.key==='Enter')checkPw();});
+  function checkPw(){
+    var v=document.getElementById('pw-input').value;
+    if(v===PW){sessionStorage.setItem('painel_auth',PW);unlock();}
+    else{document.getElementById('pw-err').textContent='Senha incorreta. Tente novamente.';document.getElementById('pw-input').value='';}
+  }
+  window.checkPw=checkPw;
+  function unlock(){
+    var o=document.getElementById('pw-overlay');
+    if(o)o.remove();
+    document.body.classList.remove('locked');
+  }
+})();
+</script>
 <nav class="topnav">
   <a href="#visao" class="active">Visão Geral</a>
   <a href="#indicadores">Indicadores</a>

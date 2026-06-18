@@ -1,0 +1,18 @@
+[
+  {
+    "id": "6bf3c33c-0843-4e76-bfbc-4804db150a0d",
+    "contato_id": "8250d6ab-4fd4-456f-8296-fcfb6fbcdae4",
+    "evento_id": "ab9edf3b-c645-4e21-bb54-0197b3ad0a11",
+    "status": "confirmado",
+    "confirmado_em": "2026-06-15T18:49:16.594899+00:00",
+    "origem": "pagina_evento",
+    "mensagem_confirmacao_status": "pendente",
+    "mensagem_confirmacao_enviada_em": null,
+    "mensagem_agradecimento_status": "pendente",
+    "mensagem_agradecimento_enviada_em": null,
+    "tentativas": 0,
+    "ultimo_erro": null,
+    "created_at": "2026-06-15T18:46:23.116811+00:00",
+    "updated_at": "2026-06-15T18:49:16.594899+00:00"
+  }
+]

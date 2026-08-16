@@ -1,0 +1,105 @@
+/* GERADO por _IDENTIDADE v1.0.0 — não edite aqui.
+   Edite _IDENTIDADE/src/ e rode ./bin/sincronizar.sh */
+/* ============================================================================
+   Pepê Collaço 11223 — tokens canônicos da identidade visual
+   Fonte-verdade: _IDENTIDADE/src/tokens.css · versão 1.0.0
+
+   Todos os hex abaixo foram medidos por amostragem de pixel nos arquivos
+   originais da agência em "_ARTE /". Não invente cores novas: se faltar um
+   tom, derive dos existentes com color-mix() ou peça um valor à agência.
+
+   Camada 1 (--pp-*) são as primitivas. NÃO use em componente.
+   Camada 2 (--cor-*, --grad-*) é o papel semântico. É esta que se consome.
+   ========================================================================= */
+
+:root {
+  /* ── Camada 1: primitivas ──────────────────────────────────────────────
+     Azuis, na ordem em que aparecem no degradê de fundo (claro → escuro) */
+  --pp-azul-foco: #0082BF;      /* ponto mais claro do fundo, canto sup. esq. */
+  --pp-azul-medio: #006A9E;
+  --pp-azul-profundo: #0A5480;
+  --pp-navy: #123F68;
+  --pp-navy-escuro: #12314F;
+  --pp-abismo: #0E1E46;         /* canto inferior direito do fundo */
+  --pp-tinta: #061A3A;          /* navy da marca; o texto escuro do sistema */
+  --pp-azul-marca: #23638D;     /* início do degradê do PEPÊ sobre fundo claro */
+  --pp-azul-claro: #8BC1DC;     /* fim do degradê do PEPÊ sobre fundo escuro */
+  --pp-vote: #233F64;           /* a palavra VOTE no lockup */
+
+  /* Amarelo e laranja: o número 11223 e a face externa do símbolo */
+  --pp-amarelo: #FFC400;
+  --pp-amarelo-num: #FDC51E;    /* início do degradê do 11223 */
+  --pp-laranja: #FAAA40;        /* fim do degradê do 11223 */
+  --pp-laranja-quente: #FF9C33;
+
+  /* Verdes: COLLAÇO, legenda e face interna do símbolo */
+  --pp-verde: #00B171;
+  --pp-verde-claro: #8ACD88;
+  --pp-verde-legenda: #54AE74;
+  --pp-petroleo: #01374B;
+
+  --pp-branco: #FEFFFF;
+
+  /* Não existe na arte. Declarado aqui para que erro/destrutivo tenham UMA
+     cor no sistema inteiro, em vez de cada app inventar a sua. */
+  --pp-alerta: #E5484D;
+
+  /* ── Camada 2: papel semântico ─────────────────────────────────────── */
+  --cor-fundo: var(--pp-abismo);
+  --cor-fundo-elevado: var(--pp-navy-escuro);
+  --cor-fundo-campo: rgba(255, 255, 255, 0.07);
+  --cor-superficie-clara: #F4F8FB;
+
+  --cor-texto: #FFFFFF;
+  --cor-texto-suave: var(--pp-azul-claro);
+  --cor-texto-inverso: var(--pp-tinta);
+
+  --cor-acento: var(--pp-amarelo);
+  --cor-acento-hover: var(--pp-amarelo-num);
+  --cor-sobre-acento: var(--pp-tinta);   /* 10,8:1 — o par de botão canônico */
+
+  --cor-positivo: var(--pp-verde);
+  --cor-negativo: var(--pp-alerta);
+
+  --cor-borda: rgba(255, 255, 255, 0.14);
+  --cor-borda-forte: var(--pp-azul-marca);
+  --cor-link: var(--pp-amarelo);
+
+  /* ── Degradês ──────────────────────────────────────────────────────────
+     O fundo é o ativo mais reconhecível da identidade: radial, foco no topo
+     deslocado à esquerda, caindo para o abismo no canto inferior direito.
+     Os stops reproduzem o perfil medido em FUNDO.png / FUNDO HORIZONTAL.png. */
+  --grad-fundo: radial-gradient(120% 130% at 18% 0%,
+    #0082BF 0%, #006A9E 22%, #045E8D 38%, #12456D 56%,
+    #10365F 70%, #0E2D53 82%, #0F264B 91%, #0E1E46 100%);
+
+  /* Os degradês do lockup. Existem para peças novas ficarem coerentes com a
+     marca; a marca em si é sempre imagem, nunca reconstruída com estes. */
+  --grad-marca-claro: linear-gradient(180deg, #23638D, #061A3A);
+  --grad-marca-escuro: linear-gradient(180deg, #FEFFFF, #8BC1DC);
+  --grad-numero: linear-gradient(180deg, #FDC51E, #FAAA40);
+  --grad-collaco: linear-gradient(180deg, #8ACD88, #00B171);
+  --grad-seta-externa: linear-gradient(135deg, #FF9C33, #FFC400);
+
+  /* Véu para deitar texto sobre o degradê de fundo. Ver a regra de contraste
+     nº 5 no CLAUDE.md: sem isto, texto pequeno reprova no topo-esquerdo. */
+  --veu-conteudo: linear-gradient(rgba(14, 30, 70, 0.55), rgba(6, 26, 58, 0.85));
+
+  /* ── Tipografia ────────────────────────────────────────────────────────
+     Só existem 400 e 700. Não peça 900: o navegador sintetiza um negrito
+     falso e a marca perde. O que for "mais pesado que 700" é imagem. */
+  --fonte: "Acumin Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --peso-normal: 400;
+  --peso-forte: 700;
+
+  /* ── Textura de setas ──────────────────────────────────────────────────
+     Grid escalonado, geometria medida em TEXTURA SETAS FUNDO.png.
+     Aplique como MÁSCARA, não como background-image: um SVG carregado por
+     url() renderiza isolado, então currentColor ali cai para preto e a
+     textura some sobre o azul. Com máscara, quem dá a cor é o
+     background-color do elemento. Ver a receita em CLAUDE.md.
+     Use sempre em opacidade baixa: é assinatura, não papel de parede. */
+  --textura-setas: url("../textura/setas-tile.svg");
+  --textura-tamanho: 308px 491px;
+  --textura-opacidade: 0.07;
+}

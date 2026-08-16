@@ -1,0 +1,25 @@
+/* Compat — /admin (interface de trabalho)
+   O admin continua CLARO de propósito: é onde a equipe passa horas, e a
+   identidade escura de campanha atrapalharia a leitura de tabela e formulário.
+   Aqui a nova paleta entra na cor de marca, não no clima da tela. */
+@import "../tokens.css";
+@import "../tipografia.css";
+
+:root {
+  --sidebar: var(--pp-tinta);
+  --sidebar2: #0A2450;
+  --sidebar3: #14335C;
+  --blue: var(--pp-azul-profundo);
+  --blue2: var(--pp-azul-foco);
+  --green: var(--cor-positivo);
+  --amber: var(--pp-laranja);
+  --red: var(--cor-negativo);
+  --purple: #6B4FD8;
+  --bg: #EDF3F9;
+  --card: #FFFFFF;
+  --text: var(--pp-tinta);
+  --muted: #5B6E86;
+  --border: #D6E4F0;
+}
+
+body { font-family: var(--fonte); }

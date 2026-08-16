@@ -1,0 +1,19 @@
+/* Compat — /time (cadastro público)
+   Repontua os nomes de variável que a página já usa para os tokens da
+   identidade. Assim a sub-área ganha cor e fonte novas sem reescrever
+   nenhuma regra de layout. */
+@import "../tokens.css";
+@import "../tipografia.css";
+
+:root {
+  --bg: #E8F1FA;
+  --card: #FFFFFF;
+  --blue: var(--pp-azul-profundo);
+  --blue2: var(--pp-azul-foco);
+  --text: var(--pp-tinta);
+  --muted: #5B6E86;
+  --border: #C9DCEC;
+  --input-bg: #F4F8FB;
+}
+
+body { font-family: var(--fonte); }

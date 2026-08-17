@@ -45,9 +45,9 @@ const PAGINAS = {
   },
   'pelo-autismo': {
     titulo: 'PELO AUTISMO',
-    numero: 'R$ 5,7',
+    numero: 'R$ 4,6',
     unidade: 'MILHÕES',
-    legenda: 'em terapia, inclusão e acolhimento em 22 municípios',
+    legenda: 'em terapia e acolhimento para famílias atípicas de 18 municípios',
   },
   'pela-educacao': {
     titulo: 'PELA EDUCAÇÃO',

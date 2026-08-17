@@ -13,7 +13,7 @@
   <meta property="og:url" content="https://www.pepecollaco.com/" />
   <meta property="og:site_name" content="Pepê Collaço 11223" />
   <meta property="og:title" content="Vote Pepê Collaço 11223 | Deputado Estadual" />
-  <meta property="og:description" content="Trabalho pelo Sul e por Santa Catarina. Infraestrutura, saúde, autismo e desenvolvimento regional." />
+  <meta property="og:description" content="Quem faz, representa. Infraestrutura, saúde, autismo e desenvolvimento regional." />
   <meta property="og:image" content="https://www.pepecollaco.com/assets/brand/og-11223.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -326,6 +326,33 @@
     .card.destaque .card-ul { border-color: rgba(255,255,255,.14); }
     .card.destaque .card-ul li { border-color: rgba(255,255,255,.09); }
 
+    /* ── Projetos de lei ────────────────────────────────────── */
+    .leis { display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: 16px; margin-top: 34px; }
+    .lei {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 4px; padding: 22px 22px 24px;
+      display: flex; flex-direction: column; gap: 12px;
+      transition: transform .22s ease, border-color .22s ease;
+    }
+    .lei:hover { transform: translateY(-3px); border-color: var(--cor-acento); }
+    .lei-t { font-size: 17px; font-weight: var(--peso-forte); text-transform: uppercase; line-height: 1.18; margin: 0; }
+    .lei-d { font-size: 14.5px; color: var(--cor-texto-suave); margin: 0; flex: 1; }
+    /* O selo traz a palavra escrita, nunca só a cor: verde sozinho não
+       comunica estado e reprova contraste como texto (IDENTIDADE.md, regra 3). */
+    .selo {
+      align-self: flex-start; font-size: 11px; font-weight: var(--peso-forte);
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 6px 12px; border-radius: 2px; border: 1px solid transparent;
+    }
+    .selo-aprovado { background: var(--cor-positivo); color: var(--pp-tinta); }
+    .selo-comissao { border-color: rgba(255,255,255,.34); color: var(--cor-texto-suave); }
+    .leis-grupo {
+      display: flex; align-items: center; gap: 12px;
+      margin: 46px 0 0; font-size: 12px; font-weight: var(--peso-forte);
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--pp-verde-claro);
+    }
+    .leis-grupo::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,.14); }
+
     /* ── Galeria ────────────────────────────────────────────── */
     .galeria { padding: clamp(52px, 7vw, 84px) 0; background: var(--pp-tinta); overflow: hidden; }
     .carrossel { position: relative; margin-top: 26px; }
@@ -424,6 +451,7 @@
   <ul class="nav-ul" id="navUl">
     <li><a href="#trajetoria" onclick="fecharNav()">Trajetória</a></li>
     <li><a href="#bandeiras" onclick="fecharNav()">Bandeiras</a></li>
+    <li><a href="#leis" onclick="fecharNav()">Nossas leis</a></li>
     <li><a href="#resultados" onclick="fecharNav()">Resultados</a></li>
     <li><a href="#autismo" onclick="fecharNav()">Autismo</a></li>
     <li><a href="#contato" class="nav-cta" onclick="fecharNav()">Contato</a></li>
@@ -444,8 +472,8 @@
                alt="Vote Pepê Collaço, deputado estadual, 11223"
                width="960" height="879" fetchpriority="high" />
         </h1>
-        <p class="hero-frase">Trabalho pelo Sul<br>e por <em>Santa Catarina.</em></p>
-        <p class="hero-sub">Advogado, ex-vereador, ex-prefeito de Tubarão e deputado estadual. Um mandato com foco em infraestrutura, saúde, inclusão e desenvolvimento regional.</p>
+        <p class="hero-frase">Quem faz,<br><em>representa!</em></p>
+        <p class="hero-sub">Advogado, ex-vereador, ex-vice-prefeito de Tubarão e deputado estadual. Um mandato com foco em infraestrutura, saúde, inclusão e desenvolvimento regional.</p>
         <div class="hero-botoes">
           <a href="https://wa.me/5548999412599" class="btn btn-primario" target="_blank" rel="noopener">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -456,9 +484,9 @@
       </div>
 
       <div class="hero-foto">
-        <img src="assets/brand/foto/pepe-1400.webp"
+        <img src="assets/brand/foto/pepe-busto-1400.webp"
              alt="Pepê Collaço, de camisa branca e braços cruzados, sorrindo"
-             width="930" height="1400" fetchpriority="high" />
+             width="1088" height="1400" fetchpriority="high" />
       </div>
     </div>
   </div>
@@ -477,7 +505,7 @@
         <span class="faixa-lbl">Emendas no mandato</span>
       </div>
       <div class="faixa-item">
-        <span class="faixa-num">60+</span>
+        <span class="faixa-num">150+</span>
         <span class="faixa-lbl">Municípios atendidos</span>
       </div>
       <div class="faixa-item">
@@ -505,7 +533,7 @@
       <h2 class="titulo rv d1" id="quem-e-h">Natural de Tubarão,<br>formado na <em>vida pública.</em></h2>
     </div>
     <div>
-      <p class="sobre-texto rv d2">Natural de Tubarão, <strong>Pepê Collaço</strong> construiu sua trajetória a partir da realidade dos municípios do Sul Catarinense. Foi vereador, presidente da Câmara, vice-prefeito e prefeito antes de chegar à Assembleia Legislativa.</p>
+      <p class="sobre-texto rv d2">Natural de Tubarão, <strong>Pepê Collaço</strong> construiu sua trajetória a partir da realidade dos municípios do Sul Catarinense. Foi vereador, presidente da Câmara e vice-prefeito antes de chegar à Assembleia Legislativa.</p>
       <blockquote class="citacao rv d3">Sou advogado e apaixonado pelo legislativo bem feito.</blockquote>
       <p class="nota rv d4">Hoje, como deputado estadual, preside a Comissão de Constituição e Justiça (CCJ) da Alesc e coordena a Frente Parlamentar em Defesa da Pessoa com Autismo em Santa Catarina.</p>
     </div>
@@ -521,7 +549,6 @@
       <div class="etapa rv"><p class="etapa-fase">Início</p><h3 class="etapa-cargo">Vereador</h3><p class="etapa-desc">Três mandatos em Tubarão. Presidente da Câmara em duas ocasiões.</p></div>
       <div class="etapa rv d1"><p class="etapa-fase">Câmara</p><h3 class="etapa-cargo">Presidente da Câmara</h3><p class="etapa-desc">Liderança no Legislativo municipal de Tubarão.</p></div>
       <div class="etapa rv d2"><p class="etapa-fase">Executivo</p><h3 class="etapa-cargo">Vice-prefeito</h3><p class="etapa-desc">Atuação no executivo municipal de Tubarão.</p></div>
-      <div class="etapa rv d3"><p class="etapa-fase">Gestão</p><h3 class="etapa-cargo">Prefeito de Tubarão</h3><p class="etapa-desc">Gestão municipal com foco em infraestrutura e desenvolvimento.</p></div>
       <div class="etapa rv d4"><p class="etapa-fase">Estado</p><h3 class="etapa-cargo">DETER-SC e Defesa Civil</h3><p class="etapa-desc">Diretor do DETER-SC e Secretário Adjunto da Defesa Civil.</p></div>
       <div class="etapa rv d4"><p class="etapa-fase">2023–2026</p><h3 class="etapa-cargo">Deputado Estadual</h3><p class="etapa-desc">20ª Legislatura. Presidente da CCJ. Frente do Autismo.</p></div>
     </div>
@@ -627,6 +654,69 @@
   </div>
 </section>
 
+<!-- ── NOSSAS LEIS ─────────────────────────────────────────── -->
+<section class="secao fundo-campanha" id="leis" aria-labelledby="leis-h">
+  <div class="wrap">
+    <p class="rotulo rv">Projetos de lei</p>
+    <h2 class="titulo rv d1" id="leis-h">Nossas <em>leis.</em></h2>
+    <p class="lead rv d2">Poucos projetos, grandes impactos.</p>
+
+    <div class="leis">
+      <article class="lei rv">
+        <h3 class="lei-t">Testes rápidos em farmácias</h3>
+        <p class="lei-d">Autoriza farmácias a realizar mais de 47 exames clínicos e testes rápidos, ampliando o acesso à saúde básica.</p>
+        <span class="selo selo-aprovado">Aprovado</span>
+      </article>
+
+      <article class="lei rv d1">
+        <h3 class="lei-t">Painéis solares para hospitais</h3>
+        <p class="lei-d">Reduz o gasto com energia elétrica, dá fôlego financeiro às instituições e libera recursos para o atendimento.</p>
+        <span class="selo selo-aprovado">Aprovado</span>
+      </article>
+
+      <article class="lei rv d2">
+        <h3 class="lei-t">Rota turística das águas termais</h3>
+        <p class="lei-d">Inclui municípios do Sul na rota das águas termais, fomentando o turismo na região.</p>
+        <span class="selo selo-aprovado">Aprovado</span>
+      </article>
+
+      <article class="lei rv d3">
+        <h3 class="lei-t">Incentivo à ovinocaprinocultura</h3>
+        <p class="lei-d">Apoio técnico, campanhas de divulgação, inclusão desses alimentos em escolas e hospitais, linhas de crédito e incentivo a produtores.</p>
+        <span class="selo selo-aprovado">Aprovado</span>
+      </article>
+
+      <article class="lei rv">
+        <h3 class="lei-t">Ressarcimento a municípios por atraso de repasses</h3>
+        <p class="lei-d">Evita que prefeituras fiquem no prejuízo ao usar recursos próprios por atraso ou suspensão de repasses do Estado.</p>
+        <span class="selo selo-comissao">Em comissões</span>
+      </article>
+    </div>
+
+    <p class="leis-grupo rv">Bandeira Autismo</p>
+
+    <div class="leis">
+      <article class="lei rv">
+        <h3 class="lei-t">Cine Azul</h3>
+        <p class="lei-d">Incentivo a sessões de cinema adaptadas a crianças e adolescentes com autismo e suas famílias.</p>
+        <span class="selo selo-aprovado">Aprovado</span>
+      </article>
+
+      <article class="lei rv d1">
+        <h3 class="lei-t">Protocolo de inclusão de alunos autistas (PIA)</h3>
+        <p class="lei-d">Atividades e avaliações adaptadas para promover aprendizagem de forma mais justa e inclusiva, seguindo padrões comprovados em outros estados.</p>
+        <span class="selo selo-comissao">Em comissões</span>
+      </article>
+
+      <article class="lei rv d2">
+        <h3 class="lei-t">Continuidade do professor 2</h3>
+        <p class="lei-d">Dá preferência a que o segundo professor do estudante com TEA seja o mesmo profissional que já o acompanhava no ano anterior.</p>
+        <span class="selo selo-comissao">Em comissões</span>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ── GALERIA ─────────────────────────────────────────────── -->
 <section class="galeria" id="galeria" aria-label="Galeria de imagens">
   <div class="wrap">
@@ -683,10 +773,10 @@
           <span class="tema-nome">Infraestrutura</span>
         </div>
         <ul>
-          <li><strong>R$ 5 mi</strong> — Dragagem Porto de Laguna e Molhes da Barra</li>
-          <li><strong>R$ 2,5 mi</strong> — Pavimentação Várzea das Canoas, Gravatal</li>
-          <li><strong>R$ 2,3 mi</strong> — Infraestrutura viária, Pescaria Brava</li>
-          <li><strong>R$ 2 mi</strong> — Abertura Av. Pedro Zapelini, Tubarão</li>
+          <li>Dragagem Porto de Laguna e Molhes da Barra</li>
+          <li>Pavimentação Várzea das Canoas, Gravatal</li>
+          <li>Infraestrutura viária, Pescaria Brava</li>
+          <li>Abertura Av. Pedro Zapelini, Tubarão</li>
           <li>SC-370, BR-101 e vias municipais da AMUREL</li>
         </ul>
       </div>
@@ -723,7 +813,7 @@
           <span class="tema-nome">Educação</span>
         </div>
         <ul>
-          <li><strong>R$ 2,3 mi</strong> — Creche Joelma de Bona, Paulo Lopes</li>
+          <li>Creche Joelma de Bona, Paulo Lopes</li>
           <li>Construção e ampliação de CEIs</li>
           <li>Ônibus escolares e mobiliário</li>
           <li>Projetos de robótica, esporte e cultura</li>
@@ -736,7 +826,7 @@
           <span class="tema-nome">Esporte e Lazer</span>
         </div>
         <ul>
-          <li><strong>R$ 5,9 mi</strong> — Ginásio de Esportes, Sangão</li>
+          <li>Ginásio de Esportes, Sangão</li>
           <li>Projetos esportivos em municípios da AMUREL</li>
           <li>Praças e áreas de lazer</li>
         </ul>
@@ -832,7 +922,7 @@
       <div class="ccj-num"><b>CCJ</b><span>Presidente da Comissão de Constituição e Justiça</span></div>
       <div class="ccj-num"><b>TEA</b><span>Frente Parlamentar do Autismo</span></div>
       <div class="ccj-num"><b>494</b><span>Emendas registradas no mandato</span></div>
-      <div class="ccj-num"><b>60+</b><span>Municípios atendidos em SC</span></div>
+      <div class="ccj-num"><b>150+</b><span>Municípios atendidos em SC</span></div>
     </div>
   </div>
 </section>
@@ -874,6 +964,7 @@
       <nav class="rodape-nav" aria-label="Links de rodapé">
         <a href="#inicio">Início</a>
         <a href="#bandeiras">Bandeiras</a>
+        <a href="#leis">Nossas leis</a>
         <a href="#resultados">Resultados</a>
         <a href="#contato">Contato</a>
       </nav>

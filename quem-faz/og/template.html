@@ -8,7 +8,7 @@
   Não é uma página do site: existe só para o Chromium fotografar (og/render.cjs).
 
   Parâmetros por query string:
-    ?titulo=POR TUBARÃO&numero=R$ 18,2&unidade=MILHÕES&legenda=...&rodape=...
+    ?titulo=POR TUBARÃO&numero=+R$ 20&unidade=MILHÕES&legenda=...&cta=...
 
   O teste real desta imagem é ser lida em miniatura, no balão de um WhatsApp.
   Por isso: um título gigante, um número, e nada mais competindo.
@@ -94,10 +94,19 @@
 
   .rodape { margin-top: auto; padding-top: 18px; display: flex; align-items: flex-end; gap: 22px; }
   .rodape img { width: 158px; display: block; }
-  .rodape .nota {
-    font-size: 17px; letter-spacing: .18em; text-transform: uppercase;
-    font-weight: 700; color: var(--pp-azul-claro);
-    padding-bottom: 6px;
+  /* A tarja de chamada. Amarelo #FFC400 com texto #061A3A é o par canônico
+     (10,8:1) — o único elemento da imagem que precisa gritar de longe, porque
+     no balão do WhatsApp a miniatura tem uns 300 px de largura. */
+  .rodape .cta {
+    display: inline-block;
+    background: var(--cor-acento);
+    color: var(--cor-sobre-acento);
+    font-size: 21px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    padding: 11px 22px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+    white-space: nowrap;
   }
 </style>
 </head>
@@ -112,7 +121,7 @@
       <div class="legenda" id="legenda">destinados à cidade em três anos de mandato</div>
       <div class="rodape">
         <img src="../../assets/brand/marca/collaco-11223-escuro-960.webp" alt="Pepê Collaço 11223" />
-        <div class="nota" id="rodape">Quem faz representa</div>
+        <div class="cta" id="cta">Clique e entenda</div>
       </div>
     </div>
   </div>
@@ -127,7 +136,7 @@
   põe('numero', 'numero');
   põe('unidade', 'unidade');
   põe('legenda', 'legenda');
-  põe('rodape', 'rodape');
+  põe('cta', 'cta');
 
   // sem número, o bloco inteiro sai e a legenda sobe
   if (p.get('numero') === '') {

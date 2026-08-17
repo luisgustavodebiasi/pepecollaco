@@ -200,9 +200,11 @@
 
     /* ── Hero ───────────────────────────────────────────────── */
     .hero { position: relative; padding: 128px 0 0; overflow: hidden; }
+    /* A coluna do retrato ganha mais espaço que a do texto: o busto entra
+       cortado na cintura, então precisa de largura para o rosto ler grande. */
     .hero-grade {
-      display: grid; grid-template-columns: 1.05fr .95fr;
-      gap: 26px; align-items: end;
+      display: grid; grid-template-columns: .92fr 1.08fr;
+      gap: 18px; align-items: end;
     }
     .hero-texto { padding-bottom: clamp(48px, 7vw, 96px); }
     .hero-sobre {
@@ -223,7 +225,14 @@
     .hero-sub { font-size: 16.5px; color: var(--cor-texto-suave); margin: 0 0 30px; max-width: 46ch; }
     .hero-botoes { display: flex; flex-wrap: wrap; gap: 12px; }
 
-    .hero-foto { position: relative; align-self: end; }
+    /* Sangra para fora do wrap à direita e abaixo do topo do grid: com o busto
+       cortado na cintura, deixar o retrato preso à coluna o faria parecer
+       pequeno no meio do azul. */
+    .hero-foto {
+      position: relative; align-self: end;
+      margin-right: clamp(-70px, -4vw, 0px);
+      margin-top: -70px;
+    }
     .hero-foto img {
       width: 100%; height: auto; display: block;
       filter: drop-shadow(0 32px 60px rgba(0,0,0,.5));
@@ -244,7 +253,7 @@
       .rotulo, .hero-botoes { justify-content: center; }
       .hero-marca img { width: min(360px, 82%); margin-inline: auto; }
       .hero-sub { margin-inline: auto; }
-      .hero-foto { width: min(430px, 92%); margin-inline: auto; }
+      .hero-foto { width: min(480px, 100%); margin-inline: auto; margin-right: auto; margin-top: -20px; }
     }
 
     /* ── Faixa de números ───────────────────────────────────── */
@@ -486,7 +495,7 @@
       <div class="hero-foto">
         <img src="assets/brand/foto/pepe-busto-1400.webp"
              alt="Pepê Collaço, de camisa branca e braços cruzados, sorrindo"
-             width="1088" height="1400" fetchpriority="high" />
+             width="1193" height="1400" fetchpriority="high" />
       </div>
     </div>
   </div>

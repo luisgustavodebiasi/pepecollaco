@@ -27,7 +27,7 @@ const { chromium } = require('playwright');
 const PAGINAS = {
   'por-tubarao': {
     titulo: 'POR TUBARÃO',
-    numero: 'R$ 18,2',
+    numero: '+R$ 20',
     unidade: 'MILHÕES',
     legenda: 'destinados à cidade em três anos de mandato',
   },

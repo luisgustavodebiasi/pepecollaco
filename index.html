@@ -228,10 +228,11 @@
     /* Sangra para fora do wrap à direita e abaixo do topo do grid: com o busto
        cortado na cintura, deixar o retrato preso à coluna o faria parecer
        pequeno no meio do azul. */
+    /* Sangra só pela direita. NUNCA por cima: o .hero tem overflow hidden, e
+       qualquer margem negativa no topo decepa a cabeça do retrato. */
     .hero-foto {
       position: relative; align-self: end;
       margin-right: clamp(-70px, -4vw, 0px);
-      margin-top: -70px;
     }
     .hero-foto img {
       width: 100%; height: auto; display: block;
@@ -253,7 +254,7 @@
       .rotulo, .hero-botoes { justify-content: center; }
       .hero-marca img { width: min(360px, 82%); margin-inline: auto; }
       .hero-sub { margin-inline: auto; }
-      .hero-foto { width: min(480px, 100%); margin-inline: auto; margin-right: auto; margin-top: -20px; }
+      .hero-foto { width: min(480px, 100%); margin-inline: auto; margin-right: auto; }
     }
 
     /* ── Faixa de números ───────────────────────────────────── */

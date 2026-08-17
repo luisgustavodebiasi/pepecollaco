@@ -1,0 +1,348 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   QUEM FAZ — sistema das páginas de resposta rápida
+   Identidade 11223. Todas as cores vêm de assets/brand/css/tokens.css;
+   nenhum hex novo mora aqui. Regras em _IDENTIDADE/CLAUDE.md.
+
+   Estas páginas são feitas para serem abertas num celular, vindas de um link
+   de WhatsApp ou de uma resposta de comentário. Um scroll curto, números
+   grandes, e nada que exija paciência.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  /* o degradê vive por seção (.fundo-campanha); o body é só o chão */
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte);
+  font-weight: var(--peso-normal);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* height:auto é obrigatório: com os atributos width/height no HTML (que
+   evitam salto de layout), sem isto o navegador trata a altura como fixa e
+   a foto estica. */
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--cor-acento); color: var(--cor-sobre-acento); }
+
+.wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+@media (max-width: 640px) { .wrap { width: calc(100% - 32px); } }
+
+/* ── O fundo da identidade ────────────────────────────────────────────────
+   Mesmo padrão do index.html do site: o degradê é aplicado POR SEÇÃO, não no
+   body. Um radial esticado por uma página de 8 mil pixels vira uma mancha; por
+   seção, ele reaparece inteiro em cada bloco e é isso que assina a identidade.
+
+   A textura vem por cima como MÁSCARA. Não trocar por background-image: um SVG
+   carregado por url() renderiza isolado, o currentColor dele cai para preto, e
+   uma textura preta a 7% sobre o azul escuro simplesmente some. */
+.fundo-campanha { position: relative; background: var(--grad-fundo); }
+.fundo-campanha::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-color: #fff;
+  -webkit-mask-image: url("../assets/brand/textura/setas-tile.svg");
+          mask-image: url("../assets/brand/textura/setas-tile.svg");
+  -webkit-mask-size: var(--textura-tamanho);
+          mask-size: var(--textura-tamanho);
+  opacity: var(--textura-opacidade);
+}
+/* Véu: sem ele o texto pequeno cai sobre o claro do degradê (#0082BF) e
+   reprova contraste. Entra ABAIXO da textura — invertido, apagaria os 7%. */
+.veu::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: var(--veu-conteudo);
+}
+.veu::before { z-index: 1; }
+.fundo-campanha > .wrap { position: relative; z-index: 2; }
+
+/* ── Tipografia do sistema ────────────────────────────────────────────────
+   Só existem 400 e 700. A hierarquia vem de tamanho, caixa e tracking —
+   nunca de um peso 900, que o navegador falsifica e borra. */
+.olho {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: var(--peso-forte);
+  font-size: clamp(12px, 2.6vw, 14px);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+.olho::before {
+  content: ""; width: 26px; height: 3px;
+  background: var(--cor-acento);
+}
+
+h1, h2, h3 { margin: 0; font-weight: var(--peso-forte); text-transform: uppercase; letter-spacing: -.005em; }
+h1 { font-size: clamp(42px, 11vw, 96px); line-height: .92; }
+h2 { font-size: clamp(27px, 6vw, 44px); line-height: 1.02; }
+h3 { font-size: clamp(17px, 3.6vw, 21px); line-height: 1.15; letter-spacing: .01em; }
+
+.amarelo { color: var(--cor-acento); }
+.suave { color: var(--cor-texto-suave); }
+
+/* ── Hero ─────────────────────────────────────────────────────────────────*/
+.hero { overflow: hidden; padding-block: clamp(38px, 5.5vw, 54px) 0; }
+
+/* O texto centra na altura e o retrato encosta no chão da seção. Alinhar os
+   dois pelo rodapé abriria um vão morto acima do título, do tamanho da
+   diferença entre a coluna curta e a foto comprida. */
+.hero-grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+  gap: clamp(20px, 4vw, 40px);
+  align-items: center;
+}
+.hero-grade > :first-child { padding-bottom: clamp(36px, 5vw, 56px); }
+@media (max-width: 860px) {
+  .hero-grade { grid-template-columns: 1fr; }
+  .hero-grade > :first-child { padding-bottom: clamp(48px, 12vw, 72px); }
+}
+
+.hero h1 { margin-top: 18px; }
+.hero-frase {
+  margin: 22px 0 0;
+  font-size: clamp(16px, 3.4vw, 19px);
+  line-height: 1.55;
+  max-width: 30em;
+  color: var(--cor-texto-suave);
+}
+.hero-frase b { color: var(--cor-texto); font-weight: var(--peso-forte); }
+
+/* o número-manchete */
+.manchete { margin: clamp(26px, 5vw, 38px) 0 0; }
+.manchete .cifra {
+  display: block;
+  font-weight: var(--peso-forte);
+  font-size: clamp(52px, 13vw, 108px);
+  line-height: .86;
+  letter-spacing: -.02em;
+  color: var(--cor-acento);
+}
+.manchete .cifra small { font-size: .42em; letter-spacing: 0; }
+.manchete .legenda {
+  display: block; margin-top: 10px;
+  font-size: clamp(13px, 2.9vw, 15px);
+  letter-spacing: .14em; text-transform: uppercase;
+  font-weight: var(--peso-forte);
+  color: var(--cor-texto);
+}
+
+.hero-retrato { position: relative; align-self: end; }
+.hero-retrato img {
+  width: min(380px, 100%);
+  margin-inline: auto;
+  margin-bottom: -2px;
+  filter: drop-shadow(-14px 10px 44px rgba(6, 26, 58, .55));
+}
+@media (max-width: 860px) {
+  .hero-retrato { display: none; }
+}
+
+/* ── Botões ───────────────────────────────────────────────────────────────
+   O par canônico é amarelo #FFC400 com texto #061A3A — 10,8:1. Não invente
+   outro CTA primário. */
+.botoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(26px, 5vw, 34px); }
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 14px 24px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-weight: var(--peso-forte);
+  font-size: 15px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-acento { background: var(--cor-acento); color: var(--cor-sobre-acento); }
+.btn-acento:hover { background: var(--cor-acento-hover); }
+.btn-vazado { border-color: var(--cor-borda); color: var(--cor-texto); }
+.btn-vazado:hover { border-color: var(--cor-acento); color: var(--cor-acento); }
+/* No celular dois botões de larguras diferentes ficam tortos. Empilhados e
+   cheios, viram alvo grande de polegar — que é o que a página precisa. */
+@media (max-width: 520px) {
+  .botoes { flex-direction: column; align-items: stretch; }
+  .btn { justify-content: center; }
+}
+
+/* ── Seções ───────────────────────────────────────────────────────────────*/
+section { padding-block: clamp(52px, 9vw, 88px); }
+.sec-cabeca { margin-bottom: clamp(28px, 5vw, 44px); }
+.sec-cabeca h2 { margin-top: 14px; }
+.sec-cabeca p {
+  margin: 16px 0 0; max-width: 46em;
+  color: var(--cor-texto-suave);
+  font-size: clamp(15px, 3.2vw, 17px);
+}
+
+.faixa-clara { background: var(--cor-fundo-elevado); }
+
+/* ── Placar de números ────────────────────────────────────────────────────*/
+.placar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(146px, 1fr));
+  gap: 1px;
+  background: var(--cor-borda);
+  border: 1px solid var(--cor-borda);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.placar div { background: var(--cor-fundo-campo); padding: clamp(22px, 4vw, 30px); }
+.placar b {
+  display: block;
+  font-size: clamp(32px, 7vw, 46px);
+  line-height: 1;
+  letter-spacing: -.02em;
+  color: var(--cor-acento);
+}
+.placar b small { font-size: .48em; letter-spacing: 0; }
+.placar span {
+  display: block; margin-top: 10px;
+  font-size: 13.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+
+/* ── Cards de obra ────────────────────────────────────────────────────────*/
+.obras { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.obra {
+  position: relative;
+  padding: clamp(24px, 4vw, 30px);
+  background: var(--cor-fundo-campo);
+  border: 1px solid var(--cor-borda);
+  border-radius: 16px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.obra .valor {
+  font-weight: var(--peso-forte);
+  font-size: clamp(26px, 5vw, 34px);
+  line-height: 1;
+  letter-spacing: -.02em;
+  color: var(--cor-acento);
+}
+.obra .valor small { font-size: .5em; letter-spacing: 0; }
+.obra p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--cor-texto-suave); }
+.obra.destaque { border-color: var(--cor-acento); background: rgba(255, 196, 0, .06); }
+.obra .selo {
+  align-self: flex-start;
+  font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase;
+  font-weight: var(--peso-forte);
+  color: var(--cor-sobre-acento);
+  background: var(--cor-acento);
+  padding: 5px 11px; border-radius: 999px;
+}
+
+/* ── Chips (a lista de ruas) ──────────────────────────────────────────────*/
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+.chips li {
+  list-style: none;
+  padding: 9px 15px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  font-size: 14.5px;
+  color: var(--cor-texto);
+  background: var(--cor-fundo-campo);
+}
+.chips-nota {
+  margin: 22px 0 0;
+  font-size: 14.5px;
+  color: var(--cor-texto-suave);
+}
+@media (max-width: 640px) {
+  .chips { gap: 6px; }
+  .chips li { font-size: 12.5px; padding: 7px 11px; }
+}
+
+/* ── Lista de pautas ──────────────────────────────────────────────────────*/
+.pautas { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--cor-borda); }
+.pautas li {
+  padding: clamp(18px, 3.4vw, 24px) 0;
+  border-bottom: 1px solid var(--cor-borda);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  gap: clamp(8px, 3vw, 32px);
+  align-items: baseline;
+}
+@media (max-width: 720px) { .pautas li { grid-template-columns: 1fr; gap: 8px; } }
+.pautas h3 { color: var(--cor-texto); }
+.pautas p { margin: 0; color: var(--cor-texto-suave); font-size: 15.5px; line-height: 1.55; }
+
+/* ── Fecho ────────────────────────────────────────────────────────────────*/
+.fecho { text-align: center; }
+.fecho .marca-vote { width: min(230px, 62vw); margin: 0 auto clamp(26px, 5vw, 34px); }
+.fecho .lema {
+  font-size: clamp(24px, 5.4vw, 38px);
+  font-weight: var(--peso-forte);
+  text-transform: uppercase;
+  line-height: 1.06;
+  letter-spacing: -.01em;
+  margin: 0 auto;
+  max-width: 16em;
+}
+.fecho .botoes { justify-content: center; }
+
+/* ── As outras portas ─────────────────────────────────────────────────────
+   `.porta-vazia` é a página que ainda não foi publicada: aparece apagada e
+   sem href, para a peça nunca entregar um link morto ao eleitor. Ao publicar,
+   troque o <span class="porta-vazia"> por <a href="../slug/">. */
+.portas { display: grid; grid-template-columns: repeat(auto-fit, minmax(154px, 1fr)); gap: 12px; }
+.portas a, .portas .porta-vazia {
+  display: block;
+  padding: 20px 22px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 14px;
+  transition: border-color .18s ease, background .18s ease;
+}
+.portas a:hover { border-color: var(--cor-acento); background: var(--cor-fundo-campo); }
+.portas .porta-vazia { opacity: .5; }
+.portas .porta-vazia .alvo::after {
+  content: "em breve";
+  display: block; margin-top: 6px;
+  font-size: 11.5px; letter-spacing: .2em;
+  font-weight: var(--peso-normal);
+  color: var(--cor-texto-suave);
+}
+.portas .rot {
+  display: block;
+  font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+.portas .alvo {
+  display: block; margin-top: 6px;
+  font-weight: var(--peso-forte);
+  font-size: 19px; text-transform: uppercase; letter-spacing: -.005em;
+}
+
+/* ── Rodapé ───────────────────────────────────────────────────────────────*/
+footer {
+  padding-block: clamp(34px, 6vw, 48px);
+  border-top: 1px solid var(--cor-borda);
+  font-size: 13.5px;
+  color: var(--cor-texto-suave);
+}
+footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: center; justify-content: space-between; }
+footer img { width: 128px; }
+footer a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── Revelação no scroll ──────────────────────────────────────────────────
+   Só esconde quando há JavaScript para revelar (a classe .js entra por script
+   inline no topo do documento). Sem essa trava, um erro de script deixaria a
+   página inteira invisível — e o único trabalho dela é ser lida. */
+.js .rv { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.js .rv.dentro { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .rv { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+  .btn:hover { transform: none; }
+}

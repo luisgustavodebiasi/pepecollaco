@@ -3,7 +3,7 @@
 
    Fotografa template.html com o Chromium em 1200×630 e grava o JPG dentro da
    pasta da página. Usa a Acumin de verdade, o degradê de verdade e o retrato
-   de verdade — por isso o navegador, e não uma montagem à mão.
+   de verdade, por isso o navegador, e não uma montagem à mão.
 
    O pacote playwright não é dependência deste repositório (o site é estático).
    Ele já existe em gerador-materiais/, então rode apontando o NODE_PATH:
@@ -23,7 +23,7 @@ const RAIZ = path.resolve(__dirname, '..', '..');   // pepecollaco-site/
 const { chromium } = require('playwright');
 
 /* Cada página e o que a OG dela mostra. Título curto, um número, uma linha.
-   Os valores vêm da apuração do CSV de emendas — ver o plano do projeto. */
+   Os valores vêm da apuração do CSV de emendas, ver o plano do projeto. */
 const PAGINAS = {
   'por-tubarao': {
     titulo: 'POR TUBARÃO',

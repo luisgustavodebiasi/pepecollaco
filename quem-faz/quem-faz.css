@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════════════════════
-   QUEM FAZ — sistema das páginas de resposta rápida
+   QUEM FAZ, sistema das páginas de resposta rápida
    Identidade 11223. Todas as cores vêm de assets/brand/css/tokens.css;
    nenhum hex novo mora aqui. Regras em _IDENTIDADE/CLAUDE.md.
 
@@ -59,7 +59,7 @@ a { color: inherit; text-decoration: none; }
   opacity: var(--textura-opacidade);
 }
 /* Véu: sem ele o texto pequeno cai sobre o claro do degradê (#0082BF) e
-   reprova contraste. Entra ABAIXO da textura — invertido, apagaria os 7%. */
+   reprova contraste. Entra ABAIXO da textura, invertido, apagaria os 7%. */
 .veu::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background: var(--veu-conteudo);
@@ -68,13 +68,29 @@ a { color: inherit; text-decoration: none; }
 .fundo-campanha > .wrap { position: relative; z-index: 2; }
 
 /* ── Tipografia do sistema ────────────────────────────────────────────────
-   Só existem 400 e 700. A hierarquia vem de tamanho, caixa e tracking —
-   nunca de um peso 900, que o navegador falsifica e borra. */
+   Duas famílias com papéis separados, como manda _IDENTIDADE/CLAUDE.md:
+
+     --fonte          Acumin Pro, 400/700. O que se lê sentado: parágrafo,
+                      rótulo, botão, texto de card.
+     --fonte-display  Acumin Pro Wide, 275/400/900. O que se lê de relance:
+                      olho, manchete, número grande, lema, alvo de link.
+
+   A Wide é a largura do lockup da agência, então manchete em Wide Black
+   encosta na marca impressa. Na 700 da Pro normal, que era o que estas
+   páginas usavam, o título saía mais estreito e mais leve do que o material
+   que já está na rua.
+
+   Nenhum peso é sintetizado. Na Wide não existe nada entre 400 e 900: pedir
+   700 devolve a Black. Escreva 275, 400 ou 900 e não há surpresa.
+
+   Os corpos aqui são menores do que na versão anterior porque a Wide ocupa
+   cerca de um quinto a mais de largura no mesmo font-size. */
 .olho {
   display: inline-flex; align-items: center; gap: 10px;
-  font-weight: var(--peso-forte);
+  font-family: var(--fonte-display);
+  font-weight: 400;
   font-size: clamp(12px, 2.6vw, 14px);
-  letter-spacing: .22em;
+  letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--cor-texto-suave);
 }
@@ -83,10 +99,34 @@ a { color: inherit; text-decoration: none; }
   background: var(--cor-acento);
 }
 
-h1, h2, h3 { margin: 0; font-weight: var(--peso-forte); text-transform: uppercase; letter-spacing: -.005em; }
-h1 { font-size: clamp(42px, 11vw, 96px); line-height: .92; }
-h2 { font-size: clamp(27px, 6vw, 44px); line-height: 1.02; }
-h3 { font-size: clamp(17px, 3.6vw, 21px); line-height: 1.15; letter-spacing: .01em; }
+/* Manchete na Wide Black. O h3 fica de fora de propósito: é título de item
+   de lista, lido sentado ao lado do parágrafo, e em corpo pequeno a
+   expandida cansa. */
+h1, h2 {
+  margin: 0;
+  font-family: var(--fonte-display);
+  font-weight: var(--peso-display-forte);
+  text-transform: uppercase;
+  letter-spacing: -.015em;
+}
+/* O h1 diz a frase inteira: "Quem faz" na Extra Light, o assunto na Black.
+   O corpo desceu de 78 para 62px porque agora são duas linhas de display,
+   e nesse tamanho o assunto mais comprido ("Pelas cidades") ainda cabe em
+   uma linha só, tanto no computador quanto no celular. */
+h1 { font-size: clamp(32px, 7.2vw, 62px); line-height: .95; }
+h1 .leve {
+  display: block;
+  font-weight: var(--peso-display-leve);
+  letter-spacing: .01em;
+  color: var(--cor-texto-suave);
+}
+h2 { font-size: clamp(24px, 5.2vw, 38px); line-height: 1; }
+h3 {
+  margin: 0;
+  font-weight: var(--peso-forte);
+  text-transform: uppercase;
+  font-size: clamp(17px, 3.6vw, 21px); line-height: 1.15; letter-spacing: .01em;
+}
 
 .amarelo { color: var(--cor-acento); }
 .suave { color: var(--cor-texto-suave); }
@@ -123,13 +163,23 @@ h3 { font-size: clamp(17px, 3.6vw, 21px); line-height: 1.15; letter-spacing: .01
 .manchete { margin: clamp(26px, 5vw, 38px) 0 0; }
 .manchete .cifra {
   display: block;
-  font-weight: var(--peso-forte);
-  font-size: clamp(52px, 13vw, 108px);
-  line-height: .86;
-  letter-spacing: -.02em;
+  font-family: var(--fonte-display);
+  font-weight: var(--peso-display-forte);
+  font-size: clamp(44px, 11vw, 88px);
+  line-height: .88;
+  letter-spacing: -.03em;
   color: var(--cor-acento);
 }
-.manchete .cifra small { font-size: .42em; letter-spacing: 0; }
+.manchete .cifra small { font-size: .4em; letter-spacing: .02em; }
+
+/* O sinal de mais é o único que fica na Extra Light: um traço fino antes da
+   massa do número. Vale para o hero, para o placar e para o card de obra. */
+.cifra .mais,
+.placar b .mais,
+.obra .valor .mais {
+  display: inline;
+  font-weight: var(--peso-display-leve);
+}
 .manchete .legenda {
   display: block; margin-top: 10px;
   font-size: clamp(13px, 2.9vw, 15px);
@@ -150,7 +200,7 @@ h3 { font-size: clamp(17px, 3.6vw, 21px); line-height: 1.15; letter-spacing: .01
 }
 
 /* ── Botões ───────────────────────────────────────────────────────────────
-   O par canônico é amarelo #FFC400 com texto #061A3A — 10,8:1. Não invente
+   O par canônico é amarelo #FFC400 com texto #061A3A, 10,8:1. Não invente
    outro CTA primário. */
 .botoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(26px, 5vw, 34px); }
 .btn {
@@ -171,7 +221,7 @@ h3 { font-size: clamp(17px, 3.6vw, 21px); line-height: 1.15; letter-spacing: .01
 .btn-vazado { border-color: var(--cor-borda); color: var(--cor-texto); }
 .btn-vazado:hover { border-color: var(--cor-acento); color: var(--cor-acento); }
 /* No celular dois botões de larguras diferentes ficam tortos. Empilhados e
-   cheios, viram alvo grande de polegar — que é o que a página precisa. */
+   cheios, viram alvo grande de polegar, que é o que a página precisa. */
 @media (max-width: 520px) {
   .botoes { flex-direction: column; align-items: stretch; }
   .btn { justify-content: center; }
@@ -202,13 +252,18 @@ section { padding-block: clamp(52px, 9vw, 88px); }
 .placar div { background: var(--cor-fundo-campo); padding: clamp(22px, 4vw, 30px); }
 .placar b {
   display: block;
-  font-size: clamp(32px, 7vw, 46px);
+  font-family: var(--fonte-display);
+  font-weight: var(--peso-display-forte);
+  font-size: clamp(28px, 6vw, 40px);
   line-height: 1;
-  letter-spacing: -.02em;
+  letter-spacing: -.03em;
   color: var(--cor-acento);
 }
-.placar b small { font-size: .48em; letter-spacing: 0; }
-.placar span {
+.placar b small { font-size: .46em; letter-spacing: .02em; }
+/* Filho direto da célula, e só ele: o rótulo. Escrito como ".placar span"
+   esta regra também pegava os spans que vivem dentro do <b> (o sinal de mais
+   e o da contagem) e empilhava "+", "R$", "20" e "MI" em quatro linhas. */
+.placar div > span {
   display: block; margin-top: 10px;
   font-size: 13.5px; letter-spacing: .1em; text-transform: uppercase;
   color: var(--cor-texto-suave);
@@ -225,13 +280,14 @@ section { padding-block: clamp(52px, 9vw, 88px); }
   display: flex; flex-direction: column; gap: 12px;
 }
 .obra .valor {
-  font-weight: var(--peso-forte);
-  font-size: clamp(26px, 5vw, 34px);
+  font-family: var(--fonte-display);
+  font-weight: var(--peso-display-forte);
+  font-size: clamp(23px, 4.4vw, 30px);
   line-height: 1;
-  letter-spacing: -.02em;
+  letter-spacing: -.03em;
   color: var(--cor-acento);
 }
-.obra .valor small { font-size: .5em; letter-spacing: 0; }
+.obra .valor small { font-size: .48em; letter-spacing: .02em; }
 .obra p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--cor-texto-suave); }
 .obra.destaque { border-color: var(--cor-acento); background: rgba(255, 196, 0, .06); }
 .obra .selo {
@@ -284,13 +340,14 @@ section { padding-block: clamp(52px, 9vw, 88px); }
 .fecho { text-align: center; }
 .fecho .marca-vote { width: min(230px, 62vw); margin: 0 auto clamp(26px, 5vw, 34px); }
 .fecho .lema {
-  font-size: clamp(24px, 5.4vw, 38px);
-  font-weight: var(--peso-forte);
+  font-family: var(--fonte-display);
+  font-size: clamp(21px, 4.6vw, 32px);
+  font-weight: var(--peso-display-forte);
   text-transform: uppercase;
-  line-height: 1.06;
-  letter-spacing: -.01em;
+  line-height: 1.04;
+  letter-spacing: -.02em;
   margin: 0 auto;
-  max-width: 16em;
+  max-width: 14em;
 }
 .fecho .botoes { justify-content: center; }
 
@@ -311,8 +368,8 @@ section { padding-block: clamp(52px, 9vw, 88px); }
 .portas .porta-vazia .alvo::after {
   content: "em breve";
   display: block; margin-top: 6px;
-  font-size: 11.5px; letter-spacing: .2em;
-  font-weight: var(--peso-normal);
+  font-size: 11.5px; letter-spacing: .18em;
+  font-weight: 400;
   color: var(--cor-texto-suave);
 }
 .portas .rot {
@@ -322,8 +379,9 @@ section { padding-block: clamp(52px, 9vw, 88px); }
 }
 .portas .alvo {
   display: block; margin-top: 6px;
-  font-weight: var(--peso-forte);
-  font-size: 19px; text-transform: uppercase; letter-spacing: -.005em;
+  font-family: var(--fonte-display);
+  font-weight: var(--peso-display-forte);
+  font-size: 16.5px; text-transform: uppercase; letter-spacing: -.01em;
 }
 
 /* ── Rodapé ───────────────────────────────────────────────────────────────*/
@@ -337,14 +395,71 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 28px; align-items: cent
 footer img { width: 128px; }
 footer a { text-decoration: underline; text-underline-offset: 3px; }
 
-/* ── Revelação no scroll ──────────────────────────────────────────────────
-   Só esconde quando há JavaScript para revelar (a classe .js entra por script
-   inline no topo do documento). Sem essa trava, um erro de script deixaria a
-   página inteira invisível — e o único trabalho dela é ser lida. */
-.js .rv { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+/* ══ ANIMAÇÃO ═════════════════════════════════════════════════════════════
+   Quatro movimentos, e só quatro, porque a página é lida com o polegar em
+   movimento: a entrada do hero, a revelação por seção, a cascata dentro das
+   grades e a contagem dos números.
+
+   Tudo depende da classe .js, que entra por script inline no topo do
+   documento. Sem essa trava, um erro de JavaScript deixaria a página inteira
+   invisível, e o único trabalho dela é ser lida.
+
+   O tempo é sempre curto. Nada acima de .8s: quem abre um link de WhatsApp
+   não veio assistir a uma animação, veio ver a conta. */
+
+/* forwards é obrigatório: sem ele o elemento roda a animação e volta para o
+   opacity: 0 do estado inicial, ou seja, some depois de aparecer. */
+.js .entra, .js .hero-retrato {
+  animation-duration: .7s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.22, .68, .35, 1);
+}
+
+@keyframes sobe   { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes entra-lado { from { opacity: 0; transform: translate(28px, 16px); } to { opacity: 1; transform: none; } }
+
+/* ── 1. Entrada do hero ───────────────────────────────────────────────────
+   Não espera scroll: acontece no carregamento, escalonada pela variável
+   --atraso que o JS escreve em cada elemento. */
+.js .entra { opacity: 0; animation-name: sobe; animation-delay: var(--atraso, 0s); }
+.js .hero-retrato { opacity: 0; animation-name: entra-lado; animation-delay: .12s; animation-duration: .9s; }
+@media (max-width: 860px) { .js .hero-retrato { animation: none; } }
+
+/* ── 2. Revelação por seção ───────────────────────────────────────────────*/
+.js .rv { opacity: 0; transform: translateY(20px); transition: opacity .6s cubic-bezier(.22, .68, .35, 1), transform .6s cubic-bezier(.22, .68, .35, 1); }
 .js .rv.dentro { opacity: 1; transform: none; }
+
+/* a régua amarela do olho se desenha da esquerda para a direita */
+.js .rv .olho::before { transform: scaleX(0); transform-origin: left center; transition: transform .5s cubic-bezier(.22, .68, .35, 1) .18s; }
+.js .rv.dentro .olho::before { transform: scaleX(1); }
+
+/* ── 3. Cascata dentro das grades ─────────────────────────────────────────
+   Card a card, com 60 ms entre eles. É o que transforma "apareceu tudo de
+   uma vez" em "a conta vai sendo apresentada". */
+.js .cascata > * { opacity: 0; transform: translateY(16px); transition: opacity .5s ease, transform .5s cubic-bezier(.22, .68, .35, 1); transition-delay: var(--atraso, 0s); }
+.js .cascata.dentro > * { opacity: 1; transform: none; }
+
+/* ── 4. Contagem dos números ──────────────────────────────────────────────
+   Enquanto conta, o número roda em algarismo de largura fixa. Sem isto o
+   bloco inteiro treme, porque o 1 é mais estreito que o 8 na Acumin. */
+.contando { display: inline; font-variant-numeric: tabular-nums; }
+
+/* ── Estados de toque e mouse ─────────────────────────────────────────────*/
+.obra, .placar div { transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+.obra:hover { transform: translateY(-3px); border-color: var(--cor-acento); }
+.chips li { transition: transform .16s ease, border-color .16s ease; }
+.chips li:hover { transform: translateY(-2px); border-color: var(--cor-acento); }
+.portas a { transition: transform .2s ease, border-color .18s ease, background .18s ease; }
+.portas a:hover { transform: translateY(-3px); }
+
+/* ── Quem pediu para não se mexer ─────────────────────────────────────────
+   Uma regra só, no fim, desligando tudo. A página continua inteira: só para
+   de se mover. */
 @media (prefers-reduced-motion: reduce) {
-  .js .rv { opacity: 1; transform: none; transition: none; }
+  .js .rv, .js .entra, .js .cascata > *, .js .hero-retrato {
+    opacity: 1; transform: none; transition: none; animation: none;
+  }
+  .js .rv .olho::before { transform: none; transition: none; }
   html { scroll-behavior: auto; }
-  .btn:hover { transform: none; }
+  .btn:hover, .obra:hover, .chips li:hover, .portas a:hover { transform: none; }
 }

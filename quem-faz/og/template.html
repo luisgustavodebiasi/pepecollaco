@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8" />
-<title>Molde de OG — QUEM FAZ</title>
+<title>Molde de OG, QUEM FAZ</title>
 <!--
   Molde 1200×630 das imagens de compartilhamento.
   Não é uma página do site: existe só para o Chromium fotografar (og/render.cjs).
@@ -13,9 +13,11 @@
   O teste real desta imagem é ser lida em miniatura, no balão de um WhatsApp.
   Por isso: um título gigante, um número, e nada mais competindo.
 -->
-  <!-- Acumin Pro pelo kit licenciado da Adobe Fonts. A cópia self-hosted em
-       assets/brand/fontes/ segue como reserva no --fonte, e só é baixada se
-       este kit não responder — por isso ela não é mais pré-carregada. -->
+  <!-- Acumin Pro (texto) pelo kit da Adobe Fonts; a cópia self-hosted é a
+       reserva. A Acumin Pro Wide (display) não está no kit e vem sempre de
+       assets/brand/fontes/, é ela que desenha título, número e olho aqui.
+       O render espera document.fonts.ready antes de medir, então as duas
+       chegam inteiras antes da foto. -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="preconnect" href="https://p.typekit.net" crossorigin />
   <link rel="stylesheet" href="https://use.typekit.net/ojd2pjl.css" />
@@ -34,7 +36,7 @@
 
   .quadro { position: relative; width: 1200px; height: 630px; background: var(--grad-fundo); overflow: hidden; }
 
-  /* textura de setas como máscara — ver _IDENTIDADE/CLAUDE.md */
+  /* textura de setas como máscara, ver _IDENTIDADE/CLAUDE.md */
   .quadro::before {
     content: ""; position: absolute; inset: 0;
     background-color: #fff;
@@ -68,28 +70,39 @@
      sumir e come o rodapé por baixo. Melhor estourar visível do que sumir. */
   .conteudo > * { flex: none; }
 
+  /* Não é mais uma sobrancelha: é a primeira linha do título, na Extra
+     Light. A miniatura do WhatsApp precisa da frase inteira, "Quem faz por
+     Tubarão", e não de um rótulo pequeno em cima de outra coisa. O amarelo
+     da identidade fica com a régua, logo abaixo do título. */
   .olho {
-    display: flex; align-items: center; gap: 15px;
-    font-weight: 700; font-size: 24px;
-    letter-spacing: .34em; text-transform: uppercase;
+    font-family: var(--fonte-display);
+    font-weight: var(--peso-display-leve); font-size: 40px;
+    letter-spacing: .05em; text-transform: uppercase;
+    line-height: 1;
     color: var(--pp-azul-claro);
   }
-  .olho::before { content: ""; width: 48px; height: 5px; background: var(--cor-acento); }
 
+  /* Wide Black: é a largura do lockup, e numa miniatura de WhatsApp a massa
+     da Black é o que ainda se lê a 300 px de largura. A expandida ocupa cerca
+     de um quinto a mais, então o teto do ajuste automático desceu junto. */
   h1 {
     margin: 18px 0 0;
-    font-weight: 700; text-transform: uppercase;
-    font-size: 112px; line-height: .88; letter-spacing: -.022em;
+    font-family: var(--fonte-display);
+    font-weight: var(--peso-display-forte); text-transform: uppercase;
+    font-size: 84px; line-height: .88; letter-spacing: -.03em;
   }
 
   .regua { width: 120px; height: 6px; background: var(--cor-acento); margin: 30px 0 24px; }
 
   .numero {
-    font-weight: 700; color: var(--cor-acento);
-    font-size: 70px; line-height: .94; letter-spacing: -.02em;
-    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    font-family: var(--fonte-display);
+    font-weight: var(--peso-display-forte); color: var(--cor-acento);
+    font-size: 64px; line-height: .94; letter-spacing: -.03em;
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
   }
-  .numero .un { font-size: 37px; letter-spacing: .04em; }
+  .numero .un { font-size: 34px; letter-spacing: .06em; }
+  /* só o sinal de mais fica fino, como nas páginas */
+  .numero .mais { font-weight: var(--peso-display-leve); }
 
   .legenda {
     margin-top: 15px;
@@ -101,7 +114,7 @@
   .rodape { margin-top: auto; padding-top: 18px; display: flex; align-items: flex-end; gap: 22px; }
   .rodape img { width: 158px; display: block; }
   /* A tarja de chamada. Amarelo #FFC400 com texto #061A3A é o par canônico
-     (10,8:1) — o único elemento da imagem que precisa gritar de longe, porque
+     (10,8:1), o único elemento da imagem que precisa gritar de longe, porque
      no balão do WhatsApp a miniatura tem uns 300 px de largura. */
   .rodape .cta {
     display: inline-block;
@@ -142,6 +155,10 @@
   põe('numero', 'numero');
   põe('unidade', 'unidade');
   põe('legenda', 'legenda');
+
+  // o sinal de mais é o único pedaço fino do número
+  const n = document.getElementById('numero');
+  n.innerHTML = n.textContent.replace(/^\+/, '<span class="mais">+</span>');
   põe('cta', 'cta');
 
   // sem número, o bloco inteiro sai e a legenda sobe
@@ -152,12 +169,12 @@
   // O título entra no maior corpo que ainda cabe. Contar letras não resolve:
   // "POR TUBARÃO" e "PELA EDUCAÇÃO" têm quase o mesmo tamanho e larguras bem
   // diferentes. Então mede-se de verdade, e desce de 2 em 2 até parar de
-  // estourar a caixa — assim as sete páginas ganham o maior título possível.
+  // estourar a caixa, assim as sete páginas ganham o maior título possível.
   const t = document.getElementById('titulo');
   const caixa = document.querySelector('.conteudo');
   const coube = () => caixa.scrollHeight <= caixa.clientHeight;
   document.fonts.ready.then(() => {
-    for (let px = 112; px >= 54 && !coube(); px -= 2) {
+    for (let px = 84; px >= 44 && !coube(); px -= 2) {
       t.style.fontSize = px + 'px';
     }
     document.documentElement.dataset.pronto = '1';

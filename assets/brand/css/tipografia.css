@@ -1,5 +1,9 @@
-/* Acumin Pro — gerado por _IDENTIDADE/bin/gerar-fontes.sh, não edite à mão.
-   Só existem os pesos 400 e 700. Ver tokens.css. */
+/* Acumin — gerado por _IDENTIDADE/bin/gerar-fontes.sh, não edite à mão.
+   Ver a seção Tipografia de _IDENTIDADE/CLAUDE.md. */
+
+/* ── Acumin Pro · texto ──────────────────────────────────────────
+   Largura normal, 400 e 700 com itálicos. Tudo que se lê em corpo
+   pequeno: parágrafo, rótulo, botão, campo de formulário. */
 @font-face {
   font-family: "Acumin Pro";
   src: url("../fontes/acumin-400.woff2") format("woff2");
@@ -19,4 +23,28 @@
   font-family: "Acumin Pro";
   src: url("../fontes/acumin-700i.woff2") format("woff2");
   font-weight: 700; font-style: italic; font-display: swap;
+}
+
+/* ── Acumin Pro Wide · display ───────────────────────────────────
+   Largura expandida, é a largura do lockup da agência. Só para
+   manchete e palavra grande: em corpo pequeno a expandida cansa.
+
+   Os pesos são 275, 400 e 900, e não existe nada entre 400 e 900.
+   Pedir 600 ou 700 devolve a Black, porque é o vizinho mais próximo
+   acima. Não é bug: é para não haver negrito sintético em lugar
+   nenhum. Escreva 400 ou 900 e você sabe o que vai receber. */
+@font-face {
+  font-family: "Acumin Pro Wide";
+  src: url("../fontes/acumin-wide-275.woff2") format("woff2");
+  font-weight: 275; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Acumin Pro Wide";
+  src: url("../fontes/acumin-wide-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Acumin Pro Wide";
+  src: url("../fontes/acumin-wide-900.woff2") format("woff2");
+  font-weight: 900; font-style: normal; font-display: swap;
 }

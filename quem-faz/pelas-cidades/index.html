@@ -24,12 +24,19 @@
   <link rel="icon" href="../../assets/brand/simbolo/favicon-512.png" sizes="512x512" />
   <link rel="apple-touch-icon" href="../../assets/brand/simbolo/apple-touch-icon.png" />
 
-  <!-- Acumin Pro pelo kit licenciado da Adobe Fonts. A cópia self-hosted em
-       assets/brand/fontes/ segue como reserva no --fonte, e só é baixada se
-       este kit não responder — por isso ela não é mais pré-carregada. -->
+  <!-- Acumin Pro (texto) pelo kit licenciado da Adobe Fonts. A cópia
+       self-hosted em assets/brand/fontes/ segue como reserva no --fonte, e só
+       é baixada se este kit não responder, por isso ela não é pré-carregada.
+
+       A Acumin Pro Wide (display) NÃO está no kit da Adobe: ela vem só da
+       cópia self-hosted, e agora desenha o título do hero. Por ser crítica
+       para a primeira dobra, os dois pesos que aparecem lá em cima, a Black
+       do título e a Extra Light da unidade, são pré-carregados. -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="preconnect" href="https://p.typekit.net" crossorigin />
   <link rel="stylesheet" href="https://use.typekit.net/ojd2pjl.css" />
+  <link rel="preload" href="../../assets/brand/fontes/acumin-wide-900.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../../assets/brand/fontes/acumin-wide-275.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../../assets/brand/css/tipografia.css" />
   <link rel="stylesheet" href="../../assets/brand/css/tokens.css" />
   <link rel="stylesheet" href="../quem-faz.css" />
@@ -41,13 +48,12 @@
   <header class="hero fundo-campanha veu">
     <div class="wrap hero-grade">
       <div>
-        <span class="olho">Quem faz</span>
-        <h1>Pelas cidades</h1>
+        <h1><span class="leve">Quem faz</span> Pelas cidades</h1>
 
         <p class="hero-frase">
           Deputado estadual representa o Estado inteiro, n&#227;o s&#243; a cidade onde
           nasceu. <b>Mais de um ter&#231;o de Santa Catarina</b> recebeu recurso deste
-          mandato &#8212; do extremo sul &#224; serra, do Vale ao Oeste.
+          mandato, do extremo sul &#224; serra, do Vale ao Oeste.
         </p>
 
         <div class="manchete">
@@ -89,7 +95,7 @@
         <p>
           A maior parte fica no Sul, e isso &#233; assumido: &#233; onde est&#227;o a base, a
           hist&#243;ria e as pautas que o mandato defende. Mas quase um ter&#231;o do
-          recurso saiu da regi&#227;o &#8212; porque prefeito de cidade pequena de qualquer
+          recurso saiu da regi&#227;o, porque prefeito de cidade pequena de qualquer
           canto do Estado bateu na porta e foi atendido.
         </p>
       </div>
@@ -97,7 +103,7 @@
       <div class="obras">
         <article class="obra destaque rv">
           <span class="selo">A base</span>
-          <span class="valor">+R$ 105 <small>MILH&#213;ES</small></span>
+          <span class="valor"><span class="mais">+</span>R$ 105 <small>MILH&#213;ES</small></span>
           <h3>Sul Catarinense &#183; 41 cidades</h3>
           <p>
             AMUREL, AMREC e AMESC. &#201; onde o mandato nasceu e onde est&#227;o as
@@ -127,7 +133,7 @@
         <h2>O que foi feito longe de casa</h2>
         <p>
           Estas obras est&#227;o a duzentos, trezentos quil&#244;metros de Tubar&#227;o. Nenhuma
-          delas rende voto garantido &#8212; todas resolvem o problema de algu&#233;m.
+          delas rende voto garantido: todas resolvem o problema de algu&#233;m.
         </p>
       </div>
 
@@ -334,7 +340,7 @@
         <h2>Emenda n&#227;o &#233; papel, &#233; obra</h2>
         <p>
           Os principais destinos do recurso nos tr&#234;s anos de mandato. Uma mesma
-          emenda pode atender mais de uma frente &#8212; um gin&#225;sio escolar &#233; esporte
+          emenda pode atender mais de uma frente: um gin&#225;sio escolar &#233; esporte
           e educa&#231;&#227;o ao mesmo tempo.
         </p>
       </div>
@@ -390,7 +396,7 @@
   <section class="fundo-campanha veu">
     <div class="wrap fecho">
       <img class="marca-vote rv" src="../../assets/brand/marca/vote-11223-escuro-960.webp"
-           alt="Vote Pep&#234; 11223 &#8212; Deputado Estadual" width="960" height="879" />
+           alt="Vote Pep&#234; 11223, Deputado Estadual" width="960" height="879" />
       <p class="lema rv">Quem faz representa</p>
       <div class="botoes rv">
         <a class="btn btn-acento" id="compartilhar-2" href="#">Mandar no WhatsApp</a>
@@ -422,7 +428,7 @@
       <img src="../../assets/brand/marca/collaco-11223-escuro-480.webp"
            alt="Pep&#234; Colla&#231;o 11223" width="480" height="439" />
       <p>
-        Pep&#234; Colla&#231;o &#183; Deputado Estadual de Santa Catarina &#183; Progressistas &#8212;
+        Pep&#234; Colla&#231;o &#183; Deputado Estadual de Santa Catarina &#183; Progressistas &#183;
         Federa&#231;&#227;o Uni&#227;o Progressista.<br />
         Valores destinados pelo mandato entre 2023 e 2026, conforme o controle de
         emendas do gabinete. <a href="https://www.pepecollaco.com/">pepecollaco.com</a>
@@ -430,6 +436,7 @@
     </div>
   </footer>
 
+<script src="../quem-faz.js" defer></script>
 <script>
   const texto = 'Quem faz pelas cidades: 113 municípios de Santa Catarina atendidos por este mandato, mais de um terço do Estado. Procura a sua cidade na lista:';
   const url = 'https://www.pepecollaco.com/quem-faz/pelas-cidades/';
@@ -444,18 +451,6 @@
       e.preventDefault();
       navigator.share({ title: 'Quem faz pelas cidades', text: texto, url }).catch(() => {});
     });
-  }
-
-  const alvos = document.querySelectorAll('.rv');
-  if (!window.IntersectionObserver) {
-    alvos.forEach((e) => e.classList.add('dentro'));
-  } else {
-    const obs = new IntersectionObserver((itens) => {
-      for (const i of itens) {
-        if (i.isIntersecting) { i.target.classList.add('dentro'); obs.unobserve(i.target); }
-      }
-    }, { rootMargin: '0px 0px -8% 0px' });
-    alvos.forEach((e) => obs.observe(e));
   }
 </script>
 </body>

@@ -24,12 +24,19 @@
   <link rel="icon" href="../../assets/brand/simbolo/favicon-512.png" sizes="512x512" />
   <link rel="apple-touch-icon" href="../../assets/brand/simbolo/apple-touch-icon.png" />
 
-  <!-- Acumin Pro pelo kit licenciado da Adobe Fonts. A cópia self-hosted em
-       assets/brand/fontes/ segue como reserva no --fonte, e só é baixada se
-       este kit não responder — por isso ela não é mais pré-carregada. -->
+  <!-- Acumin Pro (texto) pelo kit licenciado da Adobe Fonts. A cópia
+       self-hosted em assets/brand/fontes/ segue como reserva no --fonte, e só
+       é baixada se este kit não responder, por isso ela não é pré-carregada.
+
+       A Acumin Pro Wide (display) NÃO está no kit da Adobe: ela vem só da
+       cópia self-hosted, e agora desenha o título do hero. Por ser crítica
+       para a primeira dobra, os dois pesos que aparecem lá em cima, a Black
+       do título e a Extra Light da unidade, são pré-carregados. -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="preconnect" href="https://p.typekit.net" crossorigin />
   <link rel="stylesheet" href="https://use.typekit.net/ojd2pjl.css" />
+  <link rel="preload" href="../../assets/brand/fontes/acumin-wide-900.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../../assets/brand/fontes/acumin-wide-275.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../../assets/brand/css/tipografia.css" />
   <link rel="stylesheet" href="../../assets/brand/css/tokens.css" />
   <link rel="stylesheet" href="../quem-faz.css" />
@@ -41,8 +48,7 @@
   <header class="hero fundo-campanha veu">
     <div class="wrap hero-grade">
       <div>
-        <span class="olho">Quem faz</span>
-        <h1>Pelo autismo</h1>
+        <h1><span class="leve">Quem faz</span> Pelo autismo</h1>
 
         <p class="hero-frase">
           Ninguém esquece o dia em que recebe um diagnóstico de autismo. Naquele
@@ -114,7 +120,7 @@
           <p>
             Com a ajuda dos cavalos, muitas crianças desenvolvem equilíbrio,
             autonomia e confiança. O que se quer, principalmente, é qualidade de
-            vida — e ela vem em sessão marcada, toda semana, perto de casa.
+            vida, e ela vem em sessão marcada, toda semana, perto de casa.
           </p>
         </article>
 
@@ -132,7 +138,7 @@
           <h3>Tubarão</h3>
           <p>
             Equoterapia e terapia ocupacional na APAE, e o parque infantil
-            adaptado para crianças com transtorno do espectro autista — brincar
+            adaptado para crianças com transtorno do espectro autista: brincar
             também é terapia.
           </p>
         </article>
@@ -205,7 +211,7 @@
 
       <p class="chips-nota rv">
         Além destes, o mandato destinou R$ 1,35 milhão a APAEs de outras oito
-        cidades — veículos, reformas e salas de aula que atendem também as
+        cidades: veículos, reformas e salas de aula que atendem também as
         famílias atípicas.
       </p>
     </div>
@@ -220,7 +226,7 @@
         <p>
           Emenda resolve o ano. Lei resolve a década. Incluir não é fazer a
           criança se adaptar ao mundo: é preparar o mundo para receber cada
-          criança — e isso se escreve no papel, na Assembleia.
+          criança, e isso se escreve no papel, na Assembleia.
         </p>
       </div>
 
@@ -238,7 +244,7 @@
           <p>
             Plataforma de mapeamento das pessoas com TEA em Santa Catarina, com
             Alesc, universidades, APAEs e AMAs. Quem não conhece a realidade não
-            consegue criar política pública de verdade — e hoje o Estado não sabe
+            consegue criar política pública de verdade, e hoje o Estado não sabe
             quantas famílias precisa atender.
           </p>
         </li>
@@ -251,7 +257,7 @@
           </p>
         </li>
         <li>
-          <h3>PIA — Protocolo de Inclusão de Alunos Autistas</h3>
+          <h3>PIA: Protocolo de Inclusão de Alunos Autistas</h3>
           <p>
             Atividades e avaliações adaptadas, para que a aprendizagem seja
             medida de forma justa, seguindo padrões já comprovados em outros
@@ -263,7 +269,7 @@
           <p>
             Dá preferência para que o segundo professor do aluno com TEA seja o
             mesmo profissional do ano anterior. Um segundo professor pode mudar
-            uma trajetória escolar — trocar de pessoa todo ano desmonta o vínculo
+            uma trajetória escolar: trocar de pessoa todo ano desmonta o vínculo
             que levou um ano para ser construído. Em tramitação nas comissões.
           </p>
         </li>
@@ -275,7 +281,7 @@
   <section class="fundo-campanha veu">
     <div class="wrap fecho">
       <img class="marca-vote rv" src="../../assets/brand/marca/vote-11223-escuro-960.webp"
-           alt="Vote Pepê 11223 — Deputado Estadual" width="960" height="879" />
+           alt="Vote Pepê 11223, Deputado Estadual" width="960" height="879" />
       <p class="lema rv">Nenhuma família enfrenta essa caminhada sozinha</p>
       <div class="botoes rv">
         <a class="btn btn-acento" id="compartilhar-2" href="#">Mandar no WhatsApp</a>
@@ -307,7 +313,7 @@
       <img src="../../assets/brand/marca/collaco-11223-escuro-480.webp"
            alt="Pepê Collaço 11223" width="480" height="439" />
       <p>
-        Pepê Collaço · Deputado Estadual de Santa Catarina · Progressistas —
+        Pepê Collaço · Deputado Estadual de Santa Catarina · Progressistas ·
         Federação União Progressista.<br />
         Valores destinados pelo mandato entre 2023 e 2026, conforme o controle de
         emendas do gabinete. <a href="https://www.pepecollaco.com/">pepecollaco.com</a>
@@ -315,6 +321,7 @@
     </div>
   </footer>
 
+<script src="../quem-faz.js" defer></script>
 <script>
   const texto = 'Quem faz pelo autismo: R$ 4,6 milhões em terapia e acolhimento para famílias atípicas em 18 municípios de SC. Olha o que já foi feito:';
   const url = 'https://www.pepecollaco.com/quem-faz/pelo-autismo/';
@@ -329,18 +336,6 @@
       e.preventDefault();
       navigator.share({ title: 'Quem faz pelo autismo', text: texto, url }).catch(() => {});
     });
-  }
-
-  const alvos = document.querySelectorAll('.rv');
-  if (!window.IntersectionObserver) {
-    alvos.forEach((e) => e.classList.add('dentro'));
-  } else {
-    const obs = new IntersectionObserver((itens) => {
-      for (const i of itens) {
-        if (i.isIntersecting) { i.target.classList.add('dentro'); obs.unobserve(i.target); }
-      }
-    }, { rootMargin: '0px 0px -8% 0px' });
-    alvos.forEach((e) => obs.observe(e));
   }
 </script>
 </body>

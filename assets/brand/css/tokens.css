@@ -1,8 +1,8 @@
-/* GERADO por _IDENTIDADE v1.0.0 — não edite aqui.
+/* GERADO por _IDENTIDADE v1.1.0 — não edite aqui.
    Edite _IDENTIDADE/src/ e rode ./bin/sincronizar.sh */
 /* ============================================================================
    Pepê Collaço 11223 — tokens canônicos da identidade visual
-   Fonte-verdade: _IDENTIDADE/src/tokens.css · versão 1.0.0
+   Fonte-verdade: _IDENTIDADE/src/tokens.css · versão 1.1.0
 
    Todos os hex abaixo foram medidos por amostragem de pixel nos arquivos
    originais da agência em "_ARTE /". Não invente cores novas: se faltar um
@@ -86,8 +86,12 @@
   --veu-conteudo: linear-gradient(rgba(14, 30, 70, 0.55), rgba(6, 26, 58, 0.85));
 
   /* ── Tipografia ────────────────────────────────────────────────────────
-     Só existem 400 e 700. Não peça 900: o navegador sintetiza um negrito
-     falso e a marca perde. O que for "mais pesado que 700" é imagem. */
+     Duas famílias com papéis separados. `--fonte` é o texto: largura normal,
+     400 e 700. `--fonte-display` é a manchete: largura expandida, 275 e 900.
+
+     A regra prática é uma frase: se dá para ler sentado, é --fonte; se é para
+     ler de longe ou de relance, é --fonte-display. Misturar as duas no mesmo
+     bloco de texto é o erro que faz a peça parecer de outra campanha. */
   /* "acumin-pro" é o nome da família servida pelo kit da Adobe Fonts
      (use.typekit.net/ojd2pjl.css) — é a via licenciada de web font e resolve
      a pendência de licença registrada no CLAUDE.md. "Acumin Pro" logo atrás é
@@ -96,6 +100,16 @@
   --fonte: "acumin-pro", "Acumin Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --peso-normal: 400;
   --peso-forte: 700;
+
+  /* A Wide não está no kit da Adobe Fonts do mandato, então aqui a self-hosted
+     é a única via: nada de nome de família do Typekit na frente. O fallback é
+     a condensada do sistema, que erra a largura mas mantém a mancha da linha
+     enquanto os 20 KB não chegam. */
+  --fonte-display: "Acumin Pro Wide", "Acumin Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Não existe peso entre 400 e 900 na Wide. Pedir 700 devolve a Black, que é
+     o vizinho mais próximo acima — de propósito, para nunca haver sintético. */
+  --peso-display-leve: 275;
+  --peso-display-forte: 900;
 
   /* ── Textura de setas ──────────────────────────────────────────────────
      Grid escalonado, geometria medida em TEXTURA SETAS FUNDO.png.

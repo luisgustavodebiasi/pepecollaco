@@ -24,12 +24,19 @@
   <link rel="icon" href="../../assets/brand/simbolo/favicon-512.png" sizes="512x512" />
   <link rel="apple-touch-icon" href="../../assets/brand/simbolo/apple-touch-icon.png" />
 
-  <!-- Acumin Pro pelo kit licenciado da Adobe Fonts. A cópia self-hosted em
-       assets/brand/fontes/ segue como reserva no --fonte, e só é baixada se
-       este kit não responder — por isso ela não é mais pré-carregada. -->
+  <!-- Acumin Pro (texto) pelo kit licenciado da Adobe Fonts. A cópia
+       self-hosted em assets/brand/fontes/ segue como reserva no --fonte, e só
+       é baixada se este kit não responder, por isso ela não é pré-carregada.
+
+       A Acumin Pro Wide (display) NÃO está no kit da Adobe: ela vem só da
+       cópia self-hosted, e agora desenha o título do hero. Por ser crítica
+       para a primeira dobra, os dois pesos que aparecem lá em cima, a Black
+       do título e a Extra Light da unidade, são pré-carregados. -->
   <link rel="preconnect" href="https://use.typekit.net" crossorigin />
   <link rel="preconnect" href="https://p.typekit.net" crossorigin />
   <link rel="stylesheet" href="https://use.typekit.net/ojd2pjl.css" />
+  <link rel="preload" href="../../assets/brand/fontes/acumin-wide-900.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../../assets/brand/fontes/acumin-wide-275.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../../assets/brand/css/tipografia.css" />
   <link rel="stylesheet" href="../../assets/brand/css/tokens.css" />
   <link rel="stylesheet" href="../quem-faz.css" />
@@ -41,18 +48,17 @@
   <header class="hero fundo-campanha veu">
     <div class="wrap hero-grade">
       <div>
-        <span class="olho">Quem faz</span>
-        <h1>Pela AMUREL</h1>
+        <h1><span class="leve">Quem faz</span> Pela AMUREL</h1>
 
         <p class="hero-frase">
           Os problemas da nossa região nunca respeitaram divisas. Quando a
           estrada fecha, não para só uma cidade: para o trabalhador, a empresa e
-          a região inteira. Por isso a conta aqui <b>não é de um município só —
+          a região inteira. Por isso a conta aqui <b>não é de um município só:
           são os 18</b>.
         </p>
 
         <div class="manchete">
-          <span class="cifra">+R$ 75 <small>MILHÕES</small></span>
+          <span class="cifra"><span class="mais">+</span>R$ 75 <small>MILHÕES</small></span>
           <span class="legenda">nos 18 municípios da AMUREL, sem deixar nenhum de fora</span>
         </div>
 
@@ -74,7 +80,7 @@
     <div class="wrap">
       <div class="placar rv">
         <div>
-          <b>+R$ 75 <small>MI</small></b>
+          <b><span class="mais">+</span>R$ 75 <small>MI</small></b>
           <span>destinados à região</span>
         </div>
         <div>
@@ -171,7 +177,7 @@
           <h3>SUS em Treze de Maio</h3>
           <p>
             Recursos para ampliar e qualificar os atendimentos do SUS no
-            município e na região — porque na cidade pequena a fila do exame é
+            município e na região, porque na cidade pequena a fila do exame é
             resolvida com custeio, não com discurso.
           </p>
         </article>
@@ -186,7 +192,7 @@
         <span class="olho">Nenhum ficou de fora</span>
         <h2>Os 18 municípios</h2>
         <p>
-          A AMUREL tem 18 cidades. Todas as 18 receberam emenda deste mandato —
+          A AMUREL tem 18 cidades. Todas as 18 receberam emenda deste mandato,
           da maior à que tem pouco mais de dois mil habitantes. É fácil lembrar de
           quem vota muito; o teste é lembrar de quem vota pouco.
         </p>
@@ -240,7 +246,7 @@
           <p>
             R$ 5 milhões para o projeto executivo da dragagem do canal e da
             remodelagem dos molhes. Destrava o Porto de Laguna, a pesca e o
-            complexo lagunar de uma vez — e beneficia Laguna, Tubarão, Imaruí,
+            complexo lagunar de uma vez, e beneficia Laguna, Tubarão, Imaruí,
             Pescaria Brava e Jaguaruna ao mesmo tempo.
           </p>
         </li>
@@ -291,7 +297,7 @@
   <section class="fundo-campanha veu">
     <div class="wrap fecho">
       <img class="marca-vote rv" src="../../assets/brand/marca/vote-11223-escuro-960.webp"
-           alt="Vote Pepê 11223 — Deputado Estadual" width="960" height="879" />
+           alt="Vote Pepê 11223, Deputado Estadual" width="960" height="879" />
       <p class="lema rv">Uma Tubarão forte depende de um Sul forte</p>
       <div class="botoes rv">
         <a class="btn btn-acento" id="compartilhar-2" href="#">Mandar no WhatsApp</a>
@@ -323,7 +329,7 @@
       <img src="../../assets/brand/marca/collaco-11223-escuro-480.webp"
            alt="Pepê Collaço 11223" width="480" height="439" />
       <p>
-        Pepê Collaço · Deputado Estadual de Santa Catarina · Progressistas —
+        Pepê Collaço · Deputado Estadual de Santa Catarina · Progressistas ·
         Federação União Progressista.<br />
         Valores destinados pelo mandato entre 2023 e 2026, conforme o controle de
         emendas do gabinete. <a href="https://www.pepecollaco.com/">pepecollaco.com</a>
@@ -331,6 +337,7 @@
     </div>
   </footer>
 
+<script src="../quem-faz.js" defer></script>
 <script>
   const texto = 'Quem faz pela AMUREL: mais de R$ 75 milhões nos 18 municípios da região, sem deixar nenhum de fora. Olha a conta:';
   const url = 'https://www.pepecollaco.com/quem-faz/pela-amurel/';
@@ -345,18 +352,6 @@
       e.preventDefault();
       navigator.share({ title: 'Quem faz pela AMUREL', text: texto, url }).catch(() => {});
     });
-  }
-
-  const alvos = document.querySelectorAll('.rv');
-  if (!window.IntersectionObserver) {
-    alvos.forEach((e) => e.classList.add('dentro'));
-  } else {
-    const obs = new IntersectionObserver((itens) => {
-      for (const i of itens) {
-        if (i.isIntersecting) { i.target.classList.add('dentro'); obs.unobserve(i.target); }
-      }
-    }, { rootMargin: '0px 0px -8% 0px' });
-    alvos.forEach((e) => obs.observe(e));
   }
 </script>
 </body>

@@ -5,7 +5,7 @@ precisar decidir cor, fonte, logo ou fundo, a resposta está aqui. Onde este
 documento e o código divergirem, **este documento está certo e o código está
 desatualizado**.
 
-Versão 1.0.0 · fonte-verdade em `_IDENTIDADE/` · originais da agência em `_ARTE /`
+Versão 1.1.0 · fonte-verdade em `_IDENTIDADE/` · originais da agência em `_ARTE /`
 
 ---
 
@@ -212,6 +212,12 @@ Existe `fundo/fundo-1920.webp` para onde CSS não chega: imagem de compartilhame
 e e-mail. Não use no site — são 13 KB desnecessários sobre um degradê que o
 navegador desenha de graça, e que fica nítido em qualquer tela.
 
+E existe `fundo/fundo-og-1200.jpg`, o mesmo fundo já no formato exato do cartão de
+compartilhamento (1200×630). Ele existe porque o Satori, que renderiza as
+open-graph do credenciamento, decodifica JPEG e PNG mas **não WebP**, e não aplica
+máscara: sem este arquivo a peça cai num degradê aproximado em código, sem a
+textura de setas e sem o foco de luz do original da agência.
+
 A textura é assinatura, não papel de parede. Acima de 0,10 de opacidade ela começa
 a competir com o conteúdo e a poluir a leitura.
 
@@ -219,25 +225,44 @@ a competir com o conteúdo e a poluir a leitura.
 
 ## Tipografia
 
-**Acumin Pro**, self-hosted, subsetada para latim. Quatro arquivos, ~19 KB cada.
+Duas famílias, self-hosted, subsetadas para latim. Sete arquivos, ~19 KB cada.
+Papéis separados, e essa separação é a regra que mais muda o resultado.
+
+| Token | Família | Pesos | Para quê |
+|---|---|---|---|
+| `--fonte` | **Acumin Pro** | 400, 700 (+ itálicos) | Texto. Parágrafo, rótulo, botão, campo. |
+| `--fonte-display` | **Acumin Pro Wide** | 275, 400, 900 | Manchete. Palavra grande, número grande. |
 
 ```css
-font-family: var(--fonte);   /* "Acumin Pro", ui-sans-serif, system-ui, … */
+font-family: var(--fonte);           /* texto    */
+font-family: var(--fonte-display);   /* manchete */
 ```
 
-**Só existem os pesos 400 e 700**, com itálicos. Não peça 900: o navegador
-sintetiza um negrito falso, borrado, e o resultado envergonha a marca ao lado do
-material impresso. Onde a arte parece "mais pesada que 700", ela é imagem —
-porque é mesmo.
+A regra prática cabe numa frase: **se dá para ler sentado, é `--fonte`; se é para
+ler de longe ou de relance, é `--fonte-display`.** Misturar as duas dentro do
+mesmo bloco de texto é o erro que faz a peça parecer de outra campanha.
 
-Hierarquia sem pesos extras: tamanho, caixa alta e `letter-spacing`. O próprio
-lockup faz isso — o `DEPUTADO ESTADUAL` é pequeno com tracking largo, e lê como
-legenda sem precisar de um peso próprio.
+**A Wide é a largura do lockup.** A arte da agência é Acumin Variable Concept nos
+pesos Black e Light, e a Acumin Pro Wide Black é o que temos mais perto disso.
+Manchete em Wide Black encosta na marca impressa; manchete na Pro normal em 700
+fica visivelmente mais estreita e mais leve do que o material que já está na rua.
 
-> **Licença:** Acumin Pro é fonte comercial da Adobe. A licença desktop padrão
-> não cobre self-host de webfont em site público. Confirme antes de publicar. Se
-> não estiver coberta, o substituto identificado é **Archivo** (Google Fonts), que
-> tem eixo de largura e chega perto; nesse caso, troque só `--fonte`.
+**Nenhum peso é sintetizado, em nenhuma das duas.** Na Pro existem 400 e 700 e
+nada mais. Na Wide existem 275, 400 e 900, e **nada entre 400 e 900**: pedir 600
+ou 700 na Wide devolve a Black, porque é o vizinho mais próximo acima. Isso é de
+propósito. Escreva 400 ou 900 e você sabe o que vai receber.
+
+Continua valendo: hierarquia se faz com tamanho, caixa alta e `letter-spacing`
+antes de se fazer com peso. O próprio lockup faz isso — o `DEPUTADO ESTADUAL` é
+pequeno com tracking largo, e lê como legenda sem precisar de um peso próprio.
+
+> **Licença:** Acumin é fonte comercial da Adobe. A licença desktop padrão não
+> cobre self-host de webfont em site público. Confirme antes de publicar. O kit
+> da Adobe Fonts (`use.typekit.net/ojd2pjl.css`) cobre a **Pro** e já está em
+> `--fonte`; a **Wide** não está no kit, então hoje ela depende só da cópia
+> self-hosted. Se a licença não cobrir, o substituto identificado é **Archivo**
+> (Google Fonts), que tem eixo de largura: nesse caso troque `--fonte` por
+> `Archivo` e `--fonte-display` por `Archivo Expanded`.
 
 ---
 
@@ -287,8 +312,9 @@ simbolo/   seta-{128,256,512}.{webp,png}   coloridos
            favicon-512.png · apple-touch-icon.png · favicon-32.png
 textura/   setas-tile.svg
 foto/      pepe-{900,1400,2000}.webp · pepe-2400.png
-fundo/     fundo-1920.webp
-fontes/    acumin-{400,400i,700,700i}.{woff2,otf}
+fundo/     fundo-1920.webp · fundo-og-1200.jpg   o JPEG é o que o Satori lê
+fontes/    acumin-{400,400i,700,700i}.{woff2,otf}        texto
+           acumin-wide-{275,400,900}.{woff2,otf}         display
 css/       tokens.css · tipografia.css · compat/*.css
 ```
 

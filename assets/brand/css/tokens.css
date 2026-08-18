@@ -88,7 +88,12 @@
   /* ── Tipografia ────────────────────────────────────────────────────────
      Só existem 400 e 700. Não peça 900: o navegador sintetiza um negrito
      falso e a marca perde. O que for "mais pesado que 700" é imagem. */
-  --fonte: "Acumin Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* "acumin-pro" é o nome da família servida pelo kit da Adobe Fonts
+     (use.typekit.net/ojd2pjl.css) — é a via licenciada de web font e resolve
+     a pendência de licença registrada no CLAUDE.md. "Acumin Pro" logo atrás é
+     a cópia self-hosted em fontes/: entra se a CDN da Adobe demorar ou cair,
+     e é a mesma letra, então o leitor não percebe a troca. */
+  --fonte: "acumin-pro", "Acumin Pro", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --peso-normal: 400;
   --peso-forte: 700;
 

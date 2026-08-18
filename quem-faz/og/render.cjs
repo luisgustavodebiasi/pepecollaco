@@ -51,9 +51,9 @@ const PAGINAS = {
   },
   'pela-educacao': {
     titulo: 'PELA EDUCAÇÃO',
-    numero: 'R$ 16,2',
+    numero: 'R$ 13',
     unidade: 'MILHÕES',
-    legenda: 'em creches, escolas, ônibus e primeira infância',
+    legenda: 'em creches, escolas e transporte escolar de 38 municípios',
   },
   'pelas-cidades': {
     titulo: 'PELAS CIDADES',

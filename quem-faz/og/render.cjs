@@ -57,9 +57,9 @@ const PAGINAS = {
   },
   'pelas-cidades': {
     titulo: 'PELAS CIDADES',
-    numero: '114',
+    numero: '113',
     unidade: 'MUNICÍPIOS',
-    legenda: 'atendidos em Santa Catarina, do litoral à serra',
+    legenda: 'de Santa Catarina atendidos, do litoral à serra',
   },
   'projetos-de-lei': {
     titulo: 'PROJETOS DE LEI',

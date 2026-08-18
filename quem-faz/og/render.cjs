@@ -39,7 +39,7 @@ const PAGINAS = {
   },
   'pela-amurel': {
     titulo: 'PELA AMUREL',
-    numero: 'R$ 73,7',
+    numero: '+R$ 75',
     unidade: 'MILHÕES',
     legenda: 'nos 18 municípios da AMUREL, sem deixar nenhum de fora',
   },

@@ -33,9 +33,9 @@ const PAGINAS = {
   },
   'pelo-sul': {
     titulo: 'PELO SUL',
-    numero: 'R$ 116',
+    numero: '+R$ 105',
     unidade: 'MILHÕES',
-    legenda: 'em 44 municípios do Sul Catarinense',
+    legenda: 'em 41 municípios do Sul Catarinense',
   },
   'pela-amurel': {
     titulo: 'PELA AMUREL',

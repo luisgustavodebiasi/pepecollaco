@@ -216,6 +216,26 @@
        porque a fonte original tem pesos que não licenciamos. */
     .hero-marca { margin: 0 0 26px; }
     .hero-marca img { width: min(430px, 88%); height: auto; }
+    /* A assinatura QUEM FAZ REPRESENTA vem empilhada na sequência da arte da
+       Federação: QUEM em cima, menor; FAZ no meio, dominante; REPRESENTA
+       embaixo, em pincel. É lockup, tem ordem e tem degrau, então não vira
+       uma linha só com uma palavra trocada de fonte. */
+    .hero-frase.assinatura { display: grid; justify-items: start; line-height: .88; margin-bottom: 18px; }
+    .assinatura .q {
+      font-family: var(--fonte-display);
+      font-weight: var(--peso-display-leve);
+      font-size: clamp(19px, 2.2vw, 30px);
+      letter-spacing: .04em;
+      color: var(--cor-texto-suave);
+    }
+    .assinatura .f {
+      font-family: var(--fonte-display);
+      font-weight: var(--peso-display-forte);
+      font-size: clamp(34px, 4.2vw, 56px);
+      letter-spacing: -.02em;
+    }
+    .assinatura em { font-size: clamp(38px, 4.9vw, 66px); margin-top: -.04em; display: block; }
+
     .hero-frase {
       font-size: clamp(19px, 2.5vw, 27px); font-weight: var(--peso-forte);
       line-height: 1.24; letter-spacing: -0.01em; margin: 0 0 14px;
@@ -504,7 +524,7 @@
                alt="Vote Pepê Collaço, deputado estadual, 11223"
                width="960" height="879" fetchpriority="high" />
         </h1>
-        <p class="hero-frase">Quem faz,<br><em>representa!</em></p>
+        <p class="hero-frase assinatura"><span class="q">Quem</span><span class="f">faz</span><em>representa</em></p>
         <p class="hero-sub">Advogado, ex-vereador, ex-vice-prefeito de Tubarão e deputado estadual. Um mandato com foco em infraestrutura, saúde, inclusão e desenvolvimento regional.</p>
         <div class="hero-botoes">
           <a href="https://wa.me/5548999412599" class="btn btn-primario" target="_blank" rel="noopener">

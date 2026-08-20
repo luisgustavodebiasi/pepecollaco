@@ -132,11 +132,17 @@ h1 { font-size: clamp(30px, 6.6vw, 56px); line-height: 1; }
    que a assinatura reserva para a palavra à mão. */
 h1 .pincel {
   display: block;
-  margin-top: .04em;
+  /* o til de TUBARÃO e o de EDUCAÇÃO sobem acima da altura de letra e
+     chegavam a encostar na linha de cima; o respiro é dado aqui */
+  margin-top: .12em;
   font-family: var(--fonte-brush);
   font-weight: 400;
-  font-size: 1.38em;
-  line-height: .96;
+  /* Medido na janela, e não em em do h1: preso ao h1 o assunto estourava a
+     coluna nas telas de 320 px, onde "EDUCAÇÃO" é a palavra mais comprida
+     do sistema. O teto de 108 px é o maior corpo em que ela ainda cabe na
+     coluna do hero em 1280. */
+  font-size: clamp(44px, 11.5vw, 108px);
+  line-height: .94;
   letter-spacing: 0;
   text-transform: uppercase;
   color: var(--cor-acento);
@@ -210,10 +216,21 @@ h3 {
 }
 
 .hero-retrato { position: relative; align-self: end; }
+
+/* O recorte tem cerca de 20% de largura vazia à esquerda na faixa da cabeça:
+   medindo o canal alfa do arquivo, o conteúdo só começa em x=150 de 677 nos
+   40% de cima, e só o cotovelo chega a x=0, no meio da altura. Centrar a
+   imagem na coluna, como estava, somava essa sobra aos 26 px da centragem e
+   abria 228 px de azul entre o fim do parágrafo e o rosto.
+
+   Então a imagem encosta à esquerda da coluna e ainda é puxada por cima do
+   vão. Quem manda no valor é o cotovelo, não a borda do arquivo: passar
+   disso e ele começa a esbarrar no parágrafo. */
 .hero-retrato img {
-  width: min(380px, 100%);
-  margin-inline: auto;
+  width: min(480px, 126%);
+  margin-inline: 0 auto;
   margin-bottom: -2px;
+  transform: translateX(-20%);
   filter: drop-shadow(-14px 10px 44px rgba(6, 26, 58, .55));
 }
 @media (max-width: 860px) {
@@ -377,6 +394,43 @@ section { padding-block: clamp(52px, 9vw, 88px); }
 /* ── Fecho ────────────────────────────────────────────────────────────────*/
 .fecho { text-align: center; }
 .fecho .marca-vote { width: min(230px, 62vw); margin: 0 auto clamp(26px, 5vw, 34px); }
+/* ── A assinatura QUEM FAZ REPRESENTA ────────────────────────────────────
+   Quando a frase aparece inteira, ela vem empilhada na sequência da arte da
+   Federação: QUEM em cima, menor; FAZ no meio, dominante, na Black; e
+   REPRESENTA embaixo, em pincel. Não é uma linha só com uma palavra
+   trocada de fonte: é o lockup, e o lockup tem ordem e tem degrau.
+
+   Os outros lemas, que não são a assinatura, seguem em linha corrida com a
+   palavra final em pincel. */
+.fecho .assinatura {
+  display: grid;
+  justify-items: center;
+  gap: 0;
+  margin: 0 auto;
+  max-width: none;
+  line-height: .88;
+}
+.fecho .assinatura .q {
+  font-family: var(--fonte-display);
+  font-weight: var(--peso-display-leve);
+  font-size: clamp(21px, 4.4vw, 34px);
+  letter-spacing: .04em;
+  color: var(--cor-texto-suave);
+}
+.fecho .assinatura .f {
+  font-family: var(--fonte-display);
+  font-weight: var(--peso-display-forte);
+  font-size: clamp(38px, 8vw, 62px);
+  letter-spacing: -.02em;
+}
+.fecho .assinatura .pincel {
+  display: block;
+  /* na arte REPRESENTA é a palavra mais larga do lockup, e vem colada no FAZ */
+  margin-top: -.04em;
+  font-size: clamp(44px, 9.6vw, 78px);
+  padding-inline: 0;
+}
+
 .fecho .lema {
   font-family: var(--fonte-display);
   font-size: clamp(21px, 4.6vw, 32px);

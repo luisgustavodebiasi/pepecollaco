@@ -287,6 +287,20 @@ assunto embaixo, sozinho na linha, em pincel amarelo. A caixa vem do HTML,
 porque cada degrau tem a sua, e é a diferença de caixa somada à de peso que
 constrói a hierarquia.
 
+**A frase inteira tem sequência, e a sequência é sempre a mesma.** Quando
+aparecer "QUEM FAZ REPRESENTA" por extenso, ela vem **empilhada em três
+linhas, nesta ordem**, como na arte da Federação:
+
+```
+QUEM          menor, Extra Light, apagada
+FAZ           dominante, Black
+REPRESENTA    pincel, amarelo, a palavra mais larga do lockup
+```
+
+Não é uma linha corrida com uma palavra trocada de fonte. É lockup: tem ordem,
+tem degrau de corpo e tem a palavra à mão embaixo. Escrever de outro jeito é
+escrever a assinatura errada.
+
 **Duas por página, no máximo, e longe uma da outra.** Nas páginas QUEM FAZ são
 o assunto do título e a palavra final do lema: a abertura e o fecho. Duas
 palavras em pincel dentro do mesmo bloco competem entre si e nenhuma ganha.

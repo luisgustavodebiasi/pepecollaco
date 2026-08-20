@@ -245,7 +245,7 @@ Papéis separados, e essa separação é a regra que mais muda o resultado.
 |---|---|---|---|
 | `--fonte` | **Acumin Pro** | 400, 700 (+ itálicos) | Texto. Parágrafo, rótulo, botão, campo. |
 | `--fonte-display` | **Acumin Pro Wide** | 275, 400, 900 | Manchete. Palavra grande, número grande. |
-| `--fonte-brush` | **Granesta** | 400 | Acento. UMA palavra por peça, grande. |
+| `--fonte-brush` | **Granesta** | 400 | Acento. Uma palavra por bloco, grande. |
 
 ```css
 font-family: var(--fonte);           /* texto    */
@@ -280,6 +280,16 @@ O lockup PEPÊ COLLAÇO 11223 é outra família, geométrica, e continua sendo.
 **A regra é uma palavra.** A arte mostra isso literalmente: "QUEM FAZ" em letra
 de forma, "REPRESENTA" em pincel. Uma palavra de ênfase, grande, ao lado do
 Acumin, nunca sozinha carregando a peça inteira.
+
+E o lockup inteiro tem três degraus, que é como o título das páginas QUEM FAZ
+está montado: `quem` e a preposição na Extra Light, **FAZ** na Black, e o
+assunto embaixo, sozinho na linha, em pincel amarelo. A caixa vem do HTML,
+porque cada degrau tem a sua, e é a diferença de caixa somada à de peso que
+constrói a hierarquia.
+
+**Duas por página, no máximo, e longe uma da outra.** Nas páginas QUEM FAZ são
+o assunto do título e a palavra final do lema: a abertura e o fecho. Duas
+palavras em pincel dentro do mesmo bloco competem entre si e nenhuma ganha.
 
 Onde **não** entra: texto corrido, rótulo, botão, legenda, corpo pequeno, frase
 inteira. Em corpo pequeno ela não se lê, e frase inteira em pincel vira ruído.

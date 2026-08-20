@@ -70,29 +70,26 @@
      sumir e come o rodapé por baixo. Melhor estourar visível do que sumir. */
   .conteudo > * { flex: none; }
 
-  /* Não é mais uma sobrancelha: é a primeira linha do título, na Extra
-     Light. A miniatura do WhatsApp precisa da frase inteira, "Quem faz por
-     Tubarão", e não de um rótulo pequeno em cima de outra coisa. O amarelo
-     da identidade fica com a régua, logo abaixo do título. */
-  .olho {
-    font-family: var(--fonte-display);
-    font-weight: var(--peso-display-leve); font-size: 40px;
-    letter-spacing: .05em; text-transform: uppercase;
-    line-height: 1;
-    color: var(--pp-azul-claro);
-  }
+  /* O título é o lockup da assinatura em três degraus, igual ao das páginas
+     e igual a QUEM FAZ REPRESENTA: "quem" e a preposição na Extra Light,
+     "FAZ" na Black, e o assunto embaixo, em pincel amarelo. A caixa vem do
+     HTML, cada degrau tem a sua. */
+  h1 .leve  { font-weight: var(--peso-display-leve); color: var(--pp-azul-claro); }
+  h1 .forte { font-weight: var(--peso-display-forte); }
 
   /* Wide Black: é a largura do lockup, e numa miniatura de WhatsApp a massa
      da Black é o que ainda se lê a 300 px de largura. A expandida ocupa cerca
      de um quinto a mais, então o teto do ajuste automático desceu junto. */
   h1 {
-    margin: 18px 0 0;
+    margin: 0;
     font-family: var(--fonte-display);
-    font-weight: var(--peso-display-forte); text-transform: uppercase;
-    font-size: 84px; line-height: .88; letter-spacing: -.03em;
+    font-weight: var(--peso-display-forte); text-transform: none;
+    font-size: 76px; line-height: 1; letter-spacing: -.03em;
   }
 
-  .regua { width: 120px; height: 6px; background: var(--cor-acento); margin: 30px 0 24px; }
+  /* a régua saiu: com a palavra em pincel amarela logo acima, ela repetia o
+     mesmo acento a dois centímetros de distância */
+  .vao { height: 34px; }
 
   .numero {
     font-family: var(--fonte-display);
@@ -111,11 +108,19 @@
      Fica branca, e não amarela: no quadro já são amarelos a régua e o número,
      e um terceiro amarelo tira o número do lugar de destaque. Aqui quem
      destaca é o traço, não a cor. */
+  /* O degrau que grita: sozinho na linha, maior que a de cima, e amarelo,
+     que é a cor que a assinatura reserva para a palavra à mão. Na miniatura
+     do WhatsApp é esta palavra que a pessoa lê. */
   .pincel {
+    display: block;
+    margin-top: .04em;
     font-family: var(--fonte-brush);
     font-weight: 400;
-    font-size: 1.1em;
-    padding-inline: .1em .06em;
+    font-size: 1.34em;
+    line-height: .96;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--cor-acento);
   }
 
   .legenda {
@@ -147,9 +152,8 @@
   <div class="quadro">
     <img class="retrato" id="retrato" src="../../assets/brand/foto/pepe-busto-1400.webp" alt="" />
     <div class="conteudo">
-      <div class="olho">Quem faz</div>
-      <h1><span id="titulo">POR</span> <span class="pincel" id="destaque">TUBARÃO</span></h1>
-      <div class="regua"></div>
+      <h1><span class="leve">quem</span> <span class="forte">FAZ</span> <span class="leve" id="titulo">por</span><span class="pincel" id="destaque">Tubarão</span></h1>
+      <div class="vao"></div>
       <div class="numero"><span id="numero">R$ 18,2</span><span class="un" id="unidade">MILHÕES</span></div>
       <div class="legenda" id="legenda">destinados à cidade em três anos de mandato</div>
       <div class="rodape">
@@ -191,7 +195,7 @@
   const caixa = document.querySelector('.conteudo');
   const coube = () => caixa.scrollHeight <= caixa.clientHeight;
   document.fonts.ready.then(() => {
-    for (let px = 84; px >= 44 && !coube(); px -= 2) {
+    for (let px = 76; px >= 40 && !coube(); px -= 2) {
       t.style.fontSize = px + 'px';
     }
     document.documentElement.dataset.pronto = '1';

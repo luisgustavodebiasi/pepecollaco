@@ -109,16 +109,37 @@ h1, h2 {
   text-transform: uppercase;
   letter-spacing: -.015em;
 }
+
+/* O h1 é o lockup da assinatura em três degraus, igual a QUEM FAZ
+   REPRESENTA: "quem" e a preposição na Extra Light, "FAZ" na Black, e o
+   assunto embaixo, em pincel amarelo, sozinho na linha.
+
+   A caixa vem do HTML e não do CSS: cada degrau tem a sua, e é a diferença
+   de caixa junto com a de peso que constrói a hierarquia. Só o pincel é
+   forçado para caixa alta, porque o recorte publicado da Granesta não tem
+   caixa baixa. */
+h1 { text-transform: none; }
+h1 .leve  { font-weight: var(--peso-display-leve); color: var(--cor-texto-suave); }
+h1 .forte { font-weight: var(--peso-display-forte); }
 /* O h1 diz a frase inteira: "Quem faz" na Extra Light, o assunto na Black.
    O corpo desceu de 78 para 62px porque agora são duas linhas de display,
    e nesse tamanho o assunto mais comprido ("Pelas cidades") ainda cabe em
    uma linha só, tanto no computador quanto no celular. */
-h1 { font-size: clamp(32px, 7.2vw, 62px); line-height: .95; }
-h1 .leve {
+h1 { font-size: clamp(30px, 6.6vw, 56px); line-height: 1; }
+
+/* O assunto, o degrau que grita. Corpo maior que a linha de cima porque é
+   ele que a pessoa lê de relance no meio do feed, e amarelo porque é a cor
+   que a assinatura reserva para a palavra à mão. */
+h1 .pincel {
   display: block;
-  font-weight: var(--peso-display-leve);
-  letter-spacing: .01em;
-  color: var(--cor-texto-suave);
+  margin-top: .04em;
+  font-family: var(--fonte-brush);
+  font-weight: 400;
+  font-size: 1.38em;
+  line-height: .96;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--cor-acento);
 }
 h2 { font-size: clamp(24px, 5.2vw, 38px); line-height: 1; }
 h3 {

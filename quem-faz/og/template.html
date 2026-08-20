@@ -104,6 +104,20 @@
   /* só o sinal de mais fica fino, como nas páginas */
   .numero .mais { font-weight: var(--peso-display-leve); }
 
+  /* A palavra do assunto em pincel, como a assinatura QUEM FAZ REPRESENTA
+     faz: a preposição em letra de forma, o assunto à mão. Uma palavra, que é
+     a regra do --fonte-brush.
+
+     Fica branca, e não amarela: no quadro já são amarelos a régua e o número,
+     e um terceiro amarelo tira o número do lugar de destaque. Aqui quem
+     destaca é o traço, não a cor. */
+  .pincel {
+    font-family: var(--fonte-brush);
+    font-weight: 400;
+    font-size: 1.1em;
+    padding-inline: .1em .06em;
+  }
+
   .legenda {
     margin-top: 15px;
     font-size: 24px; line-height: 1.32;
@@ -134,7 +148,7 @@
     <img class="retrato" id="retrato" src="../../assets/brand/foto/pepe-busto-1400.webp" alt="" />
     <div class="conteudo">
       <div class="olho">Quem faz</div>
-      <h1 id="titulo">POR TUBARÃO</h1>
+      <h1><span id="titulo">POR</span> <span class="pincel" id="destaque">TUBARÃO</span></h1>
       <div class="regua"></div>
       <div class="numero"><span id="numero">R$ 18,2</span><span class="un" id="unidade">MILHÕES</span></div>
       <div class="legenda" id="legenda">destinados à cidade em três anos de mandato</div>
@@ -152,9 +166,12 @@
     if (v !== null) document.getElementById(id).textContent = v;
   };
   põe('titulo', 'titulo');
+  põe('destaque', 'destaque');
   põe('numero', 'numero');
   põe('unidade', 'unidade');
   põe('legenda', 'legenda');
+
+  if (!p.get('destaque')) document.getElementById('destaque').remove();
 
   // o sinal de mais é o único pedaço fino do número
   const n = document.getElementById('numero');
@@ -170,7 +187,7 @@
   // "POR TUBARÃO" e "PELA EDUCAÇÃO" têm quase o mesmo tamanho e larguras bem
   // diferentes. Então mede-se de verdade, e desce de 2 em 2 até parar de
   // estourar a caixa, assim as sete páginas ganham o maior título possível.
-  const t = document.getElementById('titulo');
+  const t = document.querySelector('h1');
   const caixa = document.querySelector('.conteudo');
   const coube = () => caixa.scrollHeight <= caixa.clientHeight;
   document.fonts.ready.then(() => {

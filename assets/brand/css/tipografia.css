@@ -48,3 +48,17 @@
   src: url("../fontes/acumin-wide-900.woff2") format("woff2");
   font-weight: 900; font-style: normal; font-display: swap;
 }
+
+/* ── Granesta · pincel ───────────────────────────────────────────
+   A letra do "REPRESENTA" da assinatura QUEM FAZ REPRESENTA. Um
+   peso só, unicase, e o recorte publicado é só de caixa alta.
+
+   Papel de acento, não de texto: UMA palavra por peça, grande, do
+   lado do Acumin. Em corpo pequeno ela não se lê, e em frase
+   inteira vira ruído. Quem usa --fonte-brush usa também
+   text-transform: uppercase, senão pede glifo que não veio. */
+@font-face {
+  font-family: "Granesta";
+  src: url("../fontes/granesta-ptbr.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}

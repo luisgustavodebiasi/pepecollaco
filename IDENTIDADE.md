@@ -221,21 +221,36 @@ textura de setas e sem o foco de luz do original da agência.
 A textura é assinatura, não papel de parede. Acima de 0,10 de opacidade ela começa
 a competir com o conteúdo e a poluir a leitura.
 
+**Toda peça de compartilhamento leva a textura, sem exceção.** Um retângulo azul
+liso poderia ser de qualquer campanha; as setas são o que faz a peça ser
+reconhecida antes de alguém ler uma palavra. Isso vale principalmente onde há
+véu por cima: o véu existe para o texto ter contraste, não para apagar o fundo.
+Na prática o limite é 0,80 de opacidade no ponto mais fechado — acima disso a
+textura some. Em 0,80 o branco fica em torno de 15 de contraste e o amarelo em 9,
+ou seja, ainda sobra folga sobre os 4,5 exigidos.
+
+**O símbolo sozinho é o ícone recorrente.** Onde o lockup inteiro seria repetição
+(uma peça que já traz a marca em outro canto), use só a seta. É ela que faz o
+papel de ícone da campanha, e repetir o lockup duas vezes na mesma peça enfraquece
+as duas aparições.
+
 ---
 
 ## Tipografia
 
-Duas famílias, self-hosted, subsetadas para latim. Sete arquivos, ~19 KB cada.
+Três famílias, self-hosted, subsetadas para latim.
 Papéis separados, e essa separação é a regra que mais muda o resultado.
 
 | Token | Família | Pesos | Para quê |
 |---|---|---|---|
 | `--fonte` | **Acumin Pro** | 400, 700 (+ itálicos) | Texto. Parágrafo, rótulo, botão, campo. |
 | `--fonte-display` | **Acumin Pro Wide** | 275, 400, 900 | Manchete. Palavra grande, número grande. |
+| `--fonte-brush` | **Granesta** | 400 | Acento. UMA palavra por peça, grande. |
 
 ```css
 font-family: var(--fonte);           /* texto    */
 font-family: var(--fonte-display);   /* manchete */
+font-family: var(--fonte-brush);     /* acento   */
 ```
 
 A regra prática cabe numa frase: **se dá para ler sentado, é `--fonte`; se é para
@@ -256,6 +271,48 @@ Continua valendo: hierarquia se faz com tamanho, caixa alta e `letter-spacing`
 antes de se fazer com peso. O próprio lockup faz isso — o `DEPUTADO ESTADUAL` é
 pequeno com tracking largo, e lê como legenda sem precisar de um peso próprio.
 
+### Granesta, o pincel
+
+É a letra do **"REPRESENTA"** da assinatura QUEM FAZ REPRESENTA, da Federação
+União Progressista. Não é enfeite escolhido agora: já estava na arte, e só nela.
+O lockup PEPÊ COLLAÇO 11223 é outra família, geométrica, e continua sendo.
+
+**A regra é uma palavra.** A arte mostra isso literalmente: "QUEM FAZ" em letra
+de forma, "REPRESENTA" em pincel. Uma palavra de ênfase, grande, ao lado do
+Acumin, nunca sozinha carregando a peça inteira.
+
+Onde **não** entra: texto corrido, rótulo, botão, legenda, corpo pequeno, frase
+inteira. Em corpo pequeno ela não se lê, e frase inteira em pincel vira ruído.
+Ela também não substitui a Wide Black: são papéis diferentes, a Wide é a
+manchete estrutural e o pincel é o acento à mão.
+
+**Sempre em caixa alta.** A Granesta é unicase (a "minúscula" é um desenho
+alternativo da maiúscula, na mesma altura), e o recorte publicado na web tem só
+caixa alta, para não carregar 80 KB à toa. Quem usa `--fonte-brush` usa junto
+`text-transform: uppercase`, senão pede glifo que não foi embarcado.
+
+**As acentuadas são compostas por nós.** A Granesta original não tem uma única
+letra acentuada: não escreve Tubarão, não escreve Collaço, não escreve educação.
+E não falha visivelmente, o caractere some. As 48 acentuadas do português foram
+compostas a partir dos sinais soltos da própria fonte por
+`granesta/gerar-ptbr.py`, que também conserta as métricas verticais (a original
+declarava altura de linha zero e caixa de recorte em 759, cortando o topo dos
+próprios acentos). Para refazer:
+
+```bash
+cd _IDENTIDADE/granesta && python3 gerar-ptbr.py Granesta-original.otf Granesta-PTBR.otf
+cd .. && ./bin/gerar-fontes.sh
+```
+
+O pincel pesa 108 KB em woff2, contra 19 KB de cada Acumin: contorno de pincel é
+picotado, e cada farpa é ponto — a conta dá ~1,3 KB por letra. Para uma palavra
+por página está pago; se virar fonte de sistema, não está.
+
+Se algum dia isso apertar, o caminho é o recorte: a faixa publicada hoje leva a
+pontuação tipográfica inteira (aspas curvas, travessões, € e ™). Cortar para o
+que peça de campanha realmente escreve derruba para ~72 KB, ao custo de o glifo
+que faltar cair no fallback no meio da palavra.
+
 > **Licença:** Acumin é fonte comercial da Adobe. A licença desktop padrão não
 > cobre self-host de webfont em site público. Confirme antes de publicar. O kit
 > da Adobe Fonts (`use.typekit.net/ojd2pjl.css`) cobre a **Pro** e já está em
@@ -263,6 +320,18 @@ pequeno com tracking largo, e lê como legenda sem precisar de um peso próprio.
 > self-hosted. Se a licença não cobrir, o substituto identificado é **Archivo**
 > (Google Fonts), que tem eixo de largura: nesse caso troque `--fonte` por
 > `Archivo` e `--fonte-display` por `Archivo Expanded`.
+>
+> A **Granesta** é de autor individual (Ahmad Ramzi Fahruddin, 2021) e a
+> pendência dela está **resolvida desde 20/08/2026: a licença do mandato cobre
+> webfont**. Foi o que liberou servir a fonte nos apps, e não só fechá-la dentro
+> do PDF da gráfica.
+>
+> Vale saber o que ela contornou, porque o arquivo continua dizendo outra coisa:
+> o `fsType` da Granesta é 4, "preview & print", que autoriza impresso e não
+> autoriza embedding editável. Quem abrir a fonte num validador vai ver esse bit
+> e concluir que a web está proibida — quem manda é o contrato, não o bit. E o
+> arquivo foi modificado para ganhar as acentuadas, o que boa parte dos
+> contratos proíbe e este permite.
 
 ---
 

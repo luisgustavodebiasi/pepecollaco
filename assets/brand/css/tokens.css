@@ -1,4 +1,4 @@
-/* GERADO por _IDENTIDADE v1.1.0 — não edite aqui.
+/* GERADO por _IDENTIDADE v1.2.0 — não edite aqui.
    Edite _IDENTIDADE/src/ e rode ./bin/sincronizar.sh */
 /* ============================================================================
    Pepê Collaço 11223 — tokens canônicos da identidade visual
@@ -110,6 +110,21 @@
      o vizinho mais próximo acima — de propósito, para nunca haver sintético. */
   --peso-display-leve: 275;
   --peso-display-forte: 900;
+
+  /* ── Pincel ─────────────────────────────────────────────────────────────
+     A letra do "REPRESENTA" da assinatura QUEM FAZ REPRESENTA. Um peso só.
+
+     É acento, não fonte: UMA palavra por peça, grande, ao lado do Acumin.
+     A regra que a arte da agência mostra é essa, e ela vale. Frase inteira
+     em pincel vira ruído, e em corpo pequeno não se lê.
+
+     O recorte publicado tem só caixa alta, porque a fonte é unicase e o
+     papel dela é palavra grande. Quem usar este token usa junto
+     text-transform: uppercase, senão pede glifo que não foi embarcado.
+
+     O fallback é a display, e não uma cursiva do sistema: se os 70 KB não
+     chegarem, é melhor a palavra sair em Wide Black do que em Comic Sans. */
+  --fonte-brush: "Granesta", "Acumin Pro Wide", ui-sans-serif, system-ui, sans-serif;
 
   /* ── Textura de setas ──────────────────────────────────────────────────
      Grid escalonado, geometria medida em TEXTURA SETAS FUNDO.png.

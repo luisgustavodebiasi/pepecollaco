@@ -250,6 +250,23 @@ section { padding-block: clamp(52px, 9vw, 88px); }
   overflow: hidden;
 }
 .placar div { background: var(--cor-fundo-campo); padding: clamp(22px, 4vw, 30px); }
+@media (max-width: 520px) { .placar div { padding: 18px 16px; } }
+
+/* O número precisa caber na célula, e a largura da célula muda sozinha: a
+   grade é auto-fit, então ela troca de número de colunas conforme a tela.
+   Amarrar o corpo à viewport erra feio no meio do caminho: por volta de 900 px
+   a grade já está em quatro colunas estreitas e o corpo ainda está em 40 px, e
+   "+R$ 105 MI" quebra com a unidade sozinha na linha de baixo, parecendo
+   rótulo.
+
+   Aqui o corpo é medido em cqi, isto é, em porcentagem da própria célula, e
+   não da janela. 18cqi é o limite em que o valor mais comprido do sistema
+   ainda cabe em uma linha. Onde não houver container query, vale o clamp()
+   da regra acima, que acerta nas telas grandes e erra só nessa faixa. */
+.placar div { container-type: inline-size; }
+@supports (container-type: inline-size) {
+  .placar b { font-size: min(40px, max(21px, 18cqi)); white-space: nowrap; }
+}
 .placar b {
   display: block;
   font-family: var(--fonte-display);
@@ -349,6 +366,30 @@ section { padding-block: clamp(52px, 9vw, 88px); }
   margin: 0 auto;
   max-width: 14em;
 }
+
+/* A palavra de ênfase do lema, em pincel. UMA por página: é a regra do
+   --fonte-brush em _IDENTIDADE/CLAUDE.md, e é o que a assinatura QUEM FAZ
+   REPRESENTA faz, com "QUEM FAZ" em letra de forma e "REPRESENTA" à mão.
+
+   text-transform é obrigatório: o recorte publicado da Granesta só tem caixa
+   alta, então sem isto a palavra pediria glifo que não veio e sumiria.
+
+   O corpo sobe 12% porque o pincel tem altura de letra menor que a Wide no
+   mesmo font-size, e line-height volta a 1 porque a fonte declara uma caixa
+   vertical alta (para caber o til) que senão abriria a linha do lema. */
+.fecho .lema .pincel {
+  font-family: var(--fonte-brush);
+  font-weight: 400;
+  font-size: 1.12em;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--cor-acento);
+  /* O pincel tem sobra lateral negativa dos dois lados: a primeira letra
+     avança para trás e come o espaço da palavra anterior, e a última é
+     inclinada e encosta no que vier depois. O respiro é dado aqui. */
+  padding-inline: .16em .14em;
+}
+
 .fecho .botoes { justify-content: center; }
 
 /* ── As outras portas ─────────────────────────────────────────────────────

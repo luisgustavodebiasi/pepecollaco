@@ -388,9 +388,12 @@ section { padding-block: clamp(52px, 9vw, 88px); }
   max-width: 14em;
 }
 
-/* A palavra de ênfase do lema, em pincel. UMA por página: é a regra do
-   --fonte-brush em _IDENTIDADE/CLAUDE.md, e é o que a assinatura QUEM FAZ
-   REPRESENTA faz, com "QUEM FAZ" em letra de forma e "REPRESENTA" à mão.
+/* A palavra de ênfase do lema, em pincel, e em LINHA PRÓPRIA.
+
+   O `display: block` é a regra, não o layout: duas fontes na mesma linha
+   fazem a frase parecer remendo. Quando a frase quebra, a linha de baixo é
+   inteira do pincel — é o que a assinatura QUEM FAZ REPRESENTA faz, com
+   "QUEM FAZ" em letra de forma numa linha e "REPRESENTA" à mão na outra.
 
    text-transform é obrigatório: o recorte publicado da Granesta só tem caixa
    alta, então sem isto a palavra pediria glifo que não veio e sumiria.
@@ -399,6 +402,8 @@ section { padding-block: clamp(52px, 9vw, 88px); }
    mesmo font-size, e line-height volta a 1 porque a fonte declara uma caixa
    vertical alta (para caber o til) que senão abriria a linha do lema. */
 .fecho .lema .pincel {
+  display: block;
+  margin-top: .06em;
   font-family: var(--fonte-brush);
   font-weight: 400;
   font-size: 1.12em;

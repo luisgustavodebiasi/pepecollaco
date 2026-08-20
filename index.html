@@ -221,7 +221,29 @@
       line-height: 1.24; letter-spacing: -0.01em; margin: 0 0 14px;
       text-transform: uppercase;
     }
-    .hero-frase em { font-style: normal; color: var(--cor-acento); }
+    /* "representa!" é a palavra de ênfase da home, e é a mesma que a
+       assinatura QUEM FAZ REPRESENTA põe à mão. UMA por página: é a regra do
+       --fonte-brush em IDENTIDADE.md.
+
+       text-transform é requisito, não estilo: o recorte publicado da Granesta
+       só tem caixa alta, e sem ele o navegador pede um glifo que não veio e
+       cai no fallback no meio da palavra. O .hero-frase já força uppercase,
+       mas repetir aqui protege a regra de quem mexer no pai depois.
+
+       O corpo sobe 12% porque a altura de letra do pincel é menor que a da
+       Wide no mesmo font-size, e o padding lateral compensa a sobra negativa
+       do traço, que senão encosta no que vier ao lado. */
+    .hero-frase em {
+      font-style: normal;
+      color: var(--cor-acento);
+      font-family: var(--fonte-brush);
+      font-weight: 400;
+      font-size: 1.12em;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      padding-inline: .16em .14em;
+    }
     .hero-sub { font-size: 16.5px; color: var(--cor-texto-suave); margin: 0 0 30px; max-width: 46ch; }
     .hero-botoes { display: flex; flex-wrap: wrap; gap: 12px; }
 

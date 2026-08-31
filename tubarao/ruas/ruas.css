@@ -163,6 +163,37 @@ h1 .pincel {
   letter-spacing: .01em;
 }
 
+/* ── O mapa ───────────────────────────────────────────────────────────────
+   Base escura para o mapa morar no mesmo azul do sistema; as ruas são
+   polylines amarelas (#FFC400, o acento canônico) vindas de dados-mapa.js. */
+.sec-mapa { padding-bottom: 0; }
+#mapa {
+  height: clamp(340px, 56vw, 520px);
+  border: 1px solid var(--cor-borda);
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--cor-fundo-elevado);
+}
+.mapa-nota {
+  margin: 12px 0 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--cor-texto-suave);
+  max-width: 56em;
+}
+/* Escurece só os tiles: inversão + giro de matiz leva o mapa claro do OSM
+   para um azul-noite perto do sistema. As ruas amarelas vivem no overlay
+   pane, fora do filtro, e ficam na cor certa. */
+.leaflet-tile-pane {
+  filter: invert(1) hue-rotate(200deg) brightness(.72) contrast(1.05) saturate(.22);
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  background: var(--pp-navy-escuro);
+  color: var(--cor-texto);
+}
+.leaflet-popup-content { font: var(--peso-normal) 14px/1.5 var(--fonte); margin: 12px 16px; }
+.leaflet-container a.leaflet-popup-close-button { color: var(--cor-texto-suave); }
+
 /* ── A lista ──────────────────────────────────────────────────────────────*/
 section { padding-block: clamp(36px, 6vw, 56px); }
 

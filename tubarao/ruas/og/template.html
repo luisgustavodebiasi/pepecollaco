@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Molde de OG, as ruas de Tubarão</title>
+<!--
+  Molde 1200×630 do cartão de compartilhamento da página tubarao/ruas.
+  Não é uma página do site: existe só para o Chromium fotografar (render.cjs).
+  Mesma família do molde das páginas QUEM FAZ (quem-faz/og/template.html):
+  título em degraus com o assunto em pincel, um número, uma linha e a marca.
+
+  O teste real desta imagem é ser lida em miniatura, no balão de um WhatsApp.
+-->
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/ojd2pjl.css" />
+<link rel="stylesheet" href="../../../assets/brand/css/tipografia.css" />
+<link rel="stylesheet" href="../../../assets/brand/css/tokens.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 1200px; height: 630px;
+    overflow: hidden;
+    font-family: var(--fonte);
+    color: var(--cor-texto);
+    background: var(--cor-fundo);
+  }
+
+  .quadro { position: relative; width: 1200px; height: 630px; background: var(--grad-fundo); overflow: hidden; }
+
+  /* textura de setas como máscara, ver _IDENTIDADE/CLAUDE.md */
+  .quadro::before {
+    content: ""; position: absolute; inset: 0;
+    background-color: #fff;
+    -webkit-mask-image: url("../../../assets/brand/textura/setas-tile.svg");
+            mask-image: url("../../../assets/brand/textura/setas-tile.svg");
+    -webkit-mask-size: var(--textura-tamanho);
+            mask-size: var(--textura-tamanho);
+    opacity: .085;
+  }
+  /* véu: sem ele o amarelo cai sobre o #0082BF do canto e reprova em contraste */
+  .quadro::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(105deg, rgba(6,26,58,.86) 0%, rgba(10,33,72,.66) 46%, rgba(14,30,70,.12) 78%);
+  }
+
+  .retrato {
+    position: absolute; right: -18px; bottom: -14px;
+    height: 640px; width: auto;
+    z-index: 1;
+    filter: drop-shadow(-22px 8px 52px rgba(6,26,58,.6));
+  }
+
+  .conteudo {
+    position: relative; z-index: 2;
+    height: 100%;
+    padding: 56px 62px 44px;
+    display: flex; flex-direction: column;
+    max-width: 830px;
+  }
+  .conteudo > * { flex: none; }
+
+  /* O título em degraus, como nas páginas: a preposição na Extra Light e o
+     assunto embaixo, sozinho na linha, em pincel amarelo. */
+  h1 {
+    margin: 0;
+    font-family: var(--fonte-display);
+    font-weight: var(--peso-display-leve);
+    color: var(--pp-azul-claro);
+    text-transform: none;
+    font-size: 62px; line-height: 1; letter-spacing: -.02em;
+  }
+  .pincel {
+    display: block;
+    margin-top: .14em; /* o til sobe acima da altura de letra */
+    font-family: var(--fonte-brush);
+    font-weight: 400;
+    font-size: 2.1em;
+    line-height: .96;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--cor-acento);
+  }
+
+  .vao { height: 30px; }
+
+  .numero {
+    font-family: var(--fonte-display);
+    font-weight: var(--peso-display-forte); color: var(--cor-acento);
+    font-size: 64px; line-height: .94; letter-spacing: -.03em;
+    display: flex; align-items: baseline; gap: 14px;
+  }
+  .numero .un { font-size: 34px; letter-spacing: .06em; }
+
+  .legenda {
+    margin-top: 15px;
+    font-size: 24px; line-height: 1.32;
+    color: #fff;
+    max-width: 24ch;
+  }
+  .legenda b { font-weight: 700; }
+
+  .rodape { margin-top: auto; padding-top: 18px; display: flex; align-items: flex-end; gap: 22px; }
+  .rodape img { width: 158px; display: block; }
+  /* amarelo #FFC400 com texto #061A3A é o par canônico (10,8:1) */
+  .rodape .cta {
+    display: inline-block;
+    background: var(--cor-acento);
+    color: var(--cor-sobre-acento);
+    font-size: 21px; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase;
+    padding: 11px 22px;
+    border-radius: 999px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="quadro">
+    <img class="retrato" src="../../../assets/brand/foto/pepe-busto-1400.webp" alt="" />
+    <div class="conteudo">
+      <h1>as ruas de<span class="pincel">Tubarão</span></h1>
+      <div class="vao"></div>
+      <div class="numero"><span>69</span><span class="un">RUAS</span></div>
+      <div class="legenda">com recurso do mandato. <b>Sua rua está na lista?</b></div>
+      <div class="rodape">
+        <img src="../../../assets/brand/marca/collaco-11223-escuro-960.webp" alt="Pepê Collaço 11223" />
+        <div class="cta">Busque a sua rua</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  document.fonts.ready.then(function () {
+    document.documentElement.dataset.pronto = '1';
+  });
+</script>
+</body>
+</html>

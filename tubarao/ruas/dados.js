@@ -577,7 +577,7 @@ window.RUAS = [
     "bairro": null,
     "cep": null,
     "status": "pendente",
-    "obs": "Abreviada; 'Exped.' provavelmente Expedicionário. Muito parecida com 'Rua Anastácio Teófilo Teixeira', também na lista — verificar se não é a mesma via. A via tem mais de um CEP; conferir o trecho. ViaCEP devolve apenas 'Rua Anastácio Theófilo Teixeira' (88704-120), a mesma via do item 68."
+    "obs": "Abreviada; 'Exped.' provavelmente Expedicionário. Muito parecida com 'Rua Anastácio Teófilo Teixeira', também na lista — verificar se não é a mesma via. A via tem mais de um CEP; conferir o trecho. ViaCEP devolve apenas 'Rua Anastácio Theófilo Teixeira' (88704-120), a mesma via do item 68. No OSM existe 'Rua Expedicionário Joaquim Anastácio Teixeira' (Morrotes), via distinta da Anastácio Teófilo; 'Exped. J.' deve ser Expedicionário Joaquim."
   },
   {
     "id": 59,
@@ -647,7 +647,7 @@ window.RUAS = [
     "bairro": null,
     "cep": null,
     "status": "pendente",
-    "obs": ""
+    "obs": "No OSM consta como 'Beco Odário Bernardino Damásio'."
   },
   {
     "id": 66,

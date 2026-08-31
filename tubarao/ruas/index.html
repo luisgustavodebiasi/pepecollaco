@@ -13,7 +13,7 @@
   <meta property="og:site_name" content="Pepê Collaço 11223" />
   <meta property="og:title" content="Sua rua está na lista?" />
   <meta property="og:description" content="69 ruas de Tubarão com recurso destinado pelo mandato para pavimentação, drenagem e esgoto. Busque a sua." />
-  <meta property="og:image" content="https://www.pepecollaco.com/assets/brand/og-11223.jpg" />
+  <meta property="og:image" content="https://www.pepecollaco.com/tubarao/ruas/og.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="pt_BR" />
@@ -34,6 +34,8 @@
   <link rel="preload" href="../../assets/brand/fontes/acumin-wide-275.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="../../assets/brand/css/tipografia.css" />
   <link rel="stylesheet" href="../../assets/brand/css/tokens.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="ruas.css" />
 </head>
 <body>
@@ -72,8 +74,22 @@
     </div>
   </header>
 
-  <!-- ══════════════ A LISTA ══════════════ -->
+  <!-- ══════════════ O MAPA ══════════════ -->
   <main>
+    <section aria-label="Mapa das ruas" class="sec-mapa">
+      <div class="wrap">
+        <div id="mapa" role="img"
+             aria-label="Mapa de Tubarão com as ruas contempladas destacadas em amarelo"></div>
+        <p class="mapa-nota">
+          Em amarelo, o traçado de 65 das 69 ruas, conforme o OpenStreetMap.
+          A busca e os filtros acima também acendem e apagam as ruas aqui.
+          Quatro ainda não têm traçado mapeado: Caruru, João Silva,
+          José Corrêa de Souza e Adolfo José de Souza.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════ A LISTA ══════════════ -->
     <section aria-label="Lista de ruas">
       <div class="wrap">
         <ol class="ruas" id="lista"></ol>
@@ -130,6 +146,9 @@
   </footer>
 
 <script src="dados.js"></script>
+<script src="dados-mapa.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 (function () {
   var ruas = window.RUAS || [];
@@ -167,6 +186,56 @@
       encodeURIComponent(nome + ', Tubarão, SC');
   }
 
+  /* ── O mapa ─────────────────────────────────────────────────────────────
+     Tiles padrão do OpenStreetMap, escurecidos por um filtro CSS no pane de
+     tiles (ver ruas.css) para o mapa morar no mesmo azul da identidade — as
+     bases escuras prontas (CARTO, Stadia) passaram a exigir chave de API.
+     Cada rua é o traçado real da via (dados-mapa.js, extraído do OSM), em
+     amarelo; quando a busca filtra a lista, as ruas de fora apagam aqui. */
+  var mapa = null;
+  var traçados = {};   /* id da rua -> [L.Polyline] */
+  if (window.L && window.RUAS_MAPA && document.getElementById('mapa')) {
+    mapa = L.map('mapa', { scrollWheelZoom: false });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 19
+    }).addTo(mapa);
+
+    var limites = null;
+    ruas.forEach(function (r) {
+      var segs = window.RUAS_MAPA[String(r.id)];
+      if (!segs || !segs.length) return;
+      var texto = '<b>' + r.nome_arte + '</b>' +
+        (r.bairro ? '<br>' + r.bairro : '') +
+        '<br>' + (r.cep ? 'CEP ' + r.cep : 'CEP a confirmar');
+      traçados[r.id] = segs.map(function (pts) {
+        var linha = L.polyline(pts, { color: '#FFC400', weight: 4, opacity: 0.9 });
+        linha.bindPopup(texto);
+        linha.on('mouseover', function () { this.setStyle({ weight: 7 }); });
+        linha.on('mouseout', function () { this.setStyle({ weight: 4 }); });
+        linha.addTo(mapa);
+        limites = limites ? limites.extend(linha.getBounds()) : linha.getBounds();
+        return linha;
+      });
+    });
+    if (limites) mapa.fitBounds(limites, { padding: [24, 24] });
+  }
+
+  function pintarMapa(visiveis) {
+    if (!mapa) return;
+    var acesas = {};
+    visiveis.forEach(function (r) { acesas[r.id] = true; });
+    ruas.forEach(function (r) {
+      var linhas = traçados[r.id];
+      if (!linhas) return;
+      var acesa = !!acesas[r.id];
+      linhas.forEach(function (l) {
+        l.setStyle({ color: acesa ? '#FFC400' : '#3A5375', opacity: acesa ? 0.9 : 0.45 });
+        if (acesa) l.bringToFront();
+      });
+    });
+  }
+
   function desenhar() {
     var termo = normalizar(campo.value.trim());
     var bairro = selBairro.value;
@@ -179,6 +248,8 @@
       if (cepFiltro === 'sem' && r.cep) return false;
       return true;
     });
+
+    pintarMapa(visiveis);
 
     lista.innerHTML = '';
 

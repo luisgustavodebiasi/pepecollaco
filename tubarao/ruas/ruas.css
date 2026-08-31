@@ -1,0 +1,286 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   AS RUAS DE TUBARÃO — lista consultável, rua por rua
+   Identidade 11223. Todas as cores vêm de assets/brand/css/tokens.css;
+   nenhum hex novo mora aqui. Regras em _IDENTIDADE/CLAUDE.md.
+
+   A página é uma ferramenta: quem chega quer digitar o nome da rua e ver a
+   resposta. O fundo da campanha assina a cabeça e o fecho; o meio é lista.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte);
+  font-weight: var(--peso-normal);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--cor-acento); color: var(--cor-sobre-acento); }
+
+.wrap { width: min(820px, 100% - 40px); margin-inline: auto; }
+@media (max-width: 640px) { .wrap { width: calc(100% - 32px); } }
+
+.sr-oculto {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ── O fundo da identidade ────────────────────────────────────────────────
+   Degradê por seção e textura de setas como MÁSCARA, nunca background-image:
+   um SVG por url() renderiza isolado, o currentColor cai para preto e a
+   textura some sobre o azul. A receita é a de _IDENTIDADE/CLAUDE.md. */
+.fundo-campanha { position: relative; background: var(--grad-fundo); }
+.fundo-campanha::before {
+  content: "";
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background-color: #fff;
+  -webkit-mask-image: url("../../assets/brand/textura/setas-tile.svg");
+          mask-image: url("../../assets/brand/textura/setas-tile.svg");
+  -webkit-mask-size: var(--textura-tamanho);
+          mask-size: var(--textura-tamanho);
+  opacity: var(--textura-opacidade);
+}
+/* Véu: sem ele o texto pequeno cai sobre o claro do degradê (#0082BF) e
+   reprova contraste. */
+.veu::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: var(--veu-conteudo);
+}
+.veu::before { z-index: 1; }
+.fundo-campanha > .wrap { position: relative; z-index: 2; }
+
+/* ── Cabeça ───────────────────────────────────────────────────────────────*/
+.hero { padding-block: clamp(40px, 7vw, 64px) clamp(34px, 5vw, 48px); }
+
+.olho {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--fonte-display);
+  font-weight: 400;
+  font-size: clamp(12px, 2.6vw, 14px);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+.olho::before {
+  content: ""; width: 26px; height: 3px;
+  background: var(--cor-acento);
+}
+
+/* O título segue o degrau das páginas QUEM FAZ: a preposição na Extra
+   Light e o assunto embaixo, sozinho na linha, em pincel amarelo. Uma
+   palavra em pincel por bloco, como manda o guia. */
+h1 {
+  margin: 16px 0 0;
+  font-family: var(--fonte-display);
+  font-size: clamp(26px, 5.4vw, 44px);
+  line-height: 1;
+  letter-spacing: -.015em;
+}
+h1 .leve { font-weight: var(--peso-display-leve); color: var(--cor-texto-suave); }
+h1 .pincel {
+  display: block;
+  margin-top: .1em; /* o til do Ã sobe além da altura de letra */
+  font-family: var(--fonte-brush);
+  font-weight: 400;
+  font-size: clamp(52px, 12.5vw, 104px);
+  line-height: .94;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--cor-acento);
+}
+
+.hero-frase {
+  margin: 20px 0 0;
+  font-size: clamp(16px, 3.4vw, 18px);
+  line-height: 1.55;
+  max-width: 34em;
+  color: var(--cor-texto-suave);
+}
+.hero-frase b { color: var(--cor-texto); font-weight: var(--peso-forte); }
+
+/* ── Busca e filtros ──────────────────────────────────────────────────────*/
+.busca { margin-top: clamp(24px, 5vw, 32px); }
+#campo {
+  width: 100%;
+  font: var(--peso-normal) 19px/1.3 var(--fonte);
+  color: var(--cor-texto);
+  background: var(--cor-fundo-campo);
+  border: 1.5px solid var(--cor-borda);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+#campo::placeholder { color: var(--cor-texto-suave); }
+#campo:focus {
+  outline: 3px solid var(--cor-acento);
+  outline-offset: 2px;
+  border-color: var(--cor-acento);
+}
+
+.filtros {
+  display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+.filtros label {
+  color: var(--cor-texto-suave);
+  letter-spacing: .08em; text-transform: uppercase; font-size: 12.5px;
+}
+.filtros select {
+  font: var(--peso-normal) 15px var(--fonte);
+  color: var(--cor-texto);
+  background: var(--cor-fundo-campo);
+  border: 1.5px solid var(--cor-borda);
+  border-radius: 10px;
+  padding: 9px 12px;
+  max-width: 100%;
+}
+.filtros select:focus { outline: 3px solid var(--cor-acento); outline-offset: 2px; }
+.filtros option { color: var(--cor-texto-inverso); background: #fff; }
+
+.contagem {
+  margin: 16px 0 0; min-height: 1.5em;
+  font-size: 14.5px;
+  color: var(--cor-texto-suave);
+}
+.contagem b {
+  color: var(--cor-acento);
+  font-family: var(--fonte-display);
+  font-weight: var(--peso-display-forte);
+  letter-spacing: .01em;
+}
+
+/* ── A lista ──────────────────────────────────────────────────────────────*/
+section { padding-block: clamp(36px, 6vw, 56px); }
+
+.ruas { list-style: none; margin: 0; padding: 0; }
+.ruas li {
+  padding: 15px 18px;
+  margin-bottom: 8px;
+  background: var(--cor-fundo-campo);
+  border: 1px solid var(--cor-borda);
+  border-left: 4px solid var(--cor-borda);
+  border-radius: 12px;
+  transition: border-color .16s ease, transform .16s ease;
+}
+.ruas li:hover { border-color: var(--cor-acento); transform: translateY(-1px); }
+/* Verde só como preenchimento, nunca como texto, e sempre com o estado
+   escrito por extenso ao lado (o CEP presente ou o "a confirmar"). */
+.ruas li.ok { border-left-color: var(--cor-positivo); }
+.ruas li.pend { border-left-color: var(--cor-acento); }
+
+.linha-nome {
+  display: flex; flex-wrap: wrap; gap: 4px 18px;
+  align-items: baseline; justify-content: space-between;
+}
+.nome { font-weight: var(--peso-forte); font-size: 17px; }
+.cep {
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--cor-texto);
+}
+.cep.vazio { font-size: 13px; color: var(--cor-texto-suave); }
+
+.detalhe {
+  display: flex; flex-wrap: wrap; gap: 4px 16px;
+  margin-top: 4px;
+  font-size: 13.5px;
+  color: var(--cor-texto-suave);
+}
+.detalhe .oficial { font-style: italic; }
+.detalhe a {
+  color: var(--cor-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.detalhe a:focus-visible { outline: 2px solid var(--cor-acento); outline-offset: 2px; }
+
+.ruas .vazia {
+  padding: 32px 18px;
+  color: var(--cor-texto-suave);
+  border-left-color: var(--cor-borda);
+}
+
+/* ── Como ler ─────────────────────────────────────────────────────────────*/
+.faixa-clara { background: var(--cor-fundo-elevado); }
+.nota-metodo h2 {
+  margin: 0 0 14px;
+  font-family: var(--fonte-display);
+  font-weight: var(--peso-display-forte);
+  text-transform: uppercase;
+  letter-spacing: -.015em;
+  font-size: clamp(20px, 4.4vw, 28px);
+  line-height: 1;
+}
+.nota-metodo p {
+  margin: 0 0 12px; max-width: 46em;
+  font-size: 15.5px; line-height: 1.6;
+  color: var(--cor-texto-suave);
+}
+.nota-metodo b { color: var(--cor-texto); font-weight: var(--peso-forte); }
+
+/* ── Fecho ────────────────────────────────────────────────────────────────*/
+.fecho { text-align: center; }
+.fecho .marca { width: min(210px, 56vw); margin: 0 auto clamp(22px, 4vw, 30px); }
+.fecho-frase {
+  margin: 0 auto;
+  max-width: 30em;
+  font-size: clamp(16px, 3.4vw, 19px);
+  line-height: 1.5;
+  color: var(--cor-texto);
+}
+
+.botoes {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+  margin-top: clamp(24px, 5vw, 32px);
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 14px 24px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-weight: var(--peso-forte);
+  font-size: 15px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+/* o par canônico: amarelo #FFC400 com texto #061A3A, 10,8:1 */
+.btn-acento { background: var(--cor-acento); color: var(--cor-sobre-acento); }
+.btn-acento:hover { background: var(--cor-acento-hover); }
+.btn-vazado { border-color: var(--cor-borda); color: var(--cor-texto); }
+.btn-vazado:hover { border-color: var(--cor-acento); color: var(--cor-acento); }
+@media (max-width: 520px) {
+  .botoes { flex-direction: column; align-items: stretch; }
+  .btn { justify-content: center; }
+}
+
+/* ── Rodapé ───────────────────────────────────────────────────────────────*/
+footer {
+  padding-block: clamp(30px, 5vw, 42px);
+  border-top: 1px solid var(--cor-borda);
+  font-size: 13.5px;
+  color: var(--cor-texto-suave);
+}
+footer a { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn:hover, .ruas li:hover { transform: none; }
+}

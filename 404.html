@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0E1E46" />
+  <meta name="robots" content="noindex" />
+  <title>Página não encontrada | Pepê Collaço 11223</title>
+
+  <link rel="icon" href="/assets/brand/simbolo/favicon-32.png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/brand/simbolo/apple-touch-icon.png" />
+
+  <!-- Antes de mostrar qualquer coisa: quem digitou o endereço com acento ou
+       maiúscula (ex.: /tubarão/ruas) cai aqui. Normaliza e tenta de novo —
+       se a versão limpa também não existir, o 404 volta com pathname já
+       normalizado, o replace não muda nada e a página aparece, sem loop. -->
+  <script>
+    (function () {
+      var limpo = decodeURIComponent(location.pathname)
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase();
+      if (limpo !== decodeURIComponent(location.pathname)) {
+        location.replace(limpo + location.search + location.hash);
+      }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/ojd2pjl.css" />
+  <link rel="stylesheet" href="/assets/brand/css/tipografia.css" />
+  <link rel="stylesheet" href="/assets/brand/css/tokens.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--grad-fundo);
+      color: var(--cor-texto);
+      font-family: var(--fonte);
+      position: relative;
+      text-align: center;
+      padding: 24px;
+    }
+    body::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background-color: #fff;
+      -webkit-mask-image: url("/assets/brand/textura/setas-tile.svg");
+              mask-image: url("/assets/brand/textura/setas-tile.svg");
+      -webkit-mask-size: var(--textura-tamanho);
+              mask-size: var(--textura-tamanho);
+      opacity: var(--textura-opacidade);
+    }
+    main { position: relative; max-width: 34em; }
+    h1 {
+      margin: 0 0 12px;
+      font-family: var(--fonte-display);
+      font-weight: var(--peso-display-forte);
+      text-transform: uppercase;
+      font-size: clamp(26px, 6vw, 40px);
+      line-height: 1.05;
+      letter-spacing: -.015em;
+    }
+    p { margin: 0 0 26px; color: var(--cor-texto-suave); font-size: 17px; line-height: 1.6; }
+    .botoes { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    a.btn {
+      display: inline-flex; align-items: center;
+      padding: 13px 22px;
+      border: 1.5px solid transparent;
+      border-radius: 999px;
+      font-weight: var(--peso-forte);
+      font-size: 14.5px; letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none;
+    }
+    .btn-acento { background: var(--cor-acento); color: var(--cor-sobre-acento); }
+    .btn-vazado { border-color: var(--cor-borda); color: var(--cor-texto); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Essa página não existe</h1>
+    <p>
+      O endereço pode ter sido digitado com acento ou com alguma letra a mais.
+      O que mais se procura por aqui é a lista das ruas de Tubarão.
+    </p>
+    <div class="botoes">
+      <a class="btn btn-acento" href="/tubarao/ruas/">As ruas de Tubarão</a>
+      <a class="btn btn-vazado" href="/">Página inicial</a>
+    </div>
+  </main>
+</body>
+</html>

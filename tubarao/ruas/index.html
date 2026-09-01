@@ -76,6 +76,26 @@
 
   <!-- ══════════════ O MAPA ══════════════ -->
   <main>
+    <!-- Aviso de papel: o que o mandato assume e o que é da Prefeitura.
+         Vem antes do mapa de propósito, para ser lido junto com a lista. -->
+    <section aria-label="O compromisso do mandato" class="sec-aviso">
+      <div class="wrap">
+        <div class="aviso">
+          <h2>O compromisso é o recurso e a fiscalização</h2>
+          <p>
+            Deputado estadual não executa obra. O compromisso do mandato é
+            <b>aportar o recurso para a execução</b> e <b>fiscalizar para que
+            a obra saia</b>, cobrando prazo e qualidade.
+          </p>
+          <p>
+            O projeto, a licitação, a execução e a entrega são de
+            responsabilidade da Prefeitura de Tubarão. Recurso destinado,
+            portanto, não significa obra concluída.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section aria-label="Mapa das ruas" class="sec-mapa">
       <div class="wrap">
         <div id="mapa" role="img"
@@ -104,8 +124,9 @@
           A relação vem da apresentação do mandato (2023–2026) e reúne as ruas de
           Tubarão contempladas por recursos destinados a pavimentação, drenagem e
           rede de esgoto. <b>Recurso destinado não significa obra concluída:</b>
-          para saber em que fase está cada rua, procure a Secretaria de Obras do
-          município.
+          o mandato aporta o recurso e fiscaliza a execução, que é feita pela
+          Prefeitura. Para saber em que fase está cada rua, procure a Secretaria
+          de Obras do município.
         </p>
         <p>
           Bairro e CEP vêm da base pública dos Correios. Alguns nomes aparecem
@@ -187,19 +208,24 @@
   }
 
   /* ── O mapa ─────────────────────────────────────────────────────────────
-     Tiles padrão do OpenStreetMap, escurecidos por um filtro CSS no pane de
-     tiles (ver ruas.css) para o mapa morar no mesmo azul da identidade — as
-     bases escuras prontas (CARTO, Stadia) passaram a exigir chave de API.
-     Cada rua é o traçado real da via (dados-mapa.js, extraído do OSM), em
-     amarelo; quando a busca filtra a lista, as ruas de fora apagam aqui. */
+     Base clara do OpenStreetMap, só com a saturação puxada para baixo (ver
+     ruas.css) para o amarelo ser a única cor forte da tela. Cada rua é o
+     traçado real da via (dados-mapa.js, extraído do OSM) em amarelo, e vai
+     sobre um casing navy num pane próprio: #FFC400 sozinho sobre base clara
+     desaparece. Quando a busca filtra a lista, as ruas de fora apagam aqui. */
   var mapa = null;
-  var traçados = {};   /* id da rua -> [L.Polyline] */
+  var traçados = {};   /* id da rua -> [{ base, topo }] */
   if (window.L && window.RUAS_MAPA && document.getElementById('mapa')) {
     mapa = L.map('mapa', { scrollWheelZoom: false });
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       maxZoom: 19
     }).addTo(mapa);
+
+    /* pane próprio para o casing: garante que todo contorno fica abaixo de
+       todo amarelo, e não só do amarelo da mesma rua */
+    mapa.createPane('casing');
+    mapa.getPane('casing').style.zIndex = 390;
 
     var limites = null;
     ruas.forEach(function (r) {
@@ -209,13 +235,22 @@
         (r.bairro ? '<br>' + r.bairro : '') +
         '<br>' + (r.cep ? 'CEP ' + r.cep : 'CEP a confirmar');
       traçados[r.id] = segs.map(function (pts) {
-        var linha = L.polyline(pts, { color: '#FFC400', weight: 4, opacity: 0.9 });
-        linha.bindPopup(texto);
-        linha.on('mouseover', function () { this.setStyle({ weight: 7 }); });
-        linha.on('mouseout', function () { this.setStyle({ weight: 4 }); });
-        linha.addTo(mapa);
-        limites = limites ? limites.extend(linha.getBounds()) : linha.getBounds();
-        return linha;
+        var base = L.polyline(pts, {
+          pane: 'casing', color: '#061A3A', weight: 8,
+          opacity: 0.55, interactive: false
+        });
+        var topo = L.polyline(pts, { color: '#FFC400', weight: 4, opacity: 1 });
+        topo.bindPopup(texto);
+        topo.on('mouseover', function () {
+          this.setStyle({ weight: 7 }); base.setStyle({ weight: 12 });
+        });
+        topo.on('mouseout', function () {
+          this.setStyle({ weight: 4 }); base.setStyle({ weight: 8 });
+        });
+        base.addTo(mapa);
+        topo.addTo(mapa);
+        limites = limites ? limites.extend(topo.getBounds()) : topo.getBounds();
+        return { base: base, topo: topo };
       });
     });
     if (limites) mapa.fitBounds(limites, { padding: [24, 24] });
@@ -226,12 +261,13 @@
     var acesas = {};
     visiveis.forEach(function (r) { acesas[r.id] = true; });
     ruas.forEach(function (r) {
-      var linhas = traçados[r.id];
-      if (!linhas) return;
+      var segs = traçados[r.id];
+      if (!segs) return;
       var acesa = !!acesas[r.id];
-      linhas.forEach(function (l) {
-        l.setStyle({ color: acesa ? '#FFC400' : '#3A5375', opacity: acesa ? 0.9 : 0.45 });
-        if (acesa) l.bringToFront();
+      segs.forEach(function (s) {
+        s.topo.setStyle({ color: acesa ? '#FFC400' : '#8FA6BC', opacity: acesa ? 1 : 0.75 });
+        s.base.setStyle({ opacity: acesa ? 0.55 : 0.12 });
+        if (acesa) s.topo.bringToFront();
       });
     });
   }

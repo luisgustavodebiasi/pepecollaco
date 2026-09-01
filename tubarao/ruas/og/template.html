@@ -55,7 +55,7 @@
   .conteudo {
     position: relative; z-index: 2;
     height: 100%;
-    padding: 56px 62px 44px;
+    padding: 46px 62px 48px;
     display: flex; flex-direction: column;
     max-width: 830px;
   }
@@ -83,7 +83,7 @@
     color: var(--cor-acento);
   }
 
-  .vao { height: 30px; }
+  .vao { height: 12px; }
 
   .numero {
     font-family: var(--fonte-display);
@@ -94,14 +94,24 @@
   .numero .un { font-size: 34px; letter-spacing: .06em; }
 
   .legenda {
-    margin-top: 15px;
+    margin-top: 13px;
     font-size: 24px; line-height: 1.32;
     color: #fff;
     max-width: 24ch;
   }
   .legenda b { font-weight: 700; }
 
-  .rodape { margin-top: auto; padding-top: 18px; display: flex; align-items: flex-end; gap: 22px; }
+  /* O papel do mandato, dito no próprio cartão: quem recebe no WhatsApp lê
+     isto antes de abrir a página. Corpo pequeno, mas ainda legível na
+     miniatura, e sobre o lado escuro do véu. */
+  .papel {
+    margin-top: 8px;
+    font-size: 17px; line-height: 1.35;
+    color: var(--pp-azul-claro);
+    white-space: nowrap;   /* uma linha só: a nota não pode virar parágrafo */
+  }
+
+  .rodape { margin-top: auto; padding-top: 14px; display: flex; align-items: flex-end; gap: 22px; }
   .rodape img { width: 158px; display: block; }
   /* amarelo #FFC400 com texto #061A3A é o par canônico (10,8:1) */
   .rodape .cta {
@@ -125,6 +135,7 @@
       <div class="vao"></div>
       <div class="numero"><span>69</span><span class="un">RUAS</span></div>
       <div class="legenda">com recurso do mandato. <b>Sua rua está na lista?</b></div>
+      <div class="papel">O mandato aporta o recurso e fiscaliza. A obra é da Prefeitura.</div>
       <div class="rodape">
         <img src="../../../assets/brand/marca/collaco-11223-escuro-960.webp" alt="Pepê Collaço 11223" />
         <div class="cta">Busque a sua rua</div>

@@ -163,16 +163,48 @@ h1 .pincel {
   letter-spacing: .01em;
 }
 
+/* ── O aviso de papel ─────────────────────────────────────────────────────
+   O que o mandato assume e o que é da Prefeitura. Cartão de borda amarela,
+   antes do mapa: é a leitura que qualifica a lista inteira. */
+.sec-aviso { padding-bottom: 0; }
+.aviso {
+  padding: 18px 20px;
+  background: var(--cor-fundo-campo);
+  border: 1px solid var(--cor-borda);
+  border-left: 4px solid var(--cor-acento);
+  border-radius: 14px;
+}
+.aviso h2 {
+  margin: 0 0 8px;
+  font-family: var(--fonte-display);
+  font-weight: var(--peso-display-forte);
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  font-size: clamp(16px, 3.4vw, 20px);
+  line-height: 1.1;
+  color: var(--cor-acento);
+}
+.aviso p {
+  margin: 0 0 8px;
+  max-width: 46em;
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--cor-texto-suave);
+}
+.aviso p:last-child { margin-bottom: 0; }
+.aviso b { color: var(--cor-texto); font-weight: var(--peso-forte); }
+
 /* ── O mapa ───────────────────────────────────────────────────────────────
-   Base escura para o mapa morar no mesmo azul do sistema; as ruas são
-   polylines amarelas (#FFC400, o acento canônico) vindas de dados-mapa.js. */
+   Base clara do OpenStreetMap, para a cidade se ler como no mapa de sempre;
+   as ruas seguem em polylines amarelas (#FFC400, o acento canônico) vindas
+   de dados-mapa.js, com casing navy por baixo. */
 .sec-mapa { padding-bottom: 0; }
 #mapa {
   height: clamp(340px, 56vw, 520px);
   border: 1px solid var(--cor-borda);
   border-radius: 16px;
   overflow: hidden;
-  background: var(--cor-fundo-elevado);
+  background: var(--cor-superficie-clara);
 }
 .mapa-nota {
   margin: 12px 0 0;
@@ -181,18 +213,20 @@ h1 .pincel {
   color: var(--cor-texto-suave);
   max-width: 56em;
 }
-/* Escurece só os tiles: inversão + giro de matiz leva o mapa claro do OSM
-   para um azul-noite perto do sistema. As ruas amarelas vivem no overlay
-   pane, fora do filtro, e ficam na cor certa. */
+/* A base fica clara; só tira saturação e abre um pouco o branco, para o
+   amarelo das ruas ser a única cor forte da tela. As polylines vivem nos
+   panes de overlay, fora do filtro, e ficam na cor certa. */
 .leaflet-tile-pane {
-  filter: invert(1) hue-rotate(200deg) brightness(.72) contrast(1.05) saturate(.22);
+  filter: saturate(.5) brightness(1.05) contrast(.96);
 }
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
-  background: var(--pp-navy-escuro);
-  color: var(--cor-texto);
+  background: #FFFFFF;
+  color: var(--cor-texto-inverso);
 }
 .leaflet-popup-content { font: var(--peso-normal) 14px/1.5 var(--fonte); margin: 12px 16px; }
-.leaflet-container a.leaflet-popup-close-button { color: var(--cor-texto-suave); }
+.leaflet-container a.leaflet-popup-close-button { color: var(--pp-navy); }
+.leaflet-container .leaflet-control-attribution { color: var(--pp-navy-escuro); }
+.leaflet-container .leaflet-control-attribution a { color: var(--pp-azul-profundo); }
 
 /* ── A lista ──────────────────────────────────────────────────────────────*/
 section { padding-block: clamp(36px, 6vw, 56px); }

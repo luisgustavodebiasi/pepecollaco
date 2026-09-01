@@ -1,0 +1,643 @@
+{
+  "_leia": [
+    "Este é o único arquivo escrito à mão da pasta dados/. Os outros são gerados.",
+    "Aqui mora o texto; os números e os status vêm de emendas.json e leis.json.",
+    "Todo valor anunciado precisa estar no bloco `conferir`: se a base mudar e o",
+    "texto não, o build quebra em vez de publicar número errado."
+  ],
+
+  "portas": [
+    { "slug": "por-tubarao", "rotulo": "Por Tubarão", "existe": true },
+    { "slug": "pela-amurel", "rotulo": "Pela AMUREL", "existe": true },
+    { "slug": "pelo-autismo", "rotulo": "Pelo autismo", "existe": true },
+    { "slug": "pelo-sul", "rotulo": "Pelo Sul", "existe": true },
+    { "slug": "pela-educacao", "rotulo": "Pela educação", "existe": true },
+    { "slug": "pelas-cidades", "rotulo": "Pelas cidades", "existe": true },
+    { "slug": "projetos-de-lei", "rotulo": "Projetos de lei", "existe": false }
+  ],
+
+  "lugares": {
+    "pela-amurel": {
+      "slug": "pela-amurel",
+      "tipo": "regiao",
+      "nome": "AMUREL",
+      "local": "Região de Laguna",
+
+      "seo": {
+        "titulo": "Quem faz pela AMUREL",
+        "descricao": "R$ 88 milhões destinados aos 20 municípios da AMUREL em quatro anos de mandato, sem deixar nenhum de fora. Ginásio de Sangão, estradas de Gravatal, infraestrutura de Pescaria Brava, saúde, educação e autismo.",
+        "ogDescricao": "R$ 88 milhões nos 20 municípios da AMUREL, sem deixar nenhum de fora. 235 emendas em obras, saúde, educação e esporte."
+      },
+
+      "compartilhar": "Quem faz pela AMUREL: R$ 88 milhões nos 20 municípios da região, sem deixar nenhum de fora. Olha a conta:",
+
+      "conferir": {
+        "coordenacao.AMUREL.valor": 88024250.22,
+        "coordenacao.AMUREL.n": 235,
+        "coordenacao.AMUREL.municipios": 20,
+        "municipio.TUBARAO.valor": 18966127.05,
+        "municipio.SANGAO.valor": 9715000
+      },
+
+      "hero": {
+        "titulo": [
+          { "estilo": "leve", "texto": "quem" },
+          { "estilo": "forte", "texto": "FAZ" },
+          { "estilo": "leve", "texto": "pela" },
+          { "estilo": "pincel", "texto": "AMUREL" }
+        ],
+        "frase": "Os problemas da nossa região nunca respeitaram divisas. Quando a estrada fecha, não para só uma cidade: para o trabalhador, a empresa e a região inteira. Por isso a conta aqui <b>não é de um município só: são os 20</b>.",
+        "valor": 88024250.22,
+        "legenda": "nos 20 municípios da AMUREL, sem deixar nenhum de fora",
+        "ancora": "obras"
+      },
+
+      "placar": [
+        { "valor": 88024250.22, "legenda": "destinados à região" },
+        { "texto": "20 <small>DE 20</small>", "legenda": "municípios atendidos" },
+        { "texto": "235", "legenda": "emendas na AMUREL" },
+        { "valor": 5900000, "casas": 1, "legenda": "a maior obra: o ginásio de Sangão" }
+      ],
+
+      "pergunta": {
+        "olho": "A pergunta que importa",
+        "titulo": "Faz diferença ter um deputado da região?",
+        "texto": "A AMUREL tem 20 municípios e pouco mais de 450 mil habitantes. Numa Assembleia de 40 deputados, quem não tem representante daqui não tem quem leve o pedido do prefeito até onde o orçamento é decidido, nem quem volte para cobrar. A conta abaixo é a resposta prática: <b>R$ 88 milhões</b>, em 235 emendas, e nenhuma das 20 cidades de fora."
+      },
+
+      "secoes": [
+        {
+          "tipo": "obras",
+          "id": "obras",
+          "olho": "O que saiu do papel",
+          "titulo": "As obras que a região esperava",
+          "texto": "Cidade pequena não recebe obra grande por acaso. Recebe porque alguém levou o pedido do prefeito até onde o orçamento é decidido, e voltou para cobrar. Estas são as maiores destinações do mandato na AMUREL.",
+          "itens": [
+            {
+              "destaque": true,
+              "selo": "A maior da região",
+              "valor": 5900000,
+              "casas": 1,
+              "titulo": "Ginásio de Esportes · Sangão",
+              "texto": "Uma cidade de pouco mais de dez mil habitantes ganhando o maior equipamento esportivo do mandato. É onde a escola faz educação física, o time treina e a cidade inteira se encontra."
+            },
+            {
+              "valor": 4316000,
+              "casas": 1,
+              "titulo": "Infraestrutura viária · Pescaria Brava",
+              "texto": "Cidade pequena, investimento gigante: o pacote de infraestrutura viária da Bancada do Sul somado à pavimentação do trecho complementar da Av. Eliete de Souza, no Sertão de Cima.",
+              "fonte": "Duas destinações somadas: R$ 2,316 mi (Bancada 2025, pago) e R$ 2 mi (2023, pago)."
+            },
+            {
+              "valor": 2518000,
+              "casas": 1,
+              "titulo": "Estrada Várzea das Canoas · Gravatal",
+              "texto": "Quem mora no interior de Gravatal conhece bem essa estrada, e sabe o que ela vira na chuva. Pavimentar é escoamento da produção, é turismo e é segurança. Interior também é prioridade.",
+              "fonte": "Emenda de bancada 2026, aguardando portaria."
+            },
+            {
+              "valor": 2500000,
+              "casas": 1,
+              "titulo": "Asfalto e sinalização · Capivari de Baixo",
+              "texto": "Reperfilagem com sinalização das ruas Manoel Pedro Flor, João Goulart e José Domingos Bitencourt, mais um pacote de recuperação asfáltica de vias. Rua boa não é só asfalto: é faixa, placa e travessia.",
+              "fonte": "Duas destinações somadas: R$ 1,5 mi (2023) e R$ 1 mi (2025, pago)."
+            },
+            {
+              "valor": 2316000,
+              "casas": 1,
+              "titulo": "Rua Vereador Elias Bussolo · Orleans",
+              "texto": "Pavimentação garantida por emenda de bancada e já paga. Orleans é da AMREC, mas divide com a AMUREL a mesma estrada e o mesmo hospital de referência.",
+              "fonte": "Emenda de bancada 2025, paga."
+            },
+            {
+              "valor": 1250000,
+              "casas": 2,
+              "titulo": "Rua Vergílio Serafim Fernandes · Termas de Gravatal",
+              "texto": "Asfalto no coração do polo termal, onde a estrada é a porta de entrada do turista e o cartão de visita da cidade."
+            },
+            {
+              "valor": 1000000,
+              "titulo": "Ponta das Pedras · Laguna",
+              "texto": "Pavimentação asfáltica da Rua Vereador José Tomé Machado de Souza, num bairro que convive com a maré e esperava o asfalto havia anos."
+            },
+            {
+              "valor": 700000,
+              "titulo": "SUS em Treze de Maio",
+              "texto": "Recursos para ampliar e qualificar os atendimentos do SUS no município e na região, porque na cidade pequena a fila do exame é resolvida com custeio, não com discurso."
+            }
+          ]
+        },
+
+        {
+          "tipo": "obras",
+          "id": "bancada",
+          "classe": "",
+          "olho": "Bancada do Sul",
+          "titulo": "O que só sai quando a região age junta",
+          "texto": "Tem obra que nenhuma emenda individual paga e nenhuma prefeitura resolve sozinha. Sai pela Bancada do Sul, que reúne os deputados da região em torno de uma pauta só. Pepê Collaço <b>coordenou a bancada entre 2024 e abril de 2025</b>, período em que estas frentes foram destinadas.",
+          "itens": [
+            {
+              "destaque": true,
+              "selo": "Projeto executivo",
+              "valor": 5000000,
+              "titulo": "Projeto dos Molhes da Barra e redragagem do Rio Tubarão",
+              "texto": "Recurso de bancada para o <b>projeto executivo</b> da dragagem da área do Porto de Laguna, com derrocagem e remodelagem dos molhes. É a etapa que destrava a obra: sem projeto, não há licitação nem execução. A ordem de serviço dos levantamentos foi assinada em setembro de 2025, e a redragagem do Rio Tubarão entrou como prioridade na LDO estadual de 2026.",
+              "fonte": "Emenda de bancada 2024, publicada. O recurso custeia o projeto, não a execução da obra."
+            },
+            {
+              "valor": 6000000,
+              "titulo": "Av. Pedro Zapelini · Tubarão",
+              "texto": "Pavimentação e drenagem pluvial da avenida e da Rua Doze de Outubro, abrindo a ligação que a cidade pede há anos.",
+              "fonte": "R$ 6 milhões garantidos pela Bancada do Sul, dos quais R$ 2 milhões indicados por este mandato."
+            },
+            {
+              "titulo": "Enrocamento do Rio Capivari",
+              "texto": "Contenção das margens em Capivari de Baixo, para proteger quem mora na beira do rio das cheias que voltam todo ano.",
+              "fonte": "Obra da pauta da bancada. O valor total está em conferência com o gabinete e por isso não é anunciado aqui."
+            },
+            {
+              "titulo": "Túnel do Morro dos Cavalos · BR-101",
+              "texto": "O Sul não pode continuar refém de um único caminho. Depois de mais um acidente grave, a bancada apresentou moção e pediu audiência com o Ministério dos Transportes para destravar o túnel."
+            },
+            {
+              "titulo": "Barra do Camacho",
+              "texto": "O desassoreamento do canal não é problema só de Jaguaruna: mexe com a pesca, com a maricultura e com o complexo lagunar inteiro."
+            },
+            {
+              "titulo": "Aeroporto de Jaguaruna e Porto de Imbituba",
+              "texto": "Os dois modais que podem mudar a economia da região. Estão dentro da AMUREL e servem do Sul inteiro para fora."
+            }
+          ]
+        },
+
+        {
+          "tipo": "chips",
+          "id": "municipios",
+          "olho": "Nenhum ficou de fora",
+          "titulo": "Os 20 municípios",
+          "texto": "A AMUREL tem 20 cidades, incluindo Garopaba e Paulo Lopes. Todas as 20 receberam emenda deste mandato, da maior à que tem pouco mais de dois mil habitantes. É fácil lembrar de quem vota muito; o teste é lembrar de quem vota pouco.",
+          "fonte": { "tipo": "coordenacao", "chave": "AMUREL" },
+          "esperado": 20,
+          "nota": "Valores destinados entre 2023 e 2026, somando emendas impositivas, transferências especiais, emendas de bancada e demais transferências registradas no controle do gabinete."
+        },
+
+        {
+          "tipo": "leis",
+          "id": "leis",
+          "olho": "Não é só recurso",
+          "titulo": "O que virou lei",
+          "texto": "Emenda leva dinheiro para uma cidade. Lei muda a regra para as 295 cidades do Estado, e continua valendo depois que o mandato acaba. O selo de cada card sai direto do sistema da Assembleia: onde está escrito o número da lei, é lei sancionada.",
+          "grupos": [
+            {
+              "itens": [
+                {
+                  "codigo": "PL./0281/2023",
+                  "titulo": "Testes rápidos em farmácias",
+                  "texto": "Autoriza farmácias e drogarias a realizar exames clínicos e testes rápidos, ampliando o acesso à saúde básica em cidade pequena, onde o laboratório é longe e a fila é grande."
+                },
+                {
+                  "codigo": "PL./0257/2025",
+                  "titulo": "Energia solar para hospitais filantrópicos",
+                  "texto": "Permite destinar recursos do Fundo Social à instalação de sistemas fotovoltaicos em hospitais filantrópicos. Menos conta de luz é mais dinheiro no atendimento, e vale para o Nossa Senhora da Conceição, o Santa Terezinha e o Caridade."
+                },
+                {
+                  "codigo": "PL./0265/2022",
+                  "titulo": "Rota Turística das Águas Termais",
+                  "texto": "Institui a rota estadual e inclui nela os municípios do Sul, entre eles Gravatal e Pedras Grandes. Turismo termal é emprego o ano inteiro, não só na temporada."
+                },
+                {
+                  "codigo": "PL./0269/2022",
+                  "titulo": "Incentivo à ovinocaprinocultura",
+                  "texto": "Política estadual de apoio técnico, crédito e inclusão da carne ovina e caprina em escolas e hospitais. O que a suinocultura fez pelo Oeste, a ovelha pode fazer pelo pequeno produtor daqui."
+                },
+                {
+                  "codigo": "PL./0259/2025",
+                  "titulo": "Ressarcimento a municípios por atraso de repasse",
+                  "texto": "Proposta para que a prefeitura que precisa usar recurso próprio, quando o Estado atrasa ou suspende um repasse, seja ressarcida. O projeto foi retirado de tramitação e a pauta segue em aberto."
+                }
+              ]
+            },
+            {
+              "titulo": "Bandeira Autismo",
+              "itens": [
+                {
+                  "codigo": "PL./0266/2022",
+                  "titulo": "Cine Azul",
+                  "texto": "Incentiva sessões de cinema adaptadas a crianças e adolescentes com autismo e suas famílias: som mais baixo, luz acesa e liberdade para se mover."
+                },
+                {
+                  "codigo": "PL./0322/2023",
+                  "titulo": "Protocolo Individualizado de Avaliação (PIA)",
+                  "texto": "Garante avaliação adaptada ao estudante com TEA: mais tempo, ambiente com menos estímulo, enunciado direto. Não reduz o conteúdo exigido, muda a forma de perguntar."
+                },
+                {
+                  "codigo": "PL./0052/2026",
+                  "titulo": "Continuidade do segundo professor",
+                  "texto": "Dá preferência a que o segundo professor do estudante com TEA seja o mesmo do ano anterior. Uma criança com autismo não precisa recomeçar todo ano: precisa de vínculo."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "tipo": "obras",
+          "id": "autismo",
+          "classe": "",
+          "olho": "Bandeira do mandato",
+          "titulo": "Autismo: da terapia à política pública",
+          "texto": "É a pauta que este mandato levantou primeiro e continua carregando. Na AMUREL são <b>R$ 3,9 milhões em 20 emendas</b> ligadas ao autismo, em 11 municípios. E, acima do recurso, uma estrutura para que a política pública não dependa de emenda nenhuma.",
+          "itens": [
+            {
+              "destaque": true,
+              "titulo": "Frente Parlamentar em Defesa da Pessoa com Autismo",
+              "texto": "Criada por este mandato na Assembleia, é a origem institucional do Censo do Autismo e dos seminários de qualificação que rodaram o Estado."
+            },
+            {
+              "titulo": "Censo do Autismo",
+              "texto": "Santa Catarina é o primeiro estado do país a mapear as pessoas com TEA numa plataforma própria, executada com as universidades comunitárias. Política pública boa começa por saber quantos são e onde estão."
+            },
+            {
+              "valor": 3900439.24,
+              "casas": 1,
+              "titulo": "Equoterapia e terapia ocupacional",
+              "texto": "Emendas para custeio de equoterapia, terapia ocupacional, ecoterapia e salas sensoriais em Armazém, Braço do Norte, Capivari de Baixo, Gravatal, Jaguaruna, Laguna, Pedras Grandes, Sangão, São Ludgero, São Martinho e Tubarão."
+            }
+          ]
+        },
+
+        {
+          "tipo": "pautas",
+          "id": "pautas",
+          "classe": "faixa-clara",
+          "olho": "O que está em jogo agora",
+          "titulo": "As pautas que são de todo mundo",
+          "texto": "Tem obra que nenhuma prefeitura da AMUREL resolve sozinha, porque o problema atravessa municípios. É aí que ter deputado da região deixa de ser detalhe e vira necessidade.",
+          "itens": [
+            {
+              "titulo": "Redragagem do Rio Tubarão e molhes da barra",
+              "texto": "O projeto executivo está contratado e a obra entrou na LDO de 2026. Destrava o Porto de Laguna, a pesca e o complexo lagunar de uma vez, e beneficia Laguna, Tubarão, Imaruí, Pescaria Brava e Jaguaruna ao mesmo tempo."
+            },
+            {
+              "titulo": "SC-370 · Tubarão a Braço do Norte",
+              "texto": "Duplicação e revitalização da rodovia que liga a colônia ao litoral. É a estrada da produção do sul do Estado e não aguenta mais o movimento que carrega hoje."
+            },
+            {
+              "titulo": "Aeroporto de Jaguaruna",
+              "texto": "O aeroporto do Sul catarinense só cumpre o papel dele com voos regulares e infraestrutura à altura. Está no meio da AMUREL e serve a região inteira."
+            },
+            {
+              "titulo": "Porto de Imbituba",
+              "texto": "Fortalecer o porto é gerar emprego em Imbituba e escoar a produção de todo o entorno. Porto forte puxa a economia de quem está a cinquenta quilômetros dele."
+            },
+            {
+              "titulo": "BR-101 e o Morro dos Cavalos",
+              "texto": "O Sul não pode continuar refém de um único caminho. Túnel, rotas alternativas e melhorias na BR-101 são pauta das 20 cidades."
+            },
+            {
+              "titulo": "Hospitais filantrópicos",
+              "texto": "Nossa Senhora da Conceição em Tubarão, Santa Terezinha em Braço do Norte, Caridade em Jaguaruna. São eles que atendem quando a UPA lota, e vivem de repasse que atrasa."
+            }
+          ]
+        },
+
+        {
+          "tipo": "imprensa",
+          "id": "imprensa",
+          "classe": "",
+          "olho": "Na imprensa",
+          "titulo": "O que os jornais da região registraram",
+          "texto": "Reportagens de veículos independentes do Sul catarinense. Estão aqui para contexto e para quem quiser conferir na fonte: cada card abre a matéria original.",
+          "itens": [
+            { "id": 48, "resumo": "Assinada a ordem de serviço dos levantamentos e projetos de dragagem, derrocagem e remodelagem dos molhes do Porto de Laguna." },
+            { "id": 46, "resumo": "A redragagem do Rio Tubarão entra como prioridade na Lei de Diretrizes Orçamentárias de 2026, por emenda da Bancada do Sul." },
+            { "id": 26, "resumo": "Eleito presidente da Comissão de Constituição e Justiça da Alesc, o primeiro parlamentar da AMUREL a ocupar o cargo." },
+            { "id": 34, "resumo": "A Bancada do Sul cobra urgência no túnel do Morro dos Cavalos depois de mais um acidente grave na BR-101." },
+            { "id": 60, "resumo": "Balanço dos investimentos na região e defesa de mais representatividade política para a AMUREL." }
+          ]
+        },
+
+        {
+          "tipo": "redes",
+          "id": "redes",
+          "olho": "Nas redes",
+          "titulo": "Como foi, contado na hora",
+          "texto": "Registros publicados no dia em que a coisa aconteceu, com o alcance que tiveram.",
+          "itens": [
+            { "shortcode": "DWemlKZkQn7" },
+            { "shortcode": "DPHWKnsgF2k" },
+            { "shortcode": "DIhbyUfJ64i" },
+            { "shortcode": "DaIYzmCga4k" },
+            { "shortcode": "DXxPuwKhZLj" },
+            { "shortcode": "DWlyjIAgJDv" }
+          ],
+          "nota": "Números de curtidas e comentários conforme apurados no Instagram e no Facebook do mandato."
+        }
+      ],
+
+      "fecho": {
+        "lema": "Uma Tubarão forte depende de um Sul forte",
+        "pincel": "forte",
+        "apoio": "20 cidades, 235 emendas, R$ 88 milhões. Dia 4 de outubro, vote em quem trabalha pela região."
+      }
+    },
+
+    "por-tubarao": {
+      "slug": "por-tubarao",
+      "tipo": "cidade",
+      "nome": "Tubarão",
+      "local": "Tubarão",
+
+      "seo": {
+        "titulo": "Quem faz por Tubarão",
+        "descricao": "R$ 18,9 milhões destinados a Tubarão em 45 emendas: mais de 60 ruas com recurso, o projeto dos molhes e da redragagem do Rio Tubarão, a Av. Pedro Zapelini, saúde, segurança, educação e entidades.",
+        "ogDescricao": "R$ 18,9 milhões em 45 emendas para Tubarão. Mais de 60 ruas com recurso destinado, o projeto dos molhes e a Av. Pedro Zapelini."
+      },
+
+      "compartilhar": "Quem faz por Tubarão: R$ 18,9 milhões em 45 emendas, mais de 60 ruas com recurso destinado. Olha a conta:",
+
+      "conferir": {
+        "municipio.TUBARAO.valor": 18966127.05,
+        "municipio.TUBARAO.n": 45
+      },
+
+      "hero": {
+        "titulo": [
+          { "estilo": "leve", "texto": "quem" },
+          { "estilo": "forte", "texto": "FAZ" },
+          { "estilo": "leve", "texto": "por" },
+          { "estilo": "pincel", "texto": "TUBARÃO" }
+        ],
+        "frase": "Aqui eu nasci, fui vereador três vezes e fui vice-prefeito. Conheço o nome da rua antes de alguém me mandar o pedido. <b>De Tubarão, para Tubarão</b> não é slogan: é de onde a conta abaixo saiu.",
+        "valor": 18966127.05,
+        "casas": 1,
+        "legenda": "destinados a Tubarão em 45 emendas do mandato",
+        "ancora": "ruas"
+      },
+
+      "placar": [
+        { "valor": 18966127.05, "casas": 1, "legenda": "destinados à cidade" },
+        { "texto": "45", "legenda": "emendas em Tubarão" },
+        { "texto": "+60", "legenda": "ruas com recurso destinado" },
+        { "valor": 5000000, "legenda": "o projeto dos molhes e da redragagem" }
+      ],
+
+      "pergunta": {
+        "olho": "A pergunta que importa",
+        "titulo": "Faz diferença ter um representante da nossa cidade?",
+        "texto": "Tubarão tem quase cem mil habitantes e é a maior cidade da AMUREL. Mas tamanho não garante lugar na mesa onde o orçamento do Estado é decidido: garante quem senta nela. Em quatro anos, isso virou <b>R$ 18,9 milhões</b> em 45 emendas, mais de 60 ruas com recurso e a presidência da comissão mais estratégica da Assembleia."
+      },
+
+      "secoes": [
+        {
+          "tipo": "chips",
+          "id": "ruas",
+          "olho": "Onde mais aparece",
+          "titulo": "Mais de 60 ruas com recursos destinados",
+          "texto": "Pavimentação, drenagem, rede de esgoto, reperfilagem, redes subterrâneas. Tudo o que este mandato destinou para infraestrutura em Tubarão está numa lista só, bairro por bairro, com o traçado no mapa. Se você quer saber da sua rua, é lá que se procura.",
+          "itens": [
+            { "nome": "Rua Apolônia Mateus Gomes" },
+            { "nome": "Rua Arino Luiz da Silva" },
+            { "nome": "Rua das Flores" },
+            { "nome": "Rua Jardim das Estrelas" },
+            { "nome": "Rua Maurício Israel Lemos" },
+            { "nome": "Rua Severino Favarin" },
+            { "nome": "Rua Lorival Silveira Corrêa" },
+            { "nome": "Rua Pedro Isidoro da Silva" },
+            { "nome": "Rua Dilma da Costa Guimarães" },
+            { "nome": "Rua Adolfo José de Souza" },
+            { "nome": "Rua Dorivalda Bristot" },
+            { "nome": "Rua Jovencio Bernardo" },
+            { "nome": "Rua Sílvio Menegaz" },
+            { "nome": "Rua Irineu Menegaz" },
+            { "nome": "Rua Manoel Pedro" },
+            { "nome": "Rua Tereza Marcon Margotti" },
+            { "nome": "Rua José da Cruz" },
+            { "nome": "Rua Zacharias Corrêa de Souza" },
+            { "nome": "Rua Domingos Margotti" },
+            { "nome": "Rua Júlio Pozza" },
+            { "nome": "Av. Visconde de Barbacena" },
+            { "nome": "Sanga do Lajeado" },
+            { "nome": "e mais 47" }
+          ],
+          "nota": "A lista completa traz as 69 ruas levantadas pelo gabinete, com bairro, CEP e o traçado de cada uma no mapa.",
+          "botao": { "texto": "Veja todas as ruas", "href": "../../tubarao/ruas/" }
+        },
+
+        {
+          "tipo": "obras",
+          "id": "obras",
+          "olho": "Grandes obras",
+          "titulo": "O que muda a cara da cidade",
+          "texto": "Duas frentes que Tubarão persegue há décadas, garantidas por emenda de bancada, mais a infraestrutura que aparece no dia a dia de quem mora aqui.",
+          "itens": [
+            {
+              "destaque": true,
+              "selo": "Projeto executivo",
+              "valor": 5000000,
+              "titulo": "Projeto dos Molhes da Barra e redragagem do Rio Tubarão",
+              "texto": "Recurso de bancada para o <b>projeto executivo</b> da dragagem da área do Porto de Laguna, com derrocagem e remodelagem dos molhes. Tubarão sabe o que é a água subir: é disso que se trata. A ordem de serviço dos levantamentos foi assinada em setembro de 2025, e a redragagem do Rio Tubarão entrou na LDO estadual de 2026.",
+              "fonte": "Emenda de bancada 2024, publicada. O recurso custeia o projeto, não a execução da obra."
+            },
+            {
+              "valor": 6000000,
+              "titulo": "Av. Pedro Zapelini",
+              "texto": "Pavimentação e drenagem pluvial de 410 metros da avenida e de 312 metros da Rua Doze de Outubro. É a abertura que desafoga o trânsito de quem cruza a cidade todo dia.",
+              "fonte": "R$ 6 milhões garantidos pela Bancada do Sul, dos quais R$ 2 milhões indicados por este mandato."
+            },
+            {
+              "valor": 1500000,
+              "casas": 1,
+              "titulo": "Pavimentação de vias do município",
+              "texto": "Asfalto em ruas de bairro, das que não saem no jornal mas mudam a vida de quem tira o carro da garagem na chuva.",
+              "fonte": "Somam-se a esta outras destinações de pavimentação e drenagem: veja a lista completa de ruas."
+            },
+            {
+              "valor": 750000,
+              "titulo": "Rua Adolfo José de Souza · Sanga do Lajeado",
+              "texto": "A pavimentação que a comunidade esperava havia anos, anunciada ao lado da prefeitura. Foi a entrega mais comemorada do mandato nas redes.",
+              "fonte": "Emenda paga."
+            },
+            {
+              "valor": 350000,
+              "titulo": "Redes subterrâneas no centro",
+              "texto": "Tirar a fiação do poste é obra que ninguém vê e todo mundo sente: calçada livre, centro mais bonito e menos apagão no temporal."
+            }
+          ]
+        },
+
+        {
+          "tipo": "obras",
+          "id": "areas",
+          "classe": "",
+          "olho": "Por área",
+          "titulo": "Quem cuida de Tubarão",
+          "texto": "Fora da infraestrutura, o recurso do mandato foi para onde a cidade pediu: hospital, escola, segurança e as entidades que seguram a ponta todo dia.",
+          "itens": [
+            {
+              "titulo": "Saúde e assistência social",
+              "texto": "Hospital Nossa Senhora da Conceição, com recurso para atendimento SUS e custeio. STAN, Rede Feminina de Combate ao Câncer e APAE Tubarão, que atendem quem mais precisa e vivem de repasse."
+            },
+            {
+              "titulo": "Segurança",
+              "texto": "Viaturas para a Polícia Militar e recursos para o Corpo de Bombeiros. Segurança não se resolve só com discurso: se resolve com carro na rua e equipamento que funciona."
+            },
+            {
+              "titulo": "Educação e inovação",
+              "texto": "Sigma Park e o Centro de Inovação, o projeto de robótica para jovens e investimentos na rede de ensino, incluindo o C.E. Santo Afonso."
+            },
+            {
+              "titulo": "Autismo (TEA)",
+              "texto": "Equoterapia e terapia ocupacional pela APAE, além dos seminários de qualificação que começaram justamente em Tubarão."
+            },
+            {
+              "titulo": "Esporte e cultura",
+              "texto": "Orquestra Santa Teresinha do Menino Jesus, projetos esportivos e as entidades que fazem a cidade se encontrar fora do trabalho."
+            },
+            {
+              "titulo": "Entidades",
+              "texto": "Clube de Mães, COMBEMTU, Rotary Club, CDL e conselhos comunitários. É o tecido que segura o bairro quando o poder público demora."
+            }
+          ]
+        },
+
+        {
+          "tipo": "leis",
+          "id": "leis",
+          "olho": "Não é só recurso",
+          "titulo": "O que virou lei",
+          "texto": "A cadeira na Assembleia serve para duas coisas: trazer recurso e mudar a regra. O selo de cada card sai direto do sistema da Alesc: onde está escrito o número da lei, é lei sancionada.",
+          "grupos": [
+            {
+              "itens": [
+                {
+                  "codigo": "PL./0281/2023",
+                  "titulo": "Testes rápidos em farmácias",
+                  "texto": "Autoriza farmácias e drogarias a realizar exames clínicos e testes rápidos, ampliando o acesso à saúde básica."
+                },
+                {
+                  "codigo": "PL./0257/2025",
+                  "titulo": "Energia solar para hospitais filantrópicos",
+                  "texto": "Permite destinar recursos do Fundo Social a sistemas fotovoltaicos em hospitais filantrópicos, como o Nossa Senhora da Conceição. Menos conta de luz é mais dinheiro no atendimento."
+                },
+                {
+                  "codigo": "PL./0265/2022",
+                  "titulo": "Rota Turística das Águas Termais",
+                  "texto": "Institui a rota estadual e inclui nela os municípios do Sul, colocando a região no mapa do turismo termal."
+                },
+                {
+                  "codigo": "PL./0051/2026",
+                  "titulo": "Instituto Rota Sul de Ciência e Tecnologia",
+                  "texto": "Reconhece como de utilidade pública estadual o instituto de Tubarão que trabalha com ciência, tecnologia e formação. O título abre porta para convênio e recurso público."
+                },
+                {
+                  "codigo": "PL./0665/2025",
+                  "titulo": "Associação Conexão Comunitária",
+                  "texto": "Utilidade pública estadual para a associação de Tubarão, o passo que permite firmar convênio com o Estado."
+                },
+                {
+                  "codigo": "PL./0921/2025",
+                  "titulo": "Conselho Comunitário do Sertão dos Corrêas",
+                  "texto": "Utilidade pública para o conselho comunitário do Sertão dos Corrêas, em Tubarão."
+                }
+              ]
+            },
+            {
+              "titulo": "Bandeira Autismo",
+              "itens": [
+                {
+                  "codigo": "PL./0266/2022",
+                  "titulo": "Cine Azul",
+                  "texto": "Incentiva sessões de cinema adaptadas a crianças e adolescentes com autismo e suas famílias."
+                },
+                {
+                  "codigo": "PL./0322/2023",
+                  "titulo": "Protocolo Individualizado de Avaliação (PIA)",
+                  "texto": "Garante avaliação adaptada ao estudante com TEA. Não reduz o conteúdo exigido, muda a forma de perguntar."
+                },
+                {
+                  "codigo": "PL./0052/2026",
+                  "titulo": "Continuidade do segundo professor",
+                  "texto": "Dá preferência a que o segundo professor do estudante com TEA seja o mesmo do ano anterior."
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "tipo": "pautas",
+          "id": "pautas",
+          "classe": "",
+          "olho": "O que está em jogo agora",
+          "titulo": "O que Tubarão ainda precisa destravar",
+          "texto": "Recurso destinado é meio caminho. O outro meio é cobrar até a máquina do Estado entregar.",
+          "itens": [
+            {
+              "titulo": "Redragagem do Rio Tubarão",
+              "texto": "Projeto contratado e obra incluída na LDO de 2026. A cidade que viveu 1974 não pode depender da sorte na próxima enchente."
+            },
+            {
+              "titulo": "Molhes da Barra de Laguna",
+              "texto": "A remodelagem dos molhes é o que devolve calado ao canal e destrava o Porto de Laguna, a pesca e o complexo lagunar inteiro."
+            },
+            {
+              "titulo": "Av. Pedro Zapelini",
+              "texto": "Com o recurso da bancada garantido, a cobrança agora é por documentação e ordem de serviço para a obra sair do papel."
+            },
+            {
+              "titulo": "SC-370 · Tubarão a Braço do Norte",
+              "texto": "Duplicação e revitalização da estrada da produção, que liga a colônia ao litoral e não aguenta mais o movimento que carrega."
+            },
+            {
+              "titulo": "Hospital Nossa Senhora da Conceição",
+              "texto": "O hospital de referência da região atende bem além de Tubarão e vive de repasse que atrasa. Custeio e regras estáveis de repasse são pauta permanente."
+            },
+            {
+              "titulo": "Rodovia Aggeu Medeiros e Estrada da Jabuticabeira",
+              "texto": "As ligações internas que escoam a produção e encurtam o caminho de quem mora fora do centro."
+            }
+          ]
+        },
+
+        {
+          "tipo": "imprensa",
+          "id": "imprensa",
+          "classe": "faixa-clara",
+          "olho": "Na imprensa",
+          "titulo": "O que os jornais registraram",
+          "texto": "Reportagens de veículos independentes. Cada card abre a matéria original, para quem quiser conferir na fonte.",
+          "itens": [
+            { "id": 26, "resumo": "Eleito presidente da Comissão de Constituição e Justiça da Alesc, o primeiro parlamentar da região a ocupar o cargo." },
+            { "id": 46, "resumo": "A redragagem do Rio Tubarão entra como prioridade na Lei de Diretrizes Orçamentárias de 2026." },
+            { "id": 48, "resumo": "Assinada a ordem de serviço dos projetos de dragagem e remodelagem dos molhes de acesso ao Porto de Laguna." },
+            { "id": 15, "resumo": "O projeto de redragagem do Rio Tubarão passa a ser atualizado pela UFSC." },
+            { "id": 77, "resumo": "Cerca de mil pessoas na prestação de contas do mandato em Tubarão." }
+          ]
+        },
+
+        {
+          "tipo": "redes",
+          "id": "redes",
+          "olho": "Nas redes",
+          "titulo": "Como foi, contado na hora",
+          "texto": "Registros publicados no dia em que a coisa aconteceu, com o alcance que tiveram.",
+          "itens": [
+            { "shortcode": "DHl9vFapcFw" },
+            { "shortcode": "DPHWKnsgF2k" },
+            { "shortcode": "DIhbyUfJ64i" },
+            { "shortcode": "CyGrD0YOwKY" },
+            { "shortcode": "DWemlKZkQn7" }
+          ],
+          "nota": "Números de curtidas e comentários conforme apurados no Instagram e no Facebook do mandato."
+        }
+      ],
+
+      "fecho": {
+        "lema": "De Tubarão, para Tubarão",
+        "pincel": "Tubarão",
+        "apoio": "45 emendas, mais de 60 ruas, R$ 18,9 milhões. Dia 4 de outubro, vote em quem é daqui."
+      }
+    }
+  }
+}

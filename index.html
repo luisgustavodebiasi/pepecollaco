@@ -396,8 +396,16 @@
       letter-spacing: 0.14em; text-transform: uppercase;
       padding: 6px 12px; border-radius: 2px; border: 1px solid transparent;
     }
-    .selo-aprovado { background: var(--cor-positivo); color: var(--pp-tinta); }
+    /* O rótulo vem do e-Legis da Alesc (quem-faz/dados/leis.json): onde há
+       número de lei, é lei sancionada. Nunca escrever status à mão aqui. */
+    .selo-lei { background: var(--cor-positivo); color: var(--pp-tinta); }
     .selo-comissao { border-color: rgba(255,255,255,.34); color: var(--cor-texto-suave); }
+    .selo-encerrado { border-color: rgba(255,255,255,.2); color: var(--cor-texto-suave); opacity: .8; }
+    .lei-fonte {
+      font-size: 12.5px; color: var(--cor-texto-suave);
+      text-decoration: underline; text-underline-offset: 3px;
+    }
+    .lei-fonte:hover { color: var(--cor-acento); }
     .leis-grupo {
       display: flex; align-items: center; gap: 12px;
       margin: 46px 0 0; font-size: 12px; font-weight: var(--peso-forte);
@@ -505,7 +513,9 @@
     <li><a href="#bandeiras" onclick="fecharNav()">Bandeiras</a></li>
     <li><a href="#leis" onclick="fecharNav()">Nossas leis</a></li>
     <li><a href="#resultados" onclick="fecharNav()">Resultados</a></li>
-    <li><a href="#autismo" onclick="fecharNav()">Autismo</a></li>
+    <!-- As páginas "quem faz" só eram alcançáveis por link direto de WhatsApp;
+         entram aqui para existirem dentro do site. -->
+    <li><a href="/quem-faz/por-tubarao/">Quem faz</a></li>
     <li><a href="#contato" class="nav-cta" onclick="fecharNav()">Contato</a></li>
   </ul>
   <button class="nav-ham" id="ham" aria-label="Abrir menu" aria-expanded="false" onclick="alternarNav()">
@@ -553,11 +563,11 @@
         <span class="faixa-lbl">Número na urna</span>
       </div>
       <div class="faixa-item">
-        <span class="faixa-num" data-contar="494">494</span>
+        <span class="faixa-num" data-contar="525">525</span>
         <span class="faixa-lbl">Emendas no mandato</span>
       </div>
       <div class="faixa-item">
-        <span class="faixa-num">150+</span>
+        <span class="faixa-num">114</span>
         <span class="faixa-lbl">Municípios atendidos</span>
       </div>
       <div class="faixa-item">
@@ -713,59 +723,69 @@
     <h2 class="titulo rv d1" id="leis-h">Nossas <em>leis.</em></h2>
     <p class="lead rv d2">Poucos projetos, grandes impactos.</p>
 
+    <!-- leis:inicio (gerado por quem-faz/build/atualizar-home.cjs) -->
     <div class="leis">
       <article class="lei rv">
         <h3 class="lei-t">Testes rápidos em farmácias</h3>
-        <p class="lei-d">Autoriza farmácias a realizar mais de 47 exames clínicos e testes rápidos, ampliando o acesso à saúde básica.</p>
-        <span class="selo selo-aprovado">Aprovado</span>
+        <p class="lei-d">Autoriza farmácias e drogarias a realizar exames clínicos e testes rápidos, ampliando o acesso à saúde básica.</p>
+        <span class="selo selo-lei">LEI Nº 19.011/2024</span>
+        <a class="lei-fonte" href="https://portalelegis.alesc.sc.gov.br/proposicoes/zja8V/tramitacoes" target="_blank" rel="noopener">PL 0281/2023 no e-Legis</a>
       </article>
 
       <article class="lei rv d1">
-        <h3 class="lei-t">Painéis solares para hospitais</h3>
-        <p class="lei-d">Reduz o gasto com energia elétrica, dá fôlego financeiro às instituições e libera recursos para o atendimento.</p>
-        <span class="selo selo-aprovado">Aprovado</span>
+        <h3 class="lei-t">Energia solar para hospitais</h3>
+        <p class="lei-d">Permite destinar recursos do Fundo Social a sistemas fotovoltaicos em hospitais filantrópicos. Menos conta de luz é mais dinheiro no atendimento.</p>
+        <span class="selo selo-lei">LEI Nº 19.785/2026</span>
+        <a class="lei-fonte" href="https://portalelegis.alesc.sc.gov.br/proposicoes/zjgRw/tramitacoes" target="_blank" rel="noopener">PL 0257/2025 no e-Legis</a>
       </article>
 
       <article class="lei rv d2">
         <h3 class="lei-t">Rota turística das águas termais</h3>
-        <p class="lei-d">Inclui municípios do Sul na rota das águas termais, fomentando o turismo na região.</p>
-        <span class="selo selo-aprovado">Aprovado</span>
+        <p class="lei-d">Institui a rota estadual e inclui nela os municípios do Sul, fomentando o turismo termal na região.</p>
+        <span class="selo selo-lei">LEI Nº 18.673/2023</span>
+        <a class="lei-fonte" href="https://portalelegis.alesc.sc.gov.br/proposicoes/z6QxN/tramitacoes" target="_blank" rel="noopener">PL 0265/2022 no e-Legis</a>
       </article>
 
       <article class="lei rv d3">
         <h3 class="lei-t">Incentivo à ovinocaprinocultura</h3>
         <p class="lei-d">Apoio técnico, campanhas de divulgação, inclusão desses alimentos em escolas e hospitais, linhas de crédito e incentivo a produtores.</p>
-        <span class="selo selo-aprovado">Aprovado</span>
+        <span class="selo selo-lei">LEI Nº 19.225/2025</span>
+        <a class="lei-fonte" href="https://portalelegis.alesc.sc.gov.br/proposicoes/KM2L5/tramitacoes" target="_blank" rel="noopener">PL 0269/2022 no e-Legis</a>
       </article>
 
       <article class="lei rv">
         <h3 class="lei-t">Ressarcimento a municípios por atraso de repasses</h3>
-        <p class="lei-d">Evita que prefeituras fiquem no prejuízo ao usar recursos próprios por atraso ou suspensão de repasses do Estado.</p>
-        <span class="selo selo-comissao">Em comissões</span>
+        <p class="lei-d">Proposta para que a prefeitura seja ressarcida quando precisa usar recurso próprio por atraso ou suspensão de repasse do Estado. O projeto foi retirado de tramitação e a pauta segue em aberto.</p>
+        <span class="selo selo-encerrado">RETIRADO</span>
+        <a class="lei-fonte" href="https://portalelegis.alesc.sc.gov.br/proposicoes/57GEm/tramitacoes" target="_blank" rel="noopener">PL 0259/2025 no e-Legis</a>
       </article>
     </div>
 
     <p class="leis-grupo rv">Bandeira Autismo</p>
-
     <div class="leis">
       <article class="lei rv">
         <h3 class="lei-t">Cine Azul</h3>
         <p class="lei-d">Incentivo a sessões de cinema adaptadas a crianças e adolescentes com autismo e suas famílias.</p>
-        <span class="selo selo-aprovado">Aprovado</span>
+        <span class="selo selo-lei">LEI Nº 19.160/2025</span>
+        <a class="lei-fonte" href="https://portalelegis.alesc.sc.gov.br/proposicoes/zwdaK/tramitacoes" target="_blank" rel="noopener">PL 0266/2022 no e-Legis</a>
       </article>
 
       <article class="lei rv d1">
         <h3 class="lei-t">Protocolo de inclusão de alunos autistas (PIA)</h3>
         <p class="lei-d">Atividades e avaliações adaptadas para promover aprendizagem de forma mais justa e inclusiva, seguindo padrões comprovados em outros estados.</p>
-        <span class="selo selo-comissao">Em comissões</span>
+        <span class="selo selo-comissao">EM COMISSÕES</span>
+        <a class="lei-fonte" href="https://portalelegis.alesc.sc.gov.br/proposicoes/z8DrL/tramitacoes" target="_blank" rel="noopener">PL 0322/2023 no e-Legis</a>
       </article>
 
       <article class="lei rv d2">
         <h3 class="lei-t">Continuidade do professor 2</h3>
         <p class="lei-d">Dá preferência a que o segundo professor do estudante com TEA seja o mesmo profissional que já o acompanhava no ano anterior.</p>
-        <span class="selo selo-comissao">Em comissões</span>
+        <span class="selo selo-comissao">EM COMISSÕES</span>
+        <a class="lei-fonte" href="https://portalelegis.alesc.sc.gov.br/proposicoes/zL6v3/tramitacoes" target="_blank" rel="noopener">PL 0052/2026 no e-Legis</a>
       </article>
     </div>
+    <!-- leis:fim -->
+
   </div>
 </section>
 
@@ -973,8 +993,8 @@
     <div class="ccj-numeros rv d2">
       <div class="ccj-num"><b>CCJ</b><span>Presidente da Comissão de Constituição e Justiça</span></div>
       <div class="ccj-num"><b>TEA</b><span>Frente Parlamentar do Autismo</span></div>
-      <div class="ccj-num"><b>494</b><span>Emendas registradas no mandato</span></div>
-      <div class="ccj-num"><b>150+</b><span>Municípios atendidos em SC</span></div>
+      <div class="ccj-num"><b>525</b><span>Emendas registradas no mandato</span></div>
+      <div class="ccj-num"><b>114</b><span>Municípios atendidos em SC</span></div>
     </div>
   </div>
 </section>
@@ -1018,6 +1038,9 @@
         <a href="#bandeiras">Bandeiras</a>
         <a href="#leis">Nossas leis</a>
         <a href="#resultados">Resultados</a>
+        <a href="/quem-faz/por-tubarao/">Por Tubarão</a>
+        <a href="/quem-faz/pela-amurel/">Pela AMUREL</a>
+        <a href="/tubarao/ruas/">As ruas de Tubarão</a>
         <a href="#contato">Contato</a>
       </nav>
     </div>

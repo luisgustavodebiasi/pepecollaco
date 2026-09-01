@@ -30,7 +30,7 @@
 
   /* As grades que ganham cascata. Elas perdem o .rv: quem anima é cada filho,
      e manter os dois faria a seção desaparecer duas vezes. */
-  const GRADES = '.placar, .obras, .chips, .portas, .pautas';
+  const GRADES = '.placar, .obras, .chips, .portas, .pautas, .leis, .imprensa, .redes';
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     raiz.classList.remove('js');          // devolve tudo visível e parado

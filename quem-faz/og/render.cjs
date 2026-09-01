@@ -23,42 +23,50 @@ const RAIZ = path.resolve(__dirname, '..', '..');   // pepecollaco-site/
 const { chromium } = require('playwright');
 
 /* Cada página e o que a OG dela mostra. Título curto, um número, uma linha.
-   Os valores vêm da apuração do CSV de emendas, ver o plano do projeto. */
+
+   Os números de por-tubarao e pela-amurel são apurados por
+   build/normalizar.cjs a partir de EMENDAS /emendas_site_historico.csv e
+   conferidos no build das páginas. Ao mexer neles aqui, rode
+   `node build/gerar-paginas.cjs` antes: se o valor não fechar com a base, o
+   build reclama.
+
+   As demais páginas ainda não foram migradas para o gerador e seus números
+   seguem escritos à mão, defasados em relação ao HTML publicado. */
 const PAGINAS = {
   'por-tubarao': {
     titulo: 'por',
     destaque: 'TUBARÃO',
-    numero: '+R$ 20',
+    numero: 'R$ 18,9',
     unidade: 'MILHÕES',
-    legenda: 'destinados à cidade em três anos de mandato',
+    legenda: 'destinados a Tubarão em 45 emendas do mandato',
   },
   'pelo-sul': {
     titulo: 'pelo',
     destaque: 'SUL',
-    numero: '+R$ 105',
+    numero: '+R$ 119',
     unidade: 'MILHÕES',
-    legenda: 'em 41 municípios do Sul Catarinense',
+    legenda: 'em 43 municípios do Sul Catarinense',
   },
   'pela-amurel': {
     titulo: 'pela',
     destaque: 'AMUREL',
-    numero: '+R$ 75',
+    numero: 'R$ 88',
     unidade: 'MILHÕES',
-    legenda: 'nos 18 municípios da AMUREL, sem deixar nenhum de fora',
+    legenda: 'nos 20 municípios da AMUREL, sem deixar nenhum de fora',
   },
   'pelo-autismo': {
     titulo: 'pelo',
     destaque: 'AUTISMO',
-    numero: 'R$ 4,6',
+    numero: 'R$ 4,7',
     unidade: 'MILHÕES',
     legenda: 'em terapia e acolhimento para famílias atípicas de 18 municípios',
   },
   'pela-educacao': {
     titulo: 'pela',
     destaque: 'EDUCAÇÃO',
-    numero: 'R$ 13',
+    numero: 'R$ 13,2',
     unidade: 'MILHÕES',
-    legenda: 'em creches, escolas e transporte escolar de 38 municípios',
+    legenda: 'em creches, escolas e transporte escolar de 39 municípios',
   },
   'pelas-cidades': {
     titulo: 'pelas',

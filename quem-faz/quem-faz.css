@@ -345,6 +345,13 @@ section { padding-block: clamp(52px, 9vw, 88px); }
 .obra .valor small { font-size: .48em; letter-spacing: .02em; }
 .obra p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--cor-texto-suave); }
 .obra.destaque { border-color: var(--cor-acento); background: rgba(255, 196, 0, .06); }
+/* Nota de procedência do valor: de onde saiu, em que status está, se é soma de
+   mais de uma emenda. É rodapé do card, não link — por isso sem sublinhado. */
+.obra-fonte {
+  margin: 2px 0 0; padding-top: 12px;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 12.5px; line-height: 1.45; color: var(--cor-texto-suave);
+}
 .obra .selo {
   align-self: flex-start;
   font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase;
@@ -390,6 +397,120 @@ section { padding-block: clamp(52px, 9vw, 88px); }
 @media (max-width: 720px) { .pautas li { grid-template-columns: 1fr; gap: 8px; } }
 .pautas h3 { color: var(--cor-texto); }
 .pautas p { margin: 0; color: var(--cor-texto-suave); font-size: 15.5px; line-height: 1.55; }
+
+/* ── Projetos de lei ──────────────────────────────────────────────────────
+   Vieram da seção #leis da home. Aqui ganham o número da lei, que é o que
+   realmente prova a coisa: "LEI Nº 19.011/2024" vale mais que "aprovado". */
+.leis { display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: 16px; }
+.lei {
+  background: var(--cor-fundo-campo);
+  border: 1px solid var(--cor-borda);
+  border-radius: 16px;
+  padding: clamp(22px, 4vw, 26px);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.lei-t {
+  font-size: 17px; font-weight: var(--peso-forte);
+  text-transform: uppercase; line-height: 1.18; margin: 0;
+  color: var(--cor-texto);
+}
+.lei-d { margin: 0; flex: 1; font-size: 14.5px; line-height: 1.55; color: var(--cor-texto-suave); }
+.lei-fonte {
+  font-size: 12.5px; color: var(--cor-texto-suave);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.lei-fonte:hover { color: var(--cor-acento); }
+
+/* O selo sempre diz por escrito o que aconteceu. Cor sozinha não comunica
+   estado, e o verde reprova contraste como texto (IDENTIDADE.md, regra 3):
+   por isso ele é fundo, com a tinta escura por cima. */
+.selo {
+  align-self: flex-start;
+  font-size: 11px; font-weight: var(--peso-forte);
+  letter-spacing: .14em; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 999px; border: 1px solid transparent;
+}
+.selo-lei { background: var(--cor-positivo); color: var(--pp-tinta); }
+.selo-comissao { border-color: rgba(255, 255, 255, .34); color: var(--cor-texto-suave); }
+.selo-encerrado { border-color: rgba(255, 255, 255, .2); color: var(--cor-texto-suave); opacity: .8; }
+
+.leis-grupo {
+  display: flex; align-items: center; gap: 12px;
+  margin: clamp(30px, 5vw, 44px) 0 18px;
+  font-size: 12px; font-weight: var(--peso-forte);
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+.leis-grupo::after { content: ""; flex: 1; height: 1px; background: var(--cor-borda); }
+
+/* ── Na imprensa ──────────────────────────────────────────────────────────
+   Bloco deliberadamente distinto do card de obra: o que a imprensa publicou
+   não é a mesma categoria de prova que a linha de uma emenda. */
+.imprensa { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.materia {
+  display: block;
+  padding: clamp(18px, 3.4vw, 22px);
+  background: var(--cor-fundo-campo);
+  border: 1px solid var(--cor-borda);
+  border-left: 3px solid var(--cor-acento);
+  border-radius: 12px;
+}
+.materia:hover { border-color: var(--cor-acento); }
+.materia-topo {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline;
+  font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+.materia-veiculo { color: var(--cor-acento); font-weight: var(--peso-forte); }
+.materia h3 {
+  margin: 8px 0 0; font-size: 16.5px; line-height: 1.3;
+  font-weight: var(--peso-forte); color: var(--cor-texto);
+}
+.materia p { margin: 7px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--cor-texto-suave); }
+.materia-ler {
+  display: inline-block; margin-top: 12px;
+  font-size: 13px; font-weight: var(--peso-forte);
+  letter-spacing: .06em; text-transform: uppercase; color: var(--cor-acento);
+}
+
+/* ── Nas redes ────────────────────────────────────────────────────────────
+   Carrossel de texto. Sem embed e sem thumbnail: o site não pode depender de
+   script de terceiro nem quebrar quando um post sai do ar. O engajamento real
+   é que faz o trabalho de prova social. */
+.redes {
+  margin: 0; padding: 4px 0 12px; list-style: none;
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(258px, 300px);
+  gap: 14px;
+  overflow-x: auto; overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+.redes > li { scroll-snap-align: start; }
+.post {
+  height: 100%;
+  display: flex; flex-direction: column; gap: 10px;
+  padding: clamp(18px, 3.4vw, 22px);
+  background: var(--cor-fundo-campo);
+  border: 1px solid var(--cor-borda);
+  border-radius: 14px;
+}
+.post:hover { border-color: var(--cor-acento); }
+.post-topo {
+  display: flex; gap: 8px; align-items: baseline;
+  font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+.post-rede { color: var(--cor-acento); font-weight: var(--peso-forte); }
+.post p { margin: 0; flex: 1; font-size: 14.5px; line-height: 1.5; color: var(--cor-texto); }
+.post-numeros {
+  display: flex; gap: 14px;
+  font-size: 13px; font-weight: var(--peso-forte); color: var(--cor-texto-suave);
+}
+.post-ver {
+  font-size: 12.5px; font-weight: var(--peso-forte);
+  letter-spacing: .06em; text-transform: uppercase; color: var(--cor-acento);
+}
+.redes-nota { margin: 14px 0 0; font-size: 13.5px; color: var(--cor-texto-suave); }
 
 /* ── Fecho ────────────────────────────────────────────────────────────────*/
 .fecho { text-align: center; }
@@ -568,6 +689,8 @@ footer a { text-decoration: underline; text-underline-offset: 3px; }
 /* ── Estados de toque e mouse ─────────────────────────────────────────────*/
 .obra, .placar div { transition: transform .2s ease, border-color .2s ease, background .2s ease; }
 .obra:hover { transform: translateY(-3px); border-color: var(--cor-acento); }
+.lei, .materia, .post { transition: transform .2s ease, border-color .2s ease; }
+.lei:hover, .materia:hover, .post:hover { transform: translateY(-3px); }
 .chips li { transition: transform .16s ease, border-color .16s ease; }
 .chips li:hover { transform: translateY(-2px); border-color: var(--cor-acento); }
 .portas a { transition: transform .2s ease, border-color .18s ease, background .18s ease; }
@@ -582,5 +705,7 @@ footer a { text-decoration: underline; text-underline-offset: 3px; }
   }
   .js .rv .olho::before { transform: none; transition: none; }
   html { scroll-behavior: auto; }
-  .btn:hover, .obra:hover, .chips li:hover, .portas a:hover { transform: none; }
+  .btn:hover, .obra:hover, .chips li:hover, .portas a:hover,
+  .lei:hover, .materia:hover, .post:hover { transform: none; }
+  .redes { scroll-snap-type: none; }
 }

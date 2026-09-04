@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Comunicação · Pepê Collaço 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   APRESENTAÇÃO · TEMA "ARENA DIGITAL" (deck 16:9)
+   Mesma linguagem do Plano Mestre e do Manual de Discursos.
+   ============================================================ */
+:root{
+  --ink:#061A3A; --ink-d:#04122B; --ink-2:#C3CFE0; --ink-3:#8FA0BC;
+  --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.24); --white:#fff;
+  --red:#FFD21F; --red-deep:#FFDD57; --navy:#3E72C4; --navy-2:#86B4F0;
+  --sun:#1FA64A; --sun-2:#0F8A3A; --green:#46D07D;
+  --tint-red:rgba(255,210,31,.10); --tint-navy:rgba(62,114,196,.15); --tint-sun:rgba(31,166,74,.14); --tint-green:rgba(70,208,125,.13);
+  --brush:
+    linear-gradient(118deg, transparent 0 19.6%, rgba(31,166,74,.06) 20% 20.9%, transparent 21.3%),
+    linear-gradient(118deg, transparent 0 38%, rgba(255,210,31,.05) 38.3% 39%, transparent 39.4%),
+    linear-gradient(118deg, transparent 0 58%, rgba(255,255,255,.035) 58.3% 59%, transparent 59.4%),
+    linear-gradient(118deg, transparent 0 78%, rgba(62,114,196,.07) 78.3% 79.4%, transparent 79.8%),
+    radial-gradient(130% 90% at 88% -12%, rgba(8,36,82,.85), transparent 58%),
+    radial-gradient(120% 90% at -10% 110%, rgba(15,138,58,.16), transparent 55%);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{background:var(--ink-d);color:#E7EDF7;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+
+/* ---------- Deck / scroll-snap ---------- */
+.deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth;scrollbar-width:none}
+.deck::-webkit-scrollbar{display:none}
+.slide{height:100vh;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;position:relative}
+.stage{
+  height:min(90vh, calc(94vw * 9 / 16));
+  aspect-ratio:16/9;
+  background:var(--ink);background-image:var(--brush);
+  border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.05);
+  position:relative;overflow:hidden;
+  container-type:size;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:5.5cqh 6cqw;
+  font-size:clamp(10px, 2.15cqh, 21px);
+}
+.stage>*{position:relative;z-index:2}
+
+/* number watermark */
+.snum{position:absolute;right:4cqw;top:1.5cqh;font-family:"Saira Condensed";font-weight:900;font-size:11cqh;color:rgba(255,210,31,.10);line-height:.8;transform:skewX(-6deg);z-index:1;letter-spacing:.01em}
+.foot{position:absolute;left:6cqw;bottom:3.2cqh;font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:1.55cqh;color:var(--ink-3);z-index:2}
+.foot .red{color:var(--red)}
+
+/* ---------- Tipografia de slide ---------- */
+.kick{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:2.0cqh;color:var(--red);margin:0 0 1.6cqh}
+h1.st,h2.st{font-family:"Saira Condensed";font-weight:900;text-transform:uppercase;color:#fff;letter-spacing:.005em;line-height:.98;margin:0}
+h2.st{font-size:6.6cqh}
+h1.st{font-size:9cqh;transform:skewX(-3deg);transform-origin:left}
+.st .y{color:var(--red)}
+.sub{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;font-size:3.2cqh;color:#EAF1FB;letter-spacing:.01em;margin:2.2cqh 0 0;line-height:1.06}
+.lead{font-size:2.5cqh;color:#DCE6F4;max-width:46em;margin:2cqh 0 0;line-height:1.42}
+.stripe{height:1.1cqh;width:16cqw;background:var(--red);border-radius:99px;margin:2.6cqh 0 0}
+.stripe:after{content:"";display:block;height:1.1cqh;width:9cqw;background:var(--sun);border-radius:99px;margin-top:.9cqh}
+p{margin:0}
+strong{color:#fff;font-weight:700}
+.hr{height:.35cqh;background:var(--sun);border-radius:2px;margin:2cqh 0;width:100%}
+
+/* ---------- Grids ---------- */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:2.2cqh 2.4cqw}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqh 2.2cqw}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.7cqh 1.7cqw}
+
+/* ---------- Cards ---------- */
+.card{border:1px solid var(--line);background:rgba(20,43,80,.55);border-radius:1.4cqh;padding:2.3cqh 2cqw}
+.card .cn{font-family:"Saira Condensed";font-weight:800;font-size:1.9cqh;color:var(--red);letter-spacing:.08em;text-transform:uppercase}
+.card .ct{font-family:"Saira Condensed";font-weight:800;font-size:2.9cqh;color:#fff;text-transform:uppercase;margin:.3cqh 0 .5cqh;line-height:1.02}
+.card p{font-size:2.0cqh;color:#D2DDED;line-height:1.32}
+.card.big .ct{font-size:3.6cqh}
+.card.big p{font-size:2.2cqh}
+.card.hl{border-color:rgba(255,210,31,.5);background:rgba(255,210,31,.08)}
+.card.sun{border-color:rgba(31,166,74,.5);background:rgba(31,166,74,.10)}
+.card.navy{border-color:rgba(62,114,196,.5);background:rgba(62,114,196,.12)}
+
+/* mini card grid (entregas) */
+.mini{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:1cqh;padding:1.5cqh 1.4cqw;display:flex;align-items:center;gap:1cqw;min-height:8cqh}
+.mini .dot{width:1.4cqh;height:1.4cqh;border-radius:3px;background:var(--sun);flex:none}
+.mini .dot.y{background:var(--red)}
+.mini .dot.b{background:var(--navy)}
+.mini span{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;font-size:2.0cqh;color:#EAF1FB;letter-spacing:.01em;line-height:1.02}
+
+/* ---------- Flow ---------- */
+.flow{display:flex;align-items:stretch;gap:0;margin:1cqh 0}
+.flow .node{flex:1;background:rgba(20,43,80,.6);border:2px solid var(--line-2);border-radius:1.2cqh;padding:2.3cqh 1cqw;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.flow .node .ft{font-family:"Saira Condensed";font-weight:900;font-size:2.7cqh;color:#fff;text-transform:uppercase;line-height:1}
+.flow .node small{font-size:1.6cqh;color:var(--ink-2);display:block;margin-top:.7cqh}
+.flow .arr{display:flex;align-items:center;color:var(--red);font-weight:900;font-size:4cqh;padding:0 .8cqw}
+.flow .node.y{background:var(--red);border-color:var(--red)}.flow .node.y .ft{color:#1A1400}.flow .node.y small{color:rgba(26,20,0,.72)}
+.flow .node.g{background:var(--sun);border-color:var(--sun)}.flow .node.g .ft{color:#04210F}.flow .node.g small{color:rgba(4,33,15,.78)}
+
+/* ---------- Timeline horizontal ---------- */
+.htl{display:flex;gap:1.4cqw;margin:1.4cqh 0}
+.htl .ph-col{flex:1;border-top:.5cqh solid var(--line-2);padding-top:1.6cqh;position:relative}
+.htl .ph-col:before{content:"";position:absolute;top:-1cqh;left:0;width:2cqh;height:2cqh;border-radius:50%;background:var(--red);border:.4cqh solid var(--ink)}
+.htl .ph-col.now{border-top-color:var(--red)}
+.htl .ph-col.now:before{background:var(--red);box-shadow:0 0 0 .5cqh rgba(255,210,31,.3)}
+.htl .ph-col .pt{font-family:"Saira Condensed";font-weight:800;font-size:2.1cqh;color:var(--red);text-transform:uppercase;letter-spacing:.02em;line-height:1.02;margin-bottom:.6cqh}
+.htl .ph-col.now .pt{color:var(--red)}
+.htl .ph-col ul{margin:0;padding-left:1.4cqw;list-style:none}
+.htl .ph-col li{font-size:1.7cqh;color:#CDD9EA;line-height:1.28;margin-bottom:.4cqh;position:relative;padding-left:1.1cqw}
+.htl .ph-col li:before{content:"›";position:absolute;left:0;color:var(--sun);font-weight:800}
+.htl .ph-col .tag{display:inline-block;font-family:"Saira Condensed";font-weight:700;font-size:1.4cqh;text-transform:uppercase;letter-spacing:.05em;padding:.3cqh .8cqw;border-radius:99px;background:var(--red);color:#1A1400;margin-bottom:.8cqh}
+
+/* ---------- Listas ---------- */
+ul.arrow{list-style:none;padding:0;margin:0}
+ul.arrow li{position:relative;padding-left:2.4cqw;margin-bottom:1.35cqh;color:#E2E9F4;font-size:2.35cqh;line-height:1.3}
+ul.arrow li:before{content:"→";position:absolute;left:0;color:var(--red);font-weight:800}
+ul.check{list-style:none;padding:0;margin:0;column-gap:3cqw}
+ul.check li{position:relative;padding:.5cqh 0 .5cqh 2.6cqw;font-size:2.15cqh;color:#E2E9F4;line-height:1.28;break-inside:avoid}
+ul.check li:before{content:"";position:absolute;left:0;top:1.1cqh;width:1.5cqh;height:1.5cqh;border:2px solid var(--sun);border-radius:3px}
+ul.check li:after{content:"✓";position:absolute;left:.35cqw;top:.4cqh;color:var(--sun);font-size:1.7cqh;font-weight:800}
+
+/* tags */
+.tags{display:flex;flex-wrap:wrap;gap:1cqh 1cqw;margin-top:.5cqh}
+.pill{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:2.0cqh;padding:.7cqh 1.3cqw;border-radius:99px;border:1px solid var(--line-2);color:#EAF1FB;background:rgba(255,255,255,.04)}
+.pill.y{background:var(--red);color:#1A1400;border-color:var(--red)}
+.pill.g{background:var(--sun);color:#04210F;border-color:var(--sun)}
+.pill.b{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* boxes */
+.box{border:1px solid var(--line);border-left:.6cqh solid var(--red);background:var(--tint-red);border-radius:1cqh;padding:1.8cqh 1.8cqw;margin-top:1.6cqh}
+.box .bt{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:1.9cqh;color:var(--red-deep);margin-bottom:.5cqh}
+.box p{font-size:1.95cqh;color:#E7EDF7;line-height:1.32}
+.box.sun{border-left-color:var(--sun);background:var(--tint-sun)}.box.sun .bt{color:#5BE08C}
+.box.navy{border-left-color:var(--navy);background:var(--tint-navy)}.box.navy .bt{color:var(--navy-2)}
+
+/* big quote */
+.bigq{font-family:"Saira Condensed";font-weight:900;text-transform:uppercase;font-size:8.5cqh;line-height:1.02;color:#fff;letter-spacing:.005em}
+.bigq .y{color:var(--red)}
+
+/* antes/depois */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:2cqw;margin-top:1cqh}
+.ba .col{border:1px solid var(--line);border-radius:1.2cqh;padding:2cqh 1.8cqw}
+.ba .col.a{background:rgba(255,90,80,.07);border-left:.6cqh solid #FF7A6C}
+.ba .col.d{background:rgba(31,166,74,.10);border-left:.6cqh solid var(--sun)}
+.ba .h{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;font-size:1.9cqh;letter-spacing:.05em;margin-bottom:1cqh}
+.ba .col.a .h{color:#FFB4AC}.ba .col.d .h{color:#5BE08C}
+.ba .col p{font-size:2.15cqh;color:#EEF3FA;line-height:1.34;margin-bottom:1.4cqh}
+.ba .col p:last-child{margin-bottom:0}
+.ba .col p .lbl{display:block;font-size:1.5cqh;color:var(--ink-3);font-weight:600;margin-bottom:.2cqh;text-transform:none}
+
+/* stats */
+.stat{border:1px solid var(--line);border-top:.6cqh solid var(--red);background:rgba(20,43,80,.5);border-radius:1cqh;padding:1.8cqh 1.4cqw}
+.stat .num{font-family:"Saira Condensed";font-weight:900;font-size:6cqh;color:var(--red);line-height:.9;transform:skewX(-5deg);display:inline-block}
+.stat .lab{font-size:1.7cqh;color:var(--ink-2);margin-top:.6cqh;line-height:1.2}
+.stat.g{border-top-color:var(--sun)}.stat.g .num{color:#5BE08C}
+.stat.b{border-top-color:var(--navy)}.stat.b .num{color:var(--navy-2)}
+
+/* placeholder */
+.ph{border:.3cqh dashed var(--line-2);border-radius:1.2cqh;background:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 1.4cqh,rgba(255,255,255,.06) 1.4cqh 2.8cqh);padding:2.4cqh 2cqw;text-align:center;position:relative}
+.ph .pi{font-family:"Saira Condensed";font-weight:800;font-size:1.6cqh;text-transform:uppercase;letter-spacing:.12em;color:var(--red)}
+.ph .pl{font-family:"Saira Condensed";font-weight:700;font-size:2.5cqh;color:#fff;margin:.5cqh 0;text-transform:uppercase}
+.ph .pd{font-size:1.7cqh;color:var(--ink-2)}
+.ph.filled{background:#0C2247;border:1px solid var(--line);padding:1cqh}
+.fig-img{display:block;width:96%;max-height:60cqh;object-fit:contain;border-radius:1cqh;margin:0 auto}
+.ph-btn{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:1.7cqh;background:var(--red);color:#1A1400;border:none;border-radius:.8cqh;padding:.7cqh 1.4cqw;margin-top:1cqh;cursor:pointer}
+.fig-tools{display:flex;gap:.6cqw;justify-content:center;flex-wrap:wrap;margin-top:1cqh}
+.fig-tools button{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;font-size:1.5cqh;background:rgba(255,255,255,.08);color:#E7EDF7;border:1px solid var(--line-2);border-radius:.6cqh;padding:.5cqh 1cqw;cursor:pointer}
+.fig-tools button.rm{color:#FFB4AC;border-color:rgba(255,120,108,.5)}
+
+/* capa */
+.cover{justify-content:space-between}
+.cover .topline{display:flex;justify-content:space-between;font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:1.7cqh;color:rgba(255,255,255,.72)}
+.cover .meta{display:flex;gap:4cqw;flex-wrap:wrap;font-size:1.8cqh;color:rgba(255,255,255,.82)}
+.cover .meta b{display:block;font-family:"Saira Condensed";font-weight:700;color:var(--red);font-size:1.8cqh;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.2cqh}
+
+
+/* ---------- Cronograma mesclado (tabela) ---------- */
+.sched{width:100%;border-collapse:collapse;margin-top:1.3cqh;font-size:1.6cqh}
+.sched th{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:1.5cqh;color:#fff;background:#0E2A57;text-align:left;padding:.85cqh 1cqw;border-bottom:.3cqh solid var(--sun)}
+.sched td{padding:.58cqh 1cqw;border-bottom:1px solid var(--line);color:#E7EDF7;vertical-align:middle;line-height:1.16}
+.sched tbody tr:nth-child(even) td{background:rgba(255,255,255,.035)}
+.sched tr.hot td{background:rgba(255,210,31,.10)}
+.sched .dt{font-family:"JetBrains Mono";font-weight:700;color:#fff;white-space:nowrap}
+.trk{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;font-size:1.32cqh;letter-spacing:.04em;padding:.18cqh .7cqw;border-radius:99px;white-space:nowrap}
+.trk.des{background:rgba(62,114,196,.22);color:#9DC1F5;border:1px solid rgba(62,114,196,.55)}
+.trk.ele{background:rgba(255,210,31,.16);color:#FFDD57;border:1px solid rgba(255,210,31,.55)}
+.trk.cam{background:rgba(31,166,74,.20);color:#5BE08C;border:1px solid rgba(31,166,74,.55)}
+.box-chk{width:1.55cqh;height:1.55cqh;border:2px solid var(--ink-3);border-radius:3px;display:inline-block}
+.sched-legend{display:flex;gap:1cqw;margin-top:1.3cqh;align-items:center}
+.sched-note{font-size:1.45cqh;color:var(--ink-3);margin-top:1cqh;line-height:1.3}
+/* ============ UI de navegação ============ */
+.ui{position:fixed;z-index:60}
+.progress{top:0;left:0;height:5px;width:100%;background:rgba(255,255,255,.08)}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--sun));transition:width .35s ease}
+.topbar{top:12px;left:14px;display:flex;gap:8px;align-items:center}
+.topbar .brand{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:rgba(255,255,255,.8);margin-right:6px}
+.btn{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:12px;background:rgba(255,255,255,.08);color:#E7EDF7;border:1px solid var(--line-2);border-radius:7px;padding:6px 11px;cursor:pointer}
+.btn:hover{background:rgba(255,255,255,.16)}
+.btn.y{background:var(--red);color:#1A1400;border-color:var(--red)}
+.btn.y:hover{background:#FFDD57}
+.nav{bottom:16px;right:18px;display:flex;gap:8px;align-items:center}
+.nav .count{font-family:"Saira Condensed";font-weight:800;font-size:15px;color:#fff;letter-spacing:.05em;margin-right:6px}
+.nav .count b{color:var(--red)}
+.arrowbtn{width:42px;height:42px;border-radius:50%;background:var(--red);color:#1A1400;border:none;font-size:20px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.arrowbtn:hover{background:#FFDD57}
+.arrowbtn:disabled{opacity:.35;cursor:default}
+.dots{right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:9px}
+.dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.28);cursor:pointer;padding:0}
+.dots button.on{background:var(--red);transform:scale(1.35)}
+.hint{bottom:18px;left:18px;font-family:"JetBrains Mono";font-size:11px;color:var(--ink-3)}
+.editing .stage{outline:2px dashed rgba(255,210,31,.5);outline-offset:-8px}
+[contenteditable="true"]{cursor:text}
+
+@media (max-width:760px){
+  .stage{height:auto;aspect-ratio:auto;min-height:100vh;border-radius:0;font-size:14px;padding:64px 22px 80px}
+  .g4{grid-template-columns:1fr 1fr}.g3,.g2{grid-template-columns:1fr}
+  .flow,.htl,.ba{flex-direction:column}.ba{grid-template-columns:1fr}
+  .dots{display:none}.snum{font-size:80px}
+}
+@media print{
+  body{overflow:visible}.deck{height:auto;overflow:visible}
+  .slide{height:auto;page-break-after:always}
+  .stage{height:auto;aspect-ratio:16/9;border-radius:0;box-shadow:none}
+  .ui,.topbar,.nav,.dots,.progress,.hint,.ph-btn,.fig-tools{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="ui progress"><i id="prog"></i></div>
+<div class="ui topbar no-print">
+  <span class="brand">Pepê 2026</span>
+  <button class="btn y" id="edBtn" onclick="dkEdit()">✏️ Editar</button>
+  <button class="btn" onclick="dkDownload()">💾 Baixar</button>
+  <button class="btn" onclick="dkFull()">⛶ Tela cheia</button>
+</div>
+<div class="ui dots" id="dots"></div>
+<div class="ui nav no-print">
+  <span class="count"><b id="cur">01</b> / <span id="tot">14</span></span>
+  <button class="arrowbtn" id="prev" onclick="dkGo(dkI-1)" title="Anterior (↑)">‹</button>
+  <button class="arrowbtn" id="next" onclick="dkGo(dkI+1)" title="Próximo (↓ / espaço)">›</button>
+</div>
+<div class="ui hint no-print">↑ ↓ · setas · espaço · role a página</div>
+
+<div class="deck" id="deck">
+
+<!-- 1 · CAPA -->
+<section class="slide"><div class="stage cover">
+  <div class="topline"><span>Reunião estratégica · Comunicação</span><span>Jul/2026 · Uso interno</span></div>
+  <div>
+    <div class="kick">Sistema de Comunicação</div>
+    <h1 class="st">CAMPANHA<br><span class="y">PEPÊ</span> COLLAÇO<br>2026.</h1>
+    <div class="sub">Da parceria à transformação</div>
+    <div class="stripe"></div>
+  </div>
+  <div class="meta">
+    <div><b>Candidato</b>Pepê Collaço · Dep. Estadual · PP</div>
+    <div><b>Base</b>AMUREL · Sul Catarinense</div>
+    <div><b>Escopo</b>Pré-campanha → Campanha</div>
+  </div>
+</div></section>
+
+<!-- 2 · PONTO DE PARTIDA -->
+<section class="slide"><div class="stage">
+  <div class="snum">01</div>
+  <div class="kick">O ponto de partida</div>
+  <h2 class="st">Dois documentos sustentam <span class="y">tudo</span></h2>
+  <div class="g2" style="margin-top:3cqh">
+    <div class="card big navy">
+      <div class="cn">Documento 1</div>
+      <div class="ct">Plano Mestre de Comunicação</div>
+      <p>Organiza a campanha: estratégia, canais, identidade, produção, dados e mobilização. O <strong>o quê</strong> e o <strong>como</strong> de tudo que a campanha comunica.</p>
+    </div>
+    <div class="card big hl">
+      <div class="cn">Documento 2</div>
+      <div class="ct">Manual de Discursos</div>
+      <p>Sistematiza a voz do deputado: argumentos, frases, histórias e posicionamentos. O <strong>jeito Pepê</strong> de falar sobre cada tema.</p>
+    </div>
+  </div>
+  <div class="box sun"><div class="bt">Em uma frase</div><p>Estratégia e voz apontando para a mesma direção: todo mundo falando a mesma língua.</p></div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- 3 · CONCEITO CENTRAL -->
+<section class="slide"><div class="stage">
+  <div class="snum">02</div>
+  <div class="kick">A lógica central</div>
+  <h2 class="st">Parceria → Prova → Vida real → <span class="y">Transformação</span></h2>
+  <div class="flow" style="margin-top:3cqh">
+    <div class="node"><div class="ft">Parceria</div><small>construir junto</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">Prova</div><small>o que foi entregue</small></div>
+    <div class="arr">→</div>
+    <div class="node y"><div class="ft">Vida real</div><small>o que mudou</small></div>
+    <div class="arr">→</div>
+    <div class="node g"><div class="ft">Transformação</div><small>na ponta</small></div>
+  </div>
+  <div class="g2" style="margin-top:3cqh">
+    <div class="card navy"><div class="cn">Pré-campanha</div><div class="ct">Fortalece a parceria</div><p>Articulação, lideranças e entregas. Aqui o número pesa, fala com quem constrói.</p></div>
+    <div class="card hl"><div class="cn">Campanha</div><div class="ct">Prova a transformação</div><p>Número vira pessoa, obra vira benefício, recurso vira vida real. Fala com o eleitor.</p></div>
+  </div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- 4 · O QUE JÁ FOI ENTREGUE -->
+<section class="slide"><div class="stage">
+  <div class="snum">03</div>
+  <div class="kick">Entregue</div>
+  <h2 class="st">O que já está <span class="y">pronto</span></h2>
+  <div class="g4" style="margin-top:2.6cqh">
+    <div class="mini"><span class="dot y"></span><span>Plano Mestre de Comunicação</span></div>
+    <div class="mini"><span class="dot y"></span><span>Manual de Discursos</span></div>
+    <div class="mini"><span class="dot y"></span><span>Diagnóstico do discurso</span></div>
+    <div class="mini"><span class="dot"></span><span>Linhas editoriais</span></div>
+    <div class="mini"><span class="dot"></span><span>Estrutura do Time Pepê</span></div>
+    <div class="mini"><span class="dot b"></span><span>Sistema de credenciamento</span></div>
+    <div class="mini"><span class="dot b"></span><span>Base de contatos</span></div>
+    <div class="mini"><span class="dot b"></span><span>Painel administrativo</span></div>
+    <div class="mini"><span class="dot b"></span><span>WhatsApp / disparos</span></div>
+    <div class="mini"><span class="dot b"></span><span>Organização de dados</span></div>
+    <div class="mini"><span class="dot"></span><span>Direcionamento p/ impulsionamento</span></div>
+    <div class="mini"><span class="dot y"></span><span>Leitura estratégica do evento</span></div>
+  </div>
+  <div class="tags" style="margin-top:2.4cqh">
+    <span class="pill y">Estratégia &amp; discurso</span>
+    <span class="pill g">Mobilização</span>
+    <span class="pill b">Tecnologia &amp; dados</span>
+  </div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- 5 · EVENTO E LEITURA POLÍTICA -->
+<section class="slide"><div class="stage">
+  <div class="snum">04</div>
+  <div class="kick">Evento de lançamento</div>
+  <h2 class="st">A participação virou <span class="y">inteligência</span></h2>
+  <p class="lead">Estar dentro do evento não foi cobertura, foi captação estratégica. O que lemos ali orienta a comunicação daqui pra frente:</p>
+  <div class="g3" style="margin-top:2.4cqh">
+    <div class="card"><div class="ct">Tom do deputado</div><p>Como ele fala e o que emociona a plateia.</p></div>
+    <div class="card"><div class="ct">Relação com lideranças</div><p>Quem sustenta a base e como se articula.</p></div>
+    <div class="card"><div class="ct">Força regional</div><p>O peso da AMUREL e do discurso do Sul.</p></div>
+    <div class="card"><div class="ct">Discurso de parceria</div><p>“Ninguém se elege sozinho” na prática.</p></div>
+    <div class="card"><div class="ct">Papel da equipe</div><p>Como a operação funciona em campo.</p></div>
+    <div class="card"><div class="ct">Frases &amp; oportunidades</div><p>Conteúdo pronto para cortes e roteiros.</p></div>
+  </div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- 6 · NOVA ESTRUTURA DE EQUIPE -->
+<section class="slide"><div class="stage">
+  <div class="snum">05</div>
+  <div class="kick">Estrutura de equipe</div>
+  <h2 class="st">Cada um no seu <span class="y">lugar</span></h2>
+  <div class="g3" style="margin-top:2.6cqh">
+    <div class="card hl"><div class="ct">Bela</div><p>Coordenação e articulação política + comunicação. O cérebro estratégico.</p></div>
+    <div class="card sun"><div class="ct">Isa</div><p>Redes sociais, rotina, publicação e acompanhamento, aliviando a Bela.</p></div>
+    <div class="card navy"><div class="ct">Design</div><p>Empresa contratada: nova identidade visual e peças.</p></div>
+    <div class="card"><div class="ct">Editor</div><p>Profissional sob demanda, focado em vídeos de campanha.</p></div>
+    <div class="card"><div class="ct">Moita &amp; equipe</div><p>Apoio estratégico, cobertura e produção conforme a necessidade.</p></div>
+    <div class="card"><div class="ct">Equipe extra</div><p>Acionável para até 2 grandes eventos, incluindo o lançamento de campanha.</p></div>
+  </div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- 7 · IDENTIDADE VISUAL & DESIGN -->
+<section class="slide"><div class="stage">
+  <div class="snum">06</div>
+  <div class="kick">Identidade visual</div>
+  <h2 class="st">Uma marca, <span class="y">consolidada</span></h2>
+  <div class="g2" style="margin-top:2.4cqh;align-items:start">
+    <div>
+      <ul class="arrow" style="margin-top:.5cqh">
+        <li>Identidade visual atualizada</li>
+        <li>Templates e linguagem de campanha</li>
+        <li>Materiais digitais e peças para redes</li>
+        <li>Materiais de mobilização</li>
+      </ul>
+      <div class="box navy"><div class="bt">Por quê agora</div><p>Consolidar a marca antes da campanha evita retrabalho e dá consistência a tudo que for produzido.</p></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.6cqh">
+      <div class="ph" data-slot="design">
+        <div class="pi">Espaço reservado</div>
+        <div class="pl">Proposta da empresa de design</div>
+        <div class="pd">Logo, paleta e aplicações da empresa contratada.</div>
+      </div>
+      <div class="ph" data-slot="santinhos">
+        <div class="pi">Espaço reservado</div>
+        <div class="pl">Santinhos setorizados</div>
+        <div class="pd">Família de santinhos por tema e por cidade.</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+
+<!-- 8 · PRODUÇÃO AUDIOVISUAL -->
+<section class="slide"><div class="stage">
+  <div class="snum">07</div>
+  <div class="kick">Audiovisual</div>
+  <h2 class="st">A campanha em <span class="y">vídeo</span></h2>
+  <div class="g4" style="margin-top:2.4cqh">
+    <div class="mini"><span class="dot y"></span><span>Vídeos de campanha</span></div>
+    <div class="mini"><span class="dot"></span><span>Cortes de discurso</span></div>
+    <div class="mini"><span class="dot"></span><span>Bastidores</span></div>
+    <div class="mini"><span class="dot y"></span><span>Antes e depois</span></div>
+    <div class="mini"><span class="dot"></span><span>Depoimentos</span></div>
+    <div class="mini"><span class="dot y"></span><span>Histórias humanas</span></div>
+    <div class="mini"><span class="dot b"></span><span>Vídeos por cidade</span></div>
+    <div class="mini"><span class="dot b"></span><span>Vídeos por bandeira</span></div>
+  </div>
+  <div class="box"><div class="bt">Por bandeira</div><p><strong>Saúde · Infraestrutura · Autismo · Educação · Agro · Cultura · Esporte</strong>. Cada eixo com sua série, sempre ligando a obra à vida de quem usa.</p></div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- 9 · SISTEMA DIGITAL & DADOS -->
+<section class="slide"><div class="stage">
+  <div class="snum">08</div>
+  <div class="kick">Sistema &amp; dados</div>
+  <h2 class="st">Tudo em <span class="y">sistema</span></h2>
+  <div class="g3" style="margin-top:2.2cqh">
+    <div class="mini"><span class="dot b"></span><span>Credenciamento</span></div>
+    <div class="mini"><span class="dot b"></span><span>Base de contatos</span></div>
+    <div class="mini"><span class="dot b"></span><span>Painel administrativo</span></div>
+    <div class="mini"><span class="dot"></span><span>Presença &amp; cadastros</span></div>
+    <div class="mini"><span class="dot"></span><span>Estrutura de mobilização</span></div>
+    <div class="mini"><span class="dot"></span><span>Contabilidade / controle</span></div>
+    <div class="mini"><span class="dot y"></span><span>Impulsionamento</span></div>
+    <div class="mini"><span class="dot y"></span><span>Leitura de desempenho</span></div>
+    <div class="mini"><span class="dot g" style="background:var(--sun)"></span><span>Organização p/ campanha</span></div>
+  </div>
+  <div class="box sun"><div class="bt">O diferencial</div><p>Estrutura de dados montada antes da campanha, raro entre concorrentes. Decisão baseada em número, não em achismo.</p></div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- CRONOGRAMA GERAL (MESCLADO: DESIGN + ELEITORAL) -->
+<section class="slide"><div class="stage">
+  <div class="snum">10</div>
+  <div class="kick">Cronograma geral · design + calendário eleitoral</div>
+  <h2 class="st">Um só cronograma para <span class="y">acompanhar</span></h2>
+  <div class="sched-legend"><span class="trk des">Design</span><span class="trk ele">Eleitoral</span><span class="trk cam">Campanha</span></div>
+  <table class="sched">
+    <thead><tr><th style="width:15%">Data</th><th>Marco</th><th style="width:15%">Trilha</th><th style="width:6%">Ok</th></tr></thead>
+    <tbody>
+    <tr><td class="dt">07/07</td><td>Aprovação do orçamento</td><td><span class="trk des">Design</span></td><td><span class="box-chk"></span></td></tr>
+    <tr><td class="dt">14 a 17/07</td><td>1ª e 2ª geração de alternativas</td><td><span class="trk des">Design</span></td><td><span class="box-chk"></span></td></tr>
+    <tr><td class="dt">20/07 a 05/08</td><td>Convenções partidárias</td><td><span class="trk ele">Eleitoral</span></td><td><span class="box-chk"></span></td></tr>
+    <tr><td class="dt">22 a 27/07</td><td>Prévia com o Pepê e ajustes</td><td><span class="trk des">Design</span></td><td><span class="box-chk"></span></td></tr>
+    <tr><td class="dt">30/07</td><td>Apresentação da marca</td><td><span class="trk des">Design</span></td><td><span class="box-chk"></span></td></tr>
+    <tr><td class="dt">04/08</td><td>Entrega do manual de identidade visual</td><td><span class="trk des">Design</span></td><td><span class="box-chk"></span></td></tr>
+    <tr><td class="dt">10 a 13/08</td><td>Aplicações (adesivos, bandeiras, templates) e entrega final</td><td><span class="trk des">Design</span></td><td><span class="box-chk"></span></td></tr>
+    <tr><td class="dt">15/08</td><td>Registro das candidaturas</td><td><span class="trk ele">Eleitoral</span></td><td><span class="box-chk"></span></td></tr>
+    <tr class="hot"><td class="dt">16/08</td><td>Início oficial da campanha (pedido de voto liberado)</td><td><span class="trk ele">Eleitoral</span></td><td><span class="box-chk"></span></td></tr>
+    <tr class="hot"><td class="dt">20/08</td><td>Adesivaço em Garopaba, Pepê e Zé Milton (confecção casada)</td><td><span class="trk cam">Campanha</span></td><td><span class="box-chk"></span></td></tr>
+    <tr><td class="dt">28/08</td><td>Início do horário eleitoral gratuito (rádio e TV)</td><td><span class="trk ele">Eleitoral</span></td><td><span class="box-chk"></span></td></tr>
+    <tr class="hot"><td class="dt">29/08</td><td>Lançamento da campanha em Tubarão (sugestão)</td><td><span class="trk cam">Campanha</span></td><td><span class="box-chk"></span></td></tr>
+    <tr><td class="dt">01/10</td><td>Fim do horário eleitoral gratuito</td><td><span class="trk ele">Eleitoral</span></td><td><span class="box-chk"></span></td></tr>
+    <tr class="hot"><td class="dt">04/10</td><td>1º turno da eleição</td><td><span class="trk ele">Eleitoral</span></td><td><span class="box-chk"></span></td></tr>
+    </tbody>
+  </table>
+  <p class="sched-note">Datas eleitorais conforme o calendário 2026, a validar com o jurídico (TSE/TRE-SC). Pedido explícito de voto só a partir de 16/08.</p>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- 11 · MANUAL DE DISCURSOS -->
+<section class="slide"><div class="stage">
+  <div class="snum">10</div>
+  <div class="kick">A voz</div>
+  <h2 class="st">Como o Pepê <span class="y">fala</span></h2>
+  <div class="g3" style="margin-top:3cqh">
+    <div class="card hl"><div class="cn">01</div><div class="ct">No “a gente”</div><p>Fala no coletivo, nunca no “eu”. Divide o crédito, soma apoio.</p></div>
+    <div class="card sun"><div class="cn">02</div><div class="ct">Com exemplos reais</div><p>Nome, bairro, rua, pessoa. A fala vira cena, não conceito.</p></div>
+    <div class="card navy"><div class="cn">03</div><div class="ct">Ligando à vida</div><p>Todo recurso aterrissa no que mudou na vida das pessoas.</p></div>
+  </div>
+  <div class="box"><div class="bt">O manual em uma linha</div><p>Não é sobre falar bonito. É sobre fazer o eleitor se ver na história.</p></div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- 11B · CONCEITO REGIONAL -->
+<section class="slide"><div class="stage">
+  <div class="snum">12</div>
+  <div class="kick">Conceito regional</div>
+  <h2 class="st">De Tubarão, <span class="y">para Tubarão</span></h2>
+  <p class="lead" style="margin-top:1cqh">A marca falável que abre e fecha os vídeos de rua, obra e entrega. Repetível como o “Estrada Boa Rural”, pertencimento que vira reconhecimento.</p>
+  <div class="g2" style="margin-top:2.2cqh">
+    <div class="card hl"><div class="cn">Base · Cidade</div><div class="ct">“De Tubarão, para Tubarão”</div><p>Quando o foco é a cidade: origem, proximidade e resultado.</p></div>
+    <div class="card navy"><div class="cn">Missão · Estado</div><div class="ct">“Tubarão no coração. Santa Catarina na missão.”</div><p>Quando o conteúdo é regional ou institucional.</p></div>
+  </div>
+  <div class="box"><div class="bt">A lógica</div><p>Quando Tubarão tem quem conhece a cidade, anda nos bairros e leva a demanda adiante, <strong>o resultado aparece</strong>.</p></div>
+  <div class="tags" style="margin-top:1.4cqh">
+    <span class="pill">De Tubarão para a Amurel</span>
+    <span class="pill">De Tubarão para Santa Catarina</span>
+    <span class="pill y">Tubarão tem voz, e voz vira resultado</span>
+  </div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- 12 · EXEMPLOS DE ADAPTAÇÃO -->
+<section class="slide"><div class="stage">
+  <div class="snum">11</div>
+  <div class="kick">Antes → Depois</div>
+  <h2 class="st">A mesma entrega, <span class="y">dita melhor</span></h2>
+  <div class="ba" style="margin-top:2.2cqh">
+    <div class="col a"><div class="h">✗ Antes: linguagem de gabinete</div>
+      <p><span class="lbl">Saúde</span>“Destinamos R$ 500 mil para equipamentos.”</p>
+      <p><span class="lbl">Infraestrutura</span>“Fizemos uma emenda para infraestrutura.”</p>
+    </div>
+    <div class="col d"><div class="h">✓ Depois: linguagem de gente</div>
+      <p><span class="lbl">Saúde</span>“Esse recurso vira exame mais perto de casa, atendimento mais rápido e menos sofrimento para as famílias.”</p>
+      <p><span class="lbl">Infraestrutura</span>“A rua que era poeira no sol e lama na chuva agora virou acesso seguro para quem mora ali.”</p>
+    </div>
+  </div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- 13 · A REGRA PRINCIPAL -->
+<section class="slide"><div class="stage" style="justify-content:center">
+  <div class="snum">12</div>
+  <div class="kick">A regra principal</div>
+  <div class="bigq">O número mostra <span class="y">força</span>.<br>A história mostra <span class="y">sentido</span>.</div>
+  <div class="g2" style="margin-top:3.4cqh">
+    <div class="card navy"><div class="ct">Pré-campanha</div><p>O número fortalece, fala com quem constrói.</p></div>
+    <div class="card hl"><div class="ct">Campanha</div><p>A pessoa convence, fala com o eleitor.</p></div>
+  </div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+<!-- 14 · PRÓXIMOS PONTOS -->
+<section class="slide"><div class="stage">
+  <div class="snum">13</div>
+  <div class="kick">Próximos passos</div>
+  <h2 class="st">O que vem <span class="y">agora</span></h2>
+  <ul class="check" style="columns:2;margin-top:2.2cqh">
+    <li>Validar a identidade visual</li>
+    <li>Consolidar o cronograma eleitoral</li>
+    <li>Organizar banco de pautas por cidade</li>
+    <li>Definir calendário de eventos</li>
+    <li>Aprovar o guia de posicionamento</li>
+    <li>Transformar emendas em histórias</li>
+    <li>Montar agenda de gravações</li>
+    <li>Preparar vídeos prioritários</li>
+    <li>Estruturar o Time Pepê</li>
+    <li>Alinhar impulsionamento e regras</li>
+  </ul>
+  <div class="box sun"><div class="bt">O salto</div><p>Agora a comunicação deixa de ser apenas produção de conteúdo e passa a ser um <strong>sistema</strong>: estratégia, discurso, dados, equipe e execução trabalhando juntos.</p></div>
+  <div class="foot"><span class="red">PEPÊ 2026</span> · Sistema de Comunicação</div>
+</div></section>
+
+</div><!-- /deck -->
+
+<input type="file" id="dkImg" accept="image/*" class="no-print" style="display:none" onchange="dkFile(this)">
+<script>
+var deck=document.getElementById('deck');
+var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+var dkI=0, N=slides.length, dkTarget=null;
+document.getElementById('tot').textContent=String(N).padStart(2,'0');
+// numeração automática do watermark (recalcula ao inserir/remover slides)
+slides.forEach(function(s,i){var n=s.querySelector('.snum');if(n)n.textContent=String(i).padStart(2,'0');});
+
+// dots
+var dotsWrap=document.getElementById('dots');
+slides.forEach(function(s,i){var b=document.createElement('button');b.title='Slide '+(i+1);b.onclick=function(){dkGo(i);};dotsWrap.appendChild(b);});
+var dots=Array.prototype.slice.call(dotsWrap.children);
+
+function setCur(i){
+  dkI=i;
+  document.getElementById('cur').textContent=String(i+1).padStart(2,'0');
+  document.getElementById('prog').style.width=((i)/(N-1)*100)+'%';
+  dots.forEach(function(d,k){d.classList.toggle('on',k===i);});
+  document.getElementById('prev').disabled=(i===0);
+  document.getElementById('next').disabled=(i===N-1);
+}
+function dkGo(i){ if(i<0||i>=N)return; dkTarget=i; slides[i].scrollIntoView({behavior:'smooth'}); setCur(i); }
+
+// observe which slide is centered
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){ if(e.isIntersecting && e.intersectionRatio>=0.55){ var i=slides.indexOf(e.target); if(i>=0) setCur(i); } });
+},{root:deck,threshold:[0.55,0.9]});
+slides.forEach(function(s){io.observe(s);});
+
+// keyboard
+document.addEventListener('keydown',function(e){
+  if(document.querySelector('.deck')&&document.body.classList.contains('editing'))return; // don't hijack while editing
+  var k=e.key;
+  if(k==='ArrowDown'||k==='ArrowRight'||k==='PageDown'||k===' '||k==='Spacebar'){e.preventDefault();dkGo(dkI+1);}
+  else if(k==='ArrowUp'||k==='ArrowLeft'||k==='PageUp'){e.preventDefault();dkGo(dkI-1);}
+  else if(k==='Home'){e.preventDefault();dkGo(0);}
+  else if(k==='End'){e.preventDefault();dkGo(N-1);}
+});
+
+function dkFull(){ if(!document.fullscreenElement){ (document.documentElement.requestFullscreen||function(){})(); } else { document.exitFullscreen&&document.exitFullscreen(); } }
+
+/* ---------- Edição ---------- */
+var dkKey='dk_apres_comunicacao_v1';
+function dkEdit(){var on=deck.getAttribute('contenteditable')==='true';deck.setAttribute('contenteditable',on?'false':'true');document.body.classList.toggle('editing',!on);var b=document.getElementById('edBtn');b.textContent=on?'✏️ Editar':'✓ Editando';}
+function dkSaveLocal(){try{localStorage.setItem(dkKey,JSON.stringify({t:Date.now(),html:deck.innerHTML}));}catch(e){}}
+deck.addEventListener('input',function(){clearTimeout(window.__dkt);window.__dkt=setTimeout(dkSaveLocal,900);});
+
+/* ---------- Imagens em placeholders ---------- */
+var dkPh=null;
+function dkInject(){document.querySelectorAll('.ph').forEach(function(ph){ if(ph.classList.contains('filled')){ if(!ph.querySelector('.fig-tools'))dkTools(ph); } else if(!ph.querySelector('.ph-btn')){ if(ph.getAttribute('data-orig')===null)ph.setAttribute('data-orig',ph.innerHTML); var b=document.createElement('button');b.className='ph-btn no-print';b.textContent='＋ Inserir imagem';b.onclick=function(ev){ev.stopPropagation();ev.preventDefault();dkPh=ph;document.getElementById('dkImg').click();};ph.appendChild(b);} });}
+function dkTools(ph){var t=document.createElement('div');t.className='fig-tools no-print';var tr=document.createElement('button');tr.textContent='Trocar';tr.onclick=function(e){e.stopPropagation();dkPh=ph;document.getElementById('dkImg').click();};var r=document.createElement('button');r.className='rm';r.textContent='Remover';r.onclick=function(e){e.stopPropagation();dkRemove(ph);};t.appendChild(tr);t.appendChild(r);ph.appendChild(t);}
+function dkPlace(ph,url){ph.classList.add('filled');ph.innerHTML='';var img=document.createElement('img');img.className='fig-img';img.src=url;ph.appendChild(img);dkTools(ph);dkSaveLocal();}
+function dkRemove(ph){ph.classList.remove('filled');var o=ph.getAttribute('data-orig');ph.innerHTML=o||'<div class="pi">Espaço reservado</div><div class="pl">Imagem</div>';dkInject();dkSaveLocal();}
+function dkFile(input){var f=input.files&&input.files[0];if(!f||!dkPh){input.value='';return;}var rd=new FileReader();rd.onload=function(){var im=new Image();im.onload=function(){var max=1800,w=im.width,h=im.height;if(w>max){h=Math.round(h*max/w);w=max;}var c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0,w,h);dkPlace(dkPh,(f.type==='image/png')?c.toDataURL('image/png'):c.toDataURL('image/jpeg',.86));input.value='';};im.src=rd.result;};rd.readAsDataURL(f);}
+
+/* ---------- Download ---------- */
+function dkDownload(){document.querySelectorAll('.ph-btn,.fig-tools').forEach(function(b){b.remove();});deck.setAttribute('contenteditable','false');document.body.classList.remove('editing');document.getElementById('edBtn').textContent='✏️ Editar';var html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;var blob=new Blob([html],{type:'text/html;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Apresentacao_Sistema_Comunicacao_Pepe_2026_editada.html';document.body.appendChild(a);a.click();a.remove();dkInject();}
+
+/* ---------- Restaurar edição salva ---------- */
+(function(){try{var raw=localStorage.getItem(dkKey);if(raw){var when=new Date(JSON.parse(raw).t).toLocaleString('pt-BR');var bar=document.createElement('div');bar.className='no-print';bar.style.cssText='position:fixed;bottom:0;left:0;right:0;z-index:80;background:#0F8A3A;color:#fff;display:flex;gap:10px;justify-content:center;align-items:center;padding:8px;font:600 12px Inter';bar.innerHTML='📝 Há uma edição salva ('+when+').';var b1=document.createElement('button');b1.className='btn y';b1.textContent='Restaurar';b1.onclick=function(){deck.innerHTML=JSON.parse(raw).html;bar.remove();dkInject();slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));};var b2=document.createElement('button');b2.className='btn';b2.textContent='Descartar';b2.onclick=function(){localStorage.removeItem(dkKey);bar.remove();};bar.appendChild(b1);bar.appendChild(b2);document.body.appendChild(bar);}}catch(e){}})();
+
+dkInject();setCur(0);
+</script>
+</body>
+</html>

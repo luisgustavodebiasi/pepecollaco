@@ -1,0 +1,47 @@
+{
+  "_meta": {
+    "descricao": "Biblioteca de segmentacoes geograficas reutilizaveis para colar no campo targeting.geo_locations do ads_create_ad_set. Conta 1700449990528437.",
+    "observacao": "O MCP nao cria publicos salvos nem resolve chaves de regiao. Tubarao/AMUREL/Sul usam raio (custom_locations) por serem confiaveis sem chave. SC e Regiao precisam de chave de regiao a resolver no Ads Manager ou quando ads_targeting_search estiver disponivel.",
+    "distancia": "raio em kilometer, limite 80 por ponto",
+    "coordenadas": "centros aproximados de cidade, conferir se precisar de precisao fina",
+    "atualizado": "2026-07-16"
+  },
+  "Brasil": {
+    "cobertura": "Pais inteiro. Alcance amplo, CTR historicamente baixo. Rever uso.",
+    "geo_locations": { "countries": ["BR"] }
+  },
+  "Tubarao": {
+    "cobertura": "Tubarao cidade e entorno imediato, raio 20km.",
+    "geo_locations": {
+      "custom_locations": [
+        { "latitude": -28.4713, "longitude": -49.0069, "radius": 20, "distance_unit": "kilometer" }
+      ]
+    }
+  },
+  "AMUREL": {
+    "cobertura": "Regiao da AMUREL via 3 ancoras de raio (Tubarao, Laguna, Braco do Norte). Cobre a maioria dos 18 municipios.",
+    "municipios": ["Armazem","Braco do Norte","Capivari de Baixo","Grao-Para","Gravatal","Imarui","Imbituba","Jaguaruna","Laguna","Pedras Grandes","Pescaria Brava","Rio Fortuna","Sangao","Santa Rosa de Lima","Sao Ludgero","Sao Martinho","Treze de Maio","Tubarao"],
+    "geo_locations": {
+      "custom_locations": [
+        { "latitude": -28.4713, "longitude": -49.0069, "radius": 45, "distance_unit": "kilometer" },
+        { "latitude": -28.4826, "longitude": -48.7808, "radius": 25, "distance_unit": "kilometer" },
+        { "latitude": -28.2758, "longitude": -49.1656, "radius": 25, "distance_unit": "kilometer" }
+      ]
+    }
+  },
+  "Sul-SC": {
+    "cobertura": "Sul catarinense amplo (AMUREL + AMREC + parte da AMESC) via 2 ancoras de raio (Tubarao, Criciuma).",
+    "geo_locations": {
+      "custom_locations": [
+        { "latitude": -28.4713, "longitude": -49.0069, "radius": 55, "distance_unit": "kilometer" },
+        { "latitude": -28.6775, "longitude": -49.3697, "radius": 50, "distance_unit": "kilometer" }
+      ]
+    }
+  },
+  "SC": {
+    "cobertura": "Estado inteiro de Santa Catarina. Raio nao cobre um estado (limite 80km por ponto). Precisa de chave de regiao.",
+    "pendente": "Resolver a chave de regiao de Santa Catarina (geo_locations.regions[].key) no Ads Manager ou via ads_targeting_search quando disponivel.",
+    "geo_locations_quando_tiver_chave": { "regions": [ { "key": "PREENCHER_CHAVE_SC" } ] },
+    "fallback_atual": { "countries": ["BR"] }
+  }
+}

@@ -1,0 +1,8 @@
+# Notas internas de decisão e operação: não precisam ficar públicas em /README.md
+README.md
+.env.local
+.env*
+.vercel
+
+# gerador do cartão de compartilhamento: a saída (img/og.jpg) vai, o gerador não
+og/

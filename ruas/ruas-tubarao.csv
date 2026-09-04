@@ -1,0 +1,70 @@
+﻿id;pagina_pdf;nome_na_apresentacao;nome_oficial_correios;bairro;cep;status;observacao
+1;10;Rua Apolônia Mateus Gomes;Rua Apolônia Mateus Gomes;São Martinho;88708-716;confirmado;
+2;10;Rua Arino Luiz da Silva;Rua Arino Luiz da Silva;São Cristóvão;88703-495;confirmado;
+3;10;Rua das Flores;Rua das Flores;São Cristóvão;88703-108;confirmado;Nome genérico: confirmar o trecho.
+4;10;Rua Jardim das Estrelas;Rua Jardim das Estrelas;São Cristóvão;88703-315;confirmado;
+5;10;Rua Maurício Israel Lemos;Rua Maurício Israel Lemos;São Cristóvão;88703-110;confirmado;
+6;10;Rua Santos João Anacleto da Silva;Rua Santos João Anacleto da Silva;São João (Margem Direita);88702-705;confirmado;"Consta na relação de ruas de Tubarão; CEP a confirmar."
+7;10;Rua Severino Favarin;Rua Severino Favarin;São Cristóvão;88703-111;confirmado;"Existe também 'Rua Sabino Favarin' em Tubarão; não confundir."
+8;10;Rua Wenceslau Alves dos Santos;Rua Wenceslau Alves dos Santos;Dehon;88704-208;confirmado;"A via tem mais de um CEP; conferir o trecho."
+9;10;Rua Lorival Silveira Corrêa;Rua Lourival Silveira Correa;Sertão dos Correias;88703-662;confirmado;Correios grafam 'Lourival'.
+10;10;Rua Santin David Del Sante;Rua Santin David del Sante;Sertão dos Correias;88703-663;confirmado;
+11;10;Rua Pedro Isidoro da Silva;Rua Pedro Isidoro da Silva;Sertão dos Correias;88703-658;confirmado;
+12;10;Rua Dilma da Costa Guimarães;Rua Dilma da Costa Guimarães;Sertão dos Correias;88703-646;confirmado;
+13;10;Rua Manoel Agostinho Pereira;Rua Manoel Agostinho Pereira;São Clemente;88706-005;confirmado;Na apresentação está marcada como obra de REDE DE ESGOTO, não pavimentação.
+14;10;Rua Adolfo José de Souza;Rua Adolfo Jose de Souza;São Cristóvão;88703-145;confirmado;
+15;10;Rua Caruru;;;;pendente;"Existe o bairro Caruru (88707-503 a 88707-680); confirmar se a via fica lá."
+16;10;Rua Dorivalda Bristot;Rua Dorivalda Bristot de Campos;São Martinho;88708-837;confirmado;
+17;10;Rua João Silva;;;;pendente;"Nome muito genérico: alto risco de confusão. A via tem mais de um CEP; conferir o trecho. ViaCEP só devolve 'Rua José João da Silva' (88703-683, Sertão dos Correias); confirmar se é a mesma via."
+18;10;Rua Jovencio Bernardo;Rua Jovêncio Bernardo;São João (Margem Direita);88702-887;confirmado;
+19;10;Rua Luiz Matheus;Rua Luiz Matheus;São João (Margem Direita);88702-888;confirmado;
+20;10;Rua Almiro J. Silva;Rua Almiro José da Silva;São João (Margem Direita);88702-857;confirmado;Continua abreviada na apresentação.
+21;10;Rua Sílvio Menegaz;Rua Sílvio Menegaz;São João (Margem Direita);88702-874;confirmado;Sobrenome recorrente em Tubarão (Lauro, Irineu, Bento Menegaz).
+22;10;Rua Irineu Menegaz;Rua Irineu Menegaz;Bom Pastor;88707-254;confirmado;
+23;10;Rua Nilo Manoel Luiz;Rua Nilo Manoel Luiz;São Cristóvão;88703-215;confirmado;
+24;10;Rua Otacílio Silvano;Rua Otacílio SIlvano;Congonhas;88701-837;confirmado;"A via tem mais de um CEP; conferir o trecho."
+25;10;Rua Manoel Pedro;Rua Manoel Pedro Rosa;Bom Pastor;88707-248;provavel;"A via tem mais de um CEP; conferir o trecho."
+26;10;Rua Jucemar Matiola Corrêa;Rua Jucemar Matiola Corrêa;Sertão dos Correias;88703-690;confirmado;
+27;10;Rua Tereza Marcon Margotti;Rua Tereza Marcon Margotti;Sertão dos Correias;88703-628;confirmado;
+28;10;Rua Dotilio João Santiago;Rua Dotílio João Santiago;Sertão dos Correias;88703-659;confirmado;
+29;10;Rua José da Cruz;Rua José da Cruz;Sertão dos Correias;88703-654;confirmado;
+30;10;Rua Pedro Luiz Motta;Rua Pedro Luiz Motta;São João (Margem Direita);88702-881;confirmado;
+31;10;Rua Zacharias Corrêa de Souza;Rua Zacharias Corrêa de Souza;Sertão dos Correias;88703-675;confirmado;
+32;10;Rua José Corrêa de Souza;;;;pendente;"Não confundir com a 'Sobrinho', logo abaixo na mesma lista. ViaCEP só encontra a 'José Corrêa de Souza Sobrinho' (88703-676); confirmar se esta tem trecho próprio."
+33;10;Rua José Corrêa de Souza Sobrinho;Rua José Corrêa de Souza Sobrihnho;Sertão dos Correias;88703-676;confirmado;
+34;10;Rua Domingos Margotti;Rua Domingos Margotti;Sertão dos Correias;88703-622;confirmado;
+35;10;Rua Salesio Fernandes;Rua Salésio Fernandes;Kilômetro 60;88709-159;confirmado;
+36;10;Rua Júlio Pozza;Rua Júlio Pozza;São João (Margem Esquerda);88708-491;confirmado;
+37;10;Rua Paulo Luis Gomes;Rua Paulo Luís Gomes;Oficinas;88702-350;confirmado;"A via tem mais de um CEP; conferir o trecho."
+38;11;Rua Manoel Antônio Mateus;Rua Manoel Antônio Mateus;São Martinho;88708-740;confirmado;
+39;11;Rua Vespúcio Claudino;Rua Vespúcio Claudino;Monte Castelo;88702-512;confirmado;
+40;11;Rua Manoel Rosendo Linhares;Rua Manoel Rosendo Linhares;São João (Margem Esquerda);88708-492;confirmado;
+41;11;Rua Valdemar Rafael;Rua Valdemar Rafael;São João (Margem Esquerda);88708-569;confirmado;
+42;11;Rua Tomaz Souza Brasil;Rua Tomaz Souza Brasil;São Cristóvão;88703-440;confirmado;
+43;11;Rua Mario Pasetto;Rua Mário Paseto;Sertão dos Correias;88703-626;confirmado;Correios grafam 'Paseto', com um T.
+44;11;Rua João Guerino Ghizzo;Rua João Guerino Ghizzo;São Cristóvão;88703-137;confirmado;
+45;11;Rua Sabino De Pieri Bardini;Rua Sabino de Pieri Bardini;Sertão dos Correias;88703-660;confirmado;
+46;11;Rua São Pedro;Rua São Pedro;Passagem;88705-742;confirmado;"Consta em Tubarão; nome genérico, confirmar trecho e CEP. A via tem mais de um CEP; conferir o trecho."
+47;11;Rua Manoel Saturnino de Godoi;Rua Manoel Saturnino de Godoy;Passagem;88705-570;confirmado;
+48;11;Rua São Geraldo;Rua São Geraldo;Oficinas;88701-020;confirmado;"Trecho até 490/491; a via pode ter mais de um CEP."
+49;11;Rua Vilmar Goulart Justino;Rua Vilmar Goulart Justino;Passo do Gado;88706-244;confirmado;
+50;11;Rua Vicente Manoel da Costa;Rua Vicente Manoel da Costa;Passo do Gado;88706-250;confirmado;
+51;11;Rua Saleti Moraes Porto;Rua Salete Moraes Porto;Praia Redonda;88706-081;confirmado;Correios grafam 'Salete'. Há também 'Rua Moraes Porto' (88706-079) no mesmo bairro.
+52;11;Rua Manoel João Cardoso;Rua Manoel João Cardoso;Praia Redonda;88707-045;confirmado;
+53;11;Rua Vidal Ramos;Rua Vidal Ramos;Centro;88701-160;confirmado;"NÃO aparece no card '+ de 60 ruas' divulgado; só na apresentação. A via tem mais de um CEP; conferir o trecho."
+54;11;Rua Saul Wanderlind;Rua Saul Wanderlindi;Monte Castelo;88702-611;confirmado;"Consta em Tubarão; Correios grafam 'Wanderlindi'. A via tem mais de um CEP; conferir o trecho."
+55;11;Rua Nordeste;Rua Nordeste;São Martinho;88708-841;confirmado;Nome genérico: confirmar o trecho.
+56;11;Rua Karoline Modolon Saiber;Rua Karoline Modolon Saiber;Vila Esperança;88708-292;confirmado;
+57;11;Rua Pedro Mendes de Farias;Rua Pedro Mendes de Farias;Passo do Gado;88705-211;confirmado;
+58;11;Rua Exped. J. Anastácio Teixeira;;;;pendente;"Abreviada; 'Exped.' provavelmente Expedicionário. Muito parecida com 'Rua Anastácio Teófilo Teixeira', também na lista — verificar se não é a mesma via. A via tem mais de um CEP; conferir o trecho. ViaCEP devolve apenas 'Rua Anastácio Theófilo Teixeira' (88704-120), a mesma via do item 68."
+59;11;Rua Maria Salete da Rosa Mendes;Rua Maria Salete da Rosa Mendes;Passagem;88706-508;confirmado;
+60;11;Rua Manoel Antônio Almeida;Rua Manoel Antônio Almeida;Bom Pastor;88707-250;confirmado;
+61;11;Beco 1900;;;;pendente;"Logradouro informal; pode não constar na base dos Correios."
+62;11;Av. Visconde de Barbacena;Avenida Visconde de Barbacena;Passagem;88705-665;confirmado;"A via tem mais de um CEP; conferir o trecho."
+63;11;Rua Leony Gonçalves Fernandes;Rua Leony Gonçalves Fernandes;São João (Margem Esquerda);88708-646;confirmado;
+64;11;Rua Gilson Teodoro Ouriques;;;;pendente;
+65;11;Rua Adário Bernardinho Damásio;;;;pendente;
+66;11;Rua Virgílio Parisi Duarte;Rua Virgílio Parise Duarte;Monte Castelo;88702-670;confirmado;
+67;11;Rua Celso Camilo Tonelli;Rua Celso Camilo Tonelli;Recife;88705-730;confirmado;
+68;11;Rua Anastácio Teófilo Teixeira;Rua Anastácio Theófilo Teixeira;Morrotes;88704-120;provavel;"Ver observação da 'Rua Exped. J. Anastácio Teixeira'. A via tem mais de um CEP; conferir o trecho."
+69;11;Rua Manoel Custodio Braga;Rua Manoel Custódio Braga;Bom Pastor;88707-294;confirmado;

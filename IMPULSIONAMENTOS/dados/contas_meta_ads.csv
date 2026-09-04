@@ -1,0 +1,10 @@
+ad_account_id,nome,business,status,mcp_habilitado,consultavel,observacao
+1565441288651757,PEPE COLLAÇO - ELEIÇÃO,Pepê Collaço,ACTIVE,SIM,SIM,Segunda conta do Business (vista em 02/09/2026); só campanha de teste
+1700449990528437,CA - PEPE COLLAÇO - OFICIAL,Pepê Collaço,ACTIVE,SIM,SIM,PRINCIPAL do mandato
+943250046537320,LIBRAS.SE AD,Libras.se ADM,ACTIVE,SIM,SIM,Outro projeto
+483724714338806,CA01,Bm - 4794,ACTIVE,SIM,SIM,Genérica / reserva
+418322638313693,(sem nome),(sem business),ACTIVE,SIM,SIM,Sem nome
+1449554698720212,Libras-se,Luis Gustavo Debiasi,UNSETTLED,SIM,NÃO,Pendência de pagamento
+245426087522660,MOVIMENTO SOU BEM,SOU BEM,UNSETTLED,SIM,NÃO,Pendência de pagamento
+1283592963985064,Expedito Michels - Pré,Expeditooficial,ACTIVE,NÃO,SIM,MCP não liberado (rollout)
+301936120,(sem nome),(sem business),CLOSED,SIM,NÃO,Conta fechada

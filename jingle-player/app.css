@@ -1,0 +1,275 @@
+/* ==========================================================================
+   Player de jingles · Pepê Collaço 11223
+   Tokens e regras vêm de _IDENTIDADE/CLAUDE.md (v1.1.0). Onde este arquivo e
+   aquele documento divergirem, o documento está certo.
+   ========================================================================== */
+
+@font-face{font-family:"Acumin Pro";src:url(fontes/acumin-400.woff2) format("woff2");
+  font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Acumin Pro";src:url(fontes/acumin-700.woff2) format("woff2");
+  font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Acumin Pro Wide";src:url(fontes/acumin-wide-900.woff2) format("woff2");
+  font-weight:900;font-style:normal;font-display:swap}
+
+:root{
+  /* azuis */
+  --pp-azul-foco:#0082BF; --pp-azul-medio:#006A9E; --pp-azul-profundo:#0A5480;
+  --pp-navy:#123F68; --pp-navy-escuro:#12314F; --pp-abismo:#0E1E46; --pp-tinta:#061A3A;
+  --pp-azul-claro:#8BC1DC;
+  /* ação */
+  --pp-amarelo:#FFC400; --pp-amarelo-num:#FDC51E; --pp-laranja:#FAAA40; --pp-laranja-quente:#FF9C33;
+  /* institucional */
+  --pp-verde:#00B171; --pp-verde-claro:#8ACD88;
+  --pp-alerta:#E5484D;
+
+  /* Copiados de _IDENTIDADE/dist/css/tokens.css. O app é offline e não pode
+     depender de buscar o CSS da identidade, mas os valores são aqueles. */
+  --grad-fundo:radial-gradient(120% 130% at 18% 0%,
+    #0082BF 0%, #006A9E 22%, #045E8D 38%, #12456D 56%,
+    #10365F 70%, #0E2D53 82%, #0F264B 91%, #0E1E46 100%);
+  --veu-conteudo:linear-gradient(rgba(14,30,70,.55), rgba(6,26,58,.85));
+  --textura-opacidade:.07;
+  --textura-tamanho:308px 491px;   /* o tile não é quadrado; forçar 1:1 deforma a seta */
+
+  --fonte:"Acumin Pro",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --fonte-display:"Acumin Pro Wide","Acumin Pro",system-ui,sans-serif;
+
+  --raio:18px;
+  --pulso:0;              /* 0..1, escrito pelo rAF no compasso da faixa */
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--fonte);
+  color:#fff;
+  background:var(--pp-abismo);
+  overscroll-behavior:none;
+  -webkit-text-size-adjust:100%;
+  -webkit-tap-highlight-color:transparent;
+}
+
+/* Fundo: degradê da identidade + textura de setas aplicada como MÁSCARA.
+   Máscara e não background-image: um SVG em url() renderiza isolado, não
+   enxerga a cor da página, e a textura sumiria sobre o azul escuro. */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-3;
+  background:var(--grad-fundo);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-color:#fff;
+  -webkit-mask-image:url(img/setas-tile.svg); mask-image:url(img/setas-tile.svg);
+  -webkit-mask-size:var(--textura-tamanho); mask-size:var(--textura-tamanho);
+  opacity:var(--textura-opacidade);
+}
+#fundo{position:fixed;inset:0;z-index:-1;width:100%;height:100%;pointer-events:none}
+
+/* Véu sob a coluna. Regra de contraste nº 5 da identidade: o canto superior
+   esquerdo do degradê é #0082BF, onde branco pequeno dá 4,25 e amarelo 2,66. */
+.app::before{
+  content:"";position:fixed;top:0;bottom:0;left:50%;transform:translateX(-50%);
+  width:min(100%,620px);z-index:-1;pointer-events:none;
+  background:var(--veu-conteudo);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+
+/* ---------- moldura ---------- */
+.app{
+  min-height:100%;
+  display:flex;flex-direction:column;
+  max-width:560px;margin:0 auto;
+  padding:calc(16px + env(safe-area-inset-top)) 18px calc(18px + env(safe-area-inset-bottom));
+  gap:16px;
+}
+
+.topo{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.marca{width:104px;height:auto;flex:none}
+
+/* Selo de estado do cache. Cor sozinha não comunica: vem sempre com texto. */
+.selo{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 13px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.24);
+  background:rgba(6,26,58,.5);
+  color:#fff;font:600 12px/1 var(--fonte);letter-spacing:.02em;
+  cursor:pointer;
+}
+.selo-ponto{width:9px;height:9px;border-radius:50%;background:var(--pp-azul-claro);flex:none}
+.selo[data-estado="pronto"] .selo-ponto{background:var(--pp-verde)}
+.selo[data-estado="baixando"] .selo-ponto{background:var(--pp-amarelo);animation:pisca 1s infinite}
+.selo[data-estado="falta"] .selo-ponto{background:var(--pp-alerta)}
+@keyframes pisca{50%{opacity:.25}}
+
+.palco{flex:1;display:flex;flex-direction:column;align-items:center;gap:16px}
+/* Tudo que não é a capa vive aqui. Existe para o modo paisagem poder pôr capa
+   e controles lado a lado sem precisar de grade nomeada: `.capa-area` é filha
+   de `.palco`, e não de `.app`, então grid-area no `.app` não a alcançaria. */
+.coluna{display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;min-width:0}
+
+/* ---------- capa e anel de progresso ---------- */
+.capa-area{position:relative;width:min(72vw,300px);aspect-ratio:1;flex:none;margin-top:4px}
+.capa-moldura{
+  position:absolute;inset:0;border-radius:var(--raio);overflow:hidden;
+  box-shadow:0 18px 44px rgba(6,26,58,.55), 0 0 0 1px rgba(255,255,255,.10) inset;
+  transform:scale(calc(1 + var(--pulso) * .014));
+  will-change:transform;
+}
+.capa{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---------- textos ---------- */
+.info{text-align:center;min-height:64px}
+.titulo{
+  font-family:var(--fonte-display);font-weight:900;
+  font-size:clamp(21px,5.6vw,27px);line-height:1.08;letter-spacing:-.01em;
+  margin:0 0 5px;text-transform:uppercase;
+}
+.subtitulo{margin:0;font-size:13px;color:var(--pp-azul-claro);letter-spacing:.04em}
+
+/* ---------- barras no compasso ---------- */
+.barras{display:flex;align-items:flex-end;gap:5px;height:34px}
+.barras i{
+  width:5px;border-radius:3px;background:linear-gradient(180deg,var(--pp-amarelo),var(--pp-laranja));
+  height:100%;transform:scaleY(.16);transform-origin:bottom;opacity:.9;
+}
+
+/* ---------- tempo ---------- */
+.tempo{display:flex;align-items:center;gap:11px;width:100%;
+  font-variant-numeric:tabular-nums;font-size:12px;color:var(--pp-azul-claro)}
+.busca{flex:1;min-width:0}
+
+input[type=range]{
+  -webkit-appearance:none;appearance:none;background:transparent;height:26px;margin:0;cursor:pointer;
+}
+/* O trilho mostra o quanto já andou. Numa carreata o operador olha de relance:
+   uma barra preenchida se lê mais rápido que um número. */
+input[type=range]::-webkit-slider-runnable-track{height:5px;border-radius:3px;
+  background:linear-gradient(90deg,var(--pp-amarelo) var(--prog,0%),
+                                    rgba(255,255,255,.20) var(--prog,0%))}
+input[type=range]::-moz-range-track{height:5px;border-radius:3px;
+  background:linear-gradient(90deg,var(--pp-amarelo) var(--prog,0%),
+                                    rgba(255,255,255,.20) var(--prog,0%))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:17px;height:17px;border-radius:50%;
+  background:var(--pp-amarelo);border:none;margin-top:-6px;box-shadow:0 2px 7px rgba(0,0,0,.4)}
+input[type=range]::-moz-range-thumb{width:17px;height:17px;border-radius:50%;
+  background:var(--pp-amarelo);border:none;box-shadow:0 2px 7px rgba(0,0,0,.4)}
+
+/* ---------- controles ---------- */
+.controles{display:flex;align-items:center;justify-content:center;gap:26px}
+.bt{
+  display:grid;place-items:center;border:none;cursor:pointer;color:#fff;
+  background:transparent;padding:0;border-radius:50%;
+}
+.bt svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.bt-lado{width:62px;height:62px;background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16)}
+.bt-lado svg{width:26px;height:26px;fill:currentColor;stroke-width:1.4}
+.bt-lado:active{background:rgba(255,255,255,.2)}
+
+/* Botão primário canônico: amarelo com tinta. 10,81 de contraste. */
+.bt-tocar{
+  width:92px;height:92px;background:var(--pp-amarelo);color:var(--pp-tinta);
+  box-shadow:0 10px 30px rgba(255,196,0,.30);
+}
+.bt-tocar:active{transform:scale(.95)}
+.bt-tocar svg{width:38px;height:38px;fill:currentColor;stroke:none}
+.bt-tocar .ic-pause{display:none}
+body.tocando .bt-tocar .ic-play{display:none}
+body.tocando .bt-tocar .ic-pause{display:block}
+
+/* ---------- modos ---------- */
+.modos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%}
+.modo{
+  display:flex;flex-direction:column;gap:2px;align-items:center;
+  padding:11px 6px;border-radius:13px;cursor:pointer;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  color:#fff;font-family:var(--fonte);text-align:center;
+}
+.modo strong{font-size:13px;font-weight:700;line-height:1.15}
+.modo span{font-size:10.5px;color:var(--pp-azul-claro);line-height:1.2}
+.modo[aria-checked=true]{background:var(--pp-amarelo);border-color:var(--pp-amarelo);color:var(--pp-tinta)}
+.modo[aria-checked=true] span{color:rgba(6,26,58,.72)}
+
+/* ---------- volume ---------- */
+.volume{display:flex;align-items:center;gap:11px;width:100%;color:var(--pp-azul-claro)}
+.volume svg{width:21px;height:21px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+.volume input{flex:1;min-width:0}
+.volume output{font-size:12px;font-variant-numeric:tabular-nums;min-width:30px;text-align:right}
+
+/* ---------- lista ---------- */
+.lista{list-style:none;margin:2px 0 0;padding:0;width:100%;display:flex;flex-direction:column;gap:7px}
+.lista li{margin:0}
+.faixa{
+  display:flex;align-items:center;gap:12px;width:100%;
+  padding:11px 13px;border-radius:13px;cursor:pointer;text-align:left;
+  background:rgba(255,255,255,.055);border:1px solid transparent;
+  color:#fff;font-family:var(--fonte);
+}
+.faixa[aria-current=true]{background:rgba(255,255,255,.13);border-color:rgba(255,196,0,.55)}
+.faixa-n{font-family:var(--fonte-display);font-weight:900;font-size:15px;
+  color:var(--pp-amarelo);min-width:18px;flex:none}
+.faixa-txt{flex:1;min-width:0}
+.faixa-nome{display:block;font-size:14px;font-weight:700;line-height:1.2;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.faixa-meta{display:block;font-size:11px;color:var(--pp-azul-claro);margin-top:2px}
+.faixa-dur{font-size:11.5px;color:var(--pp-azul-claro);font-variant-numeric:tabular-nums;flex:none}
+
+/* ---------- manter a tela ligada ---------- */
+.tela{
+  display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
+  padding:13px;border-radius:13px;cursor:pointer;margin-top:2px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  color:#fff;font:700 13px/1 var(--fonte);
+}
+.tela-ic{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.3);flex:none}
+.tela[aria-pressed=true]{background:rgba(0,177,113,.19);border-color:rgba(0,177,113,.55)}
+.tela[aria-pressed=true] .tela-ic{background:var(--pp-verde)}
+
+/* ---------- rodapé ---------- */
+.rodape{text-align:center;padding-top:4px}
+.aviso-ia{
+  margin:0 0 5px;font-size:10px;font-weight:700;letter-spacing:.07em;
+  color:rgba(255,255,255,.82);line-height:1.35;
+}
+.creditos{margin:0;font-size:10.5px;color:rgba(139,193,220,.75)}
+
+/* ---------- tela de preparo ---------- */
+.preparando{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:24px;
+  background:rgba(6,26,58,.92);backdrop-filter:blur(7px)}
+.preparando[hidden]{display:none}
+.preparando-caixa{max-width:380px;text-align:center}
+.preparando-caixa h2{font-family:var(--fonte-display);font-weight:900;font-size:19px;
+  text-transform:uppercase;margin:0 0 9px;line-height:1.15}
+#preparandoTexto{margin:0 0 15px;font-size:14px;color:var(--pp-azul-claro)}
+.preparando-trilho{height:7px;border-radius:4px;background:rgba(255,255,255,.16);overflow:hidden}
+.preparando-barra{height:100%;width:0;border-radius:4px;
+  background:linear-gradient(90deg,var(--pp-amarelo),var(--pp-laranja));transition:width .3s ease}
+.preparando-nota{margin:15px 0 0;font-size:12px;color:rgba(139,193,220,.8);line-height:1.45}
+
+/* ---------- paisagem: telefone deitado no suporte do carro ---------- */
+@media (orientation:landscape) and (max-height:560px){
+  .app{max-width:940px;gap:10px}
+  .palco{flex-direction:row;align-items:center;justify-content:center;gap:26px}
+  .capa-area{flex:0 0 clamp(150px,30vw,210px);width:clamp(150px,30vw,210px);margin-top:0}
+  .coluna{flex:1;gap:10px}
+  .lista{display:none}          /* espaço é curto: a lista sai, os controles ficam */
+  .barras{height:24px}
+  .info{min-height:0}
+  .titulo{font-size:clamp(18px,3.2vw,23px)}
+  .bt-tocar{width:74px;height:74px}
+  .bt-tocar svg{width:31px;height:31px}
+  .bt-lado{width:52px;height:52px}
+  .controles{gap:20px}
+  .rodape{padding-top:0}
+  .aviso-ia{font-size:9px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .capa-moldura{transform:none}
+  .barras i{transform:scaleY(.4)!important}
+  #fundo{display:none}
+}

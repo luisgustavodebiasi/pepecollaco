@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>Vem com o Pepe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #e8f4ff;
+      --card: #ffffff;
+      --blue: #1a7fe8;
+      --blue2: #5db3ff;
+      --text: #0d2a4a;
+      --muted: #7aaecf;
+      --border: #c2ddf7;
+      --input-bg: #f0f8ff;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #daeeff 0%, #c5e4ff 100%);
+      min-height: 100dvh;
+      padding: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 28px;
+      padding: 44px 28px 40px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow:
+        0 4px 32px rgba(26,127,232,0.10),
+        0 1px 4px rgba(26,127,232,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* Logo / título */
+    .logo-wrap {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .logo-icon {
+      font-size: 52px;
+      line-height: 1;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--blue);
+      line-height: 1.1;
+    }
+
+    h1 span {
+      color: var(--text);
+    }
+
+    /* Inputs */
+    .fields {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .field-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .phone-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    input {
+      width: 100%;
+      background: var(--input-bg);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 20px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+
+    input::placeholder {
+      color: #b8d5ef;
+      font-weight: 400;
+    }
+
+    input:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(26,127,232,0.10);
+    }
+
+    input.ddi {
+      width: 90px;
+      min-width: 90px;
+      text-align: center;
+      flex-shrink: 0;
+      font-size: 20px;
+    }
+
+    input#name {
+      font-size: 20px;
+    }
+
+    /* Botão */
+    .btn {
+      width: 100%;
+      padding: 22px;
+      border: none;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue2) 100%);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+      box-shadow: 0 6px 24px rgba(26,127,232,0.30);
+      position: relative;
+    }
+
+    .btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn:not(:disabled):active {
+      transform: scale(0.97);
+    }
+
+    .btn .spinner {
+      display: none;
+      width: 22px; height: 22px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .btn.loading .btn-text { display: none; }
+    .btn.loading .spinner { display: block; }
+
+    /* Success */
+    .success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      animation: pop 0.4s cubic-bezier(.34,1.56,.64,1) both;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    .success.show { display: flex; }
+    .form-area.hide { display: none; }
+
+    .success-icon {
+      font-size: 64px;
+      line-height: 1;
+    }
+
+    .success h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .success p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <span class="logo-icon">🐾</span>
+      <h1>VEM COM<br/><span>O PEPE</span></h1>
+    </div>
+
+    <!-- Formulário -->
+    <div class="form-area">
+      <div class="fields">
+
+        <!-- WhatsApp -->
+        <div>
+          <div class="field-label">WhatsApp</div>
+          <div class="phone-row">
+            <input class="ddi" id="ddi" type="tel" inputmode="numeric" value="+55" maxlength="4"/>
+            <input id="phone" type="tel" inputmode="numeric" placeholder="(11) 99999-9999" autocomplete="tel"/>
+          </div>
+        </div>
+
+        <!-- Nome (opcional) -->
+        <div>
+          <div class="field-label">Nome <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;color:#b8d5ef">(opcional)</span></div>
+          <input id="name" type="text" inputmode="text" placeholder="Seu nome"/>
+        </div>
+
+      </div>
+
+      <button class="btn" id="btn" disabled onclick="submit()">
+        <span class="btn-text">Entrar 👊</span>
+        <div class="spinner"></div>
+      </button>
+    </div>
+
+    <!-- Sucesso -->
+    <div class="success" id="success">
+      <div class="success-icon">✅</div>
+      <h2>Recebido!</h2>
+      <p>Você vai receber uma mensagem no WhatsApp agora mesmo.</p>
+    </div>
+
+  </div>
+
+  <script>
+    const N8N_WEBHOOK_URL = "https://SEU-N8N.com/webhook/lead-capture";
+
+    const phoneEl = document.getElementById('phone');
+    const ddiEl   = document.getElementById('ddi');
+    const btn     = document.getElementById('btn');
+
+    // Apenas números nos campos numéricos
+    ddiEl.addEventListener('keypress', e => { if (!/[\d+]/.test(e.key)) e.preventDefault(); });
+
+    phoneEl.addEventListener('input', () => {
+      // Remove tudo que não for número
+      let v = phoneEl.value.replace(/\D/g, '');
+      // Formata
+      if (v.length <= 2)       phoneEl.value = v;
+      else if (v.length <= 6)  phoneEl.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+      else if (v.length <= 10) phoneEl.value = `(${v.slice(0,2)}) ${v.slice(2,6)}-${v.slice(6)}`;
+      else                     phoneEl.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7,11)}`;
+
+      // Habilita botão só com número válido
+      btn.disabled = v.length < 10;
+    });
+
+    // Bloqueia digitação de letras no campo de telefone
+    phoneEl.addEventListener('keypress', e => {
+      if (!/[\d]/.test(e.key)) e.preventDefault();
+    });
+
+    async function submit() {
+      btn.classList.add('loading');
+      btn.disabled = true;
+
+      const rawPhone = phoneEl.value.replace(/\D/g, '');
+      const ddi      = ddiEl.value.replace(/\D/g, '') || '55';
+      const fullPhone = ddi + rawPhone;
+      const name     = document.getElementById('name').value.trim();
+
+      try {
+        await fetch(N8N_WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name || null,
+            phone: fullPhone,
+            phone_display: phoneEl.value,
+            ddi,
+            source: document.referrer || 'direto',
+            page_url: window.location.href,
+            timestamp: new Date().toISOString()
+          })
+        });
+      } catch(e) { console.warn(e); }
+
+      document.querySelector('.form-area').classList.add('hide');
+      document.getElementById('success').classList.add('show');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Discursos — Pepê Collaço 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&amp;family=Saira:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   MANUAL DE DISCURSOS — TEMA "ARENA DIGITAL"
+   (mesmo sistema visual do Plano Mestre de Comunicação)
+   Azul-marinho de fundo · números em amarelo · verde institucional
+   · cinza-azulado de apoio · tipografia condensada esportiva.
+   ============================================================ */
+:root{
+  --ink:#061A3A;          /* azul marinho principal (fundo) */
+  --ink-d:#04122B;        /* navy mais profundo */
+  --ink-2:#C3CFE0;        /* texto secundário (cinza azulado) */
+  --ink-3:#8FA0BC;        /* apoio / muted */
+  --paper:#061A3A;        /* fundo doc */
+  --paper-2:#0C2247;      /* zebra de tabela */
+  --line:rgba(255,255,255,.12);
+  --line-2:rgba(255,255,255,.24);
+  --white:#FFFFFF;
+  --slate:#B8C4D6;        /* cinza azulado claro */
+  --red:#FFD21F;          /* (mapeado) AMARELO destaque */
+  --red-deep:#FFDD57;     /* amarelo claro p/ títulos de caixa */
+  --navy:#3E72C4;         /* azul médio de apoio (acentos) */
+  --navy-2:#86B4F0;       /* azul claro p/ texto-acento */
+  --navy-fill:#142B50;    /* azul médio de caixas/cards */
+  --navy-fill2:#203A63;   /* azul médio claro */
+  --sun:#1FA64A;          /* (mapeado) VERDE institucional */
+  --sun-2:#0F8A3A;
+  --green:#46D07D;        /* verde claro (feito/boa prática) */
+  --tint-red:rgba(255,210,31,.10);
+  --tint-navy:rgba(62,114,196,.15);
+  --tint-sun:rgba(31,166,74,.14);
+  --tint-green:rgba(70,208,125,.13);
+  --brush:
+    linear-gradient(118deg, transparent 0 19.6%, rgba(31,166,74,.06) 20% 20.9%, transparent 21.3%),
+    linear-gradient(118deg, transparent 0 38%, rgba(255,210,31,.05) 38.3% 39%, transparent 39.4%),
+    linear-gradient(118deg, transparent 0 58%, rgba(255,255,255,.035) 58.3% 59%, transparent 59.4%),
+    linear-gradient(118deg, transparent 0 78%, rgba(62,114,196,.07) 78.3% 79.4%, transparent 79.8%),
+    linear-gradient(118deg, transparent 0 90%, rgba(31,166,74,.05) 90.2% 91%, transparent 91.4%),
+    radial-gradient(130% 90% at 88% -12%, rgba(8,36,82,.85), transparent 58%),
+    radial-gradient(120% 90% at -10% 110%, rgba(15,138,58,.16), transparent 55%);
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  margin:0;background:var(--ink-d);color:#E7EDF7;
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size:15px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+.doc{max-width:210mm;margin:24px auto;background:var(--ink);border-radius:16px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.05)}
+
+/* ---------- Tipografia condensada esportiva ---------- */
+h1,h2,h3,h4,.display{font-family:"Saira Condensed",sans-serif;color:var(--white);
+  letter-spacing:.01em;line-height:1.02;font-weight:800;text-transform:uppercase}
+.kicker{font-family:"Saira Condensed",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--red)}
+p{margin:0 0 12px;color:#E2E9F4}
+a{color:var(--navy-2)}
+strong{font-weight:700;color:var(--white)}
+em{font-style:italic;color:#EAF0F8}
+mark{background:rgba(255,210,31,.22);color:#FFF1B8;padding:0 .15em;border-radius:2px}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.small{font-size:12.5px;color:var(--ink-2)}
+.muted{color:var(--ink-3)}
+.center{text-align:center}
+
+/* ---------- Página / impressão ---------- */
+.page{padding:26mm 22mm 24mm;position:relative;min-height:297mm;background-color:var(--ink);background-image:var(--brush);background-attachment:local}
+.page--tight{padding-top:18mm}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .doc{max-width:none;margin:0;border-radius:0;box-shadow:none}
+  .no-print{display:none !important}
+  .page{break-after:page}
+  .break{break-before:page}
+  .avoid{break-inside:avoid}
+  h2,h3{break-after:avoid}
+  tr{break-inside:avoid}
+}
+.break{}
+.avoid{break-inside:avoid}
+
+/* ---------- Barra utilitária ---------- */
+.toolbar{position:sticky;top:0;z-index:50;background:var(--ink-d);color:#fff;
+  display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;
+  padding:9px 16px;font-size:12.5px;border-bottom:1px solid rgba(255,255,255,.1)}
+.toolbar b{color:#fff}
+.toolbar .dot{color:var(--red)}
+.tbtn{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+  font-size:12px;background:var(--red);color:#1A1400;border:none;border-radius:6px;padding:5px 12px;cursor:pointer}
+.tbtn:hover{background:#FFDD57}
+.pm-editing .doc{outline:2px dashed rgba(255,210,31,.45);outline-offset:-6px}
+[contenteditable="true"]{cursor:text}
+
+/* ---------- CAPA ---------- */
+.cover{background-color:var(--ink-d);background-image:var(--brush);color:#fff;min-height:297mm;padding:24mm 22mm;
+  display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.cover:before{content:"";position:absolute;right:-12%;top:-10%;width:62%;height:60%;
+  background:radial-gradient(circle at center,rgba(255,210,31,.18),transparent 62%)}
+.cover:after{content:"";position:absolute;left:-12%;bottom:-16%;width:60%;height:58%;
+  background:radial-gradient(circle at center,rgba(31,166,74,.28),transparent 60%)}
+.cover>*{position:relative;z-index:2}
+.cover .topline{display:flex;justify-content:space-between;align-items:flex-start;
+  font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:rgba(255,255,255,.72)}
+.cover h1{color:#fff;font-size:92px;font-weight:900;letter-spacing:.005em;line-height:.9;margin:0;transform:skewX(-4deg);transform-origin:left}
+.cover h1 .red{color:var(--red)}
+.cover .sub{font-family:"Saira Condensed";font-weight:600;font-size:21px;text-transform:uppercase;letter-spacing:.02em;color:rgba(255,255,255,.92);margin-top:20px;max-width:22ch;line-height:1.12}
+.cover .stripe{height:9px;width:170px;background:var(--red);margin:26px 0 0;border-radius:99px;box-shadow:0 0 0 0 transparent}
+.cover .stripe:after{content:"";display:block;height:9px;width:90px;background:var(--sun);border-radius:99px;margin-top:6px}
+.cover .meta{display:flex;gap:36px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.8)}
+.cover .meta b{display:block;font-family:"Saira Condensed";font-weight:700;color:var(--red);font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.cover .conf{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.05em;color:rgba(255,255,255,.6)}
+
+/* ---------- Divisórias de PARTE ---------- */
+.divider{background-color:var(--ink-d);background-image:var(--brush);color:#fff;min-height:297mm;padding:30mm 22mm;
+  display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.divider.alt:after{content:"";position:absolute;right:-10%;top:-10%;width:55%;height:55%;background:radial-gradient(circle,rgba(31,166,74,.22),transparent 60%)}
+.divider>*{position:relative;z-index:2}
+.divider .pnum{font-family:"Saira Condensed";font-weight:900;font-size:160px;line-height:.78;color:var(--red);letter-spacing:.01em;transform:skewX(-5deg);transform-origin:left}
+.divider .ptitle{font-family:"Saira Condensed";font-weight:900;font-size:56px;color:#fff;letter-spacing:.01em;line-height:.98;margin:6px 0 18px;max-width:18ch;text-transform:uppercase}
+.divider .pdesc{max-width:54ch;color:rgba(255,255,255,.82);font-size:15px}
+.divider .pindex{margin-top:30px;border-top:1px solid rgba(255,255,255,.2);padding-top:18px;
+  display:grid;grid-template-columns:1fr 1fr;gap:6px 30px;font-size:13px;color:rgba(255,255,255,.88)}
+.divider .pindex span{font-family:"JetBrains Mono";color:var(--red);margin-right:8px}
+
+/* ---------- Cabeçalho de capítulo ---------- */
+.chead{display:flex;align-items:baseline;gap:14px;border-bottom:3px solid var(--sun);
+  padding-bottom:10px;margin:0 0 20px}
+.chead .n{font-family:"Saira Condensed";font-weight:900;font-size:40px;color:var(--red);line-height:.85;transform:skewX(-5deg)}
+.chead h2{font-size:30px;margin:0;flex:1;color:#fff}
+.shead{font-family:"Saira Condensed";font-weight:800;font-size:20px;margin:26px 0 8px;text-transform:uppercase;
+  color:#fff;display:flex;align-items:center;gap:10px;letter-spacing:.01em}
+.shead:before{content:"";width:14px;height:14px;background:var(--sun);display:inline-block;flex:none;border-radius:2px}
+.q{font-family:"Saira Condensed";font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--navy-2);margin:18px 0 6px}
+
+/* running header */
+.rh{position:absolute;top:12mm;left:22mm;right:22mm;display:flex;justify-content:space-between;
+  font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--ink-3);
+  border-bottom:1px solid var(--line);padding-bottom:6px;z-index:3}
+.rh .red{color:var(--red)}
+
+/* ---------- Lead ---------- */
+.lead{font-size:17px;line-height:1.55;color:#EDF2FA;font-weight:500}
+.lead--big{font-family:"Saira Condensed";font-weight:700;font-size:23px;line-height:1.2;letter-spacing:.005em;color:#fff;text-transform:none}
+
+/* ---------- Boxes / callouts ---------- */
+.box{border:1px solid var(--line);border-left:5px solid var(--red);background:var(--tint-red);
+  padding:16px 18px;margin:16px 0;border-radius:8px}
+.box .bt{font-family:"Saira Condensed";font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.05em;margin:0 0 6px;color:var(--red-deep)}
+.box.red{border-left-color:var(--red);background:var(--tint-red)}
+.box.red .bt{color:var(--red-deep)}
+.box.navy{border-left-color:var(--navy);background:var(--tint-navy)}
+.box.navy .bt{color:var(--navy-2)}
+.box.sun{border-left-color:var(--sun);background:var(--tint-sun)}
+.box.sun .bt{color:#5BE08C}
+.box.green{border-left-color:var(--green);background:var(--tint-green)}
+.box.green .bt{color:var(--green)}
+.box p:last-child{margin-bottom:0}
+.box p{color:#E7EDF7}
+
+/* ---------- Grids ---------- */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:1fr 1fr 1fr}
+.g4{grid-template-columns:repeat(4,1fr)}
+
+/* ---------- Cards ---------- */
+.card{border:1px solid var(--line);background:rgba(20,43,80,.55);border-radius:10px;padding:15px 16px}
+.card .ct{font-family:"Saira Condensed";font-weight:800;font-size:16px;margin:0 0 4px;color:#fff;text-transform:uppercase;letter-spacing:.01em}
+.card .cn{font-family:"Saira Condensed";font-weight:800;font-size:13px;color:var(--red);letter-spacing:.06em}
+.card p{font-size:13px;margin:0;color:#D9E2F0}
+.card.dark{background:rgba(4,18,43,.7);border-color:var(--line-2)}
+.card.dark .ct{color:var(--red)}
+
+/* ---------- KPI / estatística ---------- */
+.stat{border:1px solid var(--line);border-top:4px solid var(--red);background:rgba(20,43,80,.5);border-radius:8px;padding:14px}
+.stat .num{font-family:"Saira Condensed";font-weight:900;font-size:34px;line-height:1;color:var(--red);letter-spacing:.01em;transform:skewX(-5deg);display:inline-block}
+.stat .lab{font-size:11.5px;color:var(--ink-2);margin-top:6px;line-height:1.3}
+.stat.navy{border-top-color:var(--navy)}
+.stat.navy .num{color:var(--navy-2)}
+.stat.sun{border-top-color:var(--sun)}
+.stat.sun .num{color:#5BE08C}
+.stat.green{border-top-color:var(--green)}
+.stat.green .num{color:var(--green)}
+
+/* ---------- Tabelas ---------- */
+table.tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin:14px 0}
+table.tbl th{background:#0E2A57;color:#fff;text-align:left;font-family:"Saira Condensed";
+  font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;padding:9px 10px;vertical-align:bottom;border-bottom:2px solid var(--sun)}
+table.tbl td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top;color:#E2E9F4}
+table.tbl tr:nth-child(even) td{background:rgba(255,255,255,.035)}
+table.tbl .r{text-align:right;white-space:nowrap}
+table.tbl .blank{color:var(--ink-3)}
+table.tbl.compact td,table.tbl.compact th{padding:6px 8px;font-size:11.8px}
+.fill{display:inline-block;min-width:90px;border-bottom:1px dotted var(--line-2)}
+
+/* pills / tags */
+.pill{display:inline-block;font-family:"Saira Condensed";font-weight:700;font-size:11px;text-transform:uppercase;
+  letter-spacing:.05em;padding:3px 10px;border-radius:99px;border:1px solid var(--line-2);color:var(--ink-2)}
+.pill.red{background:var(--red);color:#1A1400;border-color:var(--red)}
+.pill.navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pill.sun{background:var(--sun);color:#04210F;border-color:var(--sun)}
+.pill.green{background:var(--green);color:#04210F;border-color:var(--green)}
+.pill.ghost{background:transparent;color:var(--ink-2)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+
+/* ---------- Checklist ---------- */
+.check{list-style:none;padding:0;margin:12px 0}
+.check li{position:relative;padding:6px 0 6px 30px;border-bottom:1px solid var(--line);font-size:13.5px;color:#E2E9F4}
+.check li:before{content:"";position:absolute;left:0;top:8px;width:15px;height:15px;border:2px solid var(--ink-3);border-radius:3px}
+.check li.done:before{background:var(--green);border-color:var(--green)}
+.check li.done:after{content:"✓";position:absolute;left:3px;top:4px;color:#04210F;font-size:11px;font-weight:800}
+.check li.done{color:var(--ink-3);text-decoration:line-through}
+
+/* ---------- Matriz de prioridade ---------- */
+.matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
+.quad{border:1px solid var(--line-2);border-radius:10px;padding:14px;min-height:120px}
+.quad .qh{font-family:"Saira Condensed";font-weight:800;font-size:14px;margin-bottom:8px;display:flex;justify-content:space-between;text-transform:uppercase;color:#fff}
+.quad.p0{background:rgba(255,210,31,.09);border-color:var(--red)}
+.quad.p1{background:rgba(31,166,74,.1);border-color:var(--sun)}
+.quad.p2{background:rgba(62,114,196,.12);border-color:var(--navy)}
+.quad.p3{background:rgba(255,255,255,.04)}
+.quad ul{margin:0;padding-left:16px;font-size:12px;color:#DCE4F1}
+.quad li{margin-bottom:3px}
+
+/* ---------- Timeline ---------- */
+.tl{position:relative;margin:18px 0;padding-left:26px}
+.tl:before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:3px;background:var(--line-2)}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev:before{content:"";position:absolute;left:-26px;top:3px;width:17px;height:17px;border-radius:50%;background:var(--red);border:3px solid var(--ink);box-shadow:0 0 0 2px var(--red)}
+.tl .ev .d{font-family:"Saira Condensed";font-weight:800;font-size:13px;color:var(--red);text-transform:uppercase;letter-spacing:.05em}
+.tl .ev .t{font-family:"Saira Condensed";font-weight:700;font-size:16px;margin:1px 0 2px;color:#fff;text-transform:uppercase}
+.tl .ev p{font-size:13px;margin:0;color:#D9E2F0}
+
+/* ---------- Fluxograma ---------- */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:16px 0}
+.flow .node{flex:1;min-width:110px;background:rgba(20,43,80,.6);border:2px solid var(--line-2);border-radius:8px;
+  padding:11px 12px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.flow .node .ft{font-family:"Saira Condensed";font-weight:800;font-size:13px;color:#fff;text-transform:uppercase}
+.flow .node small{font-size:10.5px;color:var(--ink-2);display:block;margin-top:3px}
+.flow .arr{display:flex;align-items:center;color:var(--red);font-weight:900;font-size:22px;padding:0 6px}
+.flow .node.red{background:var(--red);border-color:var(--red)}
+.flow .node.red .ft{color:#1A1400}.flow .node.red small{color:rgba(26,20,0,.7)}
+.flow .node.navy{background:var(--sun);border-color:var(--sun)}
+.flow .node.navy .ft{color:#04210F}.flow .node.navy small{color:rgba(4,33,15,.75)}
+
+/* ---------- Placeholder ---------- */
+.ph{border:2px dashed var(--line-2);border-radius:10px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 10px,rgba(255,255,255,.06) 10px 20px);
+  padding:22px;text-align:center;margin:14px 0;color:var(--ink-2)}
+.ph .pi{font-family:"Saira Condensed";font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--red)}
+.ph .pl{font-family:"Saira Condensed";font-weight:700;font-size:16px;color:#fff;margin:4px 0;text-transform:uppercase}
+.ph .pd{font-size:12px;color:var(--ink-2)}
+.ph.tall{padding:42px 22px}
+.ph{position:relative}
+.ph.filled{background:#0C2247;border:1px solid var(--line);padding:8px;text-align:center}
+.fig-img{display:block;width:90%;max-width:100%;border-radius:8px;margin:0 auto}
+.fig-cap{font-size:11.5px;color:var(--ink-2);margin-top:6px;text-align:center}
+.fig-tools{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:9px}
+.fig-tools button{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;font-size:10.5px;letter-spacing:.04em;
+  background:rgba(255,255,255,.08);color:#E7EDF7;border:1px solid var(--line-2);border-radius:5px;padding:3px 9px;cursor:pointer}
+.fig-tools button:hover{background:rgba(255,255,255,.16)}
+.fig-tools button.rm{color:#FFB4AC;border-color:rgba(255,120,108,.5)}
+.ph-btn{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:11px;
+  background:var(--red);color:#1A1400;border:none;border-radius:6px;padding:5px 11px;margin-top:10px;cursor:pointer}
+.ph-btn:hover{background:#FFDD57}
+.pm-bar{background:#0F8A3A;color:#fff;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;padding:8px 14px;font-size:12.5px}
+.tbtn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
+figure.fig{margin:14px 0}
+figure.fig img{display:block;width:100%;border-radius:10px;border:1px solid var(--line)}
+figure.fig figcaption{font-size:11.5px;color:var(--ink-2);margin-top:6px;text-align:center}
+@media print{.ph-btn,.fig-tools,.pm-bar{display:none!important}}
+
+/* ---------- Placar / ranking ---------- */
+.placar{background:linear-gradient(180deg,rgba(20,43,80,.7),rgba(8,36,82,.5));border:1px solid var(--line-2);border-radius:14px;padding:16px 18px;margin:14px 0}
+.placar .total{display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:12px}
+.placar .total .big{font-family:"Saira Condensed";font-weight:900;font-size:58px;line-height:.8;color:var(--red);transform:skewX(-6deg)}
+.placar .total .tlab{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;font-size:16px;color:#fff;line-height:1.05}
+.placar .total .tlab small{display:block;font-family:"Inter";font-weight:500;text-transform:none;font-size:11.5px;color:var(--ink-2)}
+.rrow{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:8px;background:rgba(255,255,255,.04);margin-bottom:6px}
+.rrow .pos{font-family:"Saira Condensed";font-weight:900;font-size:20px;width:30px;text-align:center;color:var(--ink-2)}
+.rrow .medal{font-size:18px;width:22px;text-align:center}
+.rrow .city{flex:1;font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;font-size:15px;color:#fff;letter-spacing:.01em}
+.rrow .pts{font-family:"Saira Condensed";font-weight:800;color:var(--red);font-size:16px}
+.rrow.lead{background:rgba(255,210,31,.12);border:1px solid rgba(255,210,31,.4)}
+.rrow.lead .pos{color:var(--red)}
+
+/* listas */
+ul.clean{padding-left:18px;margin:8px 0}
+ul.clean li{margin-bottom:5px;color:#E2E9F4}
+ul.arrow{list-style:none;padding:0;margin:8px 0}
+ul.arrow li{position:relative;padding-left:20px;margin-bottom:6px;color:#E2E9F4}
+ul.arrow li:before{content:"→";position:absolute;left:0;color:var(--red);font-weight:800}
+
+/* pilares */
+.pillar{display:flex;gap:14px;align-items:flex-start;border-bottom:1px solid var(--line);padding:12px 0}
+.pillar .pn{font-family:"Saira Condensed";font-weight:900;font-size:34px;color:var(--red);line-height:.85;width:46px;flex:none;transform:skewX(-6deg)}
+.pillar .ph2{font-family:"Saira Condensed";font-weight:800;font-size:18px;margin:0 0 2px;color:#fff;text-transform:uppercase}
+.pillar p{font-size:13px;margin:0;color:#D9E2F0}
+
+/* big quote */
+.bigq{font-family:"Saira Condensed";font-weight:800;font-size:28px;line-height:1.12;letter-spacing:.005em;
+  border-left:6px solid var(--red);padding:6px 0 6px 20px;margin:20px 0;color:#fff;text-transform:uppercase}
+.bigq .by{display:block;font-family:"Inter";font-weight:500;font-size:13px;color:var(--ink-2);text-transform:none;letter-spacing:0;margin-top:8px}
+
+/* frase reutilizável (modelo) */
+.say{border:1px solid var(--line);border-left:4px solid var(--navy);background:rgba(62,114,196,.10);
+  border-radius:8px;padding:12px 14px;margin:10px 0}
+.say .sq{font-family:"Saira";font-weight:600;font-size:15px;color:#F1F5FC;line-height:1.4}
+.say .sm{font-size:11.5px;color:var(--ink-3);margin-top:6px;display:block}
+.say.real{border-left-color:var(--sun);background:rgba(31,166,74,.10)}
+.say.real .sm:before{content:"● FALA REAL — ";color:#5BE08C;font-weight:700}
+.say.model .sm:before{content:"◇ MODELO REUTILIZÁVEL — ";color:var(--navy-2);font-weight:700}
+.wordpair{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:12px 0}
+.wordpair>div{padding:10px 12px}
+.wordpair .no{background:rgba(255,90,80,.08)}
+.wordpair .yes{background:rgba(31,166,74,.1)}
+.wordpair .h{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.06em;margin-bottom:6px}
+.wordpair .no .h{color:#FFB4AC}
+.wordpair .yes .h{color:#5BE08C}
+.wordpair p{font-size:13px;margin:4px 0;color:#E2E9F4}
+
+/* índice */
+.toc{margin-top:6px}
+.toc .row{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:1px solid var(--line)}
+.toc .row .pt{font-family:"Saira Condensed";font-weight:800;color:var(--red);width:30px;font-size:14px}
+.toc .row .nm{font-family:"Saira Condensed";font-weight:600;font-size:15px;color:#EAF0F8;text-transform:uppercase;letter-spacing:.01em}
+.toc .row .ln{flex:1;border-bottom:1px dotted var(--line-2);transform:translateY(-3px)}
+.toc .part{font-family:"Saira Condensed";font-weight:900;text-transform:uppercase;letter-spacing:.04em;font-size:14px;color:var(--red);margin:16px 0 2px}
+.toc .part:first-child{margin-top:0}
+
+footer.fin{background:var(--ink-d);background-image:var(--brush);color:rgba(255,255,255,.85);padding:22mm;text-align:center}
+footer.fin h3{color:var(--red);font-size:28px}
+.divline{height:3px;background:var(--sun);margin:22px 0;border-radius:2px}
+.subtle{height:1px;background:var(--line);margin:18px 0}
+</style>
+</head>
+<body class="">
+
+<div class="toolbar no-print">
+  <span><b>Manual de Discursos — Pepê Collaço 2026</b></span>
+  <span class="dot">●</span>
+  <button class="tbtn" id="pmEdit" onclick="pmToggleEdit()">✏️ Editar</button>
+  <button class="tbtn" onclick="pmDownload()">💾 Baixar HTML</button>
+  <span class="dot">●</span>
+  <span>PDF: <b>Imprimir → Salvar como PDF → A4 → margens “Nenhuma” → ativar fundo</b></span>
+</div>
+
+<div class="doc" contenteditable="false">
+
+<!-- ===================== CAPA ===================== -->
+<section class="cover page">
+  <div class="topline">
+    <span>Documento Estratégico Confidencial · Companheiro do Plano Mestre</span>
+    <span>Edição 1.0 — Jul/2026</span>
+  </div>
+  <div>
+    <div class="kicker" style="color:rgba(255,255,255,.7)">Manual de Discursos, Narrativa e Alinhamento de Fala</div>
+    <h1>COMO<br><span class="red">A GENTE</span> FALA.</h1>
+    <div class="sub">Playbook de comunicação verbal — Pepê Collaço · Deputado Estadual · SC · 2026</div>
+    <div class="stripe"></div>
+  </div>
+  <div>
+    <div class="meta">
+      <div><b>Base</b>Transcrições de rádio (~3h) + evento de lançamento (~2h26)</div>
+      <div><b>Território</b>AMUREL · Sul Catarinense · SC</div>
+      <div><b>Uso</b>Discursos · Entrevistas · Rádio · Vídeos · Debates</div>
+    </div>
+    <div class="conf" style="margin-top:18px">USO INTERNO · NÃO DISTRIBUIR · MANUAL VIVO — ATUALIZAÇÃO CONTÍNUA</div>
+  </div>
+</section>
+
+<!-- ===================== FICHA TÉCNICA ===================== -->
+<section class="page page--tight break">
+  <div class="rh"><span><span class="red">PEPÊ COLLAÇO 2026</span> · MANUAL DE DISCURSOS</span><span>Ficha Técnica</span></div>
+  <div class="kicker">Controle do documento</div>
+  <h2 style="font-size:32px;margin:6px 0 16px;color:#fff">Ficha técnica &amp; como usar este manual</h2>
+  <p class="lead">Este é o <strong>manual de fala</strong> do deputado. Ele é o par verbal do <em>Plano Mestre de Comunicação</em>: enquanto o Plano define <strong>o que</strong> a campanha comunica e por quais canais, este manual define <strong>como o Pepê fala</strong> — o estilo, as histórias, os argumentos, as frases e as estruturas que qualquer assessor pode usar para montar um discurso, uma entrevista ou um roteiro de vídeo mantendo a voz autêntica dele.</p>
+
+  <div class="grid g2" style="margin-top:18px">
+    <div class="box navy"><div class="bt">De onde ele nasce</div><p>Da <strong>análise de duas falas reais e longas</strong>: uma sequência de entrevistas de rádio (balanço 2025 + esquenta 2026) e o evento de pré-lançamento em Florianópolis. Sobre elas, a própria equipe já havia feito <strong>marcações de coaching</strong> (foco, causa-e-consequência, boas falas, pautas a desenvolver) — que estão incorporadas ao Capítulo 02.</p></div>
+    <div class="box red"><div class="bt">Princípio editorial</div><p><strong>Recurso e força política convencem a liderança; a vida na ponta convence o eleitor.</strong> Toda fala forte do Pepê liga uma coisa à outra: a emenda vira asfalto, o asfalto vira a dona que esperava a rua a vida inteira. Este manual existe para tornar essa ponte automática.</p></div>
+  </div>
+
+  <div class="shead">Como qualquer assessor deve usar</div>
+  <ul class="arrow">
+    <li>Vai escrever um <strong>discurso de evento</strong>? Comece pela abertura (cap. 19), monte o corpo com os pilares (Parte II) e uma grande história (Parte III), feche com um encerramento (cap. 20).</li>
+    <li>Vai preparar uma <strong>entrevista de rádio</strong>? Use a pirâmide invertida (cap. 18), o jeito de falar números (cap. 16) e o banco de frases do tema (cap. 21).</li>
+    <li>Vai roteirizar um <strong>vídeo/Reels</strong>? Pegue uma fórmula de storytelling (cap. 15) e uma frase de impacto (cap. 21). Ligue sempre obra → pessoa.</li>
+    <li>Ficou em dúvida se “soa como o Pepê”? Rode a peça pelo <strong>manual de estilo</strong> (cap. 03): responde primeiro? conta história? fala de gente? mostra consequência?</li>
+  </ul>
+
+  <div class="shead">Controle de versão</div>
+  <table class="tbl compact">
+    <tbody><tr><th>Versão</th><th>Data</th><th>Responsável</th><th>Alterações</th></tr>
+    <tr><td class="mono">1.0</td><td>Jul/2026</td><td>Núcleo de Comunicação</td><td>Estrutura inicial completa a partir da análise das transcrições de rádio e evento.</td></tr>
+    <tr><td class="mono blank">1.1</td><td class="blank"><span class="fill"></span></td><td class="blank"><span class="fill"></span></td><td class="blank">Novas falas analisadas · frases aprovadas em campo · ajustes de números.</td></tr>
+  </tbody></table>
+
+  <div class="shead">Convenções deste documento</div>
+  <div class="grid g2">
+    <div class="say real"><div class="sq">“Mandato é ferramenta, mandato é ponte.”</div><span class="sm">algo que ele realmente disse (extraído das transcrições).</span></div>
+    <div class="say model"><div class="sq">“Aqui, [obra] deixou de ser promessa e virou [benefício] na vida de [quem].”</div><span class="sm">um esqueleto para o assessor preencher e reaproveitar.</span></div>
+  </div>
+
+  <div class="box sun avoid">
+    <div class="bt">Aviso de conformidade eleitoral</div>
+    <p>Este é um manual de <strong>estilo e narrativa</strong>, não um parecer jurídico. <strong>O que pode ser dito muda conforme a fase</strong> (divulgação de mandato × pré-campanha × propaganda eleitoral). Pedir voto explicitamente só é permitido na janela legal. Toda fala sensível passa pela assessoria jurídica eleitoral (Lei 9.504/97 e resoluções do TSE/TRE-SC). O calendário jurídico prevalece sobre o criativo.</p>
+  </div>
+</section>
+
+<!-- ===================== SUMÁRIO EXECUTIVO ===================== -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PEPÊ COLLAÇO 2026</span> · MANUAL DE DISCURSOS</span><span>O DNA da fala</span></div>
+  <div class="kicker">O jeito Pepê de falar, em uma página</div>
+  <h2 style="font-size:32px;margin:6px 0 14px;color:#fff">O DNA da fala</h2>
+
+  <p class="lead--big">Em uma frase: o Pepê fala como <span style="color:var(--red)">quem conhece a cidade pelo nome</span> — regional, próximo, concreto — e transforma cada recurso do mandato em <span style="color:var(--navy-2)">algo que mudou na vida de uma pessoa de verdade</span>.</p>
+
+  <div class="grid g4" style="margin:20px 0">
+    <div class="stat"><div class="num">“A gente”</div><div class="lab">fala no coletivo, quase nunca no “eu”</div></div>
+    <div class="stat navy"><div class="num">Ponta</div><div class="lab">a régua é sempre o cidadão do bairro</div></div>
+    <div class="stat sun"><div class="num">História</div><div class="lab">explica política por exemplos de vida</div></div>
+    <div class="stat green"><div class="num">Regional</div><div class="lab">80% do que entrega fica na base — e ele diz isso</div></div>
+  </div>
+
+  <div class="shead">As 4 marcas que se repetem em toda fala boa</div>
+  <div class="grid g2">
+    <div class="card" style="border-top:4px solid var(--red)">
+      <div class="cn">MARCA 1 · PROXIMIDADE</div>
+      <div class="ct">Ele nomeia gente e lugar</div>
+      <p>Cita prefeito, vereador, bairro, rua, a “dona Alba de Gravatal”. Isso faz a fala virar cena. <strong>Quanto mais nome próprio, mais verdade.</strong></p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--navy)">
+      <div class="cn">MARCA 2 · CONCRETUDE</div>
+      <div class="ct">Ele fala em coisa, não em conceito</div>
+      <p>“Asfalto, creche, ambulância, trator, sala sensorial.” Objetos que a pessoa vê. <strong>Substantivo concreto no lugar de jargão.</strong></p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--sun)">
+      <div class="cn">MARCA 3 · CAUSA → CONSEQUÊNCIA</div>
+      <div class="ct">Ele liga a ação ao efeito</div>
+      <p>Rodovia → escoamento → economia. Painel solar → conta zerada → mais atendimento. <strong>Nunca larga o resultado no meio do caminho.</strong></p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--green)">
+      <div class="cn">MARCA 4 · HUMILDADE ATIVA</div>
+      <div class="ct">“Ninguém faz nada sozinho”</div>
+      <p>Reconhece o time, o prefeito, o eleitor. Trabalho no lugar de vaidade. <strong>Divide o crédito — e por isso soma apoio.</strong></p>
+    </div>
+  </div>
+
+  <div class="box red avoid"><div class="bt">O que este manual protege (e o que corrige)</div>
+  <div class="grid g2" style="margin-top:6px">
+    <div><p style="margin:0"><strong style="color:#5BE08C">PRESERVAR</strong> — o regionalismo assumido, o “a gente”, os exemplos locais, a linguagem popular, a honestidade de admitir frustração (“o mandato não é só felicidade”).</p></div>
+    <div><p style="margin:0"><strong style="color:#FFB4AC">CORRIGIR</strong> — a fuga do foco na hora de agradecer nomes; o excesso de números soltos; a ideia dita fora de ordem; e o hábito de parar no “recurso” sem chegar na vida da ponta.</p></div>
+  </div>
+  </div>
+</section>
+
+<!-- ===================== ÍNDICE ===================== -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PEPÊ COLLAÇO 2026</span> · MANUAL DE DISCURSOS</span><span>Índice</span></div>
+  <div class="kicker">Navegação</div>
+  <h2 style="font-size:32px;margin:6px 0 10px;color:#fff">Índice</h2>
+  <div class="toc">
+    <div class="part">Parte I — O comunicador</div>
+    <div class="row"><span class="pt">01</span><span class="nm">Identidade do discurso</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">02</span><span class="nm">Diagnóstico de oratória (as marcações da equipe)</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">03</span><span class="nm">Manual de estilo — as regras de ouro</span><span class="ln"></span></div>
+
+    <div class="part">Parte II — Os pilares da mensagem</div>
+    <div class="row"><span class="pt">04</span><span class="nm">Pilar 1 — Regionalismo</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">05</span><span class="nm">Pilar 2 — A política começa nas pessoas</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">06</span><span class="nm">Pilar 3 — Trabalho (resultado, não esforço)</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">07</span><span class="nm">Pilar 4 — Realizações (não investimentos)</span><span class="ln"></span></div>
+
+    <div class="part">Parte III — As grandes histórias</div>
+    <div class="row"><span class="pt">08</span><span class="nm">A conquista da CCJ</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">09</span><span class="nm">A Bancada do Sul e os grandes modais</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">10</span><span class="nm">Testes rápidos nas farmácias</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">11</span><span class="nm">Painéis solares nos hospitais filantrópicos</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">12</span><span class="nm">Ovinocaprinocultura</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">13</span><span class="nm">Autismo (TEA)</span><span class="ln"></span></div>
+  </div>
+  <div class="toc" style="margin-top:10px">
+    <div class="part">Parte IV — A mecânica da fala</div>
+    <div class="row"><span class="pt">14</span><span class="nm">A estrutura dos discursos</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">15</span><span class="nm">Storytelling — as fórmulas</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">16</span><span class="nm">Como falar números</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">17</span><span class="nm">Como gerar conexão</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">18</span><span class="nm">Respostas para entrevistas (pirâmide invertida)</span><span class="ln"></span></div>
+
+    <div class="part">Parte V — O arsenal (pronto para usar)</div>
+    <div class="row"><span class="pt">19</span><span class="nm">Aberturas</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">20</span><span class="nm">Encerramentos</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">21</span><span class="nm">Banco de frases de impacto (por tema)</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">22</span><span class="nm">Ideias para rádio, vídeo, evento e redes</span><span class="ln"></span></div>
+
+    <div class="part">Parte VI — A base</div>
+    <div class="row"><span class="pt">23</span><span class="nm">Banco de dados e números do mandato</span><span class="ln"></span></div>
+  </div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE I ===================== -->
+<section class="divider page break">
+  <div class="pnum">I</div>
+  <div class="ptitle">O comunicador</div>
+  <div class="pdesc">Antes de qualquer frase pronta: quem é o Pepê quando ele abre a boca. O que aparece o tempo todo, o que sustentar, o que corrigir. Esta parte é o espelho — as próximas são as ferramentas.</div>
+  <div class="pindex">
+    <div><span>01</span>Identidade do discurso</div>
+    <div><span>02</span>Diagnóstico de oratória</div>
+    <div><span>03</span>Manual de estilo</div>
+  </div>
+</section>
+
+<!-- CAP 01 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE I</span> · O COMUNICADOR</span><span>01 · Identidade do discurso</span></div>
+  <div class="chead"><div class="n">01</div><h2>Identidade do discurso</h2></div>
+  <p class="lead">O Pepê é um <strong>comunicador de proximidade</strong>. Ele não discursa de cima para baixo: ele conversa. Fala como quem esteve na cidade ontem, conhece o prefeito, sabe o nome da rua e lembra da fila do exame. Traduz política pública em vida cotidiana e transforma obra em gente. A força dele não está na retórica — está na <mark>concretude e na presença</mark>.</p>
+
+  <div class="shead">O que aparece o tempo todo</div>
+  <div class="grid g3">
+    <div class="card"><div class="ct">Linguagem popular</div><p>Fala do dia a dia, sem juridiquês. Usa “a gente”, brinca, apelida, conta caso. Aproxima em vez de impressionar.</p></div>
+    <div class="card"><div class="ct">Exemplo prático sempre</div><p>Cada tema desce para um caso concreto: a UPA de Garopaba, a rua que “come poeira no sol e vira lama na chuva”.</p></div>
+    <div class="card"><div class="ct">Regional assumido</div><p>Não esconde que é do Sul e trabalha para o Sul. “Meu mandato é regionalista” — dito com orgulho, não como desculpa.</p></div>
+    <div class="card"><div class="ct">Obra ligada à pessoa</div><p>A emenda nunca fica no valor: vira asfalto, creche, ambulância — e daí vira a vida de alguém.</p></div>
+    <div class="card"><div class="ct">Coletivo, não vaidade</div><p>“Ninguém se elege sozinho.” Divide crédito com time, prefeitos, vereadores e eleitor.</p></div>
+    <div class="card"><div class="ct">Honestidade sobre limites</div><p>Admite frustração e obra que não saiu. Isso gera credibilidade — não fragilidade.</p></div>
+  </div>
+
+  <div class="shead">A biografia é argumento</div>
+  <p>Ele quase nunca fala de si sem passar pela trajetória — e faz isso porque ela <strong>prova experiência</strong>: vereador três vezes, vice-prefeito, prefeito, gestão estadual (DETER, Defesa Civil), advogado. O recado implícito: <em>“eu já sentei na cadeira do outro lado, eu entendo o que você vive”.</em> O Zé Milton resumiu isso no evento: <em>“quando um de vocês conversa com o Pepê, ele entende com facilidade”.</em></p>
+  <div class="say real"><div class="sq">“Aprendi que política não começa no gabinete, começa na rua — quando a cidade precisa de alguém que não apenas escute, mas volte com resposta.”</div><span class="sm">abertura do vídeo institucional do evento. É a tese de identidade do mandato.</span></div>
+
+  <div class="shead">Preservar · Fortalecer · Evitar</div>
+  <div class="grid g3">
+    <div class="box green"><div class="bt">Preservar</div>
+      <ul class="clean" style="margin:0">
+        <li>O “a gente” e o tom de conversa.</li>
+        <li>Os nomes próprios (gente, bairro, rua).</li>
+        <li>Os substantivos concretos.</li>
+        <li>O orgulho regional.</li>
+        <li>A humildade que divide crédito.</li>
+      </ul>
+    </div>
+    <div class="box navy"><div class="bt">Fortalecer</div>
+      <ul class="clean" style="margin:0">
+        <li>Fechar sempre no impacto na ponta.</li>
+        <li>Uma história por fala (não dez).</li>
+        <li>Causa → consequência explícita.</li>
+        <li>Número que vira imagem, não planilha.</li>
+        <li>Frases curtas nos momentos-chave.</li>
+      </ul>
+    </div>
+    <div class="box red"><div class="bt">Evitar</div>
+      <ul class="clean" style="margin:0">
+        <li>A lista interminável de nomes (fuga do foco).</li>
+        <li>Empilhar valores em reais sem contexto.</li>
+        <li>Jargão de Assembleia (rubrica, LDO, regimental).</li>
+        <li>Frase longa que se perde antes do ponto.</li>
+        <li>Falar só de “articulação” sem mostrar o quê mudou.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box navy avoid" style="margin-top:16px"><div class="bt">Tom de voz — a régua de uma frase</div>
+    <p>Direto, próximo, regional, sem arrogância. Cobra o Estado quando precisa, mas é <strong>pragmático na parceria</strong> — o interesse da cidade acima da disputa partidária. Se a frase soaria estranha dita num balcão de padaria em Tubarão, ela ainda não está no tom do Pepê.</p></div>
+</section>
+
+<!-- CAP 02 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE I</span> · O COMUNICADOR</span><span>02 · Diagnóstico de oratória</span></div>
+  <div class="chead"><div class="n">02</div><h2>Diagnóstico de oratória — as marcações da equipe</h2></div>
+  <p class="lead">A própria equipe já escutou as duas falas com caneta na mão e marcou os pontos, com timecode. Essas marcações são ouro: elas dizem <strong>o que clipar</strong>, <strong>o que desenvolver</strong> e <strong>o que corrigir</strong>. Este capítulo organiza tudo em três gavetas.</p>
+
+  <div class="shead">Gaveta 1 — Boas falas (clipar e reaproveitar)</div>
+  <p class="small muted">Momentos marcados como “boa fala”, “contou uma história” ou frases de posicionamento. Viram Reels, cortes e abertura de material.</p>
+  <table class="tbl compact">
+    <tbody><tr><th style="width:78px">Timecode</th><th>Fala / momento</th><th>Por que funciona</th></tr>
+    <tr><td class="mono">R 01:21:37</td><td><em>“Eu senti na pele o que um hospital passa.”</em></td><td>Emoção + autoridade pessoal. Humaniza a bandeira da saúde.</td></tr>
+    <tr><td class="mono">R 00:30:27</td><td>“Boa fala” (saúde/farmácias)</td><td>Explicação limpa de política pública pelo cotidiano.</td></tr>
+    <tr><td class="mono">R 01:57:55</td><td><em>“A melhor pesquisa é a da rua.”</em></td><td>Bordão de proximidade. Cabe em qualquer contexto.</td></tr>
+    <tr><td class="mono">R 02:27:22</td><td><em>“Sou regional.”</em></td><td>Afirmação de identidade, sem pedir desculpa.</td></tr>
+    <tr><td class="mono">E 00:48:22</td><td>Amin: “vocês estão invadindo a minha cancha”</td><td>História afetiva do padrinho político — vira conteúdo institucional.</td></tr>
+    <tr><td class="mono">E 00:09:23</td><td><em>“De forma técnica, de forma lúcida, de forma competente.”</em></td><td>Tríade de ritmo. Define o padrão de trabalho.</td></tr>
+  </tbody></table>
+
+  <div class="shead">Gaveta 2 — Pautas a desenvolver (marcadas “vamos falar?”)</div>
+  <p class="small muted">Temas que a equipe sinalizou para transformar em conteúdo próprio. Cada um vira um capítulo da Parte III.</p>
+  <div class="tags">
+    <span class="pill navy">Teste rápido nas farmácias</span>
+    <span class="pill navy">Painéis solares nos hospitais</span>
+    <span class="pill navy">Ovinocaprinocultura</span>
+    <span class="pill navy">Ressarcimento por atraso de repasse</span>
+    <span class="pill navy">Revitalização das SCs (rodovias)</span>
+    <span class="pill navy">Empresa chinesa de bateria de lítio</span>
+    <span class="pill navy">Redragagem do Rio Tubarão</span>
+    <span class="pill navy">Rota das águas termais</span>
+  </div>
+  <div class="box sun"><div class="bt">Nota da própria equipe: “direcionar para políticos”</div><p>A pauta de <strong>ressarcimento por atraso de repasse</strong> foi marcada com um lembrete: é assunto que fala direto ao <strong>prefeito e ao vereador</strong> (público da pré-campanha), não ao eleitor comum. Lição geral: <strong>cada pauta tem um público</strong> — escolha o canal e a linguagem conforme quem precisa ouvir.</p></div>
+
+  <div class="shead">Gaveta 3 — Correções de técnica (o que ajustar)</div>
+  <table class="tbl compact">
+    <tbody><tr><th style="width:78px">Timecode</th><th>O que a equipe marcou</th><th>Como corrigir na próxima</th></tr>
+    <tr><td class="mono">E 00:11:41<br>→00:13:00</td><td><span class="pill red">Fuga do foco</span> — desviou para agradecer o tio e listar prefeitos de fora da região</td><td>Agradecer é bom, mas em <strong>bloco curto e separado</strong>. Não misturar a lista de nomes com o argumento. Nome demais mata a mensagem.</td></tr>
+    <tr><td class="mono">R 00:01:26<br>→00:01:31</td><td><span class="pill red">Alterar a ordem das ideias</span> — “quem mais trabalha” × “excesso de leis” saíram embaralhadas</td><td>Primeiro a tese (“trabalho não é quantidade de lei”), <strong>depois</strong> o dado (“o país sofre de excesso de leis”). Uma ideia por vez.</td></tr>
+    <tr><td class="mono">R 01:28:06</td><td><span class="pill red">Manter o foco no contexto da pergunta</span></td><td>Responder o que foi perguntado <strong>antes</strong> de abrir para o tema maior. Ver a pirâmide invertida (cap. 18).</td></tr>
+    <tr><td class="mono">R 00:34:35<br>02:54:04</td><td><span class="pill red">Reforçar a causa e consequência</span> (marcado 2×)</td><td>Nunca largar o efeito no meio. Toda ação precisa chegar num “…e por isso hoje [resultado] na vida de [quem]”.</td></tr>
+    <tr><td class="mono">R 01:43:29</td><td><span class="pill red">Falar dos recursos e da força política, mas citar o que isso representa na ponta</span></td><td>A correção-mãe deste manual. Depois de “R$ 100 milhões” e “presidência da CCJ”, <strong>sempre</strong> aterrissar na rua, no hospital, na família.</td></tr>
+    <tr><td class="mono">R 01:36:32</td><td><span class="pill red">Correlacionar molhes com a redragagem</span></td><td>Conectar as partes de uma mesma história (Molhes da Barra ↔ dragagem do Rio Tubarão) para não parecer assunto solto.</td></tr>
+  </tbody></table>
+
+  <div class="box red avoid"><div class="bt">A correção que vale por todas</div>
+    <p>Se a equipe pudesse guardar <strong>uma só</strong> anotação, seria esta: <mark>fale do recurso e da força política, mas nunca pare aí — mostre o que isso representa na ponta.</mark> Recurso e cargo impressionam a liderança; a vida na ponta convence o eleitor. Toda fala forte faz as duas coisas, nessa ordem.</p></div>
+</section>
+
+<!-- CAP 03 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE I</span> · O COMUNICADOR</span><span>03 · Manual de estilo</span></div>
+  <div class="chead"><div class="n">03</div><h2>Manual de estilo — as regras de ouro</h2></div>
+  <p class="lead">Cola de parede. Antes de gravar, publicar ou subir ao palco, passe a peça por estas regras. Se ela obedece às seis do “sempre” e evita as seis do “nunca”, ela soa como o Pepê.</p>
+
+  <div class="grid g2">
+    <div class="box green"><div class="bt">Sempre</div>
+      <ul class="arrow" style="margin:0">
+        <li><strong>Responder primeiro</strong>, explicar depois (pirâmide invertida).</li>
+        <li><strong>Contar uma história</strong> — uma pessoa, um lugar, uma cena.</li>
+        <li><strong>Falar das pessoas</strong>, não das siglas.</li>
+        <li><strong>Mostrar consequência</strong> — ligar a ação ao efeito.</li>
+        <li><strong>Ligar a obra ao cidadão</strong> — a emenda vira vida.</li>
+        <li><strong>Transformar política em cotidiano</strong> — o que muda na semana de quem ouve.</li>
+      </ul>
+    </div>
+    <div class="box red"><div class="bt">Nunca</div>
+      <ul class="arrow" style="margin:0">
+        <li><strong>Excesso de burocracia</strong> (rubrica, LDO, empenho, regimental).</li>
+        <li><strong>Excesso de números</strong> soltos, um atrás do outro.</li>
+        <li><strong>Frases muito longas</strong> que se perdem antes do ponto.</li>
+        <li><strong>Jargão político</strong> que só a Assembleia entende.</li>
+        <li><strong>Linguagem administrativa</strong> (“destinação de recursos para o custeio de…”).</li>
+        <li><strong>Terminar no “estamos trabalhando”</strong> sem dizer o resultado.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="shead">Regras de ritmo</div>
+  <ul class="arrow">
+    <li><strong>Uma ideia por frase.</strong> No rádio e no vídeo, a frase longa perde o ouvinte que está dirigindo.</li>
+    <li><strong>Concreto vence abstrato.</strong> “Sala sensorial” &gt; “equipamento de acessibilidade”. “A rua da dona Alba” &gt; “malha viária”.</li>
+    <li><strong>Regra do 3.</strong> O Pepê já usa tríades naturalmente (“asfalto, creche, ambulância”; “técnica, lúcida, competente”). Elas dão musicalidade — use de propósito.</li>
+    <li><strong>O número serve à imagem, não o contrário.</strong> O valor entra para dar grandeza e sai de cena; quem fica é a coisa que ele virou.</li>
+    <li><strong>Fecho curto.</strong> Todo bloco importante termina numa frase de impacto de até 8 palavras.</li>
+  </ul>
+
+  <div class="shead">O teste dos 4 “sins”</div>
+  <div class="flow">
+    <div class="node"><div class="ft">RESPONDE?</div><small>a peça responde à pergunta/tema logo?</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">TEM GENTE?</div><small>aparece uma pessoa ou lugar de verdade?</small></div>
+    <div class="arr">→</div>
+    <div class="node navy"><div class="ft">MOSTRA EFEITO?</div><small>liga a ação ao que mudou?</small></div>
+    <div class="arr">→</div>
+    <div class="node red"><div class="ft">SOA POPULAR?</div><small>daria pra dizer numa padaria?</small></div>
+  </div>
+  <p class="small muted">Quatro “sim” = pode publicar. Um “não” = ajuste antes.</p>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE II ===================== -->
+<section class="divider page break alt">
+  <div class="pnum">II</div>
+  <div class="ptitle">Os pilares da mensagem</div>
+  <div class="pdesc">Os quatro eixos que atravessam toda fala do Pepê. Cada pilar traz conceito, narrativa, argumentos, exemplos, metáfora, frases prontas e uma estrutura de discurso pronta para montar. São a régua de aprovação: toda peça deve sustentar pelo menos um deles.</div>
+  <div class="pindex">
+    <div><span>04</span>Regionalismo</div>
+    <div><span>05</span>A política começa nas pessoas</div>
+    <div><span>06</span>Trabalho (resultado, não esforço)</div>
+    <div><span>07</span>Realizações (não investimentos)</div>
+  </div>
+</section>
+
+<!-- CAP 04 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE II</span> · PILARES</span><span>04 · Pilar 1 — Regionalismo</span></div>
+  <div class="chead"><div class="n">04</div><h2>Pilar 1 — Regionalismo</h2></div>
+  <p class="lead">É o coração do mandato. A tese: <strong>o Sul precisa de quem conhece o Sul.</strong> Nem tudo se resolve em Florianópolis, nem tudo nasce em Brasília — as soluções nascem ouvindo quem vive a realidade daqui. Perder a cadeira do deputado na Assembleia é perder a porta por onde a região entra no Estado.</p>
+
+  <div class="shead">Conceito em uma linha</div>
+  <div class="bigq">Quem não é daqui não briga por aqui.<span class="by">A ideia-mãe do pilar: representação regional não é bairrismo, é sobrevivência da região na disputa por recursos.</span></div>
+
+  <div class="shead">A narrativa (como a história é contada)</div>
+  <ul class="arrow">
+    <li><strong>Situação:</strong> Santa Catarina tem 295 municípios e o recurso é disputado. “Cada um puxa a brasa pra sua sardinha.”</li>
+    <li><strong>Tensão:</strong> quando a região fica sem deputado forte, o dinheiro vai para onde tem quem brigue por ele. A região já viveu isso — e sentiu na pele.</li>
+    <li><strong>Virada:</strong> um deputado que é da terra abre a porta, leva a demanda, acelera a solução, conecta o prefeito ao governo e transforma a necessidade local em política pública.</li>
+    <li><strong>Resultado:</strong> mais de R$ 100 milhões destinados à região; 80% de tudo que o mandato entregou ficou na base. Isso não é sorte — é ter alguém de dentro na mesa da decisão.</li>
+  </ul>
+  <div class="say real"><div class="sq">“Se fosse um deputado de Jaraguá ou de Joinville, esse recurso ia pra lá. Perder essa cadeira seria um suicídio pra região.”</div><span class="sm">fala de liderança local no rádio — o argumento regional dito por um terceiro pesa ainda mais que na própria voz.</span></div>
+
+  <div class="shead">Argumentos que convencem</div>
+  <div class="grid g2">
+    <div class="card"><div class="ct">O de dentro entende</div><p>“Eu já fui vereador, vice, prefeito. Sei o que é comer poeira no sol e lama na chuva.” Conhecer a realidade é pré-requisito para defendê-la.</p></div>
+    <div class="card"><div class="ct">A porta aberta</div><p>“Quando o cidadão chega ao vereador, ele sabe em qual porta bater. Hoje a região tem dois gabinetes abertos.” Representação é acesso.</p></div>
+    <div class="card"><div class="ct">Consolidar o que já anda</div><p>Dragagem, rodovia, porto, aeroporto: “já avançou isso, mas falta aquilo. Se troca no meio, pode não acontecer.” Continuidade protege a obra.</p></div>
+    <div class="card"><div class="ct">Regional não é fechado</div><p>“80% ficou aqui, mas atendi mais de 150 municípios.” Ser regional dá também o diálogo estadual — foi assim que se chegou à CCJ.</p></div>
+  </div>
+
+  <div class="shead">Metáforas e analogias</div>
+  <div class="grid g3">
+    <div class="box navy"><div class="bt">A ponte</div><p>“Mandato é ponte” — liga a cidade ao Estado. Sem a ponte, a demanda não atravessa.</p></div>
+    <div class="box navy"><div class="bt">A cirurgia</div><p>“Numa cirurgia complexa você procura quem já fez várias. Na política, escolha quem já foi testado.” (do Zé Milton, adotável.)</p></div>
+    <div class="box navy"><div class="bt">A cadeira na mesa</div><p>Sem representante, a região “fica de fora da mesa onde o bolo é dividido”.</p></div>
+  </div>
+
+  <div class="shead">Frases prontas — Regionalismo</div>
+  <div class="say model"><div class="sq">“Nem tudo se resolve em Florianópolis, nem tudo nasce em Brasília. Muita coisa nasce aqui, ouvindo quem vive a realidade da nossa terra.”</div><span class="sm">abertura de bloco regional em evento ou rádio.</span></div>
+  <div class="say model"><div class="sq">“A [obra/pauta] não é só de [Tubarão]. Ela é de toda a AMUREL — porque quando [rio/rodovia/porto] anda, é a economia de toda a região que anda junto.”</div><span class="sm">para ampliar uma pauta local ao interesse regional.</span></div>
+  <div class="say model"><div class="sq">“Eu não represento um gabinete em Florianópolis. Eu represento [cidade] dentro de Florianópolis.”</div><span class="sm">virada de identidade — inverte a lógica ‘eu lá / vocês aqui’.</span></div>
+
+  <div class="box red avoid"><div class="bt">Estrutura de discurso pronta — “Por que o Sul precisa de nós”</div>
+    <p><strong>1.</strong> Comece na rua (“essa semana eu estava em [cidade]…”). <strong>2.</strong> Estabeleça a disputa (“295 municípios brigando pelo mesmo recurso”). <strong>3.</strong> Mostre o risco (“quando a região não tem quem brigue, o dinheiro vai embora”). <strong>4.</strong> Traga a prova (“80% do que entregamos ficou aqui — [1 exemplo concreto]”). <strong>5.</strong> Feche na continuidade (“o que começou não pode parar no meio”). <strong>Encerramento curto:</strong> “Quem é daqui, briga por aqui.”</p></div>
+</section>
+
+<!-- CAP 05 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE II</span> · PILARES</span><span>05 · Pilar 2 — A política começa nas pessoas</span></div>
+  <div class="chead"><div class="n">05</div><h2>Pilar 2 — A política começa nas pessoas</h2></div>
+  <p class="lead">A tese: <strong>toda grande decisão nasce da escuta.</strong> Política pública boa não é a que tem a lei mais bonita — é a que resolve o problema de quem vive na ponta. O Pepê constrói pauta ouvindo o agricultor, o professor, o hospital, a mãe. A escuta não é gentileza: é método.</p>
+
+  <div class="shead">Conceito em uma linha</div>
+  <div class="bigq">A melhor pesquisa é a da rua.<span class="by">Frase real dele — resume que o dado que importa é o que vem do cidadão, não da planilha.</span></div>
+
+  <div class="shead">A narrativa</div>
+  <p>O Pepê conta que muitas de suas bandeiras <strong>não foram ideias dele</strong> — vieram da escuta. O autismo entrou pela Comissão da Criança, quando “o tema vinha com muita frequência”. O teste rápido nasceu porque “nas nossas andanças, o cidadão reclamava que não tinha onde fazer um exame simples”. A rota das águas termais foi ideia de um prefeito. <strong>Ele é o tradutor entre a ponta e a lei</strong> — e faz questão de dizer que é assim.</p>
+  <div class="say real"><div class="sq">“Muitas leis eu não inventei. Elas vieram batendo na porta do gabinete. O meu trabalho é transformar isso em política pública.”</div><span class="sm">síntese do método, reconstruída das falas sobre autismo, farmácias e hospitais.</span></div>
+
+  <div class="shead">As palavras-chave deste pilar</div>
+  <div class="tags">
+    <span class="pill ghost">realidade</span><span class="pill ghost">ponta</span><span class="pill ghost">comunidade</span>
+    <span class="pill ghost">bairro</span><span class="pill ghost">agricultor</span><span class="pill ghost">hospital</span>
+    <span class="pill ghost">professor</span><span class="pill ghost">família</span><span class="pill ghost">escuta</span>
+    <span class="pill ghost">porta aberta</span>
+  </div>
+
+  <div class="shead">Argumentos que convencem</div>
+  <div class="grid g2">
+    <div class="card"><div class="ct">Escuta vira lei</div><p>“O protocolo individualizado, o cinema adaptado, o teste na farmácia — tudo começou numa reclamação de mãe, de paciente, de morador.”</p></div>
+    <div class="card"><div class="ct">O eleitor não vive de política</div><p>“Quem está no carro agora está pensando em pagar a conta, levar o filho na escola. Meu papel é resolver, não complicar.”</p></div>
+    <div class="card"><div class="ct">O detalhe importa</div><p>Referência à vereadora Talita: olhar o uniforme, o moletom pelo cós, a sandália no frio. “A gente começou a olhar nos detalhes.”</p></div>
+    <div class="card"><div class="ct">Mostrar o caminho</div><p>“Ajudar não é passar na frente. É mostrar que a pessoa tem direito e onde ele está.”</p></div>
+  </div>
+
+  <div class="shead">Metáforas e analogias</div>
+  <div class="grid g2">
+    <div class="box navy"><div class="bt">O tradutor</div><p>Ele é quem “traduz” a dor da ponta para a linguagem da lei e do orçamento. A rua fala; ele escreve.</p></div>
+    <div class="box navy"><div class="bt">O detalhe que vira tudo</div><p>“A criança cresce de um ano pro outro” — o detalhe pequeno (a blusa curta) revela a política inteira. Governar é reparar no detalhe.</p></div>
+  </div>
+
+  <div class="shead">Frases prontas — Pessoas</div>
+  <div class="say model"><div class="sq">“Essa lei não nasceu num gabinete. Ela nasceu na [cozinha/fila/porta] de [quem], que me disse uma coisa que eu não conseguia mais esquecer.”</div><span class="sm">abertura de história de política pública.</span></div>
+  <div class="say model"><div class="sq">“Antes de ser [emenda/projeto], isso foi o problema real de uma família de [cidade]. Foi ela que me ensinou o caminho.”</div><span class="sm">humaniza a origem de qualquer entrega.</span></div>
+  <div class="say real"><div class="sq">“Eu vou entrar na política pra tentar fazer amigos.”</div><span class="sm">o que ele respondeu ao pai, que temia que política fizesse inimigos. Frase-identidade — usar em aberturas afetivas.</span></div>
+
+  <div class="box red avoid"><div class="bt">Estrutura de discurso pronta — “Da escuta à entrega”</div>
+    <p><strong>1.</strong> A cena da escuta (uma pessoa, uma frase que marcou). <strong>2.</strong> O que aquilo revelou (o problema maior por trás do caso). <strong>3.</strong> A ação (a lei/emenda/articulação). <strong>4.</strong> O resultado na vida daquela pessoa e de outras como ela. <strong>Encerramento:</strong> “Foi ela que me ensinou — a política começa ouvindo.”</p></div>
+</section>
+
+<!-- CAP 06 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE II</span> · PILARES</span><span>06 · Pilar 3 — Trabalho</span></div>
+  <div class="chead"><div class="n">06</div><h2>Pilar 3 — Trabalho (resultado, não esforço)</h2></div>
+  <p class="lead">A tese: <strong>nada aconteceu por acaso.</strong> Cada entrega é resultado de dedicação, presença, estudo e construção. Mas há uma armadilha: falar de trabalho no vazio (“estamos trabalhando”) não convence ninguém. O jeito Pepê de falar de trabalho é <mark>mostrar a consequência do trabalho</mark>, não o esforço.</p>
+
+  <div class="shead">Conceito em uma linha</div>
+  <div class="bigq">Nunca foi sorte. Sempre foi trabalho.<span class="by">Bordão do vídeo institucional. Funciona como refrão — pode fechar qualquer bloco de realizações.</span></div>
+
+  <div class="box red avoid"><div class="bt">A regra que muda tudo: troque esforço por consequência</div>
+    <div class="wordpair" style="margin-top:8px">
+      <div class="no"><div class="h">✗ Esforço (fraco)</div>
+        <p>“Estamos trabalhando pela saúde.”</p>
+        <p>“Estamos lutando pela rodovia.”</p>
+        <p>“Tenho me empenhado muito.”</p>
+      </div>
+      <div class="yes"><div class="h">✓ Consequência (forte)</div>
+        <p>“Hoje esse hospital atende porque houve uma articulação que começou meses atrás.”</p>
+        <p>“A terceira faixa já tem projeto e recurso previsto no orçamento.”</p>
+        <p>“Esse resultado tem nome, tem data e tem uma reunião por trás.”</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead">A narrativa (o trabalho como escolha, não como reclamação)</div>
+  <p>O Pepê conta o trabalho por cenas: “atendi 82 vereadores numa quarta-feira”; “não teve sábado, não teve domingo”; “cheguei em Tubarão dez da noite”; “estamos na escala sete por zero”. Mas o ponto não é a exaustão — é que <strong>ele foi atrás</strong>. “Quando cheguei, todos queriam fugir das comissões. Cada uma que sobrava, eu pegava.” Trabalho, na boca dele, é <strong>iniciativa</strong>, não sacrifício choroso.</p>
+  <div class="say real"><div class="sq">“Quando eu cheguei na Assembleia, o pessoal queria fugir das comissões. Cada uma que sobrava, eu ia pegando: traz pra cá que eu quero. Não é à toa que a gente chegou onde chegou.”</div><span class="sm">o trabalho contado como atitude — e a liderança aparece como consequência (ver cap. 08).</span></div>
+
+  <div class="shead">Argumentos e provas</div>
+  <ul class="arrow">
+    <li><strong>Trabalho tem rastro.</strong> “Entra na minha rede social, volta lá pro começo do mandato: isso não começou agora, na eleição.”</li>
+    <li><strong>Trabalho é presença.</strong> A régua não é o discurso, é onde ele estava: “quando você me via, eu estava Estado afora, onde as pessoas estão”.</li>
+    <li><strong>Trabalho é feito com prazer.</strong> “Tô fazendo com muita felicidade, com muito amor.” — evita o tom de mártir.</li>
+  </ul>
+
+  <div class="shead">Frases prontas — Trabalho</div>
+  <div class="say model"><div class="sq">“Isso não veio de uma ligação, nem de um dia pro outro. Veio de [reunião/estudo/insistência] que começou lá atrás — e hoje virou [resultado].”</div><span class="sm">ancora o resultado no trabalho, com data.</span></div>
+  <div class="say model"><div class="sq">“Eu não vim aqui dizer que estou trabalhando. Eu vim mostrar o que o trabalho já virou em [cidade].”</div><span class="sm">inverte o clichê e cobra prova de si mesmo.</span></div>
+  <div class="say real"><div class="sq">“Time que está ganhando não se mexe.”</div><span class="sm">bordão do evento (na camiseta). Usar para defender continuidade — trabalho que dá resultado não se troca.</span></div>
+</section>
+
+<!-- CAP 07 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE II</span> · PILARES</span><span>07 · Pilar 4 — Realizações</span></div>
+  <div class="chead"><div class="n">07</div><h2>Pilar 4 — Realizações (não investimentos)</h2></div>
+  <p class="lead">A tese: <strong>a população entende entrega, não cifra.</strong> “Essa APAE recebeu um veículo novo” chega mais fundo do que “foram destinados R$ 300 mil”. O valor continua importante — mas ele serve para mostrar grandeza, nunca para ser o centro. Na campanha, o número sai de cena e entra a vida real.</p>
+
+  <div class="box navy avoid"><div class="bt">Alinhado ao Plano Mestre</div><p>Este pilar é a tradução verbal do princípio das duas fases: <strong>Pré-campanha fala em recurso e parceria</strong> (o número pesa, para a liderança); <strong>campanha fala em transformação</strong> (a entrega substitui o valor; o benefício substitui o número; a pessoa substitui a obra).</p></div>
+
+  <div class="shead">A régua da tradução</div>
+  <div class="wordpair">
+    <div class="no"><div class="h">✗ Investimento (linguagem de gabinete)</div>
+      <p>“Destinamos R$ 300 mil para a APAE.”</p>
+      <p>“R$ 1 milhão em pavimentação.”</p>
+      <p>“Recurso para a área da saúde.”</p>
+      <p>“Emenda para exames de imagem.”</p>
+    </div>
+    <div class="yes"><div class="h">✓ Realização (linguagem de gente)</div>
+      <p>“A APAE tem um veículo novo pra buscar as crianças.”</p>
+      <p>“A rua que vivia na lama hoje tem asfalto.”</p>
+      <p>“Quem esperava meses pelo exame, faz na própria cidade.”</p>
+      <p>“Ninguém mais precisa rodar 70 km pra fazer um raio-X.”</p>
+    </div>
+  </div>
+
+  <div class="shead">A prova viva: a lição da própria assessoria</div>
+  <p>No evento, a comunicação do gabinete cravou a regra que este pilar formaliza: <em>“as pessoas não compartilham um concreto, elas não compartilham a obra — elas compartilham um significado”.</em> E deu o exemplo perfeito: engaja mais a “dona Alba de Gravatal contando que esperava aquela estrada desde que nasceu naquela rua” do que a foto do asfalto pronto.</p>
+  <div class="say real"><div class="sq">“O que adianta fazer o raio-X e não contar? Criamos o raio-X em Paulo Lopes e o pessoal parou de rodar 70 km até Florianópolis pra fazer um exame simples.”</div><span class="sm">o número (o equipamento) some; o que fica é o que ele resolveu na vida das pessoas.</span></div>
+
+  <div class="shead">Frases prontas — Realizações</div>
+  <div class="say model"><div class="sq">“Não é sobre [R$ X]. É sobre a [dona/seu] [nome], de [bairro], que agora [benefício concreto] sem sair da própria cidade.”</div><span class="sm">modelo-ouro: começa negando a cifra e aterrissa na pessoa.</span></div>
+  <div class="say model"><div class="sq">“[Obra] deixou de ser promessa e virou [coisa que se vê] na vida de quem mora em [lugar].”</div><span class="sm">converte destinação em transformação.</span></div>
+  <div class="say model"><div class="sq">“Foram [valor] — mas o que importa é que hoje [efeito na rotina]. O número mostra o tamanho; a mudança mostra o sentido.”</div><span class="sm">quando o valor precisa aparecer, ele entra e sai rápido, servindo à imagem.</span></div>
+
+  <div class="box red avoid"><div class="bt">Regra prática</div><p>Sempre que a frase terminar num valor em reais, <strong>ela ainda não acabou</strong>. Pergunte: “isso virou o quê, na vida de quem?” A resposta é o verdadeiro fim da frase.</p></div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE III ===================== -->
+<section class="divider page break">
+  <div class="pnum">III</div>
+  <div class="ptitle">As grandes histórias</div>
+  <div class="pdesc">Seis pautas do mandato transformadas em histórias completas — nunca em lista de ações. Cada uma segue a mesma espinha: problema → ação → resultado → impacto. São os “grandes números musicais” do repertório: prontas para virar discurso, entrevista ou série de vídeos.</div>
+  <div class="pindex">
+    <div><span>08</span>A conquista da CCJ</div>
+    <div><span>09</span>Bancada do Sul e os modais</div>
+    <div><span>10</span>Testes rápidos nas farmácias</div>
+    <div><span>11</span>Painéis solares nos hospitais</div>
+    <div><span>12</span>Ovinocaprinocultura</div>
+    <div><span>13</span>Autismo (TEA)</div>
+  </div>
+</section>
+
+<!-- CAP 08 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE III</span> · HISTÓRIAS</span><span>08 · A conquista da CCJ</span></div>
+  <div class="chead"><div class="n">08</div><h2>A conquista da CCJ</h2></div>
+  <p class="lead">A história da CCJ é a prova de que <strong>liderança foi consequência do trabalho, não ponto de partida</strong>. Um deputado de primeiro mandato presidindo a comissão mais importante da Assembleia — algo inédito. Contada certa, ela não soa vaidade: soa método.</p>
+
+  <div class="shead">A história (problema → ação → resultado → impacto)</div>
+  <div class="tl">
+    <div class="ev"><div class="d">Problema</div><div class="t">Deputado novo, sem envergadura</div><p>“Deputado de primeiro mandato, chegando na Assembleia.” Sem peso, a voz da região não é ouvida e o recurso não vem.</p></div>
+    <div class="ev"><div class="d">Ação</div><div class="t">Pegou o que os outros fugiam</div><p>“Todos queriam fugir das comissões. Cada uma que sobrava, eu pegava.” Estudou, circulou gabinete por gabinete, construiu diálogo com os pares.</p></div>
+    <div class="ev"><div class="d">Resultado</div><div class="t">A presidência da CCJ</div><p>Todo projeto — do governo, de qualquer deputado, do TJ — passa primeiro pela CCJ. É onde se decide se a matéria pode andar.</p></div>
+    <div class="ev"><div class="d">Impacto</div><div class="t">Voz que virou recurso pra ponta</div><p>“A comissão nos deu envergadura, diálogo diário com o governo e os secretários. Muito dos R$ 100 milhões da região passou por essa força política.”</p></div>
+  </div>
+
+  <div class="box navy avoid"><div class="bt">Por que a CCJ é estratégica (traduzir para o eleitor)</div><p>Não falar “controle de constitucionalidade”. Falar: <strong>“é a porta por onde toda lei passa. Estar na presidência é ter a caneta e o telefone do governo. E isso eu usei pra puxar obra pra cá.”</strong> A CCJ só interessa ao eleitor quando vira asfalto e hospital.</p></div>
+
+  <div class="shead">Frases prontas — CCJ</div>
+  <div class="say real"><div class="sq">“Força própria na Assembleia ninguém tem. A gente chega com apoio, com diálogo, com trabalho.”</div><span class="sm">humildade que desarma a acusação de vaidade — e reforça o pilar do trabalho.</span></div>
+  <div class="say model"><div class="sq">“Um deputado de primeiro mandato presidindo a comissão mais importante da Casa não é sorte. É o que acontece quando você não tem medo de pegar trabalho.”</div><span class="sm">liga a conquista ao pilar Trabalho.</span></div>
+  <div class="say model"><div class="sq">“A CCJ me deu a caneta e a mesa do governo. E eu usei isso pra trazer [obra] pra [cidade].”</div><span class="sm">traduz o cargo em benefício concreto — a correção-mãe deste manual.</span></div>
+
+  <div class="box red"><div class="bt">Como ficar mais forte</div><p>Sempre encerrar a história da CCJ num exemplo de ponta. O cargo é o meio; a rua asfaltada é o fim. Nunca terminar em “presidência” — terminar em “por isso [cidade] recebeu [obra]”.</p></div>
+</section>
+
+<!-- CAP 09 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE III</span> · HISTÓRIAS</span><span>09 · Bancada do Sul e os modais</span></div>
+  <div class="chead"><div class="n">09</div><h2>A Bancada do Sul e os grandes modais</h2></div>
+  <p class="lead">A história de que o mandato não é só emenda de rua — é <strong>desenvolvimento estrutural da região</strong>. Aeroporto, porto, rodovia, dragagem: as obras que mudam a economia do Sul por uma geração. Aqui o argumento sai do bairro e sobe para o mapa — mas sempre volta para o emprego e o escoamento.</p>
+
+  <div class="shead">Os quatro modais — cada um com sua consequência</div>
+  <div class="grid g2">
+    <div class="card"><div class="ct">Aeroporto de Jaguaruna</div><p><strong>Ação:</strong> concessão e ampliação. <strong>Consequência:</strong> instrumento de desenvolvimento econômico e turístico para toda a região.</p></div>
+    <div class="card"><div class="ct">Porto de Imbituba</div><p><strong>Ação:</strong> nova linha com a Rússia (fertilizantes, câmara fria). <strong>Consequência:</strong> escoamento de perecíveis e atração de indústria — inclusive chinesa.</p></div>
+    <div class="card"><div class="ct">SC-370 (Tubarão–Braço do Norte)</div><p><strong>Ação:</strong> revitalização e terceira faixa (duplicação onde der). <strong>Consequência:</strong> mobilidade e escoamento da produção do Vale — “rodovia é economia”.</p></div>
+    <div class="card"><div class="ct">Dragagem do Rio Tubarão / Molhes da Barra</div><p><strong>Ação:</strong> R$ 5 mi para o projeto executivo dos Molhes; R$ 80 mi previstos no orçamento. <strong>Consequência:</strong> defesa contra enchente e reabertura da economia da barra.</p></div>
+  </div>
+
+  <div class="shead">A história da bateria de lítio (a joia escondida)</div>
+  <p>A pergunta que abre a história é dele mesmo:</p>
+  <div class="say real"><div class="sq">“Qual o valor de trazer uma empresa do exterior para nossa região? A gente esteve na China e trouxe pra Laguna a maior fábrica de bateria de lítio do mundo. A ideia é chegar a 450 colaboradores.”</div><span class="sm">tira o holofote da pavimentação e mostra visão econômica. Emprego é a consequência que fecha a história.</span></div>
+  <div class="box navy"><div class="bt">O gancho da guerra comercial</div><p>“Com a taxação entre China e EUA, o que ia ser produzido lá pros Estados Unidos passou a ser produzido aqui em Laguna.” — micro-aula de economia que qualquer ouvinte entende. Mostra o Pepê que enxerga o tabuleiro grande.</p></div>
+
+  <div class="shead">sobre o Rio Tubarão (transformar frustração em credibilidade)</div>
+  <p>A dragagem é a pauta em que ele mais admite dificuldade — e isso é uma força, não uma fraqueza. Usar a franqueza:</p>
+  <div class="say real"><div class="sq">“O mandato não é feito só de felicidade, tem frustração também. Essa redragagem se discute há 20 anos. Teve hora que deu vontade de desistir. Mas a gente conseguiu tirar o projeto dos Molhes do papel.”</div><span class="sm">admitir o que ainda não saiu constrói confiança e prepara o argumento da continuidade (“falta terminar — não troca no meio”).</span></div>
+
+  <div class="shead">Frases prontas — Modais</div>
+  <div class="say real"><div class="sq">“Rodovia não é asfalto por asfalto. Rodovia é escoamento do que é produzido na região. E escoamento da produção é a economia da região andando.”</div><span class="sm">a causa-e-consequência que a equipe pediu para reforçar. Serve para qualquer obra estrutural.</span></div>
+  <div class="say model"><div class="sq">“[Porto/aeroporto/rodovia] chegou a nossa vez. Os modais estão prontos — agora é a região colher em emprego e renda.”</div><span class="sm">fecho otimista de bloco de infraestrutura.</span></div>
+
+  <div class="box red"><div class="bt">Como ficar mais forte</div><p>Correlacionar as partes: <strong>Molhes da Barra ↔ dragagem do Rio Tubarão ↔ Barra do Camacho</strong> são capítulos de <em>uma</em> história (a região das águas), não assuntos soltos. E sempre aterrissar o modal no emprego: “o porto cresce → a indústria vem → o filho de vocês trabalha aqui, sem precisar ir pra cidade grande”.</p></div>
+</section>
+
+<!-- CAP 10 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE III</span> · HISTÓRIAS</span><span>10 · Testes rápidos nas farmácias</span></div>
+  <div class="chead"><div class="n">10</div><h2>Testes rápidos nas farmácias</h2></div>
+  <p class="lead">É uma história de <strong>democratização do acesso</strong> que casa perfeitamente com o perfil de Santa Catarina, estado de pequenas e médias cidades. Simples de contar, fácil de sentir.</p>
+
+  <div class="shead">A história</div>
+  <div class="tl">
+    <div class="ev"><div class="d">Problema</div><div class="t">Cidade pequena, sem laboratório</div><p>“Nas nossas andanças, o cidadão reclamava: não tem onde fazer um exame simples de diabete, de colesterol.”</p></div>
+    <div class="ev"><div class="d">Ação</div><div class="t">Lei que autoriza exames na farmácia</div><p>Construída junto com os próprios donos de laboratório. Mais de 50 exames que antes só o laboratório fazia, agora feitos na farmácia da esquina.</p></div>
+    <div class="ev"><div class="d">Resultado</div><div class="t">Já está valendo</div><p>“Várias farmácias já adotaram. E quanto mais o cidadão conhece o direito, mais procura.”</p></div>
+    <div class="ev"><div class="d">Impacto</div><div class="t">Diagnóstico perto de casa</div><p>Mede o colesterol na hora, e se estiver alto, procura o médico. Acesso ampliado, prevenção facilitada.</p></div>
+  </div>
+
+  <div class="box navy avoid"><div class="bt">O contorno que blinda a pauta</div><p>Antecipar a crítica: <strong>“não substitui o médico, mas amplia o acesso”</strong>. E lembrar que foi feito <em>com</em> os laboratórios, não contra eles. Isso desarma o profissional de saúde antes que ele reclame (técnica do cap. 17: responder a dúvida antes que apareça).</p></div>
+
+  <div class="shead">Por que a história funciona tão bem</div>
+  <ul class="arrow">
+    <li>Casa com a identidade do Estado: “Santa Catarina foi forjada em pequenas e médias cidades”. O eleitor do interior se vê.</li>
+    <li>É universal: diabete e colesterol estão na casa de todo mundo.</li>
+    <li>Tem um gesto pessoal pronto: ele mesmo brinca que “tava com o colesterol alto, já emagreci”. Aproxima na hora.</li>
+  </ul>
+
+  <div class="shead">Frases prontas — Testes rápidos</div>
+  <div class="say model"><div class="sq">“Em [cidade pequena], fazer um exame simples virava uma viagem. Hoje se mede o colesterol na farmácia da esquina. Sem substituir o médico, só aproximando a saúde de casa.”</div><span class="sm">história completa em duas frases.</span></div>
+  <div class="say model"><div class="sq">“Santa Catarina é feita de pequenas cidades. Uma lei que só serve pra capital não serve pro nosso Estado.”</div><span class="sm">conecta a pauta ao pilar regional.</span></div>
+</section>
+
+<!-- CAP 11 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE III</span> · HISTÓRIAS</span><span>11 · Painéis solares nos hospitais</span></div>
+  <div class="chead"><div class="n">11</div><h2>Painéis solares nos hospitais filantrópicos</h2></div>
+  <p class="lead">Uma história de <strong>engenharia inteligente</strong>: em vez de dar peixe (mais uma emenda emergencial), a lei ensina o hospital a pescar — corta o maior custo fixo e libera dinheiro para o que importa, o atendimento. É solução permanente, não ajuda temporária.</p>
+
+  <div class="shead">A história</div>
+  <div class="tl">
+    <div class="ev"><div class="d">Problema</div><div class="t">A conta de luz que sangra o hospital</div><p>“Hospital funciona 24 horas. Tubarão e Laguna gastam R$ 300 a 400 mil por mês — quase R$ 3 milhões por ano só de energia.”</p></div>
+    <div class="ev"><div class="d">Ação</div><div class="t">1% do Fundo Social para painel solar</div><p>A lei permite que empresas destinem parte do que pagam ao Fundo Social para o hospital comprar painéis fotovoltaicos. Já é lei, já vale.</p></div>
+    <div class="ev"><div class="d">Resultado</div><div class="t">Conta de energia zerada</div><p>Com energia própria no mercado livre, muitos hospitais podem zerar a maior despesa fixa.</p></div>
+    <div class="ev"><div class="d">Impacto</div><div class="t">Mais fôlego pra salvar vidas</div><p>O que ia pra concessionária vira leito, exame, remédio. É dinheiro que volta pro atendimento — pra sempre.</p></div>
+  </div>
+
+  <div class="shead">A metáfora que carrega a história</div>
+  <div class="box navy avoid"><div class="bt">Dar a vara, não o peixe</div><p>“Não é mais uma ajuda que acaba no mês seguinte. É resolver o custo na raiz.”&nbsp;</p></div>
+
+  <div class="shead">Frases prontas — Painéis solares</div>
+  <div class="say real"><div class="sq">“Hospital que gasta R$ 3 milhões por ano com energia é dinheiro que podia estar em leito e em exame. A gente resolveu na raiz: o sol paga a conta.”</div><span class="sm">problema e solução numa tacada, com imagem.</span></div>
+  <div class="say model"><div class="sq">“Não dá pra viver de emenda emergencial. Essa lei é permanente: enquanto o sol nascer, o hospital economiza.”</div><span class="sm">reforça o caráter estrutural (solução, não remendo).</span></div>
+</section>
+
+<!-- CAP 12 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE III</span> · HISTÓRIAS</span><span>12 · Ovinocaprinocultura</span></div>
+  <div class="chead"><div class="n">12</div><h2>Ovinocaprinocultura</h2></div>
+  <p class="lead">O desafio aqui é <strong>tornar simples um tema técnico</strong>. “Ovinocaprinocultura” é uma palavra que ninguém repete no bar. A história tem que virar: <em>ovelha, cabra, carne, leite, cooperativa, oportunidade.</em> E ganha força quando espelha o maior case do Estado — a suinocultura.</p>
+
+  <div class="shead">A história (comparando com o que já deu certo)</div>
+  <p>Santa Catarina é potência no agro por causa das <strong>cadeias produtivas organizadas em cooperativa</strong> — o porco e a ave são a prova. A tese do Pepê: a ovelha e a cabra podem ser a próxima. Há um projeto para incluir a carne de ovelha na merenda escolar e na alimentação dos hospitais, e incentivar cooperativas para produzir em escala.</p>
+  <div class="say real"><div class="sq">“Como a Nova Zelândia e a Austrália, a gente também tem potencial na carne da ovelha. Fizemos um projeto pra incluir essa carne na merenda escolar e incentivar as cooperativas.”</div><span class="sm">a comparação internacional dá tamanho; a merenda escolar dá concretude.</span></div>
+
+  <div class="shead">Como traduzir para o eleitor</div>
+  <div class="grid g3">
+    <div class="card"><div class="ct">O espelho da suinocultura</div><p>“O que o porco fez pelo Oeste, a ovelha pode fazer pelo pequeno produtor daqui.”</p></div>
+    <div class="card"><div class="ct">Cooperativa = renda</div><p>“Sozinho o produtor não escoa. Junto, em cooperativa, ele vira cadeia produtiva e renda.”</p></div>
+    <div class="card"><div class="ct">Mercado garantido</div><p>“A merenda e o hospital compram — o produtor tem pra quem vender.”</p></div>
+  </div>
+
+  <div class="shead">Frases prontas — Agro/Ovinocaprino</div>
+  <div class="say model"><div class="sq">“Santa Catarina cresceu quando organizou o pequeno em cooperativa. Foi assim com o porco e com o frango. A ovelha pode ser a próxima virada de renda no interior.”</div><span class="sm">história inteira em uma frase, ancorada no que o eleitor já conhece.</span></div>
+  <div class="say model"><div class="sq">“Não é sobre ovelha. É sobre o filho do agricultor ter renda e não precisar ir embora pra cidade grande.”</div><span class="sm">tira o tema do tecnicismo e liga ao pilar das pessoas.</span></div>
+  <div class="box red"><div class="bt">Como ficar mais forte</div><p>Nunca dizer “ovinocaprinocultura” sem, na frase seguinte, traduzir por “criar ovelha e cabra”. Palavra difícil afasta; a imagem do bicho e do prato aproxima.</p></div>
+</section>
+
+<!-- CAP 13 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE III</span> · HISTÓRIAS</span><span>13 · Autismo (TEA)</span></div>
+  <div class="chead"><div class="n">13</div><h2>Autismo (TEA)</h2></div>
+  <p class="lead">A bandeira mais emocional do mandato — e por isso a que mais exige <strong>narrativa, não lista</strong>. A regra aqui: nunca enumerar ações (“censo, protocolo, professor de apoio, cinema…”). Contar uma <strong>evolução</strong>: da descoberta de um mundo invisível à construção de política pública com dado real.</p>
+
+  <div class="shead">O arco emocional (a jornada, não o inventário)</div>
+  <div class="say real"><div class="sq">“Era um mundo que eu não conhecia. Quando a gente começou a conhecer essa realidade, percebeu que ainda havia muito por fazer.”</div><span class="sm">a abertura certa: humildade e descoberta. O Pepê entra como quem aprendeu, não como quem já sabia.</span></div>
+  <div class="flow">
+    <div class="node red"><div class="ft">CENSO</div><small>saber quantos são</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">PROTOCOLO</div><small>prova oral, atendimento</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">PROFESSOR 2</div><small>apoio na escola</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">CINEMA</div><small>sessão adaptada</small></div>
+    <div class="arr">→</div>
+    <div class="node navy"><div class="ft">INCLUSÃO</div><small>direito, não favor</small></div>
+  </div>
+  <p class="small muted">Mostrar como uma coisa levou à outra — o censo é a base de tudo, porque “sem saber quantos são, o município não sabe o que precisa”.</p>
+
+  <div class="shead">Os argumentos de coração</div>
+  <ul class="arrow">
+    <li>A dor real: “mães e pais que abdicam do emprego pra cuidar do filho”; “trigêmeos com nível 3, famílias desesperadas por acesso”.</li>
+    <li>O bordão de valor: <strong>“inclusão não é favor, é direito.”</strong></li>
+    <li>A origem na escuta: a pauta chegou pelo “mundo feminino”, pelas mães — conecta ao Pilar 2.</li>
+    <li>O censo como virada: “dado real orienta política pública real”. Tira o tema do abstrato.</li>
+  </ul>
+
+  <div class="shead">Frases prontas — Autismo</div>
+  <div class="say real"><div class="sq">“Inclusão não é favor, é direito.”</div><span class="sm">bordão-síntese. Cabe em placa, arte, discurso e vídeo.</span></div>
+  <div class="say model"><div class="sq">“A gente não podia cuidar de quem não conseguia enxergar. Por isso o primeiro passo foi o censo: para o Estado saber quantas famílias precisam — e onde.”</div><span class="sm">explica o censo pelo sentido humano, não pelo método.</span></div>
+  <div class="say model"><div class="sq">“Não é sobre uma lei. É sobre a mãe que pôde voltar a trabalhar porque o filho tem atendimento e um professor de apoio na escola.”</div><span class="sm">aterrissa a política na vida de uma família (Pilar 4).</span></div>
+
+  <div class="box red avoid"><div class="bt">Como ficar mais forte</div><p>Trocar a lista por <strong>uma família</strong>. Em vez de “fizemos censo, protocolo, cinema e professor de apoio”, contar a história de uma criança que passou por essa evolução. Uma história vale por dez itens. E sempre fechar em “direito, não favor”.</p></div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE IV ===================== -->
+<section class="divider page break alt">
+  <div class="pnum">IV</div>
+  <div class="ptitle">A mecânica da fala</div>
+  <div class="pdesc">Agora as ferramentas de engenharia: como montar um discurso, como contar uma história em fórmula, como falar números sem afogar o ouvinte, como criar conexão e como responder a imprensa sem se perder. É a oficina — o que faz a mensagem funcionar na prática.</div>
+  <div class="pindex">
+    <div><span>14</span>A estrutura dos discursos</div>
+    <div><span>15</span>Storytelling — as fórmulas</div>
+    <div><span>16</span>Como falar números</div>
+    <div><span>17</span>Como gerar conexão</div>
+    <div><span>18</span>Respostas para entrevistas</div>
+  </div>
+</section>
+
+<!-- CAP 14 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE IV</span> · MECÂNICA</span><span>14 · A estrutura dos discursos</span></div>
+  <div class="chead"><div class="n">14</div><h2>A estrutura dos discursos</h2></div>
+  <p class="lead">Quando o Pepê está no melhor da forma, ele segue (sem saber) um mesmo modelo mental. Este capítulo torna esse modelo consciente, para que qualquer discurso possa ser montado nele.</p>
+
+  <div class="shead">O modelo-mãe (6 tempos)</div>
+  <div class="flow">
+    <div class="node"><div class="ft">SITUAÇÃO</div><small>onde estamos</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">PROBLEMA</div><small>o que faltava</small></div>
+    <div class="arr">→</div>
+    <div class="node navy"><div class="ft">HISTÓRIA</div><small>uma pessoa/cena</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">SOLUÇÃO</div><small>o que fizemos</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">RESULTADO</div><small>o que mudou</small></div>
+    <div class="arr">→</div>
+    <div class="node red"><div class="ft">IMPACTO</div><small>na vida de quem</small></div>
+  </div>
+  <p>O erro mais comum é <strong>parar no “resultado”</strong> (“a obra saiu”, “o recurso veio”). O discurso do Pepê só termina de verdade no <strong>impacto</strong> — na pessoa. Se o texto acabou numa cifra ou numa obra, falta o último tempo.</p>
+
+  <div class="shead">Modelo de evento (o discurso longo)</div>
+  <table class="tbl compact">
+    <tbody><tr><th style="width:34px">#</th><th>Bloco</th><th>Função</th></tr>
+    <tr><td>1</td><td>Abertura afetiva</td><td>Emoção e pertencimento. “Que coisa linda ver vocês aqui.” (ver cap. 19)</td></tr>
+    <tr><td>2</td><td>Tese do mandato</td><td>“Mandato é ferramenta, mandato é ponte.” Quem ele é em uma ideia.</td></tr>
+    <tr><td>3</td><td>Prestação de contas</td><td>Números como grandeza — rápido, e já traduzidos (cap. 16).</td></tr>
+    <tr><td>4</td><td>1 ou 2 grandes histórias</td><td>Uma da Parte III, contada inteira (não listar).</td></tr>
+    <tr><td>5</td><td>Reconhecimento do time</td><td>Bloco curto e separado — sem virar lista infinita (correção do cap. 02).</td></tr>
+    <tr><td>6</td><td>Chamado / convocação</td><td>Metáfora da seleção; o que se espera de cada um. (cap. 20)</td></tr>
+    <tr><td>7</td><td>Fecho de impacto</td><td>Frase curta e memorável. “Nunca foi sorte, sempre foi trabalho.”</td></tr>
+  </tbody></table>
+
+  <div class="box navy avoid"><div class="bt">Regra de proporção</div><p>Numa fala de 10 minutos: no máximo <strong>2 minutos de números</strong>, pelo menos <strong>3 minutos de história</strong>. Se inverter, perde o ouvinte.</p></div>
+</section>
+
+<!-- CAP 15 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE IV</span> · MECÂNICA</span><span>15 · Storytelling — as fórmulas</span></div>
+  <div class="chead"><div class="n">15</div><h2>Storytelling — as fórmulas</h2></div>
+  <p class="lead">Histórias não são enfeite — são o que faz a fala grudar. O Pepê já conta bem; o que falta é <strong>sistematizar</strong> para reproduzir sempre. Aqui, três fórmulas prontas e curtas.</p>
+
+  <div class="shead">Fórmula 1 — “Uma pessoa, um antes, um depois”</div>
+  <div class="box sun"><div class="bt">Estrutura</div><p><strong>[Nome + lugar]</strong> vivia <strong>[problema concreto]</strong>. A gente <strong>[ação]</strong>. Hoje <strong>[o que mudou pra essa pessoa]</strong>.</p></div>
+  <div class="say model"><div class="sq">“A dona Alba, de Gravatal, esperava aquela estrada desde o dia em que nasceu naquela rua. A gente levou o asfalto. Hoje ela não vive mais na poeira no sol e na lama na chuva.”</div><span class="sm">o formato que a própria assessoria elegeu como o que mais engaja.</span></div>
+
+  <div class="shead">Fórmula 2 — “Da reclamação à lei”</div>
+  <div class="box sun"><div class="bt">Estrutura</div><p>Alguém <strong>reclamou</strong> de <strong>[falta]</strong>. Aquilo revelou <strong>[problema maior]</strong>. Viramos isso em <strong>[lei/emenda]</strong>. Agora <strong>[benefício para muitos]</strong>.</p></div>
+  <div class="say model"><div class="sq">“O cidadão reclamava que não tinha onde fazer um exame simples. Isso valia pra dezenas de cidades pequenas. Viramos numa lei. Hoje se faz o exame na farmácia da esquina.”</div><span class="sm">usa a estrutura ‘escuta → política pública’ do Pilar 2.</span></div>
+
+  <div class="shead">Fórmula 3 — “O caso pessoal” (quando cabe emoção)</div>
+  <div class="box sun"><div class="bt">Estrutura</div><p>Vivi/vi <strong>[experiência pessoal]</strong>. Senti <strong>[o que aquilo é]</strong>. Por isso <strong>[causa que abracei]</strong>.</p></div>
+  <div class="say real"><div class="sq">“Eu senti na pele o que um hospital passa. Por isso a saúde é uma bandeira que eu não largo.”</div><span class="sm">emoção com autoridade pessoal — usar com parcimônia, alto impacto.</span></div>
+
+  <div class="shead">Gatilhos narrativos que o Pepê já usa (nomear para repetir)</div>
+  <div class="grid g2">
+    <div class="card"><div class="ct">O detalhe visual</div><p>“Comer poeira no sol, lama na chuva.” Faz o ouvinte <strong>ver</strong> — não só entender.</p></div>
+    <div class="card"><div class="ct">O contraste</div><p>“Antes rodava 70 km; hoje faz na própria cidade.” O antes-e-depois é o motor da transformação.</p></div>
+    <div class="card"><div class="ct">A pergunta retórica</div><p>“Qual o valor de trazer uma empresa chinesa?” Abre a curiosidade antes da resposta.</p></div>
+    <div class="card"><div class="ct">A vulnerabilidade</div><p>“Deu vontade de desistir.” Admitir dificuldade cria confiança e prende a atenção.</p></div>
+  </div>
+</section>
+
+<!-- CAP 16 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE IV</span> · MECÂNICA</span><span>16 · Como falar números</span></div>
+  <div class="chead"><div class="n">16</div><h2>Como falar números</h2></div>
+  <p class="lead">Número é tempero, não prato. Usado certo, dá grandeza; usado demais, afoga. As três regras a seguir resolvem 90% dos casos.</p>
+
+  <div class="shead">Regra 1 — Todo número precisa de contexto</div>
+  <div class="wordpair">
+    <div class="no"><div class="h">✗ Número solto</div>
+      <p>“Foram 150 municípios.”</p>
+      <p>“R$ 100 milhões.”</p>
+      <p>“São quase 500 emendas.”</p>
+    </div>
+    <div class="yes"><div class="h">✓ Número com contexto</div>
+      <p>“Estivemos em 153 dos 295 municípios catarinenses, mais da metade do Estado.”</p>
+      <p>“R$ 100 milhões pra nossa região — e 80% de tudo que entreguei ficou aqui.”</p>
+      <p>“São quase 500 entregas. Isso é trabalho espalhado pelo mapa, não número na tela.”</p>
+    </div>
+  </div>
+
+  <div class="shead">Regra 2 — O número entra e sai; quem fica é a imagem</div>
+  <p>Depois de dizer a cifra, aterrisse imediatamente no concreto. O valor abre a frase; a vida fecha.</p>
+  <div class="say model"><div class="sq">“Foram [R$ X] — mas o que ficou foi [obra] atendendo [quem], em [lugar].”</div><span class="sm">fórmula de pouso: nenhum número fica sozinho no ar.</span></div>
+  <div class="say real"><div class="sq">“Isso não é número jogado na tela. É trabalho espalhado pelo mapa.”</div></div>
+
+  <div class="shead">Regra 3 — Número redondo e comparável</div>
+  <ul class="arrow">
+    <li>Prefira <strong>proporção</strong> a valor absoluto quando o público é o eleitor: “mais da metade dos municípios” &gt; “153 municípios”.</li>
+    <li>Use <strong>âncora do cotidiano</strong>: “R$ 3 milhões por ano de energia é o que um hospital gasta pra manter a luz acesa 24 horas”.</li>
+    <li><strong>Um número por ideia.</strong> Nunca metralhar três cifras seguidas — o ouvinte não guarda nenhuma.</li>
+  </ul>
+
+  <div class="box red avoid"><div class="bt">Fronteira jurídica dos números</div><p>Os valores de emenda têm status diferentes (destinada, empenhada, publicada, paga). Na dúvida, use “destinamos/garantimos” e confirme a origem.&nbsp;</p></div>
+</section>
+
+<!-- CAP 17 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE IV</span> · MECÂNICA</span><span>17 · Como gerar conexão</span></div>
+  <div class="chead"><div class="n">17</div><h2>Como gerar conexão</h2></div>
+  <p class="lead">Conexão é fazer o ouvinte sentir que a fala é <strong>sobre ele</strong>. O Pepê tem isso naturalmente — mas dá para amplificar com quatro técnicas conscientes.</p>
+
+  <div class="shead">Técnica 1 — Imaginar quem está ouvindo</div>
+  <p>Ele já faz isso, e diz explicitamente: o eleitor no rádio “está no carro, preocupado em pagar a conta, levar o filho na escola”. Falar <strong>para</strong> essa pessoa, não sobre política. Antes de qualquer fala, definir: quem é a pessoa do outro lado — prefeito? mãe de autista? agricultor? — e falar a língua dela.</p>
+  <div class="say real"><div class="sq">“Quem está ouvindo agora no carro não vive de política. Ele vive a vida dele. Meu papel é mostrar o que muda na vida dele.”</div><span class="sm">a consciência do público, dita em voz alta — pode virar até abertura de rádio.</span></div>
+
+  <div class="shead">Técnica 2 — Responder a dúvida antes que ela apareça</div>
+  <p>Antecipar a objeção desarma o crítico. Ele fez isso com o teste rápido (“não substitui o médico”) e com a acusação de oportunismo (“entra na minha rede, isso não começou na eleição”). Mapear a pergunta difícil e respondê-la <strong>antes</strong> de ser feita.</p>
+  <div class="say model"><div class="sq">“Tem gente que vai dizer que isso é conversa de época de eleição. Então eu peço: entra na minha rede social e volta lá pro começo do mandato. Isso não começou agora.”</div><span class="sm">neutraliza a crítica mais provável antes dela sair.</span></div>
+
+  <div class="shead">Técnica 3 — Transformar política em vida real</div>
+  <p>É o fio condutor do manual inteiro: toda abstração precisa virar cena. “Rubrica orçamentária”, “transferência voluntária” não conectam. “A rua da dona Alba”, “o raio-X em Paulo Lopes”, “a mãe que voltou a trabalhar” conectam.</p>
+
+  <div class="shead">Técnica 4 — Fazer a pessoa visualizar</div>
+  <div class="grid g2">
+    <div class="card"><div class="ct">Use verbos de imagem</div><p>“Ver”, “sentir”, “imagina”. “Imagina se essa rodovia não existisse — o escoamento passando dentro da cidade.”</p></div>
+    <div class="card"><div class="ct">Traga o sensorial</div><p>Poeira, lama, frio, fila. O corpo do ouvinte lembra dessas sensações — e a fala gruda.</p></div>
+  </div>
+
+  <div class="box sun avoid"><div class="bt">O princípio da própria assessoria</div><p>“Relacionamento sempre vence algoritmo” e “as pessoas compartilham significado, não concreto”. Traduzido para a fala: <strong>quem conecta não é quem fala mais bonito — é quem faz o outro se ver na história.</strong></p></div>
+</section>
+
+<!-- CAP 18 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE IV</span> · MECÂNICA</span><span>18 · Respostas para entrevistas</span></div>
+  <div class="chead"><div class="n">18</div><h2>Respostas para entrevistas — pirâmide invertida</h2></div>
+  <p class="lead">O Pepê às vezes abre o tema maior antes de responder o que foi perguntado — e o ouvinte se perde. A solução é uma só: <mark>responder primeiro, explicar depois.</mark> Nunca inverter.</p>
+
+  <div class="shead">A pirâmide invertida (a ordem certa)</div>
+  <div class="flow">
+    <div class="node red"><div class="ft">1. RESPOSTA</div><small>direto ao ponto, 1 frase</small></div>
+    <div class="arr">→</div>
+    <div class="node navy"><div class="ft">2. PROVA</div><small>história ou exemplo</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">3. CONTEXTO</div><small>o tema maior, se sobrar tempo</small></div>
+  </div>
+  <div class="wordpair">
+    <div class="no"><div class="h">✗ Ordem que perde o ouvinte</div>
+      <p>“Olha, primeiro é importante entender todo o contexto da Assembleia, das comissões, do processo legislativo… (2 min depois) …então sim, a obra vai sair.”</p>
+    </div>
+    <div class="yes"><div class="h">✓ Pirâmide invertida</div>
+      <p>“Vai sair, sim. O projeto dos Molhes já está em execução. (aí sim) E deixa eu te explicar por que isso demorou 20 anos…”</p>
+    </div>
+  </div>
+
+  <div class="shead">Técnica da ponte (voltar ao seu tema sem fugir da pergunta)</div>
+  <p>Responder a pergunta e, só então, conduzir para a mensagem-chave. A “ponte” é uma frase de transição:</p>
+  <ul class="arrow">
+    <li>“Respondo direto: [resposta]. E isso liga numa coisa maior que é [seu tema].”</li>
+    <li>“Sim/não, [resposta]. Agora, o que pouca gente vê é [história que você quer contar].”</li>
+    <li>“Essa é a parte que aparece. A que não aparece é [ângulo da ponta].”</li>
+  </ul>
+
+  <div class="shead">Kit de respostas rápidas para perguntas difíceis</div>
+  <table class="tbl compact">
+    <tbody><tr><th>Pergunta</th><th>Resposta-modelo (responde 1º, ponte depois)</th></tr>
+    <tr><td>“Isso não é papo de eleição?”</td><td>“Não. Entra na minha rede, volta pro começo do mandato — a Comissão das Barras eu criei no primeiro ano. O que muda na eleição é só o volume da divulgação.”</td></tr>
+    <tr><td>“A dragagem não saiu.”</td><td>“Verdade, e eu não escondo: se discute há 20 anos. Mas os Molhes já estão em execução e o recurso do Rio está previsto no orçamento. É obra que se conclui, não que se recomeça.”</td></tr>
+    <tr><td>“Por que apoiar homem e não mulher?” (contexto PP com Elas)</td><td>“A gente apoia quem apoia. E eu abracei a pauta do autismo, que chegou pelo mundo feminino. Represento essas causas — o critério é o trabalho, não o gênero.”</td></tr>
+    <tr><td>“Vocês vão rachar com o governo?”</td><td>“Nossa posição é clara: apoiamos o governador pelo que ele fez pelo Sul. O partido pode abrir a questão, mas o meu compromisso está firmado — e não volto atrás.”</td></tr>
+    <tr><td>“Sua eleição é fácil.”</td><td>“Não existe eleição fácil. Vai na urna e vê se tem um voto dentro dela sozinho. Voto é trabalho, todo dia, na rua.”</td></tr>
+  </tbody></table>
+
+  <div class="box red avoid"><div class="bt">A regra de ouro da entrevista</div><p>Se em 5 segundos o repórter não ouviu a resposta, você já perdeu. <strong>Responda na primeira frase.</strong> O contexto é prêmio para quem já respondeu, nunca desculpa para quem está fugindo.</p></div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE V ===================== -->
+<section class="divider page break">
+  <div class="pnum">V</div>
+  <div class="ptitle">O arsenal</div>
+  <div class="pdesc">A parte de consulta rápida: aberturas e encerramentos prontos, um banco de frases de impacto por tema e um caderno de ideias para rádio, vídeo, evento e redes. É o que o assessor abre com pressa, cinco minutos antes da fala.</div>
+  <div class="pindex">
+    <div><span>19</span>Aberturas</div>
+    <div><span>20</span>Encerramentos</div>
+    <div><span>21</span>Banco de frases de impacto</div>
+    <div><span>22</span>Ideias para rádio, vídeo, evento e redes</div>
+  </div>
+</section>
+
+<!-- CAP 19 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE V</span> · ARSENAL</span><span>19 · Aberturas</span></div>
+  <div class="chead"><div class="n">19</div><h2>Aberturas</h2></div>
+  <p class="lead">Os primeiros 10 segundos decidem se o ouvinte fica. O Pepê abre bem quando começa <strong>na emoção ou na rua</strong> — nunca no protocolo. Modelos por formato:</p>
+
+  <div class="shead">Evento / palanque</div>
+  <div class="say real"><div class="sq">“Que coisa linda ver vocês aqui! Numa quarta-feira, dia de trabalho, cada um com seus afazeres — e vocês vieram. Isso é uma demonstração.”</div><span class="sm">abertura afetiva real: valoriza a presença antes de qualquer palavra sobre si.</span></div>
+  <div class="say model"><div class="sq">“Nenhum prefeito se elege sozinho, nenhum vereador se elege sozinho. Ninguém cresce sozinho. Por isso é tão importante ver vocês aqui hoje.”</div><span class="sm">abre no coletivo — o oposto do palanque de vaidade.</span></div>
+
+  <div class="shead">Rádio / entrevista</div>
+  <div class="say model"><div class="sq">“Bom dia! Prazer estar aqui. A gente chega no fim do ano pra prestar um pouquinho de contas do trabalho — que é o que interessa pra quem está ouvindo.”</div><span class="sm">chega humilde, foca no ouvinte, evita autopromoção logo de cara.</span></div>
+  <div class="say model"><div class="sq">“Quem está ouvindo agora no carro não vive de política. Então eu vou direto no que muda na vida de vocês.”</div><span class="sm">conecta com o público real e já sinaliza objetividade.</span></div>
+
+  <div class="shead">Vídeo / Reels</div>
+  <div class="say model"><div class="sq">“Essa rua aqui vivia na poeira. Deixa eu te contar o que mudou.”</div><span class="sm">abre na cena e na curiosidade — nada de vinheta institucional lenta.</span></div>
+  <div class="say model"><div class="sq">“Você sabe o que uma empresa chinesa tem a ver com o emprego do seu vizinho em Laguna? Presta atenção.”</div><span class="sm">pergunta-gancho que segura os 3 primeiros segundos.</span></div>
+
+  <div class="shead">Reunião com lideranças</div>
+  <div class="say model"><div class="sq">“Eu não vim pedir. Eu vim prestar conta do que a gente fez junto — porque nada disso teria acontecido sem vocês na ponta.”</div><span class="sm">inverte a lógica do pedido; começa reconhecendo o outro.</span></div>
+
+  <div class="box navy avoid"><div class="bt">Regra das aberturas</div><p>Abrir com <strong>gente, cena ou emoção</strong>. O protocolo, se necessário, entra depois, curto.</p></div>
+</section>
+
+<!-- CAP 20 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE V</span> · ARSENAL</span><span>20 · Encerramentos</span></div>
+  <div class="chead"><div class="n">20</div><h2>Encerramentos</h2></div>
+  <p class="lead">O fecho é o que fica na memória. A regra: <strong>curto, alto e memorável</strong> — de preferência um bordão. O Pepê fecha bem com metáfora (a seleção) ou com refrão (“nunca foi sorte”).</p>
+
+  <div class="shead">Fechos de continuidade (defender a reeleição sem parecer súplica)</div>
+  <div class="say real"><div class="sq">“Time que está ganhando não se mexe.”</div></div>
+  <div class="say model"><div class="sq">“O que a gente começou não pode parar no meio. Consolidar é mais importante que recomeçar.”</div><span class="sm">fecho de infraestrutura (dragagem, rodovia, porto).</span></div>
+
+  <div class="shead">Fechos de identidade (refrão)</div>
+  <div class="say real"><div class="sq">“Nunca foi sorte. Sempre foi trabalho.”</div><span class="sm">refrão do mandato. Fecha qualquer bloco de realizações.</span></div>
+  <div class="say model"><div class="sq">“Quem é daqui, briga por aqui. E eu sou daqui.”</div><span class="sm">fecho regional — curto e afirmativo.</span></div>
+
+  <div class="shead">Fechos de convocação (evento / mobilização)</div>
+  <div class="say real"><div class="sq"><br></div></div>
+  <div class="say model"><div class="sq">“Esse time só ganha se entrar em campo. Então o apelo é esse: vamos juntos, do primeiro ao último minuto.”</div><span class="sm">chamado à ação com a metáfora esportiva.</span></div>
+
+  <div class="shead">Fechos de propósito (institucional / emocional)</div>
+  <div class="say real"><div class="sq">“Política só tem sentido se for pra fazer o bem. Pras pessoas, pras cidades, pro nosso Estado.”</div><span class="sm">fecho de valores — bom para encerrar entrevista longa.</span></div>
+  <div class="say real"><div class="sq">“Eu entrei na política pra fazer amigos. E é o que essa caminhada me deu.”</div><span class="sm">fecho afetivo, desarma e humaniza.</span></div>
+
+  <div class="box red avoid"><div class="bt">Regra dos encerramentos</div><p>O fecho tem, <strong>no máximo, 8 palavras na última frase</strong>. Se o discurso terminou explicando algo, ainda não terminou. Corte até sobrar só o bordão.</p></div>
+</section>
+
+<!-- CAP 21 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE V</span> · ARSENAL</span><span>21 · Banco de frases de impacto</span></div>
+  <div class="chead"><div class="n">21</div><h2>Banco de frases de impacto (por tema)</h2></div>
+  <p class="lead">Frases prontas com a identidade do Pepê, separadas por assunto — para discurso, legenda, arte, rádio ou vídeo. <span style="color:#5BE08C">Verde</span> = fala real dele. <span style="color:var(--navy-2)">Azul</span> = modelo para o assessor adaptar (troque o que está entre colchetes).</p>
+
+  <div class="shead">Regionalismo &amp; AMUREL</div>
+  <ul class="arrow">
+    <li><span class="pill sun">real</span> “O meu mandato é regionalista, sem dúvida nenhuma. 80% do que a gente entregou ficou aqui.”</li>
+    <li><span class="pill navy">modelo</span> “Nem tudo se resolve em Florianópolis, nem tudo nasce em Brasília. Muita coisa nasce aqui, ouvindo quem vive a nossa terra.”</li>
+    <li><span class="pill navy">modelo</span> “Quem é daqui, briga por aqui.”</li>
+    <li><span class="pill navy">modelo</span> “Eu não represento um gabinete em Florianópolis. Represento [cidade] dentro de Florianópolis.”</li>
+    <li><span class="pill navy">modelo</span> “Perder a cadeira do deputado é fechar a porta por onde a nossa região entra no Estado.”</li>
+  </ul>
+
+  <div class="shead">Santa Catarina &amp; Tubarão</div>
+  <ul class="arrow">
+    <li><span class="pill sun">real</span> “Santa Catarina foi forjada em pequenas e médias cidades. Isso é uma força, menos êxodo, menos problema social.”</li>
+    <li><span class="pill navy">modelo</span> “Uma lei que só serve pra capital não serve pro nosso Estado.”</li>
+    <li><span class="pill navy">modelo</span> “Tubarão e a nossa região chegaram a vez.&nbsp;</li>
+    <li><span class="pill navy">modelo</span> “Nosso Estado é feito de gente que faz mais com menos. Sempre foi assim, sempre foi trabalho.”</li>
+  </ul>
+
+  <div class="shead">Trabalho, Resultados &amp; Liderança</div>
+  <ul class="arrow">
+    <li><span class="pill sun">real</span> “Nunca foi sorte. Sempre foi trabalho.”</li>
+    <li><span class="pill sun">real</span> “Isso não é número jogado na tela, é trabalho espalhado pelo mapa.”</li>
+    <li><span class="pill sun">real</span> “Força própria na Assembleia ninguém tem. A gente chega com apoio, diálogo e trabalho.”</li>
+    <li><span class="pill sun">real</span> “Time que está ganhando não se mexe.”</li>
+    <li><span class="pill navy">modelo</span> “Eu não vim dizer que estou trabalhando. Vim mostrar o que o trabalho virou aqui em [cidade].”</li>
+    <li><span class="pill navy">modelo</span> “Liderança não foi meu ponto de partida. Foi consequência de pegar mais &nbsp;trabalho.”</li>
+  </ul>
+
+  <div class="shead">Política, Propósito &amp; Família</div>
+  <ul class="arrow">
+    <li><span class="pill sun">real</span> “Eu sempre disse ao meu pai: Eu entrei na política pra tentar fazer amigos e não inimigos.”</li>
+    <li><span class="pill sun">real</span> “Política só tem sentido se for pra fazer o bem, pras pessoas, pras cidades, pro Estado.”</li>
+    <li><span class="pill sun">real</span> “Tem gente que usa a política pra fazer barulho. E tem gente que usa a política pra fazer entrega.”</li>
+    <li><span class="pill sun">real</span> “Mandato é ferramenta, mandato é ponte.”</li>
+    <li><span class="pill navy">modelo</span> “A palavra-chave da política é a mesma da família: respeito.”</li>
+  </ul>
+
+  <div class="shead">Saúde &amp; Hospitais</div>
+  <ul class="arrow">
+    <li><span class="pill sun">real</span> “Eu senti na pele o que um hospital passa.”</li>
+    <li><span class="pill navy">modelo</span> “Hospital que gasta [R$ X] por ano de energia é dinheiro que devia estar em leito e exame. A gente resolveu na raiz: o sol paga a conta.”</li>
+    <li><span class="pill navy">modelo</span> “Em [cidade pequena], um exame simples virava viagem. Hoje se faz na farmácia da esquina — sem substituir o médico.”</li>
+    <li><span class="pill navy">modelo</span> “Ninguém mais roda [X] km pra fazer um raio-X: agora é na própria cidade.”</li>
+  </ul>
+
+  <div class="shead">Infraestrutura, Obras &amp; Desenvolvimento</div>
+  <ul class="arrow">
+    <li><span class="pill sun">real</span> “Rodovia não é asfalto por asfalto. É escoamento da produção. E escoamento é a economia da região andando.”</li>
+    <li><span class="pill navy">modelo</span> “A rua que vivia na poeira no sol e na lama na chuva hoje tem asfalto.”</li>
+    <li><span class="pill navy">modelo</span> “O que a gente começou não pode parar no meio. Consolidar vale mais que recomeçar.”</li>
+    <li><span class="pill navy">modelo</span> “Qual o valor de trazer uma empresa pra cá? É o filho de vocês trabalhando aqui, sem precisar ir pra cidade grande.”</li>
+  </ul>
+
+  <div class="shead">Autismo &amp; Inclusão</div>
+  <ul class="arrow">
+    <li><span class="pill sun">real</span> “Inclusão não é favor, é direito.”</li>
+    <li><span class="pill navy">modelo</span> “O primeiro passo foi o censo: pra saber quantas famílias precisam — e onde.”</li>
+    <li><span class="pill navy">modelo</span> “Não é sobre uma lei. É sobre a mãe que voltou a trabalhar porque o filho tem atendimento e professor de apoio.”</li>
+  </ul>
+
+  <div class="shead">Educação, Infância &amp; Agro</div>
+  <ul class="arrow">
+    <li><span class="pill navy">modelo</span> “A gente olhou o detalhe: a criança cresce de um ano pro outro, e a blusa fica curta. Governar é reparar no detalhe.”</li>
+    <li><span class="pill navy">modelo</span> “Creche não é prédio. É a mãe podendo trabalhar tranquila sabendo onde o filho está.”</li>
+    <li><span class="pill navy">modelo</span> “O que o porco fez pelo Oeste, a ovelha pode fazer pelo pequeno produtor daqui.”</li>
+    <li><span class="pill navy">modelo</span> “Não é sobre ovelha. É sobre renda no interior e o filho do agricultor ficando na terra.”</li>
+  </ul>
+
+  <div class="box navy avoid"><div class="bt">Como usar este banco</div><p>As frases <span style="color:#5BE08C">reais</span> podem ir ao ar como estão — são a voz autêntica. As <span style="color:var(--navy-2)">modelo</span> precisam do preenchimento local ([cidade], [obra], [nome]) antes de publicar. Nunca publique um modelo com os colchetes.</p></div>
+</section>
+
+<!-- CAP 22 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE V</span> · ARSENAL</span><span>22 · Ideias para rádio, vídeo, evento e redes</span></div>
+  <div class="chead"><div class="n">22</div><h2>Ideias para rádio, vídeo, evento e redes</h2></div>
+  <p class="lead">Um caderno de partida. Cada formato tem um jeito próprio de fazer a mesma mensagem funcionar. As ideias abaixo já saem das pautas “vamos falar?” e das falas fortes do repertório.</p>
+
+  <div class="shead">Rádio (a casa dele)</div>
+  <div class="grid g2">
+    <div class="card"><div class="ct">Bloco “balanço + esquenta”</div><p>Fórmula testada: fim de ano vira prestação de contas; começo de ano vira agenda. Sempre com entrada de ouvinte/liderança validando (prova social funciona no rádio).</p></div>
+    <div class="card"><div class="ct">Quadro “pauta da semana”</div><p>Uma pauta da Parte III por semana, com o contorno da crítica embutido (ex.: teste rápido “não substitui médico”).</p></div>
+    <div class="card"><div class="ct">A ponte do governador</div><p>Quando houver agenda com o governo, contar a história do acesso — “quando o governador convida, é convocação”. Mostra força política sem soberba.</p></div>
+    <div class="card"><div class="ct">Ouvinte no ar</div><p>Provocar a “pesquisa da rua”: perguntar ao ouvinte o que falta na cidade dele. Escuta ao vivo — vira pauta e vira vínculo.</p></div>
+  </div>
+
+  <div class="shead">Vídeo / Reels</div>
+  <div class="grid g2">
+    <div class="card"><div class="ct">Série “Antes &amp; Depois”</div><p>Uma obra por vídeo, na voz de quem usa (a dona Alba, não o deputado). Formato campeão de engajamento segundo a própria assessoria.</p></div>
+    <div class="card"><div class="ct">“A joia escondida”</div><p>Explicar em 40s a fábrica de bateria de lítio: pergunta-gancho → guerra comercial → emprego em Laguna. O Pepê da visão econômica.</p></div>
+    <div class="card"><div class="ct">Bastidor de agenda</div><p>Escala “sete por zero”, chegando 22h em Tubarão. Trabalho mostrado, não narrado. Humaniza sem discurso.</p></div>
+    <div class="card"><div class="ct">Micro-aula de 30s</div><p>“O que é a CCJ e por que isso virou obra na sua cidade.” Traduzir o técnico para o cotidiano em formato curto.</p></div>
+  </div>
+
+  <div class="shead">Evento / palanque</div>
+  <div class="grid g2">
+    <div class="card"><div class="ct">Metáfora da seleção</div><p>Convocação, capitão, cada cidade um jogador. Estrutura de mobilização já validada — repetir e evoluir.</p></div>
+    <div class="card"><div class="ct">Prestação de contas visual</div><p>Contar 2 histórias inteiras em vez de listar 100 cidades. O telão mostra o mapa; a boca conta a pessoa.</p></div>
+    <div class="card"><div class="ct">Voz de terceiros</div><p>Deixar prefeito/vereadora dizerem o argumento regional (“seria suicídio perder essa cadeira”). Pesa mais na voz do outro.</p></div>
+  </div>
+
+  <div class="shead">Redes / WhatsApp</div>
+  <div class="box sun avoid"><div class="bt">O princípio que a própria campanha adotou</div><p>“Comunicação não é sobre Instagram, é sobre pessoas.” <strong>Instagram alcança; WhatsApp retém.</strong> A frase de impacto abre no feed; o vínculo se faz na conversa. Toda peça de rede deve ter um gancho que puxe pro relacionamento, não só pra curtida.</p></div>
+  <ul class="arrow">
+    <li>Legendas sempre no modelo “pessoa + antes/depois”, nunca “destinado R$ X”.</li>
+    <li>Story = presença (a agenda, o corpo a corpo). Feed = resultado (a entrega). Reels = história.</li>
+    <li>Memes de bastidor (“PP escavando o rio”, “PP cortando grama”) mostram vontade de resolver — leve, mas conecta.</li>
+  </ul>
+
+  <div class="box red avoid"><div class="bt">Fio condutor de todos os formatos</div><p>Muda o canal, não muda a regra: <strong>responde/abre com gente, mostra o efeito na ponta, fecha curto.</strong> O Manual de Estilo (cap. 03) vale para os quatro.</p></div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE VI ===================== -->
+<section class="divider page break alt">
+  <div class="pnum">VI</div>
+  <div class="ptitle">A base</div>
+  <div class="pdesc">Os fatos por trás das frases. Uma base de consulta rápida com os números do mandato — sempre acompanhados do que cada um representa na vida das pessoas. Nenhuma cifra viaja sozinha.</div>
+  <div class="pindex">
+    <div><span>23</span>Banco de dados e números do mandato</div>
+  </div>
+</section>
+
+<!-- CAP 23 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VI</span> · A BASE</span><span>23 · Banco de dados e números</span></div>
+  <div class="chead"><div class="n">23</div><h2>Banco de dados e números do mandato</h2></div>
+  <p class="lead">Consulta rápida para quem vai falar em público. Cada número vem com o que ele <strong>representa na vida das pessoas</strong> — porque, neste manual, cifra sem tradução não sai da boca. Base: planilha interna de controle de emendas (494 registros).</p>
+
+  <div class="grid g4" style="margin:18px 0">
+    <div class="stat"><div class="num">494</div><div class="lab">registros de emenda mapeados na planilha interna</div></div>
+    <div class="stat navy"><div class="num">R$ 149,8 mi</div><div class="lab">soma dos registros mapeados*</div></div>
+    <div class="stat sun"><div class="num">114</div><div class="lab">municípios distintos atendidos</div></div>
+    <div class="stat green"><div class="num">57%</div><div class="lab">do valor mapeado ficou na AMUREL (R$ 85,4 mi)</div></div>
+  </div>
+
+  <div class="box red avoid"><div class="bt">Leia antes de dizer qualquer número em público</div>
+    <p><strong>Há dois conjuntos de números — e eles não brigam, mas não se misturam:</strong></p>
+    <ul class="arrow" style="margin-bottom:6px">
+      <li><strong>O que está na planilha (R$ 149,8 mi):</strong> soma das <em>emendas mapeadas</em> — impositivas, TEV, bancada, patrocínios. É o dado auditável deste manual.</li>
+      <li><strong>O que ele diz no palanque (“mais de R$ 200 mi no Estado / R$ 100 mi na região”):</strong> inclui também recursos <em>negociados com o governo</em> que não são emenda carimbada. É legítimo — ele explica isso no rádio — mas é outro cálculo.</li>
+    </ul>
+    <p><strong>Regra:</strong> os valores têm status diferentes (destinado, empenhado, publicado, pago). <mark>Trave o número e o status com a assessoria antes do uso público.</mark> Nunca dizer “paguei” o que só foi “destinado”.</p>
+  </div>
+
+  <div class="shead">Placar das cidades (top 10 por valor mapeado)</div>
+  <div class="placar">
+    <div class="total">
+      <div class="big">R$ 85,4 mi</div>
+      <div class="tlab">AMUREL — a base<small>57% de tudo que foi mapeado · 226 emendas na associação</small></div>
+    </div>
+    <div class="rrow lead"><div class="pos">1</div><div class="medal">🥇</div><div class="city">Tubarão</div><div class="pts">R$ 18,5 mi · 44</div></div>
+    <div class="rrow"><div class="pos">2</div><div class="medal">🥈</div><div class="city">Sangão</div><div class="pts">R$ 9,5 mi · 12</div></div>
+    <div class="rrow"><div class="pos">3</div><div class="medal">🥉</div><div class="city">Gravatal</div><div class="pts">R$ 8,2 mi · 21</div></div>
+    <div class="rrow"><div class="pos">4</div><div class="medal"></div><div class="city">Capivari de Baixo</div><div class="pts">R$ 7,5 mi · 22</div></div>
+    <div class="rrow"><div class="pos">5</div><div class="medal"></div><div class="city">Paulo Lopes</div><div class="pts">R$ 6,9 mi · 11</div></div>
+    <div class="rrow"><div class="pos">6</div><div class="medal"></div><div class="city">Pescaria Brava</div><div class="pts">R$ 6,7 mi · 10</div></div>
+    <div class="rrow"><div class="pos">7</div><div class="medal"></div><div class="city">Orleans</div><div class="pts">R$ 5,1 mi · 9</div></div>
+    <div class="rrow"><div class="pos">8</div><div class="medal"></div><div class="city">Laguna</div><div class="pts">R$ 4,8 mi · 15</div></div>
+    <div class="rrow"><div class="pos">9</div><div class="medal"></div><div class="city">Garopaba</div><div class="pts">R$ 4,8 mi · 11</div></div>
+    <div class="rrow"><div class="pos">10</div><div class="medal"></div><div class="city">Içara</div><div class="pts">R$ 4,7 mi · 15</div></div>
+  </div>
+
+  <div class="shead">Por área — e como dizer cada uma</div>
+  <table class="tbl compact">
+    <tbody><tr><th>Área</th><th class="r">Valor mapeado</th><th class="r">Emendas</th><th>Como falar (traduzido)</th></tr>
+    <tr><td>Pavimentação / Infraestrutura</td><td class="r">R$ 74,5 mi</td><td class="r">188</td><td>“Rua que vivia na poeira e na lama, hoje com asfalto — na maior parte das nossas cidades.”</td></tr>
+    <tr><td>Saúde / Hospitais</td><td class="r">R$ 18,7 mi</td><td class="r">76</td><td>“Ambulância, exame perto de casa, hospital com mais fôlego pra atender.”</td></tr>
+    <tr><td>Educação / Infância</td><td class="r">R$ 12,5 mi</td><td class="r">48</td><td>“Creche pra mãe trabalhar tranquila, escola reformada, ônibus e mobiliário.”</td></tr>
+    <tr><td>Esporte / Cultura / Eventos</td><td class="r">R$ 10,2 mi</td><td class="r">22</td><td>“Ginásio, quadra, praça — lugar pra criança e pra comunidade viver.”</td></tr>
+    <tr><td>Agro / Rural</td><td class="r">R$ 3,5 mi</td><td class="r">24</td><td>“Trator e implemento pro pequeno produtor — renda que fica no interior.”</td></tr>
+    <tr><td>Autismo / TEA / Inclusão</td><td class="r">R$ 2,7 mi</td><td class="r">20</td><td>“Equoterapia, sala sensorial, APAE — inclusão que é direito, não favor.”</td></tr>
+    <tr><td>Entidades sociais</td><td class="r">R$ 2,0 mi</td><td class="r">17</td><td>“Rede Feminina, Clube de Mães, sede de entidade — quem cuida de quem precisa.”</td></tr>
+  </tbody></table>
+  <p class="small muted">Classificação por palavra-chave no objeto da emenda; registros sem palavra-chave clara ficam fora do recorte temático (~R$ 25 mi em apoios diversos). Use como ordem de grandeza, não como número oficial fechado.</p>
+
+  <div class="shead">As obras-símbolo (para citar de cabeça)</div>
+  <table class="tbl compact">
+    <tbody><tr><th class="r">Valor</th><th>Obra</th><th>Cidade</th></tr>
+    <tr><td class="r">R$ 5,9 mi</td><td>Ginásio de Esportes</td><td>Sangão</td></tr>
+    <tr><td class="r">R$ 5,0 mi</td><td>Projeto executivo da dragagem / Molhes da Barra</td><td>Laguna (bancada)</td></tr>
+    <tr><td class="r">R$ 2,5 mi</td><td>Pavimentação Estrada Várzea das Canoas</td><td>Gravatal</td></tr>
+    <tr><td class="r">R$ 2,3 mi</td><td>Infraestrutura viária</td><td>Pescaria Brava</td></tr>
+    <tr><td class="r">R$ 2,3 mi</td><td>Creche Joelma de Bona</td><td>Paulo Lopes</td></tr>
+    <tr><td class="r">R$ 2,0 mi</td><td>Abertura da Av. Pedro Zapelini</td><td>Tubarão</td></tr>
+  </tbody></table>
+
+  <div class="shead">Situação das entregas (status na planilha)</div>
+  <div class="grid g4">
+    <div class="stat sun"><div class="num">121</div><div class="lab">PAGO — recurso transferido</div></div>
+    <div class="stat"><div class="num">115</div><div class="lab">PUBLICADO no DOE</div></div>
+    <div class="stat navy"><div class="num">97</div><div class="lab">AGUARDANDO PORTARIA</div></div>
+    <div class="stat"><div class="num">71</div><div class="lab">AGUARDANDO DOCUMENTAÇÃO (no município)</div></div>
+  </div>
+  <p class="small muted">Demais: PRONTO 37 · EM ANÁLISE 22 · SOLICITADO TROCA 18 · ARQUIVADO 5 · PENDENTE 4 · PAGO PARCIAL 4. <strong>“Pago” e “publicado” podem ser ditos como entrega; os demais são processo em andamento</strong> — cuidado com o verbo.</p>
+
+  <div class="box sun avoid"><div class="bt">Frases com número já traduzidas (prontas)</div>
+    <ul class="arrow" style="margin-bottom:0">
+      <li>“Estivemos em <strong>114 municípios</strong> — quase metade de Santa Catarina.”</li>
+      <li>“<strong>Mais da metade</strong> de tudo que a gente destinou ficou na nossa região. Isso é ser regional na prática.”</li>
+      <li>“Foram <strong>quase 500 entregas</strong> — trabalho espalhado pelo mapa, não número na tela.”</li>
+      <li>“Só em <strong>Tubarão</strong>, mais de R$ 18 milhões em <strong>44 frentes</strong> — asfalto, saúde, esporte, entidade.”</li>
+    </ul>
+  </div>
+
+  <div class="divline"></div>
+  <div class="center">
+    <div class="kicker">Fim do Manual de Discursos — Edição 1.0</div>
+    <p class="lead--big" style="margin-top:10px">O recurso mostra o tamanho. <span style="color:var(--red)">A vida na ponta mostra o sentido.</span></p>
+    <p class="small muted">Documento vivo · uso interno · atualização contínua · Campanha Pepê Collaço 2026</p>
+  </div>
+</section>
+
+<footer class="fin">
+  <h3>PEPÊ COLLAÇO · 2026</h3>
+  <p class="small">Manual de Discursos, Narrativa e Alinhamento de Fala — Edição 1.0 (Jul/2026) · Par verbal do Plano Mestre de Comunicação</p>
+</footer>
+</div>
+
+<input type="file" id="pmImgInput" accept="image/*" class="no-print" style="display:none" onchange="pmHandleFile(this)">
+<script>
+var pmTargetPh=null,pmKey='md_manual_discursos_v1',pmSaveTimer=null,pmAutosave=true,pmBar=null;
+function pmToggleEdit(){var d=document.querySelector('.doc');var on=d.getAttribute('contenteditable')==='true';d.setAttribute('contenteditable',on?'false':'true');document.body.classList.toggle('pm-editing',!on);var b=document.getElementById('pmEdit');if(b)b.textContent=on?'✏️ Editar':'✓ Editando — sair';}
+function pmAddPhBtn(ph,label){var b=document.createElement('button');b.type='button';b.className='ph-btn no-print';b.textContent=label;b.addEventListener('click',function(ev){ev.stopPropagation();ev.preventDefault();pmTargetPh=ph;document.getElementById('pmImgInput').click();});ph.appendChild(b);}
+function pmAddTools(ph){var img=ph.querySelector('.fig-img');var t=document.createElement('div');t.className='fig-tools no-print';[['P','45%'],['M','70%'],['G','90%'],['Total','100%']].forEach(function(o){var b=document.createElement('button');b.type='button';b.textContent=o[0];b.title='Tamanho '+o[0];b.onclick=function(e){e.stopPropagation();if(img){img.style.width=o[1];pmSave();}};t.appendChild(b);});var tr=document.createElement('button');tr.type='button';tr.textContent='Trocar';tr.onclick=function(e){e.stopPropagation();pmTargetPh=ph;document.getElementById('pmImgInput').click();};t.appendChild(tr);var r=document.createElement('button');r.type='button';r.className='rm';r.textContent='Remover';r.onclick=function(e){e.stopPropagation();pmRemoveImg(ph);};t.appendChild(r);ph.appendChild(t);}
+function pmInjectBtns(){document.querySelectorAll('.ph').forEach(function(ph){if(ph.getAttribute('data-orig')===null&&!ph.classList.contains('filled'))ph.setAttribute('data-orig',ph.innerHTML);if(ph.classList.contains('filled')){if(!ph.querySelector('.fig-tools'))pmAddTools(ph);}else if(!ph.querySelector('.ph-btn'))pmAddPhBtn(ph,'＋ Inserir imagem');});}
+function pmStripBtns(){document.querySelectorAll('.ph-btn,.fig-tools').forEach(function(b){b.remove();});}
+function pmPlaceImg(ph,url){ph.classList.add('filled');ph.innerHTML='';var img=document.createElement('img');img.className='fig-img';img.src=url;img.alt='';img.style.width='90%';var cap=document.createElement('div');cap.className='fig-cap';cap.textContent='Legenda — clique em “Editar” para alterar';ph.appendChild(img);ph.appendChild(cap);pmAddTools(ph);pmSave();}
+function pmRemoveImg(ph){ph.classList.remove('filled');var o=ph.getAttribute('data-orig');ph.innerHTML=(o!==null&&o!=='')?o:'<div class="pi">Espaço reservado</div><div class="pl">Imagem</div><div class="pd">Clique para inserir</div>';pmAddPhBtn(ph,'＋ Inserir imagem');pmSave();}
+function pmHandleFile(input){var f=input.files&&input.files[0];if(!f||!pmTargetPh){input.value='';return;}var rd=new FileReader();rd.onload=function(){var im=new Image();im.onload=function(){var max=1600,w=im.width,h=im.height;if(w>max){h=Math.round(h*max/w);w=max;}var c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0,w,h);var url=(f.type==='image/png')?c.toDataURL('image/png'):c.toDataURL('image/jpeg',0.85);pmPlaceImg(pmTargetPh,url);input.value='';};im.src=rd.result;};rd.readAsDataURL(f);}
+function pmSave(){if(!pmAutosave)return;clearTimeout(pmSaveTimer);pmSaveTimer=setTimeout(function(){try{localStorage.setItem(pmKey,JSON.stringify({t:Date.now(),html:document.querySelector('.doc').innerHTML}));}catch(e){pmAutosave=false;pmNote('Auto-salvamento pausado (arquivo grande com imagens). Use “💾 Baixar HTML” para guardar.');}},1000);}
+function pmRestore(){try{var raw=localStorage.getItem(pmKey);if(!raw)return;document.querySelector('.doc').innerHTML=JSON.parse(raw).html;pmStripBtns();pmInjectBtns();}catch(e){}if(pmBar){pmBar.remove();pmBar=null;}}
+function pmDiscard(){try{localStorage.removeItem(pmKey);}catch(e){}if(pmBar){pmBar.remove();pmBar=null;}}
+function pmShowRestore(){var raw;try{raw=localStorage.getItem(pmKey);}catch(e){return;}if(!raw)return;var when='';try{when=new Date(JSON.parse(raw).t).toLocaleString('pt-BR');}catch(e){}pmBar=document.createElement('div');pmBar.className='pm-bar no-print';var s=document.createElement('span');s.textContent='📝 Há uma edição salva neste navegador'+(when?' ('+when+')':'')+'.';var b1=document.createElement('button');b1.className='tbtn';b1.textContent='Restaurar';b1.onclick=pmRestore;var b2=document.createElement('button');b2.className='tbtn ghost';b2.textContent='Descartar';b2.onclick=pmDiscard;pmBar.appendChild(s);pmBar.appendChild(b1);pmBar.appendChild(b2);document.body.insertBefore(pmBar,document.body.firstChild);}
+function pmNote(msg){var n=document.createElement('div');n.className='pm-bar no-print';n.textContent=msg;document.body.insertBefore(n,document.body.firstChild);setTimeout(function(){n.remove();},7000);}
+function pmDownload(){pmStripBtns();var d=document.querySelector('.doc');d.setAttribute('contenteditable','false');document.body.classList.remove('pm-editing');var b=document.getElementById('pmEdit');if(b)b.textContent='✏️ Editar';var html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;var blob=new Blob([html],{type:'text/html;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Manual_Discursos_Pepe_Collaco_editado.html';document.body.appendChild(a);a.click();a.remove();pmInjectBtns();}
+document.addEventListener('DOMContentLoaded',function(){pmInjectBtns();pmShowRestore();var d=document.querySelector('.doc');if(d)d.addEventListener('input',pmSave);});
+</script>
+
+
+</body></html>

@@ -1,0 +1,22 @@
+/* Compat — /proposta-2026
+   Esta página já vinha na paleta "arena digital", que era uma aproximação da
+   identidade da agência. Aqui ela passa aos valores canônicos medidos, e as
+   fontes Saira dão lugar à Acumin. */
+@import "../tokens.css";
+@import "../tipografia.css";
+
+:root {
+  --ink: var(--pp-abismo);
+  --ink2: var(--pp-tinta);
+  --ink3: var(--pp-navy-escuro);
+  --blue: var(--pp-azul-foco);
+  --green: var(--cor-positivo);
+  --green2: var(--pp-verde-claro);
+  --sun: var(--cor-acento);
+  --white: #FFFFFF;
+  --mut: var(--pp-azul-claro);
+  --mut2: #7E93B8;
+
+  --disp: var(--fonte);
+  --body: var(--fonte);
+}

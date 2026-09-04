@@ -1,0 +1,20 @@
+/* Compat — /painel (painel estratégico)
+   Também é tela de trabalho: fundo claro, cor da marca nos acentos. */
+@import "../tokens.css";
+@import "../tipografia.css";
+
+:root {
+  --bd: var(--pp-navy);
+  --bm: var(--pp-azul-profundo);
+  --bl: var(--pp-azul-foco);
+  --bp: #DCEAF6;
+  --bg: #F0F6FB;
+  --yl: var(--cor-acento);
+  --yld: #C79A00;
+  --gn: var(--cor-positivo);
+  --rd: var(--cor-negativo);
+  --gy: #5B6E86;
+  --w: #FFFFFF;
+}
+
+body { font-family: var(--fonte); }

@@ -1,0 +1,699 @@
+{
+  "municipio": "Tubarão",
+  "uf": "SC",
+  "fonte": "APRESENTAÇÃO 1 MANDATO GERAL - 2026, páginas 10 e 11",
+  "total": 69,
+  "ruas": [
+    {
+      "id": 1,
+      "nome_arte": "Rua Apolônia Mateus Gomes",
+      "pagina": 10,
+      "nome_oficial": "Rua Apolônia Mateus Gomes",
+      "bairro": "São Martinho",
+      "cep": "88708-716",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 2,
+      "nome_arte": "Rua Arino Luiz da Silva",
+      "pagina": 10,
+      "nome_oficial": "Rua Arino Luiz da Silva",
+      "bairro": "São Cristóvão",
+      "cep": "88703-495",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 3,
+      "nome_arte": "Rua das Flores",
+      "pagina": 10,
+      "nome_oficial": "Rua das Flores",
+      "bairro": "São Cristóvão",
+      "cep": "88703-108",
+      "status": "confirmado",
+      "obs": "Nome genérico: confirmar o trecho."
+    },
+    {
+      "id": 4,
+      "nome_arte": "Rua Jardim das Estrelas",
+      "pagina": 10,
+      "nome_oficial": "Rua Jardim das Estrelas",
+      "bairro": "São Cristóvão",
+      "cep": "88703-315",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 5,
+      "nome_arte": "Rua Maurício Israel Lemos",
+      "pagina": 10,
+      "nome_oficial": "Rua Maurício Israel Lemos",
+      "bairro": "São Cristóvão",
+      "cep": "88703-110",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 6,
+      "nome_arte": "Rua Santos João Anacleto da Silva",
+      "pagina": 10,
+      "nome_oficial": "Rua Santos João Anacleto da Silva",
+      "bairro": "São João (Margem Direita)",
+      "cep": "88702-705",
+      "status": "confirmado",
+      "obs": "Consta na relação de ruas de Tubarão; CEP a confirmar."
+    },
+    {
+      "id": 7,
+      "nome_arte": "Rua Severino Favarin",
+      "pagina": 10,
+      "nome_oficial": "Rua Severino Favarin",
+      "bairro": "São Cristóvão",
+      "cep": "88703-111",
+      "status": "confirmado",
+      "obs": "Existe também 'Rua Sabino Favarin' em Tubarão; não confundir."
+    },
+    {
+      "id": 8,
+      "nome_arte": "Rua Wenceslau Alves dos Santos",
+      "pagina": 10,
+      "nome_oficial": "Rua Wenceslau Alves dos Santos",
+      "bairro": "Dehon",
+      "cep": "88704-208",
+      "status": "confirmado",
+      "obs": "A via tem mais de um CEP; conferir o trecho."
+    },
+    {
+      "id": 9,
+      "nome_arte": "Rua Lorival Silveira Corrêa",
+      "pagina": 10,
+      "nome_oficial": "Rua Lourival Silveira Correa",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-662",
+      "status": "confirmado",
+      "obs": "Correios grafam 'Lourival'."
+    },
+    {
+      "id": 10,
+      "nome_arte": "Rua Santin David Del Sante",
+      "pagina": 10,
+      "nome_oficial": "Rua Santin David del Sante",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-663",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 11,
+      "nome_arte": "Rua Pedro Isidoro da Silva",
+      "pagina": 10,
+      "nome_oficial": "Rua Pedro Isidoro da Silva",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-658",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 12,
+      "nome_arte": "Rua Dilma da Costa Guimarães",
+      "pagina": 10,
+      "nome_oficial": "Rua Dilma da Costa Guimarães",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-646",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 13,
+      "nome_arte": "Rua Manoel Agostinho Pereira",
+      "pagina": 10,
+      "nome_oficial": "Rua Manoel Agostinho Pereira",
+      "bairro": "São Clemente",
+      "cep": "88706-005",
+      "status": "confirmado",
+      "obs": "Na apresentação está marcada como obra de REDE DE ESGOTO, não pavimentação."
+    },
+    {
+      "id": 14,
+      "nome_arte": "Rua Adolfo José de Souza",
+      "pagina": 10,
+      "nome_oficial": "Rua Adolfo Jose de Souza",
+      "bairro": "São Cristóvão",
+      "cep": "88703-145",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 15,
+      "nome_arte": "Rua Caruru",
+      "pagina": 10,
+      "nome_oficial": null,
+      "bairro": null,
+      "cep": null,
+      "status": "pendente",
+      "obs": "Existe o bairro Caruru (88707-503 a 88707-680); confirmar se a via fica lá."
+    },
+    {
+      "id": 16,
+      "nome_arte": "Rua Dorivalda Bristot",
+      "pagina": 10,
+      "nome_oficial": "Rua Dorivalda Bristot de Campos",
+      "bairro": "São Martinho",
+      "cep": "88708-837",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 17,
+      "nome_arte": "Rua João Silva",
+      "pagina": 10,
+      "nome_oficial": null,
+      "bairro": null,
+      "cep": null,
+      "status": "pendente",
+      "obs": "Nome muito genérico: alto risco de confusão. A via tem mais de um CEP; conferir o trecho. ViaCEP só devolve 'Rua José João da Silva' (88703-683, Sertão dos Correias); confirmar se é a mesma via."
+    },
+    {
+      "id": 18,
+      "nome_arte": "Rua Jovencio Bernardo",
+      "pagina": 10,
+      "nome_oficial": "Rua Jovêncio Bernardo",
+      "bairro": "São João (Margem Direita)",
+      "cep": "88702-887",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 19,
+      "nome_arte": "Rua Luiz Matheus",
+      "pagina": 10,
+      "nome_oficial": "Rua Luiz Matheus",
+      "bairro": "São João (Margem Direita)",
+      "cep": "88702-888",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 20,
+      "nome_arte": "Rua Almiro J. Silva",
+      "pagina": 10,
+      "nome_oficial": "Rua Almiro José da Silva",
+      "bairro": "São João (Margem Direita)",
+      "cep": "88702-857",
+      "status": "confirmado",
+      "obs": "Continua abreviada na apresentação."
+    },
+    {
+      "id": 21,
+      "nome_arte": "Rua Sílvio Menegaz",
+      "pagina": 10,
+      "nome_oficial": "Rua Sílvio Menegaz",
+      "bairro": "São João (Margem Direita)",
+      "cep": "88702-874",
+      "status": "confirmado",
+      "obs": "Sobrenome recorrente em Tubarão (Lauro, Irineu, Bento Menegaz)."
+    },
+    {
+      "id": 22,
+      "nome_arte": "Rua Irineu Menegaz",
+      "pagina": 10,
+      "nome_oficial": "Rua Irineu Menegaz",
+      "bairro": "Bom Pastor",
+      "cep": "88707-254",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 23,
+      "nome_arte": "Rua Nilo Manoel Luiz",
+      "pagina": 10,
+      "nome_oficial": "Rua Nilo Manoel Luiz",
+      "bairro": "São Cristóvão",
+      "cep": "88703-215",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 24,
+      "nome_arte": "Rua Otacílio Silvano",
+      "pagina": 10,
+      "nome_oficial": "Rua Otacílio SIlvano",
+      "bairro": "Congonhas",
+      "cep": "88701-837",
+      "status": "confirmado",
+      "obs": "A via tem mais de um CEP; conferir o trecho."
+    },
+    {
+      "id": 25,
+      "nome_arte": "Rua Manoel Pedro",
+      "pagina": 10,
+      "nome_oficial": "Rua Manoel Pedro Rosa",
+      "bairro": "Bom Pastor",
+      "cep": "88707-248",
+      "status": "provavel",
+      "obs": "A via tem mais de um CEP; conferir o trecho."
+    },
+    {
+      "id": 26,
+      "nome_arte": "Rua Jucemar Matiola Corrêa",
+      "pagina": 10,
+      "nome_oficial": "Rua Jucemar Matiola Corrêa",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-690",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 27,
+      "nome_arte": "Rua Tereza Marcon Margotti",
+      "pagina": 10,
+      "nome_oficial": "Rua Tereza Marcon Margotti",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-628",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 28,
+      "nome_arte": "Rua Dotilio João Santiago",
+      "pagina": 10,
+      "nome_oficial": "Rua Dotílio João Santiago",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-659",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 29,
+      "nome_arte": "Rua José da Cruz",
+      "pagina": 10,
+      "nome_oficial": "Rua José da Cruz",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-654",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 30,
+      "nome_arte": "Rua Pedro Luiz Motta",
+      "pagina": 10,
+      "nome_oficial": "Rua Pedro Luiz Motta",
+      "bairro": "São João (Margem Direita)",
+      "cep": "88702-881",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 31,
+      "nome_arte": "Rua Zacharias Corrêa de Souza",
+      "pagina": 10,
+      "nome_oficial": "Rua Zacharias Corrêa de Souza",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-675",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 32,
+      "nome_arte": "Rua José Corrêa de Souza",
+      "pagina": 10,
+      "nome_oficial": null,
+      "bairro": null,
+      "cep": null,
+      "status": "pendente",
+      "obs": "Não confundir com a 'Sobrinho', logo abaixo na mesma lista. ViaCEP só encontra a 'José Corrêa de Souza Sobrinho' (88703-676); confirmar se esta tem trecho próprio."
+    },
+    {
+      "id": 33,
+      "nome_arte": "Rua José Corrêa de Souza Sobrinho",
+      "pagina": 10,
+      "nome_oficial": "Rua José Corrêa de Souza Sobrihnho",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-676",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 34,
+      "nome_arte": "Rua Domingos Margotti",
+      "pagina": 10,
+      "nome_oficial": "Rua Domingos Margotti",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-622",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 35,
+      "nome_arte": "Rua Salesio Fernandes",
+      "pagina": 10,
+      "nome_oficial": "Rua Salésio Fernandes",
+      "bairro": "Kilômetro 60",
+      "cep": "88709-159",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 36,
+      "nome_arte": "Rua Júlio Pozza",
+      "pagina": 10,
+      "nome_oficial": "Rua Júlio Pozza",
+      "bairro": "São João (Margem Esquerda)",
+      "cep": "88708-491",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 37,
+      "nome_arte": "Rua Paulo Luis Gomes",
+      "pagina": 10,
+      "nome_oficial": "Rua Paulo Luís Gomes",
+      "bairro": "Oficinas",
+      "cep": "88702-350",
+      "status": "confirmado",
+      "obs": "A via tem mais de um CEP; conferir o trecho."
+    },
+    {
+      "id": 38,
+      "nome_arte": "Rua Manoel Antônio Mateus",
+      "pagina": 11,
+      "nome_oficial": "Rua Manoel Antônio Mateus",
+      "bairro": "São Martinho",
+      "cep": "88708-740",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 39,
+      "nome_arte": "Rua Vespúcio Claudino",
+      "pagina": 11,
+      "nome_oficial": "Rua Vespúcio Claudino",
+      "bairro": "Monte Castelo",
+      "cep": "88702-512",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 40,
+      "nome_arte": "Rua Manoel Rosendo Linhares",
+      "pagina": 11,
+      "nome_oficial": "Rua Manoel Rosendo Linhares",
+      "bairro": "São João (Margem Esquerda)",
+      "cep": "88708-492",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 41,
+      "nome_arte": "Rua Valdemar Rafael",
+      "pagina": 11,
+      "nome_oficial": "Rua Valdemar Rafael",
+      "bairro": "São João (Margem Esquerda)",
+      "cep": "88708-569",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 42,
+      "nome_arte": "Rua Tomaz Souza Brasil",
+      "pagina": 11,
+      "nome_oficial": "Rua Tomaz Souza Brasil",
+      "bairro": "São Cristóvão",
+      "cep": "88703-440",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 43,
+      "nome_arte": "Rua Mario Pasetto",
+      "pagina": 11,
+      "nome_oficial": "Rua Mário Paseto",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-626",
+      "status": "confirmado",
+      "obs": "Correios grafam 'Paseto', com um T."
+    },
+    {
+      "id": 44,
+      "nome_arte": "Rua João Guerino Ghizzo",
+      "pagina": 11,
+      "nome_oficial": "Rua João Guerino Ghizzo",
+      "bairro": "São Cristóvão",
+      "cep": "88703-137",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 45,
+      "nome_arte": "Rua Sabino De Pieri Bardini",
+      "pagina": 11,
+      "nome_oficial": "Rua Sabino de Pieri Bardini",
+      "bairro": "Sertão dos Correias",
+      "cep": "88703-660",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 46,
+      "nome_arte": "Rua São Pedro",
+      "pagina": 11,
+      "nome_oficial": "Rua São Pedro",
+      "bairro": "Passagem",
+      "cep": "88705-742",
+      "status": "confirmado",
+      "obs": "Consta em Tubarão; nome genérico, confirmar trecho e CEP. A via tem mais de um CEP; conferir o trecho."
+    },
+    {
+      "id": 47,
+      "nome_arte": "Rua Manoel Saturnino de Godoi",
+      "pagina": 11,
+      "nome_oficial": "Rua Manoel Saturnino de Godoy",
+      "bairro": "Passagem",
+      "cep": "88705-570",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 48,
+      "nome_arte": "Rua São Geraldo",
+      "pagina": 11,
+      "nome_oficial": "Rua São Geraldo",
+      "bairro": "Oficinas",
+      "cep": "88701-020",
+      "status": "confirmado",
+      "obs": "Trecho até 490/491; a via pode ter mais de um CEP."
+    },
+    {
+      "id": 49,
+      "nome_arte": "Rua Vilmar Goulart Justino",
+      "pagina": 11,
+      "nome_oficial": "Rua Vilmar Goulart Justino",
+      "bairro": "Passo do Gado",
+      "cep": "88706-244",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 50,
+      "nome_arte": "Rua Vicente Manoel da Costa",
+      "pagina": 11,
+      "nome_oficial": "Rua Vicente Manoel da Costa",
+      "bairro": "Passo do Gado",
+      "cep": "88706-250",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 51,
+      "nome_arte": "Rua Saleti Moraes Porto",
+      "pagina": 11,
+      "nome_oficial": "Rua Salete Moraes Porto",
+      "bairro": "Praia Redonda",
+      "cep": "88706-081",
+      "status": "confirmado",
+      "obs": "Correios grafam 'Salete'. Há também 'Rua Moraes Porto' (88706-079) no mesmo bairro."
+    },
+    {
+      "id": 52,
+      "nome_arte": "Rua Manoel João Cardoso",
+      "pagina": 11,
+      "nome_oficial": "Rua Manoel João Cardoso",
+      "bairro": "Praia Redonda",
+      "cep": "88707-045",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 53,
+      "nome_arte": "Rua Vidal Ramos",
+      "pagina": 11,
+      "nome_oficial": "Rua Vidal Ramos",
+      "bairro": "Centro",
+      "cep": "88701-160",
+      "status": "confirmado",
+      "obs": "NÃO aparece no card '+ de 60 ruas' divulgado; só na apresentação. A via tem mais de um CEP; conferir o trecho."
+    },
+    {
+      "id": 54,
+      "nome_arte": "Rua Saul Wanderlind",
+      "pagina": 11,
+      "nome_oficial": "Rua Saul Wanderlindi",
+      "bairro": "Monte Castelo",
+      "cep": "88702-611",
+      "status": "confirmado",
+      "obs": "Consta em Tubarão; Correios grafam 'Wanderlindi'. A via tem mais de um CEP; conferir o trecho."
+    },
+    {
+      "id": 55,
+      "nome_arte": "Rua Nordeste",
+      "pagina": 11,
+      "nome_oficial": "Rua Nordeste",
+      "bairro": "São Martinho",
+      "cep": "88708-841",
+      "status": "confirmado",
+      "obs": "Nome genérico: confirmar o trecho."
+    },
+    {
+      "id": 56,
+      "nome_arte": "Rua Karoline Modolon Saiber",
+      "pagina": 11,
+      "nome_oficial": "Rua Karoline Modolon Saiber",
+      "bairro": "Vila Esperança",
+      "cep": "88708-292",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 57,
+      "nome_arte": "Rua Pedro Mendes de Farias",
+      "pagina": 11,
+      "nome_oficial": "Rua Pedro Mendes de Farias",
+      "bairro": "Passo do Gado",
+      "cep": "88705-211",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 58,
+      "nome_arte": "Rua Exped. J. Anastácio Teixeira",
+      "pagina": 11,
+      "nome_oficial": null,
+      "bairro": null,
+      "cep": null,
+      "status": "pendente",
+      "obs": "Abreviada; 'Exped.' provavelmente Expedicionário. Muito parecida com 'Rua Anastácio Teófilo Teixeira', também na lista — verificar se não é a mesma via. A via tem mais de um CEP; conferir o trecho. ViaCEP devolve apenas 'Rua Anastácio Theófilo Teixeira' (88704-120), a mesma via do item 68. No OSM existe 'Rua Expedicionário Joaquim Anastácio Teixeira' (Morrotes), via distinta da Anastácio Teófilo; 'Exped. J.' deve ser Expedicionário Joaquim."
+    },
+    {
+      "id": 59,
+      "nome_arte": "Rua Maria Salete da Rosa Mendes",
+      "pagina": 11,
+      "nome_oficial": "Rua Maria Salete da Rosa Mendes",
+      "bairro": "Passagem",
+      "cep": "88706-508",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 60,
+      "nome_arte": "Rua Manoel Antônio Almeida",
+      "pagina": 11,
+      "nome_oficial": "Rua Manoel Antônio Almeida",
+      "bairro": "Bom Pastor",
+      "cep": "88707-250",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 61,
+      "nome_arte": "Beco 1900",
+      "pagina": 11,
+      "nome_oficial": null,
+      "bairro": null,
+      "cep": null,
+      "status": "pendente",
+      "obs": "Logradouro informal; pode não constar na base dos Correios."
+    },
+    {
+      "id": 62,
+      "nome_arte": "Av. Visconde de Barbacena",
+      "pagina": 11,
+      "nome_oficial": "Avenida Visconde de Barbacena",
+      "bairro": "Passagem",
+      "cep": "88705-665",
+      "status": "confirmado",
+      "obs": "A via tem mais de um CEP; conferir o trecho."
+    },
+    {
+      "id": 63,
+      "nome_arte": "Rua Leony Gonçalves Fernandes",
+      "pagina": 11,
+      "nome_oficial": "Rua Leony Gonçalves Fernandes",
+      "bairro": "São João (Margem Esquerda)",
+      "cep": "88708-646",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 64,
+      "nome_arte": "Rua Gilson Teodoro Ouriques",
+      "pagina": 11,
+      "nome_oficial": null,
+      "bairro": null,
+      "cep": null,
+      "status": "pendente",
+      "obs": ""
+    },
+    {
+      "id": 65,
+      "nome_arte": "Rua Adário Bernardinho Damásio",
+      "pagina": 11,
+      "nome_oficial": null,
+      "bairro": null,
+      "cep": null,
+      "status": "pendente",
+      "obs": "No OSM consta como 'Beco Odário Bernardino Damásio'."
+    },
+    {
+      "id": 66,
+      "nome_arte": "Rua Virgílio Parisi Duarte",
+      "pagina": 11,
+      "nome_oficial": "Rua Virgílio Parise Duarte",
+      "bairro": "Monte Castelo",
+      "cep": "88702-670",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 67,
+      "nome_arte": "Rua Celso Camilo Tonelli",
+      "pagina": 11,
+      "nome_oficial": "Rua Celso Camilo Tonelli",
+      "bairro": "Recife",
+      "cep": "88705-730",
+      "status": "confirmado",
+      "obs": ""
+    },
+    {
+      "id": 68,
+      "nome_arte": "Rua Anastácio Teófilo Teixeira",
+      "pagina": 11,
+      "nome_oficial": "Rua Anastácio Theófilo Teixeira",
+      "bairro": "Morrotes",
+      "cep": "88704-120",
+      "status": "provavel",
+      "obs": "Ver observação da 'Rua Exped. J. Anastácio Teixeira'. A via tem mais de um CEP; conferir o trecho."
+    },
+    {
+      "id": 69,
+      "nome_arte": "Rua Manoel Custodio Braga",
+      "pagina": 11,
+      "nome_oficial": "Rua Manoel Custódio Braga",
+      "bairro": "Bom Pastor",
+      "cep": "88707-294",
+      "status": "confirmado",
+      "obs": ""
+    }
+  ],
+  "atualizado_em": "2026-08-31"
+}

@@ -1,0 +1,284 @@
+# Atualização das emendas, 31/08/2026
+
+Fontes: emendas_31-08-2026.html (HTML do sistema, fonte dos IDs, objetos completos e observações) e Relatório_de_Emendas_31-08-2026.pdf (fonte dos números SGPE). 500 registros, R$ 150.967.827,19. Base anterior: 27/05/2026 (494 registros, R$ 149.811.137,19).
+
+- IDs mantidos da base antiga: 463 (faixa 26 a 499)
+- IDs novos: 37 (faixa 500 a 544), sendo 31 emendas realmente novas e 6 recadastros
+- Recadastros (mesma emenda, ID novo, migração de TEV 26 7mi JG para TEV 26 5mi GABI/GOV): 410 virou 520, 411 virou 521, 413 virou 522, 482 virou 512, 486 virou 515, 492 virou 528 (esta com troca de objeto para Custeio Infraestrutura)
+- IDs removidos do relatório: 31 (os 25 IMPOSITIVA 2023 de 1 a 25, já encerrados, e os 6 recadastrados acima)
+- Mudanças de status: 186
+
+## Emendas novas e recadastradas (IDs 500 a 544)
+
+| ID | Município | Interessado | Valor | Objeto | Modalidade | Status |
+|---|---|---|---|---|---|---|
+| 544 | ENTRE RIOS | JACIR BINO | R$ 0,00 | VEÍCULO PARA SECRETARIA DE AGRICULTURA | DOAÇÕES | PRONTO |
+| 543 | ZORTÉA | - | R$ 150.000,00 | AQUISIÇÃO DE VEÍCULO PARA SAÚDE | TEV 26 2.8mi KATSUMI/JG | PUBLICADO |
+| 542 | URUPEMA | JHENY | R$ 200.000,00 | Pavimentação de vias urbanas no Município | TEV 26 2.8mi KATSUMI/JG | AGUARDANDO PORTARIA |
+| 541 | SÃO JOSÉ | GILMARA | R$ 100.000,00 | Aquisição e implantação de sala sensorial para atendimento educacional | TEV 26 2.8mi KATSUMI/JG | AGUARDANDO PORTARIA |
+| 540 | SÃO JOSÉ | GILMARA | R$ 100.000,00 | Aquisição de um veículo automotor destinado à Guarda Municipal | TEV 26 2.8mi KATSUMI/JG | AGUARDANDO PORTARIA |
+| 539 | RIO RUFINO | ADEMAR | R$ 100.000,00 | Aquisição de combustível para manutenção das atividades da Secretaria Municipal de Obras | TEV 26 2.8mi KATSUMI/JG | AGUARDANDO PORTARIA |
+| 538 | RIO RUFINO | - | R$ 200.000,00 | Custeio de despesas com combustível para a Secretaria Municipal de Obras | TEV 26 2.8mi KATSUMI/JG | AGUARDANDO PORTARIA |
+| 537 | PONTE ALTA DO NORTE | MARIANE CALOMENO | R$ 200.000,00 | Aquisição de um Rolo Compactador | TEV 26 2.8mi KATSUMI/JG | PUBLICADO |
+| 536 | PONTE ALTA DO NORTE | MARIANE CALOMENO | R$ 100.000,00 | Manutenção das estradas do Município | TEV 26 2.8mi KATSUMI/JG | AGUARDANDO PORTARIA |
+| 535 | LAGES | KATSUMI | R$ 160.000,00 | AQUISIÇÃO DE VEÍCULO PARA O CENTRO DE BEM-ESTAR ANIMAL | TEV 26 2.8mi KATSUMI/JG | PUBLICADO |
+| 534 | FREI ROGÉRIO | AMANDA MARIOT | R$ 400.000,00 | AQUISIÇÃO DE VAN PARA A SECRETARIA DE TURISMO, CULTURA E ESPORTE | TEV 26 2.8mi KATSUMI/JG | PUBLICADO |
+| 532 | CAMPO BELO DO SUL | JORCI | R$ 150.000,00 | Aquisição de equipamentos agrícolas para Secretaria Municipal de Agricultura | TEV 26 2.8mi KATSUMI/JG | PUBLICADO |
+| 531 | BOM RETIRO | EDUARDO NECKEL | R$ 300.000,00 | Aquisição de Rolo Compactador e Motoniveladora | TEV 26 2.8mi KATSUMI/JG | PUBLICADO |
+| 530 | BOM RETIRO | EDUARDO NECKEL | R$ 150.000,00 | Aquisição de implementos agrícolas para a Secretaria Municipal de Agricultura | TEV 26 2.8mi KATSUMI/JG | AGUARDANDO PORTARIA |
+| 529 | TUBARÃO | DEPUTADO PEPÊ COLLAÇO | R$ 450.000,00 | Revitalização da Praça Palestina | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 528 | SÃO JOÃO DO SUL | FILIPE FARINHA | R$ 250.000,00 | Custeio Infraestrutura | TEV 26 5mi GABI/GOV | AGUARDANDO PORTARIA |
+| 527 | SANGÃO | RAPHA SCREMIN | R$ 200.000,00 | TEA - Terapia Ocupacional e Ecoterapia | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 526 | RODEIO | VINO | R$ 150.000,00 | Aquisição de materiais necessários à execução de obras de pavimentação e drenagem | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 525 | RIO NEGRINHO | ANDI CASTRO | R$ 100.000,00 | Investimento em recursos tecnológicos para a APAE | TEV 26 5mi GABI/GOV | AGUARDANDO PORTARIA |
+| 524 | RIO FORTUNA | EDEVAN | R$ 200.000,00 | Custeio de Exames para Atendimento ás Demandas da Saúde | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 523 | ORLEANS | FERNANDO CRUZETTA | R$ 300.000,00 | Aquisição de veículo para secretaria de Administração | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 522 | LEBON RÉGIS | DEBORA | R$ 150.000,00 | Recurso para Secretaria de Assistência Social | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 521 | LAGUNA | FERNANDINHO | R$ 350.000,00 | Pavimentação de trecho com 188 metros de extensão da rua Fernando Antônio dos Santos - Perrixil | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 520 | JAGUARUNA | ISMAEL PIUCO | R$ 150.000,00 | Pavimentação da Rua Santa Cecília, Bairro Encruzo | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 519 | ITUPORANGA | GEISON KURTZ | R$ 200.000,00 | Aquisição de Insumos para Infraestrutura da localidade de Rio Bonito e Rio dos Bugres | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 518 | IMBITUBA | - | R$ 300.000,00 | Pavimentação da Rua Evaristo Lima, bairro Campo D´Aviação | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 517 | IMARUÍ | SIMONE JOAO MACIEL | R$ 200.000,00 | Aquisição de veículo para secretaria de Infraestrutura | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 516 | GRÃO-PARÁ | HELINHO | R$ 300.000,00 | Custeio para secretaria municipal de Saúde | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 515 | GASPAR | MELATO | R$ 400.000,00 | Pavimentação da Rua Paulo Reinert, bairro Santa Terezinha | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 514 | ENTRE RIOS | JACIR BINO | R$ 146.690,00 | Aquisição de veículo destinado ao uso exclusivo do Conselho Tutelar | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 513 | CRICIÚMA | MIRI | R$ 350.000,00 | Aquisição de Computadores para Secretaria Municipal de Saúde | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 512 | CAPIVARI DE BAIXO | FERNANDO JUNINHO | R$ 200.000,00 | Melhorias no campo de futebol do bairro ilhotinha, compreendendo a implantação de sistema de iluminação e o fechamento em vidro da sede existente no local | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 511 | CAPIVARI DE BAIXO | CAMILO POLICIAL | R$ 300.000,00 | Serviços de desassoreamento e limpeza de valas de drenagem no município | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 510 | BRAÇO DO NORTE | DUDA | R$ 500.000,00 | Pavimentação de trecho da Estrada Geral Rio Amélia | TEV 26 5mi GABI/GOV | PUBLICADO |
+| 502 | CERRO NEGRO | MARGARETE MARTINS | R$ 200.000,00 | CONSTRUÇÃO DE REFEITÓRIO NO NÚCLEO MUNICIPAL CONSTÂNCIO JOSÉ DA SILVA | TEV 26 2.8mi KATSUMI/JG | PUBLICADO |
+| 501 | CAPIVARI DE BAIXO | ALEX SENSEI | R$ 150.000,00 | AQUISIÇÃO DE MATERIAIS DE CONSTRUÇÃO E MATERIAIS ELÉTRICOS DESTINADOS À REFORMA, MANUTENÇÃO E ADEQUAÇÃO DOS CAMPOS DE FUTEBOL PERTENCENTES AO MUNICÍPIO | TEV 26 2.8mi KATSUMI/JG | PUBLICADO |
+| 500 | ZORTÉA | ÉLIO | R$ 200.000,00 | INFRAESTRUTURA NO MUNICÍPIO - RUA ADELINA BRANCHER | TEV 26 2.8mi KATSUMI/JG | PUBLICADO |
+
+## Registros removidos do relatório
+
+Os IDs 1 a 25 (IMPOSITIVA 2023, quase todos pagos) foram retirados do relatório do sistema. Os outros 6 foram recadastrados com ID novo, indicado na coluna final.
+
+| ID | Município | Valor | Objeto | Último status | Recadastrada como |
+|---|---|---|---|---|---|
+| 1 | BRAÇO DO NORTE | R$ 300.000,00 | APOIO FINANCEIRO PARA INFRAESTRUTURA | PAGO | - |
+| 2 | BRAÇO DO NORTE | R$ 150.000,00 | PAVIMENTAÇÃO DA RUA SANTA DELLA GIUSTINA | PAGO | - |
+| 3 | BRAÇO DO NORTE | R$ 100.000,00 | CONSTRUÇÃO DE PONTOS DE PASSAGEIROS | PAGO | - |
+| 4 | CAPIVARI DE BAIXO | R$ 100.000,00 | APAE - SOLICITAÇÃO DE EDIFICAÇÃO DE DUAS SALAS DE AULA E BANHEIRO | PRONTO | - |
+| 5 | CRICIÚMA | R$ 300.000,00 | PAVIMENTAÇÃO PARA O MUNICÍPIO | PAGO | - |
+| 6 | GAROPABA | R$ 800.000,00 | MELHORIA DA INFRAESTRUTURA DA REDE MUNICIPAL | PAGO | - |
+| 7 | GASPAR | R$ 150.000,00 | CONSULTAS MÉDICAS (TROCA OBJETO -> APOIO FINANCEIRO SAÚDE NEURO TEA | PAGO | - |
+| 8 | GRÃO-PARÁ | R$ 200.000,00 | INTUITO DE DIMINUIR AS FILAS DO SUS DE CIRURGIAS ELETIVAS | PAGO | - |
+| 9 | GRAVATAL | R$ 400.000,00 | RUA COBERTA TERMAS (TROCA OBJETO -> CAMINHÃO SECRETARIA DE INFRAESTRUTURA) | PAGO | - |
+| 10 | IÇARA | R$ 300.000,00 | PAVIMENTAÇÃO DA RUA 17 DE DEZEMBRO | PAGO | - |
+| 11 | IÇARA | R$ 300.000,00 | CONSTRUÇÃO DE NOVO CENTRO COMUNITÁRIO NO BAIRRO PRESIDENTE VARGAS | PAGO | - |
+| 12 | IÇARA | R$ 100.000,00 | COMPRA DE 1 VEÍCULO | PAGO | - |
+| 13 | IMBITUBA | R$ 200.000,00 | REFORMA DA ESCOLA BÁSICA BASILEU JOSÉ DA SILVA | PAGO | - |
+| 14 | IMBITUBA | R$ 100.000,00 | CONSTRUÇÃO SEDE AMAI (SOLICITAR TROCA COMPRA DE MOBILIÁRIO A SEDE DA AMAI EM 2026) | SOLICITADO TROCA | - |
+| 15 | JAGUARUNA | R$ 100.000,00 | PAVIMENTAÇÃO DA RUA 1º DE MAIO | PAGO | - |
+| 16 | JAGUARUNA | R$ 200.000,00 | PAVIMENTAÇÕES DE RUAS DO MUNICÍPIO | PAGO | - |
+| 17 | JAGUARUNA | R$ 100.000,00 | CUSTEIO E MANUTENÇÃO DAS ATIVIDADES HOSPITALARES | PAGO | - |
+| 18 | LAGES | R$ 150.000,00 | REALIZAÇÃO DE CASTRAÇÃO DE CÃES E GATOS DO MUNICÍPIO | PAGO | - |
+| 19 | LAGUNA | R$ 100.000,00 | AQUISIÇÃO DE UM VEÍCULO PARA SECRETÁRIA DE SAÚDE | PRONTO | - |
+| 20 | LAGUNA | R$ 100.000,00 | PROJETOS, PROGRAMAS E SERVIÇOES DESENVOLVIDOS PELA ASSOCIAÇÃO SÃO JUDAS TADEU | PAGO | - |
+| 21 | LAGUNA | R$ 150.000,00 | COMPRA DE VIATURA | PRONTO | - |
+| 22 | MORRO DA FUMAÇA | R$ 300.000,00 | PAVIMENTAÇÃO DE RUAS DO MUNICÍPIO | PAGO | - |
+| 23 | PEDRAS GRANDES | R$ 300.000,00 | PAVIMENTAÇÃO RUAS DO MUNICÍPIO (TROCA OBJETO -> CENTRO EDUCACIONAL TORRE DE PISA) | PUBLICADO | - |
+| 24 | PESCARIA BRAVA | R$ 250.000,00 | PAVIMENTAÇÃO DE RUAS DO MUNICÍPIO | PAGO | - |
+| 25 | RIO FORTUNA | R$ 150.000,00 | INVESTIMENTO NA EDUCAÇÃO BÁSICA DO MUNICÍPIO | PAGO | - |
+| 410 | JAGUARUNA | R$ 150.000,00 | Pavimentação da Rua Santa Cecília, Bairro Encruzo | AGUARDANDO PORTARIA | 520 |
+| 411 | LAGUNA | R$ 350.000,00 | Pavimentação de trecho com 188 metros de extensão da rua Fernando Antônio dos Santos - Perrixil | AGUARDANDO PORTARIA | 521 |
+| 413 | LEBON RÉGIS | R$ 150.000,00 | Recurso para Secretaria de Assistência Social | AGUARDANDO PORTARIA | 522 |
+| 482 | CAPIVARI DE BAIXO | R$ 200.000,00 | Melhorias no campo de futebol do bairro ilhotinha, compreendendo a implantação de sistema de iluminação e o fechamento em vidro da sede existente no local | AGUARDANDO PORTARIA | 512 |
+| 486 | GASPAR | R$ 400.000,00 | Investimento em Infraestrutura | AGUARDANDO PORTARIA | 515 |
+| 492 | SÃO JOÃO DO SUL | R$ 250.000,00 | TEA - Equoterapia e Terapia Ocupacional | AGUARDANDO PORTARIA | 528 |
+
+## Mudanças de status
+
+| ID | Município | Objeto | De | Para |
+|---|---|---|---|---|
+| 490 | RODEIO | Aquisição de materiais necessários à execução | AGUARDANDO PORTARIA | PUBLICADO |
+| 413 | LEBON RÉGIS | Recurso para Secretaria de Assistência Social | AGUARDANDO PORTARIA | PUBLICADO |
+| 411 | LAGUNA | Pavimentação de trecho com 188 metros de exte | AGUARDANDO PORTARIA | PUBLICADO |
+| 410 | JAGUARUNA | Pavimentação da Rua Santa Cecília, Bairro Enc | AGUARDANDO PORTARIA | PUBLICADO |
+| 486 | GASPAR | Pavimentação da Rua Paulo Reinert, bairro San | AGUARDANDO PORTARIA | PUBLICADO |
+| 482 | CAPIVARI DE BAIXO | Melhorias no campo de futebol do bairro ilhot | AGUARDANDO PORTARIA | PUBLICADO |
+| 475 | ANTÔNIO CARLOS | Solicitação de recursos para aquisição de tra | AGUARDANDO DOCUMENTAÇÃO | PAGO |
+| 449 | GAROPABA | APOIO FINANCEIRO AO MUNICÍPIO NA ÁREA DA SAÚD | PUBLICADO | PAGO |
+| 448 | SÃO LUDGERO | APOIO FINANCEIRO AO MUNICÍPIO NA ÁREA DA SAÚD | PUBLICADO | PAGO |
+| 447 | TREZE DE MAIO | APOIO FINANCEIRO AO MUNICÍPIO PARA COMPRA DE  | PRONTO | PAGO |
+| 446 | GRAVATAL | APOIO FINANCEIRO AO MUNICÍPIO NA ÁREA DA SAÚD | PUBLICADO | PAGO |
+| 445 | PEDRAS GRANDES | APOIO FINANCEIRO AO MUNICÍPIO NA ÁREA DA SAÚD | PUBLICADO | PAGO |
+| 444 | TURVO | APOIO FINANCEIRO AO MUNICÍPIO NA ÁREA DA SAÚD | PUBLICADO | PAGO |
+| 443 | SANGÃO | APOIO FINANCEIRO AO MUNICÍPIO NA ÁREA DA SAÚD | PUBLICADO | PAGO |
+| 430 | TUBARÃO | PAVIMENTAÇÃO E DRENAGEM PLUVIAL DA AVENIDA PE | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 429 | VITOR MEIRELES | Aquisição de materiais pétreos para pavimenta | PUBLICADO | EM ANÁLISE |
+| 428 | URUBICI | Pavimentação em asfalto da Rua Ana Warmling S | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 427 | URUBICI | O recurso para pavimentação da Rua João Locks | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 424 | TUBARÃO | Projeto CDL - Elaboração de projeto para impl | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 423 | RIO NEGRINHO | Pavimentação de parte da Rua Luiz Bernardo Ol | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 421 | RIO DO OESTE | Aquisição de equipamentos agrícolas | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 409 | JACINTO MACHADO | Pavimentação de Trecho da Estrada Geral Arizo | PUBLICADO | EM ANÁLISE |
+| 398 | WITMARSUM | Aquisição de insumos para a pavimentação de 3 | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 397 | VIDAL RAMOS | Aquisição de insumos para pavimentação em con | PUBLICADO | PAGO |
+| 396 | TUBARÃO | Aquisição de materiais para pavimentação e dr | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 395 | TUBARÃO | Pavimentação de vias no município | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 394 | TREZE TÍLIAS | Aquisição de placas de sinalização turística  | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 393 | TRÊS BARRAS | Pavimentação da rua Adão Santarém no Distrito | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 391 | SÃO PEDRO DE ALCÂNTARA | Aquisição de um veículo utilitário para uso d | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 390 | SÃO MARTINHO | Aquisição de uma Retro Escavadeira 4 x 4, par | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 389 | SÃO DOMINGOS | Custeio de atividades da secretaria municipal | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 388 | SÃO DOMINGOS | Reforma, Ampliação e Modernização do Parque I | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 387 | SÃO BONIFÁCIO | Aquisição de Van para o Esporte | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 386 | SANGÃO | Pavimentação com lajotas de concreto em diver | PUBLICADO | EM ANÁLISE |
+| 385 | SALTO VELOSO | Aquisição de 01 Carreta Agrícola Basculante 6 | PUBLICADO | EM ANÁLISE |
+| 384 | RIO DO CAMPO | Apoio financeiro para manutenção de estradas  | PUBLICADO | EM ANÁLISE |
+| 377 | MORRO DA FUMAÇA | SOLICITADO TROCA -> Apoio financeiro através  | SOLICITADO TROCA | EM ANÁLISE |
+| 374 | IMARUÍ | Pavimentação do trecho final da rodovia IMA 4 | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 372 | CAPIVARI DE BAIXO | Pavimentação da Rua Maria de Fátima da Costa, | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 371 | CAPIVARI DE BAIXO | Apoio Financeiro para Melhorias e Revitalizaç | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 370 | CAPIVARI DE BAIXO | Aquisição de Veiculo Transporte Passageiros D | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 369 | BRAÇO DO NORTE | Contração de Horas Máquinas para Execução de  | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 366 | ANTÔNIO CARLOS | TROCA DE OBJETO - Pavimentação e Sinalização  | SOLICITADO TROCA | AGUARDANDO DOCUMENTAÇÃO |
+| 365 | ÁGUA DOCE | Aquisição de máquinas, equipamentos e impleme | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 364 | VIDAL RAMOS | Verificar com Deputado a Troca - (problemas n | SOLICITADO TROCA | PAGO |
+| 363 | URUSSANGA | Recurso para implantar programa de hidroginás | AGUARDANDO PORTARIA | PUBLICADO |
+| 357 | TUBARÃO | Recursos para ampliar e qualificar os atendim | EM ANÁLISE | PAGO |
+| 355 | TROMBUDO CENTRAL | Recurso para construção de uma nova Creche Mu | AGUARDANDO PORTARIA | PAGO |
+| 354 | TREZE DE MAIO | Recuso para aquisição de drone agrícola para  | AGUARDANDO PORTARIA | PAGO |
+| 353 | TREZE DE MAIO | Recurso para projeto social que promove inclu | AGUARDANDO PORTARIA | PAGO |
+| 352 | TREZE DE MAIO | Recursos para ampliar e qualificar os atendim | AGUARDANDO PORTARIA | EM ANÁLISE |
+| 351 | TREVISO | Recurso para pavimentar a Rua João Buogo, ace | AGUARDANDO PORTARIA | PAGO |
+| 350 | TREVISO | IMPLANTAÇÃO DE SALAS SENSORIAIS NA REDE DE EN | AGUARDANDO PORTARIA | PAGO |
+| 349 | TRÊS BARRAS | Obras de revitalização da Rua Vereador Ricard | AGUARDANDO PORTARIA | PAGO |
+| 348 | TIMBÉ DO SUL | Recurso para pavimentação asfáltica com forne | AGUARDANDO PORTARIA | PAGO |
+| 347 | TIMBÉ DO SUL | Recurso para adquirir laboratórios e equipame | AGUARDANDO PORTARIA | PAGO |
+| 346 | TIMBÉ DO SUL | Pavimentação asfáltica de vias nos municipios | AGUARDANDO PORTARIA | PAGO |
+| 344 | SÃO JOÃO DO SUL | Aquisição de insumos para recuperação de vias | AGUARDANDO PORTARIA | PAGO |
+| 343 | SÃO BONIFÁCIO | Recursos para a manutenção da Fundação Médico | AGUARDANDO PORTARIA | VERIFICAR |
+| 342 | SANTA ROSA DE LIMA | Aquisição de implementos agricolas | AGUARDANDO PORTARIA | PAGO |
+| 341 | SANTA ROSA DE LIMA | Aquisição de instrumentos de sopro para educa | AGUARDANDO PORTARIA | PAGO |
+| 340 | RIO FORTUNA | EXECUÇÃO DE OBRAS DE ACESIBILIDADE EM PONTE | AGUARDANDO PORTARIA | PAGO |
+| 339 | RIO DO OESTE | Melhoria da infraestrutura urbana para amplia | AGUARDANDO PORTARIA | PAGO |
+| 338 | RIO DAS ANTAS | Recurso para manutenção das escolas, materiai | AGUARDANDO PORTARIA | PAGO |
+| 337 | PRESIDENTE NEREU | Recurso para adquirir equipamentos, mobiliári | AGUARDANDO PORTARIA | PAGO |
+| 336 | PETROLÂNDIA | Recurso para pavimentação e drenagem pluvial  | AGUARDANDO PORTARIA | PAGO |
+| 335 | PENHA | Aquisição um veículo para uso exclusivo das a | AGUARDANDO PORTARIA | PAGO |
+| 334 | PENHA | Destinada à execução de obras de infraestrutu | AGUARDANDO PORTARIA | PAGO |
+| 333 | PAULO LOPES | Recurso para a aquisição de um veículo para u | AGUARDANDO PORTARIA | PAGO |
+| 332 | PAULO LOPES | Recurso para melhorias na infraestrutura da R | AGUARDANDO PORTARIA | PAGO |
+| 330 | PALMA SOLA | PAVIMENTAÇÃO ASFÁLTICA DA RUA DONA CECÍLIA | AGUARDANDO PORTARIA | PAGO |
+| 329 | NOVA VENEZA | IMPLANTAÇÃO DE SALAS SENSORIAIS NA REDE DE EN | AGUARDANDO PORTARIA | PAGO |
+| 328 | NOVA VENEZA | Custeio de atividades de Ecoterapia - TEA | AGUARDANDO PORTARIA | PUBLICADO |
+| 326 | MORRO DA FUMAÇA | Recurso para construir o Complexo Esportivo d | AGUARDANDO PORTARIA | PAGO |
+| 324 | MORRO DA FUMAÇA | PAP: recursos para ações essenciais, materiai | AGUARDANDO PORTARIA | PUBLICADO |
+| 323 | MELEIRO | Recurso para a Saúde realizar exames e proced | AGUARDANDO PORTARIA | PAGO |
+| 322 | MARACAJÁ | Recurso para reforma da Praça Frei Euzébio, c | AGUARDANDO PORTARIA | PAGO |
+| 321 | MACIEIRA | Aquisição de 285 kits de carteiras e cadeiras | AGUARDANDO PORTARIA | PAGO |
+| 320 | LUZERNA | Recurso para aquisição de medicamentos, mater | AGUARDANDO PORTARIA | PUBLICADO |
+| 319 | LEOBERTO LEAL | Construção do Centro de Eventos no município | AGUARDANDO PORTARIA | PAGO |
+| 318 | LAGUNA | Obra de pavimentação na rua José Antônio Pedr | SOLICITADO TROCA | PAGO |
+| 315 | FLORIANÓPOLIS/ LAGUNA | PAULÃO VÔLEI | AGUARDANDO DOCUMENTAÇÃO | PAGO |
+| 314 | JOSÉ BOITEUX | Recurso para adquirir equipamentos e implanta | AGUARDANDO PORTARIA | PAGO |
+| 311 | JAGUARUNA | PAVIMENTAÇÃO VIA QUE LIGA OS BAIRROS BOA VIST | AGUARDANDO PORTARIA | PAGO |
+| 310 | JAGUARUNA | Recurso para Ampliação da Unidade de Saúde da | AGUARDANDO PORTARIA | PAGO |
+| 309 | JABORÁ | Recursos para a execução de melhorias na Esco | AGUARDANDO PORTARIA | PAGO |
+| 308 | ITUPORANGA | Recurso para ampliar e qualificar o atendimen | AGUARDANDO PORTARIA | PAGO |
+| 307 | ITAIÓPOLIS | Recurso para aquisição e instalação de ilumin | AGUARDANDO PORTARIA | PAGO |
+| 306 | IMBUIA | Recurso para aquisição de ônibus para uso da  | AGUARDANDO PORTARIA | PAGO |
+| 305 | IMBITUBA | Recurso para a Pavimentação e drenagem pluvia | AGUARDANDO PORTARIA | PAGO |
+| 304 | IMBITUBA | ASSOCIACAO DE VOLEIBOL DE IMBITUBA - Recurso  | SOLICITADO TROCA | EM ANÁLISE |
+| 303 | IMBITUBA | Para custear as atividades culturais executad | AGUARDANDO DOCUMENTAÇÃO | EM ANÁLISE |
+| 301 | IÇARA | HOSPITAL SÃO DONATO - Recurso para Custeio e  | EM ANÁLISE | PAGO |
+| 300 | GRAVATAL | AQUISIÇÃO DE VEÍCULO PARA SECRETARIA DE ESPOR | AGUARDANDO PORTARIA | PAGO |
+| 299 | GRAVATAL | AQUISIÇÃO DE IMPLEMENTOS AGRÍCOLAS | AGUARDANDO PORTARIA | PAGO |
+| 298 | GRÃO-PARÁ | AQUISIÇÃO VEÍCULO PARA ZOONOSES | AGUARDANDO PORTARIA | PAGO |
+| 297 | GASPAR | Recurso para castrações, atendimentos veterin | AGUARDANDO PORTARIA | PAGO |
+| 295 | FORQUILHINHA | Recurso para a Construção de um CENTRO DE EDU | AGUARDANDO PORTARIA | PAGO |
+| 294 | FLORIANÓPOLIS | LIRA TENIS CLUBE - Recurso para manutenção e  | SOLICITADO TROCA | EM ANÁLISE |
+| 292 | COCAL DO SUL | Construção de salas de aula na rede municipal | AGUARDANDO PORTARIA | PAGO |
+| 291 | CHAPADÃO DO LAGEADO | Recursos para a aquisição de um Trator Agríco | AGUARDANDO PORTARIA | PAGO |
+| 288 | CAPIVARI DE BAIXO | Solicitação de emenda para compra de material | SOLICITADO TROCA | EM ANÁLISE |
+| 284 | CAPINZAL | Recursos para pavimentar a Rua Pica-Pau, no R | AGUARDANDO PORTARIA | PAGO |
+| 283 | BRUSQUE | SOLICITADO TROCA -> Melhorias na Escola de En | AGUARDANDO PORTARIA | SOLICITADO TROCA |
+| 282 | BRUSQUE | SOLICITADO TROCA -> melhorias Centro de Educa | AGUARDANDO PORTARIA | SOLICITADO TROCA |
+| 281 | BRUSQUE | SOLICITADO TROCA -> melhorias da Centro de Ed | AGUARDANDO PORTARIA | SOLICITADO TROCA |
+| 280 | BRAÇO DO NORTE | FUNBAMA - Aquisição de um Drone para ações de | AGUARDANDO PORTARIA | PAGO |
+| 279 | BRAÇO DO NORTE | Recurso para aquisição de 20 abrigos para pon | AGUARDANDO PORTARIA | PAGO |
+| 278 | BRAÇO DO NORTE | PAVIMENTAÇÃO RUA PADRE JACOB LUIZ NEIBEL - Ba | AGUARDANDO PORTARIA | PAGO |
+| 276 | BOM JESUS | CUSTEIO SAÚDE - Insumos para atividades dos p | AGUARDANDO PORTARIA | PAGO |
+| 275 | BIGUAÇU | Implantação de um sistema de câmeras de segur | AGUARDANDO PORTARIA | PAGO |
+| 273 | BALNEÁRIO GAIVOTA | Pavimentação asfáltica da Rua José delaudino  | AGUARDANDO PORTARIA | PAGO |
+| 272 | ARROIO TRINTA | Aquisição de um veículo para uso da Secretari | AGUARDANDO PORTARIA | PAGO |
+| 271 | ARMAZÉM | COMPRA VEÍCULO SPIN PARA APAE - Adquirir um v | AGUARDANDO DOCUMENTAÇÃO | EM ANÁLISE |
+| 270 | ARMAZÉM | Recurso para repavimentação de trecho da Rua  | AGUARDANDO PORTARIA | PAGO |
+| 269 | ARARANGUÁ | Recurso para pavimentação da Rodovia Municipa | AGUARDANDO PORTARIA | PAGO |
+| 268 | ANTÔNIO CARLOS | Pavimentação e Infraestrutura da Rua Alvina M | AGUARDANDO PORTARIA | PAGO |
+| 267 | AGRONÔMICA | Recurso para melhorias viárias e iluminação p | AGUARDANDO PORTARIA | PAGO |
+| 266 | ABDON BATISTA | Incentivo para ações agrícolas, infraestrutur | AGUARDANDO PORTARIA | PAGO |
+| 265 | ZORTÉA | MELHORIAS NA INFRAESTRUTURA DA ESCOLA MUNICIP | PUBLICADO | PAGO |
+| 264 | WITMARSUM | RECUPERAÇÃO DAS ESTRADAS VICINAIS NO RIBEIRÃO | PUBLICADO | EM ANÁLISE |
+| 263 | VIDAL RAMOS | AQUISIÇÃO DE UM VEÍCULO PARA O ABRIGO ALBERTI | PUBLICADO | PRONTO |
+| 262 | URUSSANGA | PAVIMENTAÇÃO DA RUA DAVID SPRICIGO, RUA GIOVA | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 261 | URUPEMA | CONSTRUÇÃO DE PARQUE INFANTIL NA PRAÇA CENTRA | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 260 | URUBICI | PAVIMENTAÇÃO DA RUA JUCELINO KUBITSCHEK | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 259 | TUBARÃO | PAVIMENTAÇÃO | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 258 | TREZE DE MAIO | INVESTIMENTO EM EQUIPAMENTO TURÍSTICO / ESPOR | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 256 | TIMBÉ DO SUL | AQUISIÇÃO DE VEÍCULO UTILITÁRIO PARA SECRETAR | PUBLICADO | PAGO |
+| 255 | SÃO PEDRO DE ALCÂNTARA | AMPLIAÇÃO DE VAGAS DE ESTACIONAMENTO DE POSTO | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 254 | SÃO JOSÉ | PAVIMENTAÇÃO EM PAVER E MANUTENÇÃO DA VIA MUN | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 253 | SÃO DOMINGOS | REFORMA DO PAVILHÃO DO CENTRO COMUNITÁRIO DO  | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 252 | SÃO DOMINGOS | REFORMA NA ESCOLA INFANTIL MUNICIPAL PINGO DE | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 251 | SÃO BONIFÁCIO | AQUISIÇÃO DE PARQUINHOS | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 250 | SÃO BONIFÁCIO | CONSTRUÇÃO DE SALAS PARA SECRETARIA DE ASSIST | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 248 | SALTO VELOSO | CONSTRUÇÃO DE TOLDO METÁLICO E COBERTURA EM P | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 247 | RIO RUFINO | MANUTENÇÃO DAS AÇÕES DA ASSISTÊNCIA SOCIAL | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 246 | RIO FORTUNA | AQUISIÇÃO DE BALANÇAS PARA PESAR CAMINHÕES | PUBLICADO | PAGO |
+| 245 | RIO FORTUNA | Aquisição de Retroescavadeira | SOLICITADO TROCA | PAGO |
+| 242 | PRAIA GRANDE | AQUISIÇÃO DE MATERIAIS ESPORTIVOS PARA SECRET | AGUARDANDO DOCUMENTAÇÃO | PAGO |
+| 237 | PESCARIA BRAVA | RETIFICADO PARA -> REALIZAÇÃO DA SEMANA CULTU | PUBLICADO | PRONTO |
+| 233 | PAINEL | CUSTEIO DO TRANSPORTE DE ALUNOS | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 220 | ITAIÓPOLIS | AQUISIÇÃO DE MATERIAL BRITADO PARA RECUPERAÇÃ | AGUARDANDO DOCUMENTAÇÃO | PAGO |
+| 218 | IMARUÍ | TROCA OBJETO -> AQUISIÇÃO DE VEÍCULO PARA A S | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 205 | FRAIBURGO | PAVIMENTAÇÃO DA RUA ANTONIO BURDA, BAIRRO CEN | AGUARDANDO DOCUMENTAÇÃO | EM ANÁLISE |
+| 202 | CAMPOS NOVOS | AQUISIÇÃO DE VEÍCULO TIPO CAMIONETE, PARA ATE | PUBLICADO | PAGO |
+| 201 | CAMPOS NOVOS | COMPRA DE AUTOMÓVEL PARA SECRETARIA DE AGRICU | SOLICITADO TROCA | AGUARDANDO PORTARIA |
+| 198 | WITMARSUM | MANUTENÇÃO DE VIAS VICINAIS NA COMUNIDADE BUT | PUBLICADO | EM ANÁLISE |
+| 197 | WITMARSUM | REFORMA DO GINASIO DE ESPORTES DA COMUNIDADE  | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 196 | TUBARÃO | Pav Sombrio - PAVIMENTAÇÃO DE VIAS | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 195 | TROMBUDO CENTRAL | MÁQUINA DE USINAGEM TRANSPORTÁVEL | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 194 | SÃO MARTINHO | AQUISIÇÃO DE RETROESCAVADEIRA 4X4 | PUBLICADO | PAGO |
+| 193 | SÃO LUDGERO | REABILITAÇÃO ATRAVÉS DE EQUOTERAPIA E TERAPIA | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 192 | SÃO JOSÉ | MANUTENÇÃO DE VIAS URBANAS NA RUA JOSÉ ALVES  | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 191 | SÃO BONIFÁCIO | REVITALIZAÇÃO DA PRAÇA HERÓIS DO COMBATE DA S | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 189 | RIO DO OESTE | PAVIMENTAÇÃO DA RUA ILDA CLAUDINO DOS SANTOS, | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 187 | PRAIA GRANDE | VEÍCULO TIPO VAN PARA TRANSPORTE DE PACIENTES | PRONTO | PAGO |
+| 184 | PEDRAS GRANDES | REABILITAÇÃO ATRAVÉS DE EQUOTERAPIA E TERAPIA | PUBLICADO | PAGO |
+| 183 | PASSO DE TORRES | INVESTIMENTO EM INFRAESTRUTURA | PUBLICADO | PAGO |
+| 180 | JACINTO MACHADO | REABILITAÇÃO ATRAVÉS DE EQUOTERAPIA E TERAPIA | PUBLICADO | PAGO |
+| 179 | ITUPORANGA | INVESTIMENTO EM INFRAESTRUTURA | PUBLICADO | PAGO PARCIAL |
+| 175 | GRAVATAL | RECUPERAÇÃO E MANUTENÇÃO DAS ESTRADAS VICINAI | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 167 | ANTÔNIO CARLOS | CONSTRUÇÃO DE UMA PONTE SOBRE O RIO BIGUAÇU | PUBLICADO | AGUARDANDO DOCUMENTAÇÃO |
+| 164 | SÃO LUDGERO | SOLICITADO TROCA -> INVESTIMENTOS PARA EDUCAÇ | PUBLICADO | SOLICITADO TROCA |
+| 157 | GAROPABA | PAVIMENTAÇÃO DE VIAS NO MUNICÍPIO | PUBLICADO | PAGO |
+| 153 | SÃO JOSÉ | INFRAESTRUTURA - MANUTENÇÃO DE VIAS MUNICIPAI | PUBLICADO | ARQUIVADO |
+| 147 | VITOR MEIRELES | INVESTIMENTO EM INFRAESTRUTURA | PUBLICADO | PAGO |
+| 142 | TIMBÉ DO SUL | INVESTIMENTO EM INFRAESTRUTURA | PUBLICADO | PAGO |
+| 139 | SÃO BONIFÁCIO | CUSTEIO ESPORTE | PUBLICADO | PAGO |
+| 138 | SANGÃO | CUSTEIO SAUDE | PUBLICADO | PAGO |
+| 136 | RIO NEGRINHO | AQUISIÇAO DE EQUIPAMENTOS SAUDE | PUBLICADO | PAGO |
+| 134 | PRAIA GRANDE | INVESTIMENTO EM TURISMO | PUBLICADO | PAGO |
+| 133 | PEDRAS GRANDES | PAVIMENTAÇAO | PUBLICADO | PAGO |
+| 132 | PAINEL | AQUISIÇÃO DE EQUIPAMENTOS SAUDE | PAGO | PRONTO |
+| 129 | LEBON RÉGIS | INVESTIMENTO EM INFRAESTRUTURA | PUBLICADO | PAGO |
+| 128 | LAGUNA | CUSTEIO PARA ATENDIMENTO DE PESSOAS COM TEA P | PUBLICADO | PAGO |
+| 125 | IÇARA | CUSTEIO EDUCAÇAO | PUBLICADO | PAGO |
+| 123 | GAROPABA | CUSTEIO EDUCAÇAO | PUBLICADO | PAGO |
+| 122 | ENTRE RIOS | CUSTEIO SAUDE | PUBLICADO | PAGO |
+| 121 | ENTRE RIOS | IMPLEMENTOS AGRÍCOLAS | PUBLICADO | PAGO |
+| 117 | CAMPO BELO DO SUL | CUSTEIO PARA ASSISTENCIA SOCIAL | PUBLICADO | PAGO |
+| 116 | BRAÇO DO NORTE | INVESTIMENTO EM INFRAESTRUTURA | PUBLICADO | PAGO |
+| 113 | ÁGUA DOCE | AQUISIÇÃO DE EQUIPAMENTOS AGRICOLAS | PUBLICADO | PAGO |
+| 92 | PASSO DE TORRES | PAVIMENTAÇÃO DAS VIAS DO MUNICÍPIO | PUBLICADO | PAGO |
+| 91 | PAINEL | CUSTEIO EDUCAÇAO | PAGO | PRONTO |
+| 78 | GRÃO-PARÁ | SOLICITADO TROCA -> CONSTRUÇÃO DE CENTRO DOS  | PUBLICADO | PAGO |
+| 73 | COCAL DO SUL | TROCA DE OBJETO -> INVESTIMENTOS NA SECRETARI | PUBLICADO | PAGO |
+| 69 | TUBARÃO | RUA NILO MANOEL LUIZ | PUBLICADO | PAGO |
+| 60 | TUBARÃO | PARQUE INFANTIL ADAPTADO PARA PESSOAS COM TRA | PUBLICADO | ARQUIVADO |
+| 59 | TUBARÃO | CUSTEIO PARA O HOSPITAL | EM ANÁLISE | PAGO |
+| 47 | URUBICI | PAVIMENTAÇÃO DE RUAS DO MUNICÍPIO | PAGO | PRONTO |

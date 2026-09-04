@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia Rápido de Discursos (5 páginas) · Pepê Collaço 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#061A3A; --ink-d:#04122B; --ink-2:#C3CFE0; --ink-3:#8FA0BC;
+  --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.24); --white:#fff;
+  --red:#FFD21F; --red-deep:#FFDD57; --navy:#3E72C4; --navy-2:#86B4F0;
+  --sun:#1FA64A; --sun-2:#0F8A3A; --green:#46D07D;
+  --tint-red:rgba(255,210,31,.10); --tint-navy:rgba(62,114,196,.15); --tint-sun:rgba(31,166,74,.14); --tint-green:rgba(70,208,125,.13);
+  --brush:
+    linear-gradient(118deg, transparent 0 19.6%, rgba(31,166,74,.06) 20% 20.9%, transparent 21.3%),
+    linear-gradient(118deg, transparent 0 38%, rgba(255,210,31,.05) 38.3% 39%, transparent 39.4%),
+    linear-gradient(118deg, transparent 0 58%, rgba(255,255,255,.035) 58.3% 59%, transparent 59.4%),
+    linear-gradient(118deg, transparent 0 78%, rgba(62,114,196,.07) 78.3% 79.4%, transparent 79.8%),
+    radial-gradient(130% 90% at 88% -12%, rgba(8,36,82,.85), transparent 58%),
+    radial-gradient(120% 90% at -10% 110%, rgba(15,138,58,.16), transparent 55%);
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--ink-d);color:#E7EDF7;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.doc{max-width:210mm;margin:22px auto;background:var(--ink);border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.05)}
+h1,h2,h3{font-family:"Saira Condensed",sans-serif;color:var(--white);letter-spacing:.01em;line-height:1.0;font-weight:800;text-transform:uppercase;margin:0}
+.kicker{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:var(--red)}
+p{margin:0 0 9px;color:#E2E9F4}
+strong{font-weight:700;color:#fff}em{font-style:italic;color:#EAF0F8}
+mark{background:rgba(255,210,31,.22);color:#FFF1B8;padding:0 .15em;border-radius:2px}
+.mono{font-family:"JetBrains Mono",monospace}.small{font-size:11.5px;color:var(--ink-2)}.muted{color:var(--ink-3)}
+.page{padding:16mm 16mm 14mm;position:relative;min-height:297mm;background-color:var(--ink);background-image:var(--brush);background-attachment:local}
+@page{size:A4;margin:0}
+@media print{body{background:#fff}.doc{max-width:none;margin:0;border-radius:0;box-shadow:none}.no-print{display:none!important}.page{break-after:page}.break{break-before:page}.avoid{break-inside:avoid}}
+.break{}.avoid{break-inside:avoid}
+.toolbar{position:sticky;top:0;z-index:50;background:var(--ink-d);color:#fff;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;padding:8px 16px;font-size:12px;border-bottom:1px solid rgba(255,255,255,.1)}
+.toolbar b{color:#fff}.toolbar .dot{color:var(--red)}
+.tbtn{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:12px;background:var(--red);color:#1A1400;border:none;border-radius:6px;padding:5px 12px;cursor:pointer}
+.tbtn:hover{background:#FFDD57}.tbtn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
+.pm-editing .doc{outline:2px dashed rgba(255,210,31,.45);outline-offset:-6px}
+[contenteditable="true"]{cursor:text}
+.phead{display:flex;align-items:baseline;justify-content:space-between;border-bottom:3px solid var(--sun);padding-bottom:8px;margin-bottom:14px}
+.phead .l .k{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:var(--red)}
+.phead .l h2{font-size:26px;color:#fff;margin-top:2px}
+.phead .pg{font-family:"Saira Condensed";font-weight:900;font-size:30px;color:var(--red);transform:skewX(-6deg)}
+.phead .pg small{font-family:"Inter";font-weight:600;font-size:10px;color:var(--ink-3);display:block;text-transform:uppercase;letter-spacing:.1em;text-align:right}
+.lead{font-size:14.5px;color:#EDF2FA;font-weight:500;line-height:1.42}
+.shead{font-family:"Saira Condensed";font-weight:800;font-size:15px;margin:16px 0 6px;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:8px;letter-spacing:.01em}
+.shead:before{content:"";width:11px;height:11px;background:var(--sun);display:inline-block;flex:none;border-radius:2px}
+.box{border:1px solid var(--line);border-left:4px solid var(--red);background:var(--tint-red);padding:11px 13px;margin:11px 0;border-radius:7px}
+.box .bt{font-family:"Saira Condensed";font-weight:800;font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;margin:0 0 4px;color:var(--red-deep)}
+.box.navy{border-left-color:var(--navy);background:var(--tint-navy)}.box.navy .bt{color:var(--navy-2)}
+.box.sun{border-left-color:var(--sun);background:var(--tint-sun)}.box.sun .bt{color:#5BE08C}
+.box.green{border-left-color:var(--green);background:var(--tint-green)}.box.green .bt{color:var(--green)}
+.box p{color:#E7EDF7;font-size:12.5px;margin:0}.box p+p{margin-top:6px}
+.grid{display:grid;gap:10px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}
+.card{border:1px solid var(--line);background:rgba(20,43,80,.55);border-radius:9px;padding:11px 12px}
+.card .cn{font-family:"Saira Condensed";font-weight:800;font-size:11px;color:var(--red);letter-spacing:.06em;text-transform:uppercase}
+.card .ct{font-family:"Saira Condensed";font-weight:800;font-size:15px;margin:1px 0 3px;color:#fff;text-transform:uppercase;line-height:1.02}
+.card p{font-size:12px;margin:0;color:#D9E2F0;line-height:1.32}
+.stat{border:1px solid var(--line);border-top:4px solid var(--red);background:rgba(20,43,80,.5);border-radius:7px;padding:11px 12px}
+.stat .num{font-family:"Saira Condensed";font-weight:900;font-size:27px;line-height:1;color:var(--red);transform:skewX(-5deg);display:inline-block}
+.stat .lab{font-size:10.5px;color:var(--ink-2);margin-top:5px;line-height:1.25}
+.stat.navy{border-top-color:var(--navy)}.stat.navy .num{color:var(--navy-2)}
+.stat.sun{border-top-color:var(--sun)}.stat.sun .num{color:#5BE08C}
+.stat.green{border-top-color:var(--green)}.stat.green .num{color:var(--green)}
+table.tbl{width:100%;border-collapse:collapse;font-size:11.8px;margin:10px 0}
+table.tbl th{background:#0E2A57;color:#fff;text-align:left;font-family:"Saira Condensed";font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:7px 9px;border-bottom:2px solid var(--sun)}
+table.tbl td{border-bottom:1px solid var(--line);padding:6px 9px;vertical-align:top;color:#E2E9F4;line-height:1.3}
+table.tbl tr:nth-child(even) td{background:rgba(255,255,255,.035)}
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:10px 0}
+.flow .node{flex:1;min-width:78px;background:rgba(20,43,80,.6);border:2px solid var(--line-2);border-radius:7px;padding:8px 7px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.flow .node .ft{font-family:"Saira Condensed";font-weight:800;font-size:11.5px;color:#fff;text-transform:uppercase;line-height:1.05}
+.flow .node small{font-size:9px;color:var(--ink-2);display:block;margin-top:2px}
+.flow .arr{display:flex;align-items:center;color:var(--red);font-weight:900;font-size:16px;padding:0 4px}
+.flow .node.y{background:var(--red);border-color:var(--red)}.flow .node.y .ft{color:#1A1400}.flow .node.y small{color:rgba(26,20,0,.72)}
+.flow .node.g{background:var(--sun);border-color:var(--sun)}.flow .node.g .ft{color:#04210F}.flow .node.g small{color:rgba(4,33,15,.78)}
+.wordpair{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:7px;overflow:hidden;margin:9px 0}
+.wordpair>div{padding:8px 11px}.wordpair .no{background:rgba(255,90,80,.08)}.wordpair .yes{background:rgba(31,166,74,.1)}
+.wordpair .h{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:.05em;margin-bottom:4px}
+.wordpair .no .h{color:#FFB4AC}.wordpair .yes .h{color:#5BE08C}.wordpair p{font-size:12px;margin:3px 0;color:#E2E9F4}
+.say{border:1px solid var(--line);border-left:4px solid var(--sun);background:rgba(31,166,74,.10);border-radius:7px;padding:8px 11px;margin:7px 0}
+.say .sq{font-family:"Saira";font-weight:600;font-size:13.5px;color:#F1F5FC;line-height:1.35}
+.say .sm{font-size:10.5px;color:var(--ink-3);margin-top:3px;display:block}
+.say.model{border-left-color:var(--navy);background:rgba(62,114,196,.10)}
+.bigq{font-family:"Saira Condensed";font-weight:800;font-size:22px;line-height:1.08;border-left:5px solid var(--red);padding:5px 0 5px 16px;margin:14px 0;color:#fff;text-transform:uppercase}
+.bigq .by{display:block;font-family:"Inter";font-weight:500;font-size:11.5px;color:var(--ink-2);text-transform:none;margin-top:6px}
+.pill{display:inline-block;font-family:"Saira Condensed";font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;padding:2px 9px;border-radius:99px;border:1px solid var(--line-2);color:var(--ink-2)}
+.pill.red{background:var(--red);color:#1A1400;border-color:var(--red)}
+.pill.sun{background:var(--sun);color:#04210F;border-color:var(--sun)}
+.pill.navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+ul.arrow{list-style:none;padding:0;margin:6px 0}ul.arrow li{position:relative;padding-left:17px;margin-bottom:5px;color:#E2E9F4;font-size:12.5px;line-height:1.32}ul.arrow li:before{content:"›";position:absolute;left:0;color:var(--red);font-weight:800;font-size:15px;top:-1px}
+ul.clean{padding-left:16px;margin:6px 0}ul.clean li{margin-bottom:4px;color:#E2E9F4;font-size:12.5px}
+.foot{margin-top:14px;border-top:1px solid var(--line);padding-top:7px;display:flex;justify-content:space-between;font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:9.5px;color:var(--ink-3)}
+.foot .red{color:var(--red)}
+.cover-h{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.cover-h .t{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:10px;color:var(--ink-3)}
+h1.big{font-size:52px;font-weight:900;color:#fff;transform:skewX(-4deg);transform-origin:left;line-height:.92;margin:6px 0 0}
+h1.big .y{color:var(--red)}
+.stripe{height:7px;width:130px;background:var(--red);border-radius:99px;margin:14px 0 0}
+.stripe:after{content:"";display:block;height:7px;width:70px;background:var(--sun);border-radius:99px;margin-top:5px}
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <span><b>Guia Rápido de Discursos (5 páginas) · Pepê Collaço 2026</b></span>
+  <span class="dot">●</span>
+  <button class="tbtn" id="pmEdit" onclick="pmToggleEdit()">✏️ Editar</button>
+  <button class="tbtn" onclick="pmDownload()">💾 Baixar HTML</button>
+  <span class="dot">●</span>
+  <span>PDF: <b>Imprimir → A4 → margens “Nenhuma” → ativar fundo</b></span>
+</div>
+
+<div class="doc">
+
+<!-- ===== PÁGINA 1 ===== -->
+<section class="page">
+  <div class="cover-h">
+    <span class="t">Guia rápido · resumo do Manual de Discursos</span>
+    <span class="t">Jul/2026 · Uso interno</span>
+  </div>
+  <div class="kicker">Versão de bolso, 5 páginas</div>
+  <h1 class="big">COMO <span class="y">A GENTE</span> FALA.</h1>
+  <div class="stripe"></div>
+  <p class="lead" style="margin-top:14px">Cola para consultar 5 minutos antes de gravar, dar entrevista ou subir ao palco. O Manual completo aprofunda; aqui está o essencial para não errar o tom.</p>
+
+  <div class="box"><div class="bt">A régua que resume tudo</div><p><mark>Recurso e força política convencem a liderança. A vida na ponta convence o eleitor.</mark> Toda fala forte liga a emenda ao que mudou na vida de uma pessoa de verdade.</p></div>
+
+  <div class="shead">As 4 marcas de toda fala boa</div>
+  <div class="grid g4">
+    <div class="card"><div class="cn">01 · Proximidade</div><div class="ct">Nomeia gente e lugar</div><p>Prefeito, bairro, rua, a “dona Alba”. Quanto mais nome próprio, mais verdade.</p></div>
+    <div class="card"><div class="cn">02 · Concretude</div><div class="ct">Fala em coisa, não conceito</div><p>“Asfalto, creche, ambulância.” Substantivo concreto no lugar de jargão.</p></div>
+    <div class="card"><div class="cn">03 · Causa e efeito</div><div class="ct">Liga a ação ao resultado</div><p>Rodovia, escoamento, economia. Nunca larga o resultado no meio.</p></div>
+    <div class="card"><div class="cn">04 · Humildade ativa</div><div class="ct">“Ninguém faz sozinho”</div><p>Divide o crédito com o time e o eleitor. Trabalho no lugar de vaidade.</p></div>
+  </div>
+
+  <div class="shead">As regras de ouro</div>
+  <div class="grid g2">
+    <div class="box green"><div class="bt">Sempre</div>
+      <ul class="clean" style="margin:0">
+        <li>Responder primeiro, explicar depois.</li>
+        <li>Contar uma história: pessoa, lugar, cena.</li>
+        <li>Falar de gente, não de siglas.</li>
+        <li>Ligar a obra ao cidadão.</li>
+        <li>Fechar curto e memorável.</li>
+      </ul>
+    </div>
+    <div class="box"><div class="bt">Nunca</div>
+      <ul class="clean" style="margin:0">
+        <li>Excesso de burocracia (rubrica, LDO, empenho).</li>
+        <li>Números soltos, um atrás do outro.</li>
+        <li>Frase longa que se perde antes do ponto.</li>
+        <li>Jargão que só a Assembleia entende.</li>
+        <li>Terminar no “estamos trabalhando”.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot"><span><span class="red">PEPÊ COLLAÇO 2026</span> · GUIA RÁPIDO DE DISCURSOS</span><span>Página 1 de 5 · O jeito de falar</span></div>
+</section>
+
+<!-- ===== PÁGINA 2 ===== -->
+<section class="page break">
+  <div class="phead"><div class="l"><div class="k">A mecânica</div><h2>Como montar a fala</h2></div><div class="pg">02<small>de 5</small></div></div>
+
+  <div class="shead">A estrutura (6 tempos)</div>
+  <div class="flow">
+    <div class="node"><div class="ft">Situação</div><small>onde estamos</small></div><div class="arr">›</div>
+    <div class="node"><div class="ft">Problema</div><small>o que faltava</small></div><div class="arr">›</div>
+    <div class="node y"><div class="ft">História</div><small>uma pessoa</small></div><div class="arr">›</div>
+    <div class="node"><div class="ft">Solução</div><small>o que fizemos</small></div><div class="arr">›</div>
+    <div class="node"><div class="ft">Resultado</div><small>o que mudou</small></div><div class="arr">›</div>
+    <div class="node g"><div class="ft">Impacto</div><small>na vida de quem</small></div>
+  </div>
+  <p class="small muted">O erro comum é parar no “resultado” (a obra saiu). A fala só termina de verdade no impacto: na pessoa.</p>
+
+  <div class="shead">Entrevista: pirâmide invertida</div>
+  <div class="flow">
+    <div class="node y"><div class="ft">1. Resposta</div><small>1 frase, direto</small></div><div class="arr">›</div>
+    <div class="node navy" style="background:var(--navy);border-color:var(--navy)"><div class="ft" style="color:#fff">2. Prova</div><small style="color:rgba(255,255,255,.8)">história/exemplo</small></div><div class="arr">›</div>
+    <div class="node"><div class="ft">3. Contexto</div><small>o tema maior</small></div>
+  </div>
+  <div class="box navy"><div class="bt">Regra de ouro da entrevista</div><p>Responda na <strong>primeira frase</strong>. Se em 5 segundos o repórter não ouviu a resposta, você já perdeu. O contexto é prêmio para quem já respondeu, nunca desculpa para quem foge.</p></div>
+
+  <div class="shead">Como falar números</div>
+  <div class="wordpair">
+    <div class="no"><div class="h">✗ Número solto</div><p>“Foram 150 municípios.”</p><p>“R$ 100 milhões.”</p><p>“R$ 300 mil para a APAE.”</p></div>
+    <div class="yes"><div class="h">✓ Número que vira imagem</div><p>“Estivemos em mais da metade das cidades de SC.”</p><p>“R$ 100 milhões pra região, e 80% ficou aqui.”</p><p>“A APAE tem um veículo novo pra buscar as crianças.”</p></div>
+  </div>
+  <p class="small muted">O número entra e sai; quem fica é a coisa que ele virou. Se a frase termina numa cifra, ela ainda não acabou.</p>
+
+  <div class="shead">Storytelling: 3 fórmulas</div>
+  <ul class="arrow">
+    <li><strong>Uma pessoa, um antes, um depois:</strong> “A dona Alba esperava a estrada a vida toda. Levamos o asfalto. Hoje ela não vive mais na poeira e na lama.”</li>
+    <li><strong>Da reclamação à lei:</strong> alguém reclamou de uma falta, aquilo virou lei, agora beneficia muitos.</li>
+    <li><strong>O caso pessoal:</strong> “Eu senti na pele o que um hospital passa. Por isso a saúde é uma bandeira que eu não largo.”</li>
+  </ul>
+
+  <div class="foot"><span><span class="red">PEPÊ COLLAÇO 2026</span> · GUIA RÁPIDO DE DISCURSOS</span><span>Página 2 de 5 · A mecânica</span></div>
+</section>
+
+<!-- ===== PÁGINA 3 ===== -->
+<section class="page break">
+  <div class="phead"><div class="l"><div class="k">Todos os temas</div><h2>Como falar de cada pauta</h2></div><div class="pg">03<small>de 5</small></div></div>
+  <p class="lead">Cada bandeira do mandato com o ângulo certo e a frase pronta. A regra vale para todas: <strong>sempre aterrissar na vida da ponta</strong>.</p>
+
+  <table class="tbl">
+    <tr><th style="width:20%">Tema</th><th style="width:37%">Como falar (o ângulo)</th><th>Frase pronta</th></tr>
+    <tr><td><strong>CCJ</strong></td><td>Liderança foi consequência do trabalho, não ponto de partida. Traduza o cargo em obra.</td><td>“A CCJ me deu a caneta e a mesa do governo. Usei isso pra trazer obra pra cá.”</td></tr>
+    <tr><td><strong>Bancada do Sul e modais</strong></td><td>Do bairro ao mapa: aeroporto, porto, SC-370, dragagem, bateria de lítio. Volte sempre ao emprego.</td><td>“Rodovia é escoamento da produção. E escoamento é a economia da região andando.”</td></tr>
+    <tr><td><strong>Teste rápido nas farmácias</strong></td><td>Acesso na cidade pequena. Antecipe a crítica: não substitui o médico, amplia o acesso.</td><td>“Em cidade pequena, um exame simples virava viagem. Hoje se faz na farmácia da esquina.”</td></tr>
+    <tr><td><strong>Painel solar nos hospitais</strong></td><td>Solução permanente, não ajuda temporária. A imagem do sol pagando a conta.</td><td>“Hospital gasta milhões de luz. A gente resolveu na raiz: o sol paga a conta, sobra pra atender.”</td></tr>
+    <tr><td><strong>Ovinocaprinocultura</strong></td><td>Traduza o técnico: ovelha, cabra, cooperativa, renda. Espelho da suinocultura.</td><td>“O que o porco fez pelo Oeste, a ovelha pode fazer pelo pequeno produtor daqui.”</td></tr>
+    <tr><td><strong>Autismo (TEA)</strong></td><td>Narrativa emocional em evolução (censo a inclusão), nunca uma lista de ações.</td><td>“Inclusão não é favor, é direito. O primeiro passo foi o censo: saber quantos são.”</td></tr>
+    <tr><td><strong>Ressarcimento por atraso de repasse</strong></td><td>Fala direto ao prefeito: a obra não para quando o Estado atrasa.</td><td>“O prefeito paga com recurso próprio e é ressarcido depois. A obra não para no meio.”</td></tr>
+    <tr><td><strong>Rota das águas termais</strong></td><td>Turismo que integra o Sul, de Santo Amaro a Pedras Grandes.</td><td>“Um corredor de águas termais que potencializa o turismo de toda a região.”</td></tr>
+  </table>
+
+  <div class="box"><div class="bt">A correção que vale por todas</div><p>Depois de “R$ X” e “presidência da CCJ”, <strong>sempre</strong> aterrisse na rua, no hospital, na família. Recurso e cargo impressionam a liderança; a vida na ponta convence o eleitor.</p></div>
+
+  <div class="foot"><span><span class="red">PEPÊ COLLAÇO 2026</span> · GUIA RÁPIDO DE DISCURSOS</span><span>Página 3 de 5 · Os temas</span></div>
+</section>
+
+<!-- ===== PÁGINA 4 ===== -->
+<section class="page break">
+  <div class="phead"><div class="l"><div class="k">Marca regional</div><h2>De Tubarão, para Tubarão</h2></div><div class="pg">04<small>de 5</small></div></div>
+  <p class="lead">A linha falável e recorrente da campanha, no espírito de um “Estrada Boa Rural”. O Pepê <strong>abre ou fecha</strong> os vídeos de rua, obra e entrega com a mesma assinatura. A repetição constrói o reconhecimento.</p>
+
+  <div class="bigq">De Tubarão, para Tubarão.<span class="by">Origem que vira compromisso, presença que vira resultado. A lógica: quando a cidade tem quem a conhece e leva a demanda adiante, o resultado aparece.</span></div>
+
+  <div class="shead">A régua: qual assinatura usar</div>
+  <table class="tbl">
+    <tr><th style="width:34%">Quando o foco é…</th><th>Assinatura</th></tr>
+    <tr><td>A cidade</td><td><strong>De Tubarão, para Tubarão.</strong></td></tr>
+    <tr><td>A região</td><td><strong>De Tubarão, para a Amurel.</strong></td></tr>
+    <tr><td>O Estado / institucional</td><td><strong>Tubarão no coração. Santa Catarina na missão.</strong></td></tr>
+    <tr><td>Ampliar sem perder a origem</td><td><strong>A força de Tubarão ajudando a representar Santa Catarina.</strong></td></tr>
+  </table>
+
+  <div class="grid g2">
+    <div>
+      <div class="shead">Aberturas de vídeo</div>
+      <ul class="arrow" style="margin:0">
+        <li>“Será que vale a pena Tubarão ter representante? Olha isso aqui…”</li>
+        <li>“Quando Tubarão tem voz, o resultado aparece.”</li>
+        <li>“Eu conheço essa cidade, conheço esses bairros.”</li>
+      </ul>
+    </div>
+    <div>
+      <div class="shead">Fechamentos de vídeo</div>
+      <ul class="arrow" style="margin:0">
+        <li>“É por isso que eu digo: de Tubarão, para Tubarão.”</li>
+        <li>“Tubarão tem voz. E quando tem voz, tem resultado.”</li>
+        <li>“Tubarão no coração. Santa Catarina na missão.”</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box sun"><div class="bt">Princípio da expansão</div><p>A origem é sempre o ponto de partida. Mesmo no conteúdo estadual, Tubarão aparece primeiro, porque é a base que dá autenticidade ao alcance. <strong>Sai de Tubarão; nunca sem Tubarão.</strong></p></div>
+  <p class="small muted">Detalhamento completo (manifesto, aplicações por tema, tom de voz e legendas) no documento “Linha Conceitual Regional, De Tubarão, para Tubarão”.</p>
+
+  <div class="foot"><span><span class="red">PEPÊ COLLAÇO 2026</span> · GUIA RÁPIDO DE DISCURSOS</span><span>Página 4 de 5 · Marca regional</span></div>
+</section>
+
+<!-- ===== PÁGINA 5 ===== -->
+<section class="page break">
+  <div class="phead"><div class="l"><div class="k">Página de referência</div><h2>Números, conceitos e falas</h2></div><div class="pg">05<small>de 5</small></div></div>
+
+  <div class="shead">Os números do mandato</div>
+  <div class="grid g4">
+    <div class="stat"><div class="num">494</div><div class="lab">emendas mapeadas na planilha interna</div></div>
+    <div class="stat navy"><div class="num">R$ 149,8 mi</div><div class="lab">soma dos registros mapeados*</div></div>
+    <div class="stat sun"><div class="num">114</div><div class="lab">municípios atendidos</div></div>
+    <div class="stat green"><div class="num">57%</div><div class="lab">do valor ficou na AMUREL (R$ 85,4 mi)</div></div>
+  </div>
+  <div class="grid g4" style="margin-top:10px">
+    <div class="stat"><div class="num">R$ 18,5 mi</div><div class="lab">só em Tubarão (44 frentes)</div></div>
+    <div class="stat navy"><div class="num">R$ 74,5 mi</div><div class="lab">pavimentação e infraestrutura</div></div>
+    <div class="stat sun"><div class="num">121</div><div class="lab">emendas já pagas · 115 publicadas</div></div>
+    <div class="stat green"><div class="num">+150</div><div class="lab">cidades citadas em palanque</div></div>
+  </div>
+  <p class="small muted">*Dado da planilha interna. No palanque ele fala “+ R$ 200 mi no Estado / R$ 100 mi na região” (inclui recursos negociados, não só emenda carimbada). <strong>Travar número e status com a assessoria antes do uso público.</strong></p>
+
+  <div class="grid g2" style="margin-top:6px">
+    <div>
+      <div class="shead">Principais conceitos</div>
+      <ul class="arrow" style="margin:0">
+        <li><strong>Recurso convence liderança; a ponta convence o eleitor.</strong></li>
+        <li>Parceria › Prova › Vida real › Transformação.</li>
+        <li>Realização no lugar de investimento.</li>
+        <li>Consequência no lugar de esforço.</li>
+        <li>Responda primeiro (pirâmide invertida).</li>
+        <li>De Tubarão, para Tubarão.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="shead">Principais falas (bordões)</div>
+      <ul class="arrow" style="margin:0">
+        <li>“Mandato é ferramenta, mandato é ponte.”</li>
+        <li>“Nunca foi sorte, sempre foi trabalho.”</li>
+        <li>“Time que está ganhando não se mexe.”</li>
+        <li>“Inclusão não é favor, é direito.”</li>
+        <li>“A melhor pesquisa é a da rua.”</li>
+        <li>“Eu senti na pele o que um hospital passa.”</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:12px"><div class="bt">A frase que fecha qualquer reunião</div><p style="font-family:'Saira Condensed';font-weight:800;font-size:18px;text-transform:uppercase;color:#fff">O número mostra força. A história mostra sentido.</p><p style="margin-top:6px">Pré-campanha: o número fortalece. Campanha: a pessoa convence.</p></div>
+
+  <div class="foot"><span><span class="red">PEPÊ COLLAÇO 2026</span> · GUIA RÁPIDO DE DISCURSOS</span><span>Página 5 de 5 · Referência</span></div>
+</section>
+
+</div><!-- /doc -->
+
+<script>
+function pmToggleEdit(){var d=document.querySelector('.doc');var on=d.getAttribute('contenteditable')==='true';d.setAttribute('contenteditable',on?'false':'true');document.body.classList.toggle('pm-editing',!on);var b=document.getElementById('pmEdit');if(b)b.textContent=on?'✏️ Editar':'✓ Editando: sair';}
+var pmKey='gd_guia_rapido_v1';
+function pmSave(){try{localStorage.setItem(pmKey,JSON.stringify({t:Date.now(),html:document.querySelector('.doc').innerHTML}));}catch(e){}}
+function pmDownload(){var d=document.querySelector('.doc');d.setAttribute('contenteditable','false');document.body.classList.remove('pm-editing');var b=document.getElementById('pmEdit');if(b)b.textContent='✏️ Editar';var html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;var blob=new Blob([html],{type:'text/html;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Guia_Rapido_Discursos_Pepe_Collaco_editado.html';document.body.appendChild(a);a.click();a.remove();}
+document.addEventListener('DOMContentLoaded',function(){try{var raw=localStorage.getItem(pmKey);if(raw){var when=new Date(JSON.parse(raw).t).toLocaleString('pt-BR');var bar=document.createElement('div');bar.className='no-print';bar.style.cssText='position:sticky;top:0;z-index:60;background:#0F8A3A;color:#fff;display:flex;gap:10px;justify-content:center;align-items:center;padding:8px;font:600 12px Inter';bar.innerHTML='📝 Há uma edição salva ('+when+').';var b1=document.createElement('button');b1.className='tbtn';b1.textContent='Restaurar';b1.onclick=function(){document.querySelector('.doc').innerHTML=JSON.parse(raw).html;bar.remove();};var b2=document.createElement('button');b2.className='tbtn ghost';b2.textContent='Descartar';b2.onclick=function(){localStorage.removeItem(pmKey);bar.remove();};bar.appendChild(b1);bar.appendChild(b2);document.body.insertBefore(bar,document.body.firstChild);}}catch(e){}var d=document.querySelector('.doc');if(d)d.addEventListener('input',function(){clearTimeout(window.__gdt);window.__gdt=setTimeout(pmSave,900);});});
+</script>
+</body>
+</html>

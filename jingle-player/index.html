@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jingles · Pepê Collaço 11223</title>
+<meta name="description" content="Player dos jingles da campanha Pepê Collaço 11223. Toca em looping, funciona sem internet.">
+<meta name="theme-color" content="#0E1E46">
+
+<!-- Cartão de compartilhamento. A URL da imagem precisa ser absoluta: os robôs
+     do WhatsApp e do Facebook não resolvem caminho relativo. Gerado por
+     og/gerar-og.py; para mudar o cartão, edite lá e rode de novo. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pepê Collaço 11223">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://jingle.pepecollaco.com/">
+<meta property="og:title" content="Os jingles da campanha · Pepê Collaço 11223">
+<meta property="og:description" content="3 faixas para tocar na rua. O player funciona sem internet, na carreata inteira.">
+<meta property="og:image" content="https://jingle.pepecollaco.com/img/og.jpg">
+<meta property="og:image:secure_url" content="https://jingle.pepecollaco.com/img/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Quem Faz Representa: os jingles da campanha de Pepê Collaço 11223, em jingle.pepecollaco.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Os jingles da campanha · Pepê Collaço 11223">
+<meta name="twitter:description" content="3 faixas para tocar na rua. O player funciona sem internet, na carreata inteira.">
+<meta name="twitter:image" content="https://jingle.pepecollaco.com/img/og.jpg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="icon" href="img/favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Jingles 11223">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<canvas id="fundo" aria-hidden="true"></canvas>
+
+<div class="app">
+
+  <header class="topo">
+    <img class="marca" src="img/marca-collaco.webp" alt="Pepê Collaço, deputado estadual, 11223" width="960" height="880">
+    <button id="btEstado" class="selo" type="button" aria-live="polite">
+      <span class="selo-ponto" aria-hidden="true"></span>
+      <span id="txEstado">verificando…</span>
+    </button>
+  </header>
+
+  <main class="palco">
+
+    <div class="capa-area">
+      <div class="capa-moldura">
+        <img id="capa" class="capa" src="img/capa-03.webp" alt="" width="800" height="800">
+      </div>
+    </div>
+
+    <div class="coluna">
+
+    <div class="info">
+      <h1 id="titulo" class="titulo">Ele Foi Lá e Fez</h1>
+      <p id="subtitulo" class="subtitulo">funk · 128 bpm</p>
+    </div>
+
+    <div id="barras" class="barras" aria-hidden="true"></div>
+
+    <div class="tempo">
+      <span id="decorrido">0:00</span>
+      <input id="busca" class="busca" type="range" min="0" max="1000" value="0" step="1"
+             aria-label="Posição da faixa">
+      <span id="restante">-1:30</span>
+    </div>
+
+    <div class="controles">
+      <button id="btAnterior" class="bt bt-lado" type="button" aria-label="Faixa anterior">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6v12M19 6l-9 6 9 6z"/></svg>
+      </button>
+      <button id="btTocar" class="bt bt-tocar" type="button" aria-label="Tocar">
+        <svg class="ic-play"  viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+        <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      </button>
+      <button id="btProxima" class="bt bt-lado" type="button" aria-label="Próxima faixa">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 6v12M5 6l9 6-9 6z"/></svg>
+      </button>
+    </div>
+
+    <div class="modos" role="radiogroup" aria-label="Modo de repetição">
+      <button class="modo" type="button" role="radio" data-modo="playlist" aria-checked="true">
+        <strong>Playlist</strong><span>as 3 em ciclo</span>
+      </button>
+      <button class="modo" type="button" role="radio" data-modo="uma" aria-checked="false">
+        <strong>Repetir uma</strong><span>só esta faixa</span>
+      </button>
+      <button class="modo" type="button" role="radio" data-modo="aleatorio" aria-checked="false">
+        <strong>Aleatório</strong><span>ordem sorteada</span>
+      </button>
+    </div>
+
+    <div id="linhaVolume" class="volume">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9zM16.5 8.5a5 5 0 010 7"/></svg>
+      <input id="volume" type="range" min="0" max="100" value="100" step="1" aria-label="Volume">
+      <output id="volumeValor">100</output>
+    </div>
+
+    <ol id="lista" class="lista"></ol>
+
+    <button id="btTela" class="tela" type="button" aria-pressed="false">
+      <span class="tela-ic" aria-hidden="true"></span>
+      <span id="txTela">Manter a tela ligada</span>
+    </button>
+
+    </div><!-- .coluna -->
+
+  </main>
+
+  <footer class="rodape">
+    <p class="aviso-ia">CONTEÚDO PRODUZIDO COM USO DE INTELIGÊNCIA ARTIFICIAL</p>
+    <p class="creditos">Composição e produção: Isabela Rodrigues</p>
+  </footer>
+
+</div>
+
+<div id="preparando" class="preparando" hidden>
+  <div class="preparando-caixa">
+    <h2>Preparando para tocar sem internet</h2>
+    <p id="preparandoTexto">Baixando as faixas…</p>
+    <div class="preparando-trilho"><div id="preparandoBarra" class="preparando-barra"></div></div>
+    <p class="preparando-nota">Deixe esta tela aberta até concluir. Depois disso o player toca em qualquer lugar, mesmo sem sinal.</p>
+  </div>
+</div>
+
+<audio id="audio" preload="auto" playsinline></audio>
+
+<script src="app.js"></script>
+</body>
+</html>

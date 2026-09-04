@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De Tubarão, para Tubarão — Linha Conceitual Regional · Pepê Collaço 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#061A3A; --ink-d:#04122B; --ink-2:#C3CFE0; --ink-3:#8FA0BC;
+  --line:rgba(255,255,255,.12); --line-2:rgba(255,255,255,.24); --white:#fff;
+  --red:#FFD21F; --red-deep:#FFDD57; --navy:#3E72C4; --navy-2:#86B4F0;
+  --sun:#1FA64A; --sun-2:#0F8A3A; --green:#46D07D;
+  --tint-red:rgba(255,210,31,.10); --tint-navy:rgba(62,114,196,.15); --tint-sun:rgba(31,166,74,.14); --tint-green:rgba(70,208,125,.13);
+  --brush:
+    linear-gradient(118deg, transparent 0 19.6%, rgba(31,166,74,.06) 20% 20.9%, transparent 21.3%),
+    linear-gradient(118deg, transparent 0 38%, rgba(255,210,31,.05) 38.3% 39%, transparent 39.4%),
+    linear-gradient(118deg, transparent 0 58%, rgba(255,255,255,.035) 58.3% 59%, transparent 59.4%),
+    linear-gradient(118deg, transparent 0 78%, rgba(62,114,196,.07) 78.3% 79.4%, transparent 79.8%),
+    radial-gradient(130% 90% at 88% -12%, rgba(8,36,82,.85), transparent 58%),
+    radial-gradient(120% 90% at -10% 110%, rgba(15,138,58,.16), transparent 55%);
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--ink-d);color:#E7EDF7;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:15px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.doc{max-width:210mm;margin:24px auto;background:var(--ink);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.05)}
+h1,h2,h3,h4{font-family:"Saira Condensed",sans-serif;color:var(--white);letter-spacing:.01em;line-height:1.02;font-weight:800;text-transform:uppercase}
+.kicker{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--red)}
+p{margin:0 0 12px;color:#E2E9F4}
+strong{font-weight:700;color:#fff}em{font-style:italic;color:#EAF0F8}
+mark{background:rgba(255,210,31,.22);color:#FFF1B8;padding:0 .15em;border-radius:2px}
+.small{font-size:12.5px;color:var(--ink-2)}.muted{color:var(--ink-3)}.center{text-align:center}
+.page{padding:26mm 22mm 24mm;position:relative;min-height:297mm;background-color:var(--ink);background-image:var(--brush);background-attachment:local}
+.page--tight{padding-top:18mm}
+@page{size:A4;margin:0}
+@media print{body{background:#fff}.doc{max-width:none;margin:0;border-radius:0;box-shadow:none}.no-print{display:none!important}.page{break-after:page}.break{break-before:page}.avoid{break-inside:avoid}h2,h3{break-after:avoid}}
+.break{}.avoid{break-inside:avoid}
+.toolbar{position:sticky;top:0;z-index:50;background:var(--ink-d);color:#fff;display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;padding:9px 16px;font-size:12.5px;border-bottom:1px solid rgba(255,255,255,.1)}
+.toolbar b{color:#fff}.toolbar .dot{color:var(--red)}
+.tbtn{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:12px;background:var(--red);color:#1A1400;border:none;border-radius:6px;padding:5px 12px;cursor:pointer}
+.tbtn:hover{background:#FFDD57}.tbtn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
+.pm-editing .doc{outline:2px dashed rgba(255,210,31,.45);outline-offset:-6px}
+[contenteditable="true"]{cursor:text}
+.cover{background-color:var(--ink-d);background-image:var(--brush);color:#fff;min-height:297mm;padding:24mm 22mm;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.cover:before{content:"";position:absolute;right:-12%;top:-10%;width:62%;height:60%;background:radial-gradient(circle at center,rgba(255,210,31,.18),transparent 62%)}
+.cover:after{content:"";position:absolute;left:-12%;bottom:-16%;width:60%;height:58%;background:radial-gradient(circle at center,rgba(31,166,74,.28),transparent 60%)}
+.cover>*{position:relative;z-index:2}
+.cover .topline{display:flex;justify-content:space-between;font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:rgba(255,255,255,.72)}
+.cover h1{color:#fff;font-size:82px;font-weight:900;line-height:.9;margin:0;transform:skewX(-4deg);transform-origin:left}
+.cover h1 .red{color:var(--red)}
+.cover .sub{font-family:"Saira Condensed";font-weight:600;font-size:21px;text-transform:uppercase;letter-spacing:.02em;color:rgba(255,255,255,.92);margin-top:20px;max-width:26ch;line-height:1.12}
+.cover .stripe{height:9px;width:170px;background:var(--red);margin:26px 0 0;border-radius:99px}
+.cover .stripe:after{content:"";display:block;height:9px;width:90px;background:var(--sun);border-radius:99px;margin-top:6px}
+.cover .meta{display:flex;gap:36px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.8)}
+.cover .meta b{display:block;font-family:"Saira Condensed";font-weight:700;color:var(--red);font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.cover .conf{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.05em;color:rgba(255,255,255,.6)}
+.chead{display:flex;align-items:baseline;gap:14px;border-bottom:3px solid var(--sun);padding-bottom:10px;margin:0 0 20px}
+.chead .n{font-family:"Saira Condensed";font-weight:900;font-size:40px;color:var(--red);line-height:.85;transform:skewX(-5deg)}
+.chead h2{font-size:30px;margin:0;flex:1;color:#fff}
+.shead{font-family:"Saira Condensed";font-weight:800;font-size:20px;margin:26px 0 8px;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:10px;letter-spacing:.01em}
+.shead:before{content:"";width:14px;height:14px;background:var(--sun);display:inline-block;flex:none;border-radius:2px}
+.rh{position:absolute;top:12mm;left:22mm;right:22mm;display:flex;justify-content:space-between;font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--ink-3);border-bottom:1px solid var(--line);padding-bottom:6px;z-index:3}
+.rh .red{color:var(--red)}
+.lead{font-size:17px;line-height:1.55;color:#EDF2FA;font-weight:500}
+.lead--big{font-family:"Saira Condensed";font-weight:700;font-size:23px;line-height:1.2;color:#fff}
+.box{border:1px solid var(--line);border-left:5px solid var(--red);background:var(--tint-red);padding:16px 18px;margin:16px 0;border-radius:8px}
+.box .bt{font-family:"Saira Condensed";font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.05em;margin:0 0 6px;color:var(--red-deep)}
+.box.navy{border-left-color:var(--navy);background:var(--tint-navy)}.box.navy .bt{color:var(--navy-2)}
+.box.sun{border-left-color:var(--sun);background:var(--tint-sun)}.box.sun .bt{color:#5BE08C}
+.box.green{border-left-color:var(--green);background:var(--tint-green)}.box.green .bt{color:var(--green)}
+.box p:last-child{margin-bottom:0}.box p{color:#E7EDF7}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+.card{border:1px solid var(--line);background:rgba(20,43,80,.55);border-radius:10px;padding:15px 16px}
+.card .ct{font-family:"Saira Condensed";font-weight:800;font-size:16px;margin:0 0 4px;color:#fff;text-transform:uppercase}
+.card .cn{font-family:"Saira Condensed";font-weight:800;font-size:13px;color:var(--red);letter-spacing:.06em}
+.card p{font-size:13px;margin:0;color:#D9E2F0}
+.pill{display:inline-block;font-family:"Saira Condensed";font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.05em;padding:3px 10px;border-radius:99px;border:1px solid var(--line-2);color:var(--ink-2)}
+.pill.red{background:var(--red);color:#1A1400;border-color:var(--red)}
+.pill.sun{background:var(--sun);color:#04210F;border-color:var(--sun)}
+.pill.navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+ul.arrow{list-style:none;padding:0;margin:8px 0}ul.arrow li{position:relative;padding-left:20px;margin-bottom:6px;color:#E2E9F4}ul.arrow li:before{content:"→";position:absolute;left:0;color:var(--red);font-weight:800}
+ul.clean{padding-left:18px;margin:8px 0}ul.clean li{margin-bottom:5px;color:#E2E9F4}
+.bigq{font-family:"Saira Condensed";font-weight:800;font-size:30px;line-height:1.1;border-left:6px solid var(--red);padding:6px 0 6px 20px;margin:20px 0;color:#fff;text-transform:uppercase}
+.bigq .by{display:block;font-family:"Inter";font-weight:500;font-size:13px;color:var(--ink-2);text-transform:none;margin-top:8px}
+.say{border:1px solid var(--line);border-left:4px solid var(--navy);background:rgba(62,114,196,.10);border-radius:8px;padding:11px 14px;margin:9px 0}
+.say .sq{font-family:"Saira";font-weight:600;font-size:15.5px;color:#F1F5FC;line-height:1.4}
+.say .sm{font-size:11.5px;color:var(--ink-3);margin-top:5px;display:block}
+.say.open{border-left-color:var(--sun);background:rgba(31,166,74,.10)}
+.say.open .sm:before{content:"▶ ABERTURA — ";color:#5BE08C;font-weight:700}
+.say.close{border-left-color:var(--red);background:rgba(255,210,31,.08)}
+.say.close .sm:before{content:"■ FECHAMENTO — ";color:var(--red-deep);font-weight:700}
+.wordpair{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:12px 0}
+.wordpair>div{padding:10px 12px}.wordpair .no{background:rgba(255,90,80,.08)}.wordpair .yes{background:rgba(31,166,74,.1)}
+.wordpair .h{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.06em;margin-bottom:6px}
+.wordpair .no .h{color:#FFB4AC}.wordpair .yes .h{color:#5BE08C}.wordpair p{font-size:13px;margin:4px 0;color:#E2E9F4}
+.toc .row{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:1px solid var(--line)}
+.toc .row .pt{font-family:"Saira Condensed";font-weight:800;color:var(--red);width:30px;font-size:14px}
+.toc .row .nm{font-family:"Saira Condensed";font-weight:600;font-size:15px;color:#EAF0F8;text-transform:uppercase}
+.toc .row .ln{flex:1;border-bottom:1px dotted var(--line-2);transform:translateY(-3px)}
+footer.fin{background:var(--ink-d);background-image:var(--brush);color:rgba(255,255,255,.85);padding:22mm;text-align:center}
+footer.fin h3{color:var(--red);font-size:28px}
+.divline{height:3px;background:var(--sun);margin:22px 0;border-radius:2px}
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <span><b>De Tubarão, para Tubarão — Linha Conceitual Regional</b></span>
+  <span class="dot">●</span>
+  <button class="tbtn" id="pmEdit" onclick="pmToggleEdit()">✏️ Editar</button>
+  <button class="tbtn" onclick="pmDownload()">💾 Baixar HTML</button>
+  <span class="dot">●</span>
+  <span>PDF: <b>Imprimir → Salvar como PDF → A4 → margens “Nenhuma” → ativar fundo</b></span>
+</div>
+
+<div class="doc">
+
+<!-- CAPA -->
+<section class="cover page">
+  <div class="topline"><span>Linha conceitual de campanha · Confidencial</span><span>Edição 1.0 — Jul/2026</span></div>
+  <div>
+    <div class="kicker" style="color:rgba(255,255,255,.7)">Conceito regional de comunicação</div>
+    <h1>DE TUBARÃO,<br><span class="red">PARA</span> TUBARÃO.</h1>
+    <div class="sub">A marca falável dos vídeos de rua, obra e entrega — de Tubarão à Amurel e a Santa Catarina</div>
+    <div class="stripe"></div>
+  </div>
+  <div>
+    <div class="meta">
+      <div><b>Base afetiva e política</b>Tubarão</div>
+      <div><b>Expansão</b>Amurel · Sul · Santa Catarina</div>
+      <div><b>Uso</b>Vídeos · Entregas · Obras · Bairros · Institucional</div>
+    </div>
+    <div class="conf" style="margin-top:18px">USO INTERNO · MARCA RECORRENTE · REPETIÇÃO GERA RECONHECIMENTO</div>
+  </div>
+</section>
+
+<!-- COMO USAR + ÍNDICE -->
+<section class="page page--tight break">
+  <div class="rh"><span><span class="red">PEPÊ COLLAÇO 2026</span> · LINHA REGIONAL</span><span>Como usar</span></div>
+  <div class="kicker">Antes de tudo</div>
+  <h2 style="font-size:32px;margin:6px 0 14px;color:#fff">Uma frase que vira marca</h2>
+  <p class="lead">Isto não é um slogan solto. É uma <strong>linha recorrente</strong> — no espírito de um “Estrada Boa Rural”. Toda vez que o Pepê grava uma rua, uma obra, uma emenda ou uma visita em Tubarão, ele <mark>abre ou fecha com a mesma assinatura</mark>. A repetição é o que constrói reconhecimento: o eleitor passa a associar, sem pensar, presença + resultado + Tubarão.</p>
+  <div class="grid g2" style="margin-top:16px">
+    <div class="box sun"><div class="bt">A régua rápida</div><p><strong>Foco na cidade</strong> → “De Tubarão, para Tubarão”. <strong>Foco na região</strong> → “De Tubarão, para a Amurel”. <strong>Foco estadual/institucional</strong> → “Tubarão no coração. Santa Catarina na missão.”</p></div>
+    <div class="box navy"><div class="bt">A lógica que sustenta tudo</div><p>Quando Tubarão tem quem conhece a cidade, anda nos bairros e leva a demanda adiante, <strong>o resultado aparece</strong>. A frase só tem força porque vem depois da entrega.</p></div>
+  </div>
+  <div class="shead">Índice</div>
+  <div class="toc">
+    <div class="row"><span class="pt">01</span><span class="nm">Conceito principal — De Tubarão, para Tubarão</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">02</span><span class="nm">Conceito ampliado — Tubarão no coração. SC na missão.</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">03</span><span class="nm">Manifesto da campanha regional</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">04</span><span class="nm">Frases de abertura para vídeos</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">05</span><span class="nm">Frases de fechamento para vídeos</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">06</span><span class="nm">Aplicações por tema</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">07</span><span class="nm">Expansão — Tubarão → Amurel → Santa Catarina</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">08</span><span class="nm">Tom de voz</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">09</span><span class="nm">Vinhetas, selos e legendas de Instagram</span><span class="ln"></span></div>
+  </div>
+</section>
+
+<!-- 01 CONCEITO PRINCIPAL -->
+<section class="page break">
+  <div class="rh"><span><span class="red">LINHA REGIONAL</span></span><span>01 · Conceito principal</span></div>
+  <div class="chead"><div class="n">01</div><h2>Conceito principal — “De Tubarão, para Tubarão”</h2></div>
+  <div class="bigq">De Tubarão, para Tubarão.<span class="by">O eixo de comunicação local. Origem que vira compromisso, presença que vira resultado.</span></div>
+  <p class="lead">Não é só uma frase bonita. É uma forma de comunicar três coisas ao mesmo tempo: <strong>representatividade</strong> (é um dos nossos), <strong>proximidade</strong> (ele anda aqui, conhece os bairros) e <strong>resultado</strong> (e por isso a coisa acontece). Ninguém defende bem uma cidade que não conhece — e Tubarão é a cidade que o Pepê conhece pelo nome da rua.</p>
+
+  <div class="shead">A lógica, em quatro tempos</div>
+  <ul class="arrow">
+    <li><strong>Origem:</strong> ele é de Tubarão — não chegou de fora em ano de eleição.</li>
+    <li><strong>Presença:</strong> anda nos bairros, escuta as pessoas, vê o problema onde ele acontece.</li>
+    <li><strong>Ação:</strong> leva a demanda adiante — do bairro à Assembleia, da Assembleia ao recurso.</li>
+    <li><strong>Resultado:</strong> a rua sai, o posto equipa, o exame chega perto. E aí a frase se prova sozinha.</li>
+  </ul>
+
+  <div class="box"><div class="bt">Por que funciona</div><p>É curta, é falável e é <strong>verdadeira</strong> — ancora numa biografia real (vereador, vice, prefeito de Tubarão). Vira gesto: ele pode dizer no começo ou no fim de qualquer vídeo, e o eleitor completa mentalmente na terceira vez que ouve.</p></div>
+
+  <div class="shead">Variações próximas (mesmo território de sentido)</div>
+  <div class="tags">
+    <span class="pill">Tubarão tem quem representa</span>
+    <span class="pill">Vale a pena ter representante em Tubarão</span>
+    <span class="pill">Quando Tubarão tem voz, o resultado aparece</span>
+    <span class="pill">A gente trabalha por Tubarão porque conhece Tubarão</span>
+  </div>
+</section>
+
+<!-- 02 CONCEITO AMPLIADO -->
+<section class="page break">
+  <div class="rh"><span><span class="red">LINHA REGIONAL</span></span><span>02 · Conceito ampliado</span></div>
+  <div class="chead"><div class="n">02</div><h2>Conceito ampliado — “Tubarão no coração. Santa Catarina na missão.”</h2></div>
+  <div class="bigq">Tubarão no coração.<br>Santa Catarina na <span style="color:var(--red)">missão</span>.<span class="by">Amplia o território político sem abandonar a origem.</span></div>
+  <p class="lead">Este é o conceito que <strong>expande sem trair a base</strong>. Ele resolve a tensão natural de um deputado estadual: como continuar sendo “o de Tubarão” e, ao mesmo tempo, representar uma região e um Estado inteiros? A resposta está na própria frase — <mark>Tubarão é o coração (afeto, base, origem); Santa Catarina é a missão (responsabilidade, alcance, dever)</mark>.</p>
+
+  <div class="shead">A lógica</div>
+  <p>Ele é de Tubarão, trabalha por Tubarão — mas também representa uma região que precisa de voz, presença e força política em Santa Catarina. O coração explica de onde ele vem; a missão explica até onde ele vai. Um não anula o outro: <strong>é a força de Tubarão que o credencia a representar o Estado.</strong></p>
+
+  <div class="grid g2">
+    <div class="card"><div class="cn">CORAÇÃO</div><div class="ct">Tubarão</div><p>Base afetiva, política e territorial. É onde a história começou e onde a confiança se prova.</p></div>
+    <div class="card"><div class="cn">MISSÃO</div><div class="ct">Santa Catarina</div><p>O alcance do mandato: Amurel, Sul e todo o Estado. Responsabilidade que nasce da base.</p></div>
+  </div>
+
+  <div class="box navy"><div class="bt">Quando usar cada um</div><p><strong>“De Tubarão, para Tubarão”</strong> abre e fecha o conteúdo <em>local</em>. <strong>“Tubarão no coração. Santa Catarina na missão”</strong> assina o conteúdo <em>estadual e institucional</em>. Nunca competem — se complementam.</p></div>
+</section>
+
+<!-- 03 MANIFESTO -->
+<section class="page break">
+  <div class="rh"><span><span class="red">LINHA REGIONAL</span></span><span>03 · Manifesto</span></div>
+  <div class="chead"><div class="n">03</div><h2>Manifesto da campanha regional</h2></div>
+  <p class="small muted">Texto-base para vídeo de conceito, abertura de evento ou post-manifesto. Curto, falável, para ser dito olhando na câmera.</p>
+  <div class="box sun avoid" style="margin-top:8px">
+    <p class="lead--big" style="margin-bottom:12px">Tubarão não é pano de fundo. É origem, é base, é compromisso.</p>
+    <p>Aqui eu aprendi política na rua, não no gabinete. Conheço os bairros, conheço as pessoas, sei onde o poder público ainda não chegou.</p>
+    <p>E quando a cidade tem alguém que conhece a cidade — que anda, que escuta e que leva a demanda adiante — <strong>o resultado aparece</strong>. Em asfalto, em saúde, em creche, em dignidade.</p>
+    <p>É simples assim: <strong>de Tubarão, para Tubarão.</strong></p>
+    <p>E é essa mesma força, nascida aqui, que representa a Amurel, o Sul e Santa Catarina inteira.</p>
+    <p style="margin-bottom:0"><strong>Tubarão no coração. Santa Catarina na missão.</strong></p>
+  </div>
+  <div class="box"><div class="bt">Versão de 15 segundos (corte curto)</div><p>“Eu conheço essa cidade pelo nome da rua. E quando Tubarão tem quem representa, o resultado aparece. De Tubarão, para Tubarão.”</p></div>
+</section>
+
+<!-- 04 ABERTURAS -->
+<section class="page break">
+  <div class="rh"><span><span class="red">LINHA REGIONAL</span></span><span>04 · Aberturas para vídeos</span></div>
+  <div class="chead"><div class="n">04</div><h2>Frases de abertura para vídeos</h2></div>
+  <p class="lead">Faláveis, espontâneas, nada publicitárias. Servem para os primeiros 3 segundos — segurar quem está passando o dedo. Ele fala olhando pra câmera ou pra rua.</p>
+  <div class="say open"><div class="sq">“Será que vale a pena Tubarão ter representante? Olha isso aqui…”</div><span class="sm">gancho de curiosidade — ótima para obra/entrega.</span></div>
+  <div class="say open"><div class="sq">“Quando Tubarão tem voz, o resultado aparece.”</div><span class="sm">tese da campanha dita logo de cara.</span></div>
+  <div class="say open"><div class="sq">“Isso aqui é o que acontece quando a cidade tem quem represente.”</div><span class="sm">aponta pra obra atrás dele.</span></div>
+  <div class="say open"><div class="sq">“De Tubarão, para Tubarão. É assim que a gente trabalha.”</div><span class="sm">assinatura na abertura — para conteúdos de rotina.</span></div>
+  <div class="say open"><div class="sq">“Eu conheço essa cidade, conheço esses bairros — e sei onde o poder público precisa chegar.”</div><span class="sm">estabelece autoridade de proximidade.</span></div>
+  <div class="say open"><div class="sq">“Ó o que tá acontecendo aqui no [bairro]. Deixa eu te mostrar.”</div><span class="sm">informal, de rua — bom para stories.</span></div>
+  <div class="say open"><div class="sq">“Essa rua aqui tem história. E hoje ela mudou.”</div><span class="sm">abre no antes/depois.</span></div>
+</section>
+
+<!-- 05 FECHAMENTOS -->
+<section class="page break">
+  <div class="rh"><span><span class="red">LINHA REGIONAL</span></span><span>05 · Fechamentos para vídeos</span></div>
+  <div class="chead"><div class="n">05</div><h2>Frases de fechamento para vídeos</h2></div>
+  <p class="lead">A assinatura que fica. Curta, firme, memorável — de preferência com o bordão. É o que o eleitor repete.</p>
+  <div class="say close"><div class="sq">“É por isso que eu digo: de Tubarão, para Tubarão.”</div><span class="sm">fechamento-padrão local.</span></div>
+  <div class="say close"><div class="sq">“Tubarão tem voz. E quando tem voz, tem resultado.”</div><span class="sm">reforça causa e consequência.</span></div>
+  <div class="say close"><div class="sq">“Tubarão no coração. Santa Catarina na missão.”</div><span class="sm">fechamento para conteúdo estadual/institucional.</span></div>
+  <div class="say close"><div class="sq">“A gente trabalha por Tubarão porque conhece Tubarão.”</div><span class="sm">liga proximidade a trabalho.</span></div>
+  <div class="say close"><div class="sq">“Representar é estar presente. E aqui, Tubarão sabe que pode contar.”</div><span class="sm">fechamento afetivo, de confiança.</span></div>
+  <div class="box"><div class="bt">Regra do fechamento</div><p>No máximo <strong>uma frase curta</strong> depois de mostrar o resultado. Se o vídeo terminou explicando, corte até sobrar só a assinatura.</p></div>
+</section>
+
+<!-- 06 APLICAÇÕES POR TEMA -->
+<section class="page break">
+  <div class="rh"><span><span class="red">LINHA REGIONAL</span></span><span>06 · Aplicações por tema</span></div>
+  <div class="chead"><div class="n">06</div><h2>Aplicações por tema</h2></div>
+  <p class="lead">A mesma linha, seis roupas diferentes. Cada tema tem um foco, uma abertura e um fechamento sugeridos.</p>
+
+  <div class="grid g2">
+    <div class="card"><div class="cn">RUAS · PAVIMENTAÇÃO · INFRA</div><div class="ct">Mobilidade e dignidade</div>
+      <p><em>Foco:</em> bairro, vida melhor, segurança, valorização.<br><strong>Abre:</strong> “Essa rua era poeira no sol e lama na chuva…”<br><strong>Fecha:</strong> “De Tubarão, para Tubarão.”</p></div>
+    <div class="card"><div class="cn">SAÚDE</div><div class="ct">Cuidado perto de casa</div>
+      <p><em>Foco:</em> acesso, hospital, fila, estrutura, dignidade.<br><strong>Abre:</strong> “Aqui, quem precisava rodar pra fazer um exame…”<br><strong>Fecha:</strong> “Tubarão tem voz — e voz vira cuidado.”</p></div>
+    <div class="card"><div class="cn">EDUCAÇÃO</div><div class="ct">Futuro que começa aqui</div>
+      <p><em>Foco:</em> escola, creche, oportunidade, futuro.<br><strong>Abre:</strong> “Nossos filhos não precisam ir pra cidade grande…”<br><strong>Fecha:</strong> “De Tubarão, para Tubarão.”</p></div>
+    <div class="card"><div class="cn">ESPORTE · LAZER</div><div class="ct">Espaço pra comunidade</div>
+      <p><em>Foco:</em> criança, família, espaço público, convivência.<br><strong>Abre:</strong> “Olha o que virou esse espaço aqui…”<br><strong>Fecha:</strong> “Cidade boa é cidade com lugar pra viver.”</p></div>
+    <div class="card"><div class="cn">BAIRROS · COMUNIDADES</div><div class="ct">Presença e escuta</div>
+      <p><em>Foco:</em> estar lá, ouvir, demanda local.<br><strong>Abre:</strong> “Tô aqui no [bairro], ouvindo o pessoal…”<br><strong>Fecha:</strong> “Representar é estar presente.”</p></div>
+    <div class="card"><div class="cn">GRANDES OBRAS · RECURSOS</div><div class="ct">Força política que aparece</div>
+      <p><em>Foco:</em> articulação, resultado concreto, tamanho.<br><strong>Abre:</strong> “Isso aqui só acontece com força política…”<br><strong>Fecha:</strong> “Tubarão no coração. Santa Catarina na missão.”</p></div>
+  </div>
+  <div class="box navy"><div class="bt">Fio comum</div><p>Muda o tema, não muda a mecânica: <strong>abre na cena → mostra o que mudou na vida → fecha com a assinatura.</strong></p></div>
+</section>
+
+<!-- 07 EXPANSÃO -->
+<section class="page break">
+  <div class="rh"><span><span class="red">LINHA REGIONAL</span></span><span>07 · Expansão territorial</span></div>
+  <div class="chead"><div class="n">07</div><h2>Expansão — Tubarão → Amurel → Santa Catarina</h2></div>
+  <p class="lead">A linha cresce em camadas. A régua abaixo diz qual assinatura usar conforme o alcance do conteúdo — sem nunca perder a origem.</p>
+
+  <table style="width:100%;border-collapse:collapse;font-size:13px;margin:14px 0">
+    <tr><th style="background:#0E2A57;color:#fff;text-align:left;font-family:'Saira Condensed';font-weight:700;text-transform:uppercase;font-size:11.5px;letter-spacing:.05em;padding:9px 10px;border-bottom:2px solid var(--sun)">Quando o foco é…</th><th style="background:#0E2A57;color:#fff;text-align:left;font-family:'Saira Condensed';font-weight:700;text-transform:uppercase;font-size:11.5px;letter-spacing:.05em;padding:9px 10px;border-bottom:2px solid var(--sun)">Assinatura</th></tr>
+    <tr><td style="border-bottom:1px solid var(--line);padding:8px 10px">A cidade</td><td style="border-bottom:1px solid var(--line);padding:8px 10px"><strong>De Tubarão, para Tubarão.</strong></td></tr>
+    <tr><td style="border-bottom:1px solid var(--line);padding:8px 10px;background:rgba(255,255,255,.035)">A região</td><td style="border-bottom:1px solid var(--line);padding:8px 10px;background:rgba(255,255,255,.035)"><strong>De Tubarão, para a Amurel.</strong></td></tr>
+    <tr><td style="border-bottom:1px solid var(--line);padding:8px 10px">O Estado / institucional</td><td style="border-bottom:1px solid var(--line);padding:8px 10px"><strong>Tubarão no coração. Santa Catarina na missão.</strong></td></tr>
+    <tr><td style="border-bottom:1px solid var(--line);padding:8px 10px;background:rgba(255,255,255,.035)">Ampliar sem perder a origem</td><td style="border-bottom:1px solid var(--line);padding:8px 10px;background:rgba(255,255,255,.035)"><strong>A força de Tubarão ajudando a representar Santa Catarina.</strong></td></tr>
+  </table>
+
+  <div class="box sun"><div class="bt">Princípio da expansão</div><p>A origem é sempre o ponto de partida da frase. Mesmo no conteúdo estadual, Tubarão aparece primeiro — porque é a base que dá autenticidade ao alcance. <strong>Sai de Tubarão; nunca sem Tubarão.</strong></p></div>
+
+  <div class="shead">Camadas de conteúdo</div>
+  <div class="grid g3">
+    <div class="card"><div class="ct">Local</div><p>Rua, obra, bairro, entrega em Tubarão. Frequência alta, tom de rua.</p></div>
+    <div class="card"><div class="ct">Regional</div><p>Cidades da Amurel e do Sul. Mostra que a base ganhou alcance.</p></div>
+    <div class="card"><div class="ct">Estadual</div><p>Bandeiras e pautas de SC. Tom institucional, com origem visível.</p></div>
+  </div>
+</section>
+
+<!-- 08 TOM DE VOZ -->
+<section class="page break">
+  <div class="rh"><span><span class="red">LINHA REGIONAL</span></span><span>08 · Tom de voz</span></div>
+  <div class="chead"><div class="n">08</div><h2>Tom de voz</h2></div>
+  <p class="lead">A linha só funciona se soar verdadeira. O tom é de conversa de rua com autoridade de quem entrega — nunca propaganda fria.</p>
+  <div class="grid g2">
+    <div class="box green"><div class="bt">O tom é</div>
+      <ul class="clean" style="margin:0">
+        <li>Popular, mas não apelativo.</li>
+        <li>Regional, mas não limitado.</li>
+        <li>Próximo, mas com autoridade.</li>
+        <li>De resultado, mas sem soar propaganda.</li>
+        <li>Com linguagem de rua, de bairro e de presença.</li>
+      </ul>
+    </div>
+    <div class="box red"><div class="bt">Evitar (salvo em construção original)</div>
+      <ul class="clean" style="margin:0">
+        <li>“Trabalho sério.”</li>
+        <li>“Compromisso com as pessoas.”</li>
+        <li>“Juntos somos mais fortes.”</li>
+        <li>Qualquer frase que caberia em qualquer candidato.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wordpair">
+    <div class="no"><div class="h">✗ Genérico</div><p>“Nosso compromisso é com o trabalho sério por Tubarão.”</p></div>
+    <div class="yes"><div class="h">✓ Com identidade</div><p>“Eu conheço essa rua, esse bairro e essa gente. De Tubarão, para Tubarão.”</p></div>
+  </div>
+  <div class="box"><div class="bt">Teste</div><p>Se a frase serviria pra qualquer político de qualquer cidade, <strong>ela ainda não é nossa</strong>. Só é da linha quando tem Tubarão, tem cena e tem resultado.</p></div>
+</section>
+
+<!-- 09 VINHETAS E LEGENDAS -->
+<section class="page break">
+  <div class="rh"><span><span class="red">LINHA REGIONAL</span></span><span>09 · Vinhetas, selos e legendas</span></div>
+  <div class="chead"><div class="n">09</div><h2>Vinhetas, selos e legendas de Instagram</h2></div>
+
+  <div class="shead">Vinhetas (assinatura falada / selo em tela)</div>
+  <ul class="arrow">
+    <li><strong>Selo de abertura (0–2s):</strong> lockup “DE TUBARÃO, PARA TUBARÃO” surgindo com a listra amarela+verde.</li>
+    <li><strong>Assinatura falada de fecho:</strong> ele diz “de Tubarão, para Tubarão” enquanto o selo aparece no canto.</li>
+    <li><strong>Selo estadual:</strong> “TUBARÃO NO CORAÇÃO · SANTA CATARINA NA MISSÃO” para peças institucionais.</li>
+    <li><strong>Carimbo de tema:</strong> pequena tag no canto (SAÚDE · RUAS · EDUCAÇÃO…) para setorizar o santinho e o vídeo.</li>
+  </ul>
+
+  <div class="shead">Legendas curtas para Instagram (com a linha)</div>
+  <div class="grid g2">
+    <div class="say"><div class="sq">“Essa rua era poeira e lama. Agora é acesso seguro pra quem mora aqui. 💛 De Tubarão, para Tubarão.”</div></div>
+    <div class="say"><div class="sq">“Quando a cidade tem voz, o resultado aparece. E Tubarão tem. 👊”</div></div>
+    <div class="say"><div class="sq">“Conheço cada bairro dessa cidade. É por isso que eu sei onde precisa chegar. #DeTubaraoParaTubarao”</div></div>
+    <div class="say"><div class="sq">“Tubarão no coração. Santa Catarina na missão. 🟢🟡”</div></div>
+    <div class="say"><div class="sq">“Não é sobre número. É sobre a vida de quem mora aqui melhorar de verdade.”</div></div>
+    <div class="say"><div class="sq">“Presença não é ano de eleição. É todo dia, em cada bairro. Tubarão sabe que pode contar.”</div></div>
+  </div>
+
+  <div class="shead">Resultado esperado (o que esta linha entrega)</div>
+  <ul class="arrow">
+    <li>Uma <strong>assinatura repetível</strong> que o eleitor reconhece e completa sozinho.</li>
+    <li>Um <strong>sistema de conteúdo</strong> que escala por tema e por território sem perder identidade.</li>
+    <li>Clareza sobre <strong>quando falar como cidade, como região e como Estado</strong>.</li>
+    <li>Uma ponte natural: a força afetiva de Tubarão vira credencial para representar Santa Catarina.</li>
+  </ul>
+
+  <div class="divline"></div>
+  <div class="center">
+    <div class="kicker">Fim da Linha Conceitual Regional — Edição 1.0</div>
+    <p class="lead--big" style="margin-top:10px">De Tubarão, para Tubarão. <span style="color:var(--red)">Tubarão no coração, Santa Catarina na missão.</span></p>
+    <p class="small muted">Documento vivo · uso interno · marca recorrente de campanha · Pepê Collaço 2026</p>
+  </div>
+</section>
+
+</div><!-- /doc -->
+
+<footer class="fin">
+  <h3>PEPÊ COLLAÇO · 2026</h3>
+  <p class="small">De Tubarão, para Tubarão — Linha Conceitual Regional · Edição 1.0 (Jul/2026)</p>
+</footer>
+
+<script>
+function pmToggleEdit(){var d=document.querySelector('.doc');var on=d.getAttribute('contenteditable')==='true';d.setAttribute('contenteditable',on?'false':'true');document.body.classList.toggle('pm-editing',!on);var b=document.getElementById('pmEdit');if(b)b.textContent=on?'✏️ Editar':'✓ Editando — sair';}
+var pmKey='lc_linha_regional_v1';
+function pmSave(){try{localStorage.setItem(pmKey,JSON.stringify({t:Date.now(),html:document.querySelector('.doc').innerHTML}));}catch(e){}}
+function pmDownload(){var d=document.querySelector('.doc');d.setAttribute('contenteditable','false');document.body.classList.remove('pm-editing');var b=document.getElementById('pmEdit');if(b)b.textContent='✏️ Editar';var html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;var blob=new Blob([html],{type:'text/html;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Linha_Conceitual_Regional_De_Tubarao_editado.html';document.body.appendChild(a);a.click();a.remove();}
+document.addEventListener('DOMContentLoaded',function(){try{var raw=localStorage.getItem(pmKey);if(raw){var when=new Date(JSON.parse(raw).t).toLocaleString('pt-BR');var bar=document.createElement('div');bar.className='no-print';bar.style.cssText='position:sticky;top:0;z-index:60;background:#0F8A3A;color:#fff;display:flex;gap:10px;justify-content:center;align-items:center;padding:8px;font:600 12px Inter';bar.innerHTML='📝 Há uma edição salva ('+when+').';var b1=document.createElement('button');b1.className='tbtn';b1.textContent='Restaurar';b1.onclick=function(){document.querySelector('.doc').innerHTML=JSON.parse(raw).html;bar.remove();};var b2=document.createElement('button');b2.className='tbtn ghost';b2.textContent='Descartar';b2.onclick=function(){localStorage.removeItem(pmKey);bar.remove();};bar.appendChild(b1);bar.appendChild(b2);document.body.insertBefore(bar,document.body.firstChild);}}catch(e){}var d=document.querySelector('.doc');if(d)d.addEventListener('input',function(){clearTimeout(window.__lct);window.__lct=setTimeout(pmSave,900);});});
+</script>
+</body>
+</html>

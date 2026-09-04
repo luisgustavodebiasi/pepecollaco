@@ -1,0 +1,20 @@
+/* Compat — /credenciamento (fonte) e /credenciar (build do Vite)
+   Edite sempre o fonte e rode `npm --prefix credenciamento run build`;
+   mexer direto em /credenciar é sobrescrito no build seguinte. */
+@import "../tokens.css";
+@import "../tipografia.css";
+
+:root {
+  --blue: var(--pp-azul-profundo);
+  --blue2: var(--pp-azul-foco);
+  --blue-d: var(--pp-tinta);
+  --yellow: var(--cor-acento);
+  --green: var(--cor-positivo);
+  --red: var(--cor-negativo);
+  --text: var(--pp-tinta);
+  --muted: #5B6E86;
+  --border: #C9DCEC;
+  --input-bg: #F4F8FB;
+}
+
+body { font-family: var(--fonte); }

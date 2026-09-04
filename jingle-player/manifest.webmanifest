@@ -1,0 +1,19 @@
+{
+  "name": "Jingles · Pepê Collaço 11223",
+  "short_name": "Jingles 11223",
+  "description": "Player dos jingles da campanha. Toca em looping e funciona sem internet.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0E1E46",
+  "theme_color": "#0E1E46",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": ["music"],
+  "icons": [
+    { "src": "img/favicon-32.png",         "sizes": "32x32",   "type": "image/png" },
+    { "src": "img/icone-512.png",          "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "img/icone-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

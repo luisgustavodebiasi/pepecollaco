@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano Mestre de Comunicação — Pepê Collaço 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;500;600;700;800;900&family=Saira:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PLANO MESTRE — TEMA "ARENA DIGITAL"
+   Azul-marinho de fundo · números em amarelo · verde institucional
+   · cinza-azulado de apoio · tipografia condensada esportiva.
+   ============================================================ */
+:root{
+  --ink:#061A3A;          /* azul marinho principal (fundo) */
+  --ink-d:#04122B;        /* navy mais profundo */
+  --ink-2:#C3CFE0;        /* texto secundário (cinza azulado) */
+  --ink-3:#8FA0BC;        /* apoio / muted */
+  --paper:#061A3A;        /* fundo doc */
+  --paper-2:#0C2247;      /* zebra de tabela */
+  --line:rgba(255,255,255,.12);
+  --line-2:rgba(255,255,255,.24);
+  --white:#FFFFFF;
+  --slate:#B8C4D6;        /* cinza azulado claro */
+  --red:#FFD21F;          /* (mapeado) AMARELO destaque */
+  --red-deep:#FFDD57;     /* amarelo claro p/ títulos de caixa */
+  --navy:#3E72C4;         /* azul médio de apoio (acentos) */
+  --navy-2:#86B4F0;       /* azul claro p/ texto-acento */
+  --navy-fill:#142B50;    /* azul médio de caixas/cards */
+  --navy-fill2:#203A63;   /* azul médio claro */
+  --sun:#1FA64A;          /* (mapeado) VERDE institucional */
+  --sun-2:#0F8A3A;
+  --green:#46D07D;        /* verde claro (feito/boa prática) */
+  --tint-red:rgba(255,210,31,.10);
+  --tint-navy:rgba(62,114,196,.15);
+  --tint-sun:rgba(31,166,74,.14);
+  --tint-green:rgba(70,208,125,.13);
+  --brush:
+    linear-gradient(118deg, transparent 0 19.6%, rgba(31,166,74,.06) 20% 20.9%, transparent 21.3%),
+    linear-gradient(118deg, transparent 0 38%, rgba(255,210,31,.05) 38.3% 39%, transparent 39.4%),
+    linear-gradient(118deg, transparent 0 58%, rgba(255,255,255,.035) 58.3% 59%, transparent 59.4%),
+    linear-gradient(118deg, transparent 0 78%, rgba(62,114,196,.07) 78.3% 79.4%, transparent 79.8%),
+    linear-gradient(118deg, transparent 0 90%, rgba(31,166,74,.05) 90.2% 91%, transparent 91.4%),
+    radial-gradient(130% 90% at 88% -12%, rgba(8,36,82,.85), transparent 58%),
+    radial-gradient(120% 90% at -10% 110%, rgba(15,138,58,.16), transparent 55%);
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  margin:0;background:var(--ink-d);color:#E7EDF7;
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size:15px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+.doc{max-width:210mm;margin:24px auto;background:var(--ink);border-radius:16px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.05)}
+
+/* ---------- Tipografia condensada esportiva ---------- */
+h1,h2,h3,h4,.display{font-family:"Saira Condensed",sans-serif;color:var(--white);
+  letter-spacing:.01em;line-height:1.02;font-weight:800;text-transform:uppercase}
+.kicker{font-family:"Saira Condensed",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--red)}
+p{margin:0 0 12px;color:#E2E9F4}
+a{color:var(--navy-2)}
+strong{font-weight:700;color:var(--white)}
+em{font-style:italic;color:#EAF0F8}
+mark{background:rgba(255,210,31,.22);color:#FFF1B8;padding:0 .15em;border-radius:2px}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.small{font-size:12.5px;color:var(--ink-2)}
+.muted{color:var(--ink-3)}
+.center{text-align:center}
+
+/* ---------- Página / impressão ---------- */
+.page{padding:26mm 22mm 24mm;position:relative;min-height:297mm;background-color:var(--ink);background-image:var(--brush);background-attachment:local}
+.page--tight{padding-top:18mm}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .doc{max-width:none;margin:0;border-radius:0;box-shadow:none}
+  .no-print{display:none !important}
+  .page{break-after:page}
+  .break{break-before:page}
+  .avoid{break-inside:avoid}
+  h2,h3{break-after:avoid}
+  tr{break-inside:avoid}
+}
+.break{}
+.avoid{break-inside:avoid}
+
+/* ---------- Barra utilitária ---------- */
+.toolbar{position:sticky;top:0;z-index:50;background:var(--ink-d);color:#fff;
+  display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;
+  padding:9px 16px;font-size:12.5px;border-bottom:1px solid rgba(255,255,255,.1)}
+.toolbar b{color:#fff}
+.toolbar .dot{color:var(--red)}
+.tbtn{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+  font-size:12px;background:var(--red);color:#1A1400;border:none;border-radius:6px;padding:5px 12px;cursor:pointer}
+.tbtn:hover{background:#FFDD57}
+.pm-editing .doc{outline:2px dashed rgba(255,210,31,.45);outline-offset:-6px}
+[contenteditable="true"]{cursor:text}
+
+/* ---------- CAPA ---------- */
+.cover{background-color:var(--ink-d);background-image:var(--brush);color:#fff;min-height:297mm;padding:24mm 22mm;
+  display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.cover:before{content:"";position:absolute;right:-12%;top:-10%;width:62%;height:60%;
+  background:radial-gradient(circle at center,rgba(255,210,31,.18),transparent 62%)}
+.cover:after{content:"";position:absolute;left:-12%;bottom:-16%;width:60%;height:58%;
+  background:radial-gradient(circle at center,rgba(31,166,74,.28),transparent 60%)}
+.cover>*{position:relative;z-index:2}
+.cover .topline{display:flex;justify-content:space-between;align-items:flex-start;
+  font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:11px;color:rgba(255,255,255,.72)}
+.cover h1{color:#fff;font-size:92px;font-weight:900;letter-spacing:.005em;line-height:.9;margin:0;transform:skewX(-4deg);transform-origin:left}
+.cover h1 .red{color:var(--red)}
+.cover .sub{font-family:"Saira Condensed";font-weight:600;font-size:21px;text-transform:uppercase;letter-spacing:.02em;color:rgba(255,255,255,.92);margin-top:20px;max-width:20ch;line-height:1.12}
+.cover .stripe{height:9px;width:170px;background:var(--red);margin:26px 0 0;border-radius:99px;box-shadow:0 0 0 0 transparent}
+.cover .stripe:after{content:"";display:block;height:9px;width:90px;background:var(--sun);border-radius:99px;margin-top:6px}
+.cover .meta{display:flex;gap:36px;flex-wrap:wrap;font-size:12.5px;color:rgba(255,255,255,.8)}
+.cover .meta b{display:block;font-family:"Saira Condensed";font-weight:700;color:var(--red);font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.cover .conf{font-family:"JetBrains Mono";font-size:10.5px;letter-spacing:.05em;color:rgba(255,255,255,.6)}
+
+/* ---------- Divisórias de PARTE ---------- */
+.divider{background-color:var(--ink-d);background-image:var(--brush);color:#fff;min-height:297mm;padding:30mm 22mm;
+  display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.divider.alt:after{content:"";position:absolute;right:-10%;top:-10%;width:55%;height:55%;background:radial-gradient(circle,rgba(31,166,74,.22),transparent 60%)}
+.divider>*{position:relative;z-index:2}
+.divider .pnum{font-family:"Saira Condensed";font-weight:900;font-size:160px;line-height:.78;color:var(--red);letter-spacing:.01em;transform:skewX(-5deg);transform-origin:left}
+.divider .ptitle{font-family:"Saira Condensed";font-weight:900;font-size:56px;color:#fff;letter-spacing:.01em;line-height:.98;margin:6px 0 18px;max-width:18ch;text-transform:uppercase}
+.divider .pdesc{max-width:54ch;color:rgba(255,255,255,.82);font-size:15px}
+.divider .pindex{margin-top:30px;border-top:1px solid rgba(255,255,255,.2);padding-top:18px;
+  display:grid;grid-template-columns:1fr 1fr;gap:6px 30px;font-size:13px;color:rgba(255,255,255,.88)}
+.divider .pindex span{font-family:"JetBrains Mono";color:var(--red);margin-right:8px}
+
+/* ---------- Cabeçalho de capítulo ---------- */
+.chead{display:flex;align-items:baseline;gap:14px;border-bottom:3px solid var(--sun);
+  padding-bottom:10px;margin:0 0 20px}
+.chead .n{font-family:"Saira Condensed";font-weight:900;font-size:40px;color:var(--red);line-height:.85;transform:skewX(-5deg)}
+.chead h2{font-size:30px;margin:0;flex:1;color:#fff}
+.shead{font-family:"Saira Condensed";font-weight:800;font-size:20px;margin:26px 0 8px;text-transform:uppercase;
+  color:#fff;display:flex;align-items:center;gap:10px;letter-spacing:.01em}
+.shead:before{content:"";width:14px;height:14px;background:var(--sun);display:inline-block;flex:none;border-radius:2px}
+.q{font-family:"Saira Condensed";font-weight:700;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--navy-2);margin:18px 0 6px}
+
+/* running header */
+.rh{position:absolute;top:12mm;left:22mm;right:22mm;display:flex;justify-content:space-between;
+  font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--ink-3);
+  border-bottom:1px solid var(--line);padding-bottom:6px;z-index:3}
+.rh .red{color:var(--red)}
+
+/* ---------- Lead ---------- */
+.lead{font-size:17px;line-height:1.55;color:#EDF2FA;font-weight:500}
+.lead--big{font-family:"Saira Condensed";font-weight:700;font-size:23px;line-height:1.2;letter-spacing:.005em;color:#fff;text-transform:none}
+
+/* ---------- Boxes / callouts ---------- */
+.box{border:1px solid var(--line);border-left:5px solid var(--red);background:var(--tint-red);
+  padding:16px 18px;margin:16px 0;border-radius:8px}
+.box .bt{font-family:"Saira Condensed";font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.05em;margin:0 0 6px;color:var(--red-deep)}
+.box.red{border-left-color:var(--red);background:var(--tint-red)}
+.box.red .bt{color:var(--red-deep)}
+.box.navy{border-left-color:var(--navy);background:var(--tint-navy)}
+.box.navy .bt{color:var(--navy-2)}
+.box.sun{border-left-color:var(--sun);background:var(--tint-sun)}
+.box.sun .bt{color:#5BE08C}
+.box.green{border-left-color:var(--green);background:var(--tint-green)}
+.box.green .bt{color:var(--green)}
+.box p:last-child{margin-bottom:0}
+.box p{color:#E7EDF7}
+
+/* ---------- Grids ---------- */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:1fr 1fr 1fr}
+.g4{grid-template-columns:repeat(4,1fr)}
+
+/* ---------- Cards ---------- */
+.card{border:1px solid var(--line);background:rgba(20,43,80,.55);border-radius:10px;padding:15px 16px}
+.card .ct{font-family:"Saira Condensed";font-weight:800;font-size:16px;margin:0 0 4px;color:#fff;text-transform:uppercase;letter-spacing:.01em}
+.card .cn{font-family:"Saira Condensed";font-weight:800;font-size:13px;color:var(--red);letter-spacing:.06em}
+.card p{font-size:13px;margin:0;color:#D9E2F0}
+.card.dark{background:rgba(4,18,43,.7);border-color:var(--line-2)}
+.card.dark .ct{color:var(--red)}
+
+/* ---------- KPI / estatística ---------- */
+.stat{border:1px solid var(--line);border-top:4px solid var(--red);background:rgba(20,43,80,.5);border-radius:8px;padding:14px}
+.stat .num{font-family:"Saira Condensed";font-weight:900;font-size:34px;line-height:1;color:var(--red);letter-spacing:.01em;transform:skewX(-5deg);display:inline-block}
+.stat .lab{font-size:11.5px;color:var(--ink-2);margin-top:6px;line-height:1.3}
+.stat.navy{border-top-color:var(--navy)}
+.stat.navy .num{color:var(--navy-2)}
+.stat.sun{border-top-color:var(--sun)}
+.stat.sun .num{color:#5BE08C}
+.stat.green{border-top-color:var(--green)}
+.stat.green .num{color:var(--green)}
+
+/* ---------- Tabelas ---------- */
+table.tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin:14px 0}
+table.tbl th{background:#0E2A57;color:#fff;text-align:left;font-family:"Saira Condensed";
+  font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;padding:9px 10px;vertical-align:bottom;border-bottom:2px solid var(--sun)}
+table.tbl td{border-bottom:1px solid var(--line);padding:8px 10px;vertical-align:top;color:#E2E9F4}
+table.tbl tr:nth-child(even) td{background:rgba(255,255,255,.035)}
+table.tbl .r{text-align:right;white-space:nowrap}
+table.tbl .blank{color:var(--ink-3)}
+table.tbl.compact td,table.tbl.compact th{padding:6px 8px;font-size:11.8px}
+.fill{display:inline-block;min-width:90px;border-bottom:1px dotted var(--line-2)}
+
+/* pills / tags */
+.pill{display:inline-block;font-family:"Saira Condensed";font-weight:700;font-size:11px;text-transform:uppercase;
+  letter-spacing:.05em;padding:3px 10px;border-radius:99px;border:1px solid var(--line-2);color:var(--ink-2)}
+.pill.red{background:var(--red);color:#1A1400;border-color:var(--red)}
+.pill.navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pill.sun{background:var(--sun);color:#04210F;border-color:var(--sun)}
+.pill.green{background:var(--green);color:#04210F;border-color:var(--green)}
+.pill.ghost{background:transparent;color:var(--ink-2)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+
+/* ---------- Checklist ---------- */
+.check{list-style:none;padding:0;margin:12px 0}
+.check li{position:relative;padding:6px 0 6px 30px;border-bottom:1px solid var(--line);font-size:13.5px;color:#E2E9F4}
+.check li:before{content:"";position:absolute;left:0;top:8px;width:15px;height:15px;border:2px solid var(--ink-3);border-radius:3px}
+.check li.done:before{background:var(--green);border-color:var(--green)}
+.check li.done:after{content:"✓";position:absolute;left:3px;top:4px;color:#04210F;font-size:11px;font-weight:800}
+.check li.done{color:var(--ink-3);text-decoration:line-through}
+
+/* ---------- Matriz de prioridade ---------- */
+.matrix{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0}
+.quad{border:1px solid var(--line-2);border-radius:10px;padding:14px;min-height:120px}
+.quad .qh{font-family:"Saira Condensed";font-weight:800;font-size:14px;margin-bottom:8px;display:flex;justify-content:space-between;text-transform:uppercase;color:#fff}
+.quad.p0{background:rgba(255,210,31,.09);border-color:var(--red)}
+.quad.p1{background:rgba(31,166,74,.1);border-color:var(--sun)}
+.quad.p2{background:rgba(62,114,196,.12);border-color:var(--navy)}
+.quad.p3{background:rgba(255,255,255,.04)}
+.quad ul{margin:0;padding-left:16px;font-size:12px;color:#DCE4F1}
+.quad li{margin-bottom:3px}
+
+/* ---------- Timeline ---------- */
+.tl{position:relative;margin:18px 0;padding-left:26px}
+.tl:before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:3px;background:var(--line-2)}
+.tl .ev{position:relative;margin-bottom:16px}
+.tl .ev:before{content:"";position:absolute;left:-26px;top:3px;width:17px;height:17px;border-radius:50%;background:var(--red);border:3px solid var(--ink);box-shadow:0 0 0 2px var(--red)}
+.tl .ev .d{font-family:"Saira Condensed";font-weight:800;font-size:13px;color:var(--red);text-transform:uppercase;letter-spacing:.05em}
+.tl .ev .t{font-family:"Saira Condensed";font-weight:700;font-size:16px;margin:1px 0 2px;color:#fff;text-transform:uppercase}
+.tl .ev p{font-size:13px;margin:0;color:#D9E2F0}
+
+/* ---------- Fluxograma ---------- */
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:16px 0}
+.flow .node{flex:1;min-width:110px;background:rgba(20,43,80,.6);border:2px solid var(--line-2);border-radius:8px;
+  padding:11px 12px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+.flow .node .ft{font-family:"Saira Condensed";font-weight:800;font-size:13px;color:#fff;text-transform:uppercase}
+.flow .node small{font-size:10.5px;color:var(--ink-2);display:block;margin-top:3px}
+.flow .arr{display:flex;align-items:center;color:var(--red);font-weight:900;font-size:22px;padding:0 6px}
+.flow .node.red{background:var(--red);border-color:var(--red)}
+.flow .node.red .ft{color:#1A1400}.flow .node.red small{color:rgba(26,20,0,.7)}
+.flow .node.navy{background:var(--sun);border-color:var(--sun)}
+.flow .node.navy .ft{color:#04210F}.flow .node.navy small{color:rgba(4,33,15,.75)}
+
+/* ---------- Placeholder ---------- */
+.ph{border:2px dashed var(--line-2);border-radius:10px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 10px,rgba(255,255,255,.06) 10px 20px);
+  padding:22px;text-align:center;margin:14px 0;color:var(--ink-2)}
+.ph .pi{font-family:"Saira Condensed";font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--red)}
+.ph .pl{font-family:"Saira Condensed";font-weight:700;font-size:16px;color:#fff;margin:4px 0;text-transform:uppercase}
+.ph .pd{font-size:12px;color:var(--ink-2)}
+.ph.tall{padding:42px 22px}
+.ph{position:relative}
+.ph.filled{background:#0C2247;border:1px solid var(--line);padding:8px;text-align:center}
+.fig-img{display:block;width:90%;max-width:100%;border-radius:8px;margin:0 auto}
+.fig-cap{font-size:11.5px;color:var(--ink-2);margin-top:6px;text-align:center}
+.fig-tools{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:9px}
+.fig-tools button{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;font-size:10.5px;letter-spacing:.04em;
+  background:rgba(255,255,255,.08);color:#E7EDF7;border:1px solid var(--line-2);border-radius:5px;padding:3px 9px;cursor:pointer}
+.fig-tools button:hover{background:rgba(255,255,255,.16)}
+.fig-tools button.rm{color:#FFB4AC;border-color:rgba(255,120,108,.5)}
+.ph-btn{font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:11px;
+  background:var(--red);color:#1A1400;border:none;border-radius:6px;padding:5px 11px;margin-top:10px;cursor:pointer}
+.ph-btn:hover{background:#FFDD57}
+.pm-bar{background:#0F8A3A;color:#fff;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;padding:8px 14px;font-size:12.5px}
+.tbtn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
+/* imagem inserida manualmente em qualquer lugar */
+figure.fig{margin:14px 0}
+figure.fig img{display:block;width:100%;border-radius:10px;border:1px solid var(--line)}
+figure.fig figcaption{font-size:11.5px;color:var(--ink-2);margin-top:6px;text-align:center}
+@media print{.ph-btn,.fig-tools,.pm-bar{display:none!important}}
+
+/* ---------- Placar / ranking ---------- */
+.placar{background:linear-gradient(180deg,rgba(20,43,80,.7),rgba(8,36,82,.5));border:1px solid var(--line-2);border-radius:14px;padding:16px 18px;margin:14px 0}
+.placar .total{display:flex;align-items:center;gap:16px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:12px}
+.placar .total .big{font-family:"Saira Condensed";font-weight:900;font-size:58px;line-height:.8;color:var(--red);transform:skewX(-6deg)}
+.placar .total .tlab{font-family:"Saira Condensed";font-weight:800;text-transform:uppercase;font-size:16px;color:#fff;line-height:1.05}
+.placar .total .tlab small{display:block;font-family:"Inter";font-weight:500;text-transform:none;font-size:11.5px;color:var(--ink-2)}
+.rrow{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:8px;background:rgba(255,255,255,.04);margin-bottom:6px}
+.rrow .pos{font-family:"Saira Condensed";font-weight:900;font-size:20px;width:30px;text-align:center;color:var(--ink-2)}
+.rrow .medal{font-size:18px;width:22px;text-align:center}
+.rrow .city{flex:1;font-family:"Saira Condensed";font-weight:700;text-transform:uppercase;font-size:15px;color:#fff;letter-spacing:.01em}
+.rrow .pts{font-family:"Saira Condensed";font-weight:800;color:var(--red);font-size:16px}
+.rrow.lead{background:rgba(255,210,31,.12);border:1px solid rgba(255,210,31,.4)}
+.rrow.lead .pos{color:var(--red)}
+
+/* listas */
+ul.clean{padding-left:18px;margin:8px 0}
+ul.clean li{margin-bottom:5px;color:#E2E9F4}
+ul.arrow{list-style:none;padding:0;margin:8px 0}
+ul.arrow li{position:relative;padding-left:20px;margin-bottom:6px;color:#E2E9F4}
+ul.arrow li:before{content:"→";position:absolute;left:0;color:var(--red);font-weight:800}
+
+/* pilares */
+.pillar{display:flex;gap:14px;align-items:flex-start;border-bottom:1px solid var(--line);padding:12px 0}
+.pillar .pn{font-family:"Saira Condensed";font-weight:900;font-size:34px;color:var(--red);line-height:.85;width:46px;flex:none;transform:skewX(-6deg)}
+.pillar .ph2{font-family:"Saira Condensed";font-weight:800;font-size:18px;margin:0 0 2px;color:#fff;text-transform:uppercase}
+.pillar p{font-size:13px;margin:0;color:#D9E2F0}
+
+/* big quote */
+.bigq{font-family:"Saira Condensed";font-weight:800;font-size:28px;line-height:1.12;letter-spacing:.005em;
+  border-left:6px solid var(--red);padding:6px 0 6px 20px;margin:20px 0;color:#fff;text-transform:uppercase}
+.bigq .by{display:block;font-family:"Inter";font-weight:500;font-size:13px;color:var(--ink-2);text-transform:none;letter-spacing:0;margin-top:8px}
+
+/* índice */
+.toc{margin-top:6px}
+.toc .row{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:1px solid var(--line)}
+.toc .row .pt{font-family:"Saira Condensed";font-weight:800;color:var(--red);width:30px;font-size:14px}
+.toc .row .nm{font-family:"Saira Condensed";font-weight:600;font-size:15px;color:#EAF0F8;text-transform:uppercase;letter-spacing:.01em}
+.toc .row .ln{flex:1;border-bottom:1px dotted var(--line-2);transform:translateY(-3px)}
+.toc .part{font-family:"Saira Condensed";font-weight:900;text-transform:uppercase;letter-spacing:.04em;font-size:14px;color:var(--red);margin:16px 0 2px}
+.toc .part:first-child{margin-top:0}
+
+footer.fin{background:var(--ink-d);background-image:var(--brush);color:rgba(255,255,255,.85);padding:22mm;text-align:center}
+footer.fin h3{color:var(--red);font-size:28px}
+.divline{height:3px;background:var(--sun);margin:22px 0;border-radius:2px}
+.subtle{height:1px;background:var(--line);margin:18px 0}
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <span><b>Plano Mestre — Pepê Collaço 2026</b></span>
+  <span class="dot">●</span>
+  <button class="tbtn" id="pmEdit" onclick="pmToggleEdit()">✏️ Editar</button>
+  <button class="tbtn" onclick="pmDownload()">💾 Baixar HTML</button>
+  <span class="dot">●</span>
+  <span>PDF: <b>Imprimir → Salvar como PDF → A4 → margens “Nenhuma” → ativar fundo</b></span>
+</div>
+
+<div class="doc">
+
+<!-- ===================== CAPA ===================== -->
+<section class="cover page">
+  <div class="topline">
+    <span>Documento Estratégico Confidencial</span>
+    <span>Edição 2.0 — Jun/2026</span>
+  </div>
+  <div>
+    <div class="kicker" style="color:rgba(255,255,255,.7)">Plano Mestre de Comunicação, Organização e Produção</div>
+    <h1>PARCERIA<br><span class="red">QUE</span> TRANSFORMA.</h1>
+    <div class="sub">Campanha Pepê Collaço — Deputado Estadual · Santa Catarina · 2026</div>
+    <div class="stripe"></div>
+  </div>
+  <div>
+    <div class="meta">
+      <div><b>Candidato</b>Felippe Luiz Collaço — “Pepê Collaço” · PP</div>
+      <div><b>Território-base</b>AMUREL · Sul Catarinense · SC</div>
+      <div><b>Escopo</b>Pré-campanha + Campanha</div>
+    </div>
+    <div class="conf" style="margin-top:18px">USO INTERNO · NÃO DISTRIBUIR · MANUAL VIVO — ATUALIZAÇÃO CONTÍNUA</div>
+  </div>
+</section>
+
+<!-- ===================== FICHA TÉCNICA ===================== -->
+<section class="page page--tight break">
+  <div class="rh"><span><span class="red">PEPÊ COLLAÇO 2026</span> · PLANO MESTRE</span><span>Ficha Técnica</span></div>
+  <div class="kicker">Controle do documento</div>
+  <h2 style="font-size:32px;margin:6px 0 16px;color:#fff">Ficha técnica &amp; como usar este plano</h2>
+  <p class="lead">Este é o <strong>documento-guia central</strong> da comunicação, organização e produção da campanha. Ele não é uma peça isolada: é o sistema operacional que orienta estratégia, design, audiovisual, redes, WhatsApp, Time Pepê, dados, produção, fotografia, site e imprensa — todos falando a mesma língua.</p>
+
+  <div class="grid g2" style="margin-top:18px">
+    <div class="box navy"><div class="bt">Natureza</div><p>Manual vivo e <strong>editável</strong>. Use o botão <strong>“Editar”</strong> no topo para alterar textos direto no navegador e “Baixar HTML” para salvar sua versão. Cada novo material (dashboards, artes, painéis, vídeos) é incorporado nos espaços reservados.</p></div>
+    <div class="box red"><div class="bt">Princípio editorial</div><p><strong>Pré-campanha fala em PARCERIA</strong> (construir junto, nunca sozinho). <strong>Campanha fala em TRANSFORMAÇÃO</strong> (o que mudou na vida das pessoas).</p></div>
+  </div>
+
+  <div class="shead">Controle de versão</div>
+  <table class="tbl compact">
+    <tr><th>Versão</th><th>Data</th><th>Responsável</th><th>Alterações</th></tr>
+    <tr><td class="mono">1.0</td><td>Jun/2026</td><td>Núcleo de Comunicação</td><td>Estrutura inicial completa do Plano Mestre.</td></tr>
+    <tr><td class="mono">2.0</td><td>Jun/2026</td><td>Núcleo de Comunicação</td><td>Paleta oficial (azul-marinho / verde / amarelo) + tema escuro “arena digital”; tipografia condensada; modo edição; remoção de tráfego pago e de calendário/visitas; renumeração (28 capítulos).</td></tr>
+    <tr><td class="mono blank">2.1</td><td class="blank"><span class="fill"></span></td><td class="blank"><span class="fill"></span></td><td class="blank">Inserção dos materiais produzidos (identidade, artes, dashboards).</td></tr>
+  </table>
+
+  <div class="shead">Convenções visuais deste documento</div>
+  <div class="grid g2">
+    <div class="box red"><div class="bt">Caixa amarela</div><p>Decisão, mensagem-chave ou alerta estratégico.</p></div>
+    <div class="box navy"><div class="bt">Caixa azul</div><p>Contexto, dado, referência ou fundamento.</p></div>
+    <div class="box sun"><div class="bt">Caixa verde</div><p>Ideia de conteúdo / oportunidade criativa.</p></div>
+    <div class="box green"><div class="bt">Caixa verde-clara</div><p>Boa prática, conformidade ou item concluído.</p></div>
+  </div>
+  <div class="ph"><div class="pi">Espaço reservado</div><div class="pl">Brasão + logo “Time Pepê” oficial</div><div class="pd">Inserir a versão final do brasão/logotipo aprovado e o lockup da marca.</div></div>
+
+  <div class="box sun avoid">
+    <div class="bt">Aviso de conformidade eleitoral</div>
+    <p>Este plano é estratégico e criativo. <strong>Prazos, gastos e o que pode ser dito em cada fase devem ser validados com a assessoria jurídica eleitoral</strong> (Lei 9.504/97 e resoluções do TSE/TRE-SC). A fronteira entre divulgação de mandato, pré-campanha e propaganda eleitoral é regulada — o calendário jurídico prevalece sobre o criativo.</p>
+  </div>
+</section>
+
+<!-- ===================== SUMÁRIO EXECUTIVO ===================== -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PEPÊ COLLAÇO 2026</span> · PLANO MESTRE</span><span>Sumário Executivo</span></div>
+  <div class="kicker">Resumo para decisão</div>
+  <h2 style="font-size:32px;margin:6px 0 14px;color:#fff">Sumário executivo</h2>
+
+  <p class="lead--big">Em uma frase: transformar um mandato de entregas concretas em uma narrativa de <span style="color:var(--red)">parceria</span> que, no momento certo, vira prova de <span style="color:var(--navy-2)">transformação</span> na vida das pessoas — sustentada por mobilização (Time Pepê) e inteligência de dados.</p>
+
+  <div class="grid g4" style="margin:20px 0">
+    <div class="stat"><div class="num">R$ 149,8 mi</div><div class="lab">em emendas mapeadas (494 registros)*</div></div>
+    <div class="stat navy"><div class="num">R$ 77,5 mi</div><div class="lab">destinados à base AMUREL*</div></div>
+    <div class="stat sun"><div class="num">15.525</div><div class="lab">contatos na base (Supabase)</div></div>
+    <div class="stat green"><div class="num">28.809</div><div class="lab">votos em 2022 (a superar)</div></div>
+  </div>
+  <p class="small muted">*Valores extraídos das planilhas internas de controle de emendas. <strong>Devem ser conferidos e travados pela assessoria antes de qualquer uso público</strong>, distinguindo emenda destinada, empenhada, publicada e efetivamente paga.</p>
+
+  <div class="shead">As duas fases, em uma página</div>
+  <div class="grid g2">
+    <div class="card" style="border-top:4px solid var(--red)">
+      <div class="cn">FASE 1</div>
+      <div class="ct">Pré-campanha — Parceria</div>
+      <p>Falar com lideranças, prefeitos, vereadores, secretários e apoiadores. Mostrar articulação e resultados. <strong>Aqui os números pesam</strong>: “mais de R$ XX milhões para…”. Objetivo: consolidar base, pertencimento e estrutura.</p>
+    </div>
+    <div class="card" style="border-top:4px solid var(--navy)">
+      <div class="cn">FASE 2</div>
+      <div class="ct">Campanha — Transformação</div>
+      <p>Falar com o eleitor. <strong>O número sai de cena; entra a vida real.</strong> A estrada asfaltada, o hospital equipado, a criança na creche. A entrega substitui o valor; o benefício substitui o número; a pessoa substitui a obra.</p>
+    </div>
+  </div>
+
+  <div class="shead">O que já está pronto (e entra neste plano)</div>
+  <div class="tags">
+    <span class="pill navy">Painel estratégico eleitoral</span>
+    <span class="pill navy">Painel de emendas</span>
+    <span class="pill navy">Cruzamento de votos 2018·2022·2024</span>
+    <span class="pill green">Base 15.525 contatos</span>
+    <span class="pill green">Plataforma de credenciamento</span>
+    <span class="pill green">Painel admin (KPIs/filtros)</span>
+    <span class="pill red">Disparo WhatsApp (n8n + Evolution)</span>
+    <span class="pill red">Time Pepê (cadastro/mobilização)</span>
+    <span class="pill sun">Site pepecollaco.com</span>
+  </div>
+
+  <div class="box red avoid"><div class="bt">As 5 decisões que destravam tudo (P0)</div>
+  <ul class="arrow" style="margin-bottom:0">
+    <li>Aplicar a <strong>identidade visual oficial</strong> (paleta definida + logo + manual) em todos os templates.</li>
+    <li>Realizar o <strong>ensaio fotográfico documental</strong> e montar o banco de imagens reais.</li>
+    <li>Travar os <strong>números de emendas</strong> com o jurídico (o que pode ser dito, e como).</li>
+    <li>Estruturar <strong>grupos de WhatsApp por região</strong> sobre a base de 15.525 contatos.</li>
+    <li>Definir o <strong>plano de lançamento do Time Pepê</strong> (gamificação + ranking de cidades).</li>
+  </ul>
+  </div>
+</section>
+
+<!-- ===================== ÍNDICE ===================== -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PEPÊ COLLAÇO 2026</span> · PLANO MESTRE</span><span>Índice</span></div>
+  <div class="kicker">Navegação</div>
+  <h2 style="font-size:32px;margin:6px 0 10px;color:#fff">Índice</h2>
+  <div class="toc">
+    <div class="part">Parte I — Fundamentos estratégicos</div>
+    <div class="row"><span class="pt">01</span><span class="nm">Quem é Pepê Collaço</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">02</span><span class="nm">Diagnóstico estratégico (SWOT)</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">03</span><span class="nm">Posicionamento — os 5 pilares</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">04</span><span class="nm">O conceito-mãe: Parceria → Transformação</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">05</span><span class="nm">Mapa de públicos e mensagens</span><span class="ln"></span></div>
+
+    <div class="part">Parte II — As duas fases</div>
+    <div class="row"><span class="pt">06</span><span class="nm">Fase 1 — Pré-campanha (Parceria)</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">07</span><span class="nm">Fase 2 — Campanha (Transformação)</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">08</span><span class="nm">Matriz comparativa Fase 1 × Fase 2</span><span class="ln"></span></div>
+
+    <div class="part">Parte III — Identidade e linguagem</div>
+    <div class="row"><span class="pt">09</span><span class="nm">Identidade visual</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">10</span><span class="nm">Sistema modular de santinhos</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">11</span><span class="nm">Linhas editoriais e formatos</span><span class="ln"></span></div>
+
+    <div class="part">Parte IV — Canais e mobilização</div>
+    <div class="row"><span class="pt">12</span><span class="nm">Redes sociais</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">13</span><span class="nm">WhatsApp e relacionamento</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">14</span><span class="nm">Time Pepê — mobilização e gamificação</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">15</span><span class="nm">Imprensa e relações públicas</span><span class="ln"></span></div>
+  </div>
+  <div class="toc" style="margin-top:10px">
+    <div class="part">Parte V — Tecnologia e dados</div>
+    <div class="row"><span class="pt">16</span><span class="nm">Ecossistema tecnológico</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">17</span><span class="nm">Indicadores, KPIs e governança de dados</span><span class="ln"></span></div>
+
+    <div class="part">Parte VI — Execução</div>
+    <div class="row"><span class="pt">18</span><span class="nm">Estrutura da equipe e organograma</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">19</span><span class="nm">Cronograma mestre por área</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">20</span><span class="nm">Roadmap / linha do tempo macro</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">21</span><span class="nm">Matriz de prioridades (P0/P1/P2)</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">22</span><span class="nm">Fluxo de produção de conteúdo</span><span class="ln"></span></div>
+
+    <div class="part">Parte VII — Anexos e materiais</div>
+    <div class="row"><span class="pt">23</span><span class="nm">Materiais já produzidos (com espaços)</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">24</span><span class="nm">Banco de pautas: emendas → conteúdo</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">25</span><span class="nm">Checklists gerais</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">26</span><span class="nm">Conformidade eleitoral (guarda-corpo)</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">27</span><span class="nm">Glossário e governança do documento</span><span class="ln"></span></div>
+    <div class="row"><span class="pt">28</span><span class="nm">Mapa de atualização contínua</span><span class="ln"></span></div>
+  </div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE I ===================== -->
+<section class="divider page break">
+  <div class="pnum">I</div>
+  <div class="ptitle">Fundamentos estratégicos</div>
+  <div class="pdesc">Antes de qualquer arte ou post: quem é o candidato, onde ele está forte, como ele se posiciona, qual é a ideia-mãe que atravessa tudo e com quem falamos. Esta parte é o solo onde tudo é plantado.</div>
+  <div class="pindex">
+    <div><span>01</span>Quem é Pepê Collaço</div>
+    <div><span>02</span>Diagnóstico estratégico (SWOT)</div>
+    <div><span>03</span>Posicionamento — 5 pilares</div>
+    <div><span>04</span>Parceria → Transformação</div>
+    <div><span>05</span>Mapa de públicos e mensagens</div>
+  </div>
+</section>
+
+<!-- CAP 01 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE I</span> · FUNDAMENTOS</span><span>01 · Quem é Pepê Collaço</span></div>
+  <div class="chead"><div class="n">01</div><h2>Quem é Pepê Collaço</h2></div>
+  <p class="lead">Político <strong>regionalista, de proximidade e de entrega</strong>. Advogado, três mandatos de vereador, vice-prefeito e prefeito de Tubarão, com passagem por gestão estadual (DETER, Defesa Civil). Hoje deputado estadual com forte atuação na CCJ e nas causas da inclusão. Sua marca é <mark>estar presente nas cidades</mark> e aproximar o poder público das pessoas.</p>
+
+  <div class="grid g2">
+    <div>
+      <div class="shead">Dados-âncora</div>
+      <table class="tbl compact">
+        <tr><th>Campo</th><th>Informação</th></tr>
+        <tr><td>Nome político</td><td>Pepê Collaço (Felippe Luiz Collaço)</td></tr>
+        <tr><td>Partido</td><td>Progressistas (PP)</td></tr>
+        <tr><td>Cargo</td><td>Deputado Estadual SC — 20ª Legislatura</td></tr>
+        <tr><td>Nascimento</td><td>13/07/1978 — Tubarão/SC</td></tr>
+        <tr><td>Formação</td><td>Advogado</td></tr>
+        <tr><td>Votação 2022</td><td>28.809 votos</td></tr>
+        <tr><td>Base</td><td>Tubarão e região da AMUREL</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="shead">Trajetória (capital político)</div>
+      <div class="tl">
+        <div class="ev"><div class="t">Vereador (3 mandatos)</div><p>Construção de base e capilaridade em Tubarão.</p></div>
+        <div class="ev"><div class="t">Vice-prefeito → Prefeito</div><p>Experiência de gestão e execução de obras.</p></div>
+        <div class="ev"><div class="t">DETER / Defesa Civil</div><p>Atuação estadual e visão de infraestrutura.</p></div>
+        <div class="ev"><div class="t">Deputado Estadual</div><p>CCJ, autismo, hospitais e infraestrutura regional.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead">As 7 bandeiras do mandato</div>
+  <div class="grid g3">
+    <div class="card"><div class="ct">1. Infraestrutura regional</div><p>SC-370, dragagem do Rio Tubarão/Molhes de Laguna, BR-101, pavimentação na AMUREL.</p></div>
+    <div class="card"><div class="ct">2. Saúde</div><p>Hospitais filantrópicos, exames de imagem, atenção básica.</p></div>
+    <div class="card"><div class="ct">3. Autismo (TEA)</div><p>Frente Parlamentar, censo/plataforma TEA, equoterapia, salas sensoriais.</p></div>
+    <div class="card"><div class="ct">4. Entidades sociais</div><p>APAE, Rede Feminina, Clube de Mães, COMBEMTU, STAN.</p></div>
+    <div class="card"><div class="ct">5. Segurança pública</div><p>Viaturas PM, Bombeiros, câmeras de segurança.</p></div>
+    <div class="card"><div class="ct">6. Educação e infância</div><p>CEIs, ônibus e mobiliário escolar, robótica e esporte.</p></div>
+  </div>
+  <div class="card" style="margin-top:12px"><div class="ct">7. Desenvolvimento rural</div><p>Tratores e implementos, estradas vicinais, apoio à agricultura familiar de pequenos municípios.</p></div>
+
+  <div class="box navy avoid" style="margin-top:16px"><div class="bt">Tom de voz</div>
+    <p>Direto, próximo, regional, sem arrogância. Fala como quem conhece a cidade pelo nome. Usa “a gente”, não “eu”. Cobra o Estado quando precisa, mas é <strong>pragmático na parceria com prefeitos</strong> — o interesse da cidade acima da disputa partidária.</p></div>
+</section>
+
+<!-- CAP 02 SWOT -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE I</span> · FUNDAMENTOS</span><span>02 · Diagnóstico estratégico</span></div>
+  <div class="chead"><div class="n">02</div><h2>Diagnóstico estratégico — SWOT</h2></div>
+  <p class="lead">Leitura honesta do ponto de partida. Cada quadrante vira decisão de comunicação: forças a amplificar, fraquezas a blindar, oportunidades a capturar, ameaças a neutralizar.</p>
+
+  <div class="matrix">
+    <div class="quad p1">
+      <div class="qh"><span>FORÇAS</span><span class="pill sun">amplificar</span></div>
+      <ul>
+        <li>Histórico de entregas concretas (emendas e obras na região).</li>
+        <li>Liderança na CCJ — relevância e articulação.</li>
+        <li>Reconhecimento nas causas inclusivas (autismo, Rede Feminina).</li>
+        <li>Proximidade real: presente nas cidades, festas e comunidades.</li>
+        <li>Estrutura digital e de dados já montada (rara entre concorrentes).</li>
+      </ul>
+    </div>
+    <div class="quad p0">
+      <div class="qh"><span>FRAQUEZAS</span><span class="pill red">blindar</span></div>
+      <ul>
+        <li>Identidade regional forte pode limitar expansão a outras regiões.</li>
+        <li>Percepção de proximidade depende de agenda presencial intensa.</li>
+        <li>Marca pessoal ainda concentrada no Sul — baixa lembrança no resto de SC.</li>
+        <li>Risco de comunicação “tecnocrática” se falar só em valores/números.</li>
+      </ul>
+    </div>
+    <div class="quad p2">
+      <div class="qh"><span>OPORTUNIDADES</span><span class="pill navy">capturar</span></div>
+      <ul>
+        <li>Conteúdo “antes e depois” com altíssimo potencial de engajamento.</li>
+        <li>Expansão para além do Sul via pautas de desenvolvimento e empregos.</li>
+        <li>Obras estratégicas maturando para “entrega” na janela da campanha.</li>
+        <li>Time Pepê como motor de mobilização e dados próprios.</li>
+      </ul>
+    </div>
+    <div class="quad p3">
+      <div class="qh"><span>AMEAÇAS</span><span class="pill ghost">neutralizar</span></div>
+      <ul>
+        <li>Ser alvo prioritário de adversários regionais por estar em destaque.</li>
+        <li>Polarização: posicionamentos econômicos podem afastar parte do eleitorado.</li>
+        <li>Atrasos de obra: prometer entrega antes da hora vira passivo.</li>
+        <li>Janela jurídica: confundir mandato e campanha gera risco legal.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="shead">Cruzamentos estratégicos</div>
+  <table class="tbl">
+    <tr><th>Combinação</th><th>Movimento de comunicação</th></tr>
+    <tr><td><strong>Força × Oportunidade</strong></td><td>Transformar o histórico de entregas em série “antes e depois” e usar o Time Pepê para distribuir capilarmente.</td></tr>
+    <tr><td><strong>Força × Ameaça</strong></td><td>Usar proximidade e causas inclusivas como blindagem reputacional contra ataques.</td></tr>
+    <tr><td><strong>Fraqueza × Oportunidade</strong></td><td>Pautas de desenvolvimento/empregos para furar a bolha regional sem perder a base.</td></tr>
+    <tr><td><strong>Fraqueza × Ameaça</strong></td><td>Calendário de presença física + conteúdo documental para sustentar a percepção de proximidade.</td></tr>
+  </table>
+  <div class="ph"><div class="pi">Espaço reservado</div><div class="pl">Pesquisa eleitoral / indicadores de percepção</div><div class="pd">Inserir gráficos de pesquisa, rejeição, lembrança espontânea e mapa de força por município quando disponíveis.</div></div>
+</section>
+
+<!-- CAP 03 PILARES -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE I</span> · FUNDAMENTOS</span><span>03 · Posicionamento</span></div>
+  <div class="chead"><div class="n">03</div><h2>Posicionamento — os 5 pilares</h2></div>
+  <p class="lead">Todo conteúdo deve reforçar pelo menos um destes pilares. Eles são o “esqueleto” da mensagem — a régua para aprovar ou recusar uma peça.</p>
+
+  <div class="pillar"><div class="pn">1</div><div><div class="ph2">Proximidade</div><p>Presença física constante nas cidades. Estar com as pessoas, ouvir, caminhar, conversar. É o ativo mais difícil de copiar.</p></div></div>
+  <div class="pillar"><div class="pn">2</div><div><div class="ph2">Resultados</div><p>Entrega comprovada de recursos e obras. Não é promessa: é histórico. Na pré-campanha, sustentado por números; na campanha, por imagens da vida real.</p></div></div>
+  <div class="pillar"><div class="pn">3</div><div><div class="ph2">Articulação</div><p>Liderança na CCJ e capacidade de fazer acontecer. Quem articula entrega — a competência política vira benefício concreto.</p></div></div>
+  <div class="pillar"><div class="pn">4</div><div><div class="ph2">Inclusão e direitos</div><p>Autismo (TEA), APAE, Rede Feminina. A face humana e sensível do mandato — gera identificação e blindagem reputacional.</p></div></div>
+  <div class="pillar" style="border-bottom:none"><div class="pn">5</div><div><div class="ph2">Desenvolvimento &amp; economia</div><p>Atração de investimentos, infraestrutura e geração de empregos. O pilar que permite expandir para além do Sul.</p></div></div>
+
+  <div class="box red avoid"><div class="bt">Régua de aprovação de conteúdo</div>
+  <p>Antes de publicar qualquer peça, pergunte: <strong>“Qual pilar esta peça fortalece?”</strong> Se a resposta for “nenhum com clareza”, a peça volta para a prancheta. Conteúdo que não constrói posicionamento é ruído.</p></div>
+
+  <div class="shead">Conceito permanente que costura os 5 pilares</div>
+  <div class="bigq">“Pepê nunca aparece sozinho. Aparece construindo junto — ao lado dos prefeitos, das cidades, das lideranças e de quem trabalha.”
+  <span class="by">Parceria é o fio condutor. Os pilares são o que provamos; a parceria é como contamos.</span></div>
+</section>
+
+<!-- CAP 04 CONCEITO-MÃE -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE I</span> · FUNDAMENTOS</span><span>04 · Conceito-mãe</span></div>
+  <div class="chead"><div class="n">04</div><h2>O conceito-mãe: Parceria → Transformação</h2></div>
+  <p class="lead--big">Uma só ideia atravessa todo o plano e gira no momento certo: começa em <span style="color:var(--red)">PARCERIA</span> e amadurece em <span style="color:var(--navy-2)">TRANSFORMAÇÃO</span>.</p>
+
+  <div class="flow">
+    <div class="node red"><div class="ft">PARCERIA</div><small>Pré-campanha</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">PROVA</div><small>Resultados e articulação</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">VIDA REAL</div><small>Pessoas usando</small></div>
+    <div class="arr">→</div>
+    <div class="node navy"><div class="ft">TRANSFORMAÇÃO</div><small>Campanha</small></div>
+  </div>
+
+  <div class="grid g2" style="margin-top:8px">
+    <div class="box red"><div class="bt">Por que “Parceria” na pré-campanha</div>
+      <p>O público são lideranças, prefeitos, vereadores, secretários e apoiadores. Eles precisam sentir que <strong>constroem com</strong> o Pepê — não que recebem dele. Parceria gera pertencimento, e pertencimento gera mobilização.</p></div>
+    <div class="box navy"><div class="bt">Por que “Transformação” na campanha</div>
+      <p>O público vira o eleitor comum. Ele não vota em valor de emenda; vota no que mudou perto dele. <strong>A transformação é a parceria que deu certo</strong> — agora visível na rua, no hospital, na escola.</p></div>
+  </div>
+
+  <div class="shead">A regra de ouro da virada de linguagem</div>
+  <table class="tbl">
+    <tr><th>Em vez de dizer…</th><th>Mostramos…</th></tr>
+    <tr><td>“Trouxe R$ 10 milhões.”</td><td>“A estrada foi asfaltada.”</td></tr>
+    <tr><td>“R$ 400 mil em equipamentos.”</td><td>“O hospital agora faz o exame aqui.”</td></tr>
+    <tr><td>“R$ 2,3 milhões para a creche.”</td><td>“As crianças já têm onde estudar.”</td></tr>
+    <tr><td>“Emenda para a agricultura.”</td><td>“O agricultor consegue produzir mais.”</td></tr>
+  </table>
+  <div class="bigq" style="font-size:24px">A entrega substitui o valor. O benefício substitui o número. A pessoa substitui a obra.</div>
+
+  <div class="box sun avoid"><div class="bt">Cuidado de timing</div>
+    <p>A virada não é abrupta no dia do registro: é uma <strong>transição gradual</strong>. Comece a plantar histórias humanas ainda na pré-campanha (sem caráter eleitoral explícito), para que na campanha a “transformação” já tenha lastro emocional. O jurídico define até onde ir em cada momento.</p></div>
+
+  <div class="box green avoid"><div class="bt">A face local do conceito: “De Tubarão, para Tubarão”</div>
+    <p>No território, o conceito-mãe ganha uma <strong>linha falável e recorrente</strong> — no espírito de um “Estrada Boa Rural”. <strong>“De Tubarão, para Tubarão”</strong> abre e fecha o conteúdo local; <strong>“Tubarão no coração. Santa Catarina na missão”</strong> assina o conteúdo estadual. É a mesma lógica Parceria → Transformação, dita na linguagem da rua: quando a cidade tem quem conhece a cidade, o resultado aparece. Detalhamento completo (aberturas, fechamentos, aplicações por tema, expansão e tom) no documento complementar <em>Linha Conceitual Regional — De Tubarão, para Tubarão</em>.</p></div>
+</section>
+
+<!-- CAP 05 MAPA DE PÚBLICOS -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE I</span> · FUNDAMENTOS</span><span>05 · Públicos e mensagens</span></div>
+  <div class="chead"><div class="n">05</div><h2>Mapa de públicos e mensagens</h2></div>
+  <p class="lead">Não se fala com todo mundo do mesmo jeito. Cada público tem uma dor, uma mensagem-núcleo, um canal preferencial e uma “prova” que mais convence.</p>
+
+  <table class="tbl">
+    <tr><th style="width:18%">Público</th><th style="width:24%">Mensagem-núcleo</th><th style="width:20%">Prova que convence</th><th style="width:18%">Canal principal</th><th>Fase</th></tr>
+    <tr><td><strong>Prefeitos e vices</strong></td><td>“A gente resolve junto — eu destravo no Estado o que sua cidade precisa.”</td><td>Recursos destinados, agilidade, parceria apartidária.</td><td>Presencial + WhatsApp direto</td><td><span class="pill red">Pré</span></td></tr>
+    <tr><td><strong>Vereadores e lideranças</strong></td><td>“Você tem voz e canal direto comigo.”</td><td>Atendimento de demandas locais, presença em eventos.</td><td>WhatsApp + encontros</td><td><span class="pill red">Pré</span></td></tr>
+    <tr><td><strong>Secretários municipais</strong></td><td>“Levo recurso técnico para sua pasta funcionar.”</td><td>Emendas por área (saúde, educação, agricultura).</td><td>Presencial + ofício</td><td><span class="pill red">Pré</span></td></tr>
+    <tr><td><strong>Apoiadores / Time Pepê</strong></td><td>“Faça parte. Sua cidade pode liderar.”</td><td>Pertencimento, ranking, gamificação.</td><td>App Time Pepê + grupos</td><td><span class="pill red">Pré</span> <span class="pill navy">Camp</span></td></tr>
+    <tr><td><strong>Famílias atípicas (TEA)</strong></td><td>“Aqui sua causa tem quem defenda.”</td><td>Frente Parlamentar, equoterapia, censo TEA.</td><td>Instagram + grupos + entidades</td><td><span class="pill red">Pré</span> <span class="pill navy">Camp</span></td></tr>
+    <tr><td><strong>Eleitor da base (AMUREL)</strong></td><td>“Veja o que mudou na sua cidade.”</td><td>Obra pronta, serviço funcionando, vizinho usando.</td><td>Instagram/Reels + rua</td><td><span class="pill navy">Campanha</span></td></tr>
+    <tr><td><strong>Eleitor de expansão</strong></td><td>“Desenvolvimento, emprego e quem entrega de verdade.”</td><td>Cobertura estadual de emendas, articulação.</td><td>Mídia digital + Reels</td><td><span class="pill navy">Campanha</span></td></tr>
+    <tr><td><strong>Imprensa regional</strong></td><td>“Pauta com dado, personagem e território.”</td><td>Releases, números travados, porta-voz disponível.</td><td>Assessoria de imprensa</td><td><span class="pill red">Pré</span> <span class="pill navy">Camp</span></td></tr>
+  </table>
+
+  <div class="box navy avoid"><div class="bt">Mapa estratégico territorial</div>
+    <p>Três anéis concêntricos orientam o esforço: <strong>(1) Núcleo</strong> — Tubarão e AMUREL (defender e aprofundar); <strong>(2) Cinturão</strong> — AMREC, AMESC, AMUREL ampliada (crescer); <strong>(3) Expansão</strong> — Serra, Alto Vale, Meio-Oeste, Oeste, Litoral e Planalto Norte (semear com pautas de desenvolvimento). A intensidade de mídia e presença cai do anel 1 ao 3, mas nunca zera.</p></div>
+  <div class="ph"><div class="pi">Espaço reservado</div><div class="pl">Mapa de calor por município (votos × emendas)</div><div class="pd">Exportar do Painel Estratégico: sobreposição de votação 2022/2024 com emendas destinadas, para priorizar anéis e cidades-alvo.</div></div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE II ===================== -->
+<section class="divider alt page break">
+  <div class="pnum">II</div>
+  <div class="ptitle">As duas fases</div>
+  <div class="pdesc">A mesma campanha, dois tempos e duas linguagens. Primeiro consolidamos a base com a lógica da parceria e dos números. Depois traduzimos tudo em transformação visível. Esta parte detalha o que muda — e o que permanece — na passagem de uma fase para a outra.</div>
+  <div class="pindex">
+    <div><span>06</span>Fase 1 — Pré-campanha (Parceria)</div>
+    <div><span>07</span>Fase 2 — Campanha (Transformação)</div>
+    <div><span>08</span>Matriz comparativa Fase 1 × Fase 2</div>
+  </div>
+</section>
+
+<!-- CAP 06 FASE 1 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE II</span> · AS DUAS FASES</span><span>06 · Fase 1 — Pré-campanha</span></div>
+  <div class="chead"><div class="n">06</div><h2>Fase 1 — Pré-campanha · <span style="color:var(--red)">Parceria</span></h2></div>
+  <p class="lead">Do momento atual até o lançamento oficial. Objetivo: <strong>preparar o terreno</strong> — fortalecer base e pertencimento, consolidar lideranças, aumentar engajamento e organizar toda a estrutura digital.</p>
+
+  <div class="grid g4">
+    <div class="card"><div class="cn">META 1</div><div class="ct">Fortalecer a base</div><p>Pertencimento e sensação de “construir junto”.</p></div>
+    <div class="card"><div class="cn">META 2</div><div class="ct">Consolidar lideranças</div><p>Prefeitos, vereadores, secretários e apoiadores.</p></div>
+    <div class="card"><div class="cn">META 3</div><div class="ct">Engajar</div><p>Crescer alcance e interação orgânica.</p></div>
+    <div class="card"><div class="cn">META 4</div><div class="ct">Estruturar o digital</div><p>Perfis, base, grupos, Time Pepê, dados.</p></div>
+  </div>
+
+  <div class="shead">Com quem falamos nesta fase</div>
+  <div class="tags">
+    <span class="pill">Lideranças</span><span class="pill">Vereadores</span><span class="pill">Prefeitos</span>
+    <span class="pill">Vice-prefeitos</span><span class="pill">Secretários</span><span class="pill">Apoiadores</span>
+    <span class="pill">Time Pepê</span><span class="pill">Núcleo político</span>
+  </div>
+
+  <div class="shead">Séries de conteúdo da pré-campanha</div>
+  <div class="grid g2">
+    <div class="box navy"><div class="bt">Grandes entregas &amp; projetos</div><p>Principais investimentos conquistados, emendas e recursos destinados, com cidades beneficiadas. <strong>Aqui o número é aliado.</strong></p></div>
+    <div class="box navy"><div class="bt">Bastidores do mandato</div><p>Visitas técnicas, reuniões, acompanhamento de obras, encontros com lideranças — o trabalho que sustenta a entrega.</p></div>
+  </div>
+
+  <div class="box red avoid"><div class="bt">Nesta fase, o número fortalece</div>
+    <p>É positivo comunicar valores financeiros destinados: <strong>“Mais de R$ XX milhões para a saúde do Sul”</strong>, <strong>“R$ 5,9 milhões para o ginásio de Sangão”</strong>. Esses números demonstram capacidade política, articulação e resultado — exatamente o que a base e o núcleo político precisam enxergar. <span class="muted">(Sempre com valores travados pelo jurídico.)</span></p></div>
+
+  <div class="shead">Linhas editoriais ativas (detalhe no cap. 11)</div>
+  <table class="tbl compact">
+    <tr><th>Linha</th><th>O que é</th><th>Exemplo</th></tr>
+    <tr><td><strong>Tamo Chegando</strong> 📍</td><td>Anúncio de recursos para municípios.</td><td>“Tamo chegando, Braço do Norte! Mais R$ 2 milhões para a saúde.”</td></tr>
+    <tr><td><strong>Pepê na Estrada</strong> 🚗</td><td>Roteiros e agendas de visitas.</td><td>“Hoje é dia de estrada! Laguna, Imbituba e Tubarão.”</td></tr>
+    <tr><td><strong>Pepê Explica</strong> 📊</td><td>Conteúdo didático sobre projetos.</td><td>“Você sabe por que a dragagem do Rio Tubarão é essencial?”</td></tr>
+  </table>
+
+  <div class="box green avoid"><div class="bt">Resultado esperado da Fase 1</div>
+    <p>Base mobilizada, lideranças engajadas, estrutura digital pronta e um acervo de provas (entregas, números, bastidores) que será a <strong>matéria-prima da transformação</strong> na Fase 2.</p></div>
+</section>
+
+<!-- CAP 07 FASE 2 -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE II</span> · AS DUAS FASES</span><span>07 · Fase 2 — Campanha</span></div>
+  <div class="chead"><div class="n">07</div><h2>Fase 2 — Campanha · <span style="color:var(--navy-2)">Transformação</span></h2></div>
+  <p class="lead">Após o lançamento oficial, a comunicação muda. <strong>O foco deixa de ser o valor financeiro</strong> e passa a ser o que mudou na vida das pessoas.</p>
+
+  <div class="shead">O que mostramos agora</div>
+  <div class="grid g3">
+    <div class="card dark"><div class="ct">Obras prontas</div><p>Estrada asfaltada, ponte, pavimentação, drenagem.</p></div>
+    <div class="card dark"><div class="ct">Serviços funcionando</div><p>Hospital equipado, exame perto de casa, ambulância na rua.</p></div>
+    <div class="card dark"><div class="ct">Pessoas usando</div><p>Criança na creche, atleta no ginásio, agricultor no campo.</p></div>
+  </div>
+
+  <div class="grid g2" style="margin-top:14px">
+    <div class="box navy"><div class="bt">A foto vale mais que o cifrão</div><p>Valorizar registros documentais: pessoas reais utilizando o que foi entregue. Rosto, lugar, depoimento curto. <strong>Emoção, não planilha.</strong></p></div>
+    <div class="box navy"><div class="bt">Antes e depois</div><p>O formato de maior engajamento. “Antes: estrada esburacada. Agora: acesso seguro e asfaltado.” Carrossel ou vídeo de transformação.</p></div>
+  </div>
+
+  <div class="bigq">“É disso que a gente gosta.”
+    <span class="by">Linha-assinatura da Fase 2: obra/ação pronta no formato antes e depois.</span></div>
+
+  <div class="shead">Roteiro-padrão de conteúdo de transformação</div>
+  <div class="flow">
+    <div class="node"><div class="ft">1. CENA</div><small>O lugar / a pessoa</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">2. ANTES</div><small>O problema real</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">3. DEPOIS</div><small>A entrega em uso</small></div>
+    <div class="arr">→</div>
+    <div class="node navy"><div class="ft">4. PESSOA</div><small>Quem vive melhor</small></div>
+  </div>
+
+  <div class="box red avoid"><div class="bt">Disciplina de status (regra inegociável)</div>
+    <p>Só comunicar como “entregue / pronto / funcionando” o que <strong>de fato</strong> está. Emenda em status “aguardando portaria”, “em análise” ou “pendente” <strong>não é entrega</strong>. Errar isso vira munição para o adversário e quebra a confiança da base. Conferir sempre com prefeitura/entidade antes de postar.</p></div>
+
+  <div class="shead">Banco de histórias prontas para a Fase 2 (exemplos da base)</div>
+  <table class="tbl compact">
+    <tr><th>Tema</th><th>História humana</th><th>Cidade</th></tr>
+    <tr><td>Saúde</td><td>Endoscopia que evita deslocamento — exame perto de casa.</td><td>Jacinto Machado</td></tr>
+    <tr><td>Saúde</td><td>Ambulância nova: tempo de resposta e segurança.</td><td>Treze de Maio</td></tr>
+    <tr><td>Educação</td><td>Creche Joelma de Bona: mães que voltam a trabalhar.</td><td>Paulo Lopes</td></tr>
+    <tr><td>Inclusão</td><td>Equoterapia: a evolução de uma criança atípica.</td><td>Tubarão / Laguna</td></tr>
+    <tr><td>Esporte</td><td>Ginásio: do treino ao evento que move a cidade.</td><td>Sangão</td></tr>
+    <tr><td>Mulheres</td><td>Kits de artesanato: renda e autonomia.</td><td>Pescaria Brava</td></tr>
+  </table>
+  <p class="small muted">Banco completo no capítulo 24. Cada história exige autorização de imagem — sobretudo com crianças, saúde e TEA.</p>
+</section>
+
+<!-- CAP 08 MATRIZ COMPARATIVA -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE II</span> · AS DUAS FASES</span><span>08 · Matriz comparativa</span></div>
+  <div class="chead"><div class="n">08</div><h2>Matriz comparativa — Fase 1 × Fase 2</h2></div>
+  <p class="lead">O quadro de bolso da virada. Imprima e cole na parede do estúdio.</p>
+
+  <table class="tbl">
+    <tr><th style="width:22%">Dimensão</th><th style="width:39%"><span class="pill red">Fase 1 — Parceria</span></th><th><span class="pill navy">Fase 2 — Transformação</span></th></tr>
+    <tr><td><strong>Conceito</strong></td><td>Construir junto, articulação, capacidade.</td><td>O que mudou na vida das pessoas.</td></tr>
+    <tr><td><strong>Público</strong></td><td>Lideranças, prefeitos, secretários, apoiadores.</td><td>Eleitor comum (base + expansão).</td></tr>
+    <tr><td><strong>Herói da peça</strong></td><td>Pepê + a liderança local (juntos).</td><td>A pessoa beneficiada / a comunidade.</td></tr>
+    <tr><td><strong>Prova central</strong></td><td>Valor, número, recurso destinado.</td><td>Imagem da obra em uso, depoimento.</td></tr>
+    <tr><td><strong>Linguagem</strong></td><td>“Mais de R$ XX milhões para…”</td><td>“A estrada foi asfaltada.”</td></tr>
+    <tr><td><strong>Formatos-chave</strong></td><td>Cards de prestação de contas, bastidores, agenda.</td><td>Antes/depois, mini-doc, depoimento, Reels.</td></tr>
+    <tr><td><strong>Emoção dominante</strong></td><td>Confiança, competência, pertencimento.</td><td>Orgulho, gratidão, identificação.</td></tr>
+    <tr><td><strong>Métrica de sucesso</strong></td><td>Crescimento de base, engajamento, adesões ao Time.</td><td>Intenção de voto, alcance qualificado, compartilhamentos.</td></tr>
+    <tr><td><strong>Papel do número</strong></td><td>Protagonista.</td><td>Coadjuvante (entra como legenda, não manchete).</td></tr>
+  </table>
+
+  <div class="box sun avoid"><div class="bt">O que NÃO muda entre as fases</div>
+    <p>Tom de voz próximo, fotografia documental real, os 5 pilares, a régua de status (só comunicar o que existe) e o respeito à conformidade eleitoral. <strong>A linguagem gira; a essência permanece.</strong></p></div>
+
+  <div class="shead">Linha de transição (visual)</div>
+  <div class="tl">
+    <div class="ev"><div class="d">Pré-campanha</div><div class="t">Parceria + números</div><p>Construir base e acervo de provas. Plantar primeiras histórias humanas sem caráter eleitoral.</p></div>
+    <div class="ev"><div class="d">Janela de virada</div><div class="t">Transição gradual</div><p>Aumentar peso das histórias de vida; reduzir destaque ao cifrão. Jurídico baliza cada passo.</p></div>
+    <div class="ev"><div class="d">Campanha oficial</div><div class="t">Transformação</div><p>Antes/depois, depoimentos, pessoas usando. O número vira legenda discreta.</p></div>
+    <div class="ev"><div class="d">Reta final</div><div class="t">Mobilização total</div><p>Time Pepê em ranking máximo, prova social, chamada ao voto.</p></div>
+  </div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE III ===================== -->
+<section class="divider page break">
+  <div class="pnum">III</div>
+  <div class="ptitle">Identidade e linguagem</div>
+  <div class="pdesc">Como a campanha se parece e como ela fala. Um sistema visual de “arena digital” — azul-marinho profundo, números em amarelo, verde institucional, tipografia condensada esportiva e fotografia real. Inclui o sistema modular de santinhos e as linhas editoriais.</div>
+  <div class="pindex">
+    <div><span>09</span>Identidade visual</div>
+    <div><span>10</span>Sistema modular de santinhos</div>
+    <div><span>11</span>Linhas editoriais e formatos</div>
+  </div>
+</section>
+
+<!-- CAP 09 IDENTIDADE VISUAL -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE III</span> · IDENTIDADE</span><span>09 · Identidade visual</span></div>
+  <div class="chead"><div class="n">09</div><h2>Identidade visual</h2></div>
+  <div class="box green"><div class="bt">Status</div><p>Paleta oficial <strong>definida</strong> (abaixo). Pendente: aplicação em todos os templates, fechamento do logotipo e do manual de marca (P0). Este capítulo é a fonte da verdade de cor e tipografia.</p></div>
+
+  <div class="shead">Conceito: “arena digital” de campanha</div>
+  <p>Composição <strong>centralizada e vertical</strong>, como um card de aplicativo / painel de campanha: conteúdo principal ao centro, cantos arredondados, sombra suave e leve transparência criando profundidade. Fundo escuro com <strong>pinceladas diagonais</strong> em verde, amarelo, azul e branco — movimento visual sem prejudicar a leitura, uma atmosfera de convocação de lideranças. A hierarquia é clara: brasão → “Time Pepê” → número de impacto (em amarelo) → ranking.</p>
+  <div class="grid g4">
+    <div class="card"><div class="ct">Centralizado</div><p>Card vertical, responsivo, com profundidade.</p></div>
+    <div class="card"><div class="ct">Textura viva</div><p>Pinceladas diagonais ao fundo.</p></div>
+    <div class="card"><div class="ct">Número-herói</div><p>Amarelo, peso máximo, impacto imediato.</p></div>
+    <div class="card"><div class="ct">Foto real</div><p>Documental, espontânea, humana.</p></div>
+  </div>
+
+  <div class="shead">Paleta oficial</div>
+  <table class="tbl compact">
+    <tr><th>Cor</th><th>Nome / uso</th><th>Hex</th></tr>
+    <tr><td><span style="display:inline-block;width:34px;height:14px;background:#061A3A;border:1px solid #335;vertical-align:middle"></span></td><td><strong>Azul marinho principal</strong> — fundo geral, cards principais, áreas institucionais.</td><td class="mono">#061A3A / #082452</td></tr>
+    <tr><td><span style="display:inline-block;width:34px;height:14px;background:#203A63;vertical-align:middle"></span></td><td><strong>Azul médio de apoio</strong> — caixas, rankings, campos internos, divisões.</td><td class="mono">#142B50 / #203A63</td></tr>
+    <tr><td><span style="display:inline-block;width:34px;height:14px;background:#1FA64A;vertical-align:middle"></span></td><td><strong>Verde institucional</strong> — faixas, detalhes, identidade regional (SC/Brasil).</td><td class="mono">#0F8A3A / #1FA64A</td></tr>
+    <tr><td><span style="display:inline-block;width:34px;height:14px;background:#FFD21F;vertical-align:middle"></span></td><td><strong>Amarelo destaque</strong> — números, selos, chamadas, posições de ranking, atenção.</td><td class="mono">#FFD21F / #FFC400</td></tr>
+    <tr><td><span style="display:inline-block;width:34px;height:14px;background:#FFFFFF;border:1px solid #335;vertical-align:middle"></span></td><td><strong>Branco</strong> — textos principais, logotipo, títulos, contraste sobre escuro.</td><td class="mono">#FFFFFF</td></tr>
+    <tr><td><span style="display:inline-block;width:34px;height:14px;background:#B8C4D6;vertical-align:middle"></span></td><td><strong>Cinza azulado claro</strong> — textos secundários, descrições, apoio.</td><td class="mono">#B8C4D6</td></tr>
+  </table>
+
+  <div class="shead">Tipografia e hierarquia</div>
+  <p>Estilo <strong>condensado, esportivo e em caixa alta</strong>, forte e competitivo. Títulos em peso bold/extra bold, com leve inclinação (sensação de movimento). Textos secundários menores, em branco ou cinza azulado, com boa legibilidade sobre o fundo escuro.</p>
+  <table class="tbl compact">
+    <tr><th>Nível</th><th>Tratamento</th></tr>
+    <tr><td>Título principal</td><td>Condensado extra bold, caixa alta, leve skew.</td></tr>
+    <tr><td>Número de destaque</td><td>Amarelo, tamanho ampliado, peso máximo.</td></tr>
+    <tr><td>Subtítulos e selos</td><td>Amarelo sobre azul ou azul sobre amarelo.</td></tr>
+    <tr><td>Texto explicativo</td><td>Branco ou cinza azulado, espaçamento confortável.</td></tr>
+  </table>
+
+  <div class="shead">Componentes visuais</div>
+  <div class="grid g2">
+    <div class="box navy"><div class="bt">Cards e caixas</div><p>Fundo azul translúcido ou azul médio, cantos arredondados, bordas discretas. Profundidade por sombra suave.</p></div>
+    <div class="box sun"><div class="bt">Ranking / placar</div><p>Linhas horizontais em blocos separados (sensação de placar). Ícones de medalha e troféu reforçam a dinâmica competitiva. Ver cap. 14.</p></div>
+  </div>
+
+  <div class="shead">Referência estética e fotografia</div>
+  <p>Inspiração britânica contemporânea (<strong>apenas estética</strong>): tipografia dominante, poucas palavras, alto contraste, fotos reais e espontâneas. O candidato caminhando, conversando, ouvindo, trabalhando. <strong>Evitar excesso de estúdio; valorizar o registro documental e humanizar.</strong></p>
+  <div class="grid g2">
+    <div class="box green"><div class="bt">Fazer</div>
+      <ul class="clean" style="margin:0"><li>Cenas espontâneas, luz natural.</li><li>Pepê ouvindo, caminhando, trabalhando.</li><li>Mãos, olhares, contato com pessoas reais.</li><li>Território visível (cidade, obra, paisagem).</li></ul></div>
+    <div class="box red"><div class="bt">Evitar</div>
+      <ul class="clean" style="margin:0"><li>Excesso de estúdio e pose rígida.</li><li>Fundos artificiais e luz “de catálogo”.</li><li>Stock genérico sem o território.</li><li>Filtros que descaracterizam a realidade.</li></ul></div>
+  </div>
+
+  <div class="ph tall"><div class="pi">Espaço reservado</div><div class="pl">Manual de identidade visual aplicado</div><div class="pd">Inserir: logo final e variações, grid de aplicação, exemplos de feed/story/Reels, mockups (bandeira, adesivo, camiseta, outdoor) já na paleta oficial.</div></div>
+</section>
+
+<!-- CAP 10 SANTINHOS -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE III</span> · IDENTIDADE</span><span>10 · Sistema de santinhos</span></div>
+  <div class="chead"><div class="n">10</div><h2>Sistema modular de santinhos</h2></div>
+  <p class="lead--big">Não um santinho. Uma <span style="color:var(--red)">família inteira</span> — um sistema modular que se adapta por bandeira, por região e por cidade, mantendo a mesma assinatura visual.</p>
+
+  <div class="shead">Lógica do sistema</div>
+  <div class="flow">
+    <div class="node navy"><div class="ft">BASE FIXA</div><small>Logo, foto, número, slogan</small></div>
+    <div class="arr">+</div>
+    <div class="node"><div class="ft">MÓDULO TEMA</div><small>Saúde, educação…</small></div>
+    <div class="arr">+</div>
+    <div class="node"><div class="ft">MÓDULO REGIÃO</div><small>AMUREL, AMREC…</small></div>
+    <div class="arr">=</div>
+    <div class="node red"><div class="ft">SANTINHO ÚNICO</div><small>Para cada público</small></div>
+  </div>
+
+  <div class="grid g2">
+    <div>
+      <div class="shead">Família por bandeira (tema)</div>
+      <div class="tags">
+        <span class="pill red">Agricultura</span><span class="pill red">Saúde</span><span class="pill red">Educação</span>
+        <span class="pill red">Infraestrutura</span><span class="pill red">Juventude</span><span class="pill red">Mulheres</span>
+        <span class="pill red">Inclusão / TEA</span><span class="pill red">Segurança</span><span class="pill red">Esporte</span>
+      </div>
+    </div>
+    <div>
+      <div class="shead">Família por região</div>
+      <div class="tags">
+        <span class="pill sun">AMUREL</span><span class="pill sun">AMREC</span><span class="pill sun">AMESC</span>
+        <span class="pill sun">Litoral</span><span class="pill sun">Serra</span><span class="pill sun">Alto Vale</span>
+        <span class="pill sun">Meio-Oeste</span><span class="pill sun">Oeste</span><span class="pill sun">Planalto Norte</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="box sun avoid"><div class="bt">Adaptação por cidade</div>
+    <p>Cada cidade pode ganhar sua versão: foto local, entrega específica e frase “Tamo chegando, <em>[cidade]</em>”. O sistema permite produzir <strong>dezenas de variações a partir de um único template-mãe</strong> — fundamental para a capilaridade da base AMUREL e além.</p></div>
+
+  <div class="shead">Anatomia do santinho (frente e verso)</div>
+  <table class="tbl compact">
+    <tr><th>Elemento</th><th>Frente</th><th>Verso</th></tr>
+    <tr><td>Identidade</td><td>Foto documental + nome + número + slogan.</td><td>Logo + assinatura Time Pepê.</td></tr>
+    <tr><td>Mensagem</td><td>Manchete curta da bandeira/região.</td><td>3–4 entregas/propostas em bullets.</td></tr>
+    <tr><td>Conexão</td><td>—</td><td>QR para site/Time Pepê + redes + WhatsApp.</td></tr>
+  </table>
+
+  <div class="grid g3" style="margin-top:6px">
+    <div class="ph" style="min-height:150px"><div class="pi">Modelo</div><div class="pl">Saúde</div><div class="pd">Inserir arte aprovada</div></div>
+    <div class="ph" style="min-height:150px"><div class="pi">Modelo</div><div class="pl">Educação</div><div class="pd">Inserir arte aprovada</div></div>
+    <div class="ph" style="min-height:150px"><div class="pi">Modelo</div><div class="pl">Infraestrutura</div><div class="pd">Inserir arte aprovada</div></div>
+  </div>
+  <div class="box green avoid"><div class="bt">Ganho operacional</div><p>Sistema modular = menos retrabalho, mais velocidade e consistência. O design vira “linha de montagem” controlada, não peça artesanal a cada pedido.</p></div>
+</section>
+
+<!-- CAP 11 LINHAS EDITORIAIS -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE III</span> · IDENTIDADE</span><span>11 · Linhas editoriais</span></div>
+  <div class="chead"><div class="n">11</div><h2>Linhas editoriais e formatos</h2></div>
+  <p class="lead">As “editorias” da campanha. Cada post nasce dentro de uma linha — isso dá ritmo, reconhecimento e previsibilidade de produção.</p>
+
+  <div class="grid g2">
+    <div class="card" style="border-top:4px solid var(--red)"><div class="cn">LINHA 1 · 📍</div><div class="ct">Tamo Chegando</div><p>Anúncio de recursos para municípios. Post de impacto com destino e finalidade.</p><p class="small muted">“Tamo chegando, Braço do Norte! Mais R$ 2 milhões para a saúde.”</p></div>
+    <div class="card" style="border-top:4px solid var(--red)"><div class="cn">LINHA 2 · 🚗</div><div class="ct">Pepê na Estrada</div><p>Roteiros e agendas de visitas. Bastidores, fotos com lideranças, registros de reuniões.</p><p class="small muted">“Hoje é dia de estrada! Laguna, Imbituba e Tubarão.”</p></div>
+    <div class="card" style="border-top:4px solid var(--navy)"><div class="cn">LINHA 3 · 📊</div><div class="ct">Pepê Explica</div><p>Didático sobre economia, projetos de lei e infraestrutura. Linguagem simples + dados visuais.</p><p class="small muted">“Você sabe por que a dragagem do Rio Tubarão é essencial?”</p></div>
+    <div class="card" style="border-top:4px solid var(--navy)"><div class="cn">LINHA 4 · 🔨</div><div class="ct">É Disso que a Gente Gosta</div><p>Obras e ações prontas no formato antes e depois. Carrossel ou vídeo de transformação.</p><p class="small muted">“Antes, estrada esburacada. Agora, acesso seguro e asfaltado.”</p></div>
+  </div>
+
+  <div class="shead">Linhas complementares sugeridas</div>
+  <div class="grid g3">
+    <div class="card"><div class="cn">LINHA 5</div><div class="ct">Gente do Sul</div><p>Histórias de pessoas reais beneficiadas. O coração da Fase 2.</p></div>
+    <div class="card"><div class="cn">LINHA 6</div><div class="ct">Causa que Move</div><p>Inclusão, TEA, Rede Feminina, APAE. Pauta sensível e identitária.</p></div>
+    <div class="card"><div class="cn">LINHA 7</div><div class="ct">Time Pepê</div><p>Ranking, mobilização, conquistas das cidades, prova social.</p></div>
+  </div>
+
+  <div class="shead">Mix de formatos por canal</div>
+  <table class="tbl compact">
+    <tr><th>Formato</th><th>Função</th><th>Linha típica</th></tr>
+    <tr><td>Reels / vídeo curto</td><td>Alcance e emoção.</td><td>É Disso que a Gente Gosta, Gente do Sul</td></tr>
+    <tr><td>Carrossel</td><td>Explicar e provar.</td><td>Pepê Explica, antes/depois</td></tr>
+    <tr><td>Card de prestação de contas</td><td>Documentar entrega.</td><td>Tamo Chegando</td></tr>
+    <tr><td>Stories</td><td>Bastidor e rotina.</td><td>Pepê na Estrada</td></tr>
+    <tr><td>Depoimento</td><td>Prova social humana.</td><td>Gente do Sul, Causa que Move</td></tr>
+  </table>
+
+  <div class="box navy avoid"><div class="bt">Cadência sugerida (semana-tipo)</div>
+    <p>Ritmo orgânico de referência, a calibrar com a equipe e o jurídico: <strong>3–5 posts no feed/semana</strong> + <strong>stories diários</strong> + <strong>1–2 Reels/semana</strong>. Equilíbrio: ~40% entregas/resultados, ~30% bastidor/agenda, ~20% causas/pessoas, ~10% Time Pepê/mobilização.</p></div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE IV ===================== -->
+<section class="divider alt page break">
+  <div class="pnum">IV</div>
+  <div class="ptitle">Canais e mobilização</div>
+  <div class="pdesc">Onde a mensagem encontra as pessoas. Redes sociais, WhatsApp em escala, o Time Pepê como motor de mobilização gamificada e a imprensa. Cada canal com papel claro dentro do sistema.</div>
+  <div class="pindex">
+    <div><span>12</span>Redes sociais</div>
+    <div><span>13</span>WhatsApp e relacionamento</div>
+    <div><span>14</span>Time Pepê</div>
+    <div><span>15</span>Imprensa e RP</div>
+  </div>
+</section>
+
+<!-- CAP 12 REDES -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE IV</span> · CANAIS</span><span>12 · Redes sociais</span></div>
+  <div class="chead"><div class="n">12</div><h2>Redes sociais</h2></div>
+  <p class="lead">A vitrine da parceria e da transformação. Cada plataforma tem um papel — não se publica a mesma coisa em todo lugar.</p>
+
+  <table class="tbl">
+    <tr><th>Canal</th><th>Papel</th><th>Formatos-chave</th><th>Foco</th></tr>
+    <tr><td><strong>Instagram</strong></td><td>Casa principal: emoção, entregas, pessoas.</td><td>Reels, carrossel, stories.</td><td>Base + expansão</td></tr>
+    <tr><td><strong>WhatsApp</strong></td><td>Relação direta e mobilização (cap. 13).</td><td>Status, grupos, disparo.</td><td>Base e lideranças</td></tr>
+    <tr><td><strong>Facebook</strong></td><td>Alcance em público 40+ e interior.</td><td>Vídeo, álbum, eventos.</td><td>Base regional</td></tr>
+    <tr><td><strong>TikTok / Kwai</strong></td><td>Alcance jovem e viralização.</td><td>Vídeo curto, trends.</td><td>Juventude / expansão</td></tr>
+    <tr><td><strong>YouTube</strong></td><td>Conteúdo longo, Pepê Explica, documentais.</td><td>Vídeos 2–8 min, Shorts.</td><td>Aprofundamento</td></tr>
+  </table>
+
+  <div class="shead">Auditoria de ponto de partida</div>
+  <div class="ph"><div class="pi">Espaço reservado</div><div class="pl">Auditoria do Instagram + métricas atuais</div><div class="pd">Inserir dados de <span class="mono">auditoria_instagram_pepecollaco</span> e o relatório de alcance/engajamento. Definir linha de base de seguidores, alcance e engajamento.</div></div>
+
+  <div class="shead">Princípios de produção para redes</div>
+  <ul class="arrow">
+    <li><strong>Legenda com 3 dados fixos</strong> em posts de entrega: município, valor (quando cabível) e objeto.</li>
+    <li><strong>Primeiros 3 segundos</strong> do Reels decidem tudo — abrir com cena ou pergunta forte.</li>
+    <li><strong>Foto real sempre que possível</strong> — obra, equipe, morador, território.</li>
+    <li><strong>Uma ideia por peça</strong> — poucas palavras, alto contraste, manchete dominante.</li>
+    <li><strong>Acessibilidade</strong> — legendas embutidas nos vídeos, texto alternativo.</li>
+  </ul>
+
+  <div class="box red avoid"><div class="bt">Checklist antes de postar</div>
+    <ul class="clean" style="margin:0">
+      <li>Status da entrega confirmado com prefeitura/entidade?</li>
+      <li>Autorização de imagem (especialmente crianças, saúde, TEA)?</li>
+      <li>Qual pilar e qual linha editorial esta peça reforça?</li>
+      <li>Conformidade eleitoral checada para o momento atual?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CAP 13 WHATSAPP -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE IV</span> · CANAIS</span><span>13 · WhatsApp</span></div>
+  <div class="chead"><div class="n">13</div><h2>WhatsApp e relacionamento</h2></div>
+  <p class="lead">O canal mais poderoso da política regional. A campanha já tem <strong>infraestrutura própria</strong>: base de 15.525 contatos no Supabase e automação via n8n + Evolution API.</p>
+
+  <div class="grid g4">
+    <div class="stat"><div class="num">15.525</div><div class="lab">contatos importados na base</div></div>
+    <div class="stat navy"><div class="num">n8n</div><div class="lab">automação de fluxos (boas-vindas + agradecimento)</div></div>
+    <div class="stat sun"><div class="num">RLS</div><div class="lab">segurança ativa no banco</div></div>
+    <div class="stat green"><div class="num">Por região</div><div class="lab">grupos a estruturar (P0)</div></div>
+  </div>
+
+  <div class="shead">Arquitetura do relacionamento</div>
+  <div class="flow">
+    <div class="node"><div class="ft">CONTATO</div><small>Base 15,5k / evento</small></div>
+    <div class="arr">→</div>
+    <div class="node navy"><div class="ft">SUPABASE</div><small>CRM + RLS</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">n8n</div><small>fluxo automático</small></div>
+    <div class="arr">→</div>
+    <div class="node red"><div class="ft">WHATSAPP</div><small>Evolution API</small></div>
+  </div>
+
+  <div class="shead">Camadas de uso</div>
+  <table class="tbl compact">
+    <tr><th>Camada</th><th>O que é</th><th>Uso</th></tr>
+    <tr><td><strong>1:1 lideranças</strong></td><td>Conversa direta com prefeitos/vereadores.</td><td>Relação e demanda — manual.</td></tr>
+    <tr><td><strong>Grupos por região</strong></td><td>Comunidades segmentadas (AMUREL, AMREC…).</td><td>Mobilização e informação.</td></tr>
+    <tr><td><strong>Listas / status</strong></td><td>Difusão de conteúdo aprovado.</td><td>Prestação de contas e campanha.</td></tr>
+    <tr><td><strong>Disparo automatizado</strong></td><td>Boas-vindas, agradecimento, avisos.</td><td>n8n + Evolution (com rate limit).</td></tr>
+  </table>
+
+  <div class="box red avoid"><div class="bt">Regras de ouro do WhatsApp</div>
+    <ul class="clean" style="margin:0">
+      <li><strong>Opt-in e LGPD</strong>: respeitar consentimento; oferecer saída fácil. Dado pessoal exige cuidado legal.</li>
+      <li><strong>Rate limit</strong>: intervalos entre envios (já previsto: 3s) para evitar bloqueio do número.</li>
+      <li><strong>service_role key</strong> nunca no front — só dentro do n8n. (Já é a prática documentada.)</li>
+      <li><strong>Conteúdo eleitoral em massa</strong>: validar regras e janelas com o jurídico.</li>
+    </ul>
+  </div>
+  <div class="ph"><div class="pi">Espaço reservado</div><div class="pl">Mapa de grupos por região + base de lideranças (CTTS)</div><div class="pd">Inserir o organograma de grupos de WhatsApp e a planilha de lideranças (<span class="mono">LIDERANÇAS CTTS</span>) com responsáveis por território.</div></div>
+</section>
+
+<!-- CAP 14 TIME PEPE -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE IV</span> · CANAIS</span><span>14 · Time Pepê</span></div>
+  <div class="chead"><div class="n">14</div><h2>Time Pepê — mobilização e gamificação</h2></div>
+  <p class="lead--big">O Time Pepê transforma apoiador em <span style="color:var(--red)">protagonista</span>. É a ponte entre comunicação e mobilização: uma plataforma digital que gamifica o pertencimento e gera dados próprios.</p>
+
+  <div class="shead">Placar de cidades (modelo ilustrativo)</div>
+  <div class="placar">
+    <div class="total">
+      <div class="big">604</div>
+      <div class="tlab">Participantes no Time<small>Total de membros ativos — preencher com dado real</small></div>
+      <div style="margin-left:auto;text-align:right"><span class="pill sun">🏆 Ranking de Times</span></div>
+    </div>
+    <div class="rrow lead"><div class="pos">1</div><div class="medal">🥇</div><div class="city">Tubarão</div><div class="pts">1.240 pts</div></div>
+    <div class="rrow"><div class="pos">2</div><div class="medal">🥈</div><div class="city">Laguna</div><div class="pts">980 pts</div></div>
+    <div class="rrow"><div class="pos">3</div><div class="medal">🥉</div><div class="city">Braço do Norte</div><div class="pts">870 pts</div></div>
+    <div class="rrow"><div class="pos">4</div><div class="medal">·</div><div class="city">Capivari de Baixo</div><div class="pts">760 pts</div></div>
+    <div class="rrow"><div class="pos">5</div><div class="medal">·</div><div class="city">Gravatal</div><div class="pts">645 pts</div></div>
+  </div>
+  <p class="small muted">Números ilustrativos. O ranking real é alimentado pela plataforma (cadastros, convites, compartilhamentos, presença).</p>
+
+  <div class="shead">Como funciona (mecânica)</div>
+  <div class="grid g4">
+    <div class="card"><div class="ct">Cadastro</div><p>Apoiador entra pelo <span class="mono">time.pepecollaco.com/CIDADE</span>.</p></div>
+    <div class="card"><div class="ct">Participação</div><p>Compartilha, convida, comparece, divulga.</p></div>
+    <div class="card"><div class="ct">Pontuação</div><p>Cada ação vira pontos.</p></div>
+    <div class="card"><div class="ct">Ranking</div><p>Cidades competem entre si.</p></div>
+  </div>
+
+  <div class="shead">Por que isso fortalece uma campanha de mobilização</div>
+  <div class="grid g2">
+    <div class="box navy"><div class="bt">Pertencimento</div><p>“Fazer parte do Time” é identidade. O apoiador deixa de ser espectador e vira parte da máquina.</p></div>
+    <div class="box navy"><div class="bt">Capilaridade</div><p>Cada membro é um multiplicador. O conteúdo viaja pela rede de pessoas reais, não só por anúncio.</p></div>
+    <div class="box navy"><div class="bt">Competição saudável</div><p>O ranking entre cidades cria energia e meta. A base AMUREL puxa; as demais perseguem.</p></div>
+    <div class="box navy"><div class="bt">Dados próprios</div><p>Quem engaja, onde, com o quê. Inteligência que orienta a alocação de esforço (cap. 16–17).</p></div>
+  </div>
+
+  <div class="shead">Elementos da plataforma</div>
+  <div class="tags">
+    <span class="pill red">Plataforma digital</span><span class="pill red">Gamificação</span><span class="pill red">Ranking entre cidades</span>
+    <span class="pill red">Mobilização</span><span class="pill red">Cadastro</span><span class="pill red">Pontuação</span>
+    <span class="pill red">Comunidade</span><span class="pill red">Pertencimento</span>
+  </div>
+
+  <div class="box sun avoid"><div class="bt">Plano de lançamento (P0)</div>
+    <p>Definir: mecânica de pontos, premiação simbólica por cidade, ritual de divulgação do ranking (ex.: stories semanais “a cidade que mais cresceu”), e integração com o disparo de WhatsApp. <strong>O Time Pepê precisa de um momento de lançamento com narrativa</strong>, não apenas existir como link.</p></div>
+  <div class="ph"><div class="pi">Espaço reservado</div><div class="pl">Telas do app, logo Time Pepê e ranking ao vivo</div><div class="pd">Inserir: logotipo “Time Pepê”, prints do fluxo de cadastro, tela de ranking de cidades e KPIs de adesão por município.</div></div>
+</section>
+
+<!-- CAP 15 IMPRENSA -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE IV</span> · CANAIS</span><span>15 · Imprensa e RP</span></div>
+  <div class="chead"><div class="n">15</div><h2>Imprensa e relações públicas</h2></div>
+  <p class="lead">A mídia espontânea dá credibilidade que dinheiro não compra. Estratégia: ser <strong>fonte fácil, com pauta pronta, dado e personagem</strong>.</p>
+
+  <div class="grid g2">
+    <div class="box navy"><div class="bt">O que oferecer à imprensa</div>
+      <ul class="clean" style="margin:0"><li>Releases com número travado, território e personagem.</li><li>Porta-voz disponível e ágil.</li><li>Pautas regionais (rádios e jornais do interior).</li><li>Exclusivas em momentos-chave.</li></ul></div>
+    <div class="box red"><div class="bt">Gestão de crise</div>
+      <ul class="clean" style="margin:0"><li>Banco de respostas a ataques/críticas (preparado na pré-campanha).</li><li>Protocolo: quem fala, em quanto tempo, por qual canal.</li><li>Monitoramento de menções e clima.</li><li>Nunca improvisar em tema sensível (saúde, TEA, obras).</li></ul></div>
+  </div>
+
+  <div class="shead">Mapa de veículos (preencher)</div>
+  <table class="tbl compact">
+    <tr><th>Veículo</th><th>Tipo</th><th>Região</th><th>Contato</th><th>Relação</th></tr>
+    <tr><td><span class="fill"></span></td><td>Rádio</td><td>AMUREL</td><td class="blank"><span class="fill"></span></td><td class="blank"><span class="fill"></span></td></tr>
+    <tr><td><span class="fill"></span></td><td>Portal/jornal</td><td><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill"></span></td><td class="blank"><span class="fill"></span></td></tr>
+    <tr><td><span class="fill"></span></td><td>TV regional</td><td><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill"></span></td><td class="blank"><span class="fill"></span></td></tr>
+  </table>
+  <div class="box green avoid"><div class="bt">Ativo já existente</div><p>A reportagem sobre o <strong>censo do autismo (NDTV)</strong> e a atuação na CCJ são provas de relevância editorial. Reaproveitar como prova social e base para novas pautas.</p></div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE V ===================== -->
+<section class="divider page break">
+  <div class="pnum">V</div>
+  <div class="ptitle">Tecnologia e dados</div>
+  <div class="pdesc">O diferencial silencioso desta campanha: ela enxerga. Painéis, dashboards e sistemas já construídos transformam a operação em decisão baseada em evidência — onde votar mais valeu, onde investir conteúdo, quem mobilizar.</div>
+  <div class="pindex">
+    <div><span>16</span>Ecossistema tecnológico</div>
+    <div><span>17</span>Indicadores, KPIs e governança de dados</div>
+  </div>
+</section>
+
+<!-- CAP 16 ECOSSISTEMA -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE V</span> · TECNOLOGIA</span><span>16 · Ecossistema tecnológico</span></div>
+  <div class="chead"><div class="n">16</div><h2>Ecossistema tecnológico</h2></div>
+  <p class="lead--big">Esta campanha tem <span style="color:var(--red)">inteligência de dados</span> — algo raro no nível estadual. Os sistemas abaixo já foram entregues e tornam a operação mais eficiente, barata e precisa.</p>
+
+  <div class="shead">Sistemas já entregues</div>
+  <table class="tbl">
+    <tr><th>Sistema</th><th>O que faz</th><th>Valor para a campanha</th></tr>
+    <tr><td><strong>Painel estratégico eleitoral</strong></td><td>Cruzamento de votação 2018·2022·2024 por município/zona, com mapa interativo.</td><td>Onde defender, onde crescer, onde semear.</td></tr>
+    <tr><td><strong>Painel de emendas</strong></td><td>494 emendas com valor, status, cidade, objeto e modalidade.</td><td>Banco de pautas e prestação de contas.</td></tr>
+    <tr><td><strong>Painel de cidades</strong></td><td>Visão por município (votos × emendas × adesão).</td><td>Priorização territorial dos anéis.</td></tr>
+    <tr><td><strong>Plataforma de credenciamento</strong></td><td>Check-in de eventos que grava no CRM em tempo real.</td><td>Captura de base e presença qualificada.</td></tr>
+    <tr><td><strong>Painel admin (KPIs/filtros)</strong></td><td>Dashboard com filtros combináveis e exportação.</td><td>Acompanhamento ao vivo da operação.</td></tr>
+    <tr><td><strong>Disparo de WhatsApp</strong></td><td>n8n + Evolution API com automação e rate limit.</td><td>Relacionamento em escala.</td></tr>
+    <tr><td><strong>Time Pepê</strong></td><td>Mobilização gamificada com ranking de cidades.</td><td>Multiplicação e dados próprios.</td></tr>
+    <tr><td><strong>Site pepecollaco.com</strong></td><td>Landing institucional + páginas de cadastro.</td><td>Hub digital e conversão.</td></tr>
+  </table>
+
+  <div class="shead">Como as peças se conectam</div>
+  <div class="flow">
+    <div class="node"><div class="ft">CAPTURA</div><small>Site · evento · Time</small></div>
+    <div class="arr">→</div>
+    <div class="node navy"><div class="ft">DADOS</div><small>Supabase (CRM)</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">INTELIGÊNCIA</div><small>Painéis · KPIs</small></div>
+    <div class="arr">→</div>
+    <div class="node red"><div class="ft">AÇÃO</div><small>Conteúdo · WhatsApp · presença</small></div>
+  </div>
+
+  <div class="box navy avoid"><div class="bt">Mensagem para a equipe e o candidato</div>
+    <p>Não é “tecnologia por tecnologia”. Cada sistema responde a uma pergunta de campanha: <em>Onde meu voto rende mais? Qual emenda vira história? Quem está mobilizado? O que está funcionando?</em> <strong>Decisão por evidência, não por achismo.</strong></p></div>
+  <div class="ph"><div class="pi">Espaço reservado</div><div class="pl">Prints dos painéis e dashboards</div><div class="pd">Inserir capturas do Painel Estratégico (mapa), Painel de Emendas, Painel Admin e Time Pepê — com breve legenda do que cada um mostra.</div></div>
+</section>
+
+<!-- CAP 17 KPIs -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE V</span> · TECNOLOGIA</span><span>17 · Indicadores e KPIs</span></div>
+  <div class="chead"><div class="n">17</div><h2>Indicadores, KPIs e governança de dados</h2></div>
+  <p class="lead">O que medimos para saber se estamos ganhando. Poucos indicadores, bem escolhidos, revisados semanalmente.</p>
+
+  <div class="shead">Painel de KPIs da campanha</div>
+  <table class="tbl">
+    <tr><th>Eixo</th><th>Indicador</th><th>Meta (preencher)</th><th>Frequência</th></tr>
+    <tr><td rowspan="2"><strong>Base &amp; mobilização</strong></td><td>Nº de contatos no CRM</td><td class="blank"><span class="fill"></span></td><td>Semanal</td></tr>
+    <tr><td>Adesões ao Time Pepê / cidades ativas</td><td class="blank"><span class="fill"></span></td><td>Semanal</td></tr>
+    <tr><td rowspan="2"><strong>Conteúdo &amp; alcance</strong></td><td>Alcance e engajamento (por canal)</td><td class="blank"><span class="fill"></span></td><td>Semanal</td></tr>
+    <tr><td>Compartilhamentos / salvamentos</td><td class="blank"><span class="fill"></span></td><td>Semanal</td></tr>
+    <tr><td rowspan="2"><strong>Relacionamento</strong></td><td>Mensagens entregues no WhatsApp</td><td class="blank"><span class="fill"></span></td><td>Por campanha</td></tr>
+    <tr><td>Taxa de resposta / opt-out</td><td class="blank"><span class="fill"></span></td><td>Por campanha</td></tr>
+    <tr><td rowspan="2"><strong>Território</strong></td><td>Cidades cobertas por visita/conteúdo</td><td class="blank"><span class="fill"></span></td><td>Mensal</td></tr>
+    <tr><td>Força por município (votos × adesão)</td><td class="blank"><span class="fill"></span></td><td>Mensal</td></tr>
+    <tr><td><strong>Eleitoral</strong></td><td>Intenção/lembrança (se houver pesquisa)</td><td class="blank"><span class="fill"></span></td><td>Por onda</td></tr>
+  </table>
+
+  <div class="grid g2">
+    <div class="box green"><div class="bt">Governança de dados (boas práticas já adotadas)</div>
+      <ul class="clean" style="margin:0"><li>RLS ativo no Supabase.</li><li>service_role key isolada no n8n.</li><li>Backups periódicos (CSV/JSON).</li><li>Auditoria de base (duplicados, inválidos, sem telefone).</li></ul></div>
+    <div class="box red"><div class="bt">A endurecer antes da campanha</div>
+      <ul class="clean" style="margin:0"><li>Trocar senhas/códigos de acesso padrão dos painéis.</li><li>Ativar autenticação real no admin (não só trava client-side).</li><li>Política LGPD documentada e consentimento registrado.</li><li>Controle de acesso por papel na equipe.</li></ul></div>
+  </div>
+  <div class="box sun avoid"><div class="bt">Ritual de dados</div><p><strong>Reunião semanal de 30 min com o painel aberto.</strong> Três perguntas fixas: o que cresceu, o que travou, o que vamos mudar na próxima semana. Decisão registrada no controle de versão deste plano.</p></div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE VI ===================== -->
+<section class="divider alt page break">
+  <div class="pnum">VI</div>
+  <div class="ptitle">Execução</div>
+  <div class="pdesc">Onde a estratégia vira rotina. Estrutura de equipe, cronograma mestre por área, roadmap até a eleição, matriz de prioridades e o fluxo de produção. Colunas de responsável e prazo em branco, para a equipe preencher.</div>
+  <div class="pindex">
+    <div><span>18</span>Estrutura e organograma</div>
+    <div><span>19</span>Cronograma mestre por área</div>
+    <div><span>20</span>Roadmap / linha do tempo</div>
+    <div><span>21</span>Matriz de prioridades</div>
+    <div><span>22</span>Fluxo de produção</div>
+  </div>
+</section>
+
+<!-- CAP 18 ORGANOGRAMA -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VI</span> · EXECUÇÃO</span><span>18 · Estrutura da equipe</span></div>
+  <div class="chead"><div class="n">18</div><h2>Estrutura da equipe e organograma</h2></div>
+  <p class="lead">Quem faz o quê. Estrutura enxuta com papéis claros — uma pessoa pode acumular funções, mas cada função tem um dono.</p>
+
+  <div class="shead">Núcleos da operação</div>
+  <div class="grid g3">
+    <div class="card dark"><div class="ct">Estratégia</div><p>Posicionamento, mensagem, decisões, conformidade.</p></div>
+    <div class="card"><div class="ct">Conteúdo</div><p>Pauta, roteiro, copy, edição editorial.</p></div>
+    <div class="card"><div class="ct">Design</div><p>Identidade, santinhos, peças, templates.</p></div>
+    <div class="card"><div class="ct">Audiovisual</div><p>Captação, edição de vídeo, Reels.</p></div>
+    <div class="card"><div class="ct">Fotografia</div><p>Registro documental, banco de imagens.</p></div>
+    <div class="card"><div class="ct">Redes sociais</div><p>Publicação, comunidade, atendimento.</p></div>
+    <div class="card"><div class="ct">WhatsApp / mobilização</div><p>Grupos, disparo, Time Pepê.</p></div>
+    <div class="card"><div class="ct">Dados / tecnologia</div><p>Painéis, CRM, automação, métricas.</p></div>
+    <div class="card"><div class="ct">Imprensa / jurídico</div><p>Releases, RP, conformidade eleitoral.</p></div>
+  </div>
+
+  <div class="shead">Matriz RACI (preencher com nomes)</div>
+  <table class="tbl compact">
+    <tr><th>Frente</th><th>Responsável (R)</th><th>Aprova (A)</th><th>Consultado (C)</th><th>Informado (I)</th></tr>
+    <tr><td>Estratégia/mensagem</td><td class="blank"><span class="fill"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td>Conteúdo/redes</td><td class="blank"><span class="fill"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td>Design/audiovisual</td><td class="blank"><span class="fill"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td>WhatsApp/Time Pepê</td><td class="blank"><span class="fill"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td>Dados/tecnologia</td><td class="blank"><span class="fill"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td>Imprensa/jurídico</td><td class="blank"><span class="fill"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+  </table>
+  <div class="box navy avoid"><div class="bt">Rotina mínima da equipe</div><p>Reunião semanal de pauta (segunda) · janela de produção (meio de semana) · revisão de dados (sexta) · alinhamento mensal de estratégia. Tudo registrado.</p></div>
+</section>
+
+<!-- CAP 19 CRONOGRAMA MESTRE -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VI</span> · EXECUÇÃO</span><span>19 · Cronograma mestre</span></div>
+  <div class="chead"><div class="n">19</div><h2>Cronograma mestre por área</h2></div>
+  <p class="lead">Cada área com prioridades, dependências e entregáveis. <strong>Responsável e prazo ficam em branco</strong> para a equipe preencher e versionar.</p>
+
+  <table class="tbl compact">
+    <tr><th style="width:14%">Área</th><th style="width:28%">Entregáveis-chave</th><th style="width:16%">Dependências</th><th style="width:10%">Prioridade</th><th>Responsável</th><th>Prazo</th></tr>
+    <tr><td><strong>Estratégia</strong></td><td>Posicionamento, mensagem-mãe, discurso (longo + elevator), respostas a ataques.</td><td>—</td><td><span class="pill red">P0</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td><strong>Design</strong></td><td>Aplicação da paleta, logo, manual de marca, templates, sistema de santinhos.</td><td>Estratégia</td><td><span class="pill red">P0</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td><strong>Fotografia</strong></td><td>Ensaio documental, banco ≥50 fotos aprovadas, fotos em alta p/ gráfico.</td><td>Identidade</td><td><span class="pill red">P0</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td><strong>Audiovisual</strong></td><td>Vídeo institucional, série antes/depois, depoimentos, Reels recorrentes.</td><td>Banco de imagens</td><td><span class="pill sun">P1</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td><strong>Redes sociais</strong></td><td>Perfis otimizados, link na bio, calendário, cadência ativa.</td><td>Identidade</td><td><span class="pill red">P0</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td><strong>WhatsApp</strong></td><td>Base organizada, grupos por região, fluxos n8n ativos.</td><td>Base/Supabase</td><td><span class="pill red">P0</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td><strong>Time Pepê</strong></td><td>Mecânica de pontos, ranking, plano de lançamento, premiação.</td><td>Plataforma/Design</td><td><span class="pill sun">P1</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td><strong>Produção gráfica</strong></td><td>Santinhos, folders, adesivos, banners, bandeiras, material de comitê.</td><td>Design aprovado</td><td><span class="pill sun">P1</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td><strong>Site</strong></td><td>Landing de campanha, páginas de cadastro, SEO básico.</td><td>Identidade</td><td><span class="pill sun">P1</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td><strong>Imprensa</strong></td><td>Mapa de veículos, releases-modelo, banco de crise.</td><td>Estratégia</td><td><span class="pill sun">P1</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td><strong>Conteúdo</strong></td><td>Banco de pautas (emendas), roteiros-modelo, calendário editorial.</td><td>Estratégia/Dados</td><td><span class="pill sun">P1</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+    <tr><td><strong>Dados</strong></td><td>Painéis atualizados, KPIs semanais, segurança endurecida.</td><td>Sistemas prontos</td><td><span class="pill red">P0</span></td><td class="blank"><span class="fill" style="min-width:60px"></span></td><td class="blank"><span class="fill" style="min-width:50px"></span></td></tr>
+  </table>
+  <p class="small muted">P0 = crítico (destrava o resto) · P1 = alto (volume e materiais) · P2 = médio (qualidade e escala). Detalhe da matriz no capítulo 21.</p>
+</section>
+
+<!-- CAP 20 ROADMAP -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VI</span> · EXECUÇÃO</span><span>20 · Roadmap</span></div>
+  <div class="chead"><div class="n">20</div><h2>Roadmap — linha do tempo macro</h2></div>
+  <p class="lead">A jornada até a eleição em blocos. As datas oficiais do calendário eleitoral <strong>devem ser confirmadas com o jurídico</strong> — aqui está a lógica de sequência.</p>
+
+  <div class="tl">
+    <div class="ev"><div class="d">Bloco 1 · Fundação</div><div class="t">Identidade + estrutura digital</div><p>Aplicar paleta/logo/manual, ensaio fotográfico, perfis otimizados, base e grupos de WhatsApp, lançamento do Time Pepê. <span class="pill red">P0</span></p></div>
+    <div class="ev"><div class="d">Bloco 2 · Acúmulo</div><div class="t">Pré-campanha (Parceria)</div><p>Séries de entregas e bastidores, prestação de contas, agenda de visitas por região, crescimento de base e engajamento.</p></div>
+    <div class="ev"><div class="d">Bloco 3 · Materiais</div><div class="t">Produção gráfica + audiovisual</div><p>Santinhos modulares, folders, vídeo institucional, série antes/depois pronta para disparar.</p></div>
+    <div class="ev"><div class="d">Bloco 4 · Virada</div><div class="t">Transição de linguagem</div><p>Plantar histórias humanas; preparar a passagem de “número” para “transformação”. Documentação e registro de candidatura (prazos jurídicos).</p></div>
+    <div class="ev"><div class="d">Bloco 5 · Campanha</div><div class="t">Transformação + mobilização</div><p>Antes/depois, depoimentos, horário eleitoral, presença de rua e Time Pepê em ritmo máximo.</p></div>
+    <div class="ev"><div class="d">Bloco 6 · Reta final</div><div class="t">Conversão de voto</div><p>Prova social, mobilização total, presença de rua, fechamento territorial cidade a cidade.</p></div>
+  </div>
+
+  <div class="shead">Calendário eleitoral 2026 — datas-chave</div>
+  <table class="tbl compact">
+    <tr><th style="width:118px">Data</th><th>Marco</th><th>O que muda para a campanha</th></tr>
+    <tr><td class="mono">20/07–05/08</td><td>Convenções partidárias</td><td>Partidos e federações oficializam candidaturas e coligações (05/08 é o último dia).</td></tr>
+    <tr><td class="mono">15/08</td><td>Registro de candidatura</td><td>Prazo final para o pedido de registro na Justiça Eleitoral.</td></tr>
+    <tr><td class="mono">16/08</td><td>Início oficial da campanha</td><td>Liberados o <strong>pedido explícito de voto</strong>, campanha de rua e propaganda na internet.</td></tr>
+    <tr><td class="mono">28/08</td><td>Início do horário eleitoral gratuito</td><td>Propaganda gratuita em rádio e TV (1º turno).</td></tr>
+    <tr><td class="mono">01/10</td><td>Fim do horário eleitoral gratuito</td><td>Último dia da propaganda gratuita em rádio/TV (1º turno).</td></tr>
+    <tr><td class="mono">04/10</td><td>1º turno da eleição</td><td>Dia da votação.</td></tr>
+  </table>
+
+  <div class="shead">Marcos da campanha (nossos)</div>
+  <table class="tbl compact">
+    <tr><th style="width:118px">Data</th><th>Marco</th><th>Responsável / nota</th></tr>
+    <tr><td class="mono">07/07 → 13/08</td><td>Identidade visual — do orçamento à entrega final</td><td>Empresa de design. Inclui manual de marca (04/08) e aplicações — adesivos, bandeiras e templates (10–13/08).</td></tr>
+    <tr><td class="mono">20/08</td><td>Adesivaço em Garopaba — Pepê + Zé Milton</td><td><strong>Confecção casada dos dois</strong> (sob a Bela). Peças já na nova identidade.</td></tr>
+    <tr><td class="mono">29/08</td><td>Lançamento da campanha — Tubarão <span class="pill navy">sugestão</span></td><td>Evento grande — acionar equipe extra de cobertura/produção.</td></tr>
+  </table>
+
+  <div class="box sun avoid"><div class="bt">Validar com o jurídico</div>
+    <p>As datas acima seguem o calendário eleitoral de 2026, mas <strong>devem ser confirmadas com a assessoria jurídica</strong> (TSE/TRE-SC). Ponto crítico: <strong>pedido explícito de voto só a partir de 16/08</strong> — na pré-campanha, comunica-se trabalho e parceria. Estes prazos governam o calendário criativo.</p></div>
+  <div class="ph"><div class="pi">Espaço reservado</div><div class="pl">Arte oficial do calendário TSE/TRE-SC</div><div class="pd">Inserir a versão visual final do calendário eleitoral com as janelas legais marcadas.</div></div>
+</section>
+
+<!-- CAP 21 MATRIZ PRIORIDADE -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VI</span> · EXECUÇÃO</span><span>21 · Matriz de prioridades</span></div>
+  <div class="chead"><div class="n">21</div><h2>Matriz de prioridades</h2></div>
+  <p class="lead">Como ler: <strong>P0</strong> precisa estar pronto antes da fase de produção em escala; <strong>P1</strong> destrava volume de conteúdo e materiais; <strong>P2</strong> melhora qualidade e escala, mas não trava o resto.</p>
+
+  <div class="matrix">
+    <div class="quad p0">
+      <div class="qh"><span>P0 · CRÍTICO</span><span class="pill red">agora</span></div>
+      <ul>
+        <li>Aplicação da paleta + logo + manual</li>
+        <li>Templates de redes (feed/story/Reels)</li>
+        <li>Perfis otimizados + link na bio</li>
+        <li>Base organizada + grupos por região</li>
+        <li>Ensaio fotográfico + banco de imagens</li>
+        <li>Números de emenda travados (jurídico)</li>
+        <li>Lançamento do Time Pepê</li>
+      </ul>
+    </div>
+    <div class="quad p1">
+      <div class="qh"><span>P1 · ALTO</span><span class="pill sun">em seguida</span></div>
+      <ul>
+        <li>Discurso (longo + elevator pitch)</li>
+        <li>Propostas formatadas</li>
+        <li>Layout do santinho + boneco aprovado</li>
+        <li>Artes: adesivos, bandeiras, camisetas</li>
+        <li>Folders informativos</li>
+        <li>Vídeo institucional (30–60s)</li>
+      </ul>
+    </div>
+    <div class="quad p2">
+      <div class="qh"><span>P2 · MÉDIO</span><span class="pill navy">depois</span></div>
+      <ul>
+        <li>Material para comitês (faixas, cavaletes)</li>
+        <li>Outdoors</li>
+        <li>Jingles (se houver)</li>
+        <li>Material para rádio</li>
+        <li>Expansão de formatos (séries novas)</li>
+      </ul>
+    </div>
+    <div class="quad p3">
+      <div class="qh"><span>CONTROLE JURÍDICO</span><span class="pill ghost">paralelo</span></div>
+      <ul>
+        <li>Registro de candidatura</li>
+        <li>Conta bancária da campanha</li>
+        <li>Número de candidato / coligação</li>
+        <li>Declaração de bens / certidões</li>
+        <li>Sistema de prestação de contas</li>
+        <li>Contador eleitoral</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box green avoid"><div class="bt">Já concluído (do checklist atual)</div>
+    <p>Cabos eleitorais por região mapeados · Comitês regionais estruturados · Advogado eleitoral contratado. <strong>Bom ponto de partida</strong> — manter atualizado neste plano.</p></div>
+</section>
+
+<!-- CAP 22 FLUXO DE PRODUÇÃO -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VI</span> · EXECUÇÃO</span><span>22 · Fluxo de produção</span></div>
+  <div class="chead"><div class="n">22</div><h2>Fluxo de produção de conteúdo</h2></div>
+  <p class="lead">Do briefing à publicação, sem gargalo. Um pipeline simples que todos seguem.</p>
+
+  <div class="flow">
+    <div class="node"><div class="ft">1. PAUTA</div><small>Banco de emendas / agenda</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">2. APURAÇÃO</div><small>Confirma status + autorização</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">3. ROTEIRO</div><small>Copy + direção</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">4. PRODUÇÃO</div><small>Foto/vídeo/arte</small></div>
+  </div>
+  <div class="flow">
+    <div class="node"><div class="ft">5. EDIÇÃO</div><small>Montagem + revisão</small></div>
+    <div class="arr">→</div>
+    <div class="node navy"><div class="ft">6. APROVAÇÃO</div><small>Estratégia + jurídico</small></div>
+    <div class="arr">→</div>
+    <div class="node"><div class="ft">7. PUBLICAÇÃO</div><small>Canal certo, hora certa</small></div>
+    <div class="arr">→</div>
+    <div class="node red"><div class="ft">8. MEDIÇÃO</div><small>KPIs + aprendizado</small></div>
+  </div>
+
+  <div class="shead">Portões de qualidade (quality gates)</div>
+  <table class="tbl compact">
+    <tr><th>Portão</th><th>Pergunta de aprovação</th></tr>
+    <tr><td>Apuração</td><td>O status da entrega está confirmado? Há autorização de imagem?</td></tr>
+    <tr><td>Roteiro</td><td>Qual pilar e linha editorial? A mensagem está clara em poucas palavras?</td></tr>
+    <tr><td>Aprovação</td><td>Conforme à fase (parceria/transformação) e à lei eleitoral?</td></tr>
+    <tr><td>Publicação</td><td>Canal, horário e formato corretos? Legenda com os dados fixos?</td></tr>
+  </table>
+
+  <div class="box navy avoid"><div class="bt">Banco de roteiros prontos (cap. 24)</div>
+    <p>Quatro roteiros-modelo já existem e aceleram a produção: <strong>TEA/equoterapia, creche, ambulância/saúde e obra regional</strong>. Cada um com gancho e estrutura de 5 passos.</p></div>
+  <div class="ph"><div class="pi">Espaço reservado</div><div class="pl">Fluxo no gerenciador da equipe (Notion/Trello)</div><div class="pd">Inserir print do board de produção e o calendário de conteúdo operacional (já existe versão no Notion).</div></div>
+</section>
+
+<!-- ===================== DIVISÓRIA PARTE VII ===================== -->
+<section class="divider page break">
+  <div class="pnum">VII</div>
+  <div class="ptitle">Anexos e materiais</div>
+  <div class="pdesc">O baú da campanha. Aqui ficam os materiais já produzidos (com espaços para inserir), o banco de pautas vindo das emendas, os checklists gerais, o guarda-corpo de conformidade e a governança de atualização contínua deste documento.</div>
+  <div class="pindex">
+    <div><span>23</span>Materiais já produzidos</div>
+    <div><span>24</span>Banco de pautas (emendas)</div>
+    <div><span>25</span>Checklists gerais</div>
+    <div><span>26</span>Conformidade eleitoral</div>
+    <div><span>27</span>Glossário e governança</div>
+    <div><span>28</span>Mapa de atualização contínua</div>
+  </div>
+</section>
+
+<!-- CAP 23 MATERIAIS PRODUZIDOS -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VII</span> · ANEXOS</span><span>23 · Materiais produzidos</span></div>
+  <div class="chead"><div class="n">23</div><h2>Materiais já produzidos</h2></div>
+  <p class="lead">Capítulo-acervo. Registra tudo o que já foi desenvolvido e reserva espaço para inserir os arquivos (dashboards, prints, artes, layouts, vídeos).</p>
+
+  <div class="shead">Inventário atual</div>
+  <table class="tbl compact">
+    <tr><th>Item</th><th>Tipo</th><th>Status</th><th>Onde está</th></tr>
+    <tr><td>Painel estratégico eleitoral (mapa, votos 2018/22/24)</td><td>Sistema/dado</td><td><span class="pill green">Pronto</span></td><td class="mono">PAINEL/</td></tr>
+    <tr><td>Painel/relatório de emendas (494 registros)</td><td>Dado</td><td><span class="pill green">Pronto</span></td><td class="mono">EMENDAS/</td></tr>
+    <tr><td>Plataforma de credenciamento + admin</td><td>Software</td><td><span class="pill green">Pronto</span></td><td class="mono">pepecollaco-site/</td></tr>
+    <tr><td>Base de contatos (15.525) + auditorias</td><td>Dado</td><td><span class="pill green">Pronto</span></td><td class="mono">Supabase</td></tr>
+    <tr><td>Fluxos WhatsApp (n8n + Evolution)</td><td>Automação</td><td><span class="pill green">Pronto</span></td><td class="mono">WPP SERVER/</td></tr>
+    <tr><td>Time Pepê (cadastro/mobilização)</td><td>Software</td><td><span class="pill sun">Em evolução</span></td><td class="mono">PEPECOPY/</td></tr>
+    <tr><td>Site pepecollaco.com</td><td>Web</td><td><span class="pill green">No ar</span></td><td class="mono">pepecollaco-site/</td></tr>
+    <tr><td>Calendário de conteúdo 2026</td><td>Planejamento</td><td><span class="pill green">Pronto</span></td><td class="mono">REDES/</td></tr>
+    <tr><td>Auditoria de Instagram</td><td>Análise</td><td><span class="pill green">Pronto</span></td><td class="mono">REDES/</td></tr>
+    <tr><td>Banco de pautas (emendas p/ redes)</td><td>Conteúdo</td><td><span class="pill green">Pronto</span></td><td class="mono">EMENDAS/</td></tr>
+    <tr><td>Logo Time Pepê</td><td>Identidade</td><td><span class="pill sun">Parcial</span></td><td class="mono">raiz/</td></tr>
+    <tr><td>Acervo fotográfico</td><td>Imagem</td><td><span class="pill sun">A organizar</span></td><td class="mono">FOTOS/</td></tr>
+    <tr><td>Manual de marca na paleta oficial</td><td>Identidade</td><td><span class="pill red">Pendente</span></td><td>—</td></tr>
+  </table>
+
+  <div class="shead">Galeria de inserção (placeholders)</div>
+  <div class="grid g2">
+    <div class="ph" style="min-height:150px"><div class="pi">Inserir</div><div class="pl">Dashboards / painéis</div><div class="pd">Prints do painel estratégico e de emendas.</div></div>
+    <div class="ph" style="min-height:150px"><div class="pi">Inserir</div><div class="pl">Identidade visual</div><div class="pd">Logo, paleta aplicada, manual, templates.</div></div>
+    <div class="ph" style="min-height:150px"><div class="pi">Inserir</div><div class="pl">Artes e santinhos</div><div class="pd">Família modular aprovada.</div></div>
+    <div class="ph" style="min-height:150px"><div class="pi">Inserir</div><div class="pl">Vídeos</div><div class="pd">Institucional, antes/depois, depoimentos (frames + links).</div></div>
+    <div class="ph" style="min-height:150px"><div class="pi">Inserir</div><div class="pl">Site / Wikipedia</div><div class="pd">Prints de páginas e verbete.</div></div>
+    <div class="ph" style="min-height:150px"><div class="pi">Inserir</div><div class="pl">Time Pepê / WhatsApp</div><div class="pd">Telas, ranking, fluxos.</div></div>
+  </div>
+</section>
+
+<!-- CAP 24 BANCO DE PAUTAS -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VII</span> · ANEXOS</span><span>24 · Banco de pautas</span></div>
+  <div class="chead"><div class="n">24</div><h2>Banco de pautas — emendas que viram conteúdo</h2></div>
+  <p class="lead">As emendas são a matéria-prima narrativa. Estas combinam valor relevante, apelo humano e potencial visual. <strong>Confirmar status antes de publicar.</strong></p>
+
+  <div class="shead">Top pautas para conteúdo</div>
+  <table class="tbl compact">
+    <tr><th>Cidade</th><th class="r">Valor</th><th>Objeto</th><th>Por que rende história</th></tr>
+    <tr><td>Tubarão</td><td class="r">R$ 400 mil</td><td>APAE — equoterapia/TO</td><td>Inclusão, famílias, evolução terapêutica.</td></tr>
+    <tr><td>Sangão</td><td class="r">R$ 5,9 mi</td><td>Ginásio de esportes</td><td>Maior valor da base; esporte e juventude.</td></tr>
+    <tr><td>Tubarão/Laguna</td><td class="r">R$ 5,0 mi</td><td>Dragagem Porto de Laguna / molhes</td><td>Economia, pesca, turismo, futuro da região.</td></tr>
+    <tr><td>Paulo Lopes</td><td class="r">R$ 2,3 mi</td><td>Creche Joelma de Bona</td><td>Mães que trabalham, primeira infância.</td></tr>
+    <tr><td>Jacinto Machado</td><td class="r">R$ 400 mil</td><td>Endoscopia (saúde)</td><td>Exame perto de casa, menos deslocamento.</td></tr>
+    <tr><td>Treze de Maio</td><td class="r">R$ 350 mil</td><td>Ambulância</td><td>Tempo de resposta, segurança, emoção visual.</td></tr>
+    <tr><td>Turvo</td><td class="r">R$ 100 mil</td><td>Atendimento autismo (saúde)</td><td>Tema sensível e atual; acesso e fila.</td></tr>
+    <tr><td>Pescaria Brava</td><td class="r">R$ 100 mil</td><td>Kits de artesanato — mulheres</td><td>Renda, autonomia, mãos trabalhando.</td></tr>
+    <tr><td>Gravatal</td><td class="r">R$ 300 mil</td><td>Natal nas Águas 2026</td><td>Turismo, família, economia local.</td></tr>
+  </table>
+
+  <div class="shead">Eixos temáticos do banco (494 emendas)</div>
+  <div class="tags">
+    <span class="pill red">TEA / APAE / equoterapia</span><span class="pill navy">Saúde na vida real</span>
+    <span class="pill sun">Educação e infância</span><span class="pill green">Esporte e juventude</span>
+    <span class="pill ghost">Obras regionais</span><span class="pill ghost">Cultura e turismo</span>
+    <span class="pill ghost">Mulheres</span><span class="pill ghost">Campo e agricultura</span><span class="pill ghost">Causa animal</span>
+  </div>
+
+  <div class="shead">Roteiros-modelo (gancho + 5 passos)</div>
+  <div class="grid g2">
+    <div class="box navy"><div class="bt">Roteiro 1 — TEA / equoterapia</div><p><em>“Uma emenda pode virar atendimento, terapia e mais autonomia para famílias.”</em> Espaço → valor/cidade → o que é a terapia → fala de terapeuta/responsável → status.</p></div>
+    <div class="box navy"><div class="bt">Roteiro 2 — Creche</div><p><em>“Creche não é só obra: é tempo, trabalho e tranquilidade.”</em> Obra → valor/bairro → impacto → fala de mãe/professora → status.</p></div>
+    <div class="box navy"><div class="bt">Roteiro 3 — Ambulância / saúde</div><p><em>“Quando o recurso chega na saúde, ele aparece no atendimento.”</em> Equipamento → tradução para a vida → equipe → valor/cidade/status.</p></div>
+    <div class="box navy"><div class="bt">Roteiro 4 — Obra regional</div><p><em>“Tem obra que muda a circulação da economia.”</em> Mapa → problema atual → projeto → quem usa → próximo passo.</p></div>
+  </div>
+
+  <div class="box red avoid"><div class="bt">Cuidados de publicação</div>
+    <p>Autorização de imagem (crianças, saúde, TEA) · sem promessa de resultado individual · confirmar se o recurso já chegou ou depende de portaria/documentação · não dizer “entregue” quando o status é pendente · legenda com município, valor e objeto.</p></div>
+</section>
+
+<!-- CAP 25 CHECKLISTS -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VII</span> · ANEXOS</span><span>25 · Checklists</span></div>
+  <div class="chead"><div class="n">25</div><h2>Checklists gerais</h2></div>
+
+  <div class="grid g2">
+    <div>
+      <div class="shead">Material fotográfico e audiovisual</div>
+      <ul class="check">
+        <li>Ensaio fotográfico documental (luz natural, cenas reais)</li>
+        <li>Fotos em alta resolução (outdoor, banner, folder)</li>
+        <li>Fotos em diferentes cenários (gabinete, obras, eventos, povo)</li>
+        <li>Banco de imagens (mín. 50 fotos aprovadas)</li>
+        <li>Vídeo institucional (30–60s)</li>
+      </ul>
+      <div class="shead">Identidade visual</div>
+      <ul class="check">
+        <li class="done">Paleta de cores oficial</li>
+        <li>Logo da campanha</li>
+        <li>Manual de identidade (fontes, cores, aplicações)</li>
+        <li>Templates de redes (feed, stories, Reels)</li>
+        <li>Layout do santinho (frente e verso)</li>
+        <li>Arte para adesivos, bandeiras, camisetas e bonés</li>
+      </ul>
+      <div class="shead">Material gráfico</div>
+      <ul class="check">
+        <li>Boneco do santinho aprovado</li>
+        <li>Impressão de santinhos (quantidade definida)</li>
+        <li>Folders informativos</li>
+        <li>Adesivos, banners e bandeiras</li>
+        <li>Material para comitês (faixas, cavaletes)</li>
+      </ul>
+    </div>
+    <div>
+      <div class="shead">Digital e comunicação</div>
+      <ul class="check">
+        <li>Site/landing da campanha</li>
+        <li>Perfis otimizados (bio, foto, capa)</li>
+        <li>Link na bio configurado</li>
+        <li>Base de contatos organizada (WhatsApp, e-mail)</li>
+        <li>Grupos de WhatsApp por região</li>
+      </ul>
+      <div class="shead">Planejamento estratégico</div>
+      <ul class="check">
+        <li>Propostas definidas e formatadas</li>
+        <li>Discurso (versão longa + elevator pitch)</li>
+        <li>Respostas para possíveis ataques/críticas</li>
+        <li>Pesquisa eleitoral inicial (se orçamento permitir)</li>
+      </ul>
+      <div class="shead">Estrutura de campanha</div>
+      <ul class="check">
+        <li>Equipe de rua/mobilização</li>
+        <li class="done">Cabos eleitorais por região mapeados</li>
+        <li class="done">Comitês regionais estruturados</li>
+        <li class="done">Advogado eleitoral contratado</li>
+      </ul>
+      <div class="shead">Documentação e registro (jurídico)</div>
+      <ul class="check">
+        <li>Registro de candidatura na Justiça Eleitoral</li>
+        <li>Conta bancária da campanha</li>
+        <li>Número de candidato confirmado / coligação</li>
+        <li>Declaração de bens / certidões negativas</li>
+        <li>Sistema de prestação de contas + contador eleitoral</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small muted">Itens marcados como concluídos refletem o checklist atual da equipe. Atualizar conforme a execução avança.</p>
+</section>
+
+<!-- CAP 26 CONFORMIDADE -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VII</span> · ANEXOS</span><span>26 · Conformidade eleitoral</span></div>
+  <div class="chead"><div class="n">26</div><h2>Conformidade eleitoral — guarda-corpo</h2></div>
+  <div class="box red"><div class="bt">Importante</div><p>Este capítulo é um <strong>alerta estratégico, não parecer jurídico</strong>. Toda decisão sensível passa pelo advogado eleitoral da campanha. O objetivo aqui é evitar que o calendário criativo atropele o legal.</p></div>
+
+  <div class="shead">Fronteiras que a equipe precisa respeitar</div>
+  <ul class="arrow">
+    <li><strong>Divulgação de mandato × pré-campanha × propaganda eleitoral</strong> são coisas distintas, com regras e prazos próprios. O que pode ser dito muda em cada janela.</li>
+    <li><strong>Propaganda antecipada</strong>: pedir voto explicitamente antes do período permitido é vedado. Na pré-campanha, comunica-se trabalho e parceria — não “vote em mim”.</li>
+    <li><strong>Uso de estrutura pública</strong>: material de gabinete, servidores e bens públicos têm limites claros na comunicação eleitoral.</li>
+    <li><strong>Dados pessoais (LGPD)</strong>: base de contatos e disparos exigem consentimento e finalidade legítima.</li>
+    <li><strong>Prestação de contas</strong>: todo gasto de campanha (gráfica, produção, serviços) precisa ser contabilizado.</li>
+  </ul>
+
+  <div class="shead">Protocolo de aprovação</div>
+  <div class="flow">
+    <div class="node"><div class="ft">PEÇA PRONTA</div><small>Conteúdo/arte</small></div>
+    <div class="arr">→</div>
+    <div class="node navy"><div class="ft">CHECK JURÍDICO</div><small>Fase atual permite?</small></div>
+    <div class="arr">→</div>
+    <div class="node red"><div class="ft">LIBERAÇÃO</div><small>Publica ou ajusta</small></div>
+  </div>
+
+  <div class="box green avoid"><div class="bt">Regra prática para a equipe</div>
+    <p>Na dúvida, <strong>não publique — pergunte</strong>. Um post errado pode custar mais que dez posts a menos. Mantenha um canal rápido com o jurídico para liberar peças sensíveis no mesmo dia.</p></div>
+  <div class="ph"><div class="pi">Espaço reservado</div><div class="pl">Parecer jurídico + calendário eleitoral oficial</div><div class="pd">Inserir orientação formal do advogado eleitoral sobre janelas, limites e o que pode ser dito em cada fase.</div></div>
+</section>
+
+<!-- CAP 27 GLOSSARIO -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VII</span> · ANEXOS</span><span>27 · Glossário e governança</span></div>
+  <div class="chead"><div class="n">27</div><h2>Glossário e governança do documento</h2></div>
+
+  <div class="shead">Glossário rápido</div>
+  <table class="tbl compact">
+    <tr><th>Termo</th><th>Significado</th></tr>
+    <tr><td>AMUREL</td><td>Associação dos Municípios da Região de Laguna — base eleitoral principal.</td></tr>
+    <tr><td>Emenda impositiva / bancada / TEV</td><td>Modalidades de destinação de recursos parlamentares (individual, de bancada, transferência especial).</td></tr>
+    <tr><td>Pilar</td><td>Um dos 5 eixos de posicionamento; régua de aprovação de conteúdo.</td></tr>
+    <tr><td>Linha editorial</td><td>“Editoria” recorrente de conteúdo (ex.: Tamo Chegando).</td></tr>
+    <tr><td>P0 / P1 / P2</td><td>Níveis de prioridade (crítico / alto / médio).</td></tr>
+    <tr><td>CRM</td><td>Base de relacionamento (contatos) no Supabase.</td></tr>
+    <tr><td>RLS</td><td>Row Level Security — segurança por linha no banco.</td></tr>
+    <tr><td>n8n / Evolution API</td><td>Ferramentas de automação e envio de WhatsApp.</td></tr>
+    <tr><td>Antes/depois</td><td>Formato de conteúdo de transformação (Fase 2).</td></tr>
+  </table>
+
+  <div class="shead">Governança: como manter este plano vivo</div>
+  <ul class="arrow">
+    <li><strong>Dono do documento</strong>: o Núcleo de Comunicação. Uma pessoa responde pela versão oficial.</li>
+    <li><strong>Cadência de atualização</strong>: revisão a cada virada de bloco do roadmap e sempre que um material novo for produzido.</li>
+    <li><strong>Registro</strong>: toda mudança relevante entra no controle de versão (pág. de Ficha Técnica).</li>
+    <li><strong>Fonte da verdade</strong>: números de emenda sempre do controle oficial travado; status sempre confirmado na origem.</li>
+  </ul>
+
+  <div class="grid g2">
+    <div class="box navy avoid"><div class="bt">Editar este plano</div>
+      <p>No topo da tela, clique em <strong>“✏️ Editar”</strong> para alterar qualquer texto direto no navegador (preencher responsáveis, prazos, metas). Clique em <strong>“💾 Baixar HTML”</strong> para salvar sua versão editada. O layout é preservado.</p></div>
+    <div class="box green avoid"><div class="bt">Gerar o PDF</div>
+      <p>Abrir no Chrome → <strong>Imprimir</strong> → <strong>Salvar como PDF</strong> → <strong>A4</strong> → Margens <strong>Nenhuma</strong> → ativar <strong>“Gráficos de plano de fundo”</strong>. As quebras de página já estão preparadas.</p></div>
+  </div>
+</section>
+
+<!-- CAP 28 MAPA DE ATUALIZAÇÃO -->
+<section class="page break">
+  <div class="rh"><span><span class="red">PARTE VII</span> · ANEXOS</span><span>28 · Atualização contínua</span></div>
+  <div class="chead"><div class="n">28</div><h2>Mapa de atualização contínua</h2></div>
+  <p class="lead">Este documento é um organismo. Abaixo, o mapa do que será inserido conforme a campanha avança — cada linha é um espaço reservado vivo.</p>
+
+  <table class="tbl compact">
+    <tr><th>Bloco a inserir</th><th>Capítulo destino</th><th>Responsável</th><th>Status</th></tr>
+    <tr><td>Logo + manual de marca na paleta oficial</td><td>09 / 23</td><td class="blank"><span class="fill"></span></td><td><span class="pill red">Pendente</span></td></tr>
+    <tr><td>Família de santinhos aprovada</td><td>10 / 23</td><td class="blank"><span class="fill"></span></td><td><span class="pill red">Pendente</span></td></tr>
+    <tr><td>Banco de imagens (ensaio documental)</td><td>09 / 23</td><td class="blank"><span class="fill"></span></td><td><span class="pill red">Pendente</span></td></tr>
+    <tr><td>Prints dos painéis/dashboards</td><td>16 / 23</td><td class="blank"><span class="fill"></span></td><td><span class="pill sun">A coletar</span></td></tr>
+    <tr><td>Auditoria + métricas de redes</td><td>12 / 17</td><td class="blank"><span class="fill"></span></td><td><span class="pill sun">A coletar</span></td></tr>
+    <tr><td>Mapa de grupos de WhatsApp por região</td><td>13</td><td class="blank"><span class="fill"></span></td><td><span class="pill sun">A montar</span></td></tr>
+    <tr><td>Telas e ranking do Time Pepê</td><td>14</td><td class="blank"><span class="fill"></span></td><td><span class="pill sun">A coletar</span></td></tr>
+    <tr><td>Mapa de veículos de imprensa</td><td>15</td><td class="blank"><span class="fill"></span></td><td><span class="pill navy">Planejado</span></td></tr>
+    <tr><td>Calendário eleitoral oficial + parecer jurídico</td><td>20 / 26</td><td class="blank"><span class="fill"></span></td><td><span class="pill red">Crítico</span></td></tr>
+    <tr><td>Pesquisa eleitoral / indicadores de percepção</td><td>02 / 17</td><td class="blank"><span class="fill"></span></td><td><span class="pill navy">Se houver</span></td></tr>
+    <tr><td>Números de emenda travados (oficial)</td><td>06 / 24</td><td class="blank"><span class="fill"></span></td><td><span class="pill red">Crítico</span></td></tr>
+  </table>
+
+  <div class="divline"></div>
+  <div class="center">
+    <div class="kicker">Fim do Plano Mestre — Edição 2.0</div>
+    <p class="lead--big" style="margin-top:10px">Parceria que se prova. <span style="color:var(--red)">Transformação que se vê.</span></p>
+    <p class="small muted">Documento vivo · uso interno · atualização contínua · Campanha Pepê Collaço 2026</p>
+  </div>
+</section>
+
+<footer class="fin">
+  <h3>PEPÊ COLLAÇO · 2026</h3>
+  <p class="small">Plano Mestre de Comunicação, Organização e Produção — Edição 2.0 (Jun/2026)</p>
+</footer>
+</div>
+
+<input type="file" id="pmImgInput" accept="image/*" class="no-print" style="display:none" onchange="pmHandleFile(this)">
+<script>
+var pmTargetPh=null,pmKey='pm_plano_mestre_v2',pmSaveTimer=null,pmAutosave=true,pmBar=null;
+function pmToggleEdit(){var d=document.querySelector('.doc');var on=d.getAttribute('contenteditable')==='true';d.setAttribute('contenteditable',on?'false':'true');document.body.classList.toggle('pm-editing',!on);var b=document.getElementById('pmEdit');if(b)b.textContent=on?'✏️ Editar':'✓ Editando — sair';}
+function pmAddPhBtn(ph,label){var b=document.createElement('button');b.type='button';b.className='ph-btn no-print';b.textContent=label;b.addEventListener('click',function(ev){ev.stopPropagation();ev.preventDefault();pmTargetPh=ph;document.getElementById('pmImgInput').click();});ph.appendChild(b);}
+function pmAddTools(ph){var img=ph.querySelector('.fig-img');var t=document.createElement('div');t.className='fig-tools no-print';[['P','45%'],['M','70%'],['G','90%'],['Total','100%']].forEach(function(o){var b=document.createElement('button');b.type='button';b.textContent=o[0];b.title='Tamanho '+o[0];b.onclick=function(e){e.stopPropagation();if(img){img.style.width=o[1];pmSave();}};t.appendChild(b);});var tr=document.createElement('button');tr.type='button';tr.textContent='Trocar';tr.onclick=function(e){e.stopPropagation();pmTargetPh=ph;document.getElementById('pmImgInput').click();};t.appendChild(tr);var r=document.createElement('button');r.type='button';r.className='rm';r.textContent='Remover';r.onclick=function(e){e.stopPropagation();pmRemoveImg(ph);};t.appendChild(r);ph.appendChild(t);}
+function pmInjectBtns(){document.querySelectorAll('.ph').forEach(function(ph){if(ph.getAttribute('data-orig')===null&&!ph.classList.contains('filled'))ph.setAttribute('data-orig',ph.innerHTML);if(ph.classList.contains('filled')){if(!ph.querySelector('.fig-tools'))pmAddTools(ph);}else if(!ph.querySelector('.ph-btn'))pmAddPhBtn(ph,'＋ Inserir imagem');});}
+function pmStripBtns(){document.querySelectorAll('.ph-btn,.fig-tools').forEach(function(b){b.remove();});}
+function pmPlaceImg(ph,url){ph.classList.add('filled');ph.innerHTML='';var img=document.createElement('img');img.className='fig-img';img.src=url;img.alt='';img.style.width='90%';var cap=document.createElement('div');cap.className='fig-cap';cap.textContent='Legenda — clique em “Editar” para alterar';ph.appendChild(img);ph.appendChild(cap);pmAddTools(ph);pmSave();}
+function pmRemoveImg(ph){ph.classList.remove('filled');var o=ph.getAttribute('data-orig');ph.innerHTML=(o!==null&&o!=='')?o:'<div class="pi">Espaço reservado</div><div class="pl">Imagem</div><div class="pd">Clique para inserir</div>';pmAddPhBtn(ph,'＋ Inserir imagem');pmSave();}
+function pmHandleFile(input){var f=input.files&&input.files[0];if(!f||!pmTargetPh){input.value='';return;}var rd=new FileReader();rd.onload=function(){var im=new Image();im.onload=function(){var max=1600,w=im.width,h=im.height;if(w>max){h=Math.round(h*max/w);w=max;}var c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(im,0,0,w,h);var url=(f.type==='image/png')?c.toDataURL('image/png'):c.toDataURL('image/jpeg',0.85);pmPlaceImg(pmTargetPh,url);input.value='';};im.src=rd.result;};rd.readAsDataURL(f);}
+function pmSave(){if(!pmAutosave)return;clearTimeout(pmSaveTimer);pmSaveTimer=setTimeout(function(){try{localStorage.setItem(pmKey,JSON.stringify({t:Date.now(),html:document.querySelector('.doc').innerHTML}));}catch(e){pmAutosave=false;pmNote('Auto-salvamento pausado (arquivo grande com imagens). Use “💾 Baixar HTML” para guardar.');}},1000);}
+function pmRestore(){try{var raw=localStorage.getItem(pmKey);if(!raw)return;document.querySelector('.doc').innerHTML=JSON.parse(raw).html;pmStripBtns();pmInjectBtns();}catch(e){}if(pmBar){pmBar.remove();pmBar=null;}}
+function pmDiscard(){try{localStorage.removeItem(pmKey);}catch(e){}if(pmBar){pmBar.remove();pmBar=null;}}
+function pmShowRestore(){var raw;try{raw=localStorage.getItem(pmKey);}catch(e){return;}if(!raw)return;var when='';try{when=new Date(JSON.parse(raw).t).toLocaleString('pt-BR');}catch(e){}pmBar=document.createElement('div');pmBar.className='pm-bar no-print';var s=document.createElement('span');s.textContent='📝 Há uma edição salva neste navegador'+(when?' ('+when+')':'')+'.';var b1=document.createElement('button');b1.className='tbtn';b1.textContent='Restaurar';b1.onclick=pmRestore;var b2=document.createElement('button');b2.className='tbtn ghost';b2.textContent='Descartar';b2.onclick=pmDiscard;pmBar.appendChild(s);pmBar.appendChild(b1);pmBar.appendChild(b2);document.body.insertBefore(pmBar,document.body.firstChild);}
+function pmNote(msg){var n=document.createElement('div');n.className='pm-bar no-print';n.textContent=msg;document.body.insertBefore(n,document.body.firstChild);setTimeout(function(){n.remove();},7000);}
+function pmDownload(){pmStripBtns();var d=document.querySelector('.doc');d.setAttribute('contenteditable','false');document.body.classList.remove('pm-editing');var b=document.getElementById('pmEdit');if(b)b.textContent='✏️ Editar';var html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;var blob=new Blob([html],{type:'text/html;charset=utf-8'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Plano_Mestre_Pepe_Collaco_editado.html';document.body.appendChild(a);a.click();a.remove();pmInjectBtns();}
+document.addEventListener('DOMContentLoaded',function(){pmInjectBtns();pmShowRestore();var d=document.querySelector('.doc');if(d)d.addEventListener('input',pmSave);});
+</script>
+</body>
+</html>

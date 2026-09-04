@@ -1,14 +1,83 @@
+# ---------------------------------------------------------------
+# Repositório do mandato Pepê Collaço (público, serve o site em
+# www.pepecollaco.com por GitHub Pages a partir da raiz da branch main)
+# ---------------------------------------------------------------
+
+# macOS
 .DS_Store
+**/.DS_Store
+.Spotlight-V100
+.Trashes
 
-# Credenciamento — Vite
-credenciamento/.env
-credenciamento/node_modules/
-credenciamento/dist/
+# ---------------------------------------------------------------
+# SEGREDOS — nunca versionar. O repositório é público.
+# ---------------------------------------------------------------
+.env
+.env.*
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.sample
 
-# CSVs com dados pessoais (não versionar)
+# ---------------------------------------------------------------
+# Dependências, builds e caches
+# ---------------------------------------------------------------
+node_modules/
+.next/
+out/
+dist/
+build/
+.turbo/
+.vercel/
+.cache/
+*.tsbuildinfo
+*.log
+npm-debug.log*
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ---------------------------------------------------------------
+# Repositórios com remote próprio (não entram como submódulo)
+# ---------------------------------------------------------------
+/gerador-materiais/
+/PEPECOPY/
+
+# ---------------------------------------------------------------
+# Originais pesados de arte, foto e apresentação.
+# Ficam no disco e no Drive; o GitHub recusa arquivo acima de 100 MB.
+# ---------------------------------------------------------------
+/_ARTE /
+/APA BALEIA FRANCA/
+/FOTOS/
+/APRESENTAÇÃO /
+/SANTINHOS MODULARES/BASE FOTOS/
+/SANTINHOS MODULARES/IMG_0653-2.png
+/Gemini_Generated_Image_pjls0mpjls0mpjls.png
+
+# Arquivos de programa gráfico
+*.psd
+*.ai
+*.indd
+*.key
+*.sketch
+
+# Bases brutas do TSE em painel/ (centenas de MB)
+/painel/votacao_candidato_munzona_2018/
+/painel/votacao_candidato_munzona_2022/
+/painel/votacao_candidato_munzona_2024/
+/painel/geojs-42-mun.json
+
+# ---------------------------------------------------------------
+# Dados pessoais que não devem ser versionados
+# ---------------------------------------------------------------
 contatos_final.csv
 contatos_supabase.csv
 contatos_revisao.csv
 
-# DS_Store em qualquer subdiretório
-**/.DS_Store
+# Token vivo da Graph API da Meta (usado por scripts/listar_posts_ig.mjs)
+IMPULSIONAMENTOS/scripts/token.txt
+
+# Arquivos de bloqueio do Word
+~$*

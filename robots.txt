@@ -1,0 +1,30 @@
+# www.pepecollaco.com
+# As páginas do site são indexáveis. As pastas de trabalho do mandato ficam
+# fora do rastreamento: elas vivem no repositório, que é público, mas não
+# devem aparecer em busca. Isso vale só para robô que respeita a regra;
+# não é controle de acesso.
+
+User-agent: *
+
+Disallow: /IMPULSIONAMENTOS/
+Disallow: /EMENDAS%20/
+Disallow: /REDES/
+Disallow: /IMPRENSA/
+Disallow: /PLANO%20MESTRE/
+Disallow: /ROTEIRO/
+Disallow: /ROTEIROS/
+Disallow: /WPP/
+Disallow: /WPP%20SERVER/
+Disallow: /SANTINHOS%20MODULARES/
+Disallow: /WIND%20BANNER/
+Disallow: /BON%C3%89/
+Disallow: /_IDENTIDADE/
+Disallow: /deppepe_collaco_arquivos_consolidados/
+Disallow: /admin/
+
+# Bases de contato e auditorias soltas na raiz
+Disallow: /BACKUP_
+Disallow: /AUDIT_
+Disallow: /contatos_
+Disallow: /preparar_base.py
+Disallow: /supabase_schema.sql

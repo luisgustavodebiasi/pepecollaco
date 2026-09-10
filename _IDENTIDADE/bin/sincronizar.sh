@@ -13,7 +13,11 @@ BASE="$(cd "$RAIZ/.." && pwd)"
 DIST="$RAIZ/dist"
 VERSAO="$(cat "$RAIZ/VERSAO")"
 
-SITE="$BASE/pepecollaco-site"
+# O site não mora mais numa pasta própria: a raiz do repositório é o que o
+# GitHub Pages publica em www.pepecollaco.com. Enquanto isto apontava para
+# pepecollaco-site/, sync_site avisava "não existe" e pulava em silêncio —
+# ou seja, dist/ era regenerado e o site continuava com os assets velhos.
+SITE="$BASE"
 CRED="$BASE/PEPECOPY/credenciamento-next"
 GER="$BASE/gerador-materiais"
 
@@ -64,7 +68,7 @@ absolutiza_urls () {
 }
 
 sync_site () {
-  echo "→ site (pepecollaco-site)"
+  echo "→ site (www.pepecollaco.com, raiz do repositório)"
   [ -d "$SITE" ] || { echo "  aviso: $SITE não existe, pulando"; return; }
   local destino="$SITE/assets/brand"
   rm -rf "$destino"

@@ -39,15 +39,23 @@
             mask-size: var(--textura-tamanho);
     opacity: .085;
   }
-  /* véu: sem ele o amarelo cai sobre o #0082BF do canto e reprova em contraste */
+  /* véu: sem ele o amarelo cai sobre o #0082BF do canto e reprova em contraste.
+     Fecha em 62%, antes de onde o retrato começa: a rampa existe para o texto
+     da esquerda, e quando ela chegava à borda direita saía por cima da camisa. */
   .quadro::after {
     content: ""; position: absolute; inset: 0;
-    background: linear-gradient(105deg, rgba(6,26,58,.86) 0%, rgba(10,33,72,.66) 46%, rgba(14,30,70,.12) 78%);
+    background: linear-gradient(100deg, rgba(6,26,58,.90) 0%, rgba(10,33,72,.74) 34%,
+      rgba(14,30,70,.22) 52%, rgba(14,30,70,0) 62%);
   }
 
+  /* Geometria do padrão (ver "Retrato nas OG" em _IDENTIDADE/CLAUDE.md):
+     altura 690, direita 26, base -84 — 519x690, ocupando a metade direita.
+     A margem da direita é positiva de propósito: o ponto mais largo do
+     recorte é a linha dos cotovelos, e sangria pela direita corta o braço
+     cruzado. Quem sangra é a base, que fecha logo abaixo das mãos. */
   .retrato {
-    position: absolute; right: -18px; bottom: -14px;
-    height: 640px; width: auto;
+    position: absolute; right: 26px; bottom: -84px;
+    height: 690px; width: auto;
     z-index: 1;
     filter: drop-shadow(-22px 8px 52px rgba(6,26,58,.6));
   }
@@ -57,7 +65,10 @@
     height: 100%;
     padding: 46px 62px 48px;
     display: flex; flex-direction: column;
-    max-width: 830px;
+    /* 790, e não 830: com o retrato ocupando a metade direita, a linha
+       do título passava por cima do ombro. Aqui ela fecha em 728px,
+       50px antes do primeiro pixel do cabelo. */
+    max-width: 790px;
   }
   .conteudo > * { flex: none; }
 

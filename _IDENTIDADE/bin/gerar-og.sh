@@ -27,23 +27,32 @@ cat > "$TMP/og.html" <<HTML
   .textura { position: absolute; inset: 0; background-color: #fff;
     -webkit-mask-image: url("$DIST/textura/setas-tile.svg");
     -webkit-mask-size: 308px 491px; opacity: .07; }
+  /* O véu fecha em 62%, antes de onde o retrato começa. Quando ele ia até a
+     borda direita, a rampa passava por cima da camisa e o retrato saía
+     acinzentado — foi a reclamação que motivou o padrão de 2026-09-10. */
   .veu { position: absolute; inset: 0;
-    background: linear-gradient(90deg, rgba(6,26,58,.92) 34%, rgba(6,26,58,.10) 100%); }
-  .conteudo { position: relative; z-index: 2; padding: 0 60px; width: 640px; }
+    background: linear-gradient(100deg, rgba(6,26,58,.92) 0%, rgba(6,26,58,.80) 34%,
+      rgba(6,26,58,.22) 52%, rgba(6,26,58,0) 62%); }
+  .conteudo { position: relative; z-index: 3; padding: 0 60px; width: 640px; }
   .conteudo img { width: 420px; display: block; }
   .frase { margin-top: 24px; font-size: 32px; font-weight: 700;
     text-transform: uppercase; line-height: 1.12; color: #fff; letter-spacing: -.01em; }
   .frase em { font-style: normal; color: var(--cor-acento); }
   /* Busto, não corpo inteiro: o cartão aparece com uns 300px de largura na
      lista de conversas do WhatsApp, e de corpo inteiro o rosto vira um ponto.
-     Sangra pela direita e pela base para preencher sem faixa vazia. */
-  .retrato { position: absolute; right: -30px; bottom: -14px; height: 610px; z-index: 1; }
+
+     Geometria do padrão (ver "Retrato nas OG" no CLAUDE.md da identidade):
+     altura 690, direita 26, base -84. A margem da direita é positiva de
+     propósito: o ponto mais largo do recorte é a linha dos cotovelos, e
+     qualquer sangria pela direita corta o braço cruzado. Quem sangra é a
+     base, que fecha logo abaixo das mãos. */
+  .retrato { position: absolute; right: 26px; bottom: -84px; height: 690px; z-index: 2; }
   .retrato img { height: 100%; width: auto;
     filter: drop-shadow(0 22px 55px rgba(0,0,0,.55)); }
 </style>
 <div class="textura"></div>
-<div class="retrato"><img src="$DIST/foto/pepe-busto-1400.webp" alt=""></div>
 <div class="veu"></div>
+<div class="retrato"><img src="$DIST/foto/pepe-busto-1400.webp" alt=""></div>
 <div class="conteudo">
   <img src="$DIST/marca/vote-11223-escuro-960.webp" alt="">
   <p class="frase">Quem faz,<br><em>representa!</em></p>

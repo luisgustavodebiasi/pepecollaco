@@ -10,7 +10,7 @@ RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BASE="$(cd "$RAIZ/.." && pwd)"
 
 alvos=(
-  "$BASE/pepecollaco-site|assets/brand"
+  "$BASE|assets/brand"                          # o site é a raiz do repositório
   "$BASE/PEPECOPY/credenciamento-next|public/brand"
   "$BASE/gerador-materiais|public/brand"
 )
@@ -72,8 +72,8 @@ alvos = [
     (base / "PEPECOPY/credenciamento-next/app/globals.css",     base / "PEPECOPY/credenciamento-next/public"),
     (base / "PEPECOPY/credenciamento-next/app/brand/tokens.css", base / "PEPECOPY/credenciamento-next/public"),
     (base / "gerador-materiais/app/brand/tokens.css",            base / "gerador-materiais/public"),
-    (base / "pepecollaco-site/assets/brand/css/tokens.css",      base / "pepecollaco-site/assets/brand/css"),
-    (base / "pepecollaco-site/assets/brand/css/tipografia.css",  base / "pepecollaco-site/assets/brand/css"),
+    (base / "assets/brand/css/tokens.css",      base / "assets/brand/css"),
+    (base / "assets/brand/css/tipografia.css",  base / "assets/brand/css"),
 ]
 
 faltando = []

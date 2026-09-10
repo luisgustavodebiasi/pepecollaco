@@ -1,5 +1,5 @@
 {
-  "versao": "1.2.0",
+  "versao": "1.2.1",
   "origem": "_IDENTIDADE/dist",
   "arquivos": {
     "css/compat/site-admin.css": "2f630ab827b12e5d3b07a6000f83da9d89098a9d97b5d2d1486ca2479c8eb5f6",
@@ -8,7 +8,7 @@
     "css/compat/site-proposta.css": "cd2ca7b60090c25d56b62c306a6a9f51fe732a4559e93b9461b0b28235b165b6",
     "css/compat/site-time.css": "0e2f23f116caa414487f0d67a1f6a5ea85437587c09f82a8328a37f99eba1c8d",
     "css/tipografia.css": "d4cf2f419f7a9ee73b7e824bf4f8b5e4dfe4d068a668352ef108e80544f32455",
-    "css/tokens.css": "97b71bdf411f84b10e4dc70ba37d0554873254b5650eb72bfac3a69352aa9460",
+    "css/tokens.css": "5e2d0898a5a9725c560c612ba285932e80b9f6142e1533338d0f22c245336ed8",
     "fontes/acumin-400.woff2": "ab0c73047c837078e6f73f1162eb8ac17854b6372009d375722e6370e9415b78",
     "fontes/acumin-400i.woff2": "6133fc3c09f613b682309de32de1c6615bf35f45a22e4f3370423ca12300dfcf",
     "fontes/acumin-700.woff2": "4b7c9f8ea04c77a2ca24723e458789831b3661a544ab18ed732e1e9f852aefdf",
@@ -43,7 +43,7 @@
     "marca/vote-11223-escuro-1600.webp": "840871d0f7e0767280fa9946a936e06615c0726210f9ec9006e089e8ceca48ee",
     "marca/vote-11223-escuro-480.webp": "17099a135f0737fb102e787d770ccbcd7c23a2a40f39070c7c1a06fd65c20eda",
     "marca/vote-11223-escuro-960.webp": "4e9cfe609ce5f8cab17b7671a498548b8d94201a724f19847d8d031a3cc8a461",
-    "og-11223.jpg": "235ba3f5f1c0ebb027a330a7ad65fcb879594a1af6d58b602e8875c1e58db8fc",
+    "og-11223.jpg": "77f0281923a44d29740a87f5c96e2c0b1031d84de262195849c7dc2b8b172805",
     "simbolo/apple-touch-icon.png": "a88327a2dd3cdd75b76737f833d0e8801f0c29d5d6e714fcedbd842014a7cbbe",
     "simbolo/favicon-32.png": "db474fdda00a1135bbc647de6efffed2a71c73a0847b505ce1165138c732776e",
     "simbolo/favicon-512.png": "5d837a5fc589d9bfaf18c371ba93f31ba47416b09059bff5c13931fb324d45f1",

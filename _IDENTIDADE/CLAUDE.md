@@ -5,7 +5,7 @@ precisar decidir cor, fonte, logo ou fundo, a resposta está aqui. Onde este
 documento e o código divergirem, **este documento está certo e o código está
 desatualizado**.
 
-Versão 1.1.0 · fonte-verdade em `_IDENTIDADE/` · originais da agência em `_ARTE /`
+Versão 1.2.1 · fonte-verdade em `_IDENTIDADE/` · originais da agência em `_ARTE /`
 
 ---
 
@@ -429,6 +429,61 @@ braços cruzados. É o hero natural sobre o fundo azul.
 
 Existe um `FOTO PEPE_azul (NÃO USAR).png` na pasta da arte. O nome é a instrução.
 O pipeline aborta se alguém apontar para ele.
+
+**Ele olha para a esquerda de quem vê.** Por isso o lugar dele é a metade
+direita da peça, olhando para dentro, e o texto fica à esquerda. Invertido, ele
+olha para fora do quadro e a peça perde o eixo. Não espelhe a foto para
+resolver: a repartição do cabelo e a mão por cima do braço trocam de lado e
+quem conhece percebe.
+
+### Retrato nas OG
+
+Padrão de 10/09/2026, e vale para **toda** peça 1200×630 de compartilhamento —
+o `og-11223.jpg` do site, os moldes de `quem-faz/og/` e `tubarao/ruas/og/`, e as
+open-graph do credenciamento em `app/**/opengraph-image.tsx`.
+
+```
+busto      foto/pepe-busto-*            (677 × 900, proporção 0,752)
+altura     690 px      →  519 px de largura, ~44% do quadro
+direita    26 px       margem POSITIVA
+base       −84 px      sangra por baixo
+```
+
+Fica 519×690 ocupando de x 655 a x 1174, com uns 20 px de respiro acima do
+cabelo. É a metade direita do cartão inteira.
+
+Três regras, e as três nasceram de cartão feio publicado:
+
+1. **A margem da direita é positiva.** O ponto mais largo do recorte é a linha
+   dos cotovelos, lá embaixo — qualquer `right` negativo corta o braço cruzado
+   rente à borda, que é exatamente o que os cartões faziam até 09/2026.
+2. **Quem sangra é a base.** O corte fecha logo abaixo das mãos: o gesto de
+   braços cruzados aparece inteiro e não sobra faixa morta no pé.
+3. **O véu não passa por cima dele.** O véu existe para o texto da esquerda
+   ganhar contraste sobre a parte clara do degradê. Ele fecha em **62%**, antes
+   de onde o retrato começa, e o retrato é pintado **depois** dele (no Satori,
+   que ignora `z-index`, isso quer dizer: o `<div>` do véu vem antes do `<img>`
+   no JSX). Rampa que ia até a borda direita deixava a camisa branca cinza.
+
+```css
+/* moldes em HTML */
+.veu { background: linear-gradient(100deg,
+  rgba(6,26,58,.92) 0%, rgba(6,26,58,.80) 34%,
+  rgba(6,26,58,.22) 52%, rgba(6,26,58,0) 62%); }
+.retrato { position: absolute; right: 26px; bottom: -84px; height: 690px; }
+```
+
+**A coluna de texto fecha em ~730 px.** No terço de cima o primeiro pixel de
+cabelo está em x 778, então dá para chegar perto; da metade para baixo o ombro
+avança até x 657, e aí nada de texto pode passar de ~640. Na dúvida, 730 é o
+teto seguro para a linha mais larga. O Satori não quebra `<span>` sozinho dentro
+de uma coluna: frase que não cabe em uma linha vai em dois `<span>` empilhados,
+não numa linha só torcendo para caber.
+
+**A exceção é `app/autoridades/opengraph-image.tsx`**, onde o conteúdo ocupa a
+largura inteira e a marca fica no canto superior direito: lá o busto entra com
+altura 470 e base −60, mesma margem de 26 à direita e mesmo corte, só menor.
+Cartão de operação interna, não de compartilhamento.
 
 ---
 

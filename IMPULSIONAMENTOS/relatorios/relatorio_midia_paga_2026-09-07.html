@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<title>Relatório de mídia paga · Pepê Collaço 11223</title>
+<link rel="stylesheet" href="file:///Users/luisgustavodebiasi/TRABALHOS/Projetos%20Externo/PEPE/_IDENTIDADE/dist/css/tipografia.css">
+<link rel="stylesheet" href="file:///Users/luisgustavodebiasi/TRABALHOS/Projetos%20Externo/PEPE/_IDENTIDADE/dist/css/tokens.css">
+<style>
+:root{
+  --asset:"file:///Users/luisgustavodebiasi/TRABALHOS/Projetos%20Externo/PEPE/_IDENTIDADE/dist";
+  --fonte:"Acumin Pro",Arial,sans-serif;
+  --fonte-display:"Acumin Pro Wide","Acumin Pro",Arial,sans-serif;
+  --fonte-brush:"Granesta","Acumin Pro Wide",sans-serif;
+}
+*{box-sizing:border-box;margin:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:A4;margin:0}
+html,body{background:var(--pp-abismo)}
+body{font-family:var(--fonte);color:#fff;font-size:9pt;line-height:1.45}
+
+.page{
+  position:relative;width:210mm;height:297mm;overflow:hidden;
+  background:var(--grad-fundo);page-break-after:always;
+}
+.page:last-child{page-break-after:auto}
+.page::before{
+  content:"";position:absolute;inset:0;background-color:#fff;
+  -webkit-mask-image:url("file:///Users/luisgustavodebiasi/TRABALHOS/Projetos%20Externo/PEPE/_IDENTIDADE/dist/textura/setas-tile.svg");
+  -webkit-mask-size:308px 491px;opacity:.07;pointer-events:none;
+}
+.inner{position:relative;z-index:2;height:100%;padding:14mm 14mm 12mm;display:flex;flex-direction:column}
+
+/* ── cabeçalho corrente ─────────────────────────────────────── */
+.rh{display:flex;align-items:center;gap:4mm;padding-bottom:3mm;margin-bottom:7mm;
+  border-bottom:1px solid var(--cor-borda);
+  font-size:7pt;letter-spacing:.16em;text-transform:uppercase;color:var(--pp-azul-claro)}
+.rh img{height:4.4mm;width:auto}
+.rh .sep{flex:1}
+.rh b{font-weight:700;color:#fff;letter-spacing:.16em}
+
+/* ── títulos ────────────────────────────────────────────────── */
+.eyebrow{font-size:7.5pt;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--pp-amarelo)}
+h1{font-family:var(--fonte-display);font-weight:900;text-transform:uppercase;
+  font-size:38pt;line-height:.94;letter-spacing:-.015em}
+.brush{font-family:var(--fonte-brush);text-transform:uppercase;color:var(--pp-amarelo);
+  font-size:44pt;line-height:.9;display:block;margin-top:1mm}
+h2{font-family:var(--fonte-display);font-weight:900;text-transform:uppercase;
+  font-size:14pt;line-height:1.05;letter-spacing:-.01em}
+.h2sub{color:var(--pp-azul-claro);font-size:8.2pt;max-width:150mm;margin-top:1.2mm}
+.rule{height:2px;background:var(--pp-amarelo);margin:2mm 0 3mm}
+section{margin-bottom:4.5mm}
+section:last-child{margin-bottom:0}
+
+/* ── capa ───────────────────────────────────────────────────── */
+.masthead{display:flex;align-items:flex-end;justify-content:space-between;gap:8mm;
+  padding-bottom:3.5mm;margin-bottom:6mm;border-bottom:2px solid var(--pp-amarelo)}
+.masthead h1{font-size:26pt;margin-top:1.5mm}
+.masthead .brush{font-size:29pt;margin-top:0}
+.masthead-meta{text-align:right;font-size:7pt;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--pp-azul-claro);line-height:1.9;white-space:nowrap}
+.capa .inner{padding:20mm 16mm 14mm}
+.retrato{position:absolute;right:-14mm;bottom:0;height:196mm;z-index:1}
+.retrato img{height:100%;width:auto;filter:drop-shadow(0 14mm 26mm rgba(0,0,0,.5))}
+.veu{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,rgba(6,26,58,.90) 40%,rgba(6,26,58,.35) 68%,rgba(6,26,58,0) 100%)}
+.dossie{display:flex;max-width:166mm;border-top:1px solid var(--cor-borda);border-bottom:1px solid var(--cor-borda);margin-top:10mm}
+.dossie div{flex:1;padding:3.5mm 3.5mm 3.5mm 0;border-right:1px solid var(--cor-borda)}
+.dossie div:last-child{border-right:0;padding-right:0}
+.dossie dt{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--pp-azul-claro)}
+.dossie dd{font-size:10.5pt;font-weight:700;margin-top:1mm;white-space:nowrap}
+.lede{margin-top:9mm;font-size:10.5pt;line-height:1.5;max-width:118mm;color:#fff}
+.lede b{color:var(--pp-amarelo);font-weight:700}
+.capa-pe{margin-top:auto;display:flex;flex-direction:column;align-items:flex-start;gap:4mm}
+.capa-pe img{width:52mm}
+.capa-pe p{font-size:7.5pt;color:var(--pp-azul-claro);letter-spacing:.1em;line-height:1.7;text-transform:uppercase;max-width:88mm}
+
+/* ── kpis ───────────────────────────────────────────────────── */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--cor-borda);border:1px solid var(--cor-borda)}
+.kpi{background:rgba(18,49,79,.55);padding:2.4mm 4.5mm 2.8mm}
+.kpi .lab{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--pp-azul-claro)}
+.kpi .val{font-family:var(--fonte-display);font-weight:900;font-size:18pt;line-height:1.1;margin-top:1mm;color:var(--pp-amarelo)}
+.kpi .obs{font-size:8pt;color:#fff;opacity:.78;margin-top:.8mm}
+
+/* ── comparativo de fases ───────────────────────────────────── */
+.fases{display:grid;grid-template-columns:1fr 1fr;gap:5mm}
+.fase{border:1px solid var(--cor-borda);background:rgba(18,49,79,.45);padding:2.6mm 4.5mm 3mm}
+.fase .cab{display:flex;align-items:center;gap:2.5mm;font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.fase .dot{width:3mm;height:3mm;display:inline-block}
+.fase h3{font-family:var(--fonte-display);font-weight:900;font-size:10.5pt;text-transform:uppercase;margin:1.5mm 0 2.2mm}
+.fase table{width:100%;font-size:8.5pt}
+.fase td{padding:.7mm 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.fase td:last-child{text-align:right;font-weight:700}
+.fase tr:last-child td{border-bottom:0}
+
+/* ── gráfico ────────────────────────────────────────────────── */
+.chart{border:1px solid var(--cor-borda);background:rgba(18,49,79,.45);padding:3mm 4mm 1mm}
+.chart svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:6mm;font-size:7.5pt;color:#fff;margin-bottom:2.5mm}
+.legend span{display:flex;align-items:center;gap:2mm}
+.legend i{width:3mm;height:3mm;display:inline-block}
+.axis-t{fill:#8BC1DC;font-family:"Acumin Pro",Arial;font-size:11px}
+.grid-l{stroke:rgba(255,255,255,.13);stroke-width:1}
+.base-l{stroke:rgba(255,255,255,.35);stroke-width:1}
+.panel-t{fill:#fff;font-family:"Acumin Pro",Arial;font-weight:700;font-size:13px;letter-spacing:.06em}
+.panel-s{fill:#8BC1DC;font-family:"Acumin Pro",Arial;font-size:11px}
+
+/* ── ranking ────────────────────────────────────────────────── */
+.rank{display:flex;flex-direction:column;gap:1px;background:var(--cor-borda);border:1px solid var(--cor-borda)}
+.rank-row{background:rgba(18,49,79,.45);display:grid;
+  grid-template-columns:8mm 68mm 1fr 24mm;gap:5mm;align-items:center;padding:2.8mm 5mm}
+.rank-n{font-size:9pt;color:var(--pp-azul-claro);font-weight:700}
+.rank-name{font-size:9.5pt;font-weight:700;line-height:1.2}
+.rank-name em{display:block;font-style:normal;font-weight:400;font-size:7.5pt;color:var(--pp-azul-claro);margin-top:.4mm;letter-spacing:.04em}
+.track{height:4.2mm;background:rgba(255,255,255,.10)}
+.fill{height:4.2mm}
+.rank-v{text-align:right;font-size:10.5pt;font-weight:700}
+.rank-v small{display:block;font-size:6.5pt;font-weight:400;color:var(--pp-azul-claro);letter-spacing:.12em;text-transform:uppercase}
+
+/* ── notas ──────────────────────────────────────────────────── */
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--cor-borda);border:1px solid var(--cor-borda)}
+.note{background:rgba(18,49,79,.45);padding:4.6mm 5mm 5.2mm;border-top:2px solid transparent}
+.note.win{border-top-color:var(--pp-verde)}
+.note.watch{border-top-color:var(--pp-amarelo)}
+.note.act{border-top-color:var(--pp-azul-claro)}
+.note .tag{font-size:7.2pt;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+.note.win .tag{color:var(--pp-verde-claro)}
+.note.watch .tag{color:var(--pp-amarelo)}
+.note.act .tag{color:var(--pp-azul-claro)}
+.note h3{font-family:var(--fonte-display);font-weight:900;font-size:11.5pt;text-transform:uppercase;margin:2.5mm 0 2.5mm;line-height:1.1}
+.note p{font-size:9.2pt;line-height:1.5;color:#fff;opacity:.9}
+.note .mono{letter-spacing:.04em;color:var(--pp-amarelo)}
+
+/* ── tabelas ────────────────────────────────────────────────── */
+table.dados{width:100%;border-collapse:collapse;font-size:7.8pt}
+table.dados thead th{
+  font-size:6.5pt;letter-spacing:.13em;text-transform:uppercase;color:var(--pp-azul-claro);
+  font-weight:700;text-align:left;padding:2mm 2mm;background:rgba(6,26,58,.55);
+  border-bottom:1px solid var(--pp-amarelo)}
+table.dados td{padding:2.5mm 2mm;border-bottom:1px solid rgba(255,255,255,.09);vertical-align:top}
+table.dados tbody tr:nth-child(even) td{background:rgba(255,255,255,.035)}
+table.dados .num{text-align:right;white-space:nowrap}
+table.dados th.num{text-align:right}
+table.dados td.nome{font-weight:700;line-height:1.25}
+table.dados td.nome span{display:block;font-weight:400;font-size:6.8pt;color:var(--pp-azul-claro);margin-top:.3mm}
+table.dados tfoot td{font-weight:700;background:rgba(255,196,0,.13);border-top:1px solid var(--pp-amarelo);border-bottom:0;padding:2.2mm 2mm}
+.chip{display:inline-block;font-size:6.2pt;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+  padding:.6mm 1.6mm;border:1px solid currentColor;white-space:nowrap}
+.c-alc{color:var(--pp-amarelo)}
+.c-trf{color:var(--pp-azul-claro)}
+.c-reg{color:var(--pp-verde-claro)}
+.c-cob{color:#fff;opacity:.8}
+.c-apo{color:var(--pp-verde-claro)}
+.c-est{color:var(--pp-alerta)}
+.c-orc{color:var(--pp-amarelo)}
+.pos{color:var(--pp-verde-claro);font-weight:700}
+.neg{color:var(--pp-alerta);font-weight:700}
+
+.resumo{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--cor-borda);border:1px solid var(--cor-borda);margin-bottom:5mm}
+.resumo div{background:rgba(18,49,79,.55);padding:3.5mm 4mm}
+.resumo dt{font-size:6.8pt;letter-spacing:.16em;text-transform:uppercase;color:var(--pp-azul-claro)}
+.resumo dd{font-family:var(--fonte-display);font-weight:900;font-size:14pt;margin-top:1mm}
+
+.glossario .note{padding:4.5mm 5mm 5mm}
+.glossario .note h3{font-size:10pt;margin:2mm 0 2mm}
+.glossario .note p{font-size:8.6pt;line-height:1.45}
+ol.acoes{list-style:none;padding:0;margin:0;counter-reset:a;display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--cor-borda);border:1px solid var(--cor-borda)}
+ol.acoes li{counter-increment:a;background:rgba(18,49,79,.45);padding:3.6mm 5mm 4mm 13mm;
+  position:relative;font-size:8.8pt;line-height:1.45}
+ol.acoes li::before{content:counter(a,decimal-leading-zero);position:absolute;left:5mm;top:4mm;
+  font-family:var(--fonte-display);font-weight:900;font-size:11pt;color:var(--pp-amarelo)}
+ol.acoes li:last-child{grid-column:1 / -1}
+ol.acoes b{color:#fff;font-weight:700}
+#ledgerTable td{padding:1.7mm 2mm}
+#ledgerTable .chip{font-size:5.8pt}
+.pe{margin-top:auto;padding-top:4mm;border-top:1px solid var(--cor-borda);
+  font-size:7.2pt;line-height:1.6;color:var(--pp-azul-claro)}
+.pe b{color:#fff;font-weight:700}
+</style></head><body>
+
+<!-- ══════════════ P2 · NÚMEROS ══════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="masthead">
+      <div>
+        <span class="eyebrow">Relatório de mídia paga · Meta Ads</span>
+        <h1>Entregas<span class="brush">Patrocinadas</span></h1>
+      </div>
+      <p class="masthead-meta">Pepê Collaço 11223<br>08/08 a 06/09/2026<br>Conta oficial · pág. 01</p>
+    </div>
+
+    <section>
+      <h2>Números do período</h2>
+      <div class="rule"></div>
+      <div class="kpis" id="kpis"></div>
+    </section>
+
+    <section>
+      <h2>As duas operações do mês</h2>
+      <p class="h2sub">Os mesmos reais compram coisas diferentes conforme o objetivo. A leitura honesta compara cada fase consigo mesma.</p>
+      <div class="rule"></div>
+      <div class="fases">
+        <div class="fase">
+          <div class="cab"><i class="dot" style="background:var(--pp-azul-claro)"></i> Fase 1 · 08 a 16/08</div>
+          <h3>Tráfego para o perfil</h3>
+          <table>
+            <tr><td>Investido</td><td>R$ 416,69</td></tr>
+            <tr><td>Impressões</td><td>15.440</td></tr>
+            <tr><td>Cliques</td><td>214</td></tr>
+            <tr><td>CTR</td><td>1,39%</td></tr>
+            <tr><td>CPM</td><td>R$ 26,99</td></tr>
+          </table>
+        </div>
+        <div class="fase">
+          <div class="cab"><i class="dot" style="background:var(--pp-amarelo)"></i> Fase 2 · 23/08 a 06/09</div>
+          <h3>Alcance com vídeo em SC</h3>
+          <table>
+            <tr><td>Investido</td><td>R$ 3.102,47</td></tr>
+            <tr><td>Impressões</td><td>1.576.870</td></tr>
+            <tr><td>Cliques</td><td>1.945</td></tr>
+            <tr><td>CTR</td><td>0,12%</td></tr>
+            <tr><td>CPM</td><td>R$ 1,97</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Como o dinheiro entregou, dia a dia</h2>
+      <p class="h2sub">Os seis dias entre 17 e 22/08 e o dia 26/08 não tiveram veiculação.</p>
+      <div class="rule"></div>
+      <div class="chart">
+        <div class="legend">
+          <span><i style="background:var(--pp-azul-claro)"></i> Fase 1 · tráfego / perfil IG</span>
+          <span><i style="background:var(--pp-amarelo)"></i> Fase 2 · alcance / vídeo SC</span>
+        </div>
+        <div id="dailyBox"></div>
+      </div>
+    </section>
+
+    <div class="pe">Alcance não é somável entre dias nem entre campanhas. Os totais vêm da própria API, já deduplicados.</div>
+  </div>
+</div>
+
+<!-- ══════════════ P3 · RANKING ══════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="rh"><img src="file:///Users/luisgustavodebiasi/TRABALHOS/Projetos%20Externo/PEPE/_IDENTIDADE/dist/simbolo/seta-amarela.svg" alt=""><b>Pepê Collaço 11223</b><span>Relatório de mídia paga</span><span class="sep"></span><span>08/08 a 06/09/2026 · 02</span></div>
+    <section>
+      <h2>Quais posts renderam mais</h2>
+      <p class="h2sub">Os 15 anúncios de maior alcance no período, com o custo por mil de cada um ao lado.</p>
+      <div class="rule"></div>
+      <div class="rank" id="rankBox"></div>
+    </section>
+    <div class="pe">Barra proporcional ao alcance do primeiro colocado. Os 15 primeiros são todos da operação de <b>alcance com vídeo</b>: nenhum anúncio de tráfego para o perfil chegou perto, porque o objetivo dele é outro.</div>
+  </div>
+</div>
+
+<!-- ══════════════ P4 · LEITURA RÁPIDA ══════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="rh"><img src="file:///Users/luisgustavodebiasi/TRABALHOS/Projetos%20Externo/PEPE/_IDENTIDADE/dist/simbolo/seta-amarela.svg" alt=""><b>Pepê Collaço 11223</b><span>Relatório de mídia paga</span><span class="sep"></span><span>08/08 a 06/09/2026 · 03</span></div>
+    <section>
+      <h2>Leitura rápida</h2>
+      <p class="h2sub">O que funcionou, o que precisa de olho e o que dá para resolver esta semana.</p>
+      <div class="rule"></div>
+      <div class="notes">
+        <div class="note win">
+          <span class="tag">Melhor alcance por real</span>
+          <h3>Inclusão · Semana APAE</h3>
+          <p>91.619 pessoas por R$ 200,93. CPM de R$ 1,68 e frequência 1,31, o mais barato e o menos repetitivo do lote. O post de autismo “Salas sensoriais Nova Veneza” vem logo atrás: 75.599 pessoas por R$ 159,19, com CPM de R$ 1,65.</p>
+        </div>
+        <div class="note win">
+          <span class="tag">Melhor engajamento</span>
+          <h3>AUT 01 · Cordões coloridos</h3>
+          <p>CTR de 4,56% com R$ 20,40 e CPC de R$ 0,13, o melhor clique da conta. A pauta autismo bate consistentemente acima de 2% de CTR, contra 0,08% a 0,15% dos vídeos de alcance.</p>
+        </div>
+        <div class="note watch">
+          <span class="tag">Atenção</span>
+          <h3>Urubici estrada com geo errada</h3>
+          <p>Maior gasto do lote de vídeo, R$ 202,62, e o nome do conjunto ainda carrega o aviso <span class="mono">[AJUSTAR GEO PARA URUBICI]</span>. Frequência 1,59, a segunda mais alta: está batendo repetido em quem já viu.</p>
+        </div>
+        <div class="note watch">
+          <span class="tag">Atenção</span>
+          <h3>Remarketing caro e saturado</h3>
+          <p>A campanha RMK queimou R$ 482,75 em 5.801 pessoas, com CPM de R$ 26,36 e frequência 3,16. O criativo “SERÁ” sozinho levou R$ 374,20. Público pequeno demais para esse orçamento.</p>
+        </div>
+        <div class="note act">
+          <span class="tag">Ação sugerida</span>
+          <h3>Duplicidade no Jingle 11223</h3>
+          <p>Dois anúncios servindo o mesmo post dentro do mesmo conjunto, um deles em <span class="mono">WITH_ISSUES</span>, com R$ 47,02 gastos. Pausar o duplicado antes que ele divida a entrega de novo.</p>
+        </div>
+        <div class="note act">
+          <span class="tag">Ação sugerida</span>
+          <h3>Regional 22 posts ainda em zero</h3>
+          <p>A campanha criada em 03/09 com 22 anúncios não registrou entrega até 06/09. Vale checar aprovação e orçamento antes de contar com ela na próxima janela.</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>O que fazer na próxima janela</h2>
+      <div class="rule"></div>
+      <ol class="acoes">
+        <li><b>Cortar o remarketing como está.</b> R$ 482,75 para 5.801 pessoas, com frequência 3,16, é público esgotado. Ou amplia a base, ou o orçamento volta para o vídeo de alcance.</li>
+        <li><b>Corrigir a geo do “Urubici estrada” antes de repor verba.</b> É o maior gasto do lote e o conjunto ainda carrega o aviso de ajuste no próprio nome.</li>
+        <li><b>Pausar o anúncio duplicado do Jingle 11223.</b> Dois anúncios do mesmo post no mesmo conjunto disputam a entrega e encarecem os dois.</li>
+        <li><b>Concentrar no que já provou custar menos:</b> APAE, Salas sensoriais Nova Veneza e Pode parecer muitas coisas rodaram abaixo de R$ 1,75 de CPM, contra R$ 2,18 dos mais caros do mesmo lote.</li>
+        <li><b>Destravar a Regional 22 posts</b> ou tirar do plano. Criada em 03/09, sem uma única impressão até 06/09.</li>
+      </ol>
+    </section>
+    <div class="pe">A segunda conta da BM, <b>PEPÊ COLLAÇO ELEIÇÃO (1565441288651757)</b>, tem apenas um anúncio de teste sem entrega e sem gasto no período, e não entra em nenhum número deste relatório.</div>
+  </div>
+</div>
+
+<!-- ══════════════ P5 · ANÚNCIOS ══════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="rh"><img src="file:///Users/luisgustavodebiasi/TRABALHOS/Projetos%20Externo/PEPE/_IDENTIDADE/dist/simbolo/seta-amarela.svg" alt=""><b>Pepê Collaço 11223</b><span>Relatório de mídia paga</span><span class="sep"></span><span>08/08 a 06/09/2026 · 04</span></div>
+    <section>
+      <h2>Anúncios com entrega</h2>
+      <p class="h2sub">Os 16 maiores investimentos do período, com frequência, CTR e CPM por anúncio.</p>
+      <div class="rule"></div>
+      <table class="dados" id="adsTable1">
+        <thead><tr>
+          <th>Anúncio / post</th><th>Tipo</th><th class="num">Gasto</th><th class="num">Alcance</th>
+          <th class="num">Impressões</th><th class="num">Freq.</th><th class="num">CTR</th>
+          <th class="num">CPM</th><th class="num">CPC</th>
+        </tr></thead><tbody></tbody>
+      </table>
+    </section>
+    <div class="pe">Continua na página seguinte, com os 13 anúncios de menor investimento.</div>
+  </div>
+</div>
+
+<!-- ══════════════ P6 · ANÚNCIOS, PARTE 2 ══════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="rh"><img src="file:///Users/luisgustavodebiasi/TRABALHOS/Projetos%20Externo/PEPE/_IDENTIDADE/dist/simbolo/seta-amarela.svg" alt=""><b>Pepê Collaço 11223</b><span>Relatório de mídia paga</span><span class="sep"></span><span>08/08 a 06/09/2026 · 05</span></div>
+    <section>
+      <h2>Anúncios com entrega · continuação</h2>
+      <p class="h2sub">Os 13 anúncios de menor investimento no período. Vários deles são testes de rótulo eleitoral e de público, com verba proposital de poucos reais.</p>
+      <div class="rule"></div>
+      <table class="dados" id="adsTable2">
+        <thead><tr>
+          <th>Anúncio / post</th><th>Tipo</th><th class="num">Gasto</th><th class="num">Alcance</th>
+          <th class="num">Impressões</th><th class="num">Freq.</th><th class="num">CTR</th>
+          <th class="num">CPM</th><th class="num">CPC</th>
+        </tr></thead><tbody></tbody>
+      </table>
+    </section>
+    <div class="pe">Os quatro anúncios abaixo de R$ 6,00 rodaram só o tempo de validar que o <b>rótulo eleitoral</b> não derruba a entrega. Não servem para comparar custo, mas o CTR deles confirma a força da pauta autismo.</div>
+  </div>
+</div>
+
+<!-- ══════════════ P6 · CAMPANHAS ══════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="rh"><img src="file:///Users/luisgustavodebiasi/TRABALHOS/Projetos%20Externo/PEPE/_IDENTIDADE/dist/simbolo/seta-amarela.svg" alt=""><b>Pepê Collaço 11223</b><span>Relatório de mídia paga</span><span class="sep"></span><span>08/08 a 06/09/2026 · 06</span></div>
+    <section>
+      <h2>Campanhas</h2>
+      <p class="h2sub">Doze campanhas com entrega no período, ordenadas por investimento.</p>
+      <div class="rule"></div>
+      <table class="dados" id="campTable">
+        <thead><tr>
+          <th>Campanha</th><th>Objetivo</th><th class="num">Gasto</th><th class="num">Alcance</th>
+          <th class="num">Impressões</th><th class="num">Freq.</th><th class="num">CTR</th><th class="num">CPM</th>
+        </tr></thead><tbody></tbody>
+        <tfoot><tr>
+          <td colspan="2">Total da conta</td><td class="num">R$ 3.519,16</td><td class="num">505.838</td>
+          <td class="num">1.592.310</td><td class="num">3,15</td><td class="num">0,14%</td><td class="num">R$ 2,21</td>
+        </tr></tfoot>
+      </table>
+    </section>
+    <section>
+      <h2>Como ler estes números</h2>
+      <div class="rule"></div>
+      <div class="notes glossario">
+        <div class="note act"><span class="tag">Alcance</span><h3>Pessoas, não visualizações</h3><p>Quantas pessoas diferentes viram o anúncio pelo menos uma vez. Não é somável entre dias nem entre campanhas: quem viu ontem e hoje conta uma vez só. Os totais deste relatório vêm já deduplicados da API.</p></div>
+        <div class="note act"><span class="tag">Impressões e frequência</span><h3>Quantas vezes apareceu</h3><p>Impressões é o total de exibições, e frequência é impressões dividido por alcance. Frequência acima de 3 no mesmo público significa repetição: o dinheiro passa a bater em quem já viu, em vez de buscar gente nova.</p></div>
+        <div class="note act"><span class="tag">CPM</span><h3>Custo por mil impressões</h3><p>É o preço do metro quadrado da mídia. Serve para comparar criativos dentro do mesmo objetivo: entre dois vídeos de alcance, o de CPM menor entrega mais gente pelo mesmo real.</p></div>
+        <div class="note act"><span class="tag">CTR e CPC</span><h3>Só valem por objetivo</h3><p>Campanha de alcance não é otimizada para clique, então CTR baixo ali é esperado e não é problema. Comparar o CTR de um vídeo de alcance com o de um anúncio de tráfego é comparar coisas diferentes.</p></div>
+      </div>
+    </section>
+    <div class="pe">A frequência do total da conta, 3,15, é maior que a de qualquer campanha isolada porque muita gente foi impactada por mais de uma delas ao longo do mês.</div>
+  </div>
+</div>
+
+<!-- ══════════════ P7 · LOG FINANCEIRO ══════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="rh"><img src="file:///Users/luisgustavodebiasi/TRABALHOS/Projetos%20Externo/PEPE/_IDENTIDADE/dist/simbolo/seta-amarela.svg" alt=""><b>Pepê Collaço 11223</b><span>Relatório de mídia paga</span><span class="sep"></span><span>08/08 a 06/09/2026 · 07</span></div>
+    <section>
+      <h2>Log de movimentações financeiras</h2>
+      <p class="h2sub">Cobranças, aportes, estorno e alterações de orçamento registradas no histórico da conta entre 08/08 e 07/09/2026.</p>
+      <div class="rule"></div>
+      <dl class="resumo">
+        <div><dt>Aportes (PIX)</dt><dd>R$ 4.000,00</dd></div>
+        <div><dt>Cobranças</dt><dd>R$ 2.623,53</dd></div>
+        <div><dt>Estorno bancário</dt><dd>R$ 1.788,35</dd></div>
+        <div><dt>Gasto veiculado</dt><dd>R$ 3.519,16</dd></div>
+      </dl>
+      <table class="dados" id="ledgerTable">
+        <thead><tr><th>Data / hora</th><th>Movimento</th><th>Objeto</th><th class="num">Valor</th><th>Origem</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+    <div class="pe">
+      <b>Cobrança não é gasto veiculado.</b> Parte do consumo de setembro ainda não foi faturada, por isso a soma das cobranças é menor que o investimento do período.<br>
+      Fonte: Meta Marketing API via MCP, extraída em 07/09/2026. A janela <b>last_30d</b> cobre 08/08 a 06/09/2026, e o dia 07/09 ainda não fecha na API.
+    </div>
+  </div>
+</div>
+
+<script>
+const BRL=n=>"R$ "+n.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+const NUM=n=>n.toLocaleString("pt-BR");
+const PCT=n=>n===0?"0%":n.toLocaleString("pt-BR",{minimumFractionDigits:n<0.1?4:2,maximumFractionDigits:n<0.1?4:2})+"%";
+const FR=n=>n.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+
+/* ── KPIs ── */
+const kpis=[
+ ["Investido","R$ 3.519","23 dias com veiculação"],
+ ["Impressões","1,59 mi","1.592.310 no período"],
+ ["Alcance","505,8 mil","pessoas únicas"],
+ ["Frequência","3,15","no acumulado do mês"],
+ ["CTR","0,14%","2.159 cliques"],
+ ["CPM","R$ 2,21","CPC de R$ 1,63"]
+];
+document.getElementById("kpis").innerHTML=kpis.map(k=>
+ `<div class="kpi"><div class="lab">${k[0]}</div><div class="val">${k[1]}</div><div class="obs">${k[2]}</div></div>`).join("");
+
+/* ── dados diários ── */
+const days=[
+ {d:"08/08",f:1,s:44.86,cpm:23.86},{d:"09/08",f:1,s:43.62,cpm:22.67},{d:"10/08",f:1,s:45.89,cpm:24.11},
+ {d:"11/08",f:1,s:45.92,cpm:29.53},{d:"12/08",f:1,s:46.57,cpm:28.66},{d:"13/08",f:1,s:55.15,cpm:33.10},
+ {d:"14/08",f:1,s:79.75,cpm:31.89},{d:"15/08",f:1,s:32.75,cpm:24.44},{d:"16/08",f:1,s:22.18,cpm:21.20},
+ {d:"17/08",f:0,s:0},{d:"18/08",f:0,s:0},{d:"19/08",f:0,s:0},{d:"20/08",f:0,s:0},{d:"21/08",f:0,s:0},{d:"22/08",f:0,s:0},
+ {d:"23/08",f:2,s:242.68,cpm:3.36},{d:"24/08",f:2,s:94.17,cpm:3.34},{d:"25/08",f:2,s:35.45,cpm:6.24},
+ {d:"26/08",f:0,s:0},{d:"27/08",f:2,s:1.43,cpm:1.98},{d:"28/08",f:2,s:50.34,cpm:1.98},
+ {d:"29/08",f:2,s:84.72,cpm:1.86},{d:"30/08",f:2,s:108.36,cpm:1.79},{d:"31/08",f:2,s:91.70,cpm:1.72},
+ {d:"01/09",f:2,s:90.01,cpm:1.64},{d:"02/09",f:2,s:426.14,cpm:1.73},{d:"03/09",f:2,s:442.98,cpm:1.83},
+ {d:"04/09",f:2,s:431.16,cpm:1.90},{d:"05/09",f:2,s:479.84,cpm:1.97},{d:"06/09",f:2,s:523.49,cpm:1.92}
+];
+(function(){
+  const W=1080,H=282,ML=64,MR=16,TOP=24,HA=98,GAP=40,HB=68;
+  const yA0=TOP+HA,yB=TOP+HA+GAP,yB0=yB+HB;
+  const n=days.length,step=(W-ML-MR)/n,bw=Math.min(21,step-7);
+  const maxS=550,maxC=35;
+  const sy=v=>yA0-(v/maxS)*HA, cy=v=>yB0-(v/maxC)*HB, cx=k=>ML+step*k+step/2;
+  const col=d=>d.f===1?"#8BC1DC":"#FFC400";
+  let g="";
+  [0,150,300,450].forEach(v=>{
+    g+=`<line class="${v===0?'base-l':'grid-l'}" x1="${ML}" y1="${sy(v)}" x2="${W-MR}" y2="${sy(v)}"/>`;
+    g+=`<text class="axis-t" x="${ML-9}" y="${sy(v)+4}" text-anchor="end">${NUM(v)}</text>`;
+  });
+  g+=`<text class="panel-t" x="${ML}" y="${TOP-10}">INVESTIMENTO DIÁRIO, EM REAIS</text>`;
+  days.forEach((d,k)=>{ if(!d.s) return;
+    const x=cx(k)-bw/2,y=sy(d.s);
+    g+=`<rect x="${x}" y="${y}" width="${bw}" height="${yA0-y}" fill="${col(d)}"/>`; });
+  [0,10,20,30].forEach(v=>{
+    g+=`<line class="${v===0?'base-l':'grid-l'}" x1="${ML}" y1="${cy(v)}" x2="${W-MR}" y2="${cy(v)}"/>`;
+    g+=`<text class="axis-t" x="${ML-9}" y="${cy(v)+4}" text-anchor="end">${v}</text>`;
+  });
+  g+=`<text class="panel-t" x="${ML}" y="${yB-12}">CUSTO POR MIL IMPRESSÕES, EM REAIS</text>`;
+  [1,2].forEach(ph=>{ const pts=[];
+    days.forEach((d,k)=>{ if(d.f===ph) pts.push(cx(k)+","+cy(d.cpm)); });
+    if(pts.length>1) g+=`<polyline points="${pts.join(" ")}" fill="none" stroke="${ph===1?'#8BC1DC':'#FFC400'}" stroke-width="2" stroke-linejoin="round"/>`; });
+  days.forEach((d,k)=>{ if(d.f) g+=`<circle cx="${cx(k)}" cy="${cy(d.cpm)}" r="3" fill="${col(d)}"/>`; });
+  days.forEach((d,k)=>{ if(k%3!==0&&k!==n-1) return;
+    g+=`<text class="axis-t" x="${cx(k)}" y="${yB0+20}" text-anchor="middle">${d.d}</text>`; });
+  g+=`<line x1="${cx(9)-step/2}" y1="${TOP+6}" x2="${cx(9)-step/2}" y2="${yB0}" stroke="rgba(255,255,255,.32)" stroke-dasharray="3 4"/>`;
+  g+=`<line x1="${cx(15)-step/2}" y1="${TOP+6}" x2="${cx(15)-step/2}" y2="${yB0}" stroke="rgba(255,255,255,.32)" stroke-dasharray="3 4"/>`;
+  g+=`<text class="panel-s" x="${cx(11.5)}" y="${TOP+62}" text-anchor="middle">sem veiculação</text>`;
+  g+=`<text class="panel-s" x="${cx(26)}" y="${cy(1.9)-9}" text-anchor="middle" fill="#FFC400">patamar de R$ 1,90</text>`;
+  document.getElementById("dailyBox").innerHTML=
+    `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Investimento diário e CPM diário entre 08/08 e 06/09/2026">${g}</svg>`;
+})();
+
+/* ── anúncios ── */
+const ads=[
+ {n:"Urubici estrada",p:"Vídeo campanha · 24-08 · geo a ajustar",t:"alc",s:202.62,r:65396,i:103990,fr:1.59,ctr:0.15,cpm:1.95,cpc:1.26},
+ {n:"Inclusão · Semana APAE",p:"Vídeo campanha · 21-08",t:"alc",s:200.93,r:91619,i:119694,fr:1.31,ctr:0.0844,cpm:1.68,cpc:1.99},
+ {n:"Pode parecer muitas coisas",p:"Vídeo campanha · 18-08",t:"alc",s:200.52,r:85293,i:117604,fr:1.38,ctr:0.0901,cpm:1.71,cpc:1.89},
+ {n:"Adesivo perfurado",p:"Vídeo campanha · 19-08",t:"alc",s:199.98,r:81933,i:116868,fr:1.43,ctr:0.0804,cpm:1.71,cpc:2.13},
+ {n:"Quero representar você · Dia 1",p:"Vídeo campanha · 16-08",t:"alc",s:199.66,r:84242,i:117155,fr:1.39,ctr:0.0683,cpm:1.70,cpc:2.50},
+ {n:"Reconhecimento · ELEIÇÕES Antigos",p:"Campanha ELEIÇÕES | ANTIGOS",t:"alc",s:199.12,r:65485,i:104602,fr:1.60,ctr:0.15,cpm:1.90,cpc:1.23},
+ {n:"Tubarão precisa ter voz",p:"Vídeo campanha · 17-08",t:"alc",s:198.52,r:57052,i:94845,fr:1.66,ctr:0.15,cpm:2.09,cpc:1.39},
+ {n:"Tubarão é parte de quem eu sou",p:"Vídeo campanha · 20-08",t:"alc",s:198.51,r:60404,i:95801,fr:1.59,ctr:0.14,cpm:2.07,cpc:1.47},
+ {n:"Regional 33 posts · 22 anúncios municipais",p:"Ituporanga, Tubarão, Içara, Orleans, Braço do Norte",t:"reg",s:183.23,r:65478,i:83278,fr:1.27,ctr:0.0420,cpm:2.20,cpc:5.24},
+ {n:"AUT 06 · Salas sensoriais Nova Veneza",p:"Reel · público autismo + LAL · SC",t:"alc",s:159.19,r:75599,i:96244,fr:1.27,ctr:0.0977,cpm:1.65,cpc:1.69},
+ {n:"AUT 05 · Equoterapia e inclusão",p:"Reel · público autismo + LAL · SC",t:"alc",s:157.76,r:71029,i:90428,fr:1.27,ctr:0.0254,cpm:1.74,cpc:6.86},
+ {n:"Post áudio deputado",p:"Reel · 28-08",t:"alc",s:157.74,r:72690,i:88012,fr:1.21,ctr:0.0420,cpm:1.79,cpc:4.26},
+ {n:"Jingle 11223",p:"Reel IG · 26-08",t:"alc",s:153.45,r:68747,i:86895,fr:1.26,ctr:0.0391,cpm:1.77,cpc:4.51},
+ {n:"Cuidar de Tubarão · 60 ruas",p:"Reel · 27-08",t:"alc",s:150.84,r:45898,i:69309,fr:1.51,ctr:0.0996,cpm:2.18,cpc:2.19},
+ {n:"Capivari bairro por bairro · R$ 7,5 mi",p:"Reel · 26-08",t:"alc",s:150.18,r:45439,i:69358,fr:1.53,ctr:0.0793,cpm:2.17,cpc:2.73},
+ {n:"Adesivação Tubarão / Capivari / Braço do Norte",p:"Reel · 22-08",t:"alc",s:149.68,r:46481,i:69453,fr:1.49,ctr:0.0706,cpm:2.16,cpc:3.05},
+ {n:"Jingle 11223 · duplicado, com problemas",p:"Mesmo conjunto do 26-08",t:"alc",s:47.02,r:24958,i:28309,fr:1.13,ctr:0.0989,cpm:1.66,cpc:1.68},
+ {n:"RMK 01 · SERÁ",p:"Remarketing engajou 365d + base própria",t:"trf",s:374.20,r:5342,i:13068,fr:2.45,ctr:1.51,cpm:28.63,cpc:1.90},
+ {n:"AUT 03 · 22 seguidores por R$ 49,80",p:"Público autismo 45k · visita perfil",t:"trf",s:72.80,r:8956,i:11631,fr:1.30,ctr:2.22,cpm:6.26,cpc:0.28},
+ {n:"RMK 08 · Prestação de contas Reels",p:"Remarketing · criativo mais recente",t:"trf",s:48.77,r:1480,i:2437,fr:1.65,ctr:1.03,cpm:20.01,cpc:1.95},
+ {n:"RMK 03 · Ganhou terra",p:"Remarketing · maior engajamento absoluto",t:"trf",s:29.76,r:1005,i:1317,fr:1.31,ctr:1.37,cpm:22.60,cpc:1.65},
+ {n:"AUT 01 · Cordões coloridos",p:"ELEIÇÕES · SC · visita perfil IG",t:"trf",s:20.40,r:3339,i:3462,fr:1.04,ctr:4.56,cpm:5.89,cpc:0.13},
+ {n:"RMK 05 · Senador Amin",p:"Remarketing · engajou 365d",t:"trf",s:19.98,r:719,i:987,fr:1.37,ctr:0.61,cpm:20.24,cpc:3.33},
+ {n:"RMK 02 · Hospital",p:"Remarketing · engajou 365d",t:"trf",s:10.04,r:413,i:506,fr:1.23,ctr:0,cpm:19.84,cpc:null},
+ {n:"AUT 01 · Eleitoral",p:"SC · visita perfil IG · rótulo eleitoral",t:"trf",s:5.10,r:823,i:831,fr:1.01,ctr:4.81,cpm:6.14,cpc:0.13},
+ {n:"AUT 03 · Autismo e o papel do pai",p:"ELEIÇÕES · SC · visita perfil IG",t:"trf",s:4.11,r:625,i:636,fr:1.02,ctr:2.52,cpm:6.46,cpc:0.26},
+ {n:"AUT 03 · Eleitoral",p:"SC · visita perfil IG · rótulo eleitoral",t:"trf",s:3.27,r:536,i:536,fr:1.00,ctr:3.92,cpm:6.10,cpc:0.16},
+ {n:"REG 36 · Carro novo Capivari de Baixo",p:"ELEIÇÕES · Regional · Capivari",t:"reg",s:2.37,r:1337,i:1381,fr:1.03,ctr:0.14,cpm:1.72,cpc:1.19},
+ {n:"AUT 04 · Lei do autismo",p:"Público autismo 45k · visita perfil",t:"trf",s:1.69,r:205,i:219,fr:1.07,ctr:1.83,cpm:7.72,cpc:0.42}
+];
+const chip=t=>t==="alc"?'<span class="chip c-alc">Alcance</span>':t==="trf"?'<span class="chip c-trf">Tráfego</span>':'<span class="chip c-reg">Regional</span>';
+const linhaAd=a=>`
+ <tr><td class="nome">${a.n}<span>${a.p}</span></td><td>${chip(a.t)}</td>
+ <td class="num">${BRL(a.s)}</td><td class="num">${NUM(a.r)}</td><td class="num">${NUM(a.i)}</td>
+ <td class="num">${FR(a.fr)}</td><td class="num">${PCT(a.ctr)}</td><td class="num">${BRL(a.cpm)}</td>
+ <td class="num">${a.cpc==null?"—":BRL(a.cpc)}</td></tr>`;
+const adsOrd=ads.slice().sort((a,b)=>b.s-a.s);
+document.querySelector("#adsTable1 tbody").innerHTML=adsOrd.slice(0,16).map(linhaAd).join("");
+document.querySelector("#adsTable2 tbody").innerHTML=adsOrd.slice(16).map(linhaAd).join("");
+
+/* ── ranking ── */
+(function(){
+  const top=ads.filter(a=>a.t!=="reg").slice().sort((a,b)=>b.r-a.r).slice(0,15);
+  const max=top[0].r;
+  document.getElementById("rankBox").innerHTML=top.map((a,k)=>`
+   <div class="rank-row">
+     <div class="rank-n">${String(k+1).padStart(2,"0")}</div>
+     <div class="rank-name">${a.n}<em>${BRL(a.s)} · CPM ${BRL(a.cpm)} · freq ${FR(a.fr)}</em></div>
+     <div><div class="track"><div class="fill" style="width:${(a.r/max*100).toFixed(1)}%;background:${a.t==="alc"?"#FFC400":"#8BC1DC"}"></div></div></div>
+     <div class="rank-v">${NUM(a.r)}<small>alcance</small></div>
+   </div>`).join("");
+})();
+
+/* ── campanhas ── */
+const camps=[
+ {n:"ELEIÇÕES | Vídeos campanha | 2026-08 | Alcance",o:"Reconhecimento",s:2526.60,r:445819,i:1363965,fr:3.06,ctr:0.0886,cpm:1.85},
+ {n:"RMK | Captação de seguidores | Tráfego perfil",o:"Tráfego",s:482.75,r:5801,i:18315,fr:3.16,ctr:1.34,cpm:26.36},
+ {n:"ELEIÇÕES | Antigos",o:"Reconhecimento",s:199.12,r:65485,i:104602,fr:1.60,ctr:0.15,cpm:1.90},
+ {n:"CAMP | 2026 | Regional-33Posts | Alcance | Sul-SC",o:"Reconhecimento",s:183.23,r:65478,i:83278,fr:1.27,ctr:0.0420,cpm:2.20},
+ {n:"SEG | Autismo | Tráfego perfil IG | 2026-08",o:"Tráfego",s:74.49,r:9034,i:11850,fr:1.31,ctr:2.21,cpm:6.29},
+ {n:"ELEIÇÕES | SEG | Autismo | Tráfego perfil IG",o:"Tráfego",s:24.57,r:3939,i:4104,fr:1.04,ctr:4.24,cpm:5.99},
+ {n:"SEG | Autismo | Tráfego perfil IG | Eleitoral",o:"Tráfego",s:8.59,r:1406,i:1406,fr:1.00,ctr:4.41,cpm:6.11},
+ {n:"ELEIÇÕES | RMK | Captação de seguidores",o:"Tráfego",s:8.51,r:169,i:198,fr:1.17,ctr:0.51,cpm:42.98},
+ {n:"Teste eleições",o:"Reconhecimento",s:4.45,r:2176,i:2183,fr:1.00,ctr:0.18,cpm:2.04},
+ {n:"RMK | Captação de seguidores | Eleitoral",o:"Tráfego",s:2.73,r:130,i:161,fr:1.24,ctr:0.62,cpm:16.96},
+ {n:"ELEIÇÕES | CAMP | Regional-33Posts | Sul-SC",o:"Reconhecimento",s:2.37,r:1337,i:1381,fr:1.03,ctr:0.14,cpm:1.72},
+ {n:"CAMP | Regional-33Posts | Sul-SC | Eleitoral",o:"Reconhecimento",s:1.75,r:849,i:867,fr:1.02,ctr:0.12,cpm:2.02}
+];
+document.querySelector("#campTable tbody").innerHTML=camps.map(c=>`
+ <tr><td class="nome">${c.n}</td><td>${c.o}</td><td class="num">${BRL(c.s)}</td>
+ <td class="num">${NUM(c.r)}</td><td class="num">${NUM(c.i)}</td><td class="num">${FR(c.fr)}</td>
+ <td class="num">${PCT(c.ctr)}</td><td class="num">${BRL(c.cpm)}</td></tr>`).join("");
+
+/* ── log financeiro ── */
+const ledger=[
+ {dt:"06/09 · 06:37",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:29.26,src:"Meta"},
+ {dt:"05/09 · 06:20",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:431.22,src:"Meta"},
+ {dt:"04/09 · 06:52",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:70.87,src:"Meta"},
+ {dt:"03/09 · 21:41",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:372.12,src:"Meta"},
+ {dt:"03/09 · 06:38",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:54.55,src:"Meta"},
+ {dt:"02/09 · 21:55",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:371.42,src:"Meta"},
+ {dt:"02/09 · 06:41",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:90.02,src:"Meta"},
+ {dt:"02/09 · 00:52",k:"orc",l:"Orçamento diário R$ 10 para R$ 30",o:"12 conjuntos de vídeo (APAE, Jingle, Urubici, Tubarão, Capivari)",v:null,src:"Gabinete · ads MCP"},
+ {dt:"01/09 · 06:28",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:91.78,src:"Meta"},
+ {dt:"31/08 · 06:28",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:108.21,src:"Meta"},
+ {dt:"30/08 · 06:29",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:84.82,src:"Meta"},
+ {dt:"30/08 · 06:03",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:52.75,src:"Meta"},
+ {dt:"29/08 · 07:41",k:"apo",l:"Aporte no saldo (PIX)",o:"Saldo disponível",v:2000.00,src:"Meta · PIX"},
+ {dt:"28/08 · 11:15",k:"orc",l:"Orçamento vitalício R$ 150 para R$ 1.500",o:"CONJ 36 · Carro novo Capivari de Baixo · ELEIÇÕES",v:null,src:"Gabinete · ads MCP"},
+ {dt:"25/08 · 22:53",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:371.22,src:"Meta"},
+ {dt:"23/08 · 09:17",k:"orc",l:"Orçamento vitalício R$ 50 para R$ 150",o:"22 conjuntos da Regional 33 posts",v:null,src:"Gabinete · ads MCP"},
+ {dt:"21/08 · 19:34",k:"est",l:"Estorno bancário",o:"Pepê Collaço Oficial",v:1788.35,src:"Meta"},
+ {dt:"18/08 · 05:49",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:236.40,src:"Meta"},
+ {dt:"17/08 · 19:14",k:"apo",l:"Aporte no saldo (PIX)",o:"Saldo disponível",v:2000.00,src:"Meta · PIX"},
+ {dt:"13/08 · 02:42",k:"cob",l:"Cobrança da conta",o:"Pepê Collaço Oficial",v:258.89,src:"Meta"}
+];
+const lchip={cob:'<span class="chip c-cob">Cobrança</span>',apo:'<span class="chip c-apo">Aporte</span>',est:'<span class="chip c-est">Estorno</span>',orc:'<span class="chip c-orc">Orçamento</span>'};
+document.querySelector("#ledgerTable tbody").innerHTML=ledger.map(e=>`
+ <tr><td style="white-space:nowrap">${e.dt}</td>
+ <td style="white-space:nowrap">${lchip[e.k]} ${e.l}</td>
+ <td>${e.o}</td>
+ <td class="num ${e.k==="apo"?"pos":e.k==="est"?"neg":""}">${e.v==null?"—":(e.k==="apo"?"+ ":e.k==="est"?"− ":"")+BRL(e.v)}</td>
+ <td style="color:#8BC1DC;white-space:nowrap">${e.src}</td></tr>`).join("");
+</script>
+</body></html>

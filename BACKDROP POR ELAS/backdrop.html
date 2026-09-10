@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Backdrop Pepê por Elas — 300 × 225 cm</title>
+<!--
+  BACKDROP "PEPÊ POR ELAS" — painel de fotos, 300 × 225 cm (4:3)
+
+  Sistema visual: identidade Pepê Collaço 11223 (_IDENTIDADE/CLAUDE.md)
+  somada à paleta rosa da peça "Pepê por Elas" (bolão 40×40, agosto/2026).
+  O rosa #F039A1 não é chute: foi lido do degradê vetorial de dentro do PDF
+  original, antes da conversão CMYK.
+
+  Estrutura: mosaico de caixinhas, tipo painel de patrocinador. Grade de
+  8 colunas × 6 linhas, com dois blocos grandes (3×3) no alto — a marca do
+  evento à esquerda, o VOTE PEPÊ 11223 à direita — e o resto em módulos de
+  ~34 cm que repetem coração, seta, número, palavra e a Federação. A repetição
+  é proposital: quem for fotografado tapa parte do painel, e o recorte que
+  sobrar precisa continuar assinado.
+
+  Escala: 1 cm real = 8 px na tela (--cm). A peça mede 2400 × 1800 px.
+  Na impressão o CSS reduz para 300 × 225 mm, ou seja 1:10. A gráfica amplia
+  10×. Ver README.md para o passo a passo do PDF.
+-->
+<style>
+@font-face{font-family:'Acumin Pro';font-style:normal;font-weight:400;src:url(assets/fontes/acumin-400.woff2) format('woff2');font-display:block}
+@font-face{font-family:'Acumin Pro';font-style:normal;font-weight:700;src:url(assets/fontes/acumin-700.woff2) format('woff2');font-display:block}
+@font-face{font-family:'Acumin Pro Wide';font-style:normal;font-weight:275;src:url(assets/fontes/acumin-wide-275.woff2) format('woff2');font-display:block}
+@font-face{font-family:'Acumin Pro Wide';font-style:normal;font-weight:900;src:url(assets/fontes/acumin-wide-900.woff2) format('woff2');font-display:block}
+
+:root{
+  --cm: 8px;                       /* 1 cm real = 8 px de tela (1:10 na impressão) */
+
+  /* azuis da identidade */
+  --navy-alto:#17335F;
+  --navy:#0E1E46;
+  --navy-fundo:#061A3A;
+  --tinta:#061A3A;
+
+  /* rosa da peça "por elas" — medido no vetor do PDF original */
+  --rosa:#F039A1;
+  --rosa-claro:#F871BC;
+  --rosa-forte:#D91C80;
+  --rosa-escuro:#A81E6C;
+  --vinho:#6E1A50;
+
+  /* ação */
+  --amarelo:#FDC51E;
+  --laranja:#FAAA40;
+
+  --raio: calc(2.2 * var(--cm));
+  --gap: calc(3.2 * var(--cm));
+  --textura: url(assets/setas-tile.svg);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{background:#0A0F1E}
+body{
+  font-family:'Acumin Pro',system-ui,sans-serif;
+  color:#fff;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------------------------------------------------------------- palco */
+.palco{
+  display:flex;justify-content:center;
+  padding:32px 24px 80px;
+}
+.moldura{position:relative;overflow:hidden}
+.peca{
+  position:relative;
+  width:calc(300 * var(--cm));
+  height:calc(225 * var(--cm));
+  overflow:hidden;
+  transform-origin:top center;
+  /* o degradê diagonal da peça: rosa entrando pelo alto à esquerda,
+     caindo para o azul profundo no canto inferior direito */
+  background:
+    radial-gradient(90% 70% at 4% -6%, rgba(255,255,255,.30) 0%, rgba(255,255,255,0) 55%),
+    linear-gradient(116deg,
+      #F45BB0 0%,
+      #EE2E93 12%,
+      #C92180 23%,
+      #932066 33%,
+      #5B2059 43%,
+      #2C2350 53%,
+      #16274F 66%,
+      #0C1E42 82%,
+      #061A3A 100%);
+}
+
+/* textura de setas — máscara, nunca background-image (ver _IDENTIDADE) */
+.textura{position:relative}
+.textura::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-color:#fff;
+  -webkit-mask-image:var(--textura);mask-image:var(--textura);
+  -webkit-mask-size:var(--tex-tam);mask-size:var(--tex-tam);
+  -webkit-mask-repeat:repeat;mask-repeat:repeat;
+  opacity:var(--tex-op,.07);
+}
+.peca{--tex-tam:calc(15 * var(--cm)) calc(23.9 * var(--cm));--tex-op:.075}
+
+/* ---------------------------------------------------------------- grade */
+.grade{
+  position:absolute;inset:0;
+  padding:calc(9 * var(--cm));
+  padding-bottom:calc(12.5 * var(--cm));
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  grid-template-rows:repeat(6,1fr);
+  gap:var(--gap);
+}
+
+/* ------------------------------------------------------------ caixinhas */
+.cx{
+  position:relative;
+  border-radius:var(--raio);
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:calc(2.6 * var(--cm));
+  --tex-tam:calc(7.5 * var(--cm)) calc(11.9 * var(--cm));
+  --tex-op:.06;
+}
+.cx::after{                       /* brilho de topo, dá volume de placa */
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(172deg,rgba(255,255,255,.09),rgba(255,255,255,0) 34%);
+  border-radius:inherit;
+}
+
+.navy{background:linear-gradient(158deg,var(--navy-alto),var(--navy-fundo));
+      box-shadow:inset 0 0 0 calc(.16 * var(--cm)) rgba(255,255,255,.14)}
+.rosa{background:linear-gradient(158deg,var(--rosa-claro),var(--rosa-forte));
+      box-shadow:inset 0 0 0 calc(.16 * var(--cm)) rgba(255,255,255,.30)}
+.vinho{background:linear-gradient(158deg,var(--rosa-escuro),var(--vinho));
+      box-shadow:inset 0 0 0 calc(.16 * var(--cm)) rgba(255,255,255,.18)}
+.vidro{background:rgba(255,255,255,.07);
+       box-shadow:inset 0 0 0 calc(.28 * var(--cm)) rgba(240,57,161,.75)}
+.vidro::after{background:none}
+
+/* ------------------------------------------------------------- conteúdo */
+.cx img{display:block;width:100%;height:auto;position:relative;z-index:1}
+
+.marca-evento{grid-column:1 / span 3;grid-row:1 / span 3;gap:calc(1 * var(--cm))}
+.marca-evento .pepe{width:78%}
+.marca-evento .porelas{width:96%;margin-top:calc(-1.5 * var(--cm))}
+
+.marca-vote{grid-column:6 / span 3;grid-row:1 / span 3}
+.marca-vote img{width:84%}
+
+.bloco-coracao{grid-column:2 / span 2;grid-row:4 / span 2}
+.bloco-coracao img{width:50%}
+
+.bloco-frase{grid-column:6 / span 2;grid-row:5 / span 2;align-items:flex-start;
+             padding:calc(4 * var(--cm))}
+.frase{
+  position:relative;z-index:1;
+  font-size:calc(6.4 * var(--cm));
+  line-height:1.18;
+  font-weight:400;
+  letter-spacing:-.005em;
+}
+.frase b{font-weight:700;color:var(--rosa-claro)}
+.frase .risco{
+  display:block;width:calc(14 * var(--cm));height:calc(.7 * var(--cm));
+  background:var(--rosa);border-radius:99px;margin-bottom:calc(3.4 * var(--cm));
+}
+
+.coracao{width:58%}
+.coracao.pequeno{width:52%}
+.seta{width:44%}
+.federacao{width:92%}
+.script{width:96%}
+.assinatura{width:92%}
+
+.numero{
+  position:relative;z-index:1;
+  font-family:'Acumin Pro Wide',sans-serif;font-weight:900;
+  font-size:calc(8 * var(--cm));line-height:1;letter-spacing:.005em;
+}
+.numero.ouro{
+  background:linear-gradient(96deg,var(--amarelo),var(--laranja));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+.palavra{
+  position:relative;z-index:1;text-align:center;
+  font-family:'Acumin Pro Wide',sans-serif;font-weight:900;
+  font-size:calc(4.4 * var(--cm));line-height:1.05;letter-spacing:.02em;
+}
+.palavra.longa{font-size:calc(3 * var(--cm))}
+.palavra::before{
+  content:"";display:block;width:calc(6.4 * var(--cm));height:calc(.7 * var(--cm));
+  background:var(--rosa);border-radius:99px;margin:0 auto calc(2.8 * var(--cm));
+}
+.rosa .palavra::before{background:#fff}
+
+/* ------------------------------------------------------------- rodapé  */
+.legal{
+  position:absolute;left:calc(6 * var(--cm));right:calc(6 * var(--cm));
+  bottom:calc(2.8 * var(--cm));
+  text-align:center;
+  font-size:calc(1.5 * var(--cm));
+  letter-spacing:.07em;
+  color:rgba(255,255,255,.70);
+  z-index:2;
+}
+
+/* -------------------------------------------------------------- guias  */
+.guias{position:absolute;inset:0;pointer-events:none;z-index:9;display:none}
+body.mostrar-guias .guias{display:block}
+.guias i{position:absolute;display:block;font-style:normal}
+.guias .sangria{inset:calc(5 * var(--cm));border:1px dashed rgba(255,255,255,.55)}
+.guias .rosto{
+  left:0;right:0;top:calc(35 * var(--cm));height:calc(40 * var(--cm));
+  background:rgba(0,255,200,.10);border-top:1px dashed rgba(0,255,200,.7);
+  border-bottom:1px dashed rgba(0,255,200,.7);
+}
+.guias .rosto::after{
+  content:"faixa dos rostos · 150–190 cm do chão";
+  position:absolute;left:calc(6 * var(--cm));top:calc(.6 * var(--cm));
+  font-family:'Acumin Pro',sans-serif;font-size:calc(1.6 * var(--cm));
+  letter-spacing:.08em;color:rgba(0,255,200,.95);
+}
+.guias .sangria::after{
+  content:"área segura · 5 cm de sobra para acabamento";
+  position:absolute;left:0;top:calc(-3 * var(--cm));
+  font-family:'Acumin Pro',sans-serif;font-size:calc(1.6 * var(--cm));
+  letter-spacing:.08em;color:rgba(255,255,255,.8);
+}
+
+/* ------------------------------------------------------------ controles */
+.controles{
+  position:fixed;left:50%;bottom:16px;transform:translateX(-50%);
+  display:flex;gap:14px;align-items:center;z-index:99;
+  background:rgba(6,26,58,.94);border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;padding:9px 18px;
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+  box-shadow:0 8px 30px rgba(0,0,0,.5);
+}
+.controles label{display:flex;gap:7px;align-items:center;cursor:pointer}
+.controles span{color:rgba(255,255,255,.55)}
+
+@media print{
+  html,body{background:#fff;width:300mm;height:225mm;overflow:hidden}
+  .palco{padding:0;display:block}
+  .moldura{width:300mm !important;height:225mm !important;overflow:hidden}
+  .controles,.guias{display:none !important}
+  /* 2400 px * 0,472441 = 1133,86 px = 300 mm. É aqui que a peça vira 1:10. */
+  .peca{transform:scale(0.472441) !important;transform-origin:top left !important}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@page{size:300mm 225mm;margin:0}
+</style>
+</head>
+<body>
+
+<div class="palco">
+<div class="moldura" id="moldura">
+<div class="peca textura" id="peca">
+
+  <div class="grade">
+
+    <!-- ===================================================== blocos grandes -->
+
+    <!-- marca do evento — colunas 1-3, linhas 1-3 -->
+    <div class="cx navy textura marca-evento">
+      <img class="pepe" src="assets/pepe.png" alt="Pepê">
+      <img class="porelas" src="assets/por-elas.png" alt="por elas">
+    </div>
+
+    <!-- pedido de voto — colunas 6-8, linhas 1-3 -->
+    <div class="cx navy textura marca-vote">
+      <img src="assets/vote-11223.png" alt="Vote Pepê 11223 — Deputado Estadual">
+    </div>
+
+    <!-- coração grande — colunas 2-3, linhas 4-5 -->
+    <div class="cx rosa textura bloco-coracao">
+      <img src="assets/coracao-branco.png" alt="">
+    </div>
+
+    <!-- frase da campanha — colunas 6-7, linhas 5-6 -->
+    <div class="cx navy textura bloco-frase">
+      <p class="frase"><span class="risco"></span>Trabalho, respeito e compromisso com as <b>mulheres</b> de Santa Catarina</p>
+    </div>
+
+    <!-- ========================================================== módulos ---
+         Entram por fluxo automático e preenchem as 22 células livres na ordem
+         de leitura. Mexer na ordem daqui remonta o painel; o rosa está puxado
+         para a esquerda e para baixo, o azul para a direita, seguindo a
+         diagonal do fundo.                                                  -->
+
+    <!-- linha 1: c4 c5 — faixa que fica acima das cabeças, leva o número -->
+    <div class="cx rosa textura"><img class="coracao" src="assets/coracao-branco.png" alt=""></div>
+    <div class="cx navy textura"><p class="numero ouro">11223</p></div>
+
+    <!-- linha 2: c4 c5 -->
+    <div class="cx rosa textura"><img class="script" src="assets/por-elas-branco.png" alt="por elas"></div>
+    <div class="cx navy textura"><img class="seta" src="assets/seta.png" alt=""></div>
+
+    <!-- linha 3: c4 c5 -->
+    <div class="cx vinho textura"><img class="coracao" src="assets/coracao-branco.png" alt=""></div>
+    <div class="cx navy textura"><p class="palavra">TRABALHO</p></div>
+
+    <!-- linha 4: c1 c4 c5 c6 c7 c8 -->
+    <div class="cx rosa textura" style="--tex-op:.15"></div>
+    <div class="cx rosa textura"><p class="numero">11223</p></div>
+    <div class="cx navy textura"><p class="palavra">RESPEITO</p></div>
+    <div class="cx navy textura"><img class="script" src="assets/por-elas.png" alt="por elas"></div>
+    <div class="cx navy textura"><img class="seta" src="assets/seta.png" alt=""></div>
+    <div class="cx navy textura"><p class="numero ouro">11223</p></div>
+
+    <!-- linha 5: c1 c4 c5 c8 -->
+    <div class="cx rosa textura"><img class="federacao" src="assets/federacao.png" alt="Federação União Progressista"></div>
+    <div class="cx vidro"><img class="seta" src="assets/seta.png" alt=""></div>
+    <div class="cx navy textura"><img class="coracao" src="assets/coracao-rosa.png" alt=""></div>
+    <div class="cx navy textura"><p class="palavra longa">COMPROMISSO</p></div>
+
+    <!-- linha 6: c1 c2 c3 c4 c5 c8 -->
+    <div class="cx rosa textura"><img class="coracao" src="assets/coracao-branco.png" alt=""></div>
+    <div class="cx rosa textura"><img class="script" src="assets/por-elas-branco.png" alt="por elas"></div>
+    <div class="cx vinho textura"><p class="palavra">MULHERES</p></div>
+    <div class="cx navy textura"><img class="assinatura" src="assets/pepe.png" alt="Pepê"></div>
+    <div class="cx navy textura"><img class="federacao" src="assets/federacao.png" alt="Federação União Progressista"></div>
+    <div class="cx vidro"><img class="coracao pequeno" src="assets/coracao-rosa.png" alt=""></div>
+
+  </div>
+
+  <p class="legal">FEDERAÇÃO UNIÃO PROGRESSISTA (UNIÃO BRASIL E PROGRESSISTAS) · CNPJ 36.425.289/0001-38 · CNPJ 68.472.001/0001-72 · TIRAGEM: 1</p>
+
+  <div class="guias">
+    <i class="sangria"></i>
+    <i class="rosto"></i>
+  </div>
+
+</div>
+</div>
+
+<div class="controles">
+  <span>300 × 225 cm · 1:10</span>
+  <label><input type="checkbox" id="cbGuias"> guias</label>
+</div>
+
+<script>
+// ajusta o zoom de tela para a peça caber na janela; a impressão ignora isso
+(function(){
+  var peca = document.getElementById('peca');
+  var moldura = document.getElementById('moldura');
+  function ajustar(){
+    var largura = document.documentElement.clientWidth - 48;
+    var escala = Math.min(1, largura / 2400);
+    peca.style.transform = 'scale(' + escala + ')';
+    moldura.style.width  = Math.round(2400 * escala) + 'px';
+    moldura.style.height = Math.round(1800 * escala) + 'px';
+  }
+  addEventListener('resize', ajustar); ajustar();
+  document.getElementById('cbGuias').addEventListener('change', function(e){
+    document.body.classList.toggle('mostrar-guias', e.target.checked);
+  });
+})();
+</script>
+
+</body>
+</html>

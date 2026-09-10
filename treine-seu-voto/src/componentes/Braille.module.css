@@ -1,0 +1,36 @@
+.braille {
+  display: flex;
+  gap: 2px;
+  flex: none;
+}
+
+/* Seis pontos, três linhas, preenchidos coluna a coluna: com grid-auto-flow em
+   coluna a ordem dos filhos é exatamente 1,2,3,4,5,6, que é a numeração da
+   célula braile. Sem isso seria preciso reordenar na mão. */
+.celula {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1px;
+}
+
+.celula i {
+  width: 1.6px;
+  height: 1.6px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+/* Ponto em relevo: um brilho por cima e uma sombra por baixo, como o molde. */
+.aceso {
+  background: currentColor !important;
+  opacity: 0.55;
+  box-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.35);
+}
+
+@media (min-width: 390px) {
+  .celula i {
+    width: 2px;
+    height: 2px;
+  }
+}

@@ -1,0 +1,116 @@
+/* ---------------------------------------------------------------------------
+   O teclado, na disposição do aparelho de referência: três colunas de números,
+   o zero embaixo à esquerda, e a coluna BRANCO / CORRIGE / CONFIRMA à direita,
+   com o CONFIRMA ocupando duas linhas, que é como ele é na urna de verdade.
+   --------------------------------------------------------------------------- */
+.teclado {
+  --tecla: clamp(40px, min(12.2cqw, 6.8dvh), 56px);
+  --vao: 6px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 1.55fr;
+  grid-auto-rows: var(--tecla);
+  gap: var(--vao);
+  padding: 2px;
+}
+
+/* Conteúdo encostado no alto e à esquerda, como no molde do aparelho: o
+   dígito não é centralizado na tecla, ele mora no canto. */
+.tecla {
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 4px 6px;
+  overflow: hidden;
+  transition: transform 80ms ease, box-shadow 80ms ease, filter 120ms ease;
+}
+
+/* O dígito ocupa quase toda a altura da tecla. O corpo sai da própria altura
+   da tecla, e não de um clamp solto, porque assim ele acompanha sozinho os
+   degraus de tamanho em tela baixa, sem uma segunda tabela de valores para
+   alguém esquecer de atualizar. */
+/* O dígito ocupa ~86% da altura da tecla.
+   O corpo sai da própria altura da tecla, e não de um clamp solto, para
+   acompanhar sozinho os degraus de tamanho em tela baixa.
+   A entrelinha é 1 de propósito: numa grotesca a altura de maiúscula (0,716em)
+   fica centrada na caixa em, então basta centralizar a caixa na tecla e o
+   algarismo cai no meio. A caixa em transborda a tecla, mas o que transborda é
+   vão vazio: a tinta sobra 7% de folga de cada lado e nada é cortado. */
+.digito {
+  font-family: var(--fonte-urna);
+  font-weight: 400;
+  font-size: calc(var(--tecla) * 1.2);
+  line-height: 1;
+}
+
+/* O rótulo enche a largura da tecla, e por isso o corpo depende do número de
+   letras: BRANCO em seis letras cabe maior que CONFIRMA em oito, que é
+   exatamente o que acontece no aparelho de verdade. O teto vem da altura da
+   tecla, para o rótulo nunca espremer o braile que vai embaixo. */
+.rotulo {
+  font-family: var(--fonte-urna);
+  font-weight: 400;
+  font-size: clamp(10px, calc(39cqw / var(--letras, 8)), calc(var(--tecla) * 0.52));
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+/* Nas de ação o rótulo vai em cima e o braile embaixo. */
+.tecla[data-variante="branco"],
+.tecla[data-variante="corrige"],
+.tecla[data-variante="confirma"] {
+  flex-direction: column;
+  gap: 2px;
+  padding: 3px 6px;
+}
+
+.tecla[data-variante="numero"] {
+  align-items: center;
+  padding: 0 6px;
+  color: var(--tecla-texto);
+  background: linear-gradient(180deg, #3a3a3a, var(--tecla-fundo) 55%, #1f1f1f);
+  box-shadow: 0 2px 0 var(--tecla-borda), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.tecla[data-variante="branco"] {
+  color: #101010;
+  background: linear-gradient(180deg, #ffffff, var(--branco-fundo) 60%, #dedede);
+  box-shadow: 0 2px 0 #a9a9a9, inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.tecla[data-variante="corrige"] {
+  color: #101010;
+  background: linear-gradient(180deg, #f2703c, var(--corrige-fundo) 55%, #c8410f);
+  box-shadow: 0 2px 0 #9c3309, inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.tecla[data-variante="confirma"] {
+  grid-row: span 2;
+  color: #101010;
+  background: linear-gradient(180deg, #3fcb66, var(--confirma-fundo) 55%, #189b3f);
+  box-shadow: 0 2px 0 #0f7830, inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* O CONFIRMA é SEMPRE verde, como no aparelho de verdade, onde a tecla não
+   muda de cor enquanto o voto está incompleto. Ele continua marcado com
+   aria-disabled enquanto falta dígito, e continua respondendo ao toque: quem
+   apertar antes da hora recebe na tela o que falta, em vez de um botão morto.
+   A cor deixou de ser o sinal; a frase é o sinal. */
+
+/* O zero fica na primeira coluna da última linha, como no aparelho. */
+.zero {
+  grid-column: 1;
+}
+
+.tecla:active,
+.tecla[data-acesa] {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.4);
+}
+
+@media (hover: hover) {
+  .tecla:hover:not([data-inativa]) {
+    filter: brightness(1.06);
+  }
+}

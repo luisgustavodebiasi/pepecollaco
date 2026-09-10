@@ -1,0 +1,68 @@
+.dados {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: start;
+  animation: entrada 220ms ease;
+}
+
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.lista {
+  margin: 0;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.linha {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 6px;
+  align-items: baseline;
+}
+
+.linha dt {
+  font-size: clamp(9.5px, 2.8cqw, 11px);
+  color: var(--tinta-fraca);
+  white-space: nowrap;
+}
+
+.linha dt::after {
+  content: ":";
+}
+
+.linha dd {
+  margin: 0;
+  font-size: clamp(11px, 3.2cqw, 13px);
+  line-height: 1.2;
+  color: var(--tinta-tela);
+  overflow-wrap: anywhere;
+}
+
+.forte {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Caixa da fotografia, com fio fino como na tela do aparelho. O campo claro
+   atrás existe porque o ativo é recorte transparente: sem ele a camisa branca
+   sumiria contra a tela. */
+.moldura {
+  width: clamp(46px, 15cqw, 62px);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid var(--regua);
+  background: linear-gradient(180deg, #ffffff, #e9eef3);
+}
+
+.foto {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  display: block;
+}

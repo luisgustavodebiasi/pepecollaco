@@ -1,0 +1,9 @@
+# Notas internas de decisão e operação: não precisam ficar públicas em /README.md
+README.md
+
+# Geradores dos ativos. A saída vai (public/assets/), o gerador não.
+ferramentas/
+
+.env
+.env.*
+.vercel

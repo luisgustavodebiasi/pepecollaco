@@ -1,0 +1,22 @@
+.casca {
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  padding-top: max(6px, env(safe-area-inset-top));
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+  padding-left: max(12px, env(safe-area-inset-left));
+  padding-right: max(12px, env(safe-area-inset-right));
+  overflow: hidden;
+}
+
+/* O palco é a única região que pode encolher. Tudo o mais tem altura própria,
+   e é isso que garante que o aviso do topo e o rodapé nunca saem da tela. */
+.palco {
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

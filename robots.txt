@@ -17,8 +17,10 @@ Disallow: /WPP/
 Disallow: /WPP%20SERVER/
 Disallow: /SANTINHOS%20MODULARES/
 Disallow: /WIND%20BANNER/
+Disallow: /BACKDROP%20POR%20ELAS/
 Disallow: /BON%C3%89/
 Disallow: /_IDENTIDADE/
+Disallow: /treine-seu-voto/
 Disallow: /deppepe_collaco_arquivos_consolidados/
 Disallow: /admin/
 

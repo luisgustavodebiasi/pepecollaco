@@ -1,0 +1,390 @@
+/* ---------------------------------------------------------------------------
+   O aparelho.
+
+   Referência: urna UE 2020. Corpo cinza claro com canto arredondado, moldura
+   preta grossa em volta da tela, tela branca com texto preto, teclado escuro
+   com a coluna BRANCO / CORRIGE / CONFIRMA à direita e o zero embaixo à
+   esquerda. Nada de brasão, nada de "Justiça Eleitoral", nada de "UE 2020":
+   a placa do corpo leva a marca da campanha, e a tela diz TREINO.
+   --------------------------------------------------------------------------- */
+.urna {
+  width: min(100%, 430px);
+  height: 100%;
+  max-height: 680px;
+  container-type: inline-size;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 18px 18px 12px 12px;
+  background: linear-gradient(180deg, #ececec, var(--corpo) 22%, #d8d8d8);
+  border: 1px solid var(--corpo-borda);
+  box-shadow:
+    0 22px 44px var(--corpo-sombra),
+    0 2px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+.urna[data-confirmando] {
+  animation: confirmar 700ms ease;
+}
+
+@keyframes confirmar {
+  30% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
+/* A moldura preta. É ela que faz o aparelho ser reconhecido antes de qualquer
+   texto: a urna de verdade é uma tela clara dentro de um retângulo preto. */
+.moldura {
+  min-height: 0;
+  padding: 9px;
+  border-radius: 8px;
+  background: var(--moldura);
+  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.5), inset 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.tela {
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 9px 9px;
+  background: var(--tela);
+  color: var(--tinta-tela);
+  text-align: left;
+}
+
+.tela > * {
+  flex: 0 0 auto;
+}
+
+/* ---------- cabeçalho da tela ---------- */
+.cabecalho {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0;
+}
+
+.cargo {
+  font-family: var(--fonte-urna);
+  font-size: clamp(13px, 4.4cqw, 18px);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+/* A urna de verdade escreve TREINAMENTO no alto da tela quando está em modo de
+   treino. Aqui a palavra é literal e é a favor da peça. */
+.selo {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--tinta-fraca);
+  border: 1px solid var(--regua);
+  border-radius: 3px;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+
+/* ---------- linha do número ---------- */
+/* A caixa de votação não encosta no cabeçalho. Na urna de referência há um
+   respiro claro entre o nome do cargo e os quadrinhos, e é ele que faz a tela
+   ser reconhecida de relance. */
+.linhaNumero {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: clamp(6px, 3cqw, 16px);
+  margin-bottom: clamp(2px, 2cqw, 10px);
+}
+
+.rotulo {
+  font-size: clamp(10px, 2.9vw, 12px);
+  color: var(--tinta-fraca);
+  flex: none;
+}
+
+.digitos {
+  display: flex;
+  gap: 5px;
+}
+
+.caixa {
+  width: clamp(30px, 9cqw, 40px);
+  height: clamp(36px, 11cqw, 48px);
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--tinta-tela);
+  background: #fff;
+  color: var(--tinta-tela);
+  /* Mesma letra do teclado: o que aparece na caixa é o que a pessoa digitou. */
+  font-family: var(--fonte-urna);
+  font-weight: 400;
+  font-size: clamp(21px, 6.6cqw, 30px);
+  font-variant-numeric: tabular-nums;
+}
+
+/* O único amarelo dentro da tela. É a cor da campanha marcando o acerto, e
+   sobre ela o texto é a tinta: 10,8 contra 1, o par canônico. */
+.caixa[data-estado="aceito"] {
+  background: var(--marca);
+  color: var(--sobre-marca);
+  border-color: var(--sobre-marca);
+  animation: pulo 200ms ease;
+}
+
+.caixa[data-estado="errado"] {
+  background: var(--pp-alerta);
+  color: #fff;
+  border-color: #8f1d21;
+  animation: tremor 420ms ease;
+}
+
+@keyframes pulo {
+  40% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+@keyframes tremor {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(3px); }
+}
+
+/* ---------- régua e área de instrução ---------- */
+/* margin-top:auto empurra o bloco para o pé da tela. É o que faz a tela ter a
+   silhueta do aparelho de referência em vez de um bloco de texto no topo. */
+.rodapeTela {
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.regua {
+  border: 0;
+  border-top: 1px solid var(--regua);
+  margin: 0 0 5px;
+  width: 100%;
+}
+
+.instrucoes {
+  margin: 0;
+  font-size: clamp(10.5px, 3cqw, 12px);
+  line-height: 1.35;
+  color: var(--tinta-fraca);
+}
+
+.instrucoes strong {
+  color: var(--tinta-tela);
+}
+
+/* ---------- zona de ensino ---------- */
+.titulo {
+  margin: 0;
+  font-family: var(--fonte-display);
+  font-weight: 900;
+  font-size: clamp(14px, 4.4cqw, 18px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.subtitulo {
+  margin: 0;
+  font-size: clamp(11px, 3.2cqw, 12.5px);
+  line-height: 1.3;
+  color: var(--tinta-fraca);
+}
+
+.referencia {
+  align-self: flex-start;
+  margin: 1px 0 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 12px 5px;
+  border-radius: 4px;
+  background: var(--marca);
+  color: var(--sobre-marca);
+}
+
+.referencia[data-realcado] {
+  animation: realce 2s ease;
+}
+
+@keyframes realce {
+  0% { transform: scale(1); }
+  12% { transform: scale(1.1); }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.referenciaRotulo {
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.referenciaNumero {
+  font-family: var(--fonte-display);
+  font-weight: 900;
+  font-size: clamp(20px, 6.4cqw, 28px);
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+.naoLembro {
+  align-self: flex-start;
+  margin: 1px 0 0;
+  padding: 5px 10px;
+  border: 1px solid var(--regua);
+  border-radius: 4px;
+  background: #f6f6f6;
+  color: var(--tinta-tela);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.mensagem {
+  margin: 0;
+  min-height: 2.4em;
+  font-size: clamp(11px, 3.2cqw, 12.5px);
+  line-height: 1.3;
+  color: var(--tinta-fraca);
+}
+
+.mensagem[data-tom="erro"] {
+  color: var(--erro-texto);
+  font-weight: 700;
+}
+
+.mensagem[data-tom="acerto"] {
+  color: #14663c;
+  font-weight: 700;
+}
+
+/* ---------- placa do corpo ---------- */
+.faixaCorpo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 2px;
+}
+
+.placa {
+  display: grid;
+  place-items: center;
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  background: linear-gradient(180deg, #eaeaea, #dcdcdc);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.placa img {
+  height: clamp(28px, 9cqw, 38px);
+  width: auto;
+  display: block;
+  opacity: 0.95;
+}
+
+/* Relevo moldado, como o "UE 2020" do aparelho de referência. Não é texto de
+   leitura: é acabamento, e por isso vai marcado como decorativo. */
+.relevo {
+  font-family: var(--fonte-display);
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #cfcfcf;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.95), 0 -1px 0 rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- telas baixas ---------- */
+@media (max-height: 680px) {
+  .tela {
+    gap: 4px;
+    padding: 7px 8px 8px;
+  }
+  .subtitulo {
+    display: none;
+  }
+  .mensagem {
+    min-height: 1.4em;
+  }
+  .faixaCorpo {
+    display: none;
+  }
+  /* O respiro acima da caixa de votação é a primeira coisa a ceder quando a
+     tela é baixa: melhor a urna apertada do que o bloco de instrução cortado. */
+  .cargo {
+    font-size: clamp(12px, 4cqw, 15px);
+  }
+  .linhaNumero {
+    margin-top: 6px;
+    margin-bottom: 2px;
+  }
+  .caixa {
+    width: clamp(28px, 8cqw, 34px);
+    height: clamp(32px, 9.5cqw, 40px);
+    font-size: clamp(19px, 6cqw, 25px);
+  }
+  .titulo {
+    font-size: clamp(13px, 4cqw, 16px);
+  }
+  .referenciaNumero {
+    font-size: clamp(18px, 5.6cqw, 24px);
+  }
+}
+
+/* Abaixo disto já não é celular em pé: é janela de navegador apertada ou
+   celular deitado. A tela continua inteira, mas tudo encolhe mais um degrau
+   para o bloco de instrução não ser cortado. */
+@media (max-height: 620px) {
+  .tela {
+    padding: 6px 8px;
+    gap: 3px;
+  }
+  .cargo {
+    font-size: clamp(11px, 3.6cqw, 14px);
+  }
+  .linhaNumero {
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+  .caixa {
+    height: clamp(30px, 8.6cqw, 36px);
+    font-size: clamp(18px, 5.6cqw, 23px);
+  }
+  .referencia {
+    padding: 3px 10px 4px;
+  }
+  .mensagem {
+    min-height: 1.2em;
+  }
+  .rodapeTela {
+    padding-top: 3px;
+  }
+  .regua {
+    margin-bottom: 3px;
+  }
+  .instrucoes {
+    font-size: clamp(9.5px, 2.8cqw, 11px);
+    line-height: 1.25;
+  }
+}
+
+@media (max-height: 570px) {
+  .titulo {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}

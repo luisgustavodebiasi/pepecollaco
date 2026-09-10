@@ -1,0 +1,215 @@
+/* ---------- o que fica dentro da tela do aparelho ---------- */
+.telaFim {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  /* min-height, e não height: com altura travada o conteúdo transborda e some
+     por cima da moldura, sem barra de rolagem para denunciar. Assim ele cresce
+     e quem rola é a tela do aparelho. */
+  min-height: 100%;
+  text-align: center;
+  animation: entrada 220ms ease;
+}
+
+@keyframes entrada {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* A urna de verdade escreve FIM grande. Aqui ele é o rótulo, e não o
+   protagonista: o protagonista é o número, que é o que a peça existe para
+   deixar na cabeça de quem abriu. */
+.fim {
+  margin: 0;
+  font-family: var(--fonte-display);
+  font-weight: 900;
+  font-size: clamp(15px, 4.6cqw, 19px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--tinta-fraca);
+}
+
+.fim:focus {
+  outline: none;
+}
+
+.nomeUrna {
+  margin: 4px 0 0;
+  font-family: var(--fonte-display);
+  font-weight: 900;
+  font-size: clamp(15px, 4.8cqw, 20px);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--tinta-tela);
+}
+
+/* O maior elemento da tela, por exigência do produto. Tinta sobre a tela
+   branca: 17,3 contra 1. Amarelo aqui reprovaria em qualquer corpo. */
+.numero {
+  margin: 0;
+  font-family: var(--fonte-display);
+  font-weight: 900;
+  font-size: clamp(46px, 17cqw, 86px);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--pp-tinta);
+}
+
+.assinatura {
+  width: clamp(78px, 24cqw, 104px);
+  height: auto;
+  margin-top: 8px;
+}
+
+.frase {
+  margin: 6px 0 0;
+  font-size: clamp(10.5px, 3cqw, 12.5px);
+  line-height: 1.3;
+  color: var(--tinta-fraca);
+  max-width: 30ch;
+}
+
+/* ---------- o bloco no lugar do teclado ---------- */
+.bloco {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  padding: 2px 2px 4px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.confete {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sequencia,
+.conquista {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.sequencia {
+  color: var(--tinta-fraca);
+}
+
+.conquista {
+  color: #8a5a00;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+}
+
+/* O par de botão canônico da identidade: amarelo com texto tinta, 10,8. */
+.principal {
+  flex: 1 1 100%;
+  min-height: 46px;
+  border-radius: 6px;
+  font-family: var(--fonte-display);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--pp-amarelo);
+  color: var(--pp-tinta);
+  box-shadow: 0 2px 0 #b78e00;
+  transition: transform 80ms ease, box-shadow 80ms ease;
+}
+
+.principal:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 #b78e00;
+}
+
+/* ---------- compartilhamento ---------- */
+.compartilhar {
+  width: 100%;
+}
+
+.botoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.secundario {
+  padding: 7px 11px;
+  min-height: 36px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #1c1c1c;
+  background: #ededed;
+  border: 1px solid var(--corpo-borda);
+}
+
+.secundario:active {
+  transform: translateY(1px);
+}
+
+.reserva {
+  margin: 6px 0 0;
+  font-size: 10px;
+  line-height: 1.3;
+  color: var(--tinta-fraca);
+}
+
+@media (max-height: 680px) {
+  .bloco {
+    gap: 5px;
+  }
+  .reserva {
+    display: none;
+  }
+}
+
+/* ---------- telas baixas ---------- */
+@media (max-height: 680px) {
+  .numero {
+    font-size: clamp(38px, 13cqw, 62px);
+  }
+  .frase {
+    margin-top: 3px;
+  }
+  .assinatura {
+    width: clamp(64px, 18cqw, 84px);
+    margin-top: 5px;
+  }
+}
+
+@media (max-height: 620px) {
+  .fim {
+    font-size: 12px;
+    letter-spacing: 0.26em;
+  }
+  .nomeUrna {
+    margin-top: 2px;
+    font-size: clamp(13px, 4cqw, 16px);
+  }
+  .numero {
+    font-size: clamp(34px, 11cqw, 52px);
+  }
+  /* A assinatura é a primeira a sair: o número é o que a pessoa leva embora. */
+  .assinatura {
+    display: none;
+  }
+}

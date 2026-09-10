@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- Bancada de conferência dos quatro alvos de tela do briefing.
+     Cada quadro é o tamanho real do aparelho, reduzido por transform só para
+     caber lado a lado: o layout dentro do iframe continua sendo calculado nos
+     pixels de verdade.
+       npm run build && cp ferramentas/aferir.html dist/ && npm run preview
+     Abra /aferir.html?e=0.55 para mudar a escala. -->
+<html lang="pt-BR"><head><meta charset="utf-8"><title>aferir</title>
+<style>
+ body{margin:0;background:#1b1b1b;font:11px system-ui;color:#eee;padding:6px}
+ .fila{display:flex;gap:6px;align-items:flex-start}
+ figure{margin:0}
+ figcaption{padding:2px 0;text-align:center}
+ .caixa{overflow:hidden}
+ iframe{border:0;display:block;transform-origin:top left;background:#fff}
+</style></head><body>
+<div class="fila" id="fila"></div>
+<script>
+ const escala = Number(new URLSearchParams(location.search).get('e') || 0.34);
+ const alvos = [[375,667],[390,844],[393,852],[430,932]];
+ document.getElementById('fila').innerHTML = alvos.map(([w,h]) => `
+   <figure>
+     <figcaption>${w}x${h}</figcaption>
+     <div class="caixa" style="width:${Math.round(w*escala)}px;height:${Math.round(h*escala)}px">
+       <iframe src="/" width="${w}" height="${h}" style="transform:scale(${escala})"></iframe>
+     </div>
+   </figure>`).join('');
+</script>
+</body></html>

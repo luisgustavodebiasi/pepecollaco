@@ -1,0 +1,85 @@
+.banner {
+  --pulso: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 5px 6px 5px 10px;
+  border-radius: 999px;
+  background: #ededed;
+  border: 1px solid var(--corpo-borda);
+  /* O anel cresce com o pulso. É o banner inteiro batendo junto, sem animar
+     largura nem altura, que forçariam recálculo de layout a cada quadro. */
+  box-shadow: 0 0 0 calc(var(--pulso) * 3px) rgba(255, 196, 0, calc(var(--pulso) * 0.55));
+}
+
+.equalizador {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+  flex: none;
+}
+
+.equalizador i {
+  width: 3px;
+  border-radius: 2px;
+  background: var(--pp-tinta);
+  transform-origin: bottom;
+}
+
+.equalizador i:nth-child(1) {
+  height: 60%;
+  transform: scaleY(calc(0.35 + var(--pulso) * 0.65));
+}
+.equalizador i:nth-child(2) {
+  height: 100%;
+  transform: scaleY(calc(0.25 + var(--pulso) * 0.75));
+}
+.equalizador i:nth-child(3) {
+  height: 75%;
+  transform: scaleY(calc(0.4 + var(--pulso) * 0.6));
+}
+
+.faixa {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #1c1c1c;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.botao {
+  flex: none;
+  min-height: 30px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1c1c1c;
+  background: #ffffff;
+  border: 1px solid var(--corpo-borda);
+}
+
+.botao:active {
+  transform: translateY(1px);
+}
+
+/* Sem música tocando o banner não pulsa e não finge que pulsa. */
+.banner:not([data-tocando]) .equalizador i {
+  transform: scaleY(0.3);
+  opacity: 0.45;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner {
+    box-shadow: none;
+  }
+  .equalizador i {
+    transform: none !important;
+  }
+}

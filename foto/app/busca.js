@@ -81,7 +81,7 @@ function telaEscolha() {
        que já esteja no celular — de frente e com o rosto bem visível.</p>
     <div class="painel-botoes">
       <button class="botao-principal" type="button" data-camera>
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="11" r="3.2"/><path d="M4 8.5h3l1.6-2.2h6.8L17 8.5h3v10H4z"/></svg>
+        <svg class="icone-rosto" viewBox="0 0 48 48"><path d="M4 15.5V8.5A4.5 4.5 0 0 1 8.5 4h7"/><path d="M32.5 4h7A4.5 4.5 0 0 1 44 8.5v7"/><path d="M44 32.5v7a4.5 4.5 0 0 1-4.5 4.5h-7"/><path d="M15.5 44h-7A4.5 4.5 0 0 1 4 39.5v-7"/><circle cx="24" cy="20.5" r="6"/><path d="M13.5 36.5c1.9-4.6 5.9-7 10.5-7s8.6 2.4 10.5 7"/></svg>
         Tirar uma selfie agora
       </button>
       <button class="botao-vazado" type="button" data-arquivo>

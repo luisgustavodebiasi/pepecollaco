@@ -10,6 +10,7 @@
      dados.json       lista de fotos + caixa e qualidade de cada rosto
      rostos.bin       vetores de 512 dimensões em int8
      index.html       a página, a partir de app/molde-evento.html
+     og.jpg           o cartão de compartilhamento, por gerar-og.mjs
 
    As fotos originais NÃO entram no repositório: ficam no HD do gabinete.
    O que se publica são os derivados, e é por isso que este script existe.
@@ -18,6 +19,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFileSync } from 'node:child_process';
 import sharp from 'sharp';
 import ort from 'onnxruntime-node';
 import { detectar, descrever, alinhar } from '../app/rosto.mjs';
@@ -81,8 +83,12 @@ function notaQualidade(lado, nit, fr) {
 /* ── Execução ───────────────────────────────────────────────────────── */
 
 const slug = process.argv[2];
+/* Mexer no texto da página não deveria custar os 90 segundos de reprocessar
+   260 fotos. Com --so-pagina o script reaproveita o dados.json que já existe
+   e só refaz o index.html e o cartão de compartilhamento. */
+const soPagina = process.argv.includes('--so-pagina');
 if (!slug) {
-  console.error('uso: node bin/gerar-evento.mjs <slug-do-evento>');
+  console.error('uso: node bin/gerar-evento.mjs <slug-do-evento> [--so-pagina]');
   process.exit(1);
 }
 const pastaEvento = path.join(RAIZ, slug);
@@ -92,10 +98,20 @@ if (!fs.existsSync(arquivoConfig)) {
   process.exit(1);
 }
 const evento = JSON.parse(fs.readFileSync(arquivoConfig, 'utf8'));
-if (!fs.existsSync(evento.origem)) {
+if (!soPagina && !fs.existsSync(evento.origem)) {
   console.error(`a pasta de origem não está montada: ${evento.origem}`);
   process.exit(1);
 }
+
+let fotos;
+let rostos = [];
+let vetores = [];   // Float32Array de 512, um por rosto indexado
+
+if (soPagina) {
+  const anterior = JSON.parse(fs.readFileSync(path.join(pastaEvento, 'dados.json'), 'utf8'));
+  fotos = anterior.fotos;
+  console.log(`${evento.titulo} · reaproveitando ${fotos.length} fotos já processadas`);
+} else {
 
 const origens = fs.readdirSync(evento.origem)
   .filter((f) => /\.(jpe?g|png|webp|heic)$/i.test(f) && !f.startsWith('.'))
@@ -114,9 +130,7 @@ console.log(`${evento.titulo} · ${origens.length} imagens`);
 const detector = await ort.InferenceSession.create(path.join(RAIZ, 'modelos/det_500m.onnx'));
 const descritor = await ort.InferenceSession.create(path.join(RAIZ, 'modelos/w600k_mbf.onnx'));
 
-const fotos = [];
-const vetores = [];   // Float32Array de 512, um por rosto indexado
-const rostos = [];    // { foto, caixa, q }
+fotos = [];
 const inicio = Date.now();
 
 for (const [indice, nome] of origens.entries()) {
@@ -213,9 +227,10 @@ const dados = {
 };
 fs.writeFileSync(path.join(pastaEvento, 'dados.json'), JSON.stringify(dados));
 
+}   // fim do processamento pesado
+
 /* ── Página ─────────────────────────────────────────────────────────── */
 const molde = fs.readFileSync(path.join(RAIZ, 'app/molde-evento.html'), 'utf8');
-const capa = evento.capa ?? fotos[0].id;
 const substituicoes = {
   TITULO: evento.titulo,
   SUBTITULO: evento.subtitulo ?? '',
@@ -227,21 +242,26 @@ const substituicoes = {
   LOCAL: evento.local ?? '',
   CREDITO: evento.credito ?? '',
   TOTAL: String(fotos.length),
-  CAPA: capa,
 };
 fs.writeFileSync(
   path.join(pastaEvento, 'index.html'),
   molde.replace(/\{\{(\w+)\}\}/g, (m, chave) => substituicoes[chave] ?? m)
 );
 
+/* ── Cartão de compartilhamento ─────────────────────────────────────── */
+execFileSync(process.execPath, [path.join(AQUI, 'gerar-og.mjs'), slug], { stdio: 'inherit' });
+
 const peso = (sub) => fs.readdirSync(path.join(pastaEvento, sub))
   .reduce((t, f) => t + fs.statSync(path.join(pastaEvento, sub, f)).size, 0);
 const mb = (b) => `${(b / 1048576).toFixed(1)} MB`;
-console.log(`
+if (!soPagina) {
+  console.log(`
   ${fotos.length} fotos · ${rostos.length} rostos indexados
   miniaturas  ${mb(peso('p'))}
   grandes     ${mb(peso('g'))}
-  rostos.bin  ${mb(bin.length)}
+  rostos.bin  ${mb(fs.statSync(path.join(pastaEvento, 'rostos.bin')).size)}`);
+}
+console.log(`
   → /foto/${slug}/
 
   Falta ligar o evento em foto/eventos.json para ele aparecer no índice.`);

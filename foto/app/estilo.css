@@ -22,6 +22,10 @@ body {
 img { max-width: 100%; display: block; }
 a { color: var(--cor-link); }
 svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* O ícone de buscar rosto é desenhado numa grade de 48, o dobro da dos
+   outros, então precisa do dobro de traço para pesar igual na tela. Tem de
+   vir por classe: o atributo stroke-width do SVG perde para a regra acima. */
+.icone-rosto { stroke-width: 3.4; }
 
 .wrap { width: min(1240px, 100% - 40px); margin-inline: auto; }
 @media (max-width: 640px) { .wrap { width: calc(100% - 28px); } }

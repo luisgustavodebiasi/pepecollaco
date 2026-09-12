@@ -1,0 +1,13 @@
+<!-- Ícone de "achar seu rosto": o quadro de mira da câmera com um rosto
+     dentro. Os quatro cantos abertos são o sinal universal de leitura por
+     câmera; o rosto dentro diz o que está sendo lido. Traço em currentColor
+     para servir tanto na peça quanto na página. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none"
+     stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 15.5V8.5A4.5 4.5 0 0 1 8.5 4h7"/>
+  <path d="M32.5 4h7A4.5 4.5 0 0 1 44 8.5v7"/>
+  <path d="M44 32.5v7a4.5 4.5 0 0 1-4.5 4.5h-7"/>
+  <path d="M15.5 44h-7A4.5 4.5 0 0 1 4 39.5v-7"/>
+  <circle cx="24" cy="20.5" r="6"/>
+  <path d="M13.5 36.5c1.9-4.6 5.9-7 10.5-7s8.6 2.4 10.5 7"/>
+</svg>

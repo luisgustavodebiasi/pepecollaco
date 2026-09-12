@@ -13,7 +13,13 @@
 <meta property="og:site_name" content="Pepê Collaço 11223" />
 <meta property="og:title" content="{{TITULO}} — as fotos" />
 <meta property="og:description" content="{{TOTAL}} fotos de {{DATA_EXTENSO}}. Ache as suas e baixe." />
-<meta property="og:image" content="https://www.pepecollaco.com/foto/{{SLUG}}/g/{{CAPA}}.webp" />
+<!-- JPEG, e não a webp da galeria: WhatsApp não desenha webp em prévia de
+     link, e é por lá que a página circula. Gerado por bin/gerar-og.mjs. -->
+<meta property="og:image" content="https://www.pepecollaco.com/foto/{{SLUG}}/og.jpg" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="{{TITULO}}: foto do público do evento, com o aviso de que dá para achar a sua foto pelo rosto" />
 <meta property="og:locale" content="pt_BR" />
 <meta name="twitter:card" content="summary_large_image" />
 
@@ -59,8 +65,15 @@
     </div>
     <div class="busca-acao">
       <button class="botao-principal" type="button" data-busca-abrir>
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="11" r="3.2" /><path d="M4 8.5h3l1.6-2.2h6.8L17 8.5h3v10H4z" />
+        <!-- o mesmo ícone do cartão de compartilhamento: quem chega pelo
+             WhatsApp reconhece na tela o que viu na prévia do link -->
+        <svg class="icone-rosto" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M4 15.5V8.5A4.5 4.5 0 0 1 8.5 4h7" />
+          <path d="M32.5 4h7A4.5 4.5 0 0 1 44 8.5v7" />
+          <path d="M44 32.5v7a4.5 4.5 0 0 1-4.5 4.5h-7" />
+          <path d="M15.5 44h-7A4.5 4.5 0 0 1 4 39.5v-7" />
+          <circle cx="24" cy="20.5" r="6" />
+          <path d="M13.5 36.5c1.9-4.6 5.9-7 10.5-7s8.6 2.4 10.5 7" />
         </svg>
         Buscar pelo meu rosto
       </button>

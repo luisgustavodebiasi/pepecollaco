@@ -49,14 +49,18 @@ Escreva `foto/<slug>/evento.json`:
   "local": "Tubarão",
   "credito": " Fotos de Fulano de Tal.",
   "capa": "0210",
+  "og": "0198",
   "origem": "/Volumes/Extreme Pro/PEPE POR ELAS/FOTOS"
 }
 ```
 
 `origem` é a pasta com os arquivos de câmera, no HD — ela não entra no
-repositório. `capa` é o `id` da foto que ilustra o evento no índice; na
-primeira rodada deixe de fora, veja as miniaturas geradas, escolha uma e
-rode de novo.
+repositório. `capa` é o `id` da foto que ilustra o evento no índice e `og`
+a que vira cartão de compartilhamento; na primeira rodada deixe as duas de
+fora, veja as miniaturas geradas, escolha e rode de novo. São campos
+separados porque o recorte é outro: a capa é quase quadrada e o cartão é
+uma faixa larga, então raramente a mesma foto serve bem nos dois. Para o
+cartão, foto de grupo aberta funciona melhor que retrato.
 
 ```bash
 cd foto/bin && npm install      # só na primeira vez
@@ -72,6 +76,7 @@ O gerador escreve, dentro de `foto/<slug>/`:
 | `dados.json` | lista de fotos, caixa e nota de qualidade de cada rosto |
 | `rostos.bin` | os vetores de 512 dimensões, em int8 |
 | `index.html` | a página, montada a partir de `app/molde-evento.html` |
+| `og.jpg` | o cartão de compartilhamento, 1200×630, por `bin/gerar-og.mjs` |
 
 Por fim, acrescente o evento a `foto/eventos.json` para ele aparecer no
 índice. É o único passo manual, e é de propósito: dá para gerar os
@@ -79,6 +84,28 @@ arquivos e conferir antes de o evento ficar visível.
 
 Ordem: a numeração sequencial da câmera já é a ordem cronológica, então as
 fotos aparecem na ordem em que foram feitas.
+
+Para mexer só no texto da página ou no cartão, sem esperar os 90 segundos
+de reprocessar as fotos:
+
+```bash
+node bin/gerar-evento.mjs <slug> --so-pagina
+```
+
+### O cartão de compartilhamento
+
+`bin/gerar-og.mjs` monta a peça: foto de fundo, véu em três camadas,
+textura de setas, manchete em Acumin Wide Black, a linha de data e local, o
+selo amarelo do reconhecimento facial e o lockup VOTE PEPÊ 11223.
+
+Sai em **JPEG**, e isso não é detalhe: WhatsApp e boa parte dos agregadores
+não desenham webp em prévia de link, e é pelo WhatsApp que a página
+circula. Cartão que não aparece no WhatsApp é cartão que não existe.
+
+O texto usa os `.otf` de `_IDENTIDADE/dist/fontes/`, porque o site publica
+só woff2 e o ImageMagick não lê woff2. O ícone é rasterizado pelo sharp: o
+renderizador de SVG interno do ImageMagick ignora `fill="none"` e devolve
+um quadrado preto.
 
 ## Peso
 
@@ -114,9 +141,11 @@ foto/
     estilo.css            visual da galeria e do índice
     molde-evento.html     molde da página de evento
     vendor/               onnxruntime-web, copiado de node_modules
+    icone/rosto-busca.svg  o quadro de mira com rosto; a peça e a página usam o mesmo
   modelos/                det_500m.onnx (SCRFD) e w600k_mbf.onnx (ArcFace)
   bin/
     gerar-evento.mjs      o gerador
+    gerar-og.mjs          o cartão de compartilhamento
     package.json          sharp + onnxruntime-node
   <slug>/                 um por evento
 ```

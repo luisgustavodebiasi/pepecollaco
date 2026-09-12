@@ -76,7 +76,7 @@ const dados = JSON.parse(fs.readFileSync(path.join(pasta, 'dados.json'), 'utf8')
    recorte é outro: a capa é quase quadrada no índice e o cartão é uma
    faixa larga, então nem sempre a mesma foto serve bem nos dois. */
 const idFoto = evento.og ?? evento.capa ?? dados.fotos[0].id;
-const fonteFoto = path.join(pasta, 'g', `${idFoto}.webp`);
+const fonteFoto = path.join(pasta, 'g', `${idFoto}.${dados.formato ?? 'webp'}`);
 if (!fs.existsSync(fonteFoto)) {
   console.error(`não achei ${path.relative(process.cwd(), fonteFoto)} — rode gerar-evento.mjs antes`);
   process.exit(1);

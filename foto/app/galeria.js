@@ -21,6 +21,10 @@ const el = {
 
 const dados = await (await fetch(`${BASE}dados.json`)).json();
 const FOTOS = dados.fotos;
+/* A extensão da foto grande vem do índice, não escrita aqui: o formato já
+   mudou uma vez (webp → jpg, para o arquivo baixado abrir fora do navegador)
+   e quem gera é que sabe qual é. O padrão cobre eventos gerados antes disso. */
+const EXT = dados.formato ?? 'webp';
 
 /* O que a grade está mostrando agora, na ordem em que aparece: índices de
    FOTOS. O visor navega por esta lista, e não pelas 260 — depois de buscar,
@@ -181,13 +185,13 @@ function irPara(posicao) {
   atual = (posicao + listaAtual.length) % listaAtual.length;
   const iFoto = listaAtual[atual];
   const foto = FOTOS[iFoto];
-  v.img.src = `${BASE}g/${foto.id}.webp`;
+  v.img.src = `${BASE}g/${foto.id}.${EXT}`;
   v.img.alt = `Foto ${iFoto + 1} do evento`;
   v.contador.textContent = resultado
     ? `${atual + 1} de ${listaAtual.length} suas`
     : `${atual + 1} de ${FOTOS.length}`;
-  v.baixar.href = `${BASE}g/${foto.id}.webp`;
-  v.baixar.download = `${dados.evento.slug}-${foto.id}.webp`;
+  v.baixar.href = `${BASE}g/${foto.id}.${EXT}`;
+  v.baixar.download = `${dados.evento.slug}-${foto.id}.${EXT}`;
   v.palco.querySelector('.marcador')?.remove();
   const achado = resultado?.get(iFoto);
   if (achado) v.img.addEventListener('load', () => marcarRosto(achado.rosto), { once: true });
@@ -237,14 +241,15 @@ v.palco.addEventListener('touchend', (e) => {
 
 /* Compartilhar direto para WhatsApp e Instagram, que é o que a pessoa quer
    fazer com a foto. Só aparece onde o navegador sabe mandar arquivo. */
-if (navigator.canShare?.({ files: [new File([''], 'x.webp', { type: 'image/webp' })] })) {
+const TIPO = EXT === 'jpg' ? 'image/jpeg' : 'image/webp';
+if (navigator.canShare?.({ files: [new File([''], `x.${EXT}`, { type: TIPO })] })) {
   v.compartilhar.hidden = false;
   v.compartilhar.addEventListener('click', async () => {
     const foto = FOTOS[atual];
     try {
-      const blob = await (await fetch(`${BASE}g/${foto.id}.webp`)).blob();
+      const blob = await (await fetch(`${BASE}g/${foto.id}.${EXT}`)).blob();
       await navigator.share({
-        files: [new File([blob], `${dados.evento.slug}-${foto.id}.webp`, { type: 'image/webp' })],
+        files: [new File([blob], `${dados.evento.slug}-${foto.id}.${EXT}`, { type: TIPO })],
         text: `${dados.evento.titulo} · Pepê Collaço 11223`,
       });
     } catch { /* a pessoa cancelou; não há o que tratar */ }

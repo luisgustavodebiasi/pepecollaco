@@ -73,7 +73,7 @@ O gerador escreve, dentro de `foto/<slug>/`:
 | Saída | O que é |
 |---|---|
 | `p/0001.webp` … | miniatura da grade, 480 px |
-| `g/0001.webp` … | a foto aberta e a que se baixa, 1800 px |
+| `g/0001.jpg` … | a foto aberta e a que se baixa, 2048 px |
 | `dados.json` | lista de fotos, caixa e nota de qualidade de cada rosto |
 | `rostos.bin` | os vetores de 512 dimensões, em int8 |
 | `index.html` | a página, montada a partir de `app/molde-evento.html` |
@@ -133,13 +133,33 @@ um quadrado preto.
 
 ## Peso
 
-O evento Pepê por Elas, com 260 fotos, ocupa cerca de **40 MB** no
-repositório — 36 MB de fotos grandes, 4 MB de miniaturas e 0,4 MB de
-vetores. Os 2,3 GB de arquivos de câmera ficam no HD.
+O evento Pepê por Elas, com 260 fotos, ocupa cerca de **95 MB** no
+repositório. Os 2,3 GB de arquivos de câmera ficam no HD.
 
-1800 px no lado grande é o suficiente para postar em qualquer rede e
-imprimir um 10×15. Quem quiser o arquivo original pede ao gabinete — o
-rodapé da página já diz isso.
+2048 px no lado grande é o suficiente para postar em qualquer rede e
+imprimir um 10×15 com folga. Quem quiser o arquivo original pede ao
+gabinete — o rodapé da página já diz isso.
+
+### Por que JPEG e por que nitidez de saída
+
+As duas decisões vieram de reclamação real de quem baixou, em 12/09/2026, e
+de medição feita depois.
+
+**O arquivo baixado é JPEG.** Webp é ótimo dentro do navegador e um problema
+fora dele: a foto sai da mão da gente e vai para gráfica, moldura digital,
+computador velho, app de edição. A miniatura da grade continua webp, porque
+essa nunca sai do navegador.
+
+**A imagem leva um ganho de nitidez depois do redimensionamento.** Esta era
+a causa de verdade da reclamação, e não a compressão. Comparando lado a lado
+na mesma resolução, o arquivo sem perda e o webp q80 ficaram quase idênticos
+— e os dois estavam moles. Reduzir de 3.500 px para 2.048 suaviza a imagem;
+todo fluxo de foto compensa isso com um ganho de nitidez na saída, e era
+justamente o que faltava. Os valores em `NITIDEZ` são discretos de propósito:
+em rosto, nitidez demais vira poro marcado e halo.
+
+O peso subiu de 36 MB para cerca de 90 MB por evento. É o preço de entregar
+foto que a pessoa quer guardar.
 
 Fora dos eventos, a pasta carrega uma vez só:
 

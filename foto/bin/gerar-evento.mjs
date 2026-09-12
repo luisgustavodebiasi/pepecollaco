@@ -6,7 +6,7 @@
 
    Lê  foto/<slug>/evento.json  e escreve, dentro da mesma pasta:
      p/0001.webp      miniatura da grade   (480 px)
-     g/0001.webp      foto aberta e baixada (1800 px)
+     g/0001.jpg       foto aberta e baixada (2048 px, com nitidez de saída)
      dados.json       lista de fotos + caixa e qualidade de cada rosto
      rostos.bin       vetores de 512 dimensões em int8
      index.html       a página, a partir de app/molde-evento.html
@@ -28,13 +28,26 @@ const AQUI = path.dirname(fileURLToPath(import.meta.url));
 const RAIZ = path.join(AQUI, '..');
 
 /* ── Ajustes ────────────────────────────────────────────────────────────
-   O lado grande de 1800 px é o que se vê e o que se baixa: dá para postar
-   no Instagram e imprimir um 10×15 sem serrilhado, e pesa ~240 KB. Quem
-   quiser o arquivo de câmera pede ao gabinete — 2,3 GB não vão para o git. */
-const LADO_GRANDE = 1800;
+   O lado grande é o que se vê no visor e o que a pessoa baixa. Quem quiser
+   o arquivo de câmera pede ao gabinete — 2,3 GB não vão para o git.
+
+   **JPEG, e não webp.** O arquivo baixado sai da mão da gente e vai para
+   onde a pessoa quiser: gráfica, moldura digital, computador velho, app de
+   edição. Webp é ótimo dentro do navegador e um problema fora dele.
+
+   **A nitidez de saída não é enfeite.** Reduzir de 3.500 px para 2.048
+   suaviza a imagem — é o que todo fluxo de foto compensa com um ganho de
+   nitidez depois do redimensionamento, e o que faltava aqui. Foi essa falta,
+   não a compressão, que gerou a reclamação de qualidade: comparando lado a
+   lado na mesma resolução, o arquivo sem perda e o webp q80 eram quase
+   iguais, e os dois estavam moles. Os valores abaixo são discretos de
+   propósito — em rosto, nitidez demais vira poro marcado e halo. */
+const LADO_GRANDE = 2048;
 const LADO_PEQUENO = 480;
-const QUALIDADE_GRANDE = 80;
-const QUALIDADE_PEQUENA = 72;
+const QUALIDADE_GRANDE = 86;
+const QUALIDADE_PEQUENA = 78;
+const NITIDEZ = { sigma: 0.7, m1: 0.35, m2: 0.9 };
+const FORMATO_GRANDE = 'jpg';
 
 /* Filtros de qualidade do rosto, medidos na imagem de trabalho (1800 px).
    Existem porque rosto pequeno e fora de foco gera vetor pouco
@@ -149,10 +162,15 @@ for (const [indice, nome] of origens.entries()) {
   const img = { dados: data, largura: info.width, altura: info.height };
   const cru = { raw: { width: info.width, height: info.height, channels: 3 } };
 
-  await sharp(data, cru).webp({ quality: QUALIDADE_GRANDE })
-    .toFile(path.join(pastaEvento, 'g', `${id}.webp`));
+  await sharp(data, cru)
+    .sharpen(NITIDEZ)
+    .jpeg({ quality: QUALIDADE_GRANDE, mozjpeg: true, progressive: true })
+    .toFile(path.join(pastaEvento, 'g', `${id}.${FORMATO_GRANDE}`));
+  /* A miniatura cai de 2.048 para 480 px, uma redução ainda maior, então
+     leva o mesmo ganho de nitidez. Ela continua webp: não sai do navegador. */
   await sharp(data, cru)
     .resize({ width: LADO_PEQUENO, height: LADO_PEQUENO, fit: 'inside' })
+    .sharpen(NITIDEZ)
     .webp({ quality: QUALIDADE_PEQUENA })
     .toFile(path.join(pastaEvento, 'p', `${id}.webp`));
 
@@ -215,6 +233,10 @@ const dados = {
     credito: evento.credito ?? '',
   },
   gerado: new Date().toISOString(),
+  /* A página lê daqui em vez de trazer a extensão escrita no código: se um
+     dia o formato mudar de novo, a galeria acompanha sozinha em vez de
+     pedir 260 arquivos que não existem. */
+  formato: FORMATO_GRANDE,
   fotos,
   rostos: {
     n: rostos.length,

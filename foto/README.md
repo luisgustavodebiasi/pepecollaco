@@ -50,6 +50,7 @@ Escreva `foto/<slug>/evento.json`:
   "credito": " Fotos de Fulano de Tal.",
   "capa": "0210",
   "og": "0198",
+  "endereco": "ABECELESC",
   "origem": "/Volumes/Extreme Pro/PEPE POR ELAS/FOTOS"
 }
 ```
@@ -94,9 +95,32 @@ node bin/gerar-evento.mjs <slug> --so-pagina
 
 ### O cartão de compartilhamento
 
-`bin/gerar-og.mjs` monta a peça: foto de fundo, véu em três camadas,
-textura de setas, manchete em Acumin Wide Black, a linha de data e local, o
-selo amarelo do reconhecimento facial e o lockup VOTE PEPÊ 11223.
+`bin/gerar-og.mjs` monta a peça: foto de fundo com um banho leve de rosa,
+faixa rosa subindo do pé, textura de setas, o lockup **Pepê por Elas** com
+sombra, a linha de endereço e cidade, a assinatura com o número e, no alto
+à direita, o selo branco do reconhecimento facial.
+
+O rosa é o da linha: `#F039A1`, lido do degradê vetorial do bolão impresso
+(ver `BACKDROP POR ELAS/README.md`), descendo até `#7A1B56` na borda de
+baixo. O cartão cai na conversa do WhatsApp logo abaixo do convite rosa que
+já circulou — sair azul ali quebraria o reconhecimento.
+
+O lockup é PEPÊ em tipo mais o lettering "por elas" em desenho, empilhados
+como no convite. **Não entra o VOTE PEPÊ 11223:** ele traz um segundo PEPÊ
+grande, e dois lockups na mesma peça se anulam. O número fica na assinatura,
+em texto, no canto oposto. É a mesma decisão já tomada no cartão do
+credenciamento (`PEPECOPY/credenciamento-next/app/[slug]/opengraph-image.tsx`).
+
+Dois detalhes que custaram tentativa:
+
+- **Cor e opacidade do degradê são construídas separadas.** O
+  `-function polynomial` do ImageMagick mexe em todos os canais, e num
+  degradê entre duas cores diferentes ele desmonta o rosa junto com a
+  rampa — o resultado sai lavado, cor de nada.
+- **A sombra do lockup é feita à mão, em tela de tamanho fixo.** O
+  `-shadow` com `-layers merge` recalcula a tela conforme o borrão e
+  reposiciona o conteúdo: o desenho ia parar em (22,22) de uma tela de
+  470×371 em vez dos (70,70) pedidos, e encostava na borda do cartão.
 
 Sai em **JPEG**, e isso não é detalhe: WhatsApp e boa parte dos agregadores
 não desenham webp em prévia de link, e é pelo WhatsApp que a página

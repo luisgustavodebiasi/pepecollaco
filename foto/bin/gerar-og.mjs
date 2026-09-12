@@ -42,6 +42,14 @@ const MARGEM = 56;
 const AMARELO = '#FFC400';
 const TINTA = '#061A3A';
 const BRANCO = '#FEFFFF';
+/* A linha Pepê por Elas tem paleta própria. O rosa #F039A1 foi lido do
+   degradê vetorial do bolão impresso, não escolhido de olho — ver
+   "BACKDROP POR ELAS/README.md". O #932066 é o fundo do degradê, onde o
+   texto branco assenta, e o #FFD9EC é o branco puxado para o rosa que o
+   convite usa na linha de local. */
+const ROSA = '#F039A1';          // o rosa da linha, lido do vetor do bolão
+const ROSA_FUNDO = '#7A1B56';    // o pé da rampa do convite, já quase vinho
+const ROSA_CLARO = '#FFD9EC';    // o branco puxado para o rosa, da linha de local
 
 const magick = (args) => execFileSync('magick', args, { stdio: ['ignore', 'pipe', 'pipe'] });
 
@@ -86,36 +94,47 @@ magick([fonteFoto, '-resize', `${L}x${A}^`, '-gravity', 'north',
         t('foto.png')]);
 
 /* ── 2. Véu ───────────────────────────────────────────────────────────
-   Uma faixa azul curta subindo do pé, e só. O resto da foto fica foto: é
-   um grupo de duzentas pessoas, e escurecer o quadro inteiro só para
-   acomodar texto joga fora o que a imagem tem de melhor.
+   Uma faixa rosa curta subindo do pé, e só. O resto da foto fica foto: é
+   um grupo de duzentas pessoas, e escurecer o quadro inteiro para acomodar
+   texto joga fora o que a imagem tem de melhor.
 
-   A curva foi calibrada medindo, não no olho: sobre esta foto o branco da
-   manchete precisa de 3,0 de contraste (é texto grande) e o do subtítulo
-   de 4,5 (é corpo). Com 0,98 na borda e a curva abaixo, o pior ponto da
-   manchete dá 3,60 e o do subtítulo 8,29. Mexer nos números sem refazer a
-   medição é chutar — a foto de cada evento tem um pé diferente, e uma
-   roupa branca no canto inferior esquerdo derruba tudo.
+   Rosa, e não azul, porque esta é a linha Pepê por Elas: o cartão cai na
+   conversa do WhatsApp logo abaixo do convite rosa que já circulou, e sair
+   azul ali quebraria o reconhecimento. O degradê vai do rosa aberto,
+   transparente em cima, ao #932066 quase opaco na borda de baixo — o fundo
+   da rampa do convite, onde o branco tem contraste de sobra.
 
-   Por cima da faixa, no canto direito, um reforço radial: a marca tem
-   branco e amarelo claro e precisa de um pouco mais de fundo do que o
-   texto para não encostar na foto.
+   A curva foi calibrada medindo, não no olho: sobre esta foto o branco do
+   lockup precisa de 3,0 de contraste (é desenho grande) e o da linha de
+   local de 4,5 (é corpo). Mexer nos números sem refazer a medição é
+   chutar — a foto de cada evento tem um pé diferente, e uma roupa branca
+   no canto inferior esquerdo derruba tudo.
 
    A textura de setas entra DEPOIS do véu — o guia avisa que acima de 0,80
    ela some, e é justamente no pé que ela precisa continuar visível. */
-magick(['-size', `${L}x${A}`, 'gradient:rgba(6,26,58,0.98)-rgba(6,26,58,0)',
+/* Um banho de rosa de leve no quadro inteiro, antes da faixa. Sem ele o
+   cartão lê como foto com texto por cima; com ele a imagem já entra na
+   linha, e quem viu o convite reconhece antes de ler. */
+magick([t('foto.png'), '-fill', ROSA, '-colorize', '16%', t('foto.png')]);
+
+/* Cor e opacidade são construídas separadas e casadas no fim. Tem de ser
+   assim: o -function polynomial do ImageMagick mexe em TODOS os canais, e
+   num degradê entre duas cores diferentes ele desmonta o rosa junto com a
+   rampa — o resultado sai lavado, cor de nada. Aqui o degradê de cor sobe
+   do #7A1B56 ao #F039A1 sem ser tocado, e a curva age só na máscara.
+
+   Os números saíram de medição: com a curva anterior a linha de local dava
+   3,09 de contraste e a assinatura 2,52, as duas reprovando. Com esta e o
+   pé em #7A1B56 dão 5,72 e 4,59. Refaça a medição antes de mexer. */
+magick(['-size', `${L}x${A}`, `gradient:${ROSA}-${ROSA_FUNDO}`, t('rosa-cor.png')]);
+magick(['-size', `${L}x${A}`, 'gradient:white-black',
         '-rotate', '180',                  // opaco embaixo, limpo em cima
-        '-function', 'polynomial', '1.4,-0.4,0',
+        '-function', 'polynomial', '2.6,-1.0,0',
+        '-evaluate', 'multiply', '0.97',
+        t('rosa-alfa.png')]);
+magick([t('rosa-cor.png'), t('rosa-alfa.png'),
+        '-alpha', 'off', '-compose', 'CopyOpacity', '-composite',
         t('veu-pe.png')]);
-/* Radial ancorado no canto: gera-se o dobro do tamanho, com o foco no
-   meio, e recorta-se o quadrante superior esquerdo — assim o centro do
-   degradê cai exatamente no canto inferior direito da peça. Girar um
-   degradê linear em 315° não serve: o -rotate do ImageMagick gira a tela
-   toda e devolve uma cunha diagonal por cima da foto. */
-magick(['-size', `${L * 2}x${A * 2}`,
-        'radial-gradient:rgba(6,26,58,0.62)-rgba(6,26,58,0)',
-        '-crop', `${L}x${A}+0+0`, '+repage',
-        t('veu-marca.png')]);
 
 /* ── 3. Textura de setas, a 7% ────────────────────────────────────────
    Assinatura da campanha: é o que faz a peça ser reconhecida antes de
@@ -155,44 +174,111 @@ magick(['-size', `${larguraSelo}x${ALTURA_SELO}`, 'xc:none',
         '-annotate', `+${PAD_X + ICONE + VAO}+1`, FRASE,
         t('selo.png')]);
 
-/* ── 5. Lockup ────────────────────────────────────────────────────────
-   VOTE PEPÊ 11223: o cartão circula em rede social, é peça de campanha.
-   Proporção travada — altura livre, largura automática. */
-magick([path.join(MARCA, 'marca/vote-11223-escuro-480.webp'),
-        '-resize', 'x148', t('marca.png')]);
+/* ── 5. Lockup Pepê por Elas ──────────────────────────────────────────
+   PEPÊ em tipo e "por elas" em desenho, empilhados — é assim que o convite
+   do evento está montado, e o cartão tem de ser reconhecido como parte da
+   mesma peça.
+
+   Não entra aqui o lockup VOTE PEPÊ 11223: ele traz um segundo PEPÊ
+   grande, e dois lockups na mesma peça se anulam. O número aparece na
+   assinatura, em texto, no canto oposto. É a mesma decisão já tomada no
+   cartão do credenciamento.
+
+   O PEPÊ sai na Acumin Pro 700, e não na Wide Black da manchete: é a
+   largura que o convite publicou, e é dela que o lettering "por elas"
+   transborda à direita. Na Wide o PEPÊ ficaria mais largo que o desenho e
+   o degrau do lockup se perderia. */
+const CORPO_PEPE = 96;
+const LARGURA_PORELAS = 330;
+magick(['-background', 'none',
+        '-font', path.join(FONTES, 'acumin-700.otf'), '-pointsize', String(CORPO_PEPE),
+        '-fill', BRANCO, '-kerning', '-2',
+        'label:PEPÊ', '-trim', '+repage', t('pepe.png')]);
+magick([path.join(RAIZ, 'app/marca/por-elas-branco-900.png'),
+        '-resize', `${LARGURA_PORELAS}x`, t('porelas.png')]);
+
+const alturaPepe = Number(magick([t('pepe.png'), '-format', '%h', 'info:']).toString());
+const alturaPorElas = Number(magick([t('porelas.png'), '-format', '%h', 'info:']).toString());
+/* O desenho encosta no tipo: no convite o "p" do lettering sobe por trás do
+   PEPÊ. 14 px de sobreposição reproduzem esse encaixe nesta escala. */
+const SOBREPOR = 14;
+const alturaLockup = alturaPepe + alturaPorElas - SOBREPOR;
+magick(['-size', `${LARGURA_PORELAS}x${alturaLockup}`, 'xc:none',
+        t('pepe.png'), '-gravity', 'northwest', '-geometry', '+0+0', '-composite',
+        t('porelas.png'), '-gravity', 'northwest',
+        '-geometry', `+0+${alturaPepe - SOBREPOR}`, '-composite',
+        t('lockup-limpo.png')]);
+
+/* Sombra atrás do lockup. Não é enfeite: o topo do desenho fica a quase
+   metade da altura do cartão, onde a faixa rosa já é transparente, e medindo
+   ali o branco dá 2,4 sobre a foto — reprova até como texto grande. Subir a
+   faixa até lá enterraria a foto, que é o conteúdo. A sombra resolve no
+   lugar, e é o que o convite publicado também faz no PEPÊ. */
+/* A sombra é construída à mão numa tela de tamanho fixo, e não com o
+   `-shadow` + `-layers merge` do ImageMagick. O merge recalcula a tela
+   conforme o borrão e reposiciona o conteúdo: medindo, o desenho acabava
+   em (22,22) de uma tela de 470×371 em vez dos (70,70) pedidos, e o
+   lockup ia encostar na borda esquerda do cartão. Aqui nada redimensiona,
+   então a posição é a que está escrita.
+
+   A sombra não é enfeite: o topo do desenho fica a quase metade da altura
+   do cartão, onde a faixa rosa já é transparente, e ali o branco mede 2,4
+   de contraste sobre a foto — reprova até como texto grande. Subir a faixa
+   até lá enterraria a foto, que é o conteúdo. É o mesmo recurso que o
+   convite publicado usa no PEPÊ. Com ela o pior ponto do lockup sai de
+   2,84 para 3,10, que é o mínimo exigido de texto grande com folga. */
+/* A margem tem de ser maior que o alcance do borrão (uns 3 sigmas), senão
+   a sombra é cortada na borda da tela e aparece um vinco reto. */
+const SOMBRA_BORRAO = 36;
+const PAD_SOMBRA = SOMBRA_BORRAO * 3 + 20;
+const SOMBRA_QUEDA = 12;
+const larguraComSombra = LARGURA_PORELAS + PAD_SOMBRA * 2;
+const alturaComSombra = alturaLockup + PAD_SOMBRA * 2;
+
+magick(['-size', `${larguraComSombra}x${alturaComSombra}`, 'xc:none',
+        t('lockup-limpo.png'), '-gravity', 'northwest',
+        '-geometry', `+${PAD_SOMBRA}+${PAD_SOMBRA}`, '-composite',
+        t('lockup-base.png')]);
+magick([t('lockup-base.png'), '-alpha', 'extract',
+        '-blur', `0x${SOMBRA_BORRAO}`, '-evaluate', 'multiply', '0.95',
+        t('sombra-mascara.png')]);
+magick(['-size', `${larguraComSombra}x${alturaComSombra}`, 'xc:#2D0620',
+        t('sombra-mascara.png'), '-alpha', 'off', '-compose', 'CopyOpacity', '-composite',
+        '-roll', `+0+${SOMBRA_QUEDA}`,
+        t('sombra.png')]);
+magick([t('sombra.png'), t('lockup-base.png'), '-composite', t('lockup.png')]);
 
 /* ── 6. Composição ────────────────────────────────────────────────────
-   Título e subtítulo assentam no pé, à esquerda, dentro da faixa. A marca
-   ocupa o canto oposto, na mesma linha de base. O selo fica lá em cima,
-   do lado direito, isolado. */
-const fonteWide = path.join(FONTES, 'acumin-wide-900.otf');
+   Lockup e linha de local assentam no pé, à esquerda, dentro da faixa. A
+   assinatura com o número ocupa o canto oposto, na mesma linha de base. O
+   selo do reconhecimento fica lá em cima, do lado direito, isolado. */
 const fonteLeve = path.join(FONTES, 'acumin-400.otf');
 
-/* O subtítulo é onde o evento aconteceu. Endereço quando houver, senão a
-   cidade e a data seguram a linha sozinhas — cartão sem lugar nenhum
-   escrito não diz ao eleitor se aquilo foi perto dele. */
-const dataExtenso = new Date(`${evento.data}T12:00:00`)
-  .toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
-const subtitulo = [evento.local, evento.endereco].filter(Boolean).join('  ·  ')
-  || dataExtenso;
+/* A linha diz onde o evento foi. Endereço na frente e cidade atrás, que é
+   como se lê um convite; sem endereço, a cidade segura sozinha. Cartão sem
+   lugar nenhum escrito não diz ao eleitor se aquilo foi perto dele. */
+const ondeFoi = [evento.endereco, evento.local].filter(Boolean).join('  ·  ');
 
 magick([
   t('foto.png'),
   t('veu-pe.png'), '-composite',
-  t('veu-marca.png'), '-composite',
   t('textura.png'), '-composite',
 
-  // manchete no pé: Wide Black, que é a largura do lockup impresso
+  t('lockup.png'), '-gravity', 'southwest',
+  '-geometry', `+${MARGEM - PAD_SOMBRA}+${MARGEM + 46 - PAD_SOMBRA}`, '-composite',
+
+  // onde foi, no rosa claro do convite
   '-gravity', 'southwest',
-  '-font', fonteWide, '-pointsize', '80', '-fill', BRANCO, '-kerning', '-1',
-  '-annotate', `+${MARGEM - 5}+${MARGEM + 52}`, evento.titulo.toUpperCase(),
+  '-font', fonteLeve, '-pointsize', '26', '-fill', ROSA_CLARO, '-kerning', '1.2',
+  '-annotate', `+${MARGEM + 3}+${MARGEM}`, ondeFoi,
 
-  // onde foi
-  '-font', fonteLeve, '-pointsize', '27', '-fill', BRANCO, '-kerning', '0.5',
-  '-annotate', `+${MARGEM}+${MARGEM}`, subtitulo,
-
-  t('marca.png'), '-gravity', 'southeast',
-  '-geometry', `+${MARGEM - 8}+${MARGEM - 20}`, '-composite',
+  /* A assinatura é o que mantém o número na peça, já que o lockup do VOTE
+     não entra. Amarelo sobre o fundo da faixa: o par de maior contraste
+     que o sistema tem depois do branco. */
+  '-gravity', 'southeast',
+  '-font', path.join(FONTES, 'acumin-700.otf'), '-pointsize', '22',
+  '-fill', AMARELO, '-kerning', '3',
+  '-annotate', `+${MARGEM}+${MARGEM + 2}`, 'PEPÊ COLLAÇO 11223',
 
   t('selo.png'), '-gravity', 'northeast',
   '-geometry', `+${MARGEM}+${MARGEM}`, '-composite',

@@ -1,0 +1,305 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   Galeria de fotos — Pepê Collaço 11223
+
+   As cores, fontes e o fundo vêm de /assets/brand/css/tokens.css.
+   Não escreva hex aqui: se faltar um tom, derive com color-mix().
+   O guia normativo é _IDENTIDADE/CLAUDE.md.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--cor-link); }
+svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.wrap { width: min(1240px, 100% - 40px); margin-inline: auto; }
+@media (max-width: 640px) { .wrap { width: calc(100% - 28px); } }
+
+/* O fundo da campanha: degradê em CSS + textura de setas por máscara.
+   Máscara e não background-image — um SVG por url() renderiza isolado e o
+   currentColor dele cai para preto, sumindo sobre o azul. */
+.fundo-campanha { position: relative; background: var(--grad-fundo); background-attachment: fixed; }
+.fundo-campanha::before {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-color: #fff;
+  -webkit-mask-image: var(--textura-setas); mask-image: var(--textura-setas);
+  -webkit-mask-size: var(--textura-tamanho); mask-size: var(--textura-tamanho);
+  opacity: var(--textura-opacidade);
+}
+body > * { position: relative; z-index: 1; }
+
+.pular {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--cor-acento); color: var(--cor-sobre-acento);
+  padding: 10px 18px; border-radius: 0 0 10px 0; font-weight: var(--peso-forte);
+}
+.pular:focus { left: 0; z-index: 50; }
+
+/* ── Cabeçalho ──────────────────────────────────────────────────────── */
+
+.cabecalho {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 18px 0 6px;
+}
+.voltar {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: var(--cor-texto-suave); text-decoration: none;
+  font-size: 15px; font-weight: var(--peso-forte);
+  padding: 8px 0; border-radius: 8px;
+}
+.voltar:hover { color: var(--cor-texto); }
+.voltar svg { width: 17px; height: 17px; }
+.cabecalho .marca { width: 84px; height: auto; }
+
+/* ── Capa ───────────────────────────────────────────────────────────── */
+
+.capa { padding: 20px 0 30px; max-width: 820px; }
+.capa-quando {
+  margin: 0 0 10px; color: var(--cor-acento);
+  font-size: 13px; font-weight: var(--peso-forte);
+  letter-spacing: .13em; text-transform: uppercase;
+}
+.capa h1 {
+  margin: 0;
+  font-family: var(--fonte-display); font-weight: var(--peso-display-forte);
+  /* Wide Black é a largura do lockup impresso; a Pro em 700 sai estreita
+     demais e a página passa a parecer de outra campanha. */
+  font-size: clamp(38px, 8.4vw, 74px); line-height: .95;
+  letter-spacing: -.015em; text-transform: uppercase;
+}
+.capa-sub {
+  margin: 14px 0 0; max-width: 46ch;
+  color: var(--cor-texto-suave); font-size: 18px;
+}
+.capa-sub:empty { display: none; }
+
+/* ── Busca por rosto ────────────────────────────────────────────────── */
+
+.busca {
+  display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center;
+  background: var(--veu-conteudo);
+  border: 1px solid var(--cor-borda);
+  border-radius: 20px; padding: 26px 28px;
+}
+@media (max-width: 760px) { .busca { grid-template-columns: 1fr; gap: 18px; padding: 22px 20px; } }
+.busca-texto h2 {
+  margin: 0 0 8px;
+  font-family: var(--fonte-display); font-weight: var(--peso-display-forte);
+  font-size: clamp(22px, 4.6vw, 30px); line-height: 1.05; text-transform: uppercase;
+}
+.busca-texto p { margin: 0; color: var(--cor-texto-suave); font-size: 15.5px; max-width: 56ch; }
+.busca-texto strong { color: var(--cor-texto); font-weight: var(--peso-forte); }
+.busca-acao { display: flex; flex-direction: column; gap: 9px; align-items: stretch; }
+.busca-nota { margin: 0; color: var(--cor-texto-suave); font-size: 12.5px; text-align: center; }
+
+/* O par canônico: amarelo com tinta, 10,8:1. Não inventar outro CTA. */
+.botao-principal {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--cor-acento); color: var(--cor-sobre-acento);
+  border: 0; border-radius: 12px; padding: 15px 26px;
+  font-family: var(--fonte); font-size: 16px; font-weight: var(--peso-forte);
+  cursor: pointer; white-space: nowrap;
+  transition: background .15s, transform .15s;
+}
+.botao-principal:hover { background: var(--cor-acento-hover); }
+.botao-principal:active { transform: translateY(1px); }
+.botao-principal:disabled { opacity: .55; cursor: default; transform: none; }
+.botao-principal svg { width: 20px; height: 20px; }
+
+.botao-vazado {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: transparent; color: var(--cor-texto);
+  border: 1px solid var(--cor-borda); border-radius: 12px; padding: 13px 22px;
+  font-family: var(--fonte); font-size: 15px; font-weight: var(--peso-forte);
+  cursor: pointer;
+}
+.botao-vazado:hover { border-color: var(--cor-texto-suave); }
+.botao-vazado svg { width: 18px; height: 18px; }
+
+/* ── Barra de contagem ──────────────────────────────────────────────── */
+
+.barra {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  flex-wrap: wrap; padding: 34px 0 14px; scroll-margin-top: 12px;
+}
+.contagem {
+  margin: 0; font-size: 14px; font-weight: var(--peso-forte);
+  letter-spacing: .1em; text-transform: uppercase; color: var(--cor-texto-suave);
+}
+.contagem strong { color: var(--cor-acento); }
+.limpar {
+  background: none; border: 0; padding: 6px 0; cursor: pointer;
+  color: var(--cor-link); font-family: var(--fonte); font-size: 14.5px;
+  font-weight: var(--peso-forte); text-decoration: underline; text-underline-offset: 3px;
+}
+
+/* ── Grade ──────────────────────────────────────────────────────────── */
+
+.grade {
+  display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(205px, 1fr));
+  padding-bottom: 12px;
+}
+@media (max-width: 560px) {
+  .grade { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 7px; }
+}
+
+.cartao {
+  position: relative; display: block; padding: 0; border: 0; cursor: pointer;
+  aspect-ratio: 3 / 2; overflow: hidden; border-radius: 12px;
+  background: color-mix(in srgb, var(--pp-navy-escuro) 70%, transparent);
+}
+.cartao img {
+  width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity .35s ease, transform .4s ease;
+}
+.cartao img.pronta { opacity: 1; }
+.cartao:hover img { transform: scale(1.045); }
+.cartao:focus-visible { outline: 3px solid var(--cor-acento); outline-offset: 2px; }
+
+/* Selo de semelhança, só quando a grade está mostrando um resultado de busca. */
+.selo {
+  position: absolute; left: 8px; bottom: 8px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 9px; border-radius: 999px;
+  font-size: 11.5px; font-weight: var(--peso-forte);
+  letter-spacing: .04em; text-transform: uppercase;
+  background: var(--cor-acento); color: var(--cor-sobre-acento);
+}
+.selo.talvez { background: color-mix(in srgb, var(--pp-tinta) 82%, transparent); color: var(--cor-texto); }
+
+.vazio {
+  grid-column: 1 / -1; text-align: center; padding: 48px 20px;
+  color: var(--cor-texto-suave);
+}
+.vazio strong { display: block; color: var(--cor-texto); font-size: 19px; margin-bottom: 6px; }
+
+.rodape-nota {
+  margin: 10px 0 0; color: var(--cor-texto-suave); font-size: 14px;
+}
+
+/* ── Rodapé ─────────────────────────────────────────────────────────── */
+
+.rodape {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  padding: 46px 0 40px; margin-top: 34px;
+  border-top: 1px solid var(--cor-borda);
+}
+.rodape img { width: 92px; height: auto; }
+.rodape p { margin: 0; color: var(--cor-texto-suave); font-size: 15px; }
+
+/* ── Visor (foto aberta) ────────────────────────────────────────────── */
+
+.visor {
+  position: fixed; inset: 0; z-index: 60;
+  display: grid; grid-template-rows: auto 1fr auto;
+  background: color-mix(in srgb, var(--pp-tinta) 96%, transparent);
+  backdrop-filter: blur(6px);
+}
+.visor[hidden] { display: none; }
+.visor-topo, .visor-pe {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px max(14px, env(safe-area-inset-right)) 12px max(14px, env(safe-area-inset-left));
+}
+.visor-pe { padding-bottom: max(14px, env(safe-area-inset-bottom)); justify-content: center; gap: 10px; flex-wrap: wrap; }
+.visor-indice { margin: 0; font-size: 14px; color: var(--cor-texto-suave); font-variant-numeric: tabular-nums; }
+
+.visor-palco { position: relative; display: grid; place-items: center; min-height: 0; padding: 0 8px; }
+.visor-palco img {
+  max-width: 100%; max-height: 100%; width: auto; height: auto;
+  object-fit: contain; border-radius: 6px;
+}
+/* Moldura de onde o rosto buscado aparece na foto. Some sozinha: serve para
+   localizar de relance, e ficar acesa o tempo todo atrapalha ver a foto. */
+.marcador {
+  position: absolute; border: 2.5px solid var(--cor-acento);
+  border-radius: 8px; box-shadow: 0 0 0 9999px rgba(6, 26, 58, .42);
+  pointer-events: none; animation: apagar 2.6s ease forwards;
+}
+@keyframes apagar { 0%, 55% { opacity: 1; } 100% { opacity: 0; } }
+
+.icone {
+  display: inline-grid; place-items: center; width: 44px; height: 44px;
+  background: rgba(255, 255, 255, .08); border: 1px solid var(--cor-borda);
+  border-radius: 50%; cursor: pointer; color: var(--cor-texto); padding: 0;
+}
+.icone:hover { background: rgba(255, 255, 255, .16); }
+.icone svg { width: 21px; height: 21px; }
+.seta {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 52px; height: 52px;
+}
+.seta.esq { left: 10px; }
+.seta.dir { right: 10px; }
+@media (max-width: 560px) { .seta { display: none; } }  /* no celular, arrasta */
+
+/* ── Painel da busca ────────────────────────────────────────────────── */
+
+.painel {
+  position: fixed; inset: 0; z-index: 70;
+  display: grid; place-items: center; padding: 18px;
+  background: color-mix(in srgb, var(--pp-tinta) 90%, transparent);
+  backdrop-filter: blur(8px);
+}
+.painel[hidden] { display: none; }
+.painel-caixa {
+  /* posicionada porque o X de fechar se ancora nela; sem isto ele escapa
+     para o canto da tela, que é onde não se procura por ele */
+  position: relative;
+  width: min(520px, 100%); max-height: calc(100vh - 36px); overflow-y: auto;
+  background: var(--pp-navy-escuro);
+  border: 1px solid var(--cor-borda); border-radius: 20px;
+  padding: 26px; text-align: center;
+}
+.painel-caixa h2 {
+  /* recuo dos dois lados para o título não correr por baixo do X de fechar;
+     simétrico porque ele é centrado, e só à direita desalinharia a peça */
+  margin: 0 0 10px; padding-inline: 34px;
+  font-family: var(--fonte-display); font-weight: var(--peso-display-forte);
+  font-size: 25px; line-height: 1.05; text-transform: uppercase;
+}
+.painel-caixa p { margin: 0 0 18px; color: var(--cor-texto-suave); font-size: 15px; }
+.painel-botoes { display: grid; gap: 10px; }
+.painel-fechar { position: absolute; top: 16px; right: 16px; }
+
+.camera {
+  position: relative; width: 100%; aspect-ratio: 3 / 4; max-height: 54vh;
+  margin: 0 0 16px; border-radius: 14px; overflow: hidden; background: #000;
+}
+.camera video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+.camera-alvo {
+  position: absolute; inset: 12% 18%; border: 2px dashed rgba(255, 255, 255, .5);
+  border-radius: 50%; pointer-events: none;
+}
+
+.progresso {
+  height: 6px; border-radius: 999px; overflow: hidden;
+  background: rgba(255, 255, 255, .12); margin: 6px 0 14px;
+}
+.progresso i { display: block; height: 100%; width: 0; background: var(--cor-acento); transition: width .25s; }
+
+.aviso {
+  margin: 14px 0 0; padding: 12px 14px; border-radius: 10px;
+  background: color-mix(in srgb, var(--pp-alerta) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--pp-alerta) 55%, transparent);
+  color: var(--cor-texto); font-size: 14.5px; text-align: left;
+}
+.privacidade {
+  margin: 16px 0 0; font-size: 12.5px; line-height: 1.5;
+  color: var(--cor-texto-suave); text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

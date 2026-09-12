@@ -1,0 +1,2 @@
+onnxruntime-web 1.20.1
+Copiado de node_modules por foto/bin. Para atualizar: npm i onnxruntime-web@<versao> em foto/bin e copiar os tres arquivos de novo.

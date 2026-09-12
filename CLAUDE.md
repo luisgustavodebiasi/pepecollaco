@@ -188,6 +188,7 @@ leia antes de mexer em cor, fonte, logo ou fundo em qualquer app.
 | `index.html`, `assets/`, `quem-faz/`, `tubarao/`, `ruas/`, `painel/`, `time/`, `admin/`, `credenciar/` | Site do deputado, servido na raiz por GitHub Pages em www.pepecollaco.com |
 | `ruas/` | Fonte-verdade das 69 ruas de Tubarão com recurso do mandato (páginas 10–11 da apresentação); alimenta a página pepecollaco.com/ruas/ (ver `ruas/README.md`) |
 | `treine-seu-voto/` | App da urna de treino em vote.pepecollaco.com: React+Vite estático, projeto Vercel próprio, nada gravado (ver `treine-seu-voto/README.md`) |
+| `foto/` | Galeria dos eventos em pepecollaco.com/foto, com busca por rosto que roda dentro do navegador de quem busca (ver `foto/README.md`) |
 | `_IDENTIDADE/CLAUDE.md` | Guia normativo da identidade visual 11223 (cores, marcas, fontes, contraste) |
 | `_ARTE /` | Originais da agência (PNG 8000px, .ai, .psd) — fonte dos derivados web |
 
@@ -201,7 +202,7 @@ que fica na raiz é servido em www.pepecollaco.com.
 
 - Site: `index.html`, `404.html`, `CNAME`, `assets/` e as pastas de página
   (`quem-faz/`, `tubarao/`, `ruas/`, `painel/`, `time/`, `admin/`, `credenciar/`,
-  `credenciamento/`, `proposta-2026/`).
+  `credenciamento/`, `proposta-2026/`, `foto/`).
 - Bases e material de trabalho: `EMENDAS /`, `REDES/`, `IMPRENSA/`, `PLANO MESTRE/`,
   `ROTEIROS/`, `_IDENTIDADE/`, `IMPULSIONAMENTOS/`, `SANTINHOS MODULARES/`,
   `WIND BANNER/`, `BONÉ/`, `WPP/`, `jingle-player/`, `treine-seu-voto/`.

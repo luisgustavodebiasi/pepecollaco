@@ -1,0 +1,14 @@
+{
+  "name": "pepe-foto-bin",
+  "private": true,
+  "type": "module",
+  "description": "Ferramentas de linha de comando da galeria de fotos. Rodam na máquina de quem publica, nunca no site.",
+  "scripts": {
+    "evento": "node gerar-evento.mjs"
+  },
+  "dependencies": {
+    "onnxruntime-node": "^1.20.1",
+    "onnxruntime-web": "^1.20.1",
+    "sharp": "^0.33.5"
+  }
+}

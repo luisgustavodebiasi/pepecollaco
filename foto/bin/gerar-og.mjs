@@ -37,10 +37,11 @@ const MARCA = path.join(SITE, 'assets/brand');
 const FONTES = path.join(SITE, '_IDENTIDADE/dist/fontes');
 
 const L = 1200, A = 630;          // o formato que Facebook e WhatsApp esperam
-const MARGEM = 64;
+const MARGEM = 56;
 
 const AMARELO = '#FFC400';
 const TINTA = '#061A3A';
+const BRANCO = '#FEFFFF';
 
 const magick = (args) => execFileSync('magick', args, { stdio: ['ignore', 'pipe', 'pipe'] });
 
@@ -85,29 +86,36 @@ magick([fonteFoto, '-resize', `${L}x${A}^`, '-gravity', 'north',
         t('foto.png')]);
 
 /* ── 2. Véu ───────────────────────────────────────────────────────────
-   Três camadas, e cada uma resolve um problema diferente.
+   Uma faixa azul curta subindo do pé, e só. O resto da foto fica foto: é
+   um grupo de duzentas pessoas, e escurecer o quadro inteiro só para
+   acomodar texto joga fora o que a imagem tem de melhor.
 
-   A base escurece a foto inteira de leve, só para o branco descolar dela.
+   A curva foi calibrada medindo, não no olho: sobre esta foto o branco da
+   manchete precisa de 3,0 de contraste (é texto grande) e o do subtítulo
+   de 4,5 (é corpo). Com 0,98 na borda e a curva abaixo, o pior ponto da
+   manchete dá 3,60 e o do subtítulo 8,29. Mexer nos números sem refazer a
+   medição é chutar — a foto de cada evento tem um pé diferente, e uma
+   roupa branca no canto inferior esquerdo derruba tudo.
 
-   A rampa da esquerda é a do guia: o texto mora ali, e sem ela a linha da
-   data cai sobre roupa clara e some. Ela fecha antes dos dois terços, para
-   a metade direita da foto continuar foto e o lockup não nadar no escuro.
+   Por cima da faixa, no canto direito, um reforço radial: a marca tem
+   branco e amarelo claro e precisa de um pouco mais de fundo do que o
+   texto para não encostar na foto.
 
-   A rampa do pé assenta o selo amarelo.
-
-   As três se somam no canto inferior esquerdo, que é onde o cartão fica
-   mais fechado. O guia avisa que acima de 0,80 a textura de setas some, e
-   é por isso que a textura entra DEPOIS do véu, não antes: assim ela
-   continua legível justamente no canto mais escuro. */
-magick(['-size', `${L}x${A}`, 'xc:rgba(6,26,58,0.20)', t('veu-base.png')]);
-magick(['-size', `${L}x${A}`, 'gradient:rgba(6,26,58,0.78)-rgba(6,26,58,0)',
-        '-rotate', '270',                  // opaco à esquerda, limpo à direita
-        '-function', 'polynomial', '1.7,-0.7,0',
-        t('veu-esquerda.png')]);
-magick(['-size', `${L}x${A}`, 'gradient:rgba(6,26,58,0.72)-rgba(6,26,58,0)',
-        '-rotate', '180',                  // opaco embaixo, transparente em cima
-        '-function', 'polynomial', '2.0,-1.0,0',   // segura a rampa no terço de baixo
+   A textura de setas entra DEPOIS do véu — o guia avisa que acima de 0,80
+   ela some, e é justamente no pé que ela precisa continuar visível. */
+magick(['-size', `${L}x${A}`, 'gradient:rgba(6,26,58,0.98)-rgba(6,26,58,0)',
+        '-rotate', '180',                  // opaco embaixo, limpo em cima
+        '-function', 'polynomial', '1.4,-0.4,0',
         t('veu-pe.png')]);
+/* Radial ancorado no canto: gera-se o dobro do tamanho, com o foco no
+   meio, e recorta-se o quadrante superior esquerdo — assim o centro do
+   degradê cai exatamente no canto inferior direito da peça. Girar um
+   degradê linear em 315° não serve: o -rotate do ImageMagick gira a tela
+   toda e devolve uma cunha diagonal por cima da foto. */
+magick(['-size', `${L * 2}x${A * 2}`,
+        'radial-gradient:rgba(6,26,58,0.62)-rgba(6,26,58,0)',
+        '-crop', `${L}x${A}+0+0`, '+repage',
+        t('veu-marca.png')]);
 
 /* ── 3. Textura de setas, a 7% ────────────────────────────────────────
    Assinatura da campanha: é o que faz a peça ser reconhecida antes de
@@ -120,9 +128,12 @@ magick([path.join(MARCA, 'textura/setas-tile.svg'), '-resize', '308x491!',
 
 /* ── 4. Selo do reconhecimento ────────────────────────────────────────
    É o que esta galeria tem de diferente de um álbum qualquer, e é o
-   motivo de alguém abrir o link. Vai em pílula amarela com texto tinta —
-   o par canônico do sistema, 10,8:1 — para ler como recurso, e não como
-   mais uma linha de legenda. */
+   motivo de alguém abrir o link. Fica no alto à direita, sozinho no céu
+   da foto, onde nada compete com ele.
+
+   Branco com texto tinta: ali em cima não passa véu nenhum, então a
+   pílula precisa carregar o próprio contraste. Sobre o fundo branco o
+   tinta dá 17:1, o par mais legível do sistema. */
 const FRASE = 'ACHE A SUA FOTO PELO ROSTO';
 const CORPO_SELO = 23;
 const ICONE = 34;
@@ -136,7 +147,7 @@ const svgIcone = fs.readFileSync(path.join(RAIZ, 'app/icone/rosto-busca.svg'), '
 await sharp(Buffer.from(svgIcone)).resize(ICONE, ICONE).png().toFile(t('icone.png'));
 
 magick(['-size', `${larguraSelo}x${ALTURA_SELO}`, 'xc:none',
-        '-fill', AMARELO, '-draw',
+        '-fill', BRANCO, '-draw',
         `roundrectangle 0,0 ${larguraSelo - 1},${ALTURA_SELO - 1} ${ALTURA_SELO / 2},${ALTURA_SELO / 2}`,
         t('icone.png'), '-gravity', 'west', '-geometry', `+${PAD_X}+0`, '-composite',
         '-font', fonteTexto, '-pointsize', String(CORPO_SELO), '-kerning', '1.6',
@@ -151,40 +162,40 @@ magick([path.join(MARCA, 'marca/vote-11223-escuro-480.webp'),
         '-resize', 'x148', t('marca.png')]);
 
 /* ── 6. Composição ────────────────────────────────────────────────────
-   As distâncias são medidas a partir do pé do cartão, de baixo para cima:
-   selo, linha de dados, manchete, sobrancelha. */
+   Título e subtítulo assentam no pé, à esquerda, dentro da faixa. A marca
+   ocupa o canto oposto, na mesma linha de base. O selo fica lá em cima,
+   do lado direito, isolado. */
 const fonteWide = path.join(FONTES, 'acumin-wide-900.otf');
 const fonteLeve = path.join(FONTES, 'acumin-400.otf');
 
+/* O subtítulo é onde o evento aconteceu. Endereço quando houver, senão a
+   cidade e a data seguram a linha sozinhas — cartão sem lugar nenhum
+   escrito não diz ao eleitor se aquilo foi perto dele. */
 const dataExtenso = new Date(`${evento.data}T12:00:00`)
   .toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
-const linhaDados = [dataExtenso, evento.local, `${dados.fotos.length} fotos`]
-  .filter(Boolean).join('   ·   ');
+const subtitulo = [evento.local, evento.endereco].filter(Boolean).join('  ·  ')
+  || dataExtenso;
 
 magick([
   t('foto.png'),
-  t('veu-base.png'), '-composite',
-  t('veu-esquerda.png'), '-composite',
   t('veu-pe.png'), '-composite',
+  t('veu-marca.png'), '-composite',
   t('textura.png'), '-composite',
+
+  // manchete no pé: Wide Black, que é a largura do lockup impresso
   '-gravity', 'southwest',
+  '-font', fonteWide, '-pointsize', '80', '-fill', BRANCO, '-kerning', '-1',
+  '-annotate', `+${MARGEM - 5}+${MARGEM + 52}`, evento.titulo.toUpperCase(),
 
-  // sobrancelha amarela: diz o que a página é
-  '-font', fonteTexto, '-pointsize', '26', '-fill', AMARELO, '-kerning', '7',
-  '-annotate', `+${MARGEM}+${MARGEM + 262}`, 'FOTOS',
-
-  // manchete: Wide Black, que é a largura do lockup impresso
-  '-font', fonteWide, '-pointsize', '80', '-fill', '#FFFFFF', '-kerning', '-1',
-  '-annotate', `+${MARGEM - 5}+${MARGEM + 172}`, 'PEPÊ POR ELAS',
-
-  // quando, onde, quantas
-  '-font', fonteLeve, '-pointsize', '25', '-fill', '#FFFFFF', '-kerning', '0.5',
-  '-annotate', `+${MARGEM}+${MARGEM + 118}`, linhaDados,
-
-  t('selo.png'), '-geometry', `+${MARGEM}+${MARGEM}`, '-composite',
+  // onde foi
+  '-font', fonteLeve, '-pointsize', '27', '-fill', BRANCO, '-kerning', '0.5',
+  '-annotate', `+${MARGEM}+${MARGEM}`, subtitulo,
 
   t('marca.png'), '-gravity', 'southeast',
-  '-geometry', `+${MARGEM - 10}+${MARGEM - 12}`, '-composite',
+  '-geometry', `+${MARGEM - 8}+${MARGEM - 20}`, '-composite',
+
+  t('selo.png'), '-gravity', 'northeast',
+  '-geometry', `+${MARGEM}+${MARGEM}`, '-composite',
 
   '-quality', '88', '-strip', '-interlace', 'Plane',
   path.join(pasta, 'og.jpg'),

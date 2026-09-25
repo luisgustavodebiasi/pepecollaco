@@ -27,6 +27,8 @@ node_modules/
 out/
 dist/
 build/
+# o gerador das páginas QUEM FAZ se chama build/ mas é fonte, não saída
+!/quem-faz/build/
 .turbo/
 .vercel/
 .cache/

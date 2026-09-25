@@ -1,0 +1,405 @@
+{
+ "_leia": [
+  "Escrito à mão. Cada foto das páginas QUEM FAZ nasce daqui: build/preparar-fotos.cjs lê a origem, recorta e grava img/<id>.webp.",
+  "origem.tipo: 'arquivo' (caminho a partir da pasta PEPE), 'video' (quadro de um reel baixado por coletar-instagram.cjs, em segundos) ou 'pexels' (id da foto no banco).",
+  "recorte: proporção final e onde ancorar o corte na vertical (0 = topo, 1 = pé). Nos reels o letreiro e a legenda moram no topo e a dois terços da altura: âncora perto de 0,15 escapa dos dois.",
+  "ilustrativa: true em toda foto de banco. A página escreve 'imagem ilustrativa' ao lado dela: foto de banco não pode passar por registro do mandato."
+ ],
+ "fotos": [
+  {
+   "id": "porta-tubarao",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "assets/img/hero/Tubarao.jpg"
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.4
+   },
+   "largura": 1000,
+   "alt": "Vista aérea de Tubarão, com o Rio Tubarão cortando a cidade"
+  },
+  {
+   "id": "porta-amurel",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DdZMbiyscCz",
+    "segundos": 57.8
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.24
+   },
+   "largura": 720,
+   "alt": "A SC-370 serpenteando entre morros verdes, vista de drone"
+  },
+  {
+   "id": "porta-sul",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "Dc4RDmTuiWZ",
+    "segundos": 31.3
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.16
+   },
+   "largura": 720,
+   "alt": "Estrada nova asfaltada atravessando campos, vista de cima"
+  },
+  {
+   "id": "porta-cidades",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DccTCx8tXNP",
+    "segundos": 14.0
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.2
+   },
+   "largura": 720,
+   "alt": "Rua iluminada à noite numa cidade da serra, vista de drone"
+  },
+  {
+   "id": "porta-autismo",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "Dct9JBJhvHh",
+    "segundos": 12.0
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.26
+   },
+   "largura": 720,
+   "alt": "Criança em sessão de equoterapia, acompanhada por terapeutas"
+  },
+  {
+   "id": "porta-educacao",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "Ddr7JVkxc0r",
+    "segundos": 5.8
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.46
+   },
+   "largura": 720,
+   "alt": "A Creche Joelma de Bona, em Paulo Lopes, vista de cima"
+  },
+  {
+   "id": "porta-leis",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DcJ7ywGuYdP",
+    "segundos": 37.5
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.3
+   },
+   "largura": 720,
+   "alt": "Pepê Collaço assinando documentos em sessão na Alesc"
+  },
+  {
+   "id": "porta-ruas",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DcjKo40OMDe",
+    "segundos": 52.5
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.15
+   },
+   "largura": 720,
+   "alt": "Via recém-asfaltada em Tubarão, vista de drone"
+  },
+  {
+   "id": "porta-fotos",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "foto/pepe-por-elas/g/0231.jpg"
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.4
+   },
+   "largura": 1000,
+   "alt": "Pepê Collaço com apoiadoras no encontro Pepê por Elas"
+  },
+  {
+   "id": "estrada-01",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "foto/pepe-por-elas/g/0171.jpg"
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.3
+   },
+   "largura": 900,
+   "alt": "Pepê Collaço fala ao microfone no encontro Pepê por Elas"
+  },
+  {
+   "id": "estrada-02",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "assets/img/galeria/gal-06.webp"
+   },
+   "recorte": {
+    "proporcao": "3:2",
+    "ancora": 0.5
+   },
+   "largura": 900,
+   "alt": "Pepê Collaço na tribuna da Assembleia Legislativa"
+  },
+  {
+   "id": "estrada-03",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "foto/pepe-por-elas/g/0236.jpg"
+   },
+   "recorte": {
+    "proporcao": "3:2",
+    "ancora": 0.4
+   },
+   "largura": 1000,
+   "alt": "Plateia reunida em volta de Pepê Collaço no Pepê por Elas"
+  },
+  {
+   "id": "estrada-04",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DdHuxp2uISK",
+    "segundos": 27.8
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.2
+   },
+   "largura": 720,
+   "alt": "Pepê Collaço caminhando na beira-rio de Tubarão"
+  },
+  {
+   "id": "estrada-05",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "assets/img/galeria/gal-40.webp"
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.4
+   },
+   "largura": 900,
+   "alt": "Pepê Collaço com as soberanas de uma festa típica"
+  },
+  {
+   "id": "estrada-06",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "assets/img/galeria/gal-26.webp"
+   },
+   "recorte": {
+    "proporcao": "3:2",
+    "ancora": 0.5
+   },
+   "largura": 900,
+   "alt": "Pepê Collaço num churrasco de comunidade"
+  },
+  {
+   "id": "estrada-07",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "foto/pepe-por-elas/g/0206.jpg"
+   },
+   "recorte": {
+    "proporcao": "3:2",
+    "ancora": 0.5
+   },
+   "largura": 1000,
+   "alt": "Selfie coletiva com o público do Pepê por Elas"
+  },
+  {
+   "id": "estrada-08",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "assets/img/galeria/gal-24.webp"
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.5
+   },
+   "largura": 900,
+   "alt": "Pepê Collaço trocando o pneu do carro na estrada"
+  },
+  {
+   "id": "estrada-09",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "assets/img/galeria/gal-38.webp"
+   },
+   "recorte": {
+    "proporcao": "3:2",
+    "ancora": 0.5
+   },
+   "largura": 900,
+   "alt": "Pepê Collaço servindo comida numa ação de comunidade"
+  },
+  {
+   "id": "estrada-10",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "foto/pepe-por-elas/g/0141.jpg"
+   },
+   "recorte": {
+    "proporcao": "3:2",
+    "ancora": 0.4
+   },
+   "largura": 1000,
+   "alt": "Pepê Collaço conversa com o público segurando o microfone"
+  },
+  {
+   "id": "lei-testes-rapidos",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DbwkX6RN2Ev",
+    "segundos": 33.1
+   },
+   "recorte": {
+    "proporcao": "1:1",
+    "ancora": 0.1
+   },
+   "largura": 720,
+   "alt": "Testes rápidos de farmácia sobre a bancada"
+  },
+  {
+   "id": "lei-testes-farmacia",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DbwkX6RN2Ev",
+    "segundos": 3.7
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.14
+   },
+   "largura": 720,
+   "alt": "Pepê Collaço numa farmácia que faz testes rápidos"
+  },
+  {
+   "id": "lei-energia-solar",
+   "origem": {
+    "tipo": "pexels",
+    "id": 8783541
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Telhado coberto de painéis solares visto de cima",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-aguas-termais",
+   "origem": {
+    "tipo": "pexels",
+    "id": 5350463
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Piscina ao ar livre com montanhas ao fundo",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-ovinocaprinocultura",
+   "origem": {
+    "tipo": "pexels",
+    "id": 5210298
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Cabras pastando num campo verde ao pé da serra",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-cine-azul",
+   "origem": {
+    "tipo": "pexels",
+    "id": 7991486
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "tom": "azul",
+   "alt": "Sala de cinema com as luzes baixas",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-pia",
+   "origem": {
+    "tipo": "pexels",
+    "id": 8923982
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.45
+   },
+   "largura": 1100,
+   "alt": "Brinquedos pedagógicos coloridos sobre a mesa de uma sala de aula",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-pia-documento",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DdUlrSTx_cp",
+    "segundos": 43.8
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.3
+   },
+   "largura": 720,
+   "alt": "Primeira página do projeto de lei do Protocolo Individualizado de Avaliação"
+  },
+  {
+   "id": "lei-segundo-professor",
+   "origem": {
+    "tipo": "pexels",
+    "id": 29932839
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Sala de aula vazia com luz natural",
+   "ilustrativa": true
+  },
+  {
+   "id": "leis-plenario",
+   "origem": {
+    "tipo": "arquivo",
+    "caminho": "assets/img/galeria/gal-20.webp"
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.4
+   },
+   "largura": 900,
+   "alt": "Pepê Collaço no plenário da Assembleia Legislativa de Santa Catarina"
+  }
+ ]
+}

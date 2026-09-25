@@ -1,0 +1,179 @@
+{
+ "_leia": [
+  "Escrito à mão: o texto das páginas de lei, em /quem-faz/projetos-de-lei/<slug>/.",
+  "Número da lei, datas, situação e setor NUNCA entram aqui: vêm de leis.json pelo `codigo`, apurados no e-Legis.",
+  "O texto só pode vir de três fontes: a ementa oficial, os textos já publicados no site (seção #leis da home) e as legendas dos posts do próprio deputado. Cada `citacao` aponta o post de onde saiu.",
+  "Foto de banco (ilustrativa em fotos.json) aparece marcada na página."
+ ],
+ "seo": {
+  "titulo": "Quem faz lei",
+  "descricao": "As 41 proposições de Pepê Collaço na Alesc, com a situação oficial de cada uma: 28 viraram lei, entre elas testes rápidos nas farmácias, energia solar nos hospitais filantrópicos e o Cine Azul.",
+  "ogDescricao": "28 leis aprovadas em Santa Catarina. O que cada uma muda na vida de quem mora aqui."
+ },
+ "compartilhar": "As leis do Pepê Collaço em Santa Catarina, e o que cada uma muda:",
+ "hero": {
+  "frase": "Poucos projetos, grandes impactos. <b>41 proposições</b> apresentadas na Alesc desde 2023, e a situação de cada uma vem direto da tramitação oficial, no e-Legis."
+ },
+ "destaques": [
+  {
+   "slug": "testes-rapidos-nas-farmacias",
+   "codigo": "PL./0281/2023",
+   "titulo": "Testes rápidos nas farmácias",
+   "curto": "Testes rápidos e exames na farmácia perto de casa, com as regras de segurança da Anvisa.",
+   "foto": "lei-testes-farmacia",
+   "fotoApoio": "lei-testes-rapidos",
+   "legendaApoio": "Testes rápidos numa farmácia de Santa Catarina. Quadro do vídeo publicado pelo deputado em 08/08/2026.",
+   "frase": "Farmácias e drogarias de Santa Catarina podem fazer exames de análises clínicas e testes rápidos, com as condições de segurança da Anvisa. Para quem mora longe de um laboratório, o cuidado fica mais perto.",
+   "pratica": [
+    "Coloca na lei estadual a Resolução nº 786/2023 da Anvisa, que define as condições seguras para exames de análises clínicas em farmácias.",
+    "Glicemia, colesterol, dengue, Covid, HIV e outros testes previstos na regulamentação ajudam no acompanhamento da saúde, sempre com orientação profissional.",
+    "O teste rápido tem caráter indicativo: não substitui o diagnóstico de laboratório nem a consulta médica, e não envolve coleta de sangue da veia."
+   ],
+   "quemGanha": [
+    "Quem mora em cidade pequena ou no interior, longe de um laboratório",
+    "Quem acompanha diabetes, colesterol ou outra condição de rotina",
+    "Farmácias e drogarias, que ganham regra clara para oferecer o serviço"
+   ],
+   "citacao": { "texto": "Saúde não pode depender da distância. Cuidado bom é cuidado que chega mais perto das pessoas.", "post": "DbwkX6RN2Ev" },
+   "posts": ["DBuCrSKJaHK", "C-SynpCuRnO", "DbwkX6RN2Ev", "C7hnTDQJtnF"],
+   "icone": "stethoscope"
+  },
+  {
+   "slug": "energia-solar-nos-hospitais",
+   "codigo": "PL./0257/2025",
+   "titulo": "Energia solar nos hospitais filantrópicos",
+   "curto": "Recursos do Fundo Social para pôr painéis solares nos hospitais filantrópicos.",
+   "foto": "lei-energia-solar",
+   "frase": "Recursos do Fundo Social podem pagar a instalação de painéis solares em hospitais filantrópicos. Menos conta de luz é mais dinheiro no atendimento.",
+   "pratica": [
+    "Altera a lei do Fundo Social (Lei nº 18.334/2022) para permitir que recursos ligados a benefícios fiscais sejam destinados a sistemas fotovoltaicos em hospitais filantrópicos.",
+    "A energia gerada no próprio telhado reduz um custo fixo que pesa todo mês no caixa dessas instituições.",
+    "O que deixa de ir para a conta de luz pode ir para manter e qualificar o atendimento à população."
+   ],
+   "quemGanha": [
+    "Os hospitais filantrópicos de Santa Catarina",
+    "Quem é atendido por eles, com mais recurso indo para o cuidado",
+    "O meio ambiente, com energia limpa gerada no próprio hospital"
+   ],
+   "citacao": { "texto": "Imagine transformar o gasto com energia em mais exames, consultas, medicamentos e atendimento para quem mais precisa.", "post": "DaBaTfRJPmA" },
+   "posts": ["DWCkUfKgRkT", "DWMlY0GgGV-", "DaBaTfRJPmA", "DZiTR5cu6-s"],
+   "icone": "sun"
+  },
+  {
+   "slug": "rota-das-aguas-termais",
+   "codigo": "PL./0265/2022",
+   "titulo": "Rota Turística das Águas Termais",
+   "curto": "A rota estadual que põe as cidades termais do Sul no mapa do turismo.",
+   "foto": "lei-aguas-termais",
+   "frase": "Institui a Rota Turística das Águas Termais de Santa Catarina e reúne as cidades termais, entre elas as do Sul, num mesmo circuito de turismo de saúde e bem-estar.",
+   "pratica": [
+    "Cria oficialmente a Rota Turística das Águas Termais no Estado.",
+    "Une num mesmo circuito cidades como Gravatal, Santo Amaro da Imperatriz, Piratuba, Águas Mornas e São João do Sul.",
+    "Rota oficial ajuda a divulgar o destino, atrair visitante o ano inteiro e movimentar comércio, hotelaria e serviços."
+   ],
+   "quemGanha": [
+    "As cidades termais, com Gravatal entre elas",
+    "Quem vive do turismo: hotéis, restaurantes, comércio",
+    "Quem visita, com um roteiro organizado"
+   ],
+   "citacao": { "texto": "Com a Rota das Águas Termais, unimos cidades como Gravatal, Santo Amaro da Imperatriz, Piratuba, Águas Mornas e São João do Sul em um circuito que valoriza o turismo, gera empregos e movimenta a economia.", "post": "DPG5Cj5DF5O" },
+   "posts": ["DPG5Cj5DF5O", "DdSAqg_BexT", "C15Urjmunp7"],
+   "icone": "map-pin"
+  },
+  {
+   "slug": "ovinocaprinocultura",
+   "codigo": "PL./0269/2022",
+   "titulo": "Incentivo à ovinocaprinocultura",
+   "curto": "Apoio a quem cria ovelhas e cabras, com crédito e espaço na merenda e nos hospitais.",
+   "foto": "lei-ovinocaprinocultura",
+   "frase": "Institui a política estadual de incentivo à criação de ovinos e caprinos: apoio técnico, crédito e espaço para esses alimentos em escolas e hospitais.",
+   "pratica": [
+    "Apoio técnico e campanhas de divulgação para quem cria ovinos e caprinos.",
+    "Inclusão da carne e do leite de ovinos e caprinos na alimentação de escolas, hospitais e casas de repouso.",
+    "Linhas de crédito e incentivo aos produtores."
+   ],
+   "quemGanha": [
+    "Os produtores rurais que criam ovinos e caprinos",
+    "A economia das cidades do interior",
+    "Escolas, hospitais e casas de repouso, com mais opção de alimento"
+   ],
+   "citacao": { "texto": "Essa iniciativa fortalece nossos produtores rurais e impulsiona a economia local.", "post": "DHOglVhOoZk" },
+   "posts": ["DHOglVhOoZk", "DDdIiqlOO5U"],
+   "icone": "users"
+  },
+  {
+   "slug": "cine-azul",
+   "codigo": "PL./0266/2022",
+   "titulo": "Cine Azul",
+   "curto": "Sessões de cinema adaptadas para crianças e adolescentes com autismo e suas famílias.",
+   "foto": "lei-cine-azul",
+   "frase": "Incentiva sessões de cinema adaptadas para crianças e adolescentes com autismo e suas famílias: luz parcialmente acesa, som mais baixo e um ambiente mais tranquilo.",
+   "pratica": [
+    "Incentiva a realização de sessões de cinema adaptadas a crianças e adolescentes com Transtorno do Espectro Autista e suas famílias.",
+    "Na Sessão Azul as luzes ficam parcialmente acesas, o som é reduzido e o ambiente é mais calmo, com menos estímulos.",
+    "A lei já está na rua: em agosto de 2026 o Cine Show do Farol Shopping programou mais uma Sessão Azul."
+   ],
+   "quemGanha": [
+    "Crianças e adolescentes com autismo",
+    "As famílias atípicas, que ganham um programa de lazer juntas",
+    "Os cinemas, que passam a receber um público novo"
+   ],
+   "citacao": { "texto": "Inclusão também significa garantir o acesso ao lazer, à convivência e a experiências que fazem parte da vida de todos.", "post": "DcBjuC2gDZB" },
+   "posts": ["DcBjuC2gDZB", "DbtvHIJoCpU", "DDFTmWEpgM_", "DdUlrSTx_cp"],
+   "icone": "clapperboard"
+  },
+  {
+   "slug": "protocolo-individualizado-de-avaliacao",
+   "codigo": "PL./0322/2023",
+   "titulo": "Protocolo Individualizado de Avaliação (PIA)",
+   "curto": "Avaliação adaptada para alunos com autismo nas escolas do Estado.",
+   "foto": "lei-pia",
+   "fotoApoio": "lei-pia-documento",
+   "legendaApoio": "A primeira página do projeto de lei. Quadro do vídeo publicado pelo deputado em 15/09/2026.",
+   "frase": "Atividades e avaliações adaptadas para alunos com autismo e outros transtornos globais do desenvolvimento, nas escolas de Santa Catarina.",
+   "pratica": [
+    "Cria o Protocolo Individualizado de Avaliação para alunos com Transtornos Globais do Desenvolvimento, incluindo o TEA, nas instituições de ensino do Estado.",
+    "Atividades e avaliações adaptadas, para que o aluno aprenda e seja avaliado de forma mais justa e inclusiva.",
+    "Segue padrões que já funcionam em outros estados."
+   ],
+   "quemGanha": [
+    "Alunos com autismo e outros transtornos globais do desenvolvimento",
+    "Professores, com um protocolo claro para adaptar a avaliação",
+    "As famílias, que acompanham o aprendizado de perto"
+   ],
+   "citacao": { "texto": "Inclusão nas escolas com o PIA, garantindo aprendizado mais justo.", "post": "DW4OzcjAOBh" },
+   "posts": ["DW4OzcjAOBh", "DDFTmWEpgM_", "DdUlrSTx_cp"],
+   "icone": "graduation-cap"
+  },
+  {
+   "slug": "continuidade-do-segundo-professor",
+   "codigo": "PL./0052/2026",
+   "titulo": "Continuidade do segundo professor",
+   "curto": "O aluno com autismo segue com o mesmo segundo professor no ano seguinte.",
+   "foto": "lei-segundo-professor",
+   "frase": "Dá preferência para que o estudante com autismo continue, no ano seguinte, com o mesmo segundo professor que já o acompanhava.",
+   "pratica": [
+    "Altera a lei que consolida os direitos da pessoa com deficiência em Santa Catarina (Lei nº 17.292/2017).",
+    "Na designação do segundo professor, a preferência é pelo profissional que já acompanhava o estudante com TEA no ano anterior.",
+    "O vínculo construído não recomeça do zero a cada ano letivo."
+   ],
+   "quemGanha": [
+    "Estudantes com autismo, que mantêm o vínculo com quem já os conhece",
+    "Os segundos professores, que dão sequência ao trabalho",
+    "As famílias, com menos rupturas na rotina da criança"
+   ],
+   "citacao": { "texto": "Uma criança com autismo não precisa recomeçar todo ano. Ela precisa de vínculo, confiança e segurança para aprender.", "post": "DVzNyB_gEee" },
+   "posts": ["DVzNyB_gEee", "DW4OzcjAOBh", "DdUlrSTx_cp"],
+   "icone": "school"
+  }
+ ],
+ "ccj": {
+  "foto": "leis-plenario",
+  "olho": "Comissão de Constituição e Justiça",
+  "titulo": "Presidente da CCJ",
+  "texto": "Antes de chegar ao Plenário, todo projeto de lei passa pela CCJ, a principal comissão da Assembleia, onde é feita a primeira análise. Pepê assumiu a presidência da comissão em 2025, o primeiro parlamentar da AMUREL no cargo.",
+  "post": "Db9Bv1goPPf"
+ },
+ "redes": ["DczPoZih-bk", "DbtvHIJoCpU", "DBuCrSKJaHK", "DWCkUfKgRkT", "DcBjuC2gDZB", "DHOglVhOoZk", "DVzNyB_gEee", "Db9Bv1goPPf"],
+ "fecho": { "lema": "Poucos projetos, grandes impactos", "pincel": "impactos" }
+}

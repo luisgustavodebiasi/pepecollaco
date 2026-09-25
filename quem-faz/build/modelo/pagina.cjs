@@ -7,8 +7,8 @@
  */
 
 const { escapar, cifra, cifraChip, milhar, data, resumirLegenda } = require('../lib/formato.cjs');
-
-const SITE = 'https://www.pepecollaco.com';
+const { SITE, documento, jsonLdPessoa } = require('./base.cjs');
+const visual = require('./visual.cjs');
 
 /* ───────────────────────────── peças ───────────────────────────── */
 
@@ -187,6 +187,8 @@ function pautas(bloco) {
  */
 function leis(bloco, ctx) {
   const porCodigo = new Map(ctx.leis.proposicoes.map((p) => [p.codigo, p]));
+  // Lei com página própria em /quem-faz/projetos-de-lei/<slug>/ ganha o link.
+  const paginaDaLei = new Map((ctx.leisPaginas?.destaques || []).map((d) => [d.codigo, d.slug]));
 
   const card = (item) => {
     const p = porCodigo.get(item.codigo);
@@ -196,7 +198,8 @@ function leis(bloco, ctx) {
     return `        <article class="lei rv">
           <h3 class="lei-t">${escapar(item.titulo)}</h3>
           <p class="lei-d">${item.texto}</p>
-          <span class="selo ${classe}">${escapar(p.rotulo)}</span>
+          <span class="selo ${classe}">${escapar(p.rotulo)}</span>${paginaDaLei.has(item.codigo) ? `
+          <a class="lei-fonte" href="../projetos-de-lei/${paginaDaLei.get(item.codigo)}/">Entender a lei</a>` : ''}
           <a class="lei-fonte" href="${p.url}" target="_blank" rel="noopener">${escapar(p.codigo.replace('./', ' '))} no e-Legis</a>
         </article>`;
   };
@@ -277,7 +280,7 @@ function redes(bloco, ctx) {
   });
 }
 
-function fecho(lugar) {
+function fecho(lugar, raiz = '../../') {
   const l = lugar.fecho;
 
   // O pincel marca a palavra final do lema, então casa com a ÚLTIMA ocorrência:
@@ -292,7 +295,7 @@ function fecho(lugar) {
 
   return `  <section class="fundo-campanha veu">
     <div class="wrap fecho">
-      <img class="marca-vote rv" src="../../assets/brand/marca/vote-11223-escuro-960.webp"
+      <img class="marca-vote rv" src="${raiz}assets/brand/marca/vote-11223-escuro-960.webp"
            alt="Vote Pepê 11223, Deputado Estadual" width="960" height="879" />
       <p class="lema rv">${lema}</p>${l.apoio ? `\n      <p class="chips-nota rv">${l.apoio}</p>` : ''}
       <div class="botoes rv">
@@ -303,53 +306,35 @@ function fecho(lugar) {
   </section>`;
 }
 
-/** Grade de links para as outras páginas. Slug atual sai da lista. */
-function portas(lugar, ctx) {
+/**
+ * Grade de links para as outras páginas. Slug atual sai da lista.
+ * `qf` é o caminho até a pasta quem-faz/ a partir da página que chama.
+ */
+function portas(lugar, ctx, qf = '../') {
   const itens = ctx.portas
     .filter((p) => p.slug !== lugar.slug)
     .map((p) =>
       p.existe
-        ? `        <a href="../${p.slug}/"><span class="rot">Quem faz</span><span class="alvo">${escapar(p.rotulo)}</span></a>`
+        ? `        <a href="${qf}${p.slug}/"><span class="rot">${escapar(p.rot || 'Quem faz')}</span><span class="alvo">${escapar(p.rotulo)}</span></a>`
         : `        <span class="porta-vazia"><span class="rot">Quem faz</span><span class="alvo">${escapar(p.rotulo)}</span></span>`
     )
     .join('\n');
+  const indice = `        <a class="porta-indice" href="${qf}"><span class="rot">Todas as páginas</span><span class="alvo">Quem faz representa</span></a>`;
 
   return secao(
-    `${cabecaSecao({ olho: 'Também tem', titulo: 'Quem faz pelo quê' })}\n      <div class="portas rv">\n${itens}\n      </div>`,
+    `${cabecaSecao({ olho: 'Também tem', titulo: 'Quem faz pelo quê' })}\n      <div class="portas rv">\n${itens}\n${indice}\n      </div>`,
     { classe: 'faixa-clara' }
   );
 }
 
 /* ──────────────────────────── documento ─────────────────────────── */
 
-const RENDERIZADORES = { obras, chips, pautas, leis, imprensa, redes };
+/** Posts do Instagram com capa (dados/instagram.json). Ver visual.cjs. */
+const vitrine = (bloco, ctx) => visual.vitrine(bloco, ctx, '../');
+/** Os reels da série "Quem faz por…", em pôster vertical. */
+const serie = (bloco, ctx) => visual.serie(bloco, ctx, '../');
 
-function jsonLd(lugar) {
-  const dado = {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: lugar.seo.titulo,
-    description: lugar.seo.descricao,
-    url: `${SITE}/quem-faz/${lugar.slug}/`,
-    inLanguage: 'pt-BR',
-    isPartOf: { '@type': 'WebSite', name: 'Pepê Collaço 11223', url: `${SITE}/` },
-    about: {
-      '@type': 'Person',
-      name: 'Pepê Collaço',
-      alternateName: 'Felippe Luiz Collaço',
-      jobTitle: 'Deputado Estadual de Santa Catarina',
-      affiliation: { '@type': 'PoliticalParty', name: 'Progressistas' },
-    },
-    ...(lugar.local && {
-      contentLocation: {
-        '@type': lugar.tipo === 'cidade' ? 'City' : 'AdministrativeArea',
-        name: lugar.local,
-        containedInPlace: { '@type': 'State', name: 'Santa Catarina' },
-      },
-    }),
-  };
-  return JSON.stringify(dado, null, 2).split('\n').map((l) => `    ${l}`).join('\n');
-}
+const RENDERIZADORES = { obras, chips, pautas, leis, imprensa, redes, vitrine, serie };
 
 function montar(lugar, ctx) {
   const url = `${SITE}/quem-faz/${lugar.slug}/`;
@@ -368,93 +353,23 @@ function montar(lugar, ctx) {
     .filter(Boolean)
     .join('\n\n');
 
-  return `<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0E1E46" />
+  const local = lugar.local && {
+    contentLocation: {
+      '@type': lugar.tipo === 'cidade' ? 'City' : 'AdministrativeArea',
+      name: lugar.local,
+      containedInPlace: { '@type': 'State', name: 'Santa Catarina' },
+    },
+  };
 
-  <title>${escapar(lugar.seo.titulo)} | Pepê Collaço 11223</title>
-  <meta name="description" content="${escapar(lugar.seo.descricao)}" />
-
-  <meta property="og:type" content="article" />
-  <meta property="og:url" content="${url}" />
-  <meta property="og:site_name" content="Pepê Collaço 11223" />
-  <meta property="og:title" content="${escapar(lugar.seo.titulo)}" />
-  <meta property="og:description" content="${escapar(lugar.seo.ogDescricao || lugar.seo.descricao)}" />
-  <meta property="og:image" content="${url}og.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:locale" content="pt_BR" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <link rel="canonical" href="${url}" />
-  <link rel="icon" href="../../assets/brand/simbolo/favicon-32.png" sizes="32x32" />
-  <link rel="icon" href="../../assets/brand/simbolo/favicon-512.png" sizes="512x512" />
-  <link rel="apple-touch-icon" href="../../assets/brand/simbolo/apple-touch-icon.png" />
-
-  <!-- Acumin Pro (texto) pelo kit licenciado da Adobe Fonts. A cópia
-       self-hosted em assets/brand/fontes/ segue como reserva no --fonte, e só
-       é baixada se este kit não responder, por isso ela não é pré-carregada.
-
-       A Acumin Pro Wide (display) NÃO está no kit da Adobe: ela vem só da
-       cópia self-hosted, e desenha o título do hero. Por ser crítica para a
-       primeira dobra, os dois pesos que aparecem lá em cima, a Black do título
-       e a Extra Light da unidade, são pré-carregados. -->
-  <link rel="preconnect" href="https://use.typekit.net" crossorigin />
-  <link rel="preconnect" href="https://p.typekit.net" crossorigin />
-  <link rel="stylesheet" href="https://use.typekit.net/ojd2pjl.css" />
-  <link rel="preload" href="../../assets/brand/fontes/acumin-wide-900.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="../../assets/brand/fontes/acumin-wide-275.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="../../assets/brand/css/tipografia.css" />
-  <link rel="stylesheet" href="../../assets/brand/css/tokens.css" />
-  <link rel="stylesheet" href="../quem-faz.css" />
-
-  <script type="application/ld+json">
-${jsonLd(lugar)}
-  </script>
-</head>
-<body>
-  <script>document.documentElement.classList.add('js');</script>
-
-${corpo}
-
-  <footer>
-    <div class="wrap">
-      <img src="../../assets/brand/marca/collaco-11223-escuro-480.webp"
-           alt="Pepê Collaço 11223" width="480" height="439" />
-      <p>
-        Pepê Collaço · Deputado Estadual de Santa Catarina · Progressistas ·
-        Federação União Progressista.<br />
-        Valores destinados pelo mandato entre 2023 e 2026, conforme o controle de
-        emendas do gabinete. Situação dos projetos de lei conforme o e-Legis da
-        Alesc em ${escapar(data(ctx.leis.coletadoEm))}.
-        <a href="${SITE}/">pepecollaco.com</a>
-      </p>
-    </div>
-  </footer>
-
-<script src="../quem-faz.js" defer></script>
-<script>
-  const texto = ${JSON.stringify(lugar.compartilhar)};
-  const url = ${JSON.stringify(url)};
-
-  for (const id of ['compartilhar', 'compartilhar-2']) {
-    const b = document.getElementById(id);
-    if (!b) continue;
-    b.href = 'https://wa.me/?text=' + encodeURIComponent(texto + ' ' + url);
-    b.target = '_blank';
-    b.addEventListener('click', (e) => {
-      if (!navigator.share) return;
-      e.preventDefault();
-      navigator.share({ title: ${JSON.stringify(lugar.seo.titulo)}, text: texto, url }).catch(() => {});
-    });
-  }
-</script>
-</body>
-</html>
-`;
+  return documento({
+    seo: lugar.seo,
+    caminho: `quem-faz/${lugar.slug}/`,
+    profundidade: 1,
+    corpo,
+    compartilhar: lugar.compartilhar,
+    jsonLd: jsonLdPessoa(lugar.seo, url, local || {}),
+    coletadoEm: ctx.leis.coletadoEm,
+  });
 }
 
-module.exports = { montar };
+module.exports = { montar, hero, placar, fecho, portas, cabecaSecao, secao, marcaCifra };

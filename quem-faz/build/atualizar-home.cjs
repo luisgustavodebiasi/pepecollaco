@@ -14,6 +14,9 @@ const path = require('path');
 
 const HOME = path.join(__dirname, '..', '..', 'index.html');
 const LEIS = path.join(__dirname, '..', 'dados', 'leis.json');
+// As leis com página própria em /quem-faz/projetos-de-lei/<slug>/ ganham o
+// link "Entender a lei" no card da home.
+const PAGINAS = path.join(__dirname, '..', 'dados', 'leis-paginas.json');
 
 const INICIO = '<!-- leis:inicio (gerado por quem-faz/build/atualizar-home.cjs) -->';
 const FIM = '<!-- leis:fim -->';
@@ -79,6 +82,7 @@ const escapar = (s) =>
 function main() {
   const leis = JSON.parse(fs.readFileSync(LEIS, 'utf8'));
   const porCodigo = new Map(leis.proposicoes.map((p) => [p.codigo, p]));
+  const paginas = new Map(JSON.parse(fs.readFileSync(PAGINAS, 'utf8')).destaques.map((d) => [d.codigo, d.slug]));
 
   const cardHtml = (c, i) => {
     const p = porCodigo.get(c.codigo);
@@ -89,7 +93,8 @@ function main() {
     return `      <article class="lei rv${atraso}">
         <h3 class="lei-t">${escapar(c.titulo)}</h3>
         <p class="lei-d">${escapar(c.texto)}</p>
-        <span class="selo ${classe}">${escapar(p.rotulo)}</span>
+        <span class="selo ${classe}">${escapar(p.rotulo)}</span>${paginas.has(c.codigo) ? `
+        <a class="lei-fonte" href="/quem-faz/projetos-de-lei/${paginas.get(c.codigo)}/">Entender a lei</a>` : ''}
         <a class="lei-fonte" href="${p.url}" target="_blank" rel="noopener">${escapar(p.codigo.replace('./', ' '))} no e-Legis</a>
       </article>`;
   };
@@ -106,7 +111,7 @@ function main() {
       const rotulo = g.nome ? `\n    <p class="leis-grupo rv">${escapar(g.nome)}</p>\n` : '';
       return `${rotulo}    <div class="leis">\n${g.itens.map(cardHtml).join('\n\n')}\n    </div>`;
     })
-    .join('\n');
+    .join('\n') + `\n    <p class="leis-mais rv"><a class="btn btn-contorno" href="/quem-faz/projetos-de-lei/">Ver as ${leis.total} proposições</a></p>`;
 
   const html = fs.readFileSync(HOME, 'utf8');
   const i = html.indexOf(INICIO);

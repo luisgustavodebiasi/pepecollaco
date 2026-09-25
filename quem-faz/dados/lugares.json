@@ -13,7 +13,7 @@
     { "slug": "pelo-sul", "rotulo": "Pelo Sul", "existe": true },
     { "slug": "pela-educacao", "rotulo": "Pela educação", "existe": true },
     { "slug": "pelas-cidades", "rotulo": "Pelas cidades", "existe": true },
-    { "slug": "projetos-de-lei", "rotulo": "Projetos de lei", "existe": false }
+    { "slug": "projetos-de-lei", "rotulo": "Projetos de lei", "existe": true }
   ],
 
   "lugares": {
@@ -318,6 +318,25 @@
         },
 
         {
+          "tipo": "serie",
+          "id": "serie",
+          "olho": "A série",
+          "titulo": "Quem faz por cada cidade",
+          "texto": "Um vídeo por cidade da AMUREL, gravado onde a obra está. Toque para assistir no Instagram.",
+          "itens": [
+            { "shortcode": "DdtxzMjRhtO", "rotulo": "Jaguaruna" },
+            { "shortcode": "Ddr7JVkxc0r", "rotulo": "Paulo Lopes" },
+            { "shortcode": "DdeRXczOQdJ", "rotulo": "Braço do Norte" },
+            { "shortcode": "DdcZMW6sH-X", "rotulo": "Garopaba" },
+            { "shortcode": "DdSAqg_BexT", "rotulo": "Gravatal" },
+            { "shortcode": "DdCmk9FB3dJ", "rotulo": "Laguna" },
+            { "shortcode": "Dc4RDmTuiWZ", "rotulo": "Pescaria Brava" },
+            { "shortcode": "Dcgj16OOhgF", "rotulo": "Capivari de Baixo" },
+            { "shortcode": "DdpRebgP6Jw", "rotulo": "Tubarão", "pagina": "../por-tubarao/" }
+          ]
+        },
+
+        {
           "tipo": "redes",
           "id": "redes",
           "olho": "Nas redes",
@@ -613,6 +632,21 @@
             { "id": 48, "resumo": "Assinada a ordem de serviço dos projetos de dragagem e remodelagem dos molhes de acesso ao Porto de Laguna." },
             { "id": 15, "resumo": "O projeto de redragagem do Rio Tubarão passa a ser atualizado pela UFSC." },
             { "id": 77, "resumo": "Cerca de mil pessoas na prestação de contas do mandato em Tubarão." }
+          ]
+        },
+
+        {
+          "tipo": "serie",
+          "id": "serie",
+          "olho": "A série",
+          "titulo": "Quem faz por Tubarão, em vídeo",
+          "texto": "Os episódios gravados na cidade, do asfalto novo à beira-rio. Toque para assistir no Instagram.",
+          "itens": [
+            { "shortcode": "DdpRebgP6Jw", "rotulo": "Episódio 5" },
+            { "shortcode": "DdZMbiyscCz", "rotulo": "Episódio 4" },
+            { "shortcode": "DdHuxp2uISK", "rotulo": "Episódio 3" },
+            { "shortcode": "DcjKo40OMDe", "rotulo": "Episódio 2" },
+            { "shortcode": "DcJ7ywGuYdP", "rotulo": "Episódio 1" }
           ]
         },
 

@@ -1,30 +1,77 @@
 # Como atualizar as páginas "Quem faz"
 
-As páginas `pela-amurel/` e `por-tubarao/` **são geradas**. Não edite o
-`index.html` delas à mão: a próxima execução do build apaga a alteração.
+**São geradas**, e não se editam à mão (a próxima execução do build apaga a
+alteração):
 
-O texto fica em `dados/lugares.json`. Os números e os status vêm das bases.
+| Página | Texto em |
+|---|---|
+| `index.html` (o índice, /quem-faz/) | `dados/indice.json` |
+| `por-tubarao/`, `pela-amurel/` | `dados/lugares.json` |
+| `projetos-de-lei/` e as 7 páginas de lei dentro dela | `dados/leis-paginas.json` |
+
+Os números e os status vêm das bases. As outras quatro (`pelo-autismo/`,
+`pelo-sul/`, `pela-educacao/`, `pelas-cidades/`) ainda são escritas à mão;
+nelas o build só mexe no trecho entre `<!-- visual:inicio -->` e
+`<!-- visual:fim -->` e na grade de portas (ver `atualizar-manuais.cjs`).
 
 ## Rodar tudo
 
 ```bash
-cd pepecollaco-site/quem-faz
+cd quem-faz
 
-node build/coletar-alesc.cjs     # e-Legis da Alesc  → dados/leis.json
-node build/normalizar.cjs        # CSVs do gabinete  → dados/*.json + MATRIZ.csv
-node build/gerar-paginas.cjs     # dados + texto     → <slug>/index.html
-node build/atualizar-home.cjs    # leis.json         → seção #leis da home
+node build/coletar-alesc.cjs        # e-Legis da Alesc       → dados/leis.json
+node build/normalizar.cjs           # CSVs do gabinete       → dados/*.json + MATRIZ.csv
+node build/coletar-instagram.cjs    # Graph API (token)      → dados/instagram.json + redes/capas/
+node build/preparar-fotos.cjs       # dados/fotos.json       → img/*.webp
+node build/gerar-paginas.cjs        # dados + texto          → index.html, <slug>/, projetos-de-lei/
+node build/atualizar-manuais.cjs    # dados/manuais.json     → trecho das 4 páginas manuais
+node build/atualizar-home.cjs       # leis.json              → seção #leis da home
+cd og && node render-chrome.cjs     # imagens de compartilhamento do índice e das leis
 ```
 
-Precisa só do Node (testado no 24). Sem dependências.
+Precisa só do Node (testado no 24), mais `magick` e `ffmpeg` (Homebrew) para as
+fotos e o Google Chrome instalado para as imagens de compartilhamento. Sem
+dependências de npm.
 
-Para regerar as imagens de compartilhamento (essas sim pedem o Playwright, que
-mora no projeto irmão `gerador-materiais`):
+## Posts do Instagram
+
+`coletar-instagram.cjs` lista os posts do @pepecollaco pela Graph API e baixa a
+capa de cada um em WebP (`redes/capas/<shortcode>.webp`). As páginas mostram a
+capa e levam para o post; não usam o embed oficial, que pesa meio megabyte por
+post e quebra quando o post sai do ar.
+
+- **O token nunca entra no repositório**, que é público. Ele vem de
+  `META_TOKEN` ou de `IMPULSIONAMENTOS/scripts/token.txt` (fora do Git).
+- Tokens desta conta vencem em cerca de duas horas. A resposta crua fica em
+  `build/.cache/` (fora do Git) com as URLs de CDN, que duram alguns dias: dá
+  para baixar capa depois com `--so-capas`, sem token.
+- `--desde=AAAA-MM-DD` escolhe a janela; `--incluir=SC1,SC2` acrescenta posts
+  antigos que alguma página cita (a lista só cresce).
+- Quadro de vídeo no lugar da capa: `--quadro=SHORTCODE@SEGUNDOS`.
+- `dados/indice.json` → `ocultar`: posts que não entram nos blocos automáticos
+  de "Nas redes" (não somem do Instagram, só não viram vitrine).
+
+## Fotos
+
+Cada foto nasce de `dados/fotos.json`: arquivo do site (`assets/img/`,
+`foto/pepe-por-elas/g/`), quadro de um reel baixado (`build/.cache/video/`) ou
+foto do **Pexels** pelo id. `preparar-fotos.cjs` recorta na proporção pedida e
+grava `img/<id>.webp`.
+
+Foto de banco leva `"ilustrativa": true` e aparece com o selo **imagem
+ilustrativa** na página. Foto de banco nunca mostra gente que possa passar por
+beneficiário do mandato: só objeto, paisagem e lugar.
+
+Para regerar as imagens de compartilhamento das páginas temáticas (essas pedem
+o Playwright, que mora no projeto irmão `gerador-materiais`):
 
 ```bash
 cd og
-NODE_PATH="../../../gerador-materiais/node_modules" node render.cjs pela-amurel por-tubarao
+NODE_PATH="../../gerador-materiais/node_modules" node render.cjs pela-amurel por-tubarao
 ```
+
+As do índice e das leis saem de `og/render-chrome.cjs`, que usa o Chrome do
+sistema e o mesmo molde.
 
 ## O que cada script faz
 
@@ -32,8 +79,11 @@ NODE_PATH="../../../gerador-materiais/node_modules" node render.cjs pela-amurel 
 |---|---|---|
 | `coletar-alesc.cjs` | portalelegis.alesc.sc.gov.br | `dados/leis.json` |
 | `normalizar.cjs` | `EMENDAS /emendas_site_historico.csv`, `IMPRENSA/*.csv`, `REDES/*.csv` | `dados/emendas.json`, `imprensa.json`, `redes.json`, `MATRIZ.csv` |
-| `gerar-paginas.cjs` | `dados/*.json` | `<slug>/index.html` |
-| `atualizar-home.cjs` | `dados/leis.json` | trecho `#leis` de `../index.html` |
+| `coletar-instagram.cjs` | Graph API (token fora do Git) | `dados/instagram.json`, `redes/capas/` |
+| `preparar-fotos.cjs` | `dados/fotos.json` | `img/*.webp` |
+| `gerar-paginas.cjs` | `dados/*.json` | `index.html`, `<slug>/index.html`, `projetos-de-lei/**` |
+| `atualizar-manuais.cjs` | `dados/manuais.json` | trecho marcado das 4 páginas manuais |
+| `atualizar-home.cjs` | `dados/leis.json`, `dados/leis-paginas.json` | trecho `#leis` de `../index.html` |
 
 ## As travas
 

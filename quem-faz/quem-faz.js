@@ -21,7 +21,7 @@
    já passou. Ela roda presa a um requestAnimationFrame, uma vez por quadro no
    máximo, e se desliga sozinha quando não sobra nada para revelar.
 
-   Carregado com defer pelas seis páginas. Não depende de nada.
+   Carregado com defer por todas as páginas da série. Não depende de nada.
    ══════════════════════════════════════════════════════════════════════════ */
 (() => {
   'use strict';
@@ -30,7 +30,8 @@
 
   /* As grades que ganham cascata. Elas perdem o .rv: quem anima é cada filho,
      e manter os dois faria a seção desaparecer duas vezes. */
-  const GRADES = '.placar, .obras, .chips, .portas, .pautas, .leis, .imprensa, .redes';
+  const GRADES = '.placar, .obras, .chips, .portas, .pautas, .leis, .imprensa, .redes, ' +
+    '.vitrine, .serie, .portas-foto, .mosaico, .leis-foto, .comunidade, .ganha';
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     raiz.classList.remove('js');          // devolve tudo visível e parado
@@ -96,7 +97,9 @@
     }
   }
 
-  document.querySelectorAll('.manchete .cifra, .placar b').forEach(preparar);
+  /* A ficha da página de lei fica de fora: ela guarda data e número de lei,
+     e "06/01/2025" contado de zero chegaria em "6". */
+  document.querySelectorAll('.manchete .cifra, .placar:not(.placar-ficha) b').forEach(preparar);
 
   function formatar(v, casas) {
     return v.toLocaleString('pt-BR', {

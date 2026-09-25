@@ -9,13 +9,23 @@
  * O HTML sai pronto do build, não do navegador: o site é estático no GitHub
  * Pages e o conteúdo precisa estar no fonte para ser indexado.
  *
- * Só mexe nos slugs listados em lugares.json. As páginas ainda não migradas
- * continuam intocadas.
+ * Gera também a página índice (/quem-faz/, texto em dados/indice.json) e as
+ * páginas de lei (/quem-faz/projetos-de-lei/, texto em dados/leis-paginas.json).
+ *
+ *   node build/gerar-paginas.cjs indice
+ *   node build/gerar-paginas.cjs projetos-de-lei
+ *
+ * Só mexe nesses caminhos. As páginas ainda não migradas (autismo, sul,
+ * educação, cidades) continuam escritas à mão; nelas quem mexe é
+ * build/atualizar-manuais.cjs, e só nos trechos marcados.
  */
 
 const fs = require('fs');
 const path = require('path');
 const { montar } = require('./modelo/pagina.cjs');
+const { montarIndice } = require('./modelo/indice.cjs');
+const { montarGeral, montarLei, SLUG: SLUG_LEIS } = require('./modelo/leis.cjs');
+const { contexto } = require('./lib/contexto.cjs');
 
 const DADOS = path.join(__dirname, '..', 'dados');
 const RAIZ = path.join(__dirname, '..');
@@ -50,21 +60,25 @@ function conferir(lugar, emendas) {
   }
 }
 
+function gravar(caminhoRelativo, html, rotulo) {
+  const destino = path.join(RAIZ, caminhoRelativo, 'index.html');
+  fs.mkdirSync(path.dirname(destino), { recursive: true });
+  fs.writeFileSync(destino, html);
+  const kb = (Buffer.byteLength(html) / 1024).toFixed(1);
+  console.log(`  ${rotulo.padEnd(44)} ${kb} KB`);
+}
+
 function main() {
   const pedidos = process.argv.slice(2);
+  const quer = (slug) => !pedidos.length || pedidos.includes(slug);
 
-  const ctx = {
-    emendas: ler('emendas.json'),
-    leis: ler('leis.json'),
-    imprensa: ler('imprensa.json'),
-    redes: ler('redes.json'),
-  };
-  const { portas, lugares } = ler('lugares.json');
-  ctx.portas = portas;
+  const ctx = contexto();
+  const { lugares } = ler('lugares.json');
 
-  const alvos = Object.values(lugares).filter((l) => !pedidos.length || pedidos.includes(l.slug));
-  if (!alvos.length) {
-    throw new Error(`nenhum lugar corresponde a: ${pedidos.join(', ')}`);
+  const alvos = Object.values(lugares).filter((l) => quer(l.slug));
+  const extras = ['indice', SLUG_LEIS].filter(quer);
+  if (!alvos.length && !extras.length) {
+    throw new Error(`nenhuma página corresponde a: ${pedidos.join(', ')}`);
   }
 
   for (const lugar of alvos) {
@@ -79,7 +93,23 @@ function main() {
     console.log(`  ${lugar.slug.padEnd(16)} ${String(lugar.secoes.length).padStart(2)} seções · ${kb} KB`);
   }
 
-  console.log(`\n${alvos.length} página(s) gerada(s).`);
+  let total = alvos.length;
+
+  if (quer('indice')) {
+    gravar('.', montarIndice(ctx), 'indice (/quem-faz/)');
+    total += 1;
+  }
+
+  if (quer(SLUG_LEIS)) {
+    gravar(SLUG_LEIS, montarGeral(ctx), SLUG_LEIS);
+    for (const d of ctx.leisPaginas.destaques) {
+      const { html } = montarLei(d, ctx);
+      gravar(path.join(SLUG_LEIS, d.slug), html, `${SLUG_LEIS}/${d.slug}`);
+    }
+    total += 1 + ctx.leisPaginas.destaques.length;
+  }
+
+  console.log(`\n${total} página(s) gerada(s).`);
 }
 
 try {

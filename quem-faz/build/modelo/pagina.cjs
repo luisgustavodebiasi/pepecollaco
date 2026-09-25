@@ -9,6 +9,36 @@
 const { escapar, cifra, cifraChip, milhar, data, resumirLegenda } = require('../lib/formato.cjs');
 const { SITE, documento, jsonLdPessoa } = require('./base.cjs');
 const visual = require('./visual.cjs');
+const { icone } = require('../lib/icones.cjs');
+
+/**
+ * Selo de situação de um projeto, sempre derivado de leis.json. Projeto que
+ * virou lei leva o selo verde APROVADO e, ao lado, o número da lei: o verde
+ * diz o que aconteceu, o número prova.
+ */
+function seloProposicao(p) {
+  if (p.virouLei) {
+    return `<span class="selos"><span class="selo selo-lei">${icone('circle-check-big')}Aprovado</span>` +
+      `<span class="selo selo-num">${escapar(p.rotulo.replace('LEI Nº', 'Lei nº'))}</span></span>`;
+  }
+  const classe = p.retirado || p.rejeitado ? 'selo-encerrado' : 'selo-comissao';
+  return `<span class="selos"><span class="selo ${classe}">${escapar(p.rotulo)}</span></span>`;
+}
+
+/** Maior palavra do texto, em letras: calibra o corpo do título que precisa caber. */
+const letrasDaMaiorPalavra = (t) => Math.max(...String(t).split(/\s+/).map((w) => [...w].length));
+
+/**
+ * O símbolo do infinito, marca da neurodiversidade, desenhado nas cores da
+ * identidade. Entra só no hero das páginas do tema autismo.
+ */
+const INFINITO = `<svg class="infinito" viewBox="0 0 240 120" aria-hidden="true" focusable="false">
+        <defs><linearGradient id="espectro" x1="0" x2="1">
+          <stop offset="0" stop-color="#8BC1DC"/><stop offset=".25" stop-color="#00B171"/>
+          <stop offset=".5" stop-color="#FFC400"/><stop offset=".75" stop-color="#FF9C33"/><stop offset="1" stop-color="#0082BF"/>
+        </linearGradient></defs>
+        <path d="M120 60c-22-30-42-45-62-45a45 45 0 0 0 0 90c20 0 40-15 62-45s42-45 62-45a45 45 0 0 1 0 90c-20 0-40-15-62-45z"/>
+      </svg>`;
 
 /* ───────────────────────────── peças ───────────────────────────── */
 
@@ -42,11 +72,21 @@ function secao(conteudo, { id, classe = '', rotulo = '' } = {}) {
 
 function hero(lugar) {
   const { hero: h } = lugar;
+  // O pincel recebe o número de letras da palavra: o CSS usa isso para o
+  // corpo nunca passar da coluna (palavra comprida estourava e era cortada).
   const titulo = h.titulo
-    .map((p) => `<span class="${p.estilo}">${escapar(p.texto)}</span>`)
+    .map((p) => p.estilo === 'pincel'
+      ? `<span class="pincel" style="--letras:${letrasDaMaiorPalavra(p.texto)}">${escapar(p.texto)}</span>`
+      : `<span class="${p.estilo}">${escapar(p.texto)}</span>`)
     .join(' ');
 
-  return `  <header class="hero fundo-campanha veu">
+  // Manchete em reais (região, tema) ou em outra unidade (a página de uma
+  // cidade não anuncia valor recebido: decisão de 25/09/2026).
+  const manchete = h.valor !== undefined
+    ? marcaCifra(h.valor, { mais: h.mais, casas: h.casas ?? null })
+    : `<span class="cifra">${escapar(h.manchete.numero)} <small>${escapar(h.manchete.unidade)}</small></span>`;
+
+  return `  <header class="hero fundo-campanha veu">${lugar.tema === 'autismo' ? `\n    ${INFINITO}` : ''}
     <div class="wrap hero-grade">
       <div>
         <h1>${titulo}</h1>
@@ -54,7 +94,7 @@ function hero(lugar) {
         <p class="hero-frase">${h.frase}</p>
 
         <div class="manchete">
-          ${marcaCifra(h.valor, { mais: h.mais, casas: h.casas ?? null })}
+          ${manchete}
           <span class="legenda">${escapar(h.legenda)}</span>
         </div>
 
@@ -150,8 +190,10 @@ function chips(bloco, ctx) {
     }
   }
 
+  // Só o nome. Valor por cidade não se publica (decisão de 25/09/2026): a lista
+  // continua ordenada pelo total da base, mas o total não aparece.
   const itens = lista
-    .map((c) => `        <li>${escapar(c.nome)}${c.valor ? ` <b>${cifraChip(c.valor)}</b>` : ''}</li>`)
+    .map((c) => `        <li>${escapar(c.nome)}</li>`)
     .join('\n');
   const nota = bloco.nota ? `\n\n      <p class="chips-nota rv">${bloco.nota}</p>` : '';
   const botao = bloco.botao
@@ -194,11 +236,10 @@ function leis(bloco, ctx) {
     const p = porCodigo.get(item.codigo);
     if (!p) throw new Error(`lei ${item.codigo} não existe em leis.json`);
 
-    const classe = p.virouLei ? 'selo-lei' : p.retirado || p.rejeitado ? 'selo-encerrado' : 'selo-comissao';
     return `        <article class="lei rv">
           <h3 class="lei-t">${escapar(item.titulo)}</h3>
           <p class="lei-d">${item.texto}</p>
-          <span class="selo ${classe}">${escapar(p.rotulo)}</span>${paginaDaLei.has(item.codigo) ? `
+          ${seloProposicao(p)}${paginaDaLei.has(item.codigo) ? `
           <a class="lei-fonte" href="../projetos-de-lei/${paginaDaLei.get(item.codigo)}/">Entender a lei</a>` : ''}
           <a class="lei-fonte" href="${p.url}" target="_blank" rel="noopener">${escapar(p.codigo.replace('./', ' '))} no e-Legis</a>
         </article>`;
@@ -329,12 +370,59 @@ function portas(lugar, ctx, qf = '../') {
 
 /* ──────────────────────────── documento ─────────────────────────── */
 
+/**
+ * "Medidas": o que o mandato fez por uma causa, além da emenda. Card com
+ * ícone; quando o item é um projeto de lei, o selo sai de leis.json e o card
+ * leva à página da lei, se ela existir.
+ */
+function medidas(bloco, ctx) {
+  const porCodigo = new Map(ctx.leis.proposicoes.map((p) => [p.codigo, p]));
+  const paginaDaLei = new Map((ctx.leisPaginas?.destaques || []).map((d) => [d.codigo, d.slug]));
+  const itens = bloco.itens
+    .map((m) => {
+      const p = m.codigo ? porCodigo.get(m.codigo) : null;
+      if (m.codigo && !p) throw new Error(`medida "${m.titulo}": lei ${m.codigo} não existe em leis.json`);
+      const slug = m.codigo && paginaDaLei.get(m.codigo);
+      const abre = slug ? `<a class="md" href="${bloco.aquiLeis || '../projetos-de-lei/'}${slug}/">` : '<div class="md">';
+      const fecha = slug ? '</a>' : '</div>';
+      return `        <li>${abre}
+          <span class="md-icone">${icone(m.icone || 'circle-check-big')}</span>
+          <h3>${escapar(m.titulo)}</h3>
+          <p>${escapar(m.texto)}</p>${p ? `\n          ${seloProposicao(p)}` : ''}${slug ? `\n          <span class="md-ver">Entender a lei ${icone('arrow-right')}</span>` : ''}
+        ${fecha}</li>`;
+    })
+    .join('\n');
+  return secao(`${cabecaSecao(bloco)}\n\n      <ul class="medidas">\n${itens}\n      </ul>`, {
+    id: bloco.id || 'medidas',
+    classe: bloco.classe ?? 'faixa-clara',
+  });
+}
+
+/** Galeria de fotos do tema (mosaico, ver visual.cjs). */
+const galeria = (bloco, ctx) => visual.mosaico({ ...bloco, id: bloco.id || 'galeria' }, ctx, '../');
+
+/** Cards das páginas de lei, pelos slugs de leis-paginas.json. */
+function leisPaginas(bloco, ctx) {
+  const { cardLei, indexar } = require('./leis.cjs');
+  const { proposicao } = indexar(ctx);
+  const porSlug = new Map(ctx.leisPaginas.destaques.map((d) => [d.slug, d]));
+  const cards = bloco.slugs.map((slug) => {
+    const d = porSlug.get(slug);
+    if (!d) throw new Error(`leisPaginas: "${slug}" não existe em leis-paginas.json`);
+    return cardLei(d, proposicao(d.codigo), ctx, '../', '../projetos-de-lei/');
+  });
+  return secao(`${cabecaSecao(bloco)}\n\n      <div class="leis-foto leis-foto-mini">\n${cards.join('\n')}\n      </div>`, {
+    id: bloco.id || 'leis-paginas',
+    classe: bloco.classe ?? '',
+  });
+}
+
 /** Posts do Instagram com capa (dados/instagram.json). Ver visual.cjs. */
 const vitrine = (bloco, ctx) => visual.vitrine(bloco, ctx, '../');
 /** Os reels da série "Quem faz por…", em pôster vertical. */
 const serie = (bloco, ctx) => visual.serie(bloco, ctx, '../');
 
-const RENDERIZADORES = { obras, chips, pautas, leis, imprensa, redes, vitrine, serie };
+const RENDERIZADORES = { obras, chips, pautas, leis, imprensa, redes, vitrine, serie, medidas, galeria, leisPaginas };
 
 function montar(lugar, ctx) {
   const url = `${SITE}/quem-faz/${lugar.slug}/`;
@@ -369,7 +457,20 @@ function montar(lugar, ctx) {
     compartilhar: lugar.compartilhar,
     jsonLd: jsonLdPessoa(lugar.seo, url, local || {}),
     coletadoEm: ctx.leis.coletadoEm,
+    tema: lugar.tema,
+    notaRodape: /"ilustrativa"/.test(corpo) || corpo.includes('class="ilustrativa"') ? 'Imagens marcadas como ilustrativas: Pexels.' : '',
   });
 }
 
-module.exports = { montar, hero, placar, fecho, portas, cabecaSecao, secao, marcaCifra };
+/**
+ * Renderiza uma seção fora da página do lugar (as páginas de lei reaproveitam
+ * a seção "medidas" do autismo). `qf` é o prefixo até a pasta quem-faz/.
+ */
+function renderizar(bloco, ctx, qf = '../') {
+  if (bloco.tipo === 'medidas') return medidas({ ...bloco, aquiLeis: qf === '../' ? '../projetos-de-lei/' : '../' }, ctx);
+  const render = RENDERIZADORES[bloco.tipo];
+  if (!render) throw new Error(`seção de tipo "${bloco.tipo}" não existe`);
+  return render(bloco, ctx);
+}
+
+module.exports = { montar, hero, placar, fecho, portas, cabecaSecao, secao, marcaCifra, seloProposicao, letrasDaMaiorPalavra, renderizar, INFINITO };

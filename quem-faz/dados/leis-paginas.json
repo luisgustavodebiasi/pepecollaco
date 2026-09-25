@@ -3,7 +3,8 @@
   "Escrito à mão: o texto das páginas de lei, em /quem-faz/projetos-de-lei/<slug>/.",
   "Número da lei, datas, situação e setor NUNCA entram aqui: vêm de leis.json pelo `codigo`, apurados no e-Legis.",
   "O texto só pode vir de três fontes: a ementa oficial, os textos já publicados no site (seção #leis da home) e as legendas dos posts do próprio deputado. Cada `citacao` aponta o post de onde saiu.",
-  "Foto de banco (ilustrativa em fotos.json) aparece marcada na página."
+  "Foto de banco (ilustrativa em fotos.json) aparece marcada na página.",
+  "fotoFaixa: foto de fundo da citação. fotosApoio: fotos ao pé de 'na prática' (quadro do mandato leva legenda de onde veio). tema: 'autismo' muda a estética da página. assunto: como a linha do tempo dos posts chama a lei ('N posts sobre o Cine Azul')."
  ],
  "seo": {
   "titulo": "Quem faz lei",
@@ -21,8 +22,6 @@
    "titulo": "Testes rápidos nas farmácias",
    "curto": "Testes rápidos e exames na farmácia perto de casa, com as regras de segurança da Anvisa.",
    "foto": "lei-testes-farmacia",
-   "fotoApoio": "lei-testes-rapidos",
-   "legendaApoio": "Testes rápidos numa farmácia de Santa Catarina. Quadro do vídeo publicado pelo deputado em 08/08/2026.",
    "frase": "Farmácias e drogarias de Santa Catarina podem fazer exames de análises clínicas e testes rápidos, com as condições de segurança da Anvisa. Para quem mora longe de um laboratório, o cuidado fica mais perto.",
    "pratica": [
     "Coloca na lei estadual a Resolução nº 786/2023 da Anvisa, que define as condições seguras para exames de análises clínicas em farmácias.",
@@ -34,9 +33,29 @@
     "Quem acompanha diabetes, colesterol ou outra condição de rotina",
     "Farmácias e drogarias, que ganham regra clara para oferecer o serviço"
    ],
-   "citacao": { "texto": "Saúde não pode depender da distância. Cuidado bom é cuidado que chega mais perto das pessoas.", "post": "DbwkX6RN2Ev" },
-   "posts": ["DBuCrSKJaHK", "C-SynpCuRnO", "DbwkX6RN2Ev", "C7hnTDQJtnF"],
-   "icone": "stethoscope"
+   "citacao": {
+    "texto": "Saúde não pode depender da distância. Cuidado bom é cuidado que chega mais perto das pessoas.",
+    "post": "DbwkX6RN2Ev"
+   },
+   "posts": [
+    "C7hnTDQJtnF",
+    "C-SynpCuRnO",
+    "DBuCrSKJaHK",
+    "DbwkX6RN2Ev",
+    "DczPoZih-bk"
+   ],
+   "icone": "stethoscope",
+   "assunto": "os testes rápidos nas farmácias",
+   "fotoFaixa": "lei-testes-rapidos-faixa",
+   "fotosApoio": [
+    {
+     "foto": "lei-testes-rapidos",
+     "legenda": "Testes rápidos numa farmácia de Santa Catarina. Quadro do vídeo publicado pelo deputado em 08/08/2026."
+    },
+    {
+     "foto": "lei-testes-rapidos-apoio"
+    }
+   ]
   },
   {
    "slug": "energia-solar-nos-hospitais",
@@ -55,9 +74,25 @@
     "Quem é atendido por eles, com mais recurso indo para o cuidado",
     "O meio ambiente, com energia limpa gerada no próprio hospital"
    ],
-   "citacao": { "texto": "Imagine transformar o gasto com energia em mais exames, consultas, medicamentos e atendimento para quem mais precisa.", "post": "DaBaTfRJPmA" },
-   "posts": ["DWCkUfKgRkT", "DWMlY0GgGV-", "DaBaTfRJPmA", "DZiTR5cu6-s"],
-   "icone": "sun"
+   "citacao": {
+    "texto": "Imagine transformar o gasto com energia em mais exames, consultas, medicamentos e atendimento para quem mais precisa.",
+    "post": "DaBaTfRJPmA"
+   },
+   "posts": [
+    "DWCkUfKgRkT",
+    "DWMlY0GgGV-",
+    "DZiTR5cu6-s",
+    "DaBaTfRJPmA",
+    "DczPoZih-bk"
+   ],
+   "icone": "sun",
+   "assunto": "a energia solar nos hospitais filantrópicos",
+   "fotoFaixa": "lei-energia-solar-faixa",
+   "fotosApoio": [
+    {
+     "foto": "lei-energia-solar-apoio"
+    }
+   ]
   },
   {
    "slug": "rota-das-aguas-termais",
@@ -76,9 +111,23 @@
     "Quem vive do turismo: hotéis, restaurantes, comércio",
     "Quem visita, com um roteiro organizado"
    ],
-   "citacao": { "texto": "Com a Rota das Águas Termais, unimos cidades como Gravatal, Santo Amaro da Imperatriz, Piratuba, Águas Mornas e São João do Sul em um circuito que valoriza o turismo, gera empregos e movimenta a economia.", "post": "DPG5Cj5DF5O" },
-   "posts": ["DPG5Cj5DF5O", "DdSAqg_BexT", "C15Urjmunp7"],
-   "icone": "map-pin"
+   "citacao": {
+    "texto": "Com a Rota das Águas Termais, unimos cidades como Gravatal, Santo Amaro da Imperatriz, Piratuba, Águas Mornas e São João do Sul em um circuito que valoriza o turismo, gera empregos e movimenta a economia.",
+    "post": "DPG5Cj5DF5O"
+   },
+   "posts": [
+    "C15Urjmunp7",
+    "DPG5Cj5DF5O",
+    "DdSAqg_BexT"
+   ],
+   "icone": "map-pin",
+   "assunto": "a Rota das Águas Termais",
+   "fotoFaixa": "lei-aguas-termais-faixa",
+   "fotosApoio": [
+    {
+     "foto": "lei-aguas-termais-apoio"
+    }
+   ]
   },
   {
    "slug": "ovinocaprinocultura",
@@ -97,9 +146,23 @@
     "A economia das cidades do interior",
     "Escolas, hospitais e casas de repouso, com mais opção de alimento"
    ],
-   "citacao": { "texto": "Essa iniciativa fortalece nossos produtores rurais e impulsiona a economia local.", "post": "DHOglVhOoZk" },
-   "posts": ["DHOglVhOoZk", "DDdIiqlOO5U"],
-   "icone": "users"
+   "citacao": {
+    "texto": "Essa iniciativa fortalece nossos produtores rurais e impulsiona a economia local.",
+    "post": "DHOglVhOoZk"
+   },
+   "posts": [
+    "DDdIiqlOO5U",
+    "DHOglVhOoZk",
+    "DczPoZih-bk"
+   ],
+   "icone": "users",
+   "assunto": "a ovinocaprinocultura",
+   "fotoFaixa": "lei-ovinocaprinocultura-faixa",
+   "fotosApoio": [
+    {
+     "foto": "lei-ovinocaprinocultura-apoio"
+    }
+   ]
   },
   {
    "slug": "cine-azul",
@@ -118,9 +181,26 @@
     "As famílias atípicas, que ganham um programa de lazer juntas",
     "Os cinemas, que passam a receber um público novo"
    ],
-   "citacao": { "texto": "Inclusão também significa garantir o acesso ao lazer, à convivência e a experiências que fazem parte da vida de todos.", "post": "DcBjuC2gDZB" },
-   "posts": ["DcBjuC2gDZB", "DbtvHIJoCpU", "DDFTmWEpgM_", "DdUlrSTx_cp"],
-   "icone": "clapperboard"
+   "citacao": {
+    "texto": "Inclusão também significa garantir o acesso ao lazer, à convivência e a experiências que fazem parte da vida de todos.",
+    "post": "DcBjuC2gDZB"
+   },
+   "posts": [
+    "DDFTmWEpgM_",
+    "DW4OzcjAOBh",
+    "DbtvHIJoCpU",
+    "DcBjuC2gDZB",
+    "DdUlrSTx_cp"
+   ],
+   "icone": "clapperboard",
+   "assunto": "o Cine Azul",
+   "fotoFaixa": "lei-cine-azul-faixa",
+   "tema": "autismo",
+   "fotosApoio": [
+    {
+     "foto": "lei-cine-azul-apoio"
+    }
+   ]
   },
   {
    "slug": "protocolo-individualizado-de-avaliacao",
@@ -128,8 +208,6 @@
    "titulo": "Protocolo Individualizado de Avaliação (PIA)",
    "curto": "Avaliação adaptada para alunos com autismo nas escolas do Estado.",
    "foto": "lei-pia",
-   "fotoApoio": "lei-pia-documento",
-   "legendaApoio": "A primeira página do projeto de lei. Quadro do vídeo publicado pelo deputado em 15/09/2026.",
    "frase": "Atividades e avaliações adaptadas para alunos com autismo e outros transtornos globais do desenvolvimento, nas escolas de Santa Catarina.",
    "pratica": [
     "Cria o Protocolo Individualizado de Avaliação para alunos com Transtornos Globais do Desenvolvimento, incluindo o TEA, nas instituições de ensino do Estado.",
@@ -141,9 +219,26 @@
     "Professores, com um protocolo claro para adaptar a avaliação",
     "As famílias, que acompanham o aprendizado de perto"
    ],
-   "citacao": { "texto": "Inclusão nas escolas com o PIA, garantindo aprendizado mais justo.", "post": "DW4OzcjAOBh" },
-   "posts": ["DW4OzcjAOBh", "DDFTmWEpgM_", "DdUlrSTx_cp"],
-   "icone": "graduation-cap"
+   "citacao": {
+    "texto": "Inclusão nas escolas com o PIA, garantindo aprendizado mais justo.",
+    "post": "DW4OzcjAOBh"
+   },
+   "posts": [
+    "DDFTmWEpgM_",
+    "DH5-3xUOghS",
+    "DW4OzcjAOBh",
+    "DczPoZih-bk",
+    "DdUlrSTx_cp"
+   ],
+   "icone": "graduation-cap",
+   "assunto": "o PIA",
+   "fotoFaixa": "lei-pia-faixa",
+   "tema": "autismo",
+   "fotosApoio": [
+    {
+     "foto": "lei-pia-apoio"
+    }
+   ]
   },
   {
    "slug": "continuidade-do-segundo-professor",
@@ -162,9 +257,24 @@
     "Os segundos professores, que dão sequência ao trabalho",
     "As famílias, com menos rupturas na rotina da criança"
    ],
-   "citacao": { "texto": "Uma criança com autismo não precisa recomeçar todo ano. Ela precisa de vínculo, confiança e segurança para aprender.", "post": "DVzNyB_gEee" },
-   "posts": ["DVzNyB_gEee", "DW4OzcjAOBh", "DdUlrSTx_cp"],
-   "icone": "school"
+   "citacao": {
+    "texto": "Uma criança com autismo não precisa recomeçar todo ano. Ela precisa de vínculo, confiança e segurança para aprender.",
+    "post": "DVzNyB_gEee"
+   },
+   "posts": [
+    "DVzNyB_gEee",
+    "DW4OzcjAOBh",
+    "DdUlrSTx_cp"
+   ],
+   "icone": "school",
+   "assunto": "o segundo professor",
+   "fotoFaixa": "lei-segundo-professor-faixa",
+   "tema": "autismo",
+   "fotosApoio": [
+    {
+     "foto": "lei-segundo-professor-apoio"
+    }
+   ]
   }
  ],
  "ccj": {
@@ -174,6 +284,18 @@
   "texto": "Antes de chegar ao Plenário, todo projeto de lei passa pela CCJ, a principal comissão da Assembleia, onde é feita a primeira análise. Pepê assumiu a presidência da comissão em 2025, o primeiro parlamentar da AMUREL no cargo.",
   "post": "Db9Bv1goPPf"
  },
- "redes": ["DczPoZih-bk", "DbtvHIJoCpU", "DBuCrSKJaHK", "DWCkUfKgRkT", "DcBjuC2gDZB", "DHOglVhOoZk", "DVzNyB_gEee", "Db9Bv1goPPf"],
- "fecho": { "lema": "Poucos projetos, grandes impactos", "pincel": "impactos" }
+ "redes": [
+  "DczPoZih-bk",
+  "DbtvHIJoCpU",
+  "DBuCrSKJaHK",
+  "DWCkUfKgRkT",
+  "DcBjuC2gDZB",
+  "DHOglVhOoZk",
+  "DVzNyB_gEee",
+  "Db9Bv1goPPf"
+ ],
+ "fecho": {
+  "lema": "Poucos projetos, grandes impactos",
+  "pincel": "impactos"
+ }
 }

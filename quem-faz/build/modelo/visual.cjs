@@ -70,6 +70,18 @@ function tituloDoPost(legenda, limite = 96) {
   return resumirLegenda(linhas[0] || '', limite);
 }
 
+const MESES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+const MESES_LONGOS = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+const mesAno = (iso) => `${MESES_LONGOS[Number(iso.slice(5, 7)) - 1]} de ${iso.slice(0, 4)}`;
+
+/**
+ * A data do post em destaque, sobre a capa: dia grande, mês e ano embaixo.
+ * É o que mostra que o assunto não nasceu na campanha.
+ */
+function quando(iso) {
+  return `<span class="ig-quando"><b>${iso.slice(8, 10)}</b><span>${MESES[Number(iso.slice(5, 7)) - 1]}</span><span>${iso.slice(0, 4)}</span></span>`;
+}
+
 const TIPOS = {
   reel: { rotulo: 'Reel', icone: 'play' },
   video: { rotulo: 'Vídeo', icone: 'play' },
@@ -105,15 +117,16 @@ function escolherPosts(ctx, { shortcodes, busca, excluir = [], limite = 8 } = {}
   return lista.slice(0, limite);
 }
 
-function cardPost(p, qf) {
+function cardPost(p, qf, { assunto = null } = {}) {
   const t = TIPOS[p.tipo] || TIPOS.foto;
   const ehVideo = p.tipo === 'reel' || p.tipo === 'video';
   return `        <li><a class="ig" href="${escapar(p.link)}" target="_blank" rel="noopener">
           <span class="ig-capa">
             <img src="${qf}${p.capa}" alt="" width="${p.capaW}" height="${p.capaH}" loading="lazy" decoding="async" />
-            <span class="ig-tipo">${icone(t.icone)}${t.rotulo}</span>${ehVideo ? `\n            <span class="ig-play">${icone('play')}</span>` : ''}
+            <span class="ig-tipo">${icone(t.icone)}${t.rotulo}</span>
+            ${quando(p.data)}${ehVideo ? `\n            <span class="ig-play">${icone('play')}</span>` : ''}
           </span>
-          <span class="ig-corpo">
+          <span class="ig-corpo">${assunto ? `\n            <span class="ig-assunto">Sobre ${escapar(assunto)}</span>` : ''}
             <span class="ig-topo">${icone('instagram')}<span>@pepecollaco</span><span class="ig-data">${escapar(data(p.data))}</span></span>
             <span class="ig-titulo">${escapar(tituloDoPost(p.legenda))}</span>
             <span class="ig-numeros"><span>${icone('heart')}${milhar(p.curtidas)}</span><span>${icone('message-circle')}${milhar(p.comentarios)}</span><span class="ig-ver" title="Ver no Instagram">${icone('arrow-up-right')}</span></span>
@@ -142,11 +155,30 @@ function secao(conteudo, { id, classe = '', rotulo = '' } = {}) {
  * bloco = { olho, titulo, texto?, shortcodes? | busca?, limite?, id?, classe? }
  */
 function vitrine(bloco, ctx, qf) {
-  const posts = escolherPosts(ctx, bloco);
+  let posts = escolherPosts(ctx, bloco);
   if (!posts.length) throw new Error(`vitrine "${bloco.titulo}" ficou sem post`);
-  const cards = posts.map((p) => cardPost(p, qf)).join('\n');
+
+  // Linha do tempo: do post mais antigo ao mais novo, com a frase que diz desde
+  // quando o deputado fala do assunto. A frase é montada das datas reais.
+  if (bloco.linhaDoTempo) {
+    posts = [...posts].sort((a, b) => (a.data < b.data ? -1 : 1));
+    const primeiro = posts[0].data;
+    const ultimo = posts[posts.length - 1].data;
+    const quantos = posts.length === 1 ? 'um post' : `${posts.length} posts`;
+    bloco = {
+      ...bloco,
+      titulo: bloco.titulo || `Falamos disso desde ${primeiro.slice(0, 4)}`,
+      texto: bloco.texto || `${quantos} do @pepecollaco sobre ${escapar(bloco.assunto)}, ` +
+        (primeiro.slice(0, 7) === ultimo.slice(0, 7)
+          ? `em ${mesAno(primeiro)}.`
+          : `do primeiro, em <b>${mesAno(primeiro)}</b>, ao mais recente, em <b>${mesAno(ultimo)}</b>.`) +
+        ' Não é assunto de campanha: é trabalho de mandato.',
+    };
+  }
+
+  const cards = posts.map((p) => cardPost(p, qf, { assunto: bloco.linhaDoTempo ? bloco.assunto : null })).join('\n');
   const rodape = `\n\n      <p class="vitrine-rodape rv"><a class="btn btn-vazado" href="https://www.instagram.com/pepecollaco/" target="_blank" rel="noopener">${icone('instagram')}Seguir @pepecollaco</a></p>`;
-  return secao(`${cabeca(bloco)}\n\n      <ul class="vitrine">\n${cards}\n      </ul>${bloco.semRodape ? '' : rodape}`, {
+  return secao(`${cabeca(bloco)}\n\n      <ul class="vitrine${bloco.linhaDoTempo ? ' linha-tempo' : ''}"${bloco.linhaDoTempo ? ` style="--n:${posts.length}"` : ''}>\n${cards}\n      </ul>${bloco.semRodape ? '' : rodape}`, {
     id: bloco.id || 'redes',
     classe: bloco.classe ?? 'faixa-clara',
   });
@@ -225,6 +257,7 @@ function mosaico(bloco, ctx, qf) {
 }
 
 module.exports = {
+  quando, mesAno,
   medirWebp, carregarFotos, foto, seloIlustrativa,
   tituloDoPost, escolherPosts, cardPost,
   cabeca, secao, vitrine, serie, portasFoto, mosaico,

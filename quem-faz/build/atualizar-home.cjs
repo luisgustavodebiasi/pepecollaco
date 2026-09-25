@@ -93,7 +93,9 @@ function main() {
     return `      <article class="lei rv${atraso}">
         <h3 class="lei-t">${escapar(c.titulo)}</h3>
         <p class="lei-d">${escapar(c.texto)}</p>
-        <span class="selo ${classe}">${escapar(p.rotulo)}</span>${paginas.has(c.codigo) ? `
+        ${p.virouLei
+          ? `<span class="selos"><span class="selo selo-lei">✓ Aprovado</span><span class="selo selo-num">${escapar(p.rotulo.replace('LEI Nº', 'Lei nº'))}</span></span>`
+          : `<span class="selo ${classe}">${escapar(p.rotulo)}</span>`}${paginas.has(c.codigo) ? `
         <a class="lei-fonte" href="/quem-faz/projetos-de-lei/${paginas.get(c.codigo)}/">Entender a lei</a>` : ''}
         <a class="lei-fonte" href="${p.url}" target="_blank" rel="noopener">${escapar(p.codigo.replace('./', ' '))} no e-Legis</a>
       </article>`;

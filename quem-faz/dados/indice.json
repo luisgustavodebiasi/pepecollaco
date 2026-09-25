@@ -16,35 +16,165 @@
   "frase": "O mandato inteiro, organizado para achar rápido: <b>por cidade, por assunto e por lei</b>. Cada valor vem do controle de emendas do gabinete e cada lei, da tramitação oficial da Alesc."
  },
  "portas": [
-  { "slug": "por-tubarao", "alvo": "Por Tubarão", "foto": "porta-tubarao", "grande": true, "dado": "municipio:TUBARAO", "texto": "Mais de 60 ruas com recurso, o projeto dos molhes e da redragagem do Rio Tubarão e a Av. Pedro Zapelini." },
-  { "slug": "pela-amurel", "alvo": "Pela AMUREL", "foto": "porta-amurel", "grande": true, "dado": "coordenacao:AMUREL", "texto": "Os 20 municípios atendidos. Ginásio de Sangão, estradas de Gravatal, infraestrutura de Pescaria Brava." },
-  { "slug": "pelo-sul", "alvo": "Pelo Sul", "foto": "porta-sul", "dado": "sul", "texto": "AMUREL, AMREC e AMESC: as três associações da região, num lugar só." },
-  { "slug": "pelas-cidades", "alvo": "Pelas cidades", "foto": "porta-cidades", "dado": "municipios", "texto": "Mais de um terço de Santa Catarina, do litoral à serra." },
-  { "slug": "pelo-autismo", "alvo": "Pelo autismo", "foto": "porta-autismo", "dadoTexto": "Frente Parlamentar", "texto": "Equoterapia, salas sensoriais, o Cine Azul e o segundo professor." },
-  { "slug": "pela-educacao", "alvo": "Pela educação", "foto": "porta-educacao", "dadoTexto": "Creches e escolas", "texto": "Centros de educação infantil, reforma de escolas, ônibus escolar e salas sensoriais." },
-  { "slug": "projetos-de-lei", "alvo": "Lei", "rot": "Quem faz", "foto": "porta-leis", "dado": "leis", "texto": "Testes rápidos nas farmácias, energia solar nos hospitais, Cine Azul e mais." },
-  { "href": "../tubarao/ruas/", "alvo": "As ruas de Tubarão", "rot": "Busque a sua", "foto": "porta-ruas", "dado": "ruas", "texto": "Procure pelo nome, pelo bairro ou pelo CEP e veja a rua no mapa." },
-  { "href": "../foto/", "alvo": "Fotos dos eventos", "rot": "Ache você", "foto": "porta-fotos", "toda": true, "dado": "fotos", "texto": "A busca pelo rosto roda no seu celular: a sua foto não sai dele." }
+  {
+   "slug": "por-tubarao",
+   "alvo": "Por Tubarão",
+   "foto": "porta-tubarao",
+   "grande": true,
+   "dado": "emendas:TUBARAO",
+   "texto": "Mais de 60 ruas com recurso, o projeto dos molhes e da redragagem do Rio Tubarão e a Av. Pedro Zapelini."
+  },
+  {
+   "slug": "pela-amurel",
+   "alvo": "Pela AMUREL",
+   "foto": "porta-amurel",
+   "grande": true,
+   "dado": "coordenacao:AMUREL",
+   "texto": "Os 20 municípios atendidos. Ginásio de Sangão, estradas de Gravatal, infraestrutura de Pescaria Brava."
+  },
+  {
+   "slug": "pela-amrec",
+   "alvo": "Pela AMREC",
+   "foto": "porta-amrec",
+   "dado": "coordenacao:AMREC",
+   "texto": "As 12 cidades da região carbonífera, de Criciúma a Siderópolis. Asfalto, saúde, esporte e salas sensoriais."
+  },
+  {
+   "slug": "pela-amesc",
+   "alvo": "Pela AMESC",
+   "foto": "porta-amesc",
+   "dado": "coordenacao:AMESC",
+   "texto": "11 cidades do extremo sul: estrada, saúde, van para pacientes e terapia para pessoas com autismo."
+  },
+  {
+   "slug": "pelas-cidades",
+   "alvo": "Pelas cidades",
+   "foto": "porta-cidades",
+   "dado": "municipios",
+   "texto": "Mais de um terço de Santa Catarina, do litoral à serra."
+  },
+  {
+   "slug": "pelo-autismo",
+   "alvo": "Pelo autismo",
+   "foto": "porta-autismo",
+   "dadoTexto": "Frente Parlamentar",
+   "texto": "Equoterapia, salas sensoriais, o Cine Azul e o segundo professor."
+  },
+  {
+   "slug": "pela-educacao",
+   "alvo": "Pela educação",
+   "foto": "porta-educacao",
+   "dadoTexto": "Creches e escolas",
+   "texto": "Centros de educação infantil, reforma de escolas, ônibus escolar e salas sensoriais."
+  },
+  {
+   "slug": "projetos-de-lei",
+   "alvo": "Lei",
+   "rot": "Quem faz",
+   "foto": "porta-leis",
+   "dado": "leis",
+   "texto": "Testes rápidos nas farmácias, energia solar nos hospitais, Cine Azul e mais."
+  },
+  {
+   "href": "../tubarao/ruas/",
+   "alvo": "As ruas de Tubarão",
+   "rot": "Busque a sua",
+   "foto": "porta-ruas",
+   "dado": "ruas",
+   "texto": "Procure pelo nome, pelo bairro ou pelo CEP e veja a rua no mapa.",
+   "grande": true
+  },
+  {
+   "href": "../foto/",
+   "alvo": "Fotos dos eventos",
+   "rot": "Ache você",
+   "foto": "porta-fotos",
+   "dado": "fotos",
+   "texto": "A busca pelo rosto roda no seu celular: a sua foto não sai dele.",
+   "grande": true
+  }
  ],
  "serie": [
-  { "shortcode": "DdtxzMjRhtO", "rotulo": "Jaguaruna" },
-  { "shortcode": "Ddr7JVkxc0r", "rotulo": "Paulo Lopes" },
-  { "shortcode": "DdpRebgP6Jw", "rotulo": "Tubarão · 5", "pagina": "por-tubarao/" },
-  { "shortcode": "DdmyVmDJnS1", "rotulo": "Nova Veneza" },
-  { "shortcode": "DdkSxopNmWP", "rotulo": "Içara" },
-  { "shortcode": "DdeRXczOQdJ", "rotulo": "Braço do Norte" },
-  { "shortcode": "DdcZMW6sH-X", "rotulo": "Garopaba" },
-  { "shortcode": "DdZMbiyscCz", "rotulo": "Tubarão · 4", "pagina": "por-tubarao/" },
-  { "shortcode": "DdUlrSTx_cp", "rotulo": "Autismo · 3", "pagina": "pelo-autismo/" },
-  { "shortcode": "DdSAqg_BexT", "rotulo": "Gravatal" },
-  { "shortcode": "DdHuxp2uISK", "rotulo": "Tubarão · 3", "pagina": "por-tubarao/" },
-  { "shortcode": "DdCmk9FB3dJ", "rotulo": "Laguna" },
-  { "shortcode": "Dc4RDmTuiWZ", "rotulo": "Pescaria Brava" },
-  { "shortcode": "Dct9JBJhvHh", "rotulo": "Autismo", "pagina": "pelo-autismo/" },
-  { "shortcode": "DcjKo40OMDe", "rotulo": "Tubarão · 2", "pagina": "por-tubarao/" },
-  { "shortcode": "Dcgj16OOhgF", "rotulo": "Capivari de Baixo" },
-  { "shortcode": "DcTy3mExCSn", "rotulo": "Autismo · 1", "pagina": "pelo-autismo/" },
-  { "shortcode": "DcJ7ywGuYdP", "rotulo": "Tubarão · 1", "pagina": "por-tubarao/" }
+  {
+   "shortcode": "DdtxzMjRhtO",
+   "rotulo": "Jaguaruna"
+  },
+  {
+   "shortcode": "Ddr7JVkxc0r",
+   "rotulo": "Paulo Lopes"
+  },
+  {
+   "shortcode": "DdpRebgP6Jw",
+   "rotulo": "Tubarão · 5",
+   "pagina": "por-tubarao/"
+  },
+  {
+   "shortcode": "DdmyVmDJnS1",
+   "rotulo": "Nova Veneza"
+  },
+  {
+   "shortcode": "DdkSxopNmWP",
+   "rotulo": "Içara"
+  },
+  {
+   "shortcode": "DdeRXczOQdJ",
+   "rotulo": "Braço do Norte"
+  },
+  {
+   "shortcode": "DdcZMW6sH-X",
+   "rotulo": "Garopaba"
+  },
+  {
+   "shortcode": "DdZMbiyscCz",
+   "rotulo": "Tubarão · 4",
+   "pagina": "por-tubarao/"
+  },
+  {
+   "shortcode": "DdUlrSTx_cp",
+   "rotulo": "Autismo · 3",
+   "pagina": "pelo-autismo/"
+  },
+  {
+   "shortcode": "DdSAqg_BexT",
+   "rotulo": "Gravatal"
+  },
+  {
+   "shortcode": "DdHuxp2uISK",
+   "rotulo": "Tubarão · 3",
+   "pagina": "por-tubarao/"
+  },
+  {
+   "shortcode": "DdCmk9FB3dJ",
+   "rotulo": "Laguna"
+  },
+  {
+   "shortcode": "Dc4RDmTuiWZ",
+   "rotulo": "Pescaria Brava"
+  },
+  {
+   "shortcode": "Dct9JBJhvHh",
+   "rotulo": "Autismo",
+   "pagina": "pelo-autismo/"
+  },
+  {
+   "shortcode": "DcjKo40OMDe",
+   "rotulo": "Tubarão · 2",
+   "pagina": "por-tubarao/"
+  },
+  {
+   "shortcode": "Dcgj16OOhgF",
+   "rotulo": "Capivari de Baixo"
+  },
+  {
+   "shortcode": "DcTy3mExCSn",
+   "rotulo": "Autismo · 1",
+   "pagina": "pelo-autismo/"
+  },
+  {
+   "shortcode": "DcJ7ywGuYdP",
+   "rotulo": "Tubarão · 1",
+   "pagina": "por-tubarao/"
+  }
  ],
  "ocultar": [
   "DdXaGSaAGof",
@@ -57,15 +187,41 @@
   "DcEJ8YVgpWY"
  ],
  "estrada": [
-  { "foto": "estrada-01", "forma": "alta" },
-  { "foto": "estrada-03", "forma": "larga" },
-  { "foto": "estrada-02" },
-  { "foto": "estrada-04", "forma": "alta" },
-  { "foto": "estrada-06" },
-  { "foto": "estrada-05", "forma": "alta" },
-  { "foto": "estrada-07", "forma": "larga" },
-  { "foto": "estrada-09" },
-  { "foto": "estrada-08", "forma": "alta" },
-  { "foto": "estrada-10" }
+  {
+   "foto": "estrada-01",
+   "forma": "alta"
+  },
+  {
+   "foto": "estrada-03",
+   "forma": "larga"
+  },
+  {
+   "foto": "estrada-02"
+  },
+  {
+   "foto": "estrada-04",
+   "forma": "alta"
+  },
+  {
+   "foto": "estrada-06"
+  },
+  {
+   "foto": "estrada-05",
+   "forma": "alta"
+  },
+  {
+   "foto": "estrada-07",
+   "forma": "larga"
+  },
+  {
+   "foto": "estrada-09"
+  },
+  {
+   "foto": "estrada-08",
+   "forma": "alta"
+  },
+  {
+   "foto": "estrada-10"
+  }
  ]
 }

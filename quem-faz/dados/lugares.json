@@ -10,7 +10,8 @@
     { "slug": "por-tubarao", "rotulo": "Por Tubarão", "existe": true },
     { "slug": "pela-amurel", "rotulo": "Pela AMUREL", "existe": true },
     { "slug": "pelo-autismo", "rotulo": "Pelo autismo", "existe": true },
-    { "slug": "pelo-sul", "rotulo": "Pelo Sul", "existe": true },
+    { "slug": "pela-amrec", "rotulo": "Pela AMREC", "existe": true },
+    { "slug": "pela-amesc", "rotulo": "Pela AMESC", "existe": true },
     { "slug": "pela-educacao", "rotulo": "Pela educação", "existe": true },
     { "slug": "pelas-cidades", "rotulo": "Pelas cidades", "existe": true },
     { "slug": "projetos-de-lei", "rotulo": "Projetos de lei", "existe": true }
@@ -34,9 +35,7 @@
       "conferir": {
         "coordenacao.AMUREL.valor": 88024250.22,
         "coordenacao.AMUREL.n": 235,
-        "coordenacao.AMUREL.municipios": 20,
-        "municipio.TUBARAO.valor": 18966127.05,
-        "municipio.SANGAO.valor": 9715000
+        "coordenacao.AMUREL.municipios": 20
       },
 
       "hero": {
@@ -369,16 +368,13 @@
 
       "seo": {
         "titulo": "Quem faz por Tubarão",
-        "descricao": "R$ 18,9 milhões destinados a Tubarão em 45 emendas: mais de 60 ruas com recurso, o projeto dos molhes e da redragagem do Rio Tubarão, a Av. Pedro Zapelini, saúde, segurança, educação e entidades.",
-        "ogDescricao": "R$ 18,9 milhões em 45 emendas para Tubarão. Mais de 60 ruas com recurso destinado, o projeto dos molhes e a Av. Pedro Zapelini."
+        "descricao": "45 emendas para Tubarão: mais de 60 ruas com recurso, o projeto dos molhes e da redragagem do Rio Tubarão, a Av. Pedro Zapelini, saúde, segurança, educação e entidades.",
+        "ogDescricao": "45 emendas para Tubarão. Mais de 60 ruas com recurso destinado, o projeto dos molhes e a Av. Pedro Zapelini."
       },
 
-      "compartilhar": "Quem faz por Tubarão: R$ 18,9 milhões em 45 emendas, mais de 60 ruas com recurso destinado. Olha a conta:",
+      "compartilhar": "Quem faz por Tubarão: 45 emendas e mais de 60 ruas com recurso destinado. Olha o que foi feito:",
 
-      "conferir": {
-        "municipio.TUBARAO.valor": 18966127.05,
-        "municipio.TUBARAO.n": 45
-      },
+      "conferir": {},
 
       "hero": {
         "titulo": [
@@ -388,14 +384,12 @@
           { "estilo": "pincel", "texto": "TUBARÃO" }
         ],
         "frase": "Aqui eu nasci, fui vereador três vezes e fui vice-prefeito. Conheço o nome da rua antes de alguém me mandar o pedido. <b>De Tubarão, para Tubarão</b> não é slogan: é de onde a conta abaixo saiu.",
-        "valor": 18966127.05,
-        "casas": 1,
-        "legenda": "destinados a Tubarão em 45 emendas do mandato",
+        "manchete": { "numero": "69", "unidade": "RUAS" },
+        "legenda": "com recurso do mandato para pavimentação, drenagem e esgoto",
         "ancora": "ruas"
       },
 
       "placar": [
-        { "valor": 18966127.05, "casas": 1, "legenda": "destinados à cidade" },
         { "texto": "45", "legenda": "emendas em Tubarão" },
         { "texto": "+60", "legenda": "ruas com recurso destinado" },
         { "valor": 5000000, "legenda": "o projeto dos molhes e da redragagem" }
@@ -404,7 +398,7 @@
       "pergunta": {
         "olho": "A pergunta que importa",
         "titulo": "Faz diferença ter um representante da nossa cidade?",
-        "texto": "Tubarão tem quase cem mil habitantes e é a maior cidade da AMUREL. Mas tamanho não garante lugar na mesa onde o orçamento do Estado é decidido: garante quem senta nela. Em quatro anos, isso virou <b>R$ 18,9 milhões</b> em 45 emendas, mais de 60 ruas com recurso e a presidência da comissão mais estratégica da Assembleia."
+        "texto": "Tubarão tem quase cem mil habitantes e é a maior cidade da AMUREL. Mas tamanho não garante lugar na mesa onde o orçamento do Estado é decidido: garante quem senta nela. Em quatro anos, isso virou <b>45 emendas</b>, mais de 60 ruas com recurso e a presidência da comissão mais estratégica da Assembleia."
       },
 
       "secoes": [
@@ -671,6 +665,888 @@
         "lema": "De Tubarão, para Tubarão",
         "pincel": "Tubarão",
         "apoio": "45 emendas, mais de 60 ruas, R$ 18,9 milhões. Dia 4 de outubro, vote em quem é daqui."
+      }
+    },
+
+    "pela-amrec": {
+      "slug": "pela-amrec",
+      "tipo": "regiao",
+      "nome": "AMREC",
+      "local": "Região Carbonífera",
+      "seo": {
+        "titulo": "Quem faz pela AMREC",
+        "descricao": "R$ 24,3 milhões destinados às 12 cidades da AMREC em 75 emendas, sem deixar nenhuma de fora: pavimentação em Orleans e Içara, centro de educação infantil em Forquilhinha, saúde, esporte e salas sensoriais.",
+        "ogDescricao": "R$ 24,3 milhões nas 12 cidades da AMREC, sem deixar nenhuma de fora. 75 emendas em obras, saúde, educação e esporte."
+      },
+      "compartilhar": "Quem faz pela AMREC: R$ 24,3 milhões nas 12 cidades da região carbonífera, sem deixar nenhuma de fora. Olha a conta:",
+      "conferir": {
+        "coordenacao.AMREC.valor": 24356000,
+        "coordenacao.AMREC.n": 75,
+        "coordenacao.AMREC.municipios": 12
+      },
+      "hero": {
+        "titulo": [
+          {
+            "estilo": "leve",
+            "texto": "quem"
+          },
+          {
+            "estilo": "forte",
+            "texto": "FAZ"
+          },
+          {
+            "estilo": "leve",
+            "texto": "pela"
+          },
+          {
+            "estilo": "pincel",
+            "texto": "AMREC"
+          }
+        ],
+        "frase": "O mandato nasceu na AMUREL, mas não parou na divisa, porque <b>a estrada que serve Tubarão é a mesma que serve Criciúma</b>. Da carbonífera à serra, as 12 cidades da AMREC receberam emenda deste mandato.",
+        "valor": 24356000,
+        "casas": 1,
+        "legenda": "nas 12 cidades da AMREC, sem deixar nenhuma de fora",
+        "ancora": "obras"
+      },
+      "placar": [
+        {
+          "valor": 24356000,
+          "casas": 1,
+          "legenda": "destinados à região"
+        },
+        {
+          "texto": "12 <small>DE 12</small>",
+          "legenda": "municípios atendidos"
+        },
+        {
+          "texto": "75",
+          "legenda": "emendas na AMREC"
+        }
+      ],
+      "pergunta": {
+        "olho": "A pergunta que importa",
+        "titulo": "Por que um deputado de Tubarão trabalha pela AMREC?",
+        "texto": "Porque os problemas do Sul nunca respeitaram divisas. O hospital que atende quando falta leito, a rodovia que liga Urussanga a Criciúma, o rio que enche e alaga lavoura e estrada: nada disso é de uma cidade só. A conta abaixo mostra o que chegou: <b>75 emendas</b>, e nenhuma das 12 cidades de fora."
+      },
+      "secoes": [
+        {
+          "tipo": "obras",
+          "id": "obras",
+          "olho": "O que saiu do papel",
+          "titulo": "As maiores obras na AMREC",
+          "texto": "Do maior município da região ao bairro que esperava o asfalto. Estas são as maiores destinações do mandato na AMREC, uma por cidade.",
+          "itens": [
+            {
+              "destaque": true,
+              "selo": "A maior da região",
+              "valor": 2316000,
+              "casas": 1,
+              "titulo": "Rua Vereador Elias Bussolo · Orleans",
+              "texto": "No Bairro Samuel Sandrini, uma rua que esperou tempo demais. Pavimentação asfáltica com recurso da Bancada do Sul, já pago.",
+              "fonte": "Emenda de bancada 2025, paga."
+            },
+            {
+              "valor": 1500000,
+              "casas": 1,
+              "titulo": "Bairro Vila Nova · Içara",
+              "texto": "Pavimentação das ruas de um bairro inteiro. Bairro com asfalto é ônibus que passa, ambulância que chega e casa que vale mais.",
+              "fonte": "Transferência especial 2025, em análise no Estado."
+            },
+            {
+              "valor": 900000,
+              "titulo": "Centro de Educação Infantil · Forquilhinha",
+              "texto": "Construção de um CEI no Bairro Ouro Negro. Cada vaga aqui é uma mãe que trabalha tranquila e uma criança bem cuidada: primeira infância é onde tudo começa.",
+              "fonte": "Emenda impositiva 2025, paga."
+            },
+            {
+              "valor": 600000,
+              "titulo": "Pronto atendimento · Cocal do Sul",
+              "texto": "Equipamentos e mobília para o pronto atendimento, enquanto o município busca transformar o 24 horas em UPA. Fila se resolve com estrutura, não com promessa.",
+              "fonte": "Transferência especial 2025, aguardando documentação do município."
+            },
+            {
+              "valor": 500000,
+              "titulo": "Macrodrenagem · Morro da Fumaça",
+              "texto": "Drenagem na margem direita da Avenida João Nicolau de Souza. É a obra que não aparece na foto, mas aparece no dia de chuva forte.",
+              "fonte": "Transferência especial 2025, paga."
+            },
+            {
+              "valor": 500000,
+              "titulo": "Complexo esportivo de Caravaggio · Nova Veneza",
+              "texto": "Gramado sintético no complexo esportivo do distrito de Caravaggio. Esporte com estrutura é convivência, saúde e orgulho comunitário.",
+              "fonte": "Transferência especial 2025, paga."
+            },
+            {
+              "valor": 400000,
+              "titulo": "Caminhão de coleta · Lauro Müller",
+              "texto": "Um caminhão compactador de coleta de lixo para a Secretaria de Obras. Cidade limpa começa pela coleta que passa.",
+              "fonte": "Transferência especial 2025, paga."
+            },
+            {
+              "valor": 400000,
+              "titulo": "Consultas e exames de olhos · Criciúma",
+              "texto": "Consultas e exames em oftalmologia para quem é atendido pelo SUS.",
+              "fonte": "Transferência especial 2025, aguardando documentação do município."
+            }
+          ]
+        },
+        {
+          "tipo": "obras",
+          "id": "autismo",
+          "classe": "",
+          "olho": "Inclusão",
+          "titulo": "Autismo e inclusão na AMREC",
+          "texto": "A pauta que este mandato levantou primeiro também chegou à região carbonífera: terapia, escola preparada e apoio às APAEs.",
+          "itens": [
+            {
+              "destaque": true,
+              "titulo": "Salas sensoriais · Nova Veneza e Treviso",
+              "texto": "Salas sensoriais na rede municipal de ensino das duas cidades, com emendas impositivas de 2025 já pagas. Em Nova Veneza, a previsão é de 11 salas nas escolas."
+            },
+            {
+              "titulo": "Equoterapia · Lauro Müller, Orleans e Nova Veneza",
+              "texto": "Reabilitação de pessoas com TEA por meio de equoterapia, terapia ocupacional e ecoterapia, com emendas de 2025 em andamento."
+            },
+            {
+              "titulo": "Parque de inclusão multissensorial · Cocal do Sul",
+              "texto": "Emenda impositiva de 2024, já paga, para um parque de inclusão multissensorial na rede de educação."
+            },
+            {
+              "titulo": "APAEs · Siderópolis e Morro da Fumaça",
+              "texto": "Reforma da APAE de Siderópolis, já paga, e recurso para qualificar os atendimentos da APAE de Morro da Fumaça."
+            },
+            {
+              "titulo": "Seminário de autismo · Criciúma",
+              "texto": "Em julho de 2024, o ciclo de seminários da Frente Parlamentar em Defesa da Pessoa com Autismo encerrou em Criciúma, com mais de 500 participantes."
+            }
+          ]
+        },
+        {
+          "tipo": "chips",
+          "id": "municipios",
+          "olho": "Nenhuma ficou de fora",
+          "titulo": "As 12 cidades",
+          "texto": "A AMREC tem 12 municípios, e todos receberam emenda deste mandato, de Criciúma a Siderópolis e Treviso.",
+          "fonte": {
+            "tipo": "coordenacao",
+            "chave": "AMREC"
+          },
+          "esperado": 12,
+          "nota": "Emendas destinadas entre 2023 e 2026, conforme o controle de emendas do gabinete."
+        },
+        {
+          "tipo": "leis",
+          "id": "leis",
+          "olho": "Não é só recurso",
+          "titulo": "O que virou lei",
+          "texto": "Emenda leva recurso a uma cidade. Lei muda a regra para as 295 cidades do Estado, e continua valendo depois que o mandato acaba.",
+          "grupos": [
+            {
+              "itens": [
+                {
+                  "codigo": "PL./0379/2026",
+                  "titulo": "Camerata Di Venezia · Nova Veneza",
+                  "texto": "Declara de utilidade pública a Associação Cultural Camerata Di Venezia, de Nova Veneza. O título abre portas para a entidade receber apoio."
+                }
+              ]
+            },
+            {
+              "titulo": "Para todo o Estado",
+              "itens": [
+                {
+                  "codigo": "PL./0281/2023",
+                  "titulo": "Testes rápidos em farmácias",
+                  "texto": "Autoriza farmácias e drogarias a realizar exames clínicos e testes rápidos, ampliando o acesso à saúde básica em cidade pequena, onde o laboratório é longe e a fila é grande."
+                },
+                {
+                  "codigo": "PL./0257/2025",
+                  "titulo": "Energia solar para hospitais filantrópicos",
+                  "texto": "Permite destinar recursos do Fundo Social a sistemas fotovoltaicos em hospitais filantrópicos. Menos conta de luz é mais dinheiro no atendimento."
+                },
+                {
+                  "codigo": "PL./0266/2022",
+                  "titulo": "Cine Azul",
+                  "texto": "Incentiva sessões de cinema adaptadas a crianças e adolescentes com autismo e suas famílias: som mais baixo, luz acesa e liberdade para se mover."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tipo": "pautas",
+          "id": "pautas",
+          "classe": "faixa-clara",
+          "olho": "O que está em jogo agora",
+          "titulo": "O que a região ainda precisa destravar",
+          "texto": "Tem problema que nenhuma prefeitura resolve sozinha, porque atravessa municípios. É aí que ter deputado do Sul deixa de ser detalhe.",
+          "itens": [
+            {
+              "titulo": "Redragagem do Rio Urussanga",
+              "texto": "O assoreamento aumenta o risco de enchente e prejudica famílias, lavouras e estradas. Em março de 2026, o plano de trabalho do desassoreamento foi apresentado em Morro da Fumaça, com o deputado presente."
+            },
+            {
+              "titulo": "SC-108 · Urussanga, Cocal do Sul e Criciúma",
+              "texto": "A Bancada do Sul cobrou o andamento da duplicação da rodovia e o cronograma de execução junto à Secretaria de Infraestrutura."
+            },
+            {
+              "titulo": "Hospitais filantrópicos",
+              "texto": "O São Donato, em Içara, e o Santa Otília, em Orleans, atendem quando falta leito e vivem de repasse que atrasa. O mandato destinou recurso para os plantonistas do pronto socorro do São Donato e um gerador para o Santa Otília."
+            },
+            {
+              "titulo": "BR-101 e o Morro dos Cavalos",
+              "texto": "O túnel, as rotas alternativas e as melhorias na rodovia. Enquanto existir um caminho só, uma interdição para o Sul inteiro: o trabalhador, o caminhão da safra e a ambulância junto."
+            }
+          ]
+        },
+        {
+          "tipo": "imprensa",
+          "id": "imprensa",
+          "classe": "",
+          "olho": "Na imprensa",
+          "titulo": "O que os jornais registraram",
+          "texto": "Reportagens de veículos independentes. Cada card abre a matéria original, para quem quiser conferir na fonte.",
+          "itens": [
+            {
+              "id": 20,
+              "resumo": "Entrega do gerador instalado no Hospital Santa Otília, em Orleans, comprado com emenda do deputado."
+            },
+            {
+              "id": 58,
+              "resumo": "Nova Veneza assina as ordens de serviço das melhorias no complexo esportivo, com duas das três obras pagas por emendas do deputado."
+            },
+            {
+              "id": 38,
+              "resumo": "Cocal do Sul busca apoio do Estado para transformar o pronto atendimento 24 horas em UPA, com equipamentos garantidos por emenda do deputado."
+            },
+            {
+              "id": 61,
+              "resumo": "Apresentado em Morro da Fumaça o plano de trabalho para o desassoreamento do Rio Urussanga."
+            }
+          ]
+        },
+        {
+          "tipo": "serie",
+          "id": "serie",
+          "olho": "A série",
+          "titulo": "A AMREC em vídeo",
+          "texto": "Os vídeos gravados na região, onde a obra está. Toque para assistir no Instagram.",
+          "itens": [
+            {
+              "shortcode": "DdkSxopNmWP",
+              "rotulo": "Içara"
+            },
+            {
+              "shortcode": "DdmyVmDJnS1",
+              "rotulo": "Nova Veneza"
+            },
+            {
+              "shortcode": "Dco70RuPWy6",
+              "rotulo": "Forquilhinha"
+            },
+            {
+              "shortcode": "Da_V4eSBbdm",
+              "rotulo": "Salas sensoriais"
+            }
+          ]
+        },
+        {
+          "tipo": "vitrine",
+          "id": "redes",
+          "olho": "Nas redes",
+          "titulo": "A AMREC no feed",
+          "texto": "O que o deputado publicou sobre as cidades da região. Toque para abrir no Instagram.",
+          "shortcodes": [
+            "DUVuUh_gCd0",
+            "DXU6Z_DAQ_z",
+            "DYX79IHOOxS",
+            "DUgBjIcgMSH",
+            "DUG-karAWrd",
+            "DZayE7cAE8M",
+            "DV8rEJIjcGz",
+            "DFDAZr2OzDO"
+          ],
+          "limite": 8
+        }
+      ],
+      "fecho": {
+        "lema": "Quando o Sul cresce, todo mundo cresce junto",
+        "pincel": "junto",
+        "apoio": "12 cidades, 75 emendas. Dia 4 de outubro, vote em quem trabalha pela região."
+      }
+    },
+
+    "pela-amesc": {
+      "slug": "pela-amesc",
+      "tipo": "regiao",
+      "nome": "AMESC",
+      "local": "Extremo Sul Catarinense",
+      "seo": {
+        "titulo": "Quem faz pela AMESC",
+        "descricao": "R$ 7 milhões destinados a 11 cidades da AMESC em 34 emendas: estrada, saúde, van para transporte de pacientes e terapia para pessoas com autismo no extremo sul catarinense.",
+        "ogDescricao": "R$ 7 milhões em 11 cidades do extremo sul. Estrada, saúde e inclusão, emenda por emenda."
+      },
+      "compartilhar": "Quem faz pela AMESC: R$ 7 milhões em 11 cidades do extremo sul catarinense. Olha a conta:",
+      "conferir": {
+        "coordenacao.AMESC.valor": 7060000,
+        "coordenacao.AMESC.n": 34,
+        "coordenacao.AMESC.municipios": 11
+      },
+      "hero": {
+        "titulo": [
+          {
+            "estilo": "leve",
+            "texto": "quem"
+          },
+          {
+            "estilo": "forte",
+            "texto": "FAZ"
+          },
+          {
+            "estilo": "leve",
+            "texto": "pela"
+          },
+          {
+            "estilo": "pincel",
+            "texto": "AMESC"
+          }
+        ],
+        "frase": "No extremo sul, cada quilômetro até o atendimento pesa. <b>11 cidades da AMESC</b> receberam emenda deste mandato: estrada, saúde, van para paciente e terapia para pessoas com autismo.",
+        "valor": 7060000,
+        "casas": 0,
+        "legenda": "em 11 cidades do extremo sul catarinense",
+        "ancora": "obras"
+      },
+      "placar": [
+        {
+          "valor": 7060000,
+          "casas": 0,
+          "legenda": "destinados à região"
+        },
+        {
+          "texto": "11",
+          "legenda": "municípios atendidos"
+        },
+        {
+          "texto": "34",
+          "legenda": "emendas na AMESC"
+        }
+      ],
+      "pergunta": {
+        "olho": "A pergunta que importa",
+        "titulo": "Faz diferença ter deputado do Sul?",
+        "texto": "Faz. A estrada que liga Passo de Torres a Laguna, a BR-101 no Morro dos Cavalos, a saúde que precisa chegar perto de quem mora longe: são pautas que só avançam quando alguém do Sul leva o pedido até onde o orçamento é decidido, e volta para cobrar. A conta abaixo é a resposta prática: <b>34 emendas</b> em 11 cidades."
+      },
+      "secoes": [
+        {
+          "tipo": "obras",
+          "id": "obras",
+          "olho": "O que saiu do papel",
+          "titulo": "As maiores obras na AMESC",
+          "texto": "Estrada, saúde e mobilidade para quem mora longe do atendimento. Estas são as maiores destinações do mandato no extremo sul, uma por cidade.",
+          "itens": [
+            {
+              "destaque": true,
+              "selo": "Já paga",
+              "valor": 500000,
+              "titulo": "Rodovia TBS 255 · Timbé do Sul",
+              "texto": "Pavimentação asfáltica, com fornecimento de materiais, num trecho da TBS 255 em Figueira Alessio.",
+              "fonte": "Emenda impositiva 2025, paga."
+            },
+            {
+              "valor": 400000,
+              "titulo": "Endoscopia · Jacinto Machado",
+              "texto": "Equipamentos de endoscopia para a Secretaria de Saúde. A máquina chegou em março de 2026, e o deputado foi conferir de perto antes de começar a atender.",
+              "fonte": "Transferência especial 2025, publicada."
+            },
+            {
+              "valor": 400000,
+              "titulo": "Van para pacientes · Praia Grande",
+              "texto": "Van para o transporte de pacientes. Mais do que um veículo: mobilidade para quem precisa ir atrás de tratamento.",
+              "fonte": "Transferência especial 2025, paga."
+            },
+            {
+              "valor": 400000,
+              "titulo": "Infraestrutura · Passo de Torres",
+              "texto": "Investimento em infraestrutura no município, com recurso já pago.",
+              "fonte": "Transferência especial 2025, paga."
+            },
+            {
+              "valor": 370000,
+              "titulo": "Rodovia ARA-204 · Araranguá",
+              "texto": "Pavimentação da rodovia municipal na comunidade de Sanga do Marco.",
+              "fonte": "Emenda impositiva 2025, paga."
+            },
+            {
+              "valor": 250000,
+              "titulo": "Recuperação de vias · São João do Sul",
+              "texto": "Insumos para recuperar as vias do município.",
+              "fonte": "Emenda impositiva 2025, paga."
+            },
+            {
+              "valor": 200000,
+              "titulo": "Hospital São Judas Tadeu · Meleiro",
+              "texto": "Custeio do hospital da comunidade.",
+              "fonte": "Sobra de saúde 2024, pronta para pagamento."
+            },
+            {
+              "valor": 140000,
+              "titulo": "Rua José Delaudino dos Santos · Balneário Gaivota",
+              "texto": "Pavimentação asfáltica da rua.",
+              "fonte": "Emenda impositiva 2025, paga."
+            }
+          ]
+        },
+        {
+          "tipo": "obras",
+          "id": "autismo",
+          "classe": "",
+          "olho": "Inclusão",
+          "titulo": "Autismo e inclusão no extremo sul",
+          "texto": "Terapia, APAE e espaço público pensado para todo mundo. A pauta do autismo também chegou à AMESC.",
+          "itens": [
+            {
+              "destaque": true,
+              "titulo": "Equoterapia · Jacinto Machado",
+              "texto": "Reabilitação de pessoas com TEA por meio de equoterapia e terapia ocupacional, com emenda já paga. O projeto apareceu em reportagens sobre equoterapia no Sul catarinense."
+            },
+            {
+              "titulo": "Atendimento ao autismo · Turvo",
+              "texto": "Apoio financeiro à saúde do município para o atendimento de pessoas com autismo, já pago."
+            },
+            {
+              "titulo": "APAE · Meleiro",
+              "texto": "Veículo novo para a APAE, com emenda paga em 2024."
+            },
+            {
+              "titulo": "Praça inclusiva · Maracajá",
+              "texto": "Reforma da Praça Frei Euzébio, criando um espaço inclusivo, com emenda já paga."
+            }
+          ]
+        },
+        {
+          "tipo": "chips",
+          "id": "municipios",
+          "olho": "Onde chegou",
+          "titulo": "As 11 cidades",
+          "texto": "Onze cidades do extremo sul receberam emenda deste mandato, de Araranguá a Passo de Torres e Praia Grande.",
+          "fonte": {
+            "tipo": "coordenacao",
+            "chave": "AMESC"
+          },
+          "esperado": 11,
+          "nota": "Emendas destinadas entre 2023 e 2026, conforme o controle de emendas do gabinete."
+        },
+        {
+          "tipo": "leis",
+          "id": "leis",
+          "olho": "Não é só recurso",
+          "titulo": "O que virou lei",
+          "texto": "Emenda leva recurso a uma cidade. Lei muda a regra para as 295 cidades do Estado, e continua valendo depois que o mandato acaba.",
+          "grupos": [
+            {
+              "itens": [
+                {
+                  "codigo": "PL./0265/2022",
+                  "titulo": "Rota Turística das Águas Termais",
+                  "texto": "Institui a rota estadual das águas termais, que reúne num mesmo circuito cidades como Gravatal, Santo Amaro da Imperatriz, Piratuba, Águas Mornas e São João do Sul."
+                }
+              ]
+            },
+            {
+              "titulo": "Para todo o Estado",
+              "itens": [
+                {
+                  "codigo": "PL./0281/2023",
+                  "titulo": "Testes rápidos em farmácias",
+                  "texto": "Autoriza farmácias e drogarias a realizar exames clínicos e testes rápidos, ampliando o acesso à saúde básica em cidade pequena, onde o laboratório é longe e a fila é grande."
+                },
+                {
+                  "codigo": "PL./0257/2025",
+                  "titulo": "Energia solar para hospitais filantrópicos",
+                  "texto": "Permite destinar recursos do Fundo Social a sistemas fotovoltaicos em hospitais filantrópicos. Menos conta de luz é mais dinheiro no atendimento."
+                },
+                {
+                  "codigo": "PL./0266/2022",
+                  "titulo": "Cine Azul",
+                  "texto": "Incentiva sessões de cinema adaptadas a crianças e adolescentes com autismo e suas famílias: som mais baixo, luz acesa e liberdade para se mover."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tipo": "pautas",
+          "id": "pautas",
+          "classe": "faixa-clara",
+          "olho": "O que está em jogo agora",
+          "titulo": "O que a região ainda precisa destravar",
+          "texto": "Tem problema que nenhuma prefeitura resolve sozinha, porque atravessa municípios. É aí que ter deputado do Sul deixa de ser detalhe.",
+          "itens": [
+            {
+              "titulo": "Caminhos do Mar · Passo de Torres a Laguna",
+              "texto": "O asfaltamento da estrada que liga Passo de Torres a Laguna é prioridade da Bancada do Sul na Alesc."
+            },
+            {
+              "titulo": "BR-101 e o Morro dos Cavalos",
+              "texto": "O túnel, as rotas alternativas e as melhorias na rodovia. Enquanto existir um caminho só, uma interdição para o Sul inteiro: o trabalhador, o caminhão da safra e a ambulância junto."
+            }
+          ]
+        },
+        {
+          "tipo": "imprensa",
+          "id": "imprensa",
+          "classe": "",
+          "olho": "Na imprensa",
+          "titulo": "O que os jornais registraram",
+          "texto": "Reportagens de veículos independentes. Cada card abre a matéria original, para quem quiser conferir na fonte.",
+          "itens": [
+            {
+              "id": 67,
+              "resumo": "Reportagem sobre a equoterapia para pessoas com TEA no Sul catarinense, com projetos em Jacinto Machado e outras cidades custeados por emendas do deputado."
+            },
+            {
+              "id": 68,
+              "resumo": "Reportagem de TV sobre o desenvolvimento emocional e social de pessoas com TEA na equoterapia, na região sul."
+            },
+            {
+              "id": 12,
+              "resumo": "As prioridades de infraestrutura e saúde do Sul para 2024, definidas pelos deputados da região, com o deputado como coordenador da Bancada do Sul."
+            }
+          ]
+        },
+        {
+          "tipo": "vitrine",
+          "id": "redes",
+          "olho": "Nas redes",
+          "titulo": "A AMESC no feed",
+          "texto": "O que o deputado publicou sobre as cidades do extremo sul. Toque para abrir no Instagram.",
+          "shortcodes": [
+            "DWExUaWgHZf",
+            "DPZvCR3kagJ",
+            "DLkcITPuO9M",
+            "DM0g5k3uVif",
+            "DPG5Cj5DF5O"
+          ],
+          "limite": 5
+        }
+      ],
+      "fecho": {
+        "lema": "O extremo sul também é Sul",
+        "pincel": "Sul",
+        "apoio": "11 cidades, 34 emendas. Dia 4 de outubro, vote em quem trabalha pela região."
+      }
+    },
+
+    "pelo-autismo": {
+      "slug": "pelo-autismo",
+      "tipo": "tema",
+      "tema": "autismo",
+      "nome": "autismo",
+      "seo": {
+        "titulo": "Quem faz pelo autismo",
+        "descricao": "R$ 5,2 milhões em equoterapia, terapia ocupacional, salas sensoriais e atendimento a pessoas com TEA em 20 municípios de Santa Catarina. Frente Parlamentar, Censo do Autismo, Cine Azul, PIA e o segundo professor.",
+        "ogDescricao": "R$ 5,2 milhões em terapia e inclusão para pessoas com TEA em 20 municípios. Frente Parlamentar, Cine Azul, PIA e o segundo professor."
+      },
+      "compartilhar": "Quem faz pelo autismo: terapia, escola, lazer e leis para as famílias atípicas de Santa Catarina. Olha o que foi feito:",
+      "conferir": {
+        "tema.autismo.valor": 5240439.24,
+        "tema.autismo.n": 28,
+        "tema.autismo.municipios": 20
+      },
+      "hero": {
+        "titulo": [
+          {
+            "estilo": "leve",
+            "texto": "quem"
+          },
+          {
+            "estilo": "forte",
+            "texto": "FAZ"
+          },
+          {
+            "estilo": "leve",
+            "texto": "pelo"
+          },
+          {
+            "estilo": "pincel",
+            "texto": "autismo"
+          }
+        ],
+        "frase": "Ninguém esquece o dia em que recebe um diagnóstico de autismo. Naquele momento <b>não muda só a vida de uma criança: muda a vida de uma família inteira</b>. E vem a pergunta que passa a acompanhar todo dia: quem vai caminhar do nosso lado?",
+        "valor": 5240439.24,
+        "legenda": "em terapias e inclusão para pessoas com TEA, em 20 municípios",
+        "ancora": "terapias",
+        "botao": "Ver o que foi feito"
+      },
+      "placar": [
+        {
+          "valor": 5240439.24,
+          "legenda": "destinados à causa"
+        },
+        {
+          "texto": "20",
+          "legenda": "municípios atendidos"
+        },
+        {
+          "texto": "28",
+          "legenda": "emendas para o TEA"
+        },
+        {
+          "texto": "3",
+          "legenda": "projetos de lei pela inclusão"
+        }
+      ],
+      "secoes": [
+        {
+          "tipo": "obras",
+          "id": "terapias",
+          "olho": "Cada conquista começa com uma oportunidade",
+          "titulo": "Depois do diagnóstico começa uma caminhada",
+          "texto": "Nenhuma criança é igual à outra. O desenvolvimento não acontece de um jeito só. Por isso o mandato não financiou um programa: financiou acesso, em cada cidade que pediu.",
+          "itens": [
+            {
+              "selo": "O maior bloco",
+              "destaque": true,
+              "titulo": "Equoterapia e terapia ocupacional",
+              "texto": "Com a ajuda dos cavalos, muitas crianças ganham equilíbrio, autonomia e confiança. O mandato levou equoterapia e terapia ocupacional a 12 municípios: Armazém, Braço do Norte, Gravatal, Jacinto Machado, Laguna, Lauro Müller, Nova Veneza, Orleans, Pedras Grandes, Sangão, São Ludgero e Tubarão."
+            },
+            {
+              "titulo": "Salas sensoriais na escola",
+              "texto": "Uma crise não espera. A sala sensorial reduz os estímulos, acolhe a criança e ajuda a se reorganizar. Tem recurso do mandato para salas sensoriais em Treviso, Nova Veneza, José Boiteux e São José, e para um parque de inclusão multissensorial em Cocal do Sul. Só em Nova Veneza, são 11 salas nas escolas."
+            },
+            {
+              "titulo": "Natação para pessoas com TEA",
+              "texto": "O desenvolvimento acontece na equoterapia, mas também na água e no esporte. Recurso para o Lira Tênis Clube, em Florianópolis, ampliar o atendimento especializado e o projeto de natação para pessoas com TEA."
+            },
+            {
+              "titulo": "Atendimento o ano inteiro",
+              "texto": "Custeio para o Conselho Comunitário de Jaguaruna manter o programa de atendimento ao público com TEA, e apoio à saúde no atendimento ao autismo em Turvo e em Gaspar."
+            },
+            {
+              "titulo": "APAEs mais fortes",
+              "texto": "Veículos, reforma de sede, salas de aula e equipamentos para APAEs que atendem também as famílias atípicas, em cidades como Capivari de Baixo, Navegantes, Siderópolis, Meleiro, São Martinho e Rio Negrinho."
+            }
+          ]
+        },
+        {
+          "tipo": "medidas",
+          "id": "medidas",
+          "olho": "Tudo o que o mandato fez",
+          "titulo": "Muito além da emenda",
+          "texto": "Emenda resolve o ano. Lei resolve a década. Incluir não é fazer a criança se adaptar ao mundo: é preparar o mundo para receber cada criança.",
+          "itens": [
+            {
+              "icone": "landmark",
+              "titulo": "Frente Parlamentar em Defesa da Pessoa com Autismo",
+              "texto": "Criada pelo mandato para o assunto entrar na pauta da Alesc e nunca mais sair. Não é pauta de um mês do ano: é causa permanente."
+            },
+            {
+              "icone": "search",
+              "titulo": "Censo do Autismo",
+              "texto": "Plataforma para mapear as pessoas com TEA em Santa Catarina. Sem conhecer a realidade, não dá para criar política pública de verdade. Hoje o Estado não sabe quantas famílias precisa atender."
+            },
+            {
+              "icone": "clapperboard",
+              "titulo": "Cine Azul",
+              "texto": "Sessões de cinema adaptadas: luz parcialmente acesa, som mais baixo e um ambiente tranquilo. Lazer em família, com acolhimento.",
+              "codigo": "PL./0266/2022"
+            },
+            {
+              "icone": "graduation-cap",
+              "titulo": "PIA: avaliação adaptada na escola",
+              "texto": "Atividades e avaliações adaptadas para o aluno com autismo. A aprendizagem medida de forma justa.",
+              "codigo": "PL./0322/2023"
+            },
+            {
+              "icone": "school",
+              "titulo": "Continuidade do segundo professor",
+              "texto": "O aluno com TEA segue com o mesmo segundo professor no ano seguinte. O vínculo não recomeça do zero.",
+              "codigo": "PL./0052/2026"
+            },
+            {
+              "icone": "users",
+              "titulo": "Seminários pelo Estado",
+              "texto": "Mais de 2 mil pessoas capacitadas nos seminários do mandato, em várias regiões de Santa Catarina."
+            },
+            {
+              "icone": "heart",
+              "titulo": "Salas sensoriais",
+              "texto": "Espaços que acalmam, estimulam os sentidos e ajudam a criança a aprender, com recurso do mandato em escolas de cinco cidades."
+            },
+            {
+              "icone": "map-pin",
+              "titulo": "Equoterapia em 12 municípios",
+              "texto": "Terapia com cavalos e terapia ocupacional perto de casa, com sessão marcada toda semana."
+            },
+            {
+              "icone": "building-2",
+              "titulo": "Utilidade pública para as AMAs",
+              "texto": "Por lei do deputado, as Associações de Pais e Amigos do Autista de Rio Rufino (Lei nº 20.032/2026) e de Tijucas (Lei nº 19.049/2024) são de utilidade pública estadual. O título abre portas para receber apoio."
+            }
+          ]
+        },
+        {
+          "tipo": "leisPaginas",
+          "id": "leis",
+          "olho": "Quem faz lei",
+          "titulo": "As leis do autismo, uma a uma",
+          "texto": "O que cada projeto muda na prática, com a situação oficial da Alesc.",
+          "slugs": [
+            "cine-azul",
+            "protocolo-individualizado-de-avaliacao",
+            "continuidade-do-segundo-professor"
+          ]
+        },
+        {
+          "tipo": "galeria",
+          "id": "galeria",
+          "olho": "De perto",
+          "titulo": "Onde a inclusão acontece",
+          "texto": "Equoterapia, natação, sala sensorial, escola e atendimento às famílias. Imagens dos vídeos gravados pelo mandato nas cidades.",
+          "itens": [
+            {
+              "foto": "aut-equoterapia",
+              "forma": "larga"
+            },
+            {
+              "foto": "aut-sala-sensorial"
+            },
+            {
+              "foto": "aut-natacao"
+            },
+            {
+              "foto": "aut-atendimento"
+            },
+            {
+              "foto": "aut-pexels-1"
+            },
+            {
+              "foto": "aut-escola",
+              "forma": "larga"
+            },
+            {
+              "foto": "aut-alesc",
+              "forma": "larga"
+            },
+            {
+              "foto": "aut-pexels-2",
+              "forma": "larga"
+            }
+          ]
+        },
+        {
+          "tipo": "chips",
+          "id": "municipios",
+          "olho": "Onde chegou",
+          "titulo": "20 municípios",
+          "texto": "Autismo não tem endereço. A fila do diagnóstico é a mesma na cidade grande e na de cinco mil habitantes. Estes são os municípios onde o mandato colocou recurso na causa, do litoral ao Vale.",
+          "itens": [
+            {
+              "nome": "Armazém"
+            },
+            {
+              "nome": "Braço do Norte"
+            },
+            {
+              "nome": "Cocal do Sul"
+            },
+            {
+              "nome": "Florianópolis"
+            },
+            {
+              "nome": "Gaspar"
+            },
+            {
+              "nome": "Gravatal"
+            },
+            {
+              "nome": "Jacinto Machado"
+            },
+            {
+              "nome": "Jaguaruna"
+            },
+            {
+              "nome": "José Boiteux"
+            },
+            {
+              "nome": "Laguna"
+            },
+            {
+              "nome": "Lauro Müller"
+            },
+            {
+              "nome": "Nova Veneza"
+            },
+            {
+              "nome": "Orleans"
+            },
+            {
+              "nome": "Pedras Grandes"
+            },
+            {
+              "nome": "Sangão"
+            },
+            {
+              "nome": "São José"
+            },
+            {
+              "nome": "São Ludgero"
+            },
+            {
+              "nome": "Treviso"
+            },
+            {
+              "nome": "Tubarão"
+            },
+            {
+              "nome": "Turvo"
+            }
+          ]
+        },
+        {
+          "tipo": "serie",
+          "id": "serie",
+          "olho": "A série",
+          "titulo": "Quem faz pelo autismo, em vídeo",
+          "texto": "Terapia, escola, lazer e as famílias atípicas, contados pelo próprio deputado. Toque para assistir no Instagram.",
+          "itens": [
+            {
+              "shortcode": "DdUlrSTx_cp",
+              "rotulo": "Acolher é fazer a diferença"
+            },
+            {
+              "shortcode": "Dct9JBJhvHh",
+              "rotulo": "Inclusão e oportunidade"
+            },
+            {
+              "shortcode": "DcTy3mExCSn",
+              "rotulo": "Inclusão não é favor"
+            }
+          ]
+        },
+        {
+          "tipo": "vitrine",
+          "id": "redes",
+          "olho": "Nas redes",
+          "titulo": "O autismo no feed",
+          "texto": "Posts do @pepecollaco sobre autismo e inclusão. A causa está no feed desde 2024.",
+          "shortcodes": [
+            "DcBjuC2gDZB",
+            "DVzNyB_gEee",
+            "Da_V4eSBbdm",
+            "DXKkyJECden",
+            "DOgD7NZgMO6",
+            "DbtvHIJoCpU",
+            "DXcscZTALQ3",
+            "DDFTmWEpgM_"
+          ],
+          "limite": 8
+        }
+      ],
+      "fecho": {
+        "lema": "Nenhuma família enfrenta essa caminhada sozinha",
+        "pincel": "sozinha"
       }
     }
   }

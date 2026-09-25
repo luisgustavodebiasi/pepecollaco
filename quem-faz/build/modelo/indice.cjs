@@ -14,22 +14,19 @@ const { SITE, documento, jsonLdPessoa } = require('./base.cjs');
 const visual = require('./visual.cjs');
 
 const PROJETO = path.join(__dirname, '..', '..', '..');
-const SUL = ['AMUREL', 'AMREC', 'AMESC'];
 
 /** Os números que o índice anuncia, todos tirados das bases. */
 function numeros(ctx) {
   const e = ctx.emendas;
   const ruas = JSON.parse(fs.readFileSync(path.join(PROJETO, 'ruas', 'ruas.json'), 'utf8'));
   const fotos = JSON.parse(fs.readFileSync(path.join(PROJETO, 'foto', 'pepe-por-elas', 'dados.json'), 'utf8'));
-  const sul = SUL.map((c) => e.porCoordenacao[c]);
   return {
     total: e.total,
     emendas: e.quantidade,
     municipios: e.municipios,
     leis: ctx.leis.totalLeis,
-    tubarao: e.porMunicipio.TUBARAO,
-    amurel: e.porCoordenacao.AMUREL,
-    sul: { valor: sul.reduce((s, c) => s + c.valor, 0), municipios: sul.reduce((s, c) => s + c.municipios, 0) },
+    porMunicipio: e.porMunicipio,
+    porCoordenacao: e.porCoordenacao,
     ruas: ruas.total ?? ruas.ruas.length,
     fotos: (fotos.fotos || []).length,
   };
@@ -38,14 +35,18 @@ function numeros(ctx) {
 /** "R$ 18,9 mi · 45 emendas" etc. HTML curto, em amarelo no card. */
 function dadoDaPorta(chave, n) {
   if (!chave) return null;
-  if (chave.startsWith('municipio:')) {
-    const m = n.tubarao;
-    return `<b>${cifraChip(m.valor)}</b> em ${m.n} emendas`;
+  // Cidade não mostra valor recebido (decisão de 25/09/2026): só quantas emendas.
+  if (chave.startsWith('emendas:')) {
+    const m = n.porMunicipio[chave.split(':')[1]];
+    return `<b>${m.n} emendas</b> na cidade`;
   }
-  // Acima de R$ 10 mi o chip teria "R$ 88,0 mi"; a cifra inteira lê melhor.
-  // cifra() arredonda para baixo, então o "+" do Sul continua verdadeiro.
-  if (chave === 'coordenacao:AMUREL') return `<b>R$ ${cifra(n.amurel.valor).numero} mi</b> nos ${n.amurel.municipios} municípios`;
-  if (chave === 'sul') return `<b>+R$ ${cifra(n.sul.valor).numero} mi</b> em ${n.sul.municipios} municípios`;
+  // Região mostra o total. cifra() arredonda para baixo; abaixo de R$ 10 mi
+  // vai com uma casa ("R$ 7 mi" esconderia os quebrados, "R$ 7,0" não diz nada).
+  if (chave.startsWith('coordenacao:')) {
+    const c = n.porCoordenacao[chave.split(':')[1]];
+    const cf = cifra(c.valor, c.valor < 1e7 && c.valor % 1e6 >= 1e5 ? 1 : 0);
+    return `<b>R$ ${cf.numero} mi</b> nos ${c.municipios} municípios`;
+  }
   if (chave === 'municipios') return `<b>${n.municipios} municípios</b> atendidos`;
   if (chave === 'leis') return `<b>${n.leis} leis</b> aprovadas`;
   if (chave === 'ruas') return `<b>${n.ruas} ruas</b> com recurso`;

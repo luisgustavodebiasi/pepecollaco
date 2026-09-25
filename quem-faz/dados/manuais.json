@@ -2,70 +2,35 @@
  "_leia": [
   "Escrito à mão: o que build/atualizar-manuais.cjs injeta nas quatro páginas QUEM FAZ que ainda são escritas à mão.",
   "O script só mexe entre <!-- visual:inicio --> e <!-- visual:fim --> (antes do fecho) e na grade de portas. O resto da página não é tocado.",
-  "Cada bloco é uma seção: 'serie' (reels da série Quem faz por…), 'vitrine' (posts com capa, por lista ou por busca na legenda) ou 'leis' (cards das páginas de lei)."
+  "Cada bloco é uma seção: 'serie' (reels da série Quem faz por…), 'vitrine' (posts com capa, por lista ou por busca na legenda) ou 'leis' (cards das páginas de lei).",
+  "pelo-autismo saiu daqui em 25/09/2026: passou a ser gerada (lugares.json, tema autismo). pelo-sul foi apagada e deu lugar a pela-amrec e pela-amesc."
  ],
  "paginas": {
-  "pelo-autismo": [
-   {
-    "tipo": "serie",
-    "olho": "A série",
-    "titulo": "Quem faz pelo autismo, em vídeo",
-    "texto": "Terapia, escola, lazer e as famílias atípicas, contados pelo próprio deputado. Toque para assistir no Instagram.",
-    "itens": [
-     { "shortcode": "DdUlrSTx_cp", "rotulo": "Acolher é fazer a diferença" },
-     { "shortcode": "Dct9JBJhvHh", "rotulo": "Inclusão e oportunidade" },
-     { "shortcode": "DcTy3mExCSn", "rotulo": "Inclusão não é favor" }
-    ]
-   },
-   {
-    "tipo": "leis",
-    "olho": "Quem faz lei",
-    "titulo": "As leis do autismo, uma a uma",
-    "texto": "O que cada projeto muda na prática, com a situação oficial da Alesc.",
-    "slugs": ["cine-azul", "protocolo-individualizado-de-avaliacao", "continuidade-do-segundo-professor"]
-   },
-   {
-    "tipo": "vitrine",
-    "olho": "Nas redes",
-    "titulo": "O autismo no feed",
-    "shortcodes": ["DcBjuC2gDZB", "DVzNyB_gEee", "Da_V4eSBbdm", "DXKkyJECden", "DOgD7NZgMO6", "DbtvHIJoCpU", "DXcscZTALQ3", "DDFTmWEpgM_"],
-    "limite": 8
-   }
-  ],
-  "pelo-sul": [
-   {
-    "tipo": "serie",
-    "olho": "A série",
-    "titulo": "Quem faz por cada cidade do Sul",
-    "texto": "Um vídeo por cidade, gravado onde a obra está: AMUREL, AMREC e AMESC. Toque para assistir no Instagram.",
-    "itens": [
-     { "shortcode": "DdtxzMjRhtO", "rotulo": "Jaguaruna" },
-     { "shortcode": "Ddr7JVkxc0r", "rotulo": "Paulo Lopes" },
-     { "shortcode": "DdmyVmDJnS1", "rotulo": "Nova Veneza" },
-     { "shortcode": "DdkSxopNmWP", "rotulo": "Içara" },
-     { "shortcode": "DdeRXczOQdJ", "rotulo": "Braço do Norte" },
-     { "shortcode": "DdcZMW6sH-X", "rotulo": "Garopaba" },
-     { "shortcode": "DdSAqg_BexT", "rotulo": "Gravatal" },
-     { "shortcode": "DdCmk9FB3dJ", "rotulo": "Laguna" },
-     { "shortcode": "Dc4RDmTuiWZ", "rotulo": "Pescaria Brava" },
-     { "shortcode": "Dcgj16OOhgF", "rotulo": "Capivari de Baixo" },
-     { "shortcode": "DdpRebgP6Jw", "rotulo": "Tubarão", "pagina": "../por-tubarao/" }
-    ]
-   }
-  ],
   "pela-educacao": [
    {
     "tipo": "leis",
     "olho": "Quem faz lei",
     "titulo": "As leis da sala de aula",
     "texto": "Dois projetos para o aluno com autismo aprender melhor, com a situação oficial da Alesc.",
-    "slugs": ["protocolo-individualizado-de-avaliacao", "continuidade-do-segundo-professor"]
+    "slugs": [
+     "protocolo-individualizado-de-avaliacao",
+     "continuidade-do-segundo-professor"
+    ]
    },
    {
     "tipo": "vitrine",
     "olho": "Nas redes",
     "titulo": "A educação no feed",
-    "shortcodes": ["Dco70RuPWy6", "Ddr7JVkxc0r", "Da_V4eSBbdm", "DMF8t68OUya", "Dadyg4DpJ2-", "DOgD7NZgMO6", "DVzNyB_gEee", "DXKkyJECden"],
+    "shortcodes": [
+     "Dco70RuPWy6",
+     "Ddr7JVkxc0r",
+     "Da_V4eSBbdm",
+     "DMF8t68OUya",
+     "Dadyg4DpJ2-",
+     "DOgD7NZgMO6",
+     "DVzNyB_gEee",
+     "DXKkyJECden"
+    ],
     "limite": 8
    }
   ],
@@ -76,17 +41,51 @@
     "titulo": "Quem faz por cada cidade",
     "texto": "Um vídeo por cidade, gravado onde a obra está. Toque para assistir no Instagram.",
     "itens": [
-     { "shortcode": "DdtxzMjRhtO", "rotulo": "Jaguaruna" },
-     { "shortcode": "Ddr7JVkxc0r", "rotulo": "Paulo Lopes" },
-     { "shortcode": "DdmyVmDJnS1", "rotulo": "Nova Veneza" },
-     { "shortcode": "DdkSxopNmWP", "rotulo": "Içara" },
-     { "shortcode": "DdeRXczOQdJ", "rotulo": "Braço do Norte" },
-     { "shortcode": "DdcZMW6sH-X", "rotulo": "Garopaba" },
-     { "shortcode": "DdSAqg_BexT", "rotulo": "Gravatal" },
-     { "shortcode": "DdCmk9FB3dJ", "rotulo": "Laguna" },
-     { "shortcode": "Dc4RDmTuiWZ", "rotulo": "Pescaria Brava" },
-     { "shortcode": "Dcgj16OOhgF", "rotulo": "Capivari de Baixo" },
-     { "shortcode": "DdpRebgP6Jw", "rotulo": "Tubarão", "pagina": "../por-tubarao/" }
+     {
+      "shortcode": "DdtxzMjRhtO",
+      "rotulo": "Jaguaruna"
+     },
+     {
+      "shortcode": "Ddr7JVkxc0r",
+      "rotulo": "Paulo Lopes"
+     },
+     {
+      "shortcode": "DdmyVmDJnS1",
+      "rotulo": "Nova Veneza"
+     },
+     {
+      "shortcode": "DdkSxopNmWP",
+      "rotulo": "Içara"
+     },
+     {
+      "shortcode": "DdeRXczOQdJ",
+      "rotulo": "Braço do Norte"
+     },
+     {
+      "shortcode": "DdcZMW6sH-X",
+      "rotulo": "Garopaba"
+     },
+     {
+      "shortcode": "DdSAqg_BexT",
+      "rotulo": "Gravatal"
+     },
+     {
+      "shortcode": "DdCmk9FB3dJ",
+      "rotulo": "Laguna"
+     },
+     {
+      "shortcode": "Dc4RDmTuiWZ",
+      "rotulo": "Pescaria Brava"
+     },
+     {
+      "shortcode": "Dcgj16OOhgF",
+      "rotulo": "Capivari de Baixo"
+     },
+     {
+      "shortcode": "DdpRebgP6Jw",
+      "rotulo": "Tubarão",
+      "pagina": "../por-tubarao/"
+     }
     ]
    },
    {

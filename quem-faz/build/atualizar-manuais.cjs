@@ -12,8 +12,7 @@
  *   1. o trecho entre <!-- visual:inicio --> e <!-- visual:fim -->, logo antes
  *      do fecho, é refeito a partir de dados/manuais.json (na primeira vez o
  *      par de marcas é criado);
- *   2. na grade "Quem faz pelo quê", a porta de Projetos de lei deixa de ser
- *      "em breve" e ganha link, e entra a porta para o índice.
+ *   2. a grade "Quem faz pelo quê" é refeita a partir de lugares.json.
  *
  * Roda de novo sem acumular nada: o trecho marcado é substituído, não somado.
  * Quando estas páginas migrarem para o gerador (lugares.json), este script
@@ -33,9 +32,18 @@ const INICIO = '<!-- visual:inicio -->';
 const FIM = '<!-- visual:fim -->';
 const FECHO = '  <section class="fundo-campanha veu">\n    <div class="wrap fecho">';
 
-const PORTA_VAZIA = '<span class="porta-vazia"><span class="rot">Quem faz</span><span class="alvo">Projetos de lei</span></span>';
-const PORTA_LEIS = '<a href="../projetos-de-lei/"><span class="rot">Quem faz</span><span class="alvo">Projetos de lei</span></a>';
-const PORTA_INDICE = '<a class="porta-indice" href="../"><span class="rot">Todas as páginas</span><span class="alvo">Quem faz representa</span></a>';
+/**
+ * A grade "Quem faz pelo quê" inteira é refeita a partir de lugares.json →
+ * portas, com o mesmo HTML das páginas geradas. Assim página apagada (o
+ * pelo-sul) e página nova (AMREC, AMESC) aparecem certas nas manuais também.
+ */
+function grade(slug, ctx) {
+  const itens = ctx.portas
+    .filter((p) => p.slug !== slug && p.existe)
+    .map((p) => `        <a href="../${p.slug}/"><span class="rot">Quem faz</span><span class="alvo">${p.rotulo}</span></a>`);
+  itens.push('        <a class="porta-indice" href="../"><span class="rot">Todas as páginas</span><span class="alvo">Quem faz representa</span></a>');
+  return `<div class="portas rv">\n${itens.join('\n')}\n      </div>`;
+}
 
 function blocoLeis(b, ctx, classe) {
   const { proposicao } = indexar(ctx);
@@ -92,11 +100,9 @@ function atualizar(slug, blocos, ctx) {
     html = `${html.slice(0, i)}  ${trecho}\n${html.slice(i)}`;
   }
 
-  if (html.includes(PORTA_VAZIA)) html = html.replace(PORTA_VAZIA, PORTA_LEIS);
-  if (!html.includes('class="porta-indice"')) {
-    if (!html.includes(PORTA_LEIS)) throw new Error(`${slug}: não achei a porta de Projetos de lei`);
-    html = html.replace(PORTA_LEIS, `${PORTA_LEIS}\n        ${PORTA_INDICE}`);
-  }
+  const g = html.match(/<div class="portas rv">[\s\S]*?\n      <\/div>/);
+  if (!g) throw new Error(`${slug}: não achei a grade de portas`);
+  html = html.replace(g[0], grade(slug, ctx));
 
   fs.writeFileSync(arq, html);
   console.log(`  ${slug.padEnd(16)} ${blocos.length} bloco(s) · ${(Buffer.byteLength(html) / 1024).toFixed(1)} KB`);

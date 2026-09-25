@@ -8,8 +8,12 @@
    foto sem dependência nenhuma.
 
      cd quem-faz/og
-     node render-chrome.cjs              # todas as páginas abaixo
-     node render-chrome.cjs indice       # só esta
+     node render-chrome.cjs              # todas as páginas
+     node render-chrome.cjs indice por-tubarao
+
+   Cobre todas as páginas da série: as de lugar e tema saem do hero de
+   lugares.json, as de lei de leis-paginas.json. (render.cjs, com Playwright,
+   ficou para quem tiver o gerador-materiais instalado.)
 
    As páginas de lei saem de dados/leis-paginas.json + leis.json: número da lei
    e data vêm da base, como no resto da série.
@@ -46,6 +50,36 @@ function paginas() {
       numero: String(leis.totalLeis), unidade: 'LEIS',
       legenda: 'aprovadas em Santa Catarina. Poucos projetos, grandes impactos',
     },
+  };
+
+  // Páginas de lugar e de tema: o cartão sai do próprio hero de lugares.json,
+  // então o número do cartão é sempre o número da página.
+  const { cifra } = require(path.join(QF, 'build', 'lib', 'formato.cjs'));
+  const { lugares } = ler('lugares.json');
+  for (const [slug, l] of Object.entries(lugares)) {
+    const h = l.hero;
+    const prep = h.titulo.filter((t) => t.estilo === 'leve').slice(1).map((t) => t.texto).join(' ');
+    const pincel = h.titulo.find((t) => t.estilo === 'pincel').texto.toUpperCase();
+    let numero, unidade;
+    if (h.valor !== undefined) {
+      const c = cifra(h.valor, h.casas ?? null);
+      numero = `${h.mais ? '+' : ''}R$ ${c.numero}`;
+      unidade = c.unidade;
+    } else {
+      numero = h.manchete.numero;
+      unidade = h.manchete.unidade;
+    }
+    lista[slug] = { pasta: slug, titulo: prep, destaque: pincel, numero, unidade, legenda: h.legenda };
+  }
+
+  // As duas páginas ainda escritas à mão.
+  lista['pela-educacao'] = {
+    pasta: 'pela-educacao', titulo: 'pela', destaque: 'EDUCAÇÃO',
+    numero: 'R$ 13,2', unidade: 'MILHÕES', legenda: 'em creches, escolas e transporte escolar de 39 municípios',
+  };
+  lista['pelas-cidades'] = {
+    pasta: 'pelas-cidades', titulo: 'pelas', destaque: 'CIDADES',
+    numero: String(emendas.municipios), unidade: 'MUNICÍPIOS', legenda: 'de Santa Catarina atendidos, do litoral à serra',
   };
 
   for (const d of destaques) {

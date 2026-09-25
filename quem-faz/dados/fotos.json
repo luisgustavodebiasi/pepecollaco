@@ -350,42 +350,28 @@
    "id": "lei-pia",
    "origem": {
     "tipo": "pexels",
-    "id": 8923982
-   },
-   "recorte": {
-    "proporcao": "4:5",
-    "ancora": 0.45
-   },
-   "largura": 1100,
-   "alt": "Brinquedos pedagógicos coloridos sobre a mesa de uma sala de aula",
-   "ilustrativa": true
-  },
-  {
-   "id": "lei-pia-documento",
-   "origem": {
-    "tipo": "video",
-    "shortcode": "DdUlrSTx_cp",
-    "segundos": 43.8
-   },
-   "recorte": {
-    "proporcao": "4:5",
-    "ancora": 0.3
-   },
-   "largura": 720,
-   "alt": "Primeira página do projeto de lei do Protocolo Individualizado de Avaliação"
-  },
-  {
-   "id": "lei-segundo-professor",
-   "origem": {
-    "tipo": "pexels",
-    "id": 29932839
+    "id": 17925153
    },
    "recorte": {
     "proporcao": "4:5",
     "ancora": 0.5
    },
    "largura": 1100,
-   "alt": "Sala de aula vazia com luz natural",
+   "alt": "Mão de criança apontando cartões visuais sobre uma mesa com brinquedos de montar",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-segundo-professor",
+   "origem": {
+    "tipo": "pexels",
+    "id": 28731612
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Mão de adulto segurando com carinho a mão de uma criança",
    "ilustrativa": true
   },
   {
@@ -400,6 +386,371 @@
    },
    "largura": 900,
    "alt": "Pepê Collaço no plenário da Assembleia Legislativa de Santa Catarina"
+  },
+  {
+   "id": "lei-pia-apoio",
+   "origem": {
+    "tipo": "pexels",
+    "id": 7023743
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.55
+   },
+   "largura": 1100,
+   "alt": "Mãos de criança manchadas de giz de cera sobre um desenho colorido",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-pia-faixa",
+   "origem": {
+    "tipo": "pexels",
+    "id": 7054779
+   },
+   "recorte": {
+    "proporcao": "16:9",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Lápis de cor e clipes coloridos sobre fundo claro",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-segundo-professor-apoio",
+   "origem": {
+    "tipo": "pexels",
+    "id": 6503156
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.6
+   },
+   "largura": 1100,
+   "alt": "Mãos de professora e de aluno acompanhando juntos a leitura de um livro",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-segundo-professor-faixa",
+   "origem": {
+    "tipo": "pexels",
+    "id": 4372319
+   },
+   "recorte": {
+    "proporcao": "16:9",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Livros abertos sobre a mesa, na luz quente do fim de tarde",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-testes-rapidos-apoio",
+   "origem": {
+    "tipo": "pexels",
+    "id": 17071587
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Glicosímetro e lanceta sobre uma mesa de madeira",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-testes-rapidos-faixa",
+   "origem": {
+    "tipo": "pexels",
+    "id": 6074000
+   },
+   "recorte": {
+    "proporcao": "16:9",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Prateleiras de farmácia com frascos, em luz baixa",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-energia-solar-apoio",
+   "origem": {
+    "tipo": "pexels",
+    "id": 27873240
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Painel solar de perto, iluminado pelo sol",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-energia-solar-faixa",
+   "origem": {
+    "tipo": "pexels",
+    "id": 356049
+   },
+   "recorte": {
+    "proporcao": "16:9",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Painéis solares refletindo o céu azul",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-aguas-termais-apoio",
+   "origem": {
+    "tipo": "pexels",
+    "id": 16638260
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.6
+   },
+   "largura": 1100,
+   "alt": "Piscinas naturais de água azul cercadas de vegetação",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-aguas-termais-faixa",
+   "origem": {
+    "tipo": "pexels",
+    "id": 8955688
+   },
+   "recorte": {
+    "proporcao": "16:9",
+    "ancora": 0.45
+   },
+   "largura": 1100,
+   "alt": "Vapor e névoa subindo de uma fonte de água termal",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-ovinocaprinocultura-apoio",
+   "origem": {
+    "tipo": "pexels",
+    "id": 2301173
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Cabrito branco dormindo no campo",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-ovinocaprinocultura-faixa",
+   "origem": {
+    "tipo": "pexels",
+    "id": 14635232
+   },
+   "recorte": {
+    "proporcao": "16:9",
+    "ancora": 0.45
+   },
+   "largura": 1100,
+   "alt": "Rebanho de ovelhas no pasto, em luz suave",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-cine-azul-apoio",
+   "origem": {
+    "tipo": "pexels",
+    "id": 18515130
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Mão pegando pipoca numa sala de cinema com luz azulada",
+   "ilustrativa": true
+  },
+  {
+   "id": "lei-cine-azul-faixa",
+   "origem": {
+    "tipo": "pexels",
+    "id": 7991436
+   },
+   "recorte": {
+    "proporcao": "16:9",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Poltronas de cinema vazias na penumbra",
+   "ilustrativa": true,
+   "tom": "azul"
+  },
+  {
+   "id": "aut-pexels-1",
+   "origem": {
+    "tipo": "pexels",
+    "id": 3933027
+   },
+   "recorte": {
+    "proporcao": "3:2",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Materiais de brincadeira sensorial: pedras lisas e macarrão em potes",
+   "ilustrativa": true
+  },
+  {
+   "id": "aut-pexels-2",
+   "origem": {
+    "tipo": "pexels",
+    "id": 8799689
+   },
+   "recorte": {
+    "proporcao": "3:2",
+    "ancora": 0.35
+   },
+   "largura": 1100,
+   "alt": "Fones de ouvido sobre a mesa, para abafar o barulho",
+   "ilustrativa": true
+  },
+  {
+   "id": "aut-faixa",
+   "origem": {
+    "tipo": "pexels",
+    "id": 7135079
+   },
+   "recorte": {
+    "proporcao": "16:9",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Degradê suave de cores, do roxo ao amarelo",
+   "ilustrativa": true
+  },
+  {
+   "id": "porta-amesc",
+   "origem": {
+    "tipo": "pexels",
+    "id": 16038806
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.5
+   },
+   "largura": 1100,
+   "alt": "Cânion coberto de mata verde, visto de cima",
+   "ilustrativa": true
+  },
+  {
+   "id": "amesc-hero",
+   "origem": {
+    "tipo": "pexels",
+    "id": 16164299
+   },
+   "recorte": {
+    "proporcao": "4:5",
+    "ancora": 0.6
+   },
+   "largura": 1100,
+   "alt": "Paredões do cânion Fortaleza, na divisa do extremo sul catarinense com o Rio Grande do Sul",
+   "ilustrativa": true
+  },
+  {
+   "id": "porta-amrec",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DdmyVmDJnS1",
+    "segundos": 40
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.22
+   },
+   "largura": 720,
+   "alt": "Complexo esportivo do distrito de Caravaggio, em Nova Veneza, visto de drone"
+  },
+  {
+   "id": "aut-equoterapia",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DdmyVmDJnS1",
+    "segundos": 31
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.38
+   },
+   "largura": 720,
+   "alt": "Criança em sessão de equoterapia, acompanhada por dois terapeutas"
+  },
+  {
+   "id": "aut-natacao",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "Dct9JBJhvHh",
+    "segundos": 26
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.3
+   },
+   "largura": 720,
+   "alt": "Piscina coberta com crianças nadando numa aula de natação"
+  },
+  {
+   "id": "aut-sala-sensorial",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DdUlrSTx_cp",
+    "segundos": 31
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.2
+   },
+   "largura": 720,
+   "alt": "Sala sensorial com luzes coloridas e parede de escalada"
+  },
+  {
+   "id": "aut-atendimento",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DdtxzMjRhtO",
+    "segundos": 34
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.17
+   },
+   "largura": 720,
+   "alt": "Profissionais do programa de atendimento a pessoas com autismo em Jaguaruna"
+  },
+  {
+   "id": "aut-escola",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "DdUlrSTx_cp",
+    "segundos": 35
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.25
+   },
+   "largura": 720,
+   "alt": "Sala de aula com professora no quadro e outra acompanhando alunos nas carteiras"
+  },
+  {
+   "id": "aut-alesc",
+   "origem": {
+    "tipo": "video",
+    "shortcode": "Dct9JBJhvHh",
+    "segundos": 44
+   },
+   "recorte": {
+    "proporcao": "4:3",
+    "ancora": 0.22
+   },
+   "largura": 720,
+   "alt": "Pepê Collaço em reunião na Alesc, com uma criança à mesa"
   }
  ]
 }

@@ -37,7 +37,9 @@ function classeSelo(p) {
   return 'selo-comissao';
 }
 
-const selo = (p) => `<span class="selo ${classeSelo(p)}">${escapar(p.rotulo)}</span>`;
+// Selo de situação: APROVADO em verde quando virou lei (com o número ao lado),
+// o rótulo do e-Legis quando ainda tramita. Mesmo selo em todo o site.
+const selo = (p) => pagina.seloProposicao(p);
 
 /** "PL./0281/2023" → "PL 0281/2023" */
 const codigoLegivel = (c) => c.replace('./', ' ').replace(/^(\w+)\/(\d+\/\d+)$/, '$1 $2');
@@ -110,7 +112,7 @@ function cardLei(d, p, ctx, qf, aqui) {
           <span class="lf-foto">${visual.foto(d.foto, ctx, qf, { alt: '' })}${visual.seloIlustrativa(d.foto, ctx)}</span>
           <span class="lf-corpo">
             ${selo(p)}
-            <span class="lf-titulo">${escapar(d.titulo)}</span>
+            <span class="lf-titulo" style="--letras:${pagina.letrasDaMaiorPalavra(d.titulo)}">${escapar(d.titulo)}</span>
             <span class="lf-texto">${escapar(d.curto)}</span>
             <span class="lf-ver">Entender a lei ${icone('arrow-right')}</span>
           </span>
@@ -335,12 +337,14 @@ function montarLei(d, ctx) {
         [p.materia, 'área'],
       ];
 
-  const hero = `  <header class="hero hero-lei fundo-campanha veu">
+  // O título pode ter palavra enorme ("OVINOCAPRINOCULTURA", 19 letras): o
+  // corpo é calibrado pela maior palavra, para caber na coluna sem quebrar.
+  const hero = `  <header class="hero hero-lei fundo-campanha veu">${d.tema === 'autismo' ? `\n    ${pagina.INFINITO}` : ''}
     <div class="wrap hero-lei-grade">
-      <div>
+      <div class="hero-lei-texto">
         <a class="volta" href="../">${icone('arrow-right')}Quem faz lei</a>
-        <h1 class="h1-lei">${escapar(d.titulo)}</h1>
-        <div class="hero-lei-selos">${selo(p)}<span class="selo selo-comissao">${escapar(codigoLegivel(p.codigo))}</span></div>
+        <h1 class="h1-lei" style="--letras:${pagina.letrasDaMaiorPalavra(d.titulo)}">${escapar(d.titulo)}</h1>
+        <div class="hero-lei-selos">${selo(p)}<span class="selo selo-codigo">${escapar(codigoLegivel(p.codigo))}</span></div>
         <p class="hero-frase">${escapar(d.frase)}</p>
         <div class="botoes">
           <a class="btn btn-acento" href="${p.url}" target="_blank" rel="noopener">Ver a tramitação ${icone('arrow-up-right')}</a>
@@ -360,9 +364,11 @@ function montarLei(d, ctx) {
     { rotulo: 'Ficha da lei' }
   );
 
-  const apoio = d.fotoApoio
-    ? `\n          <figure class="lei-apoio">${visual.foto(d.fotoApoio, ctx, qf)}<figcaption>${escapar(d.legendaApoio || '')}</figcaption></figure>`
-    : '';
+  // Fotos de apoio, ao pé da coluna "na prática". Quadro de vídeo do mandato
+  // leva legenda dizendo de onde veio; foto de banco leva o selo ilustrativa.
+  const apoios = (d.fotosApoio || []).map((a) => `
+            <figure class="lei-apoio">${visual.foto(a.foto, ctx, qf)}${visual.seloIlustrativa(a.foto, ctx)}${a.legenda ? `<figcaption>${escapar(a.legenda)}</figcaption>` : ''}</figure>`).join('');
+  const apoio = apoios ? `\n          <div class="lei-apoios">${apoios}\n          </div>` : '';
 
   const secTexto = visual.secao(
     `      <div class="lei-duas">
@@ -394,7 +400,10 @@ ${d.quemGanha.map((t) => `        <li>${icone(d.icone || 'users')}<span>${escapa
   );
 
   const cit = d.citacao;
-  const secCitacao = `  <section class="fundo-campanha veu">
+  const fundoCitacao = d.fotoFaixa
+    ? `\n    <div class="citacao-fundo">${visual.foto(d.fotoFaixa, ctx, qf, { alt: '' })}</div>`
+    : '';
+  const secCitacao = `  <section class="fundo-campanha veu${d.fotoFaixa ? ' citacao-com-foto' : ''}">${fundoCitacao}
     <div class="wrap citacao rv">
       <blockquote>
         <p>${escapar(cit.texto)}</p>
@@ -405,9 +414,33 @@ ${d.quemGanha.map((t) => `        <li>${icone(d.icone || 'users')}<span>${escapa
   </section>`;
 
   const secRedes = visual.vitrine(
-    { olho: 'Nas redes', titulo: 'Sobre esta lei', shortcodes: d.posts, limite: 4, id: 'redes', classe: 'faixa-clara', semRodape: true },
+    {
+      olho: `${d.titulo} nas redes`,
+      shortcodes: d.posts,
+      limite: 6,
+      id: 'redes',
+      classe: 'faixa-clara',
+      linhaDoTempo: true,
+      assunto: d.assunto || d.titulo,
+    },
     ctx, qf
   );
+
+  // Nas leis do autismo, o que mais o mandato fez pela causa: vem da mesma
+  // seção "medidas" da página pelo-autismo, para as duas nunca divergirem.
+  const medidasAutismo = d.tema === 'autismo'
+    ? ctx.lugares?.['pelo-autismo']?.secoes?.find((x) => x.tipo === 'medidas')
+    : null;
+  const secMedidas = medidasAutismo
+    ? pagina.renderizar({
+        ...medidasAutismo,
+        olho: 'Pelo autismo',
+        titulo: 'Esta lei não anda sozinha',
+        texto: 'O que mais o mandato fez pelas pessoas com TEA e pelas famílias atípicas de Santa Catarina.',
+        itens: medidasAutismo.itens.filter((m) => m.codigo !== d.codigo),
+        classe: '',
+      }, ctx, '../../')
+    : '';
 
   const outras = dados.destaques.filter((x) => x.slug !== d.slug).slice(0, 6);
   const secOutras = visual.secao(
@@ -431,6 +464,7 @@ ${outras.map((x) => cardLei(x, proposicao(x.codigo), ctx, qf, '../')).join('\n')
     secGanha,
     secCitacao,
     secRedes,
+    secMedidas,
     secOutras,
     pagina.fecho(lugar, raiz),
     pagina.portas(lugar, ctx, qf),
@@ -460,7 +494,8 @@ ${outras.map((x) => cardLei(x, proposicao(x.codigo), ctx, qf, '../')).join('\n')
         },
       }),
       coletadoEm: ctx.leis.coletadoEm,
-      notaRodape: ctx.fotos.get(d.foto)?.ilustrativa ? 'Imagem de abertura ilustrativa: Pexels.' : '',
+      notaRodape: corpo.includes('class="ilustrativa"') ? 'Imagens marcadas como ilustrativas: Pexels.' : '',
+      tema: d.tema,
     }),
   };
 }

@@ -36,16 +36,9 @@ const PAGINAS = {
   'por-tubarao': {
     titulo: 'por',
     destaque: 'TUBARÃO',
-    numero: 'R$ 18,9',
-    unidade: 'MILHÕES',
-    legenda: 'destinados a Tubarão em 45 emendas do mandato',
-  },
-  'pelo-sul': {
-    titulo: 'pelo',
-    destaque: 'SUL',
-    numero: '+R$ 119',
-    unidade: 'MILHÕES',
-    legenda: 'em 43 municípios do Sul Catarinense',
+    numero: '69',
+    unidade: 'RUAS',
+    legenda: 'com recurso do mandato para pavimentação, drenagem e esgoto',
   },
   'pela-amurel': {
     titulo: 'pela',

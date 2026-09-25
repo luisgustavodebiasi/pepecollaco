@@ -672,7 +672,7 @@ h1.h1-assinatura .pincel { margin-top: .02em; }
   background: rgba(6, 26, 58, .78);
   font-size: 10.5px; font-weight: var(--peso-forte);
   letter-spacing: .14em; text-transform: uppercase;
-  color: var(--cor-texto-suave);
+  color: var(--pp-azul-claro);
 }
 
 /* ── Vitrine de posts ─────────────────────────────────────────────────────
@@ -1041,6 +1041,259 @@ h1.h1-assinatura .pincel { margin-top: .02em; }
 /* A porta que leva ao índice fica marcada: é a saída para todo o resto. */
 .portas .porta-indice { border-color: rgba(255, 196, 0, .5); }
 .portas .porta-indice .alvo { color: var(--cor-acento); }
+
+/* ══ AJUSTES DE 25/09/2026 ════════════════════════════════════════════════
+   Pedido do Luis: textos bem maiores e mais compactos, selo verde de
+   APROVADO em todo projeto que virou lei, datas dos posts em destaque,
+   animações discretas e uma estética própria para o tema autismo.
+   Vem depois de tudo de propósito: reescreve corpo e entrelinha das peças
+   acima sem mexer nelas uma a uma. */
+
+/* ── Escala: maior e mais justa ───────────────────────────────────────────*/
+body { font-size: 19px; line-height: 1.45; }
+.wrap { width: min(1180px, 100% - 40px); }
+section { padding-block: clamp(48px, 8vw, 84px); }
+.sec-cabeca { margin-bottom: clamp(24px, 4.4vw, 40px); }
+h2 { font-size: clamp(29px, 6.4vw, 54px); line-height: .96; letter-spacing: -.02em; }
+h3 { font-size: clamp(19px, 4vw, 24px); line-height: 1.1; }
+.olho { font-size: clamp(12.5px, 2.8vw, 15px); }
+.hero-frase { font-size: clamp(18px, 3.9vw, 23px); line-height: 1.38; max-width: 28em; }
+.sec-cabeca p { font-size: clamp(17px, 3.7vw, 21px); line-height: 1.4; max-width: 40em; }
+.manchete .legenda { font-size: clamp(13.5px, 3vw, 16px); }
+.placar div > span { font-size: 14.5px; line-height: 1.3; }
+.obra p, .pautas p { font-size: 17.5px; line-height: 1.42; }
+.lei-t { font-size: 19px; }
+.lei-d { font-size: 16.5px; line-height: 1.45; }
+.materia h3 { font-size: 19px; }
+.materia p { font-size: 16.5px; }
+.chips li { font-size: 16.5px; padding: 10px 17px; }
+.ig-titulo { font-size: 17px; line-height: 1.32; }
+.lf-texto { font-size: 17px; line-height: 1.42; }
+.pf-texto { font-size: 16.5px; line-height: 1.38; }
+.pf-dado { font-size: 16px; }
+.pratica li { font-size: 19px; line-height: 1.4; }
+.ementa p { font-size: clamp(17px, 3.4vw, 20.5px); line-height: 1.5; }
+.ganha li { font-size: 18px; line-height: 1.35; }
+.pl-ementa { font-size: 16px; line-height: 1.4; }
+.cm li a { font-size: 16px; }
+.citacao p { font-size: clamp(25px, 4.8vw, 48px); line-height: 1.12; }
+@media (max-width: 640px) {
+  .chips li { font-size: 14.5px; padding: 8px 12px; }
+  .obra p, .pautas p { font-size: 16.5px; }
+}
+
+/* Foco visível para quem navega pelo teclado, em todo o sistema. */
+:focus-visible { outline: 3px solid var(--pp-amarelo); outline-offset: 3px; border-radius: 6px; }
+
+/* ── Hero: o pincel nunca é cortado ───────────────────────────────────────
+   Três causas, três correções. (1) O retrato vem depois no HTML e era
+   pintado por cima do fim da palavra quando a coluna apertava: o texto sobe
+   de camada. (2) A Granesta tem traço que passa da caixa da letra dos dois
+   lados: o pincel ganha folga lateral. (3) Palavra comprida passava da
+   coluna: o corpo é limitado pela largura da coluna dividida pelo número de
+   letras (--letras, escrito pelo build). Sem container query, vale o clamp. */
+.hero-grade > :first-child { position: relative; z-index: 3; container-type: inline-size; }
+h1 .pincel {
+  padding-inline: .1em .18em;
+  margin-inline: -.1em 0;
+  font-size: min(clamp(44px, 11.5vw, 108px), calc(100cqi / (var(--letras, 8) * .6)));
+}
+
+/* Título da página de lei: calibrado pela maior palavra ("OVINOCAPRINOCULTURA"
+   tem 19 letras e estourava a coluna). */
+.hero-lei-texto { container-type: inline-size; }
+.hero .h1-lei {
+  font-size: clamp(36px, 6.4vw, 74px);
+  font-size: min(clamp(36px, 6.4vw, 74px), calc(100cqi / (var(--letras, 10) * .84)));
+  line-height: .95;
+  overflow-wrap: break-word;
+}
+.lf-corpo { container-type: inline-size; }
+.lf-titulo {
+  font-size: min(clamp(20px, 2.3vw, 27px), calc(100cqi / (var(--letras, 10) * .84)));
+  overflow-wrap: break-word;
+}
+
+/* ── Selos: APROVADO em verde, com o número da lei ao lado ────────────────*/
+.selos { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; align-self: flex-start; }
+.selo-lei { display: inline-flex; align-items: center; gap: 6px; }
+.selo-lei .ic { width: 14px; height: 14px; }
+.selo-num, .selo-codigo { border-color: rgba(255, 255, 255, .34); color: var(--cor-texto); }
+.pl-lista .selos { justify-self: start; }
+.cm li a .selos { margin-top: 2px; }
+
+/* ── Datas dos posts em destaque ──────────────────────────────────────────
+   O dia grande sobre a capa, mês e ano embaixo: quem passa o olho vê que o
+   assunto é antigo, não de campanha. */
+.ig-quando {
+  position: absolute; top: 10px; right: 10px;
+  display: grid; justify-items: center;
+  min-width: 54px; padding: 7px 9px 8px;
+  border-radius: 12px;
+  background: var(--cor-acento); color: var(--cor-sobre-acento);
+  line-height: 1;
+  box-shadow: 0 8px 20px rgba(6, 26, 58, .35);
+}
+.ig-quando b { font-family: var(--fonte-display); font-weight: var(--peso-display-forte); font-size: 24px; letter-spacing: -.02em; }
+.ig-quando span { margin-top: 3px; font-size: 11.5px; font-weight: var(--peso-forte); letter-spacing: .12em; text-transform: uppercase; }
+.ig-quando span + span { margin-top: 2px; font-size: 12px; letter-spacing: .04em; }
+.ig-data { display: none; }
+.ig-assunto {
+  font-size: 11.5px; font-weight: var(--peso-forte);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--cor-acento);
+}
+
+/* Linha do tempo: um trilho sobre os cards, um ponto em cada post. Todos
+   na mesma linha (--n vem do build), para a sequência ler da esquerda para a
+   direita sem card sobrando embaixo. */
+.vitrine.linha-tempo { position: relative; padding-top: 30px; }
+@media (min-width: 641px) {
+  .vitrine.linha-tempo { grid-template-columns: repeat(var(--n, 4), minmax(0, 290px)); }
+}
+.vitrine.linha-tempo::before {
+  content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 3px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--cor-borda), var(--cor-acento));
+}
+.vitrine.linha-tempo > li { position: relative; }
+.vitrine.linha-tempo > li::before {
+  content: ""; position: absolute; top: -26px; left: 20px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--cor-acento);
+  box-shadow: 0 0 0 5px var(--cor-fundo-elevado);
+}
+
+/* ── Citação sobre foto ───────────────────────────────────────────────────*/
+.citacao-fundo { position: absolute; inset: 0; }
+.citacao-fundo img { width: 100%; height: 100%; object-fit: cover; opacity: .5; }
+.citacao-com-foto { padding-block: clamp(64px, 11vw, 120px); }
+
+/* ── Fotos de apoio na página de lei ──────────────────────────────────────*/
+.lei-apoios { display: grid; gap: 14px; margin-top: 28px; }
+.lei-apoios:has(> :nth-child(2)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.lei-apoios .lei-apoio { position: relative; margin: 0; }
+@media (max-width: 520px) { .lei-apoios:has(> :nth-child(2)) { grid-template-columns: 1fr; } }
+
+/* ── Medidas: o que o mandato fez por uma causa ───────────────────────────*/
+.medidas { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 16px; }
+.md {
+  height: 100%;
+  display: flex; flex-direction: column; gap: 11px;
+  padding: 22px 22px 24px;
+  border-radius: 20px;
+  background: var(--cor-fundo-campo);
+  border: 1px solid var(--cor-borda);
+  transition: transform .2s ease, border-color .2s ease;
+}
+a.md:hover { transform: translateY(-4px); border-color: var(--cor-acento); }
+.md-icone {
+  width: 54px; height: 54px; border-radius: 16px;
+  display: grid; place-items: center;
+  background: var(--cor-acento); color: var(--cor-sobre-acento);
+}
+.md-icone .ic { width: 27px; height: 27px; }
+.md h3 { font-size: clamp(19px, 2.2vw, 22px); }
+.md p { margin: 0; flex: 1; font-size: 17px; line-height: 1.42; color: var(--cor-texto-suave); }
+.md-ver { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: var(--peso-forte); letter-spacing: .08em; text-transform: uppercase; color: var(--cor-acento); }
+
+/* ── Setas subindo no fundo ───────────────────────────────────────────────
+   A textura de setas sobe devagar, uma volta a cada 36 s. A camada é um
+   ladrilho mais comprida que a seção e anda exatamente a altura do ladrilho
+   (491 px), então o laço não tem emenda. Transform, e não mask-position,
+   para o navegador mover a camada pronta em vez de redesenhar. */
+.fundo-campanha { overflow: hidden; }
+.fundo-campanha::before {
+  bottom: -491px;
+  animation: setas-sobem 36s linear infinite;
+  will-change: transform;
+}
+@keyframes setas-sobem { to { transform: translateY(-491px); } }
+
+/* ══ TEMA AUTISMO ═════════════════════════════════════════════════════════
+   Páginas do autismo (pelo-autismo e as leis dessa bandeira): mais cor, mais
+   calma, mais legível. Pensado para quem tem sensibilidade sensorial e para
+   quem lê com dificuldade:
+     · fundo claro nas seções de leitura, texto em tinta (16:1 de contraste);
+     · corpo maior e entrelinha mais aberta que no resto do site;
+     · cor sempre como preenchimento (ícone, faixa, selo), nunca como texto
+       pequeno, e sempre com rótulo escrito junto;
+     · nada se move sozinho no fundo: as setas ficam paradas.
+   As cores do espectro são as da própria identidade, sem tom novo. */
+.tema-autismo {
+  --grad-espectro: linear-gradient(90deg, #8BC1DC, #00B171, #FFC400, #FF9C33, #0082BF);
+  background: var(--cor-superficie-clara);
+  font-size: 20px;
+  line-height: 1.5;
+}
+.tema-autismo .fundo-campanha::before { animation: none; bottom: 0; }
+
+/* Seções de leitura em claro. Os tokens são reescritos por seção, então
+   cada peça de cima herda a cor certa sem regra própria. */
+.tema-autismo section:not(.fundo-campanha) {
+  --cor-texto: var(--pp-tinta);
+  --cor-texto-suave: #34506B;
+  --cor-fundo-campo: #FFFFFF;
+  --cor-fundo-elevado: #FFFFFF;
+  --cor-borda: rgba(6, 26, 58, .14);
+  --cor-acento: var(--pp-azul-medio);
+  --cor-sobre-acento: #FFFFFF;
+  background: var(--cor-superficie-clara);
+  color: var(--pp-tinta);
+}
+.tema-autismo section.faixa-clara { background: #FFFFFF; }
+.tema-autismo section.faixa-clara:not(.fundo-campanha) { border-top: 6px solid transparent; border-image: var(--grad-espectro) 1; }
+.tema-autismo section:not(.fundo-campanha) .btn-acento { background: var(--pp-amarelo); color: var(--pp-tinta); }
+.tema-autismo section:not(.fundo-campanha) .selo-comissao,
+.tema-autismo section:not(.fundo-campanha) .selo-num,
+.tema-autismo section:not(.fundo-campanha) .selo-codigo { border-color: rgba(6, 26, 58, .32); color: var(--pp-tinta); }
+.tema-autismo section:not(.fundo-campanha) .ig { box-shadow: 0 10px 30px rgba(6, 26, 58, .08); }
+.tema-autismo section:not(.fundo-campanha) a:not(.btn):not(.ig):not(.lf):not(.md):not(.pf) { text-underline-offset: 3px; }
+.tema-autismo .olho::before { width: 40px; height: 4px; border-radius: 2px; background: var(--grad-espectro); }
+.tema-autismo footer { background: var(--pp-abismo); }
+
+/* Mais corpo para ler sem esforço. */
+.tema-autismo .sec-cabeca p { font-size: clamp(18px, 3.9vw, 22px); line-height: 1.5; }
+.tema-autismo .obra p, .tema-autismo .md p { font-size: 18px; line-height: 1.5; }
+.tema-autismo .pratica li { font-size: 20px; line-height: 1.5; }
+
+/* Terapias em três colunas: com cinco cards, a grade de quatro deixava um
+   sozinho na segunda linha. */
+.tema-autismo .obras { grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); }
+
+/* Cada card leva uma cor do espectro, em faixa e no ícone. */
+.tema-autismo .medidas > li:nth-child(6n + 1) { --cor-item: #FFC400; }
+.tema-autismo .medidas > li:nth-child(6n + 2) { --cor-item: #00B171; }
+.tema-autismo .medidas > li:nth-child(6n + 3) { --cor-item: #8BC1DC; }
+.tema-autismo .medidas > li:nth-child(6n + 4) { --cor-item: #FF9C33; }
+.tema-autismo .medidas > li:nth-child(6n + 5) { --cor-item: #8ACD88; }
+.tema-autismo .medidas > li:nth-child(6n + 6) { --cor-item: #FAAA40; }
+.tema-autismo .md { border-top: 6px solid var(--cor-item, var(--pp-amarelo)); }
+.tema-autismo .md-icone { background: var(--cor-item, var(--pp-amarelo)); color: var(--pp-tinta); }
+.tema-autismo .obras > :nth-child(5n + 1) { border-top: 6px solid #00B171; }
+.tema-autismo .obras > :nth-child(5n + 2) { border-top: 6px solid #FFC400; }
+.tema-autismo .obras > :nth-child(5n + 3) { border-top: 6px solid #8BC1DC; }
+.tema-autismo .obras > :nth-child(5n + 4) { border-top: 6px solid #FF9C33; }
+.tema-autismo .obras > :nth-child(5n + 5) { border-top: 6px solid #0082BF; }
+.tema-autismo .mo { border-radius: 22px; }
+
+/* O infinito da neurodiversidade, desenhado uma vez ao abrir a página. */
+.infinito {
+  position: absolute; z-index: 1;
+  right: max(-40px, 50% - 700px); top: 34px;
+  width: min(560px, 62vw); height: auto;
+  fill: none; stroke: url(#espectro); stroke-width: 13; stroke-linecap: round;
+  opacity: .55;
+  stroke-dasharray: 900; stroke-dashoffset: 0;
+}
+.js .infinito { stroke-dashoffset: 900; animation: desenha-infinito 2.6s cubic-bezier(.45, .05, .25, 1) .3s forwards; }
+@keyframes desenha-infinito { to { stroke-dashoffset: 0; } }
+@media (max-width: 860px) { .infinito { top: 18px; right: -34px; width: 44vw; opacity: .4; } }
+
+/* ── Quem pediu para não se mexer ─────────────────────────────────────────*/
+@media (prefers-reduced-motion: reduce) {
+  .fundo-campanha::before { animation: none; bottom: 0; }
+  .js .infinito { animation: none; stroke-dashoffset: 0; }
+  a.md:hover { transform: none; }
+}
 
 /* ══ ANIMAÇÃO ═════════════════════════════════════════════════════════════
    Quatro movimentos, e só quatro, porque a página é lida com o polegar em

@@ -53,6 +53,7 @@ function jsonLdPessoa(seo, url, extra = {}) {
  * @param {string} p.coletadoEm   data da coleta do e-Legis, para o rodapé
  * @param {string} [p.notaRodape] frase extra no rodapé (crédito de imagem, por exemplo)
  * @param {string} [p.scripts]    <script> extra no fim do body
+ * @param {string} [p.tema]       tema visual da página ("autismo"), vira classe do <body>
  */
 function documento(p) {
   const { raiz, qf } = prefixos(p.profundidade);
@@ -105,7 +106,7 @@ function documento(p) {
 ${p.jsonLd}
   </script>
 </head>
-<body>
+<body${p.tema ? ` class="tema-${p.tema}"` : ''}>
   <script>document.documentElement.classList.add('js');</script>
 ${sprite()}
 

@@ -6,11 +6,12 @@ alteração):
 | Página | Texto em |
 |---|---|
 | `index.html` (o índice, /quem-faz/) | `dados/indice.json` |
-| `por-tubarao/`, `pela-amurel/` | `dados/lugares.json` |
+| `por-tubarao/`, `pela-amurel/`, `pela-amrec/`, `pela-amesc/`, `pelo-autismo/` | `dados/lugares.json` |
 | `projetos-de-lei/` e as 7 páginas de lei dentro dela | `dados/leis-paginas.json` |
 
-Os números e os status vêm das bases. As outras quatro (`pelo-autismo/`,
-`pelo-sul/`, `pela-educacao/`, `pelas-cidades/`) ainda são escritas à mão;
+Os números e os status vêm das bases. `pelo-sul/` foi apagada em 25/09/2026
+(deu lugar a AMREC e AMESC). As outras duas (`pela-educacao/`,
+`pelas-cidades/`) ainda são escritas à mão;
 nelas o build só mexe no trecho entre `<!-- visual:inicio -->` e
 `<!-- visual:fim -->` e na grade de portas (ver `atualizar-manuais.cjs`).
 
@@ -32,6 +33,19 @@ cd og && node render-chrome.cjs     # imagens de compartilhamento do índice e d
 Precisa só do Node (testado no 24), mais `magick` e `ffmpeg` (Homebrew) para as
 fotos e o Google Chrome instalado para as imagens de compartilhamento. Sem
 dependências de npm.
+
+## Regras de conteúdo (25/09/2026)
+
+- **Nenhum valor em reais por município**, em lugar nenhum: nem total de
+  cidade, nem lista de cidades com valor. O build recusa `municipio.*` no
+  bloco `conferir`, e a seção `chips` mostra só o nome. Total de região e de
+  tema pode; valor de uma obra específica no card de obra também.
+- Projeto que virou lei leva o selo verde **APROVADO**, com o número da lei ao
+  lado. Vem de `leis.json`, nunca escrito à mão.
+- Tema autismo: `"tema": "autismo"` no lugar (ou na lei, em
+  `leis-paginas.json`) troca a estética da página (fundo claro nas seções de
+  leitura, cores do espectro, corpo maior, fundo parado). O total do tema sai
+  de `lib/temas.cjs`, com critério escrito, e é conferido por `tema.autismo.*`.
 
 ## Posts do Instagram
 

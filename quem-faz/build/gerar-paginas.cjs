@@ -36,16 +36,23 @@ const ler = (nome) => JSON.parse(fs.readFileSync(path.join(DADOS, nome), 'utf8')
  * Confere que todo valor anunciado no lugar bate com a base de emendas.
  * É aqui que a regra de ouro vira código: número que não fecha derruba o build.
  */
-function conferir(lugar, emendas) {
+function conferir(lugar, emendas, temas) {
   const erros = [];
 
   for (const [caminho, esperado] of Object.entries(lugar.conferir || {})) {
     const [tipo, chave, campo] = caminho.split('.');
     let obtido;
 
-    if (tipo === 'municipio') obtido = emendas.porMunicipio[chave]?.[campo];
-    else if (tipo === 'coordenacao') obtido = emendas.porCoordenacao[chave]?.[campo];
+    // Valor por município não se publica mais (decisão do Luis, 25/09/2026):
+    // nenhuma cidade é comparada com outra pelo que recebeu. Se uma página
+    // voltar a conferir valor de cidade, é porque voltou a anunciá-lo.
+    if (tipo === 'municipio') {
+      erros.push(`"${caminho}": valor por município não é mais publicado`);
+      continue;
+    }
+    if (tipo === 'coordenacao') obtido = emendas.porCoordenacao[chave]?.[campo];
     else if (tipo === 'area') obtido = emendas.porArea[chave]?.[campo];
+    else if (tipo === 'tema') obtido = temas[chave]?.[campo];
     else erros.push(`conferência "${caminho}" tem tipo desconhecido`);
 
     if (obtido === undefined) {
@@ -82,7 +89,7 @@ function main() {
   }
 
   for (const lugar of alvos) {
-    conferir(lugar, ctx.emendas);
+    conferir(lugar, ctx.emendas, ctx.temas);
 
     const html = montar(lugar, ctx);
     const destino = path.join(RAIZ, lugar.slug, 'index.html');

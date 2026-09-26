@@ -7,6 +7,7 @@
  *   node build/coletar-instagram.cjs                  # posts desde 01/09/2026
  *   node build/coletar-instagram.cjs --desde=2026-08-16
  *   node build/coletar-instagram.cjs --so-capas       # não chama a API, usa o cache
+ *   node build/coletar-instagram.cjs --refazer-capas  # baixa todas as capas de novo
  *   node build/coletar-instagram.cjs --incluir=DBuCrSKJaHK,C-SynpCuRnO
  *                                     # posts mais antigos citados nas páginas
  *
@@ -52,6 +53,9 @@ const opt = (nome, padrao) => {
 };
 const DESDE = opt('desde', '2026-09-01');
 const SO_CAPAS = args.includes('--so-capas');
+// Baixa de novo a capa mesmo que o arquivo já exista (capa trocada no
+// Instagram depois da publicação).
+const REFAZER_CAPAS = args.includes('--refazer-capas');
 // Posts anteriores a --desde que alguma página cita pelo shortcode (as páginas
 // das leis mostram o post da sanção, que é de 2024).
 // Os já incluídos numa rodada anterior continuam: a lista só cresce, para uma
@@ -157,7 +161,7 @@ async function main() {
 
   for (const m of escolhidos) {
     const destino = path.join(DIR_CAPAS, `${m.shortcode}.webp`);
-    if (fs.existsSync(destino)) continue;
+    if (fs.existsSync(destino) && !REFAZER_CAPAS) continue;
     const url = urlCapa(m);
     if (!url) { falhas.push(`${m.shortcode}: sem capa`); continue; }
     try {

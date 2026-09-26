@@ -119,8 +119,8 @@ ${p.corpo}
       <p>
         Pepê Collaço · Deputado Estadual de Santa Catarina · Progressistas ·
         Federação União Progressista.<br />
-        Valores destinados pelo mandato entre 2023 e 2026, conforme o controle de
-        emendas do gabinete. Situação dos projetos de lei conforme o e-Legis da
+        Valores de 2023 a 2026 informados pelo gabinete do mandato, entre emendas e
+        demais recursos conquistados para os municípios. Situação dos projetos de lei conforme o e-Legis da
         Alesc em ${escapar(data(p.coletadoEm))}.${p.notaRodape ? `<br />\n        ${p.notaRodape}` : ''}
         <a href="${SITE}/">pepecollaco.com</a>
       </p>

@@ -3,11 +3,12 @@
   "Escrito à mão: o texto da página índice, /quem-faz/. Os números dos cards saem das bases no build (indice.cjs), não daqui.",
   "serie: os reels da série 'Quem faz por…', na ordem em que aparecem. Rótulo é o que vai embaixo do pôster.",
   "ocultar: posts que não entram nos blocos automáticos de 'Nas redes' de nenhuma página. Nada some do Instagram; só não é vitrine de prestação de contas.",
-  "estrada: as fotos do mosaico, pelo id de dados/fotos.json."
+  "estrada: as fotos do mosaico, pelo id de dados/fotos.json.",
+  "total: valor declarado do mandato inteiro (não sai da base de emendas); quem muda aqui muda o índice e a imagem de compartilhamento."
  ],
  "seo": {
   "titulo": "Quem faz representa",
-  "descricao": "Tudo o que o mandato de Pepê Collaço fez, por assunto e por cidade: R$ 156 milhões destinados a 114 municípios de Santa Catarina, 28 leis aprovadas, a série Quem faz por… e as fotos dos eventos.",
+  "descricao": "Tudo o que o mandato de Pepê Collaço fez, por assunto e por cidade: R$ 200 milhões em recursos para 114 municípios de Santa Catarina, 28 leis aprovadas, a série Quem faz por… e as fotos dos eventos.",
   "ogDescricao": "O mandato por assunto e por cidade: emendas, leis, vídeos e fotos. Cada número conferido na base do gabinete."
  },
  "compartilhar": "Tudo o que o Pepê Collaço fez pelo Sul e por Santa Catarina, por assunto e por cidade:",
@@ -223,5 +224,9 @@
   {
    "foto": "estrada-10"
   }
- ]
+ ],
+ "total": {
+  "valor": 200000000,
+  "fonte": "Total informado pela coordenação do mandato em 26/09/2026, somando emendas e demais recursos conquistados para os municípios. As emendas do controle do gabinete somam R$ 156.367.827,19."
+ }
 }

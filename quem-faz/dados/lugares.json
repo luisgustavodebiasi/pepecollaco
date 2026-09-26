@@ -26,17 +26,20 @@
 
       "seo": {
         "titulo": "Quem faz pela AMUREL",
-        "descricao": "R$ 88 milhões destinados aos 20 municípios da AMUREL em quatro anos de mandato, sem deixar nenhum de fora. Ginásio de Sangão, estradas de Gravatal, infraestrutura de Pescaria Brava, saúde, educação e autismo.",
-        "ogDescricao": "R$ 88 milhões nos 20 municípios da AMUREL, sem deixar nenhum de fora. 235 emendas em obras, saúde, educação e esporte."
+        "descricao": "R$ 100 milhões em recursos para os 20 municípios da AMUREL em quatro anos de mandato, sem deixar nenhum de fora. Ginásio de Sangão, estradas de Gravatal, infraestrutura de Pescaria Brava, saúde, educação e autismo.",
+        "ogDescricao": "R$ 100 milhões em recursos para os 20 municípios da AMUREL, sem deixar nenhum de fora. 235 emendas em obras, saúde, educação e esporte."
       },
 
-      "compartilhar": "Quem faz pela AMUREL: R$ 88 milhões nos 20 municípios da região, sem deixar nenhum de fora. Olha a conta:",
+      "compartilhar": "Quem faz pela AMUREL: R$ 100 milhões em recursos para os 20 municípios da região, sem deixar nenhum de fora. Olha a conta:",
 
       "conferir": {
-        "coordenacao.AMUREL.valor": 88024250.22,
         "coordenacao.AMUREL.n": 235,
         "coordenacao.AMUREL.municipios": 20
       },
+
+      "declarados": [
+        { "valor": 100000000, "fonte": "Total da AMUREL informado pela coordenação do mandato em 26/09/2026, somando emendas e demais recursos conquistados. As emendas do controle do gabinete somam R$ 88.024.250,22." }
+      ],
 
       "hero": {
         "titulo": [
@@ -46,13 +49,13 @@
           { "estilo": "pincel", "texto": "AMUREL" }
         ],
         "frase": "Os problemas da nossa região nunca respeitaram divisas. Quando a estrada fecha, não para só uma cidade: para o trabalhador, a empresa e a região inteira. Por isso a conta aqui <b>não é de um município só: são os 20</b>.",
-        "valor": 88024250.22,
-        "legenda": "nos 20 municípios da AMUREL, sem deixar nenhum de fora",
+        "valor": 100000000,
+        "legenda": "em recursos para os 20 municípios, sem deixar nenhum de fora",
         "ancora": "obras"
       },
 
       "placar": [
-        { "valor": 88024250.22, "legenda": "destinados à região" },
+        { "valor": 100000000, "legenda": "em recursos para a região" },
         { "texto": "20 <small>DE 20</small>", "legenda": "municípios atendidos" },
         { "texto": "235", "legenda": "emendas na AMUREL" },
         { "valor": 5900000, "casas": 1, "legenda": "a maior obra: o ginásio de Sangão" }
@@ -61,7 +64,7 @@
       "pergunta": {
         "olho": "A pergunta que importa",
         "titulo": "Faz diferença ter um deputado da região?",
-        "texto": "A AMUREL tem 20 municípios e pouco mais de 450 mil habitantes. Numa Assembleia de 40 deputados, quem não tem representante daqui não tem quem leve o pedido do prefeito até onde o orçamento é decidido, nem quem volte para cobrar. A conta abaixo é a resposta prática: <b>R$ 88 milhões</b>, em 235 emendas, e nenhuma das 20 cidades de fora."
+        "texto": "A AMUREL tem 20 municípios e pouco mais de 450 mil habitantes. Numa Assembleia de 40 deputados, quem não tem representante daqui não tem quem leve o pedido do prefeito até onde o orçamento é decidido, nem quem volte para cobrar. A conta abaixo é a resposta prática: <b>R$ 100 milhões</b> em recursos, 235 emendas e nenhuma das 20 cidades de fora."
       },
 
       "secoes": [
@@ -356,7 +359,7 @@
       "fecho": {
         "lema": "Uma Tubarão forte depende de um Sul forte",
         "pincel": "forte",
-        "apoio": "20 cidades, 235 emendas, R$ 88 milhões. Dia 4 de outubro, vote em quem trabalha pela região."
+        "apoio": "20 cidades, 235 emendas, R$ 100 milhões em recursos. Dia 4 de outubro, vote em quem trabalha pela região."
       }
     },
 

@@ -35,14 +35,15 @@ function paginas() {
   const emendas = ler('emendas.json');
   const { destaques } = ler('leis-paginas.json');
   const porCodigo = new Map(leis.proposicoes.map((p) => [p.codigo, p]));
-  const mi = Math.floor(emendas.total / 1e6);
+  const indice = ler('indice.json');
+  const mi = Math.floor((indice.total?.valor ?? emendas.total) / 1e6);
 
   const lista = {
     indice: {
       pasta: '.',
       titulo: '', destaque: 'REPRESENTA',
       numero: `R$ ${mi}`, unidade: 'MILHÕES',
-      legenda: `em ${emendas.municipios} municípios. O mandato por assunto e por cidade`,
+      legenda: `em recursos para ${emendas.municipios} municípios, por assunto e por cidade`,
     },
     'projetos-de-lei': {
       pasta: 'projetos-de-lei',

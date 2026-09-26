@@ -21,7 +21,9 @@ function numeros(ctx) {
   const ruas = JSON.parse(fs.readFileSync(path.join(PROJETO, 'ruas', 'ruas.json'), 'utf8'));
   const fotos = JSON.parse(fs.readFileSync(path.join(PROJETO, 'foto', 'pepe-por-elas', 'dados.json'), 'utf8'));
   return {
-    total: e.total,
+    // O total do índice é o declarado pelo mandato (indice.json → total),
+    // não a soma das emendas: inclui os demais recursos conquistados.
+    total: ctx.indice.total?.valor ?? e.total,
     emendas: e.quantidade,
     municipios: e.municipios,
     leis: ctx.leis.totalLeis,
@@ -33,7 +35,7 @@ function numeros(ctx) {
 }
 
 /** "R$ 18,9 mi · 45 emendas" etc. HTML curto, em amarelo no card. */
-function dadoDaPorta(chave, n) {
+function dadoDaPorta(chave, n, ctx) {
   if (!chave) return null;
   // Cidade não mostra valor recebido (decisão de 25/09/2026): só quantas emendas.
   if (chave.startsWith('emendas:')) {
@@ -43,7 +45,10 @@ function dadoDaPorta(chave, n) {
   // Região mostra o total. cifra() arredonda para baixo; abaixo de R$ 10 mi
   // vai com uma casa ("R$ 7 mi" esconderia os quebrados, "R$ 7,0" não diz nada).
   if (chave.startsWith('coordenacao:')) {
-    const c = n.porCoordenacao[chave.split(':')[1]];
+    const sigla = chave.split(':')[1];
+    const c = { ...n.porCoordenacao[sigla] };
+    const pagina = ctx.lugares?.[`pela-${sigla.toLowerCase()}`];
+    if (pagina?.hero?.valor !== undefined) c.valor = pagina.hero.valor;
     const cf = cifra(c.valor, c.valor < 1e7 && c.valor % 1e6 >= 1e5 ? 1 : 0);
     return `<b>R$ ${cf.numero} mi</b> nos ${c.municipios} municípios`;
   }
@@ -66,7 +71,7 @@ function hero(ind, n) {
 
         <div class="manchete">
           <span class="cifra">R$ ${c.numero} <small>${c.unidade}</small></span>
-          <span class="legenda">destinados a ${n.municipios} municípios de Santa Catarina</span>
+          <span class="legenda">em recursos para ${n.municipios} municípios de Santa Catarina</span>
         </div>
 
         <div class="botoes">
@@ -86,7 +91,7 @@ function hero(ind, n) {
 function placar(n) {
   const c = cifra(n.total);
   const celulas = [
-    [`R$ ${c.numero} <small>${c.curta}</small>`, 'destinados pelo mandato'],
+    [`R$ ${c.numero} <small>${c.curta}</small>`, 'em recursos para SC'],
     [`${n.emendas}`, 'emendas e convênios'],
     [`${n.municipios}`, 'municípios atendidos'],
     [`${n.leis}`, 'leis aprovadas'],
@@ -125,7 +130,7 @@ function montarIndice(ctx) {
     foto: p.foto,
     grande: p.grande,
     toda: p.toda,
-    dado: p.dado ? dadoDaPorta(p.dado, n) : p.dadoTexto ? `<b>${escapar(p.dadoTexto)}</b>` : null,
+    dado: p.dado ? dadoDaPorta(p.dado, n, ctx) : p.dadoTexto ? `<b>${escapar(p.dadoTexto)}</b>` : null,
     texto: escapar(p.texto),
   }));
 
@@ -135,7 +140,7 @@ function montarIndice(ctx) {
     hero(ind, n),
     placar(n),
     visual.portasFoto(
-      { olho: 'Por onde começar', titulo: 'Escolha um assunto', texto: 'Cada página abre no celular em segundos e cabe num link de WhatsApp. Os valores são somas das emendas destinadas pelo mandato.', itens: portas },
+      { olho: 'Por onde começar', titulo: 'Escolha um assunto', texto: 'Cada página abre no celular em segundos e cabe num link de WhatsApp. Os valores são os totais de recursos informados pelo gabinete do mandato.', itens: portas },
       ctx, qf
     ),
     visual.serie(

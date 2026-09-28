@@ -42,6 +42,10 @@
     "texto": "Um vídeo por cidade, gravado onde a obra está. Toque para assistir no Instagram.",
     "itens": [
      {
+      "shortcode": "Dd1i2AzOFAz",
+      "rotulo": "Sangão"
+     },
+     {
       "shortcode": "Dduj4_gvP9o",
       "rotulo": "Orleans"
      },
@@ -86,7 +90,7 @@
       "rotulo": "Capivari de Baixo"
      },
      {
-      "shortcode": "DdpRebgP6Jw",
+      "shortcode": "Ddzw69kgGfH",
       "rotulo": "Tubarão",
       "pagina": "../por-tubarao/"
      }

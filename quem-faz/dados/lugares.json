@@ -326,6 +326,7 @@
           "titulo": "Quem faz por cada cidade",
           "texto": "Um vídeo por cidade da AMUREL, gravado onde a obra está. Toque para assistir no Instagram.",
           "itens": [
+            { "shortcode": "Dd1i2AzOFAz", "rotulo": "Sangão" },
             { "shortcode": "DdtxzMjRhtO", "rotulo": "Jaguaruna" },
             { "shortcode": "Ddr7JVkxc0r", "rotulo": "Paulo Lopes" },
             { "shortcode": "DdeRXczOQdJ", "rotulo": "Braço do Norte" },
@@ -334,7 +335,7 @@
             { "shortcode": "DdCmk9FB3dJ", "rotulo": "Laguna" },
             { "shortcode": "Dc4RDmTuiWZ", "rotulo": "Pescaria Brava" },
             { "shortcode": "Dcgj16OOhgF", "rotulo": "Capivari de Baixo" },
-            { "shortcode": "DdpRebgP6Jw", "rotulo": "Tubarão", "pagina": "../por-tubarao/" }
+            { "shortcode": "Ddzw69kgGfH", "rotulo": "Tubarão", "pagina": "../por-tubarao/" }
           ]
         },
 
@@ -639,6 +640,7 @@
           "titulo": "Quem faz por Tubarão, em vídeo",
           "texto": "Os episódios gravados na cidade, do asfalto novo à beira-rio. Toque para assistir no Instagram.",
           "itens": [
+            { "shortcode": "Ddzw69kgGfH", "rotulo": "Episódio 6" },
             { "shortcode": "DdpRebgP6Jw", "rotulo": "Episódio 5" },
             { "shortcode": "DdZMbiyscCz", "rotulo": "Episódio 4" },
             { "shortcode": "DdHuxp2uISK", "rotulo": "Episódio 3" },

@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   Busca por rosto — roda inteira dentro do navegador.
+   Busca por rosto: roda inteira dentro do navegador.
 
    A selfie não sobe para servidor nenhum: os pixels vão da câmera para um
    canvas, do canvas para o modelo, e o que sobra é um vetor de 512 números
@@ -78,7 +78,7 @@ function telaEscolha() {
   caixa.innerHTML = `
     <h2 id="painel-titulo">Ache as suas fotos</h2>
     <p>Escolha como mandar o seu rosto. Vale uma selfie na hora ou uma foto
-       que já esteja no celular — de frente e com o rosto bem visível.</p>
+       que já esteja no celular, de frente e com o rosto bem visível.</p>
     <div class="painel-botoes">
       <button class="botao-principal" type="button" data-camera>
         <svg class="icone-rosto" viewBox="0 0 48 48"><path d="M4 15.5V8.5A4.5 4.5 0 0 1 8.5 4h7"/><path d="M32.5 4h7A4.5 4.5 0 0 1 44 8.5v7"/><path d="M44 32.5v7a4.5 4.5 0 0 1-4.5 4.5h-7"/><path d="M15.5 44h-7A4.5 4.5 0 0 1 4 39.5v-7"/><circle cx="24" cy="20.5" r="6"/><path d="M13.5 36.5c1.9-4.6 5.9-7 10.5-7s8.6 2.4 10.5 7"/></svg>
@@ -181,7 +181,7 @@ function escolherArquivo() {
 
 /* ── Carga do modelo e do índice ────────────────────────────────────── */
 
-/** Baixa mostrando progresso real — 18 MB sem barra parece travamento. */
+/** Baixa mostrando progresso real: 18 MB sem barra parece travamento. */
 async function baixar(url, aoAndar) {
   const resposta = await fetch(url);
   if (!resposta.ok) throw new Error(`falhou ${url}`);
@@ -236,7 +236,7 @@ async function preparar(base) {
 /* ── Comparação ─────────────────────────────────────────────────────── */
 
 /** Percorre os vetores do evento e devolve a melhor foto de cada pessoa
-    encontrada. É um produto escalar de 512 termos por rosto indexado —
+    encontrada. É um produto escalar de 512 termos por rosto indexado:
     milissegundos para os 887 deste evento, sem precisar de índice aproximado.
     Devolve [{ foto, s, rosto }] ordenado, com s já descontado pela qualidade. */
 function comparar(consulta, dados) {
@@ -278,7 +278,7 @@ async function processar(canvas) {
   /* Dá um respiro para o navegador pintar essa tela antes de o modelo tomar
      a thread. setTimeout e não requestAnimationFrame: quem está no celular
      troca de aplicativo enquanto espera, e aba em segundo plano não recebe
-     quadro nenhum — com rAF a busca ficava pendurada para sempre. */
+     quadro nenhum; com rAF a busca ficava pendurada para sempre. */
   await new Promise((r) => setTimeout(r, 16));
 
   const d = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height).data;

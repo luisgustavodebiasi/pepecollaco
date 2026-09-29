@@ -3,8 +3,34 @@
   "Escrito à mão: o que build/atualizar-manuais.cjs injeta nas quatro páginas QUEM FAZ que ainda são escritas à mão.",
   "O script só mexe entre <!-- visual:inicio --> e <!-- visual:fim --> (antes do fecho) e na grade de portas. O resto da página não é tocado.",
   "Cada bloco é uma seção: 'serie' (reels da série Quem faz por…), 'vitrine' (posts com capa, por lista ou por busca na legenda) ou 'leis' (cards das páginas de lei).",
-  "pelo-autismo saiu daqui em 25/09/2026: passou a ser gerada (lugares.json, tema autismo). pelo-sul foi apagada e deu lugar a pela-amrec e pela-amesc."
+  "pelo-autismo saiu daqui em 25/09/2026: passou a ser gerada (lugares.json, tema autismo). pelo-sul foi apagada e deu lugar a pela-amrec e pela-amesc.",
+  "conferir: o que cada página manual anuncia, conferido contra a base a cada execução (atualizar-manuais.cjs para se não fechar). Mudou a base, muda a página e muda aqui."
  ],
+ "conferir": {
+  "pela-educacao": {
+   "area.educacao.valor": 13581977.9,
+   "area.educacao.n": 53,
+   "area.educacao.municipios": 41,
+   "chips": "area:educacao"
+  },
+  "pelas-cidades": {
+   "base.n": 525,
+   "base.municipios": 114,
+   "chips": "base",
+   "area.infraestrutura.valor": 89191621.67,
+   "area.infraestrutura.n": 211,
+   "area.esporte-cultura.valor": 17015000,
+   "area.esporte-cultura.n": 59,
+   "area.saude.valor": 16700146.87,
+   "area.saude.n": 74,
+   "area.educacao.valor": 13581977.9,
+   "area.educacao.n": 53,
+   "area.autismo.valor": 6090439.24,
+   "area.autismo.n": 33,
+   "area.agricultura.valor": 2950000,
+   "area.agricultura.n": 20
+  }
+ },
  "paginas": {
   "pela-educacao": [
    {

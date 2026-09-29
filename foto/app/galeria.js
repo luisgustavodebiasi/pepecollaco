@@ -1,15 +1,15 @@
 /* ═══════════════════════════════════════════════════════════════════════
    Galeria de um evento: grade, visor e a ponte para a busca por rosto.
 
-   Carrega só dados.json (poucos KB). O reconhecimento — 18 MB entre modelo
-   e runtime — só entra em cena se a pessoa pedir, por import dinâmico de
+   Carrega só dados.json (poucos KB). O reconhecimento (18 MB entre modelo
+   e runtime) só entra em cena se a pessoa pedir, por import dinâmico de
    busca.js. Quem só quer olhar as fotos não paga por isso.
    ═══════════════════════════════════════════════════════════════════════ */
 
 const BASE = location.pathname.replace(/[^/]*$/, '');   // /foto/<slug>/
 
 /* Acima disto a página escreve "Você"; abaixo, "Talvez". O número e o porquê
-   estão documentados junto da comparação, em busca.js — aqui ele só rotula. */
+   estão documentados junto da comparação, em busca.js; aqui ele só rotula. */
 const LIMIAR_CERTO = 0.42;
 
 const el = {
@@ -27,7 +27,7 @@ const FOTOS = dados.fotos;
 const EXT = dados.formato ?? 'webp';
 
 /* O que a grade está mostrando agora, na ordem em que aparece: índices de
-   FOTOS. O visor navega por esta lista, e não pelas 260 — depois de buscar,
+   FOTOS. O visor navega por esta lista, e não pelas 260: depois de buscar,
    a seta "próxima" tem de ir para a próxima foto SUA. */
 let listaAtual = FOTOS.map((_, i) => i);
 
@@ -82,7 +82,7 @@ function desenhar(lista) {
   if (!lista.length) {
     el.grade.innerHTML =
       '<p class="vazio"><strong>Não achamos você nestas fotos.</strong>' +
-      'Tente outra foto sua, de frente e com boa luz — ou role a grade, ' +
+      'Tente outra foto sua, de frente e com boa luz, ou role a grade, ' +
       'o reconhecimento não é perfeito.</p>';
     return;
   }
@@ -199,7 +199,7 @@ function irPara(posicao) {
 
 /** Desenha a moldura em volta do rosto que casou, para quem está numa foto
     de 40 pessoas não precisar caçar a si mesmo. Recebe o índice do rosto
-    que a busca apontou — nunca o primeiro rosto da foto. */
+    que a busca apontou, nunca o primeiro rosto da foto. */
 function marcarRosto(indiceRosto) {
   const rostos = dados.rostos;
   if (indiceRosto == null) return;

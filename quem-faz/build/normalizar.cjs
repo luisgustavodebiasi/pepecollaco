@@ -18,7 +18,8 @@ const fs = require('fs');
 const path = require('path');
 const { lerObjetos, escrever } = require('./lib/csv.cjs');
 
-const PROJETO = path.join(__dirname, '..', '..', '..');
+// build/ → quem-faz/ → raiz do repositório (a pasta PEPE).
+const PROJETO = path.join(__dirname, '..', '..');
 const DADOS = path.join(__dirname, '..', 'dados');
 
 const ARQ_EMENDAS = path.join(PROJETO, 'EMENDAS ', 'emendas_site_historico.csv');

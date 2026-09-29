@@ -40,7 +40,7 @@ function conferir(lugar, emendas, temas) {
   const erros = [];
 
   for (const [caminho, esperado] of Object.entries(lugar.conferir || {})) {
-    const [tipo, chave, campo] = caminho.split('.');
+    const [tipo, chave, campo, sub] = caminho.split('.');
     let obtido;
 
     // Valor por município não se publica mais (decisão do Luis, 25/09/2026):
@@ -52,7 +52,8 @@ function conferir(lugar, emendas, temas) {
     }
     if (tipo === 'coordenacao') obtido = emendas.porCoordenacao[chave]?.[campo];
     else if (tipo === 'area') obtido = emendas.porArea[chave]?.[campo];
-    else if (tipo === 'tema') obtido = temas[chave]?.[campo];
+    // tema.autismo.valor (Estado inteiro) ou tema.autismo.AMUREL.valor (região)
+    else if (tipo === 'tema') obtido = sub ? temas[chave]?.porCoordenacao?.[campo]?.[sub] : temas[chave]?.[campo];
     else erros.push(`conferência "${caminho}" tem tipo desconhecido`);
 
     if (obtido === undefined) {

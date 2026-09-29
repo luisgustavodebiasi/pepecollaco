@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   Galeria de fotos — Pepê Collaço 11223
+   Galeria de fotos · Pepê Collaço 11223
 
    As cores, fontes e o fundo vêm de /assets/brand/css/tokens.css.
    Não escreva hex aqui: se faltar um tom, derive com color-mix().
@@ -31,13 +31,16 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
 @media (max-width: 640px) { .wrap { width: calc(100% - 28px); } }
 
 /* O fundo da campanha: degradê em CSS + textura de setas por máscara.
-   Máscara e não background-image — um SVG por url() renderiza isolado e o
+   Máscara e não background-image: um SVG por url() renderiza isolado e o
    currentColor dele cai para preto, sumindo sobre o azul. */
 .fundo-campanha { position: relative; background: var(--grad-fundo); background-attachment: fixed; }
 .fundo-campanha::before {
   content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
   background-color: #fff;
-  -webkit-mask-image: var(--textura-setas); mask-image: var(--textura-setas);
+  /* Caminho direto: url() dentro de var() se resolve a partir da página, e o
+     "../textura" do tokens.css virava /foto/textura/, que não existe. */
+  -webkit-mask-image: url("../../assets/brand/textura/setas-tile.svg");
+          mask-image: url("../../assets/brand/textura/setas-tile.svg");
   -webkit-mask-size: var(--textura-tamanho); mask-size: var(--textura-tamanho);
   opacity: var(--textura-opacidade);
 }

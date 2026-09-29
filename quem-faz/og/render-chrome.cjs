@@ -73,10 +73,14 @@ function paginas() {
     lista[slug] = { pasta: slug, titulo: prep, destaque: pincel, numero, unidade, legenda: h.legenda };
   }
 
-  // As duas páginas ainda escritas à mão.
+  // As duas páginas ainda escritas à mão. O cartão da educação sai da área
+  // "educacao" da base, a mesma que atualizar-manuais.cjs confere na página.
+  const edu = emendas.emendas.filter((e) => e.area === 'educacao');
+  const ce = cifra(emendas.porArea.educacao.valor, 1);
   lista['pela-educacao'] = {
     pasta: 'pela-educacao', titulo: 'pela', destaque: 'EDUCAÇÃO',
-    numero: 'R$ 13,2', unidade: 'MILHÕES', legenda: 'em creches, escolas e transporte escolar de 39 municípios',
+    numero: `R$ ${ce.numero}`, unidade: ce.unidade,
+    legenda: `em creches, escolas e transporte escolar de ${new Set(edu.map((e) => e.municipio)).size} municípios`,
   };
   lista['pelas-cidades'] = {
     pasta: 'pelas-cidades', titulo: 'pelas', destaque: 'CIDADES',

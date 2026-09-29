@@ -35,7 +35,7 @@
 
   <style>
     /* ══════════════════════════════════════════════════════════
-       Pepê Collaço 11223 — home
+       Pepê Collaço 11223 · home
        Sistema visual em assets/brand/css/tokens.css (não duplicar
        hex aqui). Ver IDENTIDADE.md na raiz para as regras.
        ══════════════════════════════════════════════════════════ */
@@ -70,13 +70,17 @@
     .fundo-campanha::before {
       content: ""; position: absolute; inset: 0; pointer-events: none;
       background-color: #fff;
-      -webkit-mask-image: var(--textura-setas); mask-image: var(--textura-setas);
+      /* Caminho direto, não var(--textura-setas): url() dentro de variável se
+         resolve a partir da página, e o "../textura" do tokens.css virava
+         /textura/, que não existe. */
+      -webkit-mask-image: url("assets/brand/textura/setas-tile.svg");
+              mask-image: url("assets/brand/textura/setas-tile.svg");
       -webkit-mask-size: var(--textura-tamanho); mask-size: var(--textura-tamanho);
       opacity: var(--textura-opacidade);
     }
     /* Véu: sem ele, texto pequeno cai sobre o claro do degradê
        (#0082BF) e reprova contraste. Ver IDENTIDADE.md, regra 5.
-       Entra ABAIXO da textura — invertido, o véu apagaria os 7% dela. */
+       Entra ABAIXO da textura: invertido, o véu apagaria os 7% dela. */
     .veu::after {
       content: ""; position: absolute; inset: 0; pointer-events: none;
       background: var(--veu-conteudo);
@@ -115,7 +119,7 @@
     .secao.clara .rotulo::before { background: var(--pp-azul-profundo); }
 
     /* ── Botões ─────────────────────────────────────────────── */
-    /* Amarelo com tinta é 10,8:1 — o melhor par do sistema. */
+    /* Amarelo com tinta é 10,8:1, o melhor par do sistema. */
     .btn {
       display: inline-flex; align-items: center; gap: 9px;
       min-height: 52px; padding: 0 26px; border-radius: 3px;
@@ -617,7 +621,7 @@
       <div class="etapa rv d1"><p class="etapa-fase">Câmara</p><h3 class="etapa-cargo">Presidente da Câmara</h3><p class="etapa-desc">Liderança no Legislativo municipal de Tubarão.</p></div>
       <div class="etapa rv d2"><p class="etapa-fase">Executivo</p><h3 class="etapa-cargo">Vice-prefeito</h3><p class="etapa-desc">Atuação no executivo municipal de Tubarão.</p></div>
       <div class="etapa rv d4"><p class="etapa-fase">Estado</p><h3 class="etapa-cargo">DETER-SC e Defesa Civil</h3><p class="etapa-desc">Diretor do DETER-SC e Secretário Adjunto da Defesa Civil.</p></div>
-      <div class="etapa rv d4"><p class="etapa-fase">2023–2026</p><h3 class="etapa-cargo">Deputado Estadual</h3><p class="etapa-desc">20ª Legislatura. Presidente da CCJ. Frente do Autismo.</p></div>
+      <div class="etapa rv d4"><p class="etapa-fase">2023 a 2026</p><h3 class="etapa-cargo">Deputado Estadual</h3><p class="etapa-desc">20ª Legislatura. Presidente da CCJ. Frente do Autismo.</p></div>
     </div>
   </div>
 </section>
@@ -1043,7 +1047,7 @@
         <img src="assets/brand/marca/collaco-11223-escuro-480.webp" alt="Pepê Collaço 11223, deputado estadual" width="480" height="439" loading="lazy" />
       </div>
       <p class="rodape-info">
-        Deputado Estadual de Santa Catarina · 20ª Legislatura (2023–2026)<br>
+        Deputado Estadual de Santa Catarina · 20ª Legislatura (2023 a 2026)<br>
         Progressistas (PP) · Tubarão e Sul Catarinense
       </p>
       <nav class="rodape-nav" aria-label="Links de rodapé">

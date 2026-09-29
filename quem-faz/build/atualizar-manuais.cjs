@@ -85,9 +85,58 @@ function montarTrecho(blocos, ctx) {
   return `${INICIO}\n${sprite()}\n\n${secoes.join('\n\n')}\n\n  ${FIM}\n`;
 }
 
-function atualizar(slug, blocos, ctx) {
+// Nome de cidade comparável: sem acento, sem entidade HTML, minúsculo.
+// A base escreve "Herval D'oeste" e a página "Herval d&#39;Oeste".
+function chaveCidade(nome) {
+  return nome
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+    .replace(/&amp;/g, '&')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().trim();
+}
+
+/**
+ * As páginas escritas à mão também têm número, e número de página manual
+ * desatualiza calado (foi o que aconteceu com a educação, presa num critério
+ * abandonado em 01/09/2026). O bloco `conferir` de manuais.json diz o que a
+ * página anuncia; se a base disser outra coisa, o script para.
+ *   base.n · base.municipios
+ *   area.<area>.valor · area.<area>.n · area.<area>.municipios
+ *   chips: "base" (todas as cidades) ou "area:<area>": a lista de cidades da
+ *   página tem de ser exatamente a da base
+ */
+function conferir(slug, regras, html, ctx) {
+  const E = ctx.emendas;
+  const cidades = (area) => new Set(
+    E.emendas.filter((e) => !area || e.area === area).map((e) => chaveCidade(e.municipio))
+  );
+  const erros = [];
+  for (const [caminho, esperado] of Object.entries(regras)) {
+    if (caminho === 'chips') {
+      const alvo = esperado === 'base' ? cidades() : cidades(esperado.replace(/^area:/, ''));
+      const ul = html.match(/<ul class="chips rv">([\s\S]*?)<\/ul>/);
+      if (!ul) { erros.push('não achei a lista de cidades'); continue; }
+      const naPagina = new Set([...ul[1].matchAll(/<li>(.*?)<\/li>/g)].map((m) => chaveCidade(m[1])));
+      const sobra = [...naPagina].filter((c) => !alvo.has(c));
+      const falta = [...alvo].filter((c) => !naPagina.has(c));
+      if (sobra.length) erros.push(`cidades na página e não na base: ${sobra.join(', ')}`);
+      if (falta.length) erros.push(`cidades na base e não na página: ${falta.join(', ')}`);
+      continue;
+    }
+    const [tipo, chave, campo] = caminho.split('.');
+    let obtido;
+    if (tipo === 'base') obtido = chave === 'n' ? E.quantidade : chave === 'municipios' ? E.municipios : undefined;
+    else if (tipo === 'area') obtido = campo === 'municipios' ? cidades(chave).size : E.porArea[chave]?.[campo];
+    if (obtido === undefined) erros.push(`conferência "${caminho}" não achou o dado na base`);
+    else if (Math.abs(obtido - esperado) > 0.01) erros.push(`${caminho}: página diz ${esperado}, base diz ${obtido}`);
+  }
+  if (erros.length) throw new Error(`${slug}:\n    - ${erros.join('\n    - ')}`);
+}
+
+function atualizar(slug, blocos, ctx, regras) {
   const arq = path.join(RAIZ, slug, 'index.html');
   let html = fs.readFileSync(arq, 'utf8');
+  if (regras) conferir(slug, regras, html, ctx);
   const trecho = montarTrecho(blocos, ctx);
 
   if (html.includes(INICIO)) {
@@ -111,10 +160,10 @@ function atualizar(slug, blocos, ctx) {
 function main() {
   const pedidos = process.argv.slice(2);
   const ctx = contexto();
-  const { paginas } = ler('manuais.json');
+  const { paginas, conferir: regras = {} } = ler('manuais.json');
   const alvos = Object.entries(paginas).filter(([slug]) => !pedidos.length || pedidos.includes(slug));
   if (!alvos.length) throw new Error(`nenhuma página manual corresponde a: ${pedidos.join(', ')}`);
-  for (const [slug, blocos] of alvos) atualizar(slug, blocos, ctx);
+  for (const [slug, blocos] of alvos) atualizar(slug, blocos, ctx, regras[slug]);
   console.log(`\n${alvos.length} página(s) manual(is) atualizada(s).`);
 }
 

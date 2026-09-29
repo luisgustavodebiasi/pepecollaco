@@ -34,7 +34,10 @@
 
       "conferir": {
         "coordenacao.AMUREL.n": 235,
-        "coordenacao.AMUREL.municipios": 20
+        "coordenacao.AMUREL.municipios": 20,
+        "tema.autismo.AMUREL.valor": 3100439.24,
+        "tema.autismo.AMUREL.n": 15,
+        "tema.autismo.AMUREL.municipios": 9
       },
 
       "declarados": [
@@ -81,7 +84,7 @@
               "valor": 5900000,
               "casas": 1,
               "titulo": "Ginásio de Esportes · Sangão",
-              "texto": "Uma cidade de pouco mais de dez mil habitantes ganhando o maior equipamento esportivo do mandato. É onde a escola faz educação física, o time treina e a cidade inteira se encontra."
+              "texto": "Uma cidade de cerca de 14 mil habitantes ganhando o maior equipamento esportivo do mandato. É onde a escola faz educação física, o time treina e a cidade inteira se encontra."
             },
             {
               "valor": 4316000,
@@ -119,7 +122,7 @@
             },
             {
               "valor": 1000000,
-              "titulo": "Ponta das Pedras · Laguna",
+              "titulo": "Ponta da Barra · Laguna",
               "texto": "Pavimentação asfáltica da Rua Vereador José Tomé Machado de Souza, num bairro que convive com a maré e esperava o asfalto havia anos."
             },
             {
@@ -248,7 +251,7 @@
           "classe": "",
           "olho": "Bandeira do mandato",
           "titulo": "Autismo: da terapia à política pública",
-          "texto": "É a pauta que este mandato levantou primeiro e continua carregando. Na AMUREL são <b>R$ 3,9 milhões em 20 emendas</b> ligadas ao autismo, em 11 municípios. E, acima do recurso, uma estrutura para que a política pública não dependa de emenda nenhuma.",
+          "texto": "É a pauta que este mandato levantou primeiro e continua carregando. Na AMUREL são <b>R$ 3,1 milhões em 15 emendas</b> para terapia e atendimento de pessoas com TEA, em 9 municípios. E, acima do recurso, uma estrutura para que a política pública não dependa de emenda nenhuma.",
           "itens": [
             {
               "destaque": true,
@@ -257,13 +260,13 @@
             },
             {
               "titulo": "Censo do Autismo",
-              "texto": "Santa Catarina é o primeiro estado do país a mapear as pessoas com TEA numa plataforma própria, executada com as universidades comunitárias. Política pública boa começa por saber quantos são e onde estão."
+              "texto": "Uma iniciativa pioneira no país: a plataforma para mapear as pessoas com TEA em Santa Catarina, construída pela Assembleia com as universidades comunitárias, as APAEs e as AMAs. Política pública boa começa por saber quantos são e onde estão."
             },
             {
-              "valor": 3900439.24,
+              "valor": 3100439.24,
               "casas": 1,
               "titulo": "Equoterapia e terapia ocupacional",
-              "texto": "Emendas para custeio de equoterapia, terapia ocupacional, ecoterapia e salas sensoriais em Armazém, Braço do Norte, Capivari de Baixo, Gravatal, Jaguaruna, Laguna, Pedras Grandes, Sangão, São Ludgero, São Martinho e Tubarão."
+              "texto": "Emendas para equoterapia, terapia ocupacional, ecoterapia e atendimento de pessoas com TEA em Armazém, Braço do Norte, Gravatal, Jaguaruna, Laguna, Pedras Grandes, Sangão, São Ludgero e Tubarão."
             }
           ]
         },
@@ -313,7 +316,7 @@
           "itens": [
             { "id": 48, "resumo": "Assinada a ordem de serviço dos levantamentos e projetos de dragagem, derrocagem e remodelagem dos molhes do Porto de Laguna." },
             { "id": 46, "resumo": "A redragagem do Rio Tubarão entra como prioridade na Lei de Diretrizes Orçamentárias de 2026, por emenda da Bancada do Sul." },
-            { "id": 26, "resumo": "Eleito presidente da Comissão de Constituição e Justiça da Alesc, o primeiro parlamentar da AMUREL a ocupar o cargo." },
+            { "id": 30, "resumo": "Presidente da CCJ e relator do projeto, Pepê Collaço conduz a aprovação do reajuste do salário mínimo regional de Santa Catarina." },
             { "id": 34, "resumo": "A Bancada do Sul cobra urgência no túnel do Morro dos Cavalos depois de mais um acidente grave na BR-101." },
             { "id": 60, "resumo": "Balanço dos investimentos na região e defesa de mais representatividade política para a AMUREL." }
           ]
@@ -402,7 +405,7 @@
       "pergunta": {
         "olho": "A pergunta que importa",
         "titulo": "Faz diferença ter um representante da nossa cidade?",
-        "texto": "Tubarão tem quase cem mil habitantes e é a maior cidade da AMUREL. Mas tamanho não garante lugar na mesa onde o orçamento do Estado é decidido: garante quem senta nela. Em quatro anos, isso virou <b>45 emendas</b>, mais de 60 ruas com recurso e a presidência da comissão mais estratégica da Assembleia."
+        "texto": "Tubarão tem mais de 110 mil habitantes e é a maior cidade da AMUREL. Mas tamanho não garante lugar na mesa onde o orçamento do Estado é decidido: garante quem senta nela. Em quatro anos, isso virou <b>45 emendas</b>, mais de 60 ruas com recurso e a presidência da comissão mais estratégica da Assembleia."
       },
 
       "secoes": [
@@ -477,8 +480,9 @@
             },
             {
               "valor": 350000,
-              "titulo": "Redes subterrâneas no centro",
-              "texto": "Tirar a fiação do poste é obra que ninguém vê e todo mundo sente: calçada livre, centro mais bonito e menos apagão no temporal."
+              "titulo": "Projeto das redes subterrâneas · CDL",
+              "texto": "O projeto, feito com a CDL, para tirar a fiação de energia do poste e levar para baixo da terra. É o primeiro passo de uma obra que ninguém vê e todo mundo sente: calçada livre, rua mais bonita e menos apagão no temporal.",
+              "fonte": "Transferência especial 2026, aguardando documentação. O recurso custeia o projeto, não a execução da obra."
             }
           ]
         },
@@ -625,10 +629,10 @@
           "titulo": "O que os jornais registraram",
           "texto": "Reportagens de veículos independentes. Cada card abre a matéria original, para quem quiser conferir na fonte.",
           "itens": [
-            { "id": 26, "resumo": "Eleito presidente da Comissão de Constituição e Justiça da Alesc, o primeiro parlamentar da região a ocupar o cargo." },
+            { "id": 30, "resumo": "Presidente da CCJ e relator do projeto, Pepê Collaço conduz a aprovação do reajuste do salário mínimo regional de Santa Catarina." },
             { "id": 46, "resumo": "A redragagem do Rio Tubarão entra como prioridade na Lei de Diretrizes Orçamentárias de 2026." },
             { "id": 48, "resumo": "Assinada a ordem de serviço dos projetos de dragagem e remodelagem dos molhes de acesso ao Porto de Laguna." },
-            { "id": 15, "resumo": "O projeto de redragagem do Rio Tubarão passa a ser atualizado pela UFSC." },
+            { "id": 35, "resumo": "O Ceped, da UFSC, revisa o projeto da redragagem do Rio Tubarão, com o deputado acompanhando como coordenador da Frente Parlamentar das Dragagens." },
             { "id": 77, "resumo": "Cerca de mil pessoas na prestação de contas do mandato em Tubarão." }
           ]
         },

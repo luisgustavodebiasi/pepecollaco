@@ -4,7 +4,7 @@
  * a capa de cada um e grava dados/instagram.json, que alimenta os blocos
  * "Nas redes" das páginas.
  *
- *   node build/coletar-instagram.cjs                  # posts desde 01/09/2026
+ *   node build/coletar-instagram.cjs                  # posts desde 01/08/2026
  *   node build/coletar-instagram.cjs --desde=2026-08-16
  *   node build/coletar-instagram.cjs --so-capas       # não chama a API, usa o cache
  *   node build/coletar-instagram.cjs --refazer-capas  # baixa todas as capas de novo
@@ -51,7 +51,9 @@ const opt = (nome, padrao) => {
   const a = args.find((x) => x.startsWith(`--${nome}=`));
   return a ? a.slice(nome.length + 3) : padrao;
 };
-const DESDE = opt('desde', '2026-09-01');
+// Agosto entra porque as páginas citam posts do Pepê por Elas e da largada
+// da campanha; com 01/09 eles cairiam fora e o build pararia.
+const DESDE = opt('desde', '2026-08-01');
 const SO_CAPAS = args.includes('--so-capas');
 // Baixa de novo a capa mesmo que o arquivo já exista (capa trocada no
 // Instagram depois da publicação).

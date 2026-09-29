@@ -346,7 +346,7 @@ section { padding-block: clamp(52px, 9vw, 88px); }
 .obra p { margin: 0; font-size: 15.5px; line-height: 1.55; color: var(--cor-texto-suave); }
 .obra.destaque { border-color: var(--cor-acento); background: rgba(255, 196, 0, .06); }
 /* Nota de procedência do valor: de onde saiu, em que status está, se é soma de
-   mais de uma emenda. É rodapé do card, não link — por isso sem sublinhado. */
+   mais de uma emenda. É rodapé do card, não link, por isso sem sublinhado. */
 .obra-fonte {
   margin: 2px 0 0; padding-top: 12px;
   border-top: 1px solid var(--cor-borda);
@@ -571,7 +571,7 @@ section { padding-block: clamp(52px, 9vw, 88px); }
 
    O `display: block` é a regra, não o layout: duas fontes na mesma linha
    fazem a frase parecer remendo. Quando a frase quebra, a linha de baixo é
-   inteira do pincel — é o que a assinatura QUEM FAZ REPRESENTA faz, com
+   inteira do pincel: é o que a assinatura QUEM FAZ REPRESENTA faz, com
    "QUEM FAZ" em letra de forma numa linha e "REPRESENTA" à mão na outra.
 
    text-transform é obrigatório: o recorte publicado da Granesta só tem caixa

@@ -109,7 +109,13 @@ O build falha de propósito, em vez de publicar número errado:
   precisam ser revisados.
 - **`gerar-paginas.cjs`** confere cada valor anunciado contra a base, pelo bloco
   `conferir` de cada lugar em `lugares.json`. Se a página diz R$ 88 milhões e a
-  base diz outra coisa, o build para.
+  base diz outra coisa, o build para. O autismo de uma região se confere com
+  `tema.autismo.<COORDENACAO>.valor|n|municipios`, com o mesmo critério da
+  página do tema.
+- **`atualizar-manuais.cjs`** faz o mesmo nas páginas escritas à mão
+  (educação e cidades), pelo bloco `conferir` de `manuais.json`: total e
+  quantidade por área (`area.educacao.valor`), número de cidades e a lista de
+  cidades da página (`chips`), que tem de ser igual à da base.
 - **`coletar-alesc.cjs`** para se o e-Legis devolver menos proposições que o
   esperado, se uma ementa vier com o breadcrumb do portal ou se uma lei vier sem
   número. Status legislativo errado no ar é pior que build quebrado.
@@ -146,9 +152,12 @@ leva o bloco.
 Matriz de validação, uma linha por emenda e por proposição. Duas colunas são
 para preencher à mão e sobrevivem à regeração:
 
-- **`area_manual`** — corrige a área quando a classificação automática erra.
-  São ~68 registros genéricos demais para o classificador (veículo, praça,
-  material de construção).
+- **`area_manual`** corrige a área quando a classificação automática erra.
+  Em 29/09/2026 foram corrigidos 35 registros: custeio de esporte que caía em
+  educação, sala sensorial de escola que caía em autismo, transporte de alunos,
+  pronto atendimento, van de pacientes, máquinas de obra, quadras e castração
+  que caíam em "outros". Os 37 que sobraram em "outros" são veículo de
+  prefeitura, centro comunitário, evento e afins.
 - **`publicar`** — `sim`, `nao` ou `validar`. Nasce como `validar` quando a área
   saiu como "Outros".
 
@@ -157,4 +166,5 @@ para preencher à mão e sobrevivem à regeração:
 | Item | Situação |
 |---|---|
 | Enrocamento do Rio Capivari | A obra está na apresentação do mandato, mas sem valor. Na base só há "enrocamento no bairro Santo André", R$ 500 mil. A página mostra a obra **sem cifra** até o gabinete confirmar. |
+| Educação (página manual) | Resolvido em 29/09/2026. Estava presa ao critério antigo (filtro F): somava R$ 13,2 mi com frentes que não fechavam e deixava Capivari de Baixo de fora. Agora é a área `educacao` da base: R$ 13.581.977,90, 53 emendas, 41 municípios, conferido por `manuais.json`. |
 | Termo de Cooperação TEA | O .docx está datado de 2016 e cita a UNESC; a reportagem da NDTV cita a Acafe. Nenhuma data ou parceiro é citado nas páginas até isso ser esclarecido. |

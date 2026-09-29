@@ -1,41 +1,41 @@
 {
- "geradoEm": "2026-09-01",
+ "geradoEm": "2026-09-29",
  "fonte": "EMENDAS /emendas_site_historico.csv",
  "total": 156367827.19,
  "quantidade": 525,
  "municipios": 114,
  "porArea": {
   "esporte-cultura": {
-   "valor": 14765000,
-   "n": 49
+   "valor": 17015000,
+   "n": 59
   },
   "saude": {
-   "valor": 15200146.87,
-   "n": 68
+   "valor": 16700146.87,
+   "n": 74
   },
   "infraestrutura": {
-   "valor": 87466621.67,
-   "n": 203
-  },
-  "autismo": {
-   "valor": 6290439.24,
-   "n": 35
-  },
-  "seguranca": {
-   "valor": 1210000,
-   "n": 5
-  },
-  "outros": {
-   "valor": 11429040,
-   "n": 68
-  },
-  "entidades": {
-   "valor": 3374601.51,
-   "n": 25
+   "valor": 89191621.67,
+   "n": 211
   },
   "educacao": {
-   "valor": 13681977.9,
-   "n": 52
+   "valor": 13581977.9,
+   "n": 53
+  },
+  "seguranca": {
+   "valor": 1460000,
+   "n": 6
+  },
+  "outros": {
+   "valor": 5024040,
+   "n": 37
+  },
+  "entidades": {
+   "valor": 4354601.51,
+   "n": 32
+  },
+  "autismo": {
+   "valor": 6090439.24,
+   "n": 33
   },
   "agricultura": {
    "valor": 2950000,
@@ -828,7 +828,7 @@
    "objeto": "Aquisição e implantação de sala sensorial para atendimento educacional",
    "modalidade": "TEV 26 2.8mi KATSUMI/JG",
    "status": "AGUARDANDO PORTARIA",
-   "area": "autismo",
+   "area": "educacao",
    "bancada": false,
    "sgpe": "SCC 3756/2026"
   },
@@ -1276,7 +1276,7 @@
    "objeto": "AQUISIÇÃO DE MATERIAIS DE CONSTRUÇÃO E MATERIAIS ELÉTRICOS DESTINADOS À REFORMA, MANUTENÇÃO E ADEQUAÇÃO DOS CAMPOS DE FUTEBOL PERTENCENTES AO MUNICÍPIO",
    "modalidade": "TEV 26 2.8mi KATSUMI/JG",
    "status": "PUBLICADO",
-   "area": "outros",
+   "area": "esporte-cultura",
    "bancada": false,
    "sgpe": "SCC 7483/2026"
   },
@@ -1668,7 +1668,7 @@
    "objeto": "INVESTIMENTO NO SISTEMA VIÁRIO DO MUNICÍPIO",
    "modalidade": "PIX 22 SUPLENTE",
    "status": "PRONTO",
-   "area": "outros",
+   "area": "infraestrutura",
    "bancada": false,
    "sgpe": "SCC 7555/2022"
   },
@@ -2256,7 +2256,7 @@
    "objeto": "Custeio para Secretaria de Esporte - APROET / ADFT / CHURRASCADA / ROBÓTICA / VÔLEI",
    "modalidade": "TEV 26 5.8mi JG",
    "status": "AGUARDANDO PORTARIA",
-   "area": "educacao",
+   "area": "esporte-cultura",
    "bancada": false,
    "sgpe": "SCC 4255/2026"
   },
@@ -2690,7 +2690,7 @@
    "objeto": "Aquisição de uma Retro Escavadeira 4 x 4, para Secretaria de Transporte e Obras",
    "modalidade": "TEV 25 10.3 mi GOV",
    "status": "AGUARDANDO DOCUMENTACAO",
-   "area": "outros",
+   "area": "infraestrutura",
    "bancada": false,
    "sgpe": "SCC 19927/2025"
   },
@@ -3054,7 +3054,7 @@
    "objeto": "Recurso para implantar programa de hidroginástica destinado a pacientes com indicação médica",
    "modalidade": "IMPOSITIVA 2025",
    "status": "PUBLICADO",
-   "area": "outros",
+   "area": "saude",
    "bancada": false,
    "sgpe": ""
   },
@@ -3600,7 +3600,7 @@
    "objeto": "PAP: recursos para ações essenciais, materiais, insumos, medicamentos e manutenção básica",
    "modalidade": "IMPOSITIVA 2025",
    "status": "PUBLICADO",
-   "area": "outros",
+   "area": "saude",
    "bancada": false,
    "sgpe": ""
   },
@@ -3656,7 +3656,7 @@
    "objeto": "Recurso para aquisição de medicamentos, materiais de consumo e combustível para transporte de pacientes da Atenção Básica",
    "modalidade": "IMPOSITIVA 2025",
    "status": "PUBLICADO",
-   "area": "outros",
+   "area": "saude",
    "bancada": false,
    "sgpe": ""
   },
@@ -3698,7 +3698,7 @@
    "objeto": "CASA ACOLHIDA FILHOS PREDILETOS - Recurso para compra de veiculo",
    "modalidade": "IMPOSITIVA 2025",
    "status": "AGUARDANDO DOCUMENTACAO",
-   "area": "outros",
+   "area": "entidades",
    "bancada": false,
    "sgpe": "SCC 2159/2026"
   },
@@ -3726,7 +3726,7 @@
    "objeto": "PAULÃO VÔLEI",
    "modalidade": "IMPOSITIVA 2025",
    "status": "PAGO",
-   "area": "outros",
+   "area": "esporte-cultura",
    "bancada": false,
    "sgpe": "SCC 1878/2026"
   },
@@ -3740,7 +3740,7 @@
    "objeto": "Recurso para adquirir equipamentos e implantar uma Sala Sensorial no CEI Branca de Neve",
    "modalidade": "IMPOSITIVA 2025",
    "status": "PAGO",
-   "area": "autismo",
+   "area": "educacao",
    "bancada": false,
    "sgpe": ""
   },
@@ -3964,7 +3964,7 @@
    "objeto": "AQUISIÇÃO VEÍCULO PARA ZOONOSES",
    "modalidade": "IMPOSITIVA 2025",
    "status": "PAGO",
-   "area": "outros",
+   "area": "saude",
    "bancada": false,
    "sgpe": ""
   },
@@ -3978,7 +3978,7 @@
    "objeto": "Recurso para castrações, atendimentos veterinários, vacinação, adoção e apoio à proteção animal",
    "modalidade": "IMPOSITIVA 2025",
    "status": "PAGO",
-   "area": "outros",
+   "area": "entidades",
    "bancada": false,
    "sgpe": ""
   },
@@ -4034,7 +4034,7 @@
    "objeto": "AABB - PROJETO SOCIAL DE VÔLEI SACA ESSA",
    "modalidade": "IMPOSITIVA 2025",
    "status": "EM ANALISE",
-   "area": "outros",
+   "area": "esporte-cultura",
    "bancada": false,
    "sgpe": "SCC 1864/2026"
   },
@@ -4090,7 +4090,7 @@
    "objeto": "TROCA OBJETO -> Custeio das atividades esportivas e recreativas da Sociedade Esportiva Recreativa Aparecida ERA -> Aquisição de materiais do projeto Escola de Campeões, que oferece aulas gratuitas de karatê -> Custeio das atividades esportivas e recreativas da Sociedade Esportiva Recreativa Aparecida",
    "modalidade": "IMPOSITIVA 2025",
    "status": "SOLICITADO TROCA",
-   "area": "educacao",
+   "area": "esporte-cultura",
    "bancada": false,
    "sgpe": "SCC 1851/2026"
   },
@@ -4286,7 +4286,7 @@
    "objeto": "Implantação de um sistema de câmeras de segurança no Município",
    "modalidade": "IMPOSITIVA 2025",
    "status": "PAGO",
-   "area": "outros",
+   "area": "seguranca",
    "bancada": false,
    "sgpe": ""
   },
@@ -4454,7 +4454,7 @@
    "objeto": "AQUISIÇÃO DE UM VEÍCULO PARA O ABRIGO ALBERTINA BERKENBROCK",
    "modalidade": "TEV 25 20mi GOV",
    "status": "PRONTO",
-   "area": "outros",
+   "area": "entidades",
    "bancada": false,
    "sgpe": "SCC 12796/2025"
   },
@@ -4622,7 +4622,7 @@
    "objeto": "AQUISIÇÃO DE PARQUINHOS",
    "modalidade": "TEV 25 20mi GOV",
    "status": "AGUARDANDO DOCUMENTACAO",
-   "area": "outros",
+   "area": "esporte-cultura",
    "bancada": false,
    "sgpe": "SCC 12778/2025"
   },
@@ -4860,7 +4860,7 @@
    "objeto": "COBERTURA DE CANCHA NO CENTRO DE EVENTOS ABELARDO JUVÊNCIO RODRIGUES, BAIRRO SANTO CRUZ",
    "modalidade": "TEV 25 20mi GOV",
    "status": "PUBLICADO",
-   "area": "outros",
+   "area": "esporte-cultura",
    "bancada": false,
    "sgpe": "SCC 12809/2025"
   },
@@ -4874,7 +4874,7 @@
    "objeto": "CUSTEIO DO TRANSPORTE DE ALUNOS",
    "modalidade": "TEV 25 20mi GOV",
    "status": "AGUARDANDO DOCUMENTACAO",
-   "area": "outros",
+   "area": "educacao",
    "bancada": false,
    "sgpe": "SCC 12987/2025"
   },
@@ -4902,7 +4902,7 @@
    "objeto": "AQUISIÇÃO DE VEÍCULOS UTILITÁRIOS PARA TRANSPORTE DE PASSAGEIROS TIPO VAN PARA CLUBES DE MÃES",
    "modalidade": "TEV 25 20mi GOV",
    "status": "AGUARDANDO DOCUMENTACAO",
-   "area": "outros",
+   "area": "entidades",
    "bancada": false,
    "sgpe": "SCC 12858/2025"
   },
@@ -4930,7 +4930,7 @@
    "objeto": "ESCAVADEIRA",
    "modalidade": "TEV 25 20mi GOV",
    "status": "EM ANALISE",
-   "area": "outros",
+   "area": "infraestrutura",
    "bancada": false,
    "sgpe": "SCC 13091/2025"
   },
@@ -5210,7 +5210,7 @@
    "objeto": "REALIZAÇÃO DE CONSTRUÇÃO DE ÁREA DE RECREAÇÃO NO BAIRRO ESTAÇÃO LUZERNA",
    "modalidade": "TEV 25 20mi GOV",
    "status": "AGUARDANDO DOCUMENTACAO",
-   "area": "outros",
+   "area": "esporte-cultura",
    "bancada": false,
    "sgpe": "SCC 13094/2025"
   },
@@ -5252,7 +5252,7 @@
    "objeto": "ADEQUAÇÃO E REVITALIZAÇÃO DA CASA DO ARTESÃO",
    "modalidade": "TEV 25 20mi GOV",
    "status": "AGUARDANDO DOCUMENTACAO",
-   "area": "outros",
+   "area": "esporte-cultura",
    "bancada": false,
    "sgpe": "SCC 13037/2025"
   },
@@ -5280,7 +5280,7 @@
    "objeto": "CONSTRUÇÃO DE UMA PISTA DE SKATE COBERTA",
    "modalidade": "TEV 25 20mi GOV",
    "status": "PUBLICADO",
-   "area": "outros",
+   "area": "esporte-cultura",
    "bancada": false,
    "sgpe": "SCC 12852/2025"
   },
@@ -5518,7 +5518,7 @@
    "objeto": "VEÍCULO TIPO VAN PARA TRANSPORTE DE PACIENTES",
    "modalidade": "TEV 25 10mi GOV",
    "status": "PAGO",
-   "area": "outros",
+   "area": "saude",
    "bancada": false,
    "sgpe": "SCC 9183/2025"
   },
@@ -5532,7 +5532,7 @@
    "objeto": "CASTRAÇÃO ANIMAL",
    "modalidade": "TEV 25 10mi GOV",
    "status": "AGUARDANDO DOCUMENTACAO",
-   "area": "outros",
+   "area": "entidades",
    "bancada": false,
    "sgpe": "SCC 9596/2025"
   },
@@ -5966,7 +5966,7 @@
    "objeto": "AQUISIÇÃO DE EQUIPAMENTOS E MOBÍLIAS PARA USO NO PRONTO ATENDIMENTO",
    "modalidade": "TEV 25 5mi JG",
    "status": "AGUARDANDO DOCUMENTACAO",
-   "area": "outros",
+   "area": "saude",
    "bancada": false,
    "sgpe": "SCC 7829/2025"
   },
@@ -6358,7 +6358,7 @@
    "objeto": "CASTRAÇÃO DE ANIMAIS NA SERRA CATARINENSE",
    "modalidade": "IMPOSITIVA 2024/2",
    "status": "EM ANALISE",
-   "area": "outros",
+   "area": "entidades",
    "bancada": false,
    "sgpe": "SCC 5682/2025"
   },
@@ -6736,7 +6736,7 @@
    "objeto": "AQUISIÇAO DE VEICULO DE TRABALHO (MINI CARREGADEIRA)",
    "modalidade": "IMPOSITIVA 2024",
    "status": "PAGO",
-   "area": "outros",
+   "area": "infraestrutura",
    "bancada": false,
    "sgpe": ""
   },
@@ -7030,7 +7030,7 @@
    "objeto": "AQUISIÇAO DE CAÇAMBA",
    "modalidade": "IMPOSITIVA 2024",
    "status": "PAGO",
-   "area": "outros",
+   "area": "infraestrutura",
    "bancada": false,
    "sgpe": ""
   },
@@ -7240,7 +7240,7 @@
    "objeto": "CONSTRUÇÃO DA ESCADARIA NO BAIRRO JARDIM JOSÉ RUPP",
    "modalidade": "TEV 2023 3mi",
    "status": "PAGO PARCIAL",
-   "area": "outros",
+   "area": "infraestrutura",
    "bancada": false,
    "sgpe": "SCC 18234/2023"
   },
@@ -7338,7 +7338,7 @@
    "objeto": "IMPLANTAÇÃO DE ABRIGOS DE PASSAGEIROS EM ÁRES DE MAIOR CIRCULAÇÃO DA POPULAÇÃO",
    "modalidade": "TEV 2023 4mi",
    "status": "PAGO",
-   "area": "outros",
+   "area": "infraestrutura",
    "bancada": false,
    "sgpe": "SCC 13801/2023"
   },
@@ -7884,7 +7884,7 @@
    "objeto": "REALIZAÇÃO DE CASTRAÇÃO DE CÃES E GATOS DO MUNICÍPIO",
    "modalidade": "IMPOSITIVA 2023",
    "status": "PAGO",
-   "area": "outros",
+   "area": "entidades",
    "bancada": false,
    "sgpe": ""
   },
@@ -8094,7 +8094,7 @@
    "objeto": "CONSTRUÇÃO DE PONTOS DE PASSAGEIROS",
    "modalidade": "IMPOSITIVA 2023",
    "status": "PAGO",
-   "area": "outros",
+   "area": "infraestrutura",
    "bancada": false,
    "sgpe": ""
   },

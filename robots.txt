@@ -23,6 +23,9 @@ Disallow: /_IDENTIDADE/
 Disallow: /treine-seu-voto/
 Disallow: /deppepe_collaco_arquivos_consolidados/
 Disallow: /admin/
+# Painel estratégico (senha só no navegador) e rascunho de layout, sem link no site
+Disallow: /painel/
+Disallow: /proposta-2026/
 
 # Bases de contato e auditorias soltas na raiz
 Disallow: /BACKUP_
